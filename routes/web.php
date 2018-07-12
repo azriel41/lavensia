@@ -10,18 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'guest'], function () {
+	Route::get('/', function () {
+	    return view('welcome');
+	});
 });
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'HomeController@test')->name('test');
+// Route::get('/test', 'HomeController@test')->name('test');
 
 //Halaman See more / Tempat Book
-Route::get('/package/package', 'package\packageController@package')->name('package');
-
-
-
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/package/package', 'package\packageController@package')->name('package');
+	Route::get('/home', 'HomeController@index')->name('home');
+});
