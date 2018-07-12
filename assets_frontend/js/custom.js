@@ -31,10 +31,10 @@ $(document).ready(function(){
 	});
 	
     $(window).scroll(function () {
-        if ($(window).scrollTop() > 400) {
+        if ($(window).scrollTop() > 100) {
             $("#navigation").css("background-color","#ad2eba");
         } else {
-            $("#navigation").css("background-color","rgba(16, 22, 54, 0.2)");
+            $("#navigation").css("background-color","rgba(16, 22, 54, 0.9)");
         }
     });
 	

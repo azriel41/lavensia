@@ -14,6 +14,7 @@
 
 <!-- Custom Css -->
 <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
+
 {{-- <link href="{{ asset ('assets_frontend/css/package_style.css') }}" rel="stylesheet"> --}}
 
 <!-- Waves Effect Css -->
@@ -54,6 +55,9 @@
 <!-- font awesome-->
 <link href="{{ asset ('assets/plugins/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets/plugins/fontawesome/css/all.css') }}" rel="stylesheet" />
+
+
+
 
 <style type="text/css">
 	

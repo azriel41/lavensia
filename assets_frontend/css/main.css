@@ -171,7 +171,12 @@ body > section,
 	border-top: 1px solid #32B0EE;
 	color: #fff;
 }
-
+.icon_login_logout{
+   margin-top: 3%;
+}
+.button_group_name{
+  margin-top: 8%;
+}
 
 
 
@@ -363,7 +368,6 @@ top: -8px;
     float: left;
     width: 25%;
     position: relative;
-    border: 8px solid white
 }
 
 .work-item > img {
@@ -738,4 +742,3 @@ label.error {
 /*=========================================
   Template Detail Package / Booking
 ==========================================*/
-

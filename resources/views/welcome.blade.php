@@ -9,8 +9,13 @@
         @include('layouts_frontend._head')
         <style type="text/css">
             .btn-primary {
-                color: #5b5252;
-                background-color: #017c5a;
+                color: white;
+                background-color: transparent;
+                border-color: #ffffff;
+            }
+            .btn-primary:hover {
+                color: black;
+                background-color: #f4c800;
                 border-color: #ffffff;
             }
             .btn-book{
@@ -19,6 +24,11 @@
             }
             .logo{
                 width: 140px;
+            }
+            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+                color: #000;
+                background-color: #face03;
+                border-color: #ffffff;
             }
         </style>
     </head>

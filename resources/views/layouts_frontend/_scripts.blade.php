@@ -95,4 +95,11 @@
             }
         });
     });
+
+    function login(argument) {
+        window.location=('{{ url('/login') }}');
+    }
+    function register(argument) {
+        window.location=('{{ url('/register') }}');
+    }
 </script>
