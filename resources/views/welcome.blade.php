@@ -25,51 +25,7 @@
     
     <body id="body">
     
-        <!-- preloader -->
-        <div id="preloader">
-            <img src="{{ asset ('assets_frontend/img/preloader.gif')}}" alt="Preloader">
-        </div>
-        <!-- end preloader -->
-
-        <!-- 
-        Fixed Navigation
-        ==================================== -->
-        <header id="navigation" class="navbar-fixed-top navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
-                    </button>
-                    <!-- /responsive nav button -->
-                    
-                    <!-- logo -->
-                    <a class="navbar-brand" href="#body">
-                        <h1 id="logo">
-                            <img src="{{ asset ('assets_frontend/img/logo.png')}}" alt="Brandi" class="logo">
-                        </h1>
-                    </a>
-                    <!-- /logo -->
-                </div>
-
-                <!-- main nav -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
-                        <li class="current"><a href="#body">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#works">Work</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="http://google.com">Contact</a></li>
-                    </ul>
-                </nav>
-                <!-- /main nav -->
-                
-            </div>
-        </header>
-        <!--
-        End Fixed Navigation
-        ==================================== -->
+        
         
         
         
@@ -94,21 +50,8 @@
                     <div class="item active" style="background-image: url(assets_frontend/img/image-gallery/12.jpg); height: 100%">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> Travel Agent.</h3>
                             <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a professionals Travel Agent</p>
-                            <p data-wow-duration="1000ms" class="wow slideInRight animated">
-                                @if (Route::has('login'))
-                                    <div class="top-right links">
-                                        @if (Auth::check())
-                                            <button class="btn btn-small btn-primary"><a href="{{ url('/home') }}">Home</a></button>
-                                        @else
-                                            <button class="btn btn-small btn-primary"><a href="{{ url('/login') }}">Login</a></button>
-                                            <a href="javascript:void(0);" style="color: #0feb9e"> || </a>
-                                            <button class="btn btn-small btn-primary"><a href="{{ url('/register') }}">Register</a></button>
-                                        @endif
-                                    </div>
-                                @endif
-                            </p>
                             
                             <ul class="social-links text-center">
                                 <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
@@ -126,19 +69,7 @@
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
                             <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
-                            <p data-wow-duration="1000ms" class="wow slideInRight animated">
-                                @if (Route::has('login'))
-                                    <div class="top-right links">
-                                        @if (Auth::check())
-                                            <a href="{{ url('/home') }}">Home</a>
-                                        @else
-                                            <button class="btn btn-small btn-primary"><a href="{{ url('/login') }}">Login</a></button>
-                                            <a href="javascript:void(0);" style="color: #0feb9e"> || </a>
-                                            <button class="btn btn-small btn-primary"><a href="{{ url('/register') }}">Register</a></button>
-                                        @endif
-                                    </div>
-                                @endif
-                            </p>
+                            
                             <ul class="social-links text-center">
                                 <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
                                 <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
@@ -350,7 +281,7 @@
                             <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
                             <li><a href="javascript:;" data-filter=".domestik" class="filter">Tour Domestik</a></li>
                             <li><a href="javascript:;" data-filter=".internasional" class="filter">Tour Internasional</a></li>
-                            <li><a href="javascript:;" data-filter=".logo-design" class="filter">logo design</a></li>
+                            <li><a href="javascript:;" data-filter=".china" class="filter">China</a></li>
                             <li><a href="javascript:;" data-filter=".photography" class="filter">photography</a></li>
                         </ul>
                     </div>
@@ -367,7 +298,7 @@
                         <h4>TOUR BANGKOK  PATTAYA</h4>
                         <p>PERIODE :  7 Sep & 18 Aug 2018</p>
                         <br>
-                        <button class="btn btn-small btn-book">See More!</button>
+                        <button class="btn btn-small btn-book"><b>See More!</b></button>
                     </figcaption>
                 </figure>
                 
@@ -380,7 +311,7 @@
                     </figcaption>
                 </figure>
                 
-                <figure class="mix work-item logo-design">
+                <figure class="mix work-item china">
                     <img src="{{ asset ('assets_frontend/img/33.png')}}" alt="">
                     <figcaption class="overlay">
                         <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-3.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
@@ -390,45 +321,45 @@
                 </figure>
                 
                 <figure class="mix work-item photography">
-                    <img src="{{ asset ('assets_frontend/img/works/item-4.jpg')}}" alt="">
+                    <img src="{{ asset ('assets_frontend/img/44.png')}}" alt="">
                     <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-4.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
+                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-4.png')}}"><i class="fa fa-eye fa-lg"></i></a>
                         <h4>Labore et dolore magnam</h4>
                         <p>Photography</p>
                     </figcaption>
                 </figure>
             
                 <figure class="mix work-item domestik">
-                    <img src="{{ asset ('assets_frontend/img/works/item-5.jpg')}}" alt="">
+                    <img src="{{ asset ('assets_frontend/img/55.png')}}" alt="">
                     <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-5.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
+                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-5.png')}}"><i class="fa fa-eye fa-lg"></i></a>
                         <h4>Labore et dolore magnam</h4>
                         <p>Photography</p>
                     </figcaption>
                 </figure>
                 
                 <figure class="mix work-item internasional">
-                    <img src="{{ asset ('assets_frontend/img/works/item-6.jpg')}}" alt="">
+                    <img src="{{ asset ('assets_frontend/img/66.png')}}" alt="">
                     <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-6.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
+                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-6.png')}}"><i class="fa fa-eye fa-lg"></i></a>
                         <h4>Labore et dolore magnam</h4>
                         <p>Photography</p>
                     </figcaption>
                 </figure>
                 
-                <figure class="mix work-item logo-design">
-                    <img src="{{ asset ('assets_frontend/img/works/item-7.jpg')}}" alt="">
+                <figure class="mix work-item china">
+                    <img src="{{ asset ('assets_frontend/img/77.png')}}" alt="">
                     <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-7.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
+                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-7.png')}}"><i class="fa fa-eye fa-lg"></i></a>
                         <h4>Labore et dolore magnam</h4>
                         <p>Photography</p>
                     </figcaption>
                 </figure>
                 
                 <figure class="mix work-item photography">
-                    <img src="{{ asset ('assets_frontend/img/works/item-8.jpg')}}" alt="">
+                    <img src="{{ asset ('assets_frontend/img/88.png')}}" alt="">
                     <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-8.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
+                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-8.png')}}"><i class="fa fa-eye fa-lg"></i></a>
                         <h4>Labore et dolore magnam</h4>
                         <p>Photography</p>
                     </figcaption>
@@ -455,7 +386,7 @@
                     <div class="row number-counters">
                         
                         <div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-                            <h2>Some Fun Facts</h2>
+                            <h2 class="count_h2">Some Fun Facts</h2>
                             <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                         </div>
                         
@@ -518,22 +449,22 @@
                     </div>
                     
                     <div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+                        <p>Keluh Kesah anda dan juga kritik anda sangat membangun perusahaan kami bertumbuh</p>
                     </div>
                     
                     <!-- contact address -->
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
+                   {{--  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
                         <div class="contact-address">
                             <h3>Cras at ultrices erat, sed vulputate!</h3>
                             <p>2345 Setwant natrer, 1234,</p>
                             <p>Washington. United States.</p>
                             <p>(401) 1234 567</p>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- end contact address -->
                     
                     <!-- contact form -->
-                    <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <div class="col-lg-11 col-md-11 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
                         <div class="contact-form">
                             <h3>Say hello!</h3>
                             <form action="#" id="contact-form">
@@ -581,62 +512,8 @@
         ==================================== -->
         
         
-        <footer id="footer" class="footer">
-            <div class="container">
-                <div class="row">
-                
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
-                        <div class="footer-single">
-                            <img src="{{ asset ('assets_frontend/img/footer-logo.png')}}" alt="">
-                            <p>eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                    </div>
-                
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <div class="footer-single">
-                            <h6>Subscribe </h6>
-                            <form action="#" class="subscribe">
-                                <input type="text" name="subscribe" id="subscribe">
-                                <input type="submit" value="&#8594;" id="subs">
-                            </form>
-                            <p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        </div>
-                    </div>
-                
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                        <div class="footer-single">
-                            <h6>Explore</h6>
-                            <ul>
-                                <li><a href="#">Inside Us</a></li>
-                                <li><a href="#">Flickr</a></li>
-                                <li><a href="#">Google</a></li>
-                                <li><a href="#">Forum</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-                        <div class="footer-single">
-                            <h6>Support</h6>
-                            <ul>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Market Blog</a></li>
-                                <li><a href="#">Help Center</a></li>
-                                <li><a href="#">Pressroom</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="copyright text-center">
-                            Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('layouts_frontend._footer')
+        
         
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
 
