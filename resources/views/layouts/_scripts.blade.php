@@ -1,7 +1,7 @@
 <!-- Jquery Core Js -->
 {{-- <script src="{{ asset ('assets/plugins/jquery/jquery.js') }}"></script> --}}
 <script src="{{ asset ('assets/plugins/jquery/jquery-1.11.3.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <!-- Bootstrap Core Js -->
 <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
@@ -41,7 +41,6 @@
 
 <!-- Flot Charts Plugin Js -->
 <script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.js') }}"></script>
-<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.resize.js') }}"></script>
 <script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
 <script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
 <script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.time.js') }}"></script>

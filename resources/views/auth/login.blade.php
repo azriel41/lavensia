@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    
     <!-- Favicon-->
     @include('layouts._head')
-
-    
 </head>
-
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
@@ -18,7 +13,7 @@
         <div class="card">
             <div class="body">
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                	{{ csrf_field() }}
+                    {{ csrf_field() }}
                     <div class="msg">Sign in to start your session</div>
 
                     <div class="input-group{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -49,7 +44,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label for="rememberme">Remember Me</label>
                         </div>
                         <div class="col-xs-4">
@@ -65,9 +60,9 @@
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
-    </div>
 
     
 </body>

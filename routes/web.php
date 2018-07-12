@@ -10,15 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'HomeController@test')->name('test');
+// Route::get('/test', 'HomeController@test')->name('test');
+
 
 //data siswa
 Route::get('/human_resource/siswa/siswa', 'human_resource\siswaController@siswa')->name('siswa');
@@ -30,8 +30,9 @@ Route::get('/human_resource/siswa/save_siswa', 'human_resource\siswaController@s
 Route::get('/human_resource/siswa/guru', 'human_resource\guruController@guru')->name('guru');
 
 
-//Halaman See more / package
-Route::get('/package/package', 'package\packageController@package')->name('package');
-
-
+//Halaman See more / Tempat Book
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/package/package', 'package\packageController@package')->name('package');
+	Route::get('/home', 'HomeController@index')->name('home');
+});
 
