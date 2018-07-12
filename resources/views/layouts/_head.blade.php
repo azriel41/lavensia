@@ -14,6 +14,7 @@
 
 <!-- Custom Css -->
 <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
+<link href="{{ asset ('assets_frontend/css/package_style.css') }}" rel="stylesheet">
 
 <!-- Waves Effect Css -->
 <link href="{{ asset ('assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
@@ -30,8 +31,6 @@
 
 <!-- Morris Chart Css-->
 <link href="{{ asset ('assets/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
-
-
 
 <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
 <link href="{{ asset ('assets/css/themes/all-themes.css') }}" rel="stylesheet" />
