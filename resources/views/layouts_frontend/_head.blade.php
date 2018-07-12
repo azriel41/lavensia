@@ -31,7 +31,7 @@ Fixed Navigation
             <!-- /responsive nav button -->
             
             <!-- logo -->
-            <a class="navbar-brand" href="#body">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <h1 id="logo">
                     <img src="{{ asset ('assets_frontend/img/logo.png')}}" alt="Brandi" class="logo">
                 </h1>
@@ -42,11 +42,29 @@ Fixed Navigation
         <!-- main nav -->
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li class="current"><a href="#body">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#works">Work</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#works">Package</a></li>
                 <li><a href="http://google.com">Contact</a></li>
+                @if (Route::has('login'))
+                        @if (Auth::check())
+                            <li>
+                                <div class="btn-group">
+                                      <button type="button" class="btn btn-primary dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->username }} 
+                                        &nbsp;<span class="caret"></span>
+                                      </button>
+
+                                      <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Log Out</a></li>
+                                      </ul>
+                                </div>
+                            </li>
+
+                        @else
+                            <button class="btn btn-small btn-primary icon_login_logout" onclick="login()">Login</button>
+
+                            <button class="btn btn-small btn-primary icon_login_logout" onclick="register()">Register</button>
+                        @endif
+                @endif
             </ul>
         </nav>
         <!-- /main nav -->
@@ -75,6 +93,9 @@ End Fixed Navigation
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/main.css')}}">
 <!-- media-queries -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/media-queries.css')}}">
+<!-- Tabs -->
+<link href="{{ asset ('assets_frontend/css/tabs/tabs.css') }}" rel="stylesheet" />
+<link href="{{ asset ('assets_frontend/css/tabs/tabstyles.css') }}" rel="stylesheet" />
 
 <!-- Modernizer Script for old Browsers -->
 <script src="{{ asset ('assets_frontend/js/modernizr-2.6.2.min.js')}}"></script>
