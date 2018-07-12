@@ -14,7 +14,7 @@
 
 <!-- Custom Css -->
 <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
-<link href="{{ asset ('assets_frontend/css/package_style.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset ('assets_frontend/css/package_style.css') }}" rel="stylesheet"> --}}
 
 <!-- Waves Effect Css -->
 <link href="{{ asset ('assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
