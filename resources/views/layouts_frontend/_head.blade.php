@@ -48,13 +48,22 @@ Fixed Navigation
                         @if (Auth::check())
                             <li>
                                 <div class="btn-group">
-                                      <button type="button" class="btn btn-primary dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->username }} 
+                                      <button type="button" class="btn btn-primary dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->name }} 
                                         &nbsp;<span class="caret"></span>
                                       </button>
 
                                       <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Log Out</a></li>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
                                       </ul>
                                 </div>
                             </li>
