@@ -291,8 +291,28 @@
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
-                                <h3>All Auctions</h3>
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <tr>
+                                    <th><b>PERIODE</b></th>
+                                    <th><b>PERIODE</b></th>
+                                </tr>
+                                <tr>
+                                    <th><b>DAY 8 SINGAPORE – SURABAYA</b></th>
+                                    <th><b>DAY 8 SINGAPORE – SURABAYA</b></th>
+                                </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                
+                                <tr>
+                                    <td>Transit di Singapore untuk penerbangan kembali ke Surabaya / Jakarta. Terima kasih atas kepercayaan yang diberikan kepada LAVENSIA.</td>
+                                </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
                             </div>
 
                             <div id="menu2" class="tab-pane fade">
