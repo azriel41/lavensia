@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\roles;
+use Session;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -24,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-      
-        return view('home');
+        if (Auth::user()->role_id == 2) {
+            return view('welcome');
+        }else{
+            return view('admin');
+        }
     }
 }
