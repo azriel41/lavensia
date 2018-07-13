@@ -106,10 +106,8 @@
                 height: 100%;
               }
             }
-
             .modal-dialog {
               display: inline-block;
-              text-align: left;
               vertical-align: middle;
             }
         </style>
@@ -165,7 +163,7 @@
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                             <div class="container">
                                 <button class="btn btn-small btn-book" onclick="keranjang()"><b><i class="fa fa-shopping-cart"></i> Masuk Keranjang !</b></button>
-                                <button class="btn btn-small btn-book" onclick="book()" data-toggle="modal" data-target="#myModal"><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                <button class="btn btn-small btn-book" onclick="booking()" {{-- data-toggle="modal" data-target="#myModal" --}}><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                             </div>
                     </div>
 
@@ -492,14 +490,8 @@
     function more(argument) {
         window.location=('{{ route('package') }}');
     }
-
-    $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
+    function booking(argument) {
+        window.location=('{{ route('booking') }}');
+    }
+        
 </script>
