@@ -53,8 +53,8 @@ Fixed Navigation
                                       </button>
 
                                       <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Log Out</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> &nbsp;Profile</a></li>
+                                        <li><a href="#"><i class="fa fa-sign-out"></i> &nbsp;Log Out</a></li>
                                       </ul>
                                 </div>
                             </li>
@@ -65,6 +65,8 @@ Fixed Navigation
                             <button class="btn btn-small btn-primary icon_login_logout" onclick="register()">Register</button>
                         @endif
                 @endif
+                <li><a href="http://google.com">Keranjang</a></li>
+
             </ul>
         </nav>
         <!-- /main nav -->
@@ -84,7 +86,7 @@ End Fixed Navigation
 <!-- Fontawesome Icon font -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/font-awesome.min.css') }}">
 <!-- Twitter Bootstrap css -->
-<link rel="stylesheet" href="{{ asset ('assets_frontend/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ asset ('assets_frontend/css/bootstrap.css')}}">
 <!-- jquery.fancybox  -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/jquery.fancybox.css')}}">
 <!-- animate -->

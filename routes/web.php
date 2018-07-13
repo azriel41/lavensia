@@ -31,8 +31,10 @@ Route::get('/human_resource/siswa/guru', 'human_resource\guruController@guru')->
 
 
 //Halaman See more / Tempat Book
+Route::get('/package/package', 'package\packageController@package')->name('package');
+
+
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/package/package', 'package\packageController@package')->name('package');
 	Route::get('/home', 'HomeController@index')->name('home');
 });
 

@@ -14,5 +14,4 @@ class packageController extends Controller
         return view('package.package');
     }
     
-    
 }

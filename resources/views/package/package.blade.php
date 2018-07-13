@@ -82,16 +82,51 @@
             .kiri{
                 text-align:left;
             }
+            /* MODAL */
+            .modal-backdrop {
+                z-index: 1040 !important;
+            }
+            .modal-dialog {
+                margin: auto;
+                z-index: 1100 !important;
+                width: 700px;
+            }
+            .modal-content {
+                border-radius: 0px; 
+            }
+            .modal {
+              text-align: center;
+            }
+
+            @media screen and (min-width: 768px) { 
+              .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+              }
+            }
+
+            .modal-dialog {
+              display: inline-block;
+              text-align: left;
+              vertical-align: middle;
+            }
         </style>
     </head>
     
     <body id="body">  
+
         <!--
         Contact Us
         ==================================== -->        
         <section id="package" class="package">
             <div class="container">
+
                 <div class="row mb50">
+
+                 @include('package.modal_book')
+
                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
                         <h2 class="count_h2">TOUR THE NEW BEIJING SHANGHAI HUANGSHAN</h2>
@@ -100,12 +135,12 @@
                     </div>
 
                     <!-- Image--> 
-                    <div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
+                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <img src="{{ asset ('assets_frontend/img/11.png')}}" alt="">
                     </div>
 
                     <!-- Hightlight--> 
-                    <div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
+                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <table width="100%"> 
                             <tr>
@@ -118,17 +153,29 @@
                                 <td valign="top">:</td>
                                 <td align="left" style="padding-left: 30px;"><h4>8 September 2018</h4></td>
                             </tr>
+                            <tr>
+                                <td align="left" valign="top"><h4>SEAT REMAIN</h4></td>
+                                <td valign="top">:</td>
+                                <td align="left" style="padding-left: 30px;"><h4>40</h4></td>
+                            </tr>
                         </table>
                       </div>
                     </div>
                     
+                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <div class="container">
+                                <button class="btn btn-small btn-book" onclick="keranjang()"><b><i class="fa fa-shopping-cart"></i> Masuk Keranjang !</b></button>
+                                <button class="btn btn-small btn-book" onclick="book()" data-toggle="modal" data-target="#myModal"><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                            </div>
+                    </div>
+
                     <!-- Tabs--> 
-                    <div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
+                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <ul class="nav nav-tabs ">
                             <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour Detail</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
-                            <li><a data-toggle="tab" href="#menu2"><i class="fa fa-heart"></i> Page</a></li> 
+                            <li><a data-toggle="tab" href="#menu2"><i class="fa fa-heart"></i> Agent Price</a></li> 
                         </ul>
 
                         <div class="tab-content">
@@ -291,22 +338,63 @@
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
-                                <tr>
-                                    <th><b>PERIODE</b></th>
-                                    <th><b>PERIODE</b></th>
-                                </tr>
-                                <tr>
-                                    <th><b>DAY 8 SINGAPORE – SURABAYA</b></th>
-                                    <th><b>DAY 8 SINGAPORE – SURABAYA</b></th>
-                                </tr>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <th><b>PERIODE</b></th>
+                                        <th><b>Dewasa</b></th>
+                                        <th><b>Single Sup</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th><b>8 Sep 2018</b></th>
+                                        <th><b>Rp 12.599.000,-</b></th>
+                                        <th><b>Rp 1.500.000,-</b></th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <td width="20%" valign="top">Harga Termasuk</td>
+                                        <td width="2%" valign="top">:</td> 
+                                        <td>SUDAH Tiket kelas Ekonomi Singapore Airlines sesuai rute diatas dengan bagasi 30 kgs per orang Akomodasi l l , Makan & Tour sesuai dengan jadwal acara Tiket masuk lokasi wisata sesuai yang tertera di jadwal acara Tiket masuk pertunjukan sesuai jadwal acara Tips Guide dan Dr l l iver.</td>
+                                    </tr>
 
                                     <tr>
                                         <td>&nbsp;</td>
                                     </tr>
+
+                                    <tr>
+                                        <td valign="top">Harga Termasuk</td>
+                                        <td valign="top">:</td> 
+                                        <td>BELUM Biaya engurusan Visa China Rp. 600.000 Pengeluaran Pribadi seperti Mini Bar, Telepon, Laundry dll. Tips Porter di hotel Tour Tambahan di luar jadwal acara.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Shopping Stops</td>
+                                        <td valign="top">:</td> 
+                                        <td>Lavensia Tour adalah shopping tour, harga tour disubsidi dari Shopping Stops. Setiap peserta diminta kerjasamanya untuk bisa mengunjungi Shopping Stops minimal selama 60 menit di setiap shopping stops untuk menghindari penalti dari subsidi yang telah di berikan.
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Deposit, Pembayaran & Pembatalan</td>
+                                        <td valign="top">:</td> 
+                                        <td>Deposit Rp. 5,000,000 per orang, dibayarkan pada saat pemesanan Pelunasan harus dilakukan minimal 1 bulan sebelum keberangkatan Pembatalan setelah deposit tidak dapat dilakukan Pembatalan 1 bulan sebelum keberangkatan, deposit akan hangus Pembatalan 2 minggu / kurang sebelum keberangkatan, seluruh pembayaran hangus Daftar hotel dan jadwal tour dapat berubah tanpa mengurangi isi daripada tour Bila peserta kurang dari 15 orang, penyelenggara berhak membatalkan tour, dan seluruh pembayaran akan dikembalikan Peserta wajib mengikuti seluruh acara tour, apabila ada sebagian seluruh acara tour yang tidak diikuti, kemungkinan akan dikenakan penalti..</td>
+                                    </tr>
+
+
+                                </table>
                                 
-                                <tr>
-                                    <td>Transit di Singapore untuk penerbangan kembali ke Surabaya / Jakarta. Terima kasih atas kepercayaan yang diberikan kepada LAVENSIA.</td>
-                                </tr>
                                     <tr>
                                         <td>&nbsp;</td>
                                     </tr>
@@ -316,10 +404,67 @@
                             </div>
 
                             <div id="menu2" class="tab-pane fade">
-                                <h3>My Saved Choices</h3>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <th><b>PERIODE</b></th>
+                                        <th><b>Dewasa</b></th>
+                                        <th><b>Single Sup</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th><b>8 Sep 2018</b></th>
+                                        <th><b>Rp 12.599.000,-</b></th>
+                                        <th><b>Rp 1.500.000,-</b></th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <td width="20%" valign="top">Harga Termasuk</td>
+                                        <td width="2%" valign="top">:</td> 
+                                        <td>SUDAH Tiket kelas Ekonomi Singapore Airlines sesuai rute diatas dengan bagasi 30 kgs per orang Akomodasi l l , Makan & Tour sesuai dengan jadwal acara Tiket masuk lokasi wisata sesuai yang tertera di jadwal acara Tiket masuk pertunjukan sesuai jadwal acara Tips Guide dan Dr l l iver.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Harga Termasuk</td>
+                                        <td valign="top">:</td> 
+                                        <td>BELUM Biaya engurusan Visa China Rp. 600.000 Pengeluaran Pribadi seperti Mini Bar, Telepon, Laundry dll. Tips Porter di hotel Tour Tambahan di luar jadwal acara.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Shopping Stops</td>
+                                        <td valign="top">:</td> 
+                                        <td>Lavensia Tour adalah shopping tour, harga tour disubsidi dari Shopping Stops. Setiap peserta diminta kerjasamanya untuk bisa mengunjungi Shopping Stops minimal selama 60 menit di setiap shopping stops untuk menghindari penalti dari subsidi yang telah di berikan.
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Deposit, Pembayaran & Pembatalan</td>
+                                        <td valign="top">:</td> 
+                                        <td>Deposit Rp. 5,000,000 per orang, dibayarkan pada saat pemesanan Pelunasan harus dilakukan minimal 1 bulan sebelum keberangkatan Pembatalan setelah deposit tidak dapat dilakukan Pembatalan 1 bulan sebelum keberangkatan, deposit akan hangus Pembatalan 2 minggu / kurang sebelum keberangkatan, seluruh pembayaran hangus Daftar hotel dan jadwal tour dapat berubah tanpa mengurangi isi daripada tour Bila peserta kurang dari 15 orang, penyelenggara berhak membatalkan tour, dan seluruh pembayaran akan dikembalikan Peserta wajib mengikuti seluruh acara tour, apabila ada sebagian seluruh acara tour yang tidak diikuti, kemungkinan akan dikenakan penalti..</td>
+                                    </tr>
+
+
+                                </table>
                             </div>
                         </div>
+                        
+
+
                       </div>
                     </div>
                 </div>
@@ -348,4 +493,13 @@
         window.location=('{{ route('package') }}');
     }
 
+    $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
 </script>
