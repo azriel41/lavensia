@@ -59,7 +59,7 @@ Fixed Navigation
                                       </button>
 
                                       <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ route('home') }}"><i class="fa fa-user"></i> Dashboard</a></li>
+                                        <li><a href="route"><i class="fa fa-user"></i> Dashboard</a></li>
                                         <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"

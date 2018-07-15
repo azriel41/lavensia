@@ -87,6 +87,8 @@
 <script src="{{ asset ('assets/plugins/fontawesome/js/fontawesome.js')}}"></script>
 <script src="{{ asset ('assets/plugins/fontawesome/js/all.js')}}"></script>
 
+<!-- Mask Money-->
+<script src="{{ asset ('assets/plugins/mask-money/jquery.maskMoney.min.js')}}"></script>
 
 <script type="text/javascript">
 		
@@ -101,6 +103,8 @@
         weekStart: 1,
         time: false
     });
+
+    $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
 
 
 </script>

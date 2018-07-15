@@ -27,6 +27,8 @@
 <!-- jquery easing -->
 <script src="{{ asset ('assets_frontend/js/wow.min.js') }}"></script>
 
+
+
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)
