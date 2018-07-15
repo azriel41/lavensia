@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 	//Additional
-	Route::get('/master/additional', 'master\additionalController@index')->name('additional');
+	Route::get('/master/additional', 'master\additionalController@index')->name('master_additional');
 	//Master intinerary
 	Route::get('/master/master_intinerary', 'master\intinerary_controller@index')->name('master_intinerary');
 	//Master Agent/Proffile

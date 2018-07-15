@@ -306,7 +306,7 @@
                                 <a href="">Perusahaan</a>
                             </li>
                             <li>
-                                <a href="{{ route('additional') }}">Additional</a>
+                                <a href="{{ route('master_additional') }}">Additional</a>
                             </li>
                             <li>
                                 <a href="{{ route('master_intinerary') }}">Master Intinerary</a>

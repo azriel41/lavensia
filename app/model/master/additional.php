@@ -6,12 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class additional extends Model
 {
-   protected $additional = 'users';
-   protected $primaryKey = 'id';
+   protected $additional = 'm_additional';
+   protected $primaryKey = 'ma_id';
 
-   protected $fillable = ['id','name','username','birthday','phone','email','address','studies','education','class','created_at','udpated_at'];
-	
-   protected $hidden = [
-        'password', 'remember_token',
-   ];
+   protected $fillable = ['ma_id','ma_name','ma_price','ma_created_at','ma_udpated_at'];
 }
