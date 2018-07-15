@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/additional', 'master\additionalController@index')->name('master_additional');
 	//Master intinerary
 	Route::get('/master/master_intinerary', 'master\intinerary_controller@index')->name('master_intinerary');
+	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create')->name('master_intinerary_create');
 	//Master Agent/Proffile
 	Route::get('/human_resource/siswa/complete_data', 'human_resource\siswaController@complete_data')->name('complete_data');
 });

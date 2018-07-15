@@ -1,5 +1,10 @@
 @extends('main')
 @include('layouts._sidebar')
+<style type="text/css" media="screen">
+    .inline-block{
+        display: inline-block;
+    }
+</style>
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
@@ -16,7 +21,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h4>Master Intinerary</h4>
+                        <h4 class="inline-block">
+                            Master Intinerary
+                        </h4>
+                        <div class="pull-right">
+                            <a href="{{ route('master_intinerary_create') }}">
+                                <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
+                            </a>
+                        </div>
                     </div>
                     <div class="body">
                         <table class="table table-bordered dataTable">

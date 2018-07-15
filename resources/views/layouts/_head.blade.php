@@ -75,4 +75,7 @@
 	.left{
 		text-align: left;
 	}
+	.borderless{
+		border: none !important;
+	}
 </style>

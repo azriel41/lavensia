@@ -9,6 +9,11 @@ class intinerary_controller extends Controller
 {
     public function index($value='')
     {
-    	return view('master.index_intinerary');
+    	return view('master.master_intinerary.index_intinerary');
+    }
+
+    public function create()
+    {
+    	return view('master.master_intinerary.create_intinerary');
     }
 }
