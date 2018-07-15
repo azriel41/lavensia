@@ -306,7 +306,7 @@
                                 <a href="{{ route('siswa') }}">Perusahaan</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Additional</a>
+                                <a href="{{ route('additional') }}">Additional</a>
                             </li>
                             <li>
                                 <a href="{{ route('siswa') }}">Master Intinerary</a>

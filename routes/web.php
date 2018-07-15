@@ -37,5 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
+	//payment
+	Route::get('/master/additional', 'master\additionalController@index')->name('additional');
 });
 

@@ -17,6 +17,12 @@
 </div>
 <!-- end preloader -->
 
+<style type="text/css">
+     .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            background-color:red;
+        }
+</style>
+
 <!-- 
 Fixed Navigation
 ==================================== -->
@@ -53,11 +59,13 @@ Fixed Navigation
                                       </button>
 
                                       <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="{{ route('home') }}"><i class="fa fa-user"></i> Dashboard</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
+                                                         <i class="fa fa-sign-out"></i>
                                                 Logout
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

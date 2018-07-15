@@ -390,7 +390,7 @@
                          <div class="contact-form col1 col-sm-1" >
                             <div class="input-group margin-top-20px">
                                 <div>
-                                    <button type="button" class="bk_save btn btn-book btm-sm"><i class="fa fa-share-square"></i> <b>Submit</b></button>
+                                    <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
                                 </div>
                             </div>
                           </div>
@@ -463,33 +463,25 @@
         if (bed == 'single') {
             var remove = $(par).find('.file-upload_append').remove();
         }else if(bed == 'double'){
-
-            $(par).find('.drop_here').html(
-                                                '<div class="file-upload file-upload_append">'+
-                                                    '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
-                                                    '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
-                                                '</div>');
-            
+           $(par).find('.drop_here').html('<div class="file-upload file-upload_append">'+
+                                                '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
+                                                '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
+                                            '</div>');
             console.log('b');
         }else if (bed == 'triple') {
-          
-
             $(par).find('.drop_here').html('<div class="file-upload file-upload_append">'+
                                                 '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
                                                 '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
                                             '</div>');
-
-            $(par).find('.drop_here').html('<div class="file-upload file-upload_append">'+
-                                                '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
-                                                '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
-                                            '</div>');
-
-
         }else if (bed == 'doubletwin&cnb') {
             console.log('e');
         }else if (bed == 'doubletwin&invent') {
             console.log('f');
         }
+    }
+
+    function save(argument) {
+        windw.location=('')
     }
 
         
