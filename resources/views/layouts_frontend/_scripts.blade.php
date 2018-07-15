@@ -26,6 +26,7 @@
 <script src="{{ asset ('assets_frontend/js/jquery.easing.min.js') }}"></script>
 <!-- jquery easing -->
 <script src="{{ asset ('assets_frontend/js/wow.min.js') }}"></script>
+
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)
@@ -41,6 +42,7 @@
 <script src="{{ asset ('assets_frontend/js/custom.js') }}"></script>
 
 <script type="text/javascript">
+    
     $(function(){
         /* ========================================================================= */
         /*  Contact Form
@@ -102,4 +104,7 @@
     function register(argument) {
         window.location=('{{ url('/register') }}');
     }
+
+    
+
 </script>

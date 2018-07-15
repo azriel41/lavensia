@@ -11,6 +11,7 @@ body {
     color: #6a737b;
 }
 
+
 ol, ul {
     margin: 0;
     padding: 0;
@@ -141,7 +142,7 @@ body > section,
 ==========================================*/
 
 #navigation {
-  background-color: rgba(16, 22, 54, 0.2);
+  background-color: rgba(16, 22, 54, 0.9);
   border: 0 none;
   margin: 0;
   
@@ -177,8 +178,8 @@ body > section,
 .button_group_name{
   margin-top: 8%;
 }
-
-
+    width: 100px !important;
+}
 
 /*=========================================
 	Slider
@@ -366,11 +367,14 @@ top: -8px;
 
 .work-item {
     float: left;
+    padding-left: 15px;
     width: 25%;
     position: relative;
 }
 
 .work-item > img {
+  margin: auto;
+  padding-bottom: 5%;
   display: block;
   height: auto;
   max-width: 100%;
@@ -380,12 +384,11 @@ top: -8px;
 	background-color: rgb(166, 60, 134,0.9);
 	text-align: center;
 	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
 	color: #fff;
-	
+	left: auto;
+  top: 0;
+  width: 96%;
+  height: 94%;
 	opacity: 0;
 	filter: alpha(opacity=0);
 	

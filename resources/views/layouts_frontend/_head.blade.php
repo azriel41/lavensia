@@ -33,7 +33,7 @@ Fixed Navigation
             <!-- logo -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <h1 id="logo">
-                    <img src="{{ asset ('assets_frontend/img/logo.png')}}" alt="Brandi" class="logo">
+                    <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="logo">
                 </h1>
             </a>
             <!-- /logo -->
@@ -74,7 +74,6 @@ Fixed Navigation
                             <button class="btn btn-small btn-primary icon_login_logout" onclick="register()">Register</button>
                         @endif
                 @endif
-                <li><a href="http://google.com">Keranjang</a></li>
 
             </ul>
         </nav>
@@ -110,4 +109,11 @@ End Fixed Navigation
 
 <!-- Modernizer Script for old Browsers -->
 <script src="{{ asset ('assets_frontend/js/modernizr-2.6.2.min.js')}}"></script>
+<!-- Data table-->
 
+<style type="text/css">
+    
+    /* Jquery DataTable ============================ */
+
+
+</style>

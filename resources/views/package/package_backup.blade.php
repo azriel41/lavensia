@@ -29,24 +29,13 @@
                 background-color: #f9ce05;
             }
             .logo{
-                width: 100px;
+                width: 140px;
             }
             .support{
                 margin-top: 10px;
             }
             .mb50{
                 margin-top: 30px;
-                background-color: white;
-            }
-            .package{
-                background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
-                /* Full height */
-                height: 100%; 
-
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
             }
             .nav-tabs { 
                 border-bottom: 2px solid #DDD; 
@@ -170,6 +159,13 @@
                         </table>
                       </div>
                     </div>
+                    
+                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <div class="container">
+                                <button class="btn btn-small btn-book" onclick="keranjang()"><b><i class="fa fa-shopping-cart"></i> Masuk Keranjang !</b></button>
+                                <button class="btn btn-small btn-book" onclick="booking()" {{-- data-toggle="modal" data-target="#myModal" --}}><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                            </div>
+                    </div>
 
                     <!-- Tabs--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
@@ -177,6 +173,7 @@
                         <ul class="nav nav-tabs ">
                             <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour Detail</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
+                            <li><a data-toggle="tab" href="#menu2"><i class="fa fa-heart"></i> Agent Price</a></li> 
                         </ul>
 
                         <div class="tab-content">
@@ -340,46 +337,125 @@
 
                             <div id="menu1" class="tab-pane fade">
                                 <table width="100%" class="kiri">
-                                    <br>
                                     <tr>
-                                        <th><b>Price Table</b></th>
+                                        <th><b>PERIODE</b></th>
+                                        <th><b>Dewasa</b></th>
+                                        <th><b>Single Sup</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th><b>8 Sep 2018</b></th>
+                                        <th><b>Rp 12.599.000,-</b></th>
+                                        <th><b>Rp 1.500.000,-</b></th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>&nbsp;</td>
                                     </tr>
                                 </table>
-                                <i class="devider"></i>
-                                <div style="margin-top: 20px"></div>
-                                <table width="100%" class="table table-striped" align="center">
-                                       <tr >
-                                           <th align="center">No</th>
-                                           <th align="center">Code Tour</th>
-                                           <th align="center">Date</th>
-                                           <th align="center">Price</th>
-                                           <th align="center">Seat Remain</th>
-                                           <th align="center">Term & con</th>
-                                           <th align="center">Book</th>
-                                       </tr>
-                                   
-                                       <tr align="left">
-                                           <td>1</td>
-                                           <td>TR001/1817</td>
-                                           <td>20 July 2018</td>
-                                           <td>Rp. 1.8000.000,-</td>
-                                           <td>40 / 60</td>
-                                           <td>tidak ada</td>
-                                           <td>
-                                               <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                           </td>
-                                       </tr>
-                                       <tr align="left">
-                                           <td>1</td>
-                                           <td>TR001/1817</td>
-                                           <td>20 July 2018</td>
-                                           <td>Rp. 1.8000.000,-</td>
-                                           <td>40 / 60</td>
-                                           <td>tidak ada</td>
-                                           <td>
-                                               <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                           </td>
-                                       </tr>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <td width="20%" valign="top">Harga Termasuk</td>
+                                        <td width="2%" valign="top">:</td> 
+                                        <td>SUDAH Tiket kelas Ekonomi Singapore Airlines sesuai rute diatas dengan bagasi 30 kgs per orang Akomodasi l l , Makan & Tour sesuai dengan jadwal acara Tiket masuk lokasi wisata sesuai yang tertera di jadwal acara Tiket masuk pertunjukan sesuai jadwal acara Tips Guide dan Dr l l iver.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Harga Termasuk</td>
+                                        <td valign="top">:</td> 
+                                        <td>BELUM Biaya engurusan Visa China Rp. 600.000 Pengeluaran Pribadi seperti Mini Bar, Telepon, Laundry dll. Tips Porter di hotel Tour Tambahan di luar jadwal acara.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Shopping Stops</td>
+                                        <td valign="top">:</td> 
+                                        <td>Lavensia Tour adalah shopping tour, harga tour disubsidi dari Shopping Stops. Setiap peserta diminta kerjasamanya untuk bisa mengunjungi Shopping Stops minimal selama 60 menit di setiap shopping stops untuk menghindari penalti dari subsidi yang telah di berikan.
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Deposit, Pembayaran & Pembatalan</td>
+                                        <td valign="top">:</td> 
+                                        <td>Deposit Rp. 5,000,000 per orang, dibayarkan pada saat pemesanan Pelunasan harus dilakukan minimal 1 bulan sebelum keberangkatan Pembatalan setelah deposit tidak dapat dilakukan Pembatalan 1 bulan sebelum keberangkatan, deposit akan hangus Pembatalan 2 minggu / kurang sebelum keberangkatan, seluruh pembayaran hangus Daftar hotel dan jadwal tour dapat berubah tanpa mengurangi isi daripada tour Bila peserta kurang dari 15 orang, penyelenggara berhak membatalkan tour, dan seluruh pembayaran akan dikembalikan Peserta wajib mengikuti seluruh acara tour, apabila ada sebagian seluruh acara tour yang tidak diikuti, kemungkinan akan dikenakan penalti..</td>
+                                    </tr>
+
+
+                                </table>
+                                
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                            </div>
+
+                            <div id="menu2" class="tab-pane fade">
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <th><b>PERIODE</b></th>
+                                        <th><b>Dewasa</b></th>
+                                        <th><b>Single Sup</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th><b>8 Sep 2018</b></th>
+                                        <th><b>Rp 12.599.000,-</b></th>
+                                        <th><b>Rp 1.500.000,-</b></th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table width="100%" class="kiri">
+                                    <tr>
+                                        <td width="20%" valign="top">Harga Termasuk</td>
+                                        <td width="2%" valign="top">:</td> 
+                                        <td>SUDAH Tiket kelas Ekonomi Singapore Airlines sesuai rute diatas dengan bagasi 30 kgs per orang Akomodasi l l , Makan & Tour sesuai dengan jadwal acara Tiket masuk lokasi wisata sesuai yang tertera di jadwal acara Tiket masuk pertunjukan sesuai jadwal acara Tips Guide dan Dr l l iver.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Harga Termasuk</td>
+                                        <td valign="top">:</td> 
+                                        <td>BELUM Biaya engurusan Visa China Rp. 600.000 Pengeluaran Pribadi seperti Mini Bar, Telepon, Laundry dll. Tips Porter di hotel Tour Tambahan di luar jadwal acara.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Shopping Stops</td>
+                                        <td valign="top">:</td> 
+                                        <td>Lavensia Tour adalah shopping tour, harga tour disubsidi dari Shopping Stops. Setiap peserta diminta kerjasamanya untuk bisa mengunjungi Shopping Stops minimal selama 60 menit di setiap shopping stops untuk menghindari penalti dari subsidi yang telah di berikan.
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td valign="top">Deposit, Pembayaran & Pembatalan</td>
+                                        <td valign="top">:</td> 
+                                        <td>Deposit Rp. 5,000,000 per orang, dibayarkan pada saat pemesanan Pelunasan harus dilakukan minimal 1 bulan sebelum keberangkatan Pembatalan setelah deposit tidak dapat dilakukan Pembatalan 1 bulan sebelum keberangkatan, deposit akan hangus Pembatalan 2 minggu / kurang sebelum keberangkatan, seluruh pembayaran hangus Daftar hotel dan jadwal tour dapat berubah tanpa mengurangi isi daripada tour Bila peserta kurang dari 15 orang, penyelenggara berhak membatalkan tour, dan seluruh pembayaran akan dikembalikan Peserta wajib mengikuti seluruh acara tour, apabila ada sebagian seluruh acara tour yang tidak diikuti, kemungkinan akan dikenakan penalti..</td>
+                                    </tr>
+
 
                                 </table>
                             </div>
@@ -417,7 +493,5 @@
     function booking(argument) {
         window.location=('{{ route('booking') }}');
     }
-    $(document).ready( function () {
-        $('.datatable').DataTable();
-    });
+        
 </script>

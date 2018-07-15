@@ -10,12 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'guest'], function () {
-	Route::get('/', function () {
-	    return view('welcome');
-	});
+Route::get('/', function () {
+    return view('welcome');
 });
-
 Auth::routes();
 
 // Route::get('/test', 'HomeController@test')->name('test');
