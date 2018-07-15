@@ -297,19 +297,19 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('siswa') }}">Akun</a>
+                                <a href="">Akun</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Agent</a>
+                                <a href="">Agent</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Perusahaan</a>
+                                <a href="">Perusahaan</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Additional</a>
+                                <a href="">Additional</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Master Intinerary</a>
+                                <a href="{{ route('master_intinerary') }}">Master Intinerary</a>
                             </li>
                         </ul>
                     </li>
@@ -321,13 +321,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('siswa') }}">Book</a>
+                                <a href="">Book</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Detail Intinerary</a>
+                                <a href="">Detail Intinerary</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">Payment</a>
+                                <a href="">Payment</a>
                             </li>
                         </ul>
                     </li>
@@ -339,10 +339,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('siswa') }}">UNDER MAINTENANCE</a>
+                                <a href="">UNDER MAINTENANCE</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">UNDER MAINTENANCE</a>
+                                <a href="">UNDER MAINTENANCE</a>
                             </li>
                         </ul>
                     </li>
@@ -354,10 +354,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('siswa') }}">UNDER MAINTENANCE</a>
+                                <a href="">UNDER MAINTENANCE</a>
                             </li>
                             <li>
-                                <a href="{{ route('siswa') }}">UNDER MAINTENANCE</a>
+                                <a href="">UNDER MAINTENANCE</a>
                             </li>
                         </ul>
                     </li>
