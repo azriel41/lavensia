@@ -9,14 +9,14 @@
         <div class="header">
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-                <li class="active"><i class="material-icons"></i>Master Intinerary</li>
+                <li class="active"><i class="material-icons"></i>Master Additional</li>
             </ol>
         </div>
         <div class="row clearfix">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h4>Master Intinerary</h4>
+                        <h4>Master Additional</h4>
                     </div>
                     <div class="body">
                         <table class="table table-bordered dataTable">
