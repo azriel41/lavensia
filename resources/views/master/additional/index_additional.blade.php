@@ -17,6 +17,7 @@
                 <div class="card">
                     <div class="header">
                         <h4>Master Additional</h4>
+                        <button class="pull-right"></button>
                     </div>
                     <div class="body">
                         <table class="table table-bordered dataTable">
