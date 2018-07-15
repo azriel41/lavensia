@@ -66,4 +66,13 @@
 	    background-color: #ebebeb;
 		pointer-events: none;
 	}
+	.center{
+		text-align: center;
+	}
+	.right{
+		text-align: right;
+	}
+	.left{
+		text-align: left;
+	}
 </style>
