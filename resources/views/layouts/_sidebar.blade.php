@@ -300,10 +300,10 @@
                                 <a href="">Akun</a>
                             </li>
                             <li>
-                                <a href="">Agent</a>
+                                <a href="{{ route('master_category') }}">Agent</a>
                             </li>
                             <li>
-                                <a href="">Perusahaan</a>
+                                <a href="{{ route('master_category') }}">Perusahaan</a>
                             </li>
                             <li>
                                 <a href="{{ route('master_category') }}">Category</a>
@@ -344,9 +344,6 @@
                             <li>
                                 <a href="">UNDER MAINTENANCE</a>
                             </li>
-                            <li>
-                                <a href="">UNDER MAINTENANCE</a>
-                            </li>
                         </ul>
                     </li>
 
@@ -356,9 +353,6 @@
                             <span>Report</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="">UNDER MAINTENANCE</a>
-                            </li>
                             <li>
                                 <a href="">UNDER MAINTENANCE</a>
                             </li>
