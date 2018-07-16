@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <!-- Always force latest IE rendering engine or request Chrome Frame -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-`atible" content="IE=edge,chrome=1">
 <!-- Page Title -->
 <title>Lavensia Tour & Travel</title>        
 <!-- Meta Description -->
