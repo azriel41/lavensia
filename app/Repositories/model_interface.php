@@ -7,9 +7,15 @@ interface model_interface
 
     public function create(array $data);
 
-    public function update(array $data, $id);
+    public function update(array $data, $column,$value);
 
     public function delete($id);
 
     public function show($id);
+
+    public function max($param);
+
+    public function same($column,$value);
+
+
 }

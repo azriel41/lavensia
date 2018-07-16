@@ -91,6 +91,8 @@
 <script src="{{ asset ('assets/plugins/mask-money/jquery.maskMoney.min.js')}}"></script>
 {{-- DATEPICKER --}}
 <script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+{{-- SELECT2 --}}
+<link href="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}" rel="stylesheet" />
 
 <script type="text/javascript">
 		

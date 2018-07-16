@@ -27,10 +27,10 @@ class TestRepo implements model_interface
     }
 
     // update record in the database
-    public function update(array $data, $id)
+    public function update(array $data, $column,$value)
     {
-        $record = $this->find($id);
-        return $record->update($data);
+        return $this->model->where($column,$value)
+                           ->update($data);
     }
 
     // remove record from the database
@@ -62,5 +62,15 @@ class TestRepo implements model_interface
     public function with($relations)
     {
         return $this->model->with($relations);
+    }
+
+    public function max($param)
+    {
+        return $this->model->max($param)+1;
+    }
+
+    public function same($column,$value)
+    {
+        return $this->model->where($column,$value)->first();
     }
 }

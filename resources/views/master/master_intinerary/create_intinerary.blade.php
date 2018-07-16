@@ -17,16 +17,25 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="header bg-cyan">
-                        <label class="inline-block h3 bold">
+                        <h4 class="" style="display: inline;margin-right: 70%">
                             Create Intinerary
-                        </label>
-                        <button type="button" class="btn bg-pink waves-effect pull-right"><i class="material-icons">save</i> Save Intinerary</button>
+                        </h4>
+                        <div class="" style="display: inline">
+                            <a class="save" 
+                                {{-- onclick="event.preventDefault();
+                                document.getElementById('save').submit();" --}}
+                            >
+                                <button type="submit" class="btn bg-pink waves-effect">
+                                    <i class="material-icons ">save</i> Save Intinerary
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 <div class="body row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="paging-trans page_1 col-sm-8 on_screen" style="background: white;font-size: 12px" >
-                        <form  method="get" accept-charset="utf-8">
+                    <form action="{{ route('save_intinerary') }}" method="post" accept-charset="utf-8" id="save">
+                        <div class="paging-trans page_1 col-sm-8 on_screen" style="background: white;font-size: 12px" >
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="tour_code">Code Tour</label>
@@ -35,6 +44,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="tour_code" value="TR001" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +56,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="intinerary" id="intinerary" class="form-control" placeholder="Field Required">
+                                            <input type="text" name="intinerary" id="intinerary" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
@@ -57,10 +67,11 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
-                                            <select name="category" id="category" class="form-control">
+                                        <div class="form-line ">
+                                            <select name="category" id="category" class="form-control ">
+                                                    <option value="">Select Category</option>
                                                 @foreach ($data as $val)
-                                                    <option value=""></option>
+                                                    <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
                                                 @endforeach  
                                             </select>
                                         </div>
@@ -88,6 +99,30 @@
                                         <div class="form-line">
                                             <input type="text" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Photo</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="file-upload">
+                                        <div class="file-select">
+                                            <div class="file-select-button" id="fileName">Image</div>
+                                            <div class="file-select-name" id="noFile">Choose Image...</div> 
+                                            <input type="file" name="image" onchange="loadFile(event)" id="chooseFile">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Preview</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="preview_td">
+                                        <img style="width: 100px;height: 100px;border:1px solid pink" id="output" >
                                     </div>
                                 </div>
                             </div>
@@ -136,117 +171,117 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>                           
+                        </div>
+                        <div class="paging-trans page_2 col-sm-12 delayed"  style="background: white">
+                            <div class="add_departure col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Start</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req" style="position:relative">
+                                                    <input type="text" id="start" class="form-control datenormal" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Adult Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="adult_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Child Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="child_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Infant Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="end">End</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req" style="position:relative">
+                                                    <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="end">Term & Condition</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <textarea rows="4" id="term" class="form-control no-resize " placeholder="Please type what you want..."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="paging-trans page_2 col-sm-12 delayed"  style="background: white">
-                        <div class="add_departure col-sm-12">
-                            <div class="col-sm-6">
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="start">Start</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line req" style="position:relative">
-                                                <input type="text" id="start" class="form-control datenormal" placeholder="Field Required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="start">Adult Price</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line req">
-                                                <input type="text" id="adult_price" class="form-control " placeholder="Field Required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="start">Child Price</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line req">
-                                                <input type="text" id="child_price" class="form-control " placeholder="Field Required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="start">Infant Price</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line req">
-                                                <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="end">End</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line req" style="position:relative">
-                                                <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                        <label class="form-control-label" for="end">Term & Condition</label>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <textarea rows="4" id="term" class="form-control no-resize " placeholder="Please type what you want..."></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
+                            <div class="detail_departure col-sm-12">
+                               <table class="table table-responsive detail table-responsive table-bordered" style="width: 100%;font-size: 12px">
+                                    <thead>
+                                        <tr>
+                                        <td>Start</td>
+                                        <td>End</td>
+                                        <td>Adult Price</td>
+                                        <td>Child Price</td>
+                                        <td>Infant Price</td>
+                                        <td>Term and Condition</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="detail_departure col-sm-12">
-                           <table class="table table-responsive detail table-responsive table-bordered" style="width: 100%;font-size: 12px">
-                                <thead>
-                                    <tr>
-                                    <td>Start</td>
-                                    <td>End</td>
-                                    <td>Adult Price</td>
-                                    <td>Child Price</td>
-                                    <td>Infant Price</td>
-                                    <td>Term and Condition</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
+                        <div class="col-sm-12">
+                            <a style="cursor: pointer" class="btn pull-right forward arrow">
+                                <i class="material-icons">arrow_forward</i>
+                            </a>
+                            <a style="cursor: pointer" class="btn pull-right backward arrow readonly">
+                                <i class="material-icons">arrow_back</i>
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <a style="cursor: pointer" class="btn pull-right forward arrow">
-                            <i class="material-icons">arrow_forward</i>
-                        </a>
-                        <a style="cursor: pointer" class="btn pull-right backward arrow readonly">
-                            <i class="material-icons">arrow_back</i>
-                        </a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -281,7 +316,7 @@
         $('.schedule .day').each(function(){
             temp+=1
         })
-        $('.schedule .all_schedule').eq(0).clone().appendTo(".schedule");
+        $('.schedule .all_schedule').eq(0).clone().fadeIn().appendTo(".schedule");
         $('.schedule .all_schedule').last().find('.day').val('Day '+temp);
         $('.schedule .all_schedule').last().find('.caption_schedule').val('');
         $('.schedule .all_schedule').last().find('.description_schedule').val('');
@@ -383,6 +418,145 @@
         $('.add_departure input').val('');
         $('.add_departure textarea').val('');
     })
+
+    $('#chooseFile').bind('change', function () {
+        var filename = $("#chooseFile").val();
+        var fsize = $('#chooseFile')[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          return false;
+        }
+        if (/^\s*$/.test(filename)) {
+            $(".file-upload").removeClass('active');
+            $("#noFile").text("No file chosen..."); 
+        }
+        else {
+            $(".file-upload").addClass('active');
+            $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+    });
+
+    var loadFile = function(event) {
+        var fsize = $('#chooseFile')[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
+          return false;
+        }
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
+
+
+    $(document).on('click','.save',function(){
+        var temp1 = 0;
+        $('.page_1 .form-control').each(function(i){
+            if ($('.page_1 .form-control').eq(i).val() == '') {
+                temp1+=1;
+                $('.page_1 .form-line').eq(i).addClass('error');
+                $('.page_1 .form-line').eq(i).addClass('focused');
+            }
+        })
+        
+
+        var temp0 = 0;
+        $('.all_schedule .caption_schedule').each(function(i){
+            if ($('.all_schedule .caption_schedule').eq(i).val() == '') {
+                temp0+=1;
+                $('.all_schedule .form-line').eq(i).addClass('error');
+                $('.all_schedule .form-line').eq(i).addClass('focused');
+            }
+        })
+        if (temp1 != 0) {
+            return false;
+        } 
+
+        if (temp0 != 0) {
+            return false;
+        } 
+        var temp = 0;
+        detail.$('.start').each(function(){
+            temp +=1;
+        })
+
+        if (temp == 0) {
+            iziToast.warning({
+                icon: 'fa fa-notice',
+                message: 'No inputed periode data!',
+            });
+            return false;
+        }
+
+
+        var form = $('#save');
+        var formdata = false;
+        if (window.FormData){
+            formdata = new FormData(form[0]);
+        }
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fas fa-question-circle',
+            title: 'Simpan Data!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+              [
+                '<button style="background-color:#32CD32;">Save</button>',
+                function (instance, toast) {
+
+                  $.ajaxSetup({
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                  $.ajax({
+                        type: "POST",
+                        url:'{{ route('save_intinerary') }}',
+                        data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize(),
+                        dataType:'json',
+                        processData: false,
+                        contentType: false,
+                      success:function(data){
+                        if (data.status == '1') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                message: 'Data Berhasil Disimpan!',
+                            });
+
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            icon: 'fa fa-info',
+                            message: 'Terjadi Kesalahan!',
+                        });
+                      }
+                    });
+                }
+              ],
+              [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+        });
+    })
+
 
 </script>
 @endsection
