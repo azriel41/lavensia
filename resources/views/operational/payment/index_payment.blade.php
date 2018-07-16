@@ -37,25 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $index => $e)
-                                <tr>
-                                    <td class="center">{{ $index+1 }}</td>
-                                    <td>{{ $e->mc_name }}</td>
-                                    <td class="center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <i class="fa fa-cog"></i>
-                                                Manage <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="master_category/{{ $e->mc_id }}/edit"  class=" waves-effect waves-block"><i class="fa fa-edit"></i> Edit</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a onclick="hapus(this)" data-id="{{ $e->mc_id }}" class=" waves-effect waves-block"><i class="fa fa-trash"></i> Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>
