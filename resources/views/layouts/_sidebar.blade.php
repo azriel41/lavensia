@@ -256,7 +256,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="{{ route('complete_data') }}"><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href=""><i class="material-icons">person</i>Profile</a></li>
                             {{-- <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
@@ -300,10 +300,10 @@
                                 <a href="">Akun</a>
                             </li>
                             <li>
-                                <a href="">Agent</a>
+                                <a href="{{ route('master_category') }}">Agent</a>
                             </li>
                             <li>
-                                <a href="">Perusahaan</a>
+                                <a href="{{ route('master_category') }}">Perusahaan</a>
                             </li>
                             <li>
                                 <a href="{{ route('master_category') }}">Category</a>
@@ -344,9 +344,6 @@
                             <li>
                                 <a href="">UNDER MAINTENANCE</a>
                             </li>
-                            <li>
-                                <a href="">UNDER MAINTENANCE</a>
-                            </li>
                         </ul>
                     </li>
 
@@ -356,9 +353,6 @@
                             <span>Report</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="">UNDER MAINTENANCE</a>
-                            </li>
                             <li>
                                 <a href="">UNDER MAINTENANCE</a>
                             </li>

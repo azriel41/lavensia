@@ -73,12 +73,12 @@ Route::group(['middleware' => 'auth'], function () {
 	
 
 	//payment
-	Route::get('/payment/operational_category', 'payment\categoryController@index')->name('operational_payment');
-	Route::get('/payment/operational_category/create', 'payment\categoryController@create')->name('operational_category_create');
-	Route::post('/payment/operational_category/save', 'payment\categoryController@save')->name('operational_category_save');
-	Route::get('/payment/operational_category/{id}/edit', 'payment\categoryController@edit')->name('operational_category_edit');
-	Route::post('/payment/operational_category/update', 'payment\categoryController@update')->name('operational_category_update');
-	Route::post('/payment/operational_category/delete', 'payment\categoryController@delete')->name('operational_category_delete');
+	Route::get('/payment/operational_payment', 'payment\paymentController@index')->name('operational_payment');
+	Route::get('/payment/operational_payment/create', 'payment\paymentController@create')->name('operational_payment_create');
+	Route::post('/payment/operational_payment/save', 'payment\paymentController@save')->name('operational_payment_save');
+	Route::get('/payment/operational_payment/{id}/edit', 'payment\paymentController@edit')->name('operational_payment_edit');
+	Route::post('/payment/operational_payment/update', 'payment\paymentController@update')->name('operational_payment_update');
+	Route::post('/payment/operational_payment/delete', 'payment\paymentController@delete')->name('operational_payment_delete');
 	
 
 	/******** END OPERATIONAL ***********/
