@@ -306,6 +306,9 @@
                                 <a href="">Perusahaan</a>
                             </li>
                             <li>
+                                <a href="{{ route('master_category') }}">Category</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('master_additional') }}">Additional</a>
                             </li>
                             <li>
@@ -327,7 +330,7 @@
                                 <a href="">Detail Intinerary</a>
                             </li>
                             <li>
-                                <a href="">Payment</a>
+                                <a href="{{ route('operational_payment') }}">Payment</a>
                             </li>
                         </ul>
                     </li>

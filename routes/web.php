@@ -22,12 +22,38 @@ Route::get('/package/package', 'package\packageController@package')->name('packa
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
-	//booking form
-	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
-	//payment
-	Route::get('/payment/payment', 'payment\paymentController@payment')->name('payment');
+	
+	/*********** HALAMAN UTAMA ************/  
+	
+
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
+
+
+	/******** END HALAMAN UTAMA ***********/
+	
+
+	/***************** BOOK ***************/  
+
+
+	//booking form
+	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
+	
+
+	/*************** END BOOK *************/
+
+
+	/**************** MASTER **************/  
+	
+
+	//Category
+	Route::get('/master/master_category', 'master\categoryController@index')->name('master_category');
+	Route::get('/master/master_category/create', 'master\categoryController@create')->name('master_category_create');
+	Route::post('/master/master_category/save', 'master\categoryController@save')->name('master_category_save');
+	Route::get('/master/master_category/{id}/edit', 'master\categoryController@edit')->name('master_category_edit');
+	Route::post('/master/master_category/update', 'master\categoryController@update')->name('master_category_update');
+	Route::post('/master/master_category/delete', 'master\categoryController@delete')->name('master_category_delete');
+
 	//Additional
 	Route::get('/master/master_additional', 'master\additionalController@index')->name('master_additional');
 	Route::get('/master/master_additional/create', 'master\additionalController@create')->name('master_additional_create');
@@ -35,10 +61,28 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_additional/{id}/edit', 'master\additionalController@edit')->name('master_additional_edit');
 	Route::post('/master/master_additional/update', 'master\additionalController@update')->name('master_additional_update');
 	Route::post('/master/master_additional/delete', 'master\additionalController@delete')->name('master_additional_delete');
+	
 	//Master intinerary
 	Route::get('/master/master_intinerary', 'master\intinerary_controller@index')->name('master_intinerary');
 	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create')->name('master_intinerary_create');
-	//Master Agent/Proffile
-	Route::get('/human_resource/siswa/complete_data', 'human_resource\siswaController@complete_data')->name('complete_data');
+	
+
+	/************* END MASTER ***********/
+	
+	/*********** OPERATIONAL ************/  
+	
+
+	//payment
+	Route::get('/payment/operational_category', 'payment\categoryController@index')->name('operational_payment');
+	Route::get('/payment/operational_category/create', 'payment\categoryController@create')->name('operational_category_create');
+	Route::post('/payment/operational_category/save', 'payment\categoryController@save')->name('operational_category_save');
+	Route::get('/payment/operational_category/{id}/edit', 'payment\categoryController@edit')->name('operational_category_edit');
+	Route::post('/payment/operational_category/update', 'payment\categoryController@update')->name('operational_category_update');
+	Route::post('/payment/operational_category/delete', 'payment\categoryController@delete')->name('operational_category_delete');
+	
+
+	/******** END OPERATIONAL ***********/
+
+
 });
 
