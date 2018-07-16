@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `m_additional` (
   PRIMARY KEY (`ma_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_additional: ~1 rows (approximately)
+-- Dumping data for table lavensia.m_additional: ~0 rows (approximately)
 DELETE FROM `m_additional`;
 /*!40000 ALTER TABLE `m_additional` DISABLE KEYS */;
 INSERT INTO `m_additional` (`ma_id`, `ma_name`, `ma_desc`, `ma_price`, `ma_created_at`, `ma_updated_at`) VALUES
@@ -64,26 +64,65 @@ INSERT INTO `m_category` (`mc_id`, `mc_name`, `mc_created_at`, `mc_updated_at`) 
 	(3, 'LOKAL', '2018-07-16 23:57:59', '2018-07-16 23:58:00');
 /*!40000 ALTER TABLE `m_category` ENABLE KEYS */;
 
+-- Dumping structure for table lavensia.m_detail_intinerary
+CREATE TABLE IF NOT EXISTS `m_detail_intinerary` (
+  `md_id` int(11) NOT NULL,
+  `md_intinerary` int(11) NOT NULL,
+  `md_start` date DEFAULT NULL,
+  `md_end` date DEFAULT NULL,
+  `md_adult_price` int(11) DEFAULT NULL,
+  `md_child_price` int(11) DEFAULT NULL,
+  `md_infant_price` int(11) DEFAULT NULL,
+  `md_term` longtext,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`md_id`,`md_intinerary`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.m_detail_intinerary: ~0 rows (approximately)
+DELETE FROM `m_detail_intinerary`;
+/*!40000 ALTER TABLE `m_detail_intinerary` DISABLE KEYS */;
+/*!40000 ALTER TABLE `m_detail_intinerary` ENABLE KEYS */;
+
 -- Dumping structure for table lavensia.m_intinerary
 CREATE TABLE IF NOT EXISTS `m_intinerary` (
   `mi_id` int(11) NOT NULL,
-  `mi_name` varchar(50) DEFAULT NULL,
+  `mi_nota` varchar(50) NOT NULL,
+  `mi_name` varchar(300) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `mi_highlight` varchar(50) DEFAULT NULL,
-  `mi_by` varchar(50) DEFAULT NULL,
+  `mi_highlight` mediumtext,
+  `mi_by` varchar(300) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `update_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`mi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_intinerary: ~1 rows (approximately)
+-- Dumping data for table lavensia.m_intinerary: ~0 rows (approximately)
 DELETE FROM `m_intinerary`;
 /*!40000 ALTER TABLE `m_intinerary` DISABLE KEYS */;
-INSERT INTO `m_intinerary` (`mi_id`, `mi_name`, `category_id`, `mi_highlight`, `mi_by`, `created_at`, `update_at`, `created_by`, `updated_by`) VALUES
-	(1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `m_intinerary` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.m_schedule
+CREATE TABLE IF NOT EXISTS `m_schedule` (
+  `ms_id` int(11) NOT NULL,
+  `ms_intinerary` int(11) NOT NULL,
+  `ms_caption` varchar(50) DEFAULT NULL,
+  `ms_description` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ms_id`,`ms_intinerary`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.m_schedule: ~0 rows (approximately)
+DELETE FROM `m_schedule`;
+/*!40000 ALTER TABLE `m_schedule` DISABLE KEYS */;
+/*!40000 ALTER TABLE `m_schedule` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
