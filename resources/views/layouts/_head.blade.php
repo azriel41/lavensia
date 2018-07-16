@@ -41,6 +41,8 @@
 <link href="{{ asset ('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
 
 <link href="{{ asset ('assets/plugins/waitme/waitMe.css') }}" rel="stylesheet" />
+{{-- DATEPICKER --}}
+<link href="{{ asset ('assets/plugins/datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
 
 
 <!-- Font awesome-->
@@ -56,6 +58,7 @@
 <!-- font awesome-->
 <link href="{{ asset ('assets/plugins/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets/plugins/fontawesome/css/all.css') }}" rel="stylesheet" />
+
 
 
 
@@ -79,4 +82,41 @@
 	.borderless{
 		border: none !important;
 	}
+	.form-control-label {
+	    text-align: left;
+	}
+	table .v_center { 
+	  display: table-cell;
+	  vertical-align: center; 
+	}
+	.over-flow-x{
+		overflow-x: auto;
+	}
+	.paging-trans{
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		-ms-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	.arrow{
+		color: green;
+		background: white;
+	}
+	.arrow:hover{
+		color: red;
+		background: #8888;
+	}
+	.on_screen{
+		left: 0;
+		opacity: 1;
+		display: inline-block;
+	}
+	.delayed{
+		left: /*1500*/;
+		opacity: 0;
+		display: none;
+	}
+	
+	
 </style>
