@@ -66,35 +66,68 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fas fa-question-circle',
+            title: 'Important!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+              [
+                '<button style="background-color:red;">Save</button>',
+                function (instance, toast) {
 
-        $.ajax({
-            data : $('#save_data').serialize(),
-            url  : ('{{ route('master_category_save') }}'),
-            type : 'POST',
-            success: function (data) {
-                if (data.status == 'sukses') {
-                    iziToast.success({
-                        icon: 'fa fa-user',
-                        title: 'Success!',
-                        message: 'Data Saved!',
-                    });
-                    window.location=('{{ route('master_category') }}');
-                }else{
-                    iziToast.error({
-                        icon: 'fas fa-times-circle',
-                        title: 'Error!',
-                        message: 'Something Wrong,Call Developer!',
-                    });
+                 $.ajax({
+                    data : $('#save_data').serialize(),
+                    url  : ('{{ route('master_category_save') }}'),
+                    type : 'POST',
+                    success: function (data) {
+                        if (data.status == 'sukses') {
+                            iziToast.success({
+                                icon: 'fa fa-user',
+                                title: 'Success!',
+                                message: 'Data Saved!',
+                            });
+                            window.location=('{{ route('master_category') }}');
+                        }else{
+                            iziToast.error({
+                                icon: 'fas fa-times-circle',
+                                title: 'Error!',
+                                message: 'Something Wrong,Call Developer!',
+                            });
+                        }
+                    },
+                    error:function(){
+                        iziToast.error({
+                            icon: 'fas fa-times-circle',
+                            title: 'Error!',
+                            message: 'Something Wrong,Call Developer',
+                        });
+                    }
+                })
+
+                 instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+
                 }
-            },
-            error:function(){
-                iziToast.error({
-                    icon: 'fas fa-times-circle',
-                    title: 'Error!',
-                    message: 'Something Wrong,Call Developer',
-                });
-            }
-        })
+              ],
+              [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+          });
+
+        
     }
 
 
