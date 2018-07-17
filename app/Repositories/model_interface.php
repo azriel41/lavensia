@@ -9,13 +9,19 @@ interface model_interface
 
     public function update(array $data, $column,$value);
 
-    public function delete($id);
+    public function update_detail(array $data, $column,$value,$column1,$value1);
+
+    public function delete($column,$value);
 
     public function show($id);
 
     public function max($param);
 
+    public function cari($column,$value);
+
     public function same($column,$value);
+
+    public function max_detail($column,$value,$param);
 
 
 }

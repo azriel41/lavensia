@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class schedule extends Model
 {
     protected $table = 'm_schedule';
-	protected $primaryKey = 'ms_id';
+	protected $primaryKey = 'ms_intinerary_id';
 	const CREATED_AT = 'created_at';
 	const UPDATED_AT = 'updated_at';
 
-	protected $fillable = ['ms_id',
-						   'ms_intinerary',
+	protected $fillable = ['ms_intinerary_id',
+						   'ms_detail',
 						   'ms_caption',
 						   'ms_description',
 						   'created_by',
@@ -20,6 +20,6 @@ class schedule extends Model
 
 	public function intinerary()
 	{
-        return $this->belongsTo('App\intinerary','ms_intinerary');
+        return $this->belongsTo('App\intinerary','ms_intinerary_id');
 	}
 }

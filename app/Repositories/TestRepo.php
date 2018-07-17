@@ -33,18 +33,36 @@ class TestRepo implements model_interface
                            ->update($data);
     }
 
-    // remove record from the database
-    public function delete($id)
+    public function update_detail(array $data, $column,$value,$column1,$value1)
     {
-        return $this->model->destroy($id);
+        return $this->model
+                    ->where($column,$value)
+                    ->where($column,$value)
+                    ->update($data);
+    }
+
+    public function max_detail($column,$value,$param)
+    {
+        return $this->model->where($column,$value)->max($param)+1;
+    }
+
+    // remove record from the database
+    public function delete($column,$value)
+    {
+        return $this->model->where($column,$value)
+                           ->delete();
     }
 
     // show the record with the given id
     public function show($id)
     {
-        return $this->model-findOrFail($id);
+        return $this->model->findOrFail($id);
     }
-
+    public function cari($column,$value)
+    {
+        return $this->model->where($column,$value)
+                           ->first();
+    }
     // Get the associated model
     public function getModel()
     {
