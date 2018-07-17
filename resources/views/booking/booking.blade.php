@@ -392,6 +392,9 @@
                                 <div>
                                     <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
                                 </div>
+                                <div>
+                                    <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
+                                </div>
                             </div>
                           </div>
 

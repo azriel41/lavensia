@@ -181,7 +181,11 @@
                     
                     <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                         <ul class="text-center">
-                            <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
+                            @foreach ($category as $cat) 
+                                <li>
+                                    <a href="javascript:;" data-filter="{{ $cat->mc_name }}" class="active filter">{{ $cat->mc_name }}</a>
+                                </li>
+                            @endforeach
                             <li><a href="javascript:;" data-filter=".domestik" class="filter">Tour Domestik</a></li>
                             <li><a href="javascript:;" data-filter=".internasional" class="filter">Tour Internasional</a></li>
                             <li><a href="javascript:;" data-filter=".china" class="filter">China</a></li>

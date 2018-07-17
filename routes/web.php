@@ -11,7 +11,9 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+	$category = App\category::all();
+    return view('welcome',compact('category'));
+
 });
 Auth::routes();
 
