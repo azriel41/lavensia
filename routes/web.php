@@ -74,7 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//payment
 	Route::get('/payment/operational_payment', 'payment\paymentController@index')->name('operational_payment');
-	Route::get('/payment/operational_payment/create', 'payment\paymentController@create')->name('operational_payment_create');
+	Route::get('/payment/operational_payment/create_admin', 'payment\paymentController@create_admin')->name('operational_payment_create_admin');
+	Route::get('/payment/operational_payment/create_agent', 'payment\paymentController@create_agent')->name('operational_payment_create_agent');
 	Route::post('/payment/operational_payment/save', 'payment\paymentController@save')->name('operational_payment_save');
 	Route::get('/payment/operational_payment/{id}/edit', 'payment\paymentController@edit')->name('operational_payment_edit');
 	Route::post('/payment/operational_payment/update', 'payment\paymentController@update')->name('operational_payment_update');
