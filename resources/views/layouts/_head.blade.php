@@ -41,6 +41,8 @@
 <link href="{{ asset ('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
 
 <link href="{{ asset ('assets/plugins/waitme/waitMe.css') }}" rel="stylesheet" />
+{{-- DATEPICKER --}}
+<link href="{{ asset ('assets/plugins/datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
 
 
 <!-- Font awesome-->
@@ -56,12 +58,26 @@
 <!-- font awesome-->
 <link href="{{ asset ('assets/plugins/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets/plugins/fontawesome/css/all.css') }}" rel="stylesheet" />
+{{-- SELECT2 --}}
+<link href="{{ asset ('assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 
 
 
 
 <style type="text/css">
-	
+	.file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
+	.file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+	.file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+	.file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+	.file-upload .file-select:hover{border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+	.file-upload .file-select:hover .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+	.file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+	.file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+	.file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
+	.file-upload .file-select.file-select-disabled{opacity:0.65;}
+	.file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+	.file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+	.file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 	.readonly:read-only
 	{
 	    background-color: #ebebeb;
@@ -79,4 +95,41 @@
 	.borderless{
 		border: none !important;
 	}
+	.form-control-label {
+	    text-align: left;
+	}
+	table .v_center { 
+	  display: table-cell;
+	  vertical-align: center; 
+	}
+	.over-flow-x{
+		overflow-x: auto;
+	}
+	.paging-trans{
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		-ms-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	.arrow{
+		color: green;
+		background: white;
+	}
+	.arrow:hover{
+		color: red;
+		background: #8888;
+	}
+	.on_screen{
+		left: 0;
+		opacity: 1;
+		display: inline-block;
+	}
+	.delayed{
+		left: /*1500*/;
+		opacity: 0;
+		display: none;
+	}
+	
+	
 </style>

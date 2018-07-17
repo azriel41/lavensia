@@ -28,6 +28,63 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(18, '2018_07_12_172920_role', 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
+-- Dumping structure for table lavensia.m_additional
+CREATE TABLE IF NOT EXISTS `m_additional` (
+  `ma_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma_name` varchar(50) DEFAULT NULL,
+  `ma_desc` varchar(250) DEFAULT NULL,
+  `ma_price` double DEFAULT NULL,
+  `ma_created_at` timestamp NULL DEFAULT NULL,
+  `ma_updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`ma_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.m_additional: ~0 rows (approximately)
+DELETE FROM `m_additional`;
+/*!40000 ALTER TABLE `m_additional` DISABLE KEYS */;
+INSERT INTO `m_additional` (`ma_id`, `ma_name`, `ma_desc`, `ma_price`, `ma_created_at`, `ma_updated_at`) VALUES
+	(23, 'Assurance', 'Dipersembahkan oleh prudencial', 1000000, '2018-07-15 19:14:27', '2018-07-15 19:14:27');
+/*!40000 ALTER TABLE `m_additional` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.m_category
+CREATE TABLE IF NOT EXISTS `m_category` (
+  `mc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mc_name` varchar(200) DEFAULT NULL,
+  `mc_created_at` timestamp NULL DEFAULT NULL,
+  `mc_updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`mc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.m_category: ~3 rows (approximately)
+DELETE FROM `m_category`;
+/*!40000 ALTER TABLE `m_category` DISABLE KEYS */;
+INSERT INTO `m_category` (`mc_id`, `mc_name`, `mc_created_at`, `mc_updated_at`) VALUES
+	(1, 'ASIA', '2018-07-16 23:57:37', '2018-07-16 23:57:39'),
+	(2, 'EROPA', '2018-07-16 23:57:51', '2018-07-16 23:57:52'),
+	(3, 'LOKAL', '2018-07-16 23:57:59', '2018-07-16 23:58:00');
+/*!40000 ALTER TABLE `m_category` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.m_intinerary
+CREATE TABLE IF NOT EXISTS `m_intinerary` (
+  `mi_id` int(11) NOT NULL,
+  `mi_name` varchar(50) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `mi_highlight` varchar(50) DEFAULT NULL,
+  `mi_by` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`mi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.m_intinerary: ~0 rows (approximately)
+DELETE FROM `m_intinerary`;
+/*!40000 ALTER TABLE `m_intinerary` DISABLE KEYS */;
+INSERT INTO `m_intinerary` (`mi_id`, `mi_name`, `category_id`, `mi_highlight`, `mi_by`, `created_at`, `update_at`, `created_by`, `updated_by`) VALUES
+	(1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `m_intinerary` ENABLE KEYS */;
+
 -- Dumping structure for table lavensia.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -55,7 +112,7 @@ DELETE FROM `role`;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`role_id`, `role_name`, `created_at`, `update_at`) VALUES
 	(1, 'ADMIN', '2018-07-13 00:54:50', '2018-07-13 00:54:51'),
-	(2, 'GUEST', '2018-07-13 00:55:03', '2018-07-13 00:55:04');
+	(2, 'AGENT', '2018-07-13 00:55:03', '2018-07-13 00:55:04');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.users
@@ -78,14 +135,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lavensia.users: ~1 rows (approximately)
+-- Dumping data for table lavensia.users: ~3 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `password`, `username`, `birthday`, `phone`, `email`, `address`, `studies`, `education`, `class`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'dewa17a', NULL, NULL, 'dewa17a@gmail.com', NULL, NULL, NULL, NULL, 2, 'p2pb3VGv1zKgxtv73SQnTQweqcb88OsDp9eCe0EyHX9XwUAATxaBRCN4saDS', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
-	(2, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'teses', NULL, NULL, 'a@gmail.com', NULL, NULL, NULL, NULL, 2, 'p2pb3VGv1zKgxtv73SQnTQweqcb88OsDp9eCe0EyHX9XwUAATxzBRCN4saDS', '2018-07-12 17:52:15', '2018-07-12 17:52:15');
+	(1, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'dewa17a', NULL, NULL, 'dewa17a@gmail.com', NULL, NULL, NULL, NULL, 2, 'IHyjaw5r0tykJbGthO8d0CDxQtVUL3MV1WsXcs8VVWMXPqcTLUVYsjO2zZ94', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
+	(2, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'teses', NULL, NULL, 'a@gmail.com', NULL, NULL, NULL, NULL, 2, 'oWxRve1a9qVO8tgiwHNAqp9tDGzWgdiW8kcAW0nRezRw2RuGKV4xeJRkAgin', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
+	(3, 'adi', '$2y$10$bVwcj838opIS/FHpGLWZiOuKgB3g5BJllZWzOsWXsgLU0Qwxfe9m.', 'dewa17aa', NULL, NULL, 'dewa17aa@gmail.com', NULL, NULL, NULL, NULL, 2, 'GipeeG6KOGFeuv2XCsLWN2i4cTzYPDg7ZXeNmVoCHVRxK6nJbCqqcduUSQYf', '2018-07-15 08:11:17', '2018-07-15 08:11:17');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

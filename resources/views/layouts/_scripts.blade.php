@@ -89,6 +89,10 @@
 
 <!-- Mask Money-->
 <script src="{{ asset ('assets/plugins/mask-money/jquery.maskMoney.min.js')}}"></script>
+{{-- DATEPICKER --}}
+<script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+{{-- SELECT2 --}}
+<link href="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}" rel="stylesheet" />
 
 <script type="text/javascript">
 		
@@ -101,8 +105,15 @@
         format: 'DD-MM-YYYY',
         clearButton: true,
         weekStart: 1,
-        time: false
+        time: false,
+        onSet: function (ele) {
+	    if(ele.select){
+	          this.close();
+	    }
+}
     });
+
+
 
     $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
 

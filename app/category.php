@@ -12,4 +12,9 @@ class category extends Model
    const UPDATED_AT = 'mc_updated_at';
 
    protected $fillable = ['mc_id','mc_name','mc_created_at','mc_updated_at'];
+
+	public function intinerary()
+	{
+		return $this->hasMany('App\intinerary');
+	}
 }

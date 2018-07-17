@@ -20,7 +20,7 @@
         <div class="row clearfix">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <div class="header">
+                    <div class="header bg-cyan">
                         <h4 class="inline-block">
                             Master Intinerary
                         </h4>

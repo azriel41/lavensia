@@ -29,9 +29,9 @@ class User extends Authenticatable
     ];
 
 
-    public function role()
+    public function jabatans()
     {
-        return $this->belongsTo('App\roles','role_id');
+        return $this->belongsTo('App\jabatan','role_id');
     }
 }
 
