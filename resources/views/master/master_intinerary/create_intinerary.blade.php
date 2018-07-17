@@ -17,8 +17,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="header bg-cyan">
-                        <h4 class="" style="display: inline;margin-right: 70%">
-                            Create Intinerary
+                        <h4 class="" style="display: inline;margin-right: 75%">
+                            Create Itinerary
                         </h4>
                         <div class="" style="display: inline">
                             <a class="save" 
@@ -26,7 +26,7 @@
                                 document.getElementById('save').submit();" --}}
                             >
                                 <button type="submit" class="btn bg-pink waves-effect">
-                                    <i class="material-icons ">save</i> Save Intinerary
+                                    <i class="material-icons ">save</i> Save
                                 </button>
                             </a>
                         </div>
@@ -43,7 +43,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="tour_code" value="TR001" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
+                                            <input type="text" name="tour_code" value="{{ $nota }}" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100px;height: 100px;border:1px solid pink" id="output" >
+                                        <img style="width: 100%;height: 50%;border:1px solid pink" id="output" >
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                                 </div>
                             </div>                           
                         </div>
-                        <div class="paging-trans page_2 col-sm-12 delayed"  style="background: white">
+                        <div class="paging-trans page_2 col-sm-12 delayed  table-responsive"  style="background: white">
                             <div class="add_departure col-sm-12">
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
@@ -240,6 +240,18 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="end">Seat</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" class="form-control" id="seat" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Term & Condition</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -256,7 +268,7 @@
                                 </div>
                             </div>
                             <div class="detail_departure col-sm-12">
-                               <table class="table table-responsive detail table-responsive table-bordered" style="width: 100%;font-size: 12px">
+                               <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: auto;">
                                     <thead>
                                         <tr>
                                         <td>Start</td>
@@ -264,6 +276,7 @@
                                         <td>Adult Price</td>
                                         <td>Child Price</td>
                                         <td>Infant Price</td>
+                                        <td>Seat</td>
                                         <td>Term and Condition</td>
                                         </tr>
                                     </thead>
@@ -310,6 +323,8 @@
         thousands:'.',
         allowZero:true,
     });
+
+
     $('.add').on('click',function(){
         // $('par').find('.day').val('da')
         var temp = 1;
@@ -394,10 +409,12 @@
         var child_price   = $('#child_price').val();
         var infant_price  = $('#infant_price').val();
         var term          = $('#term').val();
+        var seat          = $('#seat').val();
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
-            '<input type="hidden" name="start[]" value="'+start+'" class="start">',
+            '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
+            '<input type="hidden" name="detail_id[]" value="0" class="detail_id">',
 
             '<p class="end_text">'+end+'</p>'+
             '<input type="hidden" name="end[]" value="'+end+'" class="end">',
@@ -410,6 +427,9 @@
 
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
+
+            '<p class="seat_text">'+seat+'</p>'+
+            '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
@@ -438,7 +458,7 @@
 
     var loadFile = function(event) {
         var fsize = $('#chooseFile')[0].files[0].size;
-        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        if(fsize>2048576) //do something if file size more than 1 mb (1048576)
         {
           iziToast.warning({
             icon: 'fa fa-times',
@@ -511,7 +531,7 @@
             position: 'center',
             progressBarColor: 'rgb(0, 255, 184)',
             buttons: [
-              [
+            [
                 '<button style="background-color:#32CD32;">Save</button>',
                 function (instance, toast) {
 
@@ -521,7 +541,7 @@
                         }
                     });
 
-                  $.ajax({
+                    $.ajax({
                         type: "POST",
                         url:'{{ route('save_intinerary') }}',
                         data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize(),
@@ -535,6 +555,13 @@
                                 message: 'Data Berhasil Disimpan!',
                             });
 
+                            location.href = '{{ route('master_intinerary') }}'
+                        }else if (data.status == '0') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                message:data.message,
+                            });
+
                         }
                       },error:function(){
                         iziToast.warning({
@@ -543,9 +570,12 @@
                         });
                       }
                     });
+                    instance.hide({
+                        transitionOut: 'fadeOutUp'
+                    }, toast);
                 }
-              ],
-              [
+            ],
+            [
                 '<button style="background-color:#44d7c9;">Cancel</button>',
                 function (instance, toast) {
                   instance.hide({
