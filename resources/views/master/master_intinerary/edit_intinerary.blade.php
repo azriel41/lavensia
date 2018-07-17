@@ -10,7 +10,7 @@
         <ol class="breadcrumb breadcrumb-bg-pink">
             <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
             <li><i class="material-icons"></i>Master Itinerary</li>
-            <li class="active"><i class="material-icons"></i>Create Itinerary</li>
+            <li class="active"><i class="material-icons"></i>Edit Itinerary</li>
         </ol>
     </div>
     <div class="row clearfix">
@@ -18,12 +18,12 @@
             <div class="card">
                 <div class="header bg-cyan">
                     <h4 class="" style="display: inline-block;">
-                        Create Itinerary
+                        Edit Itinerary
                     </h4>
                     <div class="pull-right">
                         <a class="save">
                             <button class="btn btn-round bg-pink waves-effect">
-                                <i class="material-icons ">save</i> Save
+                                <i class="material-icons ">edit</i> Update
                             </button>
                         </a>
                     </div>
@@ -40,7 +40,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="tour_code" value="{{ $nota }}" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
+                                            <input type="text" name="tour_code" value="{{ $data->mi_nota }}" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="intinerary" id="intinerary" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                            <input type="text" name="intinerary" value="{{ $data->mi_name }}" id="intinerary" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
@@ -67,8 +67,8 @@
                                         <div class="form-line ">
                                             <select name="category" id="category" class="form-control ">
                                                     <option value="">Select Category</option>
-                                                @foreach ($data as $val)
-                                                    <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
+                                                @foreach ($category as $val)
+                                                    <option @if($val->mc_id == $data->category_id)selected @endif value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
                                                 @endforeach  
                                             </select>
                                         </div>
@@ -82,7 +82,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize" placeholder="Field Required"></textarea>
+                                            <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_highlight }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
+                                            <input type="text" value="{{ $data->mi_by }}" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
@@ -104,10 +104,10 @@
                                     <label class="form-control-label" for="caption_by">Photo</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                    <div class="file-upload">
+                                    <div class="file-upload active">
                                         <div class="file-select">
                                             <div class="file-select-button" id="fileName">Image</div>
-                                            <div class="file-select-name" id="noFile">Choose Image...</div> 
+                                            <div class="file-select-name" id="noFile">{{ str_replace('itinerary/', '', $data->mi_image) }}</div> 
                                             <input type="file" name="image" onchange="loadFile(event)" id="chooseFile">
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;height: 50%;border:1px solid pink" id="output" >
+                                        <img style="width: 100%;height: 50%;border:1px solid pink" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}" >
                                     </div>
                                 </div>
                             </div>
@@ -136,25 +136,27 @@
                                         <div id="collapseOne_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_1" aria-expanded="true" style="">
                                             <div class="panel-body">
                                                 <div class="schedule">
-                                                    <div class="all_schedule">
-                                                        <div class="col-sm-2">
-                                                            <input type="text" style="width: 70px"name="day[]" class="day_1 day form-control " readonly value="Day 1">
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line" >
-                                                                    <input type="text" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule">
+                                                    @foreach ($data->schedules as $i=> $val)
+                                                        <div class="all_schedule">
+                                                            <div class="col-sm-2">
+                                                                <input type="text" style="width: 70px"name="day[]" class="day_1 day form-control " readonly value="Day {{ $val->ms_detail }}">
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line" >
+                                                                        <input type="text" value="{{ $val->ms_caption }}" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line">
+                                                                        <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule" placeholder="Description">{{ $val->ms_description }}</textarea>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-5">
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule" placeholder="Description"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                                 <div class="center col-sm-12" style="margin-bottom: 10px;">
                                                     <button  class="btn add btn-circle bg-blue" style="color: grey"  type="button"style="margin-bottom: 10px;">
@@ -303,6 +305,13 @@
 @section('extra_scripts')
 
 <script>
+  
+    window.onload = function(){
+        $('.form-line').each(function(){
+            $(this).removeClass('error');
+            $(this).removeClass('focused');
+        })
+    }
 
     $("#adult_price").maskMoney({
         precision:0,
@@ -333,9 +342,6 @@
         $('.schedule .all_schedule').last().find('.day').val('Day '+temp);
         $('.schedule .all_schedule').last().find('.caption_schedule').val('');
         $('.schedule .all_schedule').last().find('.description_schedule').val('');
-
-        
-  
     });
 
     $('.remove').on('click',function(){
@@ -426,13 +432,13 @@
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
 
-            '<p class="seat_text">'+seat+'</p>'+
+            '<p class="seat_text">'+seat+'/'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
-            '<a type="button" onclick="hapus(this)" class="btn btn-danger waves-effect "><i class=material-icons>delete</i></a>',
+            '<a type="button" onclick="hapus(this)" class="btn btn-danger btn-sm waves-effect "><i class=material-icons>delete</i></a>',
         ]).draw();
 
         $('.add_departure input').val('');
@@ -531,7 +537,7 @@
             timeout: 20000, 
             color: 'dark',
             icon: 'fas fa-question-circle',
-            title: 'Simpan Data!',
+            title: 'Update Data!',
             message: 'Apakah Anda Yakin ?!',
             position: 'center',
             progressBarColor: 'rgb(0, 255, 184)',
@@ -591,8 +597,50 @@
             ]
         });
     })
+    @foreach ($data->detail_intinerarys as $i => $data)
+        var start         = '{{ Carbon\carbon::parse($data->md_start)->format('d-m-Y') }}';
+        var end           = '{{ Carbon\carbon::parse($data->md_end)->format('d-m-Y') }}';
+        var adult_price   = '{{ number_format($data->md_adult_price, 2, ",", ".") }}';
+        var child_price   = '{{ number_format($data->md_child_price, 2, ",", ".") }}';
+        var infant_price  = '{{ number_format($data->md_infant_price, 2, ",", ".") }}';
+        var term          = '{{ $data->md_term }}';
+        var seat          = '{{ $data->md_seat }}';
+        var seat_remain   = '{{ $data->md_seat_remain }}';
+        var md_detail     = '{{ $data->md_detail }}';
 
+        if (seat != seat_remain) {
+           
+            var action = '<a type="button" class="btn btn-success waves-effect btn-sm" title="Data sudah berjalan"><i class=material-icons>report_problem</i></a>';
+        }else{
+            var action = '<a type="button" onclick="hapus(this)" class="btn btn-sm btn-danger waves-effect" ><i class=material-icons>delete</i></a>';
+        }
 
+        detail.row.add([
+            '<p class="start_text">'+start+'</p>'+
+            '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
+            '<input type="hidden" name="detail_id[]" value="'+md_detail+'" class="detail_id">',
+
+            '<p class="end_text">'+end+'</p>'+
+            '<input type="hidden" name="end[]" value="'+end+'" class="end">',
+
+            '<p class="adult_price_text">'+adult_price+'</p>'+
+            '<input type="hidden" name="adult_price[]" value="'+adult_price+'" class="adult_price">',
+
+            '<p class="child_price_text">'+child_price+'</p>'+
+            '<input type="hidden" name="child_price[]" value="'+child_price+'" class="child_price">',
+
+            '<p class="infant_price_text">'+infant_price+'</p>'+
+            '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
+
+            '<p class="seat_text">'+seat_remain+'/'+seat+'</p>'+
+            '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
+
+            '<p class="term_text">'+term+'</p>'+
+            '<input type="hidden" name="term[]" value="'+term+'" class="term">',
+
+            action,
+        ]).draw();
+    @endforeach
 </script>
 @endsection
   

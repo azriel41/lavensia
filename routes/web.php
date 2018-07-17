@@ -27,7 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	/*********** HALAMAN UTAMA ************/  
 	
-
+	// STORAGE URL
+	Route::get('/storage/app')->name('storage');
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 
@@ -67,8 +68,11 @@ Route::group(['middleware' => 'auth'], function () {
 	//Master intinerary
 	Route::get('/master/master_intinerary', 'master\intinerary_controller@index')->name('master_intinerary');
 	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create')->name('master_intinerary_create');
+	Route::get('/master/master_intinerary/edit/{id}', 'master\intinerary_controller@edit')->name('master_intinerary_edit');
 	Route::post('/master/master_intinerary/save', 'master\intinerary_controller@save')->name('save_intinerary');
 	Route::get('/master/master_intinerary/datatable', 'master\intinerary_controller@datatable_intinerary')->name('datatable_intinerary');
+	Route::get('/master/master_intinerary/schedule', 'master\intinerary_controller@schedule')->name('schedule');
+	Route::get('/master/master_intinerary/departure', 'master\intinerary_controller@departure')->name('departure');
 	
 
 	/************* END MASTER ***********/

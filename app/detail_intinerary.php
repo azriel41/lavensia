@@ -27,6 +27,6 @@ class detail_intinerary extends Model
 
 	public function intinerary()
 	{
-        return $this->belongsTo('App\intinerary','md_intinerary_id');
+        return $this->belongsTo('App\intinerary','mi_id');
 	}
 }

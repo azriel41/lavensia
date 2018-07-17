@@ -21,11 +21,11 @@ class intinerary extends Model
 
 	public function detail_intinerarys()
 	{
-        return $this->hasMany('App\detail_intinerary','mi_id');
+        return $this->hasMany('App\detail_intinerary','md_intinerary_id');
 	}
 
 	public function schedules()
 	{
-        return $this->hasMany('App\schedule','mi_id');
+        return $this->hasMany('App\schedule','ms_intinerary_id');
 	}
 }
