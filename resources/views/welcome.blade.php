@@ -72,7 +72,7 @@
                     <div class="item" style="background-image: url(assets_frontend/img/banner.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
-                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/CREATIVE</span> ONE PAGE.</h3>
                             <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
                             
                             <ul class="social-links text-center">
