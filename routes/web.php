@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary', 'master\intinerary_controller@index')->name('master_intinerary');
 	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create')->name('master_intinerary_create');
 	Route::post('/master/master_intinerary/save', 'master\intinerary_controller@save')->name('save_intinerary');
+	Route::get('/master/master_intinerary/datatable', 'master\intinerary_controller@datatable_intinerary')->name('datatable_intinerary');
 	
 
 	/************* END MASTER ***********/

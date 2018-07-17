@@ -16,6 +16,7 @@ use Auth;
 use Response;
 use File;
 use Storage;
+use Yajra\Datatables\Datatables;
 class intinerary_controller extends Controller
 {
 	protected $model;
@@ -28,6 +29,21 @@ class intinerary_controller extends Controller
     public function index()
     {
     	return view('master.master_intinerary.index_intinerary');
+    }
+
+    public function datatable_intinerary()
+    {
+        $data = $this->model->all();
+        
+        
+        $data = collect($data);
+        return Datatables::of($data)
+                        ->addColumn('aksi', function ($data) {
+                                   
+                        })
+                        ->rawColumns(['aksi'])
+                        ->addIndexColumn()
+                        ->make(true);
     }
 
     public function create()

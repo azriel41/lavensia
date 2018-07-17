@@ -17,20 +17,17 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="header bg-cyan">
-                        <h4 class="" style="display: inline;margin-right: 75%">
-                            Create Itinerary
-                        </h4>
-                        <div class="" style="display: inline">
-                            <a class="save" 
-                                {{-- onclick="event.preventDefault();
-                                document.getElementById('save').submit();" --}}
-                            >
-                                <button type="submit" class="btn bg-pink waves-effect">
-                                    <i class="material-icons ">save</i> Save
-                                </button>
-                            </a>
-                        </div>
+                    <h4 class="" style="display: inline-block;">
+                        Create Itinerary
+                    </h4>
+                    <div class="pull-right">
+                        <a class="save">
+                            <button class="btn btn-round bg-pink waves-effect">
+                                <i class="material-icons ">save</i> Save
+                            </button>
+                        </a>
                     </div>
+                </div>
                 <div class="body row">
                     <div class="col-sm-2">
                     </div>
@@ -244,7 +241,7 @@
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
-                                                <div class="form-line">
+                                                <div class="form-line req">
                                                     <input type="number" class="form-control" id="seat" placeholder="Field Required">
                                                 </div>
                                             </div>
@@ -271,13 +268,14 @@
                                <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: auto;">
                                     <thead>
                                         <tr>
-                                        <td>Start</td>
-                                        <td>End</td>
-                                        <td>Adult Price</td>
-                                        <td>Child Price</td>
-                                        <td>Infant Price</td>
-                                        <td>Seat</td>
-                                        <td>Term and Condition</td>
+                                            <td>Start</td>
+                                            <td>End</td>
+                                            <td>Adult Price</td>
+                                            <td>Child Price</td>
+                                            <td>Infant Price</td>
+                                            <td>Seat</td>
+                                            <td>Term and Condition</td>
+                                            <td>Action</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -433,11 +431,18 @@
 
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
+
+            '<a type="button" onclick="hapus(this)" class="btn btn-danger waves-effect "><i class=material-icons>delete</i></a>',
         ]).draw();
 
         $('.add_departure input').val('');
         $('.add_departure textarea').val('');
     })
+
+    function hapus(a) {
+        var par = $(a).parents('tr');
+        detail.row(par).remove().draw();
+    }
 
     $('#chooseFile').bind('change', function () {
         var filename = $("#chooseFile").val();

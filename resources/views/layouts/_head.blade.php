@@ -130,6 +130,9 @@
 		opacity: 0;
 		display: none;
 	}
+
+	th { font-size: 12px; }
+	td { font-size: 11px; }
 	
 	
 </style>
