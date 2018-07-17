@@ -72,9 +72,7 @@
                     <div class="item" style="background-image: url(assets_frontend/img/banner.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
-
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/ssssss</span> ONE PAGE.</h3>
-
                             <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
                             
                             <ul class="social-links text-center">
@@ -183,7 +181,11 @@
                     
                     <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                         <ul class="text-center">
-                            <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
+                            @foreach ($category as $cat) 
+                                <li>
+                                    <a href="javascript:;" data-filter="{{ $cat->mc_name }}" class="active filter">{{ $cat->mc_name }}</a>
+                                </li>
+                            @endforeach
                             <li><a href="javascript:;" data-filter=".domestik" class="filter">Tour Domestik</a></li>
                             <li><a href="javascript:;" data-filter=".internasional" class="filter">Tour Internasional</a></li>
                             <li><a href="javascript:;" data-filter=".china" class="filter">China</a></li>
