@@ -28,4 +28,9 @@ class intinerary extends Model
 	{
         return $this->hasMany('App\schedule','ms_intinerary_id');
 	}
+
+	public function add()
+	{
+        return $this->belongsToMany('App\additional','m_additional_intinerary','intinerary_mi_id','additional_ma_id');
+	}
 }

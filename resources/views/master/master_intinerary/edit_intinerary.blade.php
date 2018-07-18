@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line ">
                                             <input type="text" name="tour_code" value="{{ $data->mi_nota }}" readonly=""  id="tour_code" class="form-control" placeholder="Field Required">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </div>
@@ -52,24 +52,25 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <input type="text" name="intinerary" value="{{ $data->mi_name }}" id="intinerary" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
+                            <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="intinerary">Category</label>
+                                    <label class="form-control-label" for="category">Category</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line ">
-                                            <select name="category" id="category" class="form-control ">
-                                                    <option value="">Select Category</option>
-                                                @foreach ($category as $val)
-                                                    <option @if($val->mc_id == $data->category_id)selected @endif value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
-                                                @endforeach  
+                                        <div class="form-line page_1_req">
+                                            <select name="category" id="category" class="form-control js-example-basic-single">
+                                                 <option value="">Select Category</option>
+                                            @foreach ($category as $val)
+                                                <option @if($val->mc_id == $data->category_id) selected @endif value="{{ $val->mc_id }}">{{ $val->mc_name }}
+                                                </option>
+                                            @endforeach  
                                             </select>
                                         </div>
                                     </div>
@@ -81,7 +82,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_highlight }}</textarea>
                                         </div>
                                     </div>
@@ -93,8 +94,30 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <input type="text" value="{{ $data->mi_by }}" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="additional">Additional Selection</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line page_1_req">
+                                            <select class="form-control js-example-basic-single" id="additional" name="additional[]" multiple="">
+                                                @foreach ($additional as $val)
+                                                    <option
+                                                    @foreach ($data->add as $a)
+                                                        @if ($a->ma_id == $val->ma_id)
+                                                            selected="" 
+                                                        @endif
+                                                    @endforeach
+                                                     value="{{ $val->ma_id}}">{{ $val->ma_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -144,14 +167,14 @@
                                                             <div class="col-sm-5">
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line" >
-                                                                        <input type="text" value="{{ $val->ms_caption }}" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule">
+                                                                        <input type="text" value="{{ $val->ms_caption }}" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule sch_req">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line">
-                                                                        <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule" placeholder="Description">{{ $val->ms_description }}</textarea>
+                                                                        <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule sch_req" placeholder="Description">{{ $val->ms_description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -159,10 +182,10 @@
                                                     @endforeach
                                                 </div>
                                                 <div class="center col-sm-12" style="margin-bottom: 10px;">
-                                                    <button  class="btn add btn-circle bg-blue" style="color: grey"  type="button"style="margin-bottom: 10px;">
+                                                    <button  class="btn add btn-circle bg-cyan waves-effect" style="color: grey"  type="button"style="margin-bottom: 10px;">
                                                         <i class="material-icons">add</i>
                                                     </button>
-                                                    <button  class="btn remove btn-circle bg-red" style="color: grey" type="button"style="margin-bottom: 10px;">
+                                                    <button  class="btn remove btn-circle bg-pink waves-effect" style="color: grey" type="button"style="margin-bottom: 10px;"> 
                                                         <i class="material-icons">remove</i>
                                                     </button>
                                                 </div>
@@ -223,18 +246,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Infant Price</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line req">
-                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
@@ -245,6 +256,18 @@
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
                                                     <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Infant Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -325,7 +348,6 @@
             $(this).removeClass('focused');
         })
     }
-
     $("#adult_price").maskMoney({
         precision:0,
         thousands:'.',
@@ -338,17 +360,23 @@
         allowZero:true,
     });
 
+    $("#child_w_price").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+    });
+
     $("#infant_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
     });
 
-    $("#child_w_price").maskMoney({
-        precision:0,
-        thousands:'.',
-        allowZero:true,
+    
+    $('.js-example-basic-single').select2({
+        placeholder:'Select a Option'
     });
+
 
 
     $('.add').on('click',function(){
@@ -361,6 +389,9 @@
         $('.schedule .all_schedule').last().find('.day').val('Day '+temp);
         $('.schedule .all_schedule').last().find('.caption_schedule').val('');
         $('.schedule .all_schedule').last().find('.description_schedule').val('');
+
+        
+  
     });
 
     $('.remove').on('click',function(){
@@ -455,13 +486,13 @@
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
 
-            '<p class="seat_text">'+seat+'/'+seat+'</p>'+
+            '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
-            '<a type="button" onclick="hapus(this)" class="btn btn-danger btn-sm waves-effect "><i class=material-icons>delete</i></a>',
+            '<a type="button" onclick="hapus(this)" class="btn btn-danger waves-effect "><i class=material-icons>delete</i></a>',
         ]).draw();
 
         $('.add_departure input').val('');
@@ -511,30 +542,38 @@
 
     $(document).on('click','.save',function(){
         var temp1 = 0;
-        $('.page_1 .form-control').each(function(i){
-            if ($('.page_1 .form-control').eq(i).val() == '') {
+        $('.page_1_req .form-control').each(function(i){
+            if ($('.page_1_req  .form-control').eq(i).val() == '' ) {
                 temp1+=1;
-                $('.page_1 .form-line').eq(i).addClass('error');
-                $('.page_1 .form-line').eq(i).addClass('focused');
+                $('.page_1_req').eq(i).addClass('error');
+                $('.page_1_req').eq(i).addClass('focused');
             }
         })
+        if ($('#additional').val() == null) {
+            $('#additional').parents('.form-line').addClass('error');
+            $('#additional').parents('.form-line').addClass('focused');
+            temp1 +=1;
+        }
+
+        $('.sch_req').each(function(i){
+            if ($('.sch_req').eq(i).val() == '' ) {
+                temp1+=1;
+                $('.sch_req').eq(i).parents('.form-line').addClass('error');
+                $('.sch_req').eq(i).parents('.form-line').addClass('focused');
+            }
+        })
+
         
-
-        var temp0 = 0;
-        $('.all_schedule .caption_schedule').each(function(i){
-            if ($('.all_schedule .caption_schedule').eq(i).val() == '') {
-                temp0+=1;
-                $('.all_schedule .form-line').eq(i).addClass('error');
-                $('.all_schedule .form-line').eq(i).addClass('focused');
-            }
-        })
         if (temp1 != 0) {
+            iziToast.warning({
+                icon: 'fa fa-info',
+                title: 'Error!',
+                position:'topRight',
+                message: 'Check Your Data Again!',
+            }); 
             return false;
         } 
 
-        if (temp0 != 0) {
-            return false;
-        } 
         var temp = 0;
         detail.$('.start').each(function(){
             temp +=1;
@@ -543,6 +582,8 @@
         if (temp == 0) {
             iziToast.warning({
                 icon: 'fa fa-notice',
+                title: 'Error!',
+                position:'topRight',
                 message: 'No inputed periode data!',
             });
             return false;
@@ -586,6 +627,8 @@
                         if (data.status == '1') {
                             iziToast.success({
                                 icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Success!',
                                 message: 'Data Berhasil Disimpan!',
                             });
 
@@ -593,6 +636,8 @@
                         }else if (data.status == '0') {
                             iziToast.success({
                                 icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
                                 message:data.message,
                             });
 
@@ -600,6 +645,8 @@
                       },error:function(){
                         iziToast.warning({
                             icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
                             message: 'Terjadi Kesalahan!',
                         });
                       }

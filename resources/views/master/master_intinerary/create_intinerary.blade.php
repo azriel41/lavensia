@@ -67,7 +67,7 @@
                                         <div class="form-line page_1_req">
                                             <select name="category" id="category" class="form-control js-example-basic-single">
                                                     <option value="">Select Category</option>
-                                                @foreach ($data as $val)
+                                                @foreach ($category as $val)
                                                     <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
                                                 @endforeach  
                                             </select>
@@ -107,9 +107,9 @@
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
                                             <select class="form-control js-example-basic-single" id="additional" name="additional[]" multiple="">
-                                                <option>tes</option>
-                                                <option>tes</option>
-                                                <option>tes</option>
+                                                @foreach ($additional as $val)
+                                                    <option value="{{ $val->ma_id}}">{{ $val->ma_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -173,10 +173,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="center col-sm-12" style="margin-bottom: 10px;">
-                                                    <button  class="btn add btn-circle bg-blue" style="color: grey"  type="button"style="margin-bottom: 10px;">
+                                                    <button  class="btn add btn-circle bg-cyan waves-effect" style="color: grey"  type="button"style="margin-bottom: 10px;">
                                                         <i class="material-icons">add</i>
                                                     </button>
-                                                    <button  class="btn remove btn-circle bg-red" style="color: grey" type="button"style="margin-bottom: 10px;">
+                                                    <button  class="btn remove btn-circle bg-pink waves-effect" style="color: grey" type="button"style="margin-bottom: 10px;">
                                                         <i class="material-icons">remove</i>
                                                     </button>
                                                 </div>
@@ -237,18 +237,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Infant Price</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line req">
-                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
@@ -259,6 +248,18 @@
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
                                                     <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Infant Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>

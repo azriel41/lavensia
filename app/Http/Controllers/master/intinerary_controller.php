@@ -10,6 +10,8 @@ use App\category;
 use App\schedule;
 use App\detail_intinerary;
 use App\User;
+use App\additional;
+use App\m_additional_intinerary;
 use DB;
 use carbon\Carbon;
 use Auth;
@@ -20,14 +22,15 @@ use Yajra\Datatables\Datatables;
 class intinerary_controller extends Controller
 {
     protected $model;
-	protected $category;
+    protected $category;
+	protected $additional;
 
-	public function __construct(intinerary $intinerary,category $category)
+	public function __construct(intinerary $intinerary,category $category,additional $additional)
 	{
 	   // set the model
 	   $this->model = new TestRepo($intinerary);
        $this->category = new TestRepo($category);
-
+       $this->additional = new TestRepo($additional);
 	}
     public function index()
     {
@@ -84,30 +87,32 @@ class intinerary_controller extends Controller
 
     public function create()
     {
+
+
+
         $bulan = Carbon::now()->format('m');
         $tahun = Carbon::now()->format('y');
-    	$category = new category();
-    	$category = new TestRepo($category);
     	$id = $this->model->max('mi_id');
         $index = str_pad($id, 3, '0', STR_PAD_LEFT);
         $nota = 'TR' .$bulan.$tahun.'/'. $index;  
-
-        $data =  $category->all();
-    	return view('master.master_intinerary.create_intinerary',compact('data','nota'));
+        $additional = $this->additional->all();
+        $category =  $this->category->all();
+    	return view('master.master_intinerary.create_intinerary',compact('category','nota','additional'));
     }
 
     public function edit($id)
     {
         $data = $this->model->same('mi_id',$id);
         $category =  $this->category->all();
-        return view('master.master_intinerary.edit_intinerary',compact('category','data'));
+        $additional = $this->additional->all();
+
+        return view('master.master_intinerary.edit_intinerary',compact('category','data','additional'));
     }
 
 
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
-            dd($req->additional);
             $name = Auth::user()->name;
             $intinerary = new intinerary();
             $intinerary = new TestRepo($intinerary);
@@ -115,6 +120,8 @@ class intinerary_controller extends Controller
             $schedule   = new TestRepo($schedule);
             $detail_intinerary   = new detail_intinerary();
             $detail_intinerary   = new TestRepo($detail_intinerary);
+            $m_additional_intinerary   = new m_additional_intinerary();
+            $m_additional_intinerary   = new TestRepo($m_additional_intinerary);
 
 
             $check = $intinerary->same('mi_nota',$req->tour_code);
@@ -155,6 +162,15 @@ class intinerary_controller extends Controller
                 $update_head = $intinerary->update($head,'mi_nota',$req->tour_code);
             }
 
+            $m_additional_intinerary->delete('intinerary_mi_id',$id);
+            for ($i=0; $i < count($req->additional); $i++) { 
+                $add = array(
+                    'intinerary_mi_id'       => $id,
+                    'additional_ma_id'       => $req->additional[$i],
+                );
+
+                $m_additional_intinerary->create($add);
+            }
             $delete = $schedule->delete('ms_intinerary_id',$id);
             for ($i=0; $i < count($req->day); $i++) { 
                 $sched = array(
@@ -182,7 +198,6 @@ class intinerary_controller extends Controller
                 }
             }
             $detail_intinerary->deleteNotSame('md_intinerary_id',$id,'md_detail',$temp);
-            // dd($req->term);
             for ($i=0; $i < count($req->detail_id); $i++) { 
                 $det = array(
                     'md_intinerary_id'  => $id,
