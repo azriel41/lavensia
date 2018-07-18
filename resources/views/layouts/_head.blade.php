@@ -139,8 +139,15 @@
 	.select2-selection{
 		border: none !important;
 	}
+	.width100{
+		width: 100%;
+	}
 	th { font-size: 12px; }
 	td { font-size: 11px; }
-	
-	
+	.select2-selection__rendered{
+		width: auto !important;
+	}
+	.select2-results__options{
+		width: auto !important;
+	}
 </style>

@@ -10,7 +10,7 @@
 <script src="{{ asset ('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
 
 <!-- Select Plugin Js -->
-{{-- <script src="{{ asset ('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script> --}}
+<script src="{{ asset ('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
 <!-- Moment Plugin Js -->
 <script src="{{ asset ('assets/plugins/momentjs/moment.js') }}"></script>

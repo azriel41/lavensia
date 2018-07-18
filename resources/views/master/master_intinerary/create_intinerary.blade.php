@@ -64,8 +64,8 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line page_1_req">
-                                            <select name="category" id="category" class="form-control js-example-basic-single">
+                                        <div class="form-line">
+                                            <select name="category" id="category" class="form-control js-example-basic-single width100">
                                                     <option value="">Select Category</option>
                                                 @foreach ($category as $val)
                                                     <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
@@ -105,8 +105,8 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line page_1_req">
-                                            <select class="form-control js-example-basic-single" id="additional" name="additional[]" multiple="">
+                                        <div class="form-line ">
+                                            <select class="form-control js-example-basic-single width100" id="additional" name="additional[]" multiple="">
                                                 @foreach ($additional as $val)
                                                     <option value="{{ $val->ma_id}}">{{ $val->ma_name }}</option>
                                                 @endforeach
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;height: 50%;border:1px solid pink" id="output" >
+                                        <img style="width: 100%;border:1px solid pink" id="output" >
                                     </div>
                                 </div>
                             </div>
@@ -364,9 +364,7 @@
     });
 
     
-    $('.js-example-basic-single').select2({
-        placeholder:'Select a Option'
-    });
+
 
 
 
@@ -540,6 +538,11 @@
                 $('.page_1_req').eq(i).addClass('focused');
             }
         })
+        if ($('#category').val() == '') {
+            $('#category').parents('.form-line').addClass('error');
+            $('#category').parents('.form-line').addClass('focused');
+            temp1 +=1;
+        }
         if ($('#additional').val() == null) {
             $('#additional').parents('.form-line').addClass('error');
             $('#additional').parents('.form-line').addClass('focused');

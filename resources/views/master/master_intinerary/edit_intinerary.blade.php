@@ -64,8 +64,8 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line page_1_req">
-                                            <select name="category" id="category" class="form-control js-example-basic-single">
+                                        <div class="form-line">
+                                            <select name="category" id="category" class="form-control js-example-basic-single width100">
                                                  <option value="">Select Category</option>
                                             @foreach ($category as $val)
                                                 <option @if($val->mc_id == $data->category_id) selected @endif value="{{ $val->mc_id }}">{{ $val->mc_name }}
@@ -106,8 +106,8 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line page_1_req">
-                                            <select class="form-control js-example-basic-single" id="additional" name="additional[]" multiple="">
+                                        <div class="form-line">
+                                            <select class="form-control js-example-basic-single width100" id="additional" name="additional[]" multiple="">
                                                 @foreach ($additional as $val)
                                                     <option
                                                     @foreach ($data->add as $a)
@@ -142,7 +142,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;height: 50%;border:1px solid pink" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}" >
+                                        <img style="width: 100%;border:1px solid pink" class="gambar" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}" >
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +301,7 @@
                                     <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
                                 </div>
                             </div>
-                            <div class="detail_departure col-sm-12">
+                            <div class="detail_departure col-sm-12" style="overflow-x: auto;width: 100%">
                                <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: auto;">
                                     <thead>
                                         <tr>
@@ -373,9 +373,9 @@
     });
 
     
-    $('.js-example-basic-single').select2({
-        placeholder:'Select a Option'
-    });
+    // $('.js-example-basic-single').select2({
+    //     placeholder:'Select a Option'
+    // });
 
 
 
@@ -549,6 +549,12 @@
                 $('.page_1_req').eq(i).addClass('focused');
             }
         })
+
+        if ($('#category').val() == '') {
+            $('#category').parents('.form-line').addClass('error');
+            $('#category').parents('.form-line').addClass('focused');
+            temp1 +=1;
+        }
         if ($('#additional').val() == null) {
             $('#additional').parents('.form-line').addClass('error');
             $('#additional').parents('.form-line').addClass('focused');
