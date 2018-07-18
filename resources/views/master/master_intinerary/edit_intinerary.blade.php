@@ -9,7 +9,7 @@
     <div class="header">
         <ol class="breadcrumb breadcrumb-bg-pink">
             <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-            <li><i class="material-icons"></i>Master Itinerary</li>
+            <li><a href="{{ route('master_intinerary') }}"><i class="material-icons"></i>Master Itinerary</li></a>
             <li class="active"><i class="material-icons"></i>Edit Itinerary</li>
         </ol>
     </div>
@@ -206,6 +206,7 @@
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
                                                     <input type="text" id="start" class="form-control datenormal" placeholder="Field Required">
+                                                    <input type="hidden" id="index">
                                                 </div>
                                             </div>
                                         </div>
@@ -445,6 +446,7 @@
         $('.form-line').removeClass('focused');
     })
 
+        var inc = 1;
     $('.add_detail').click(function(){
         var temp = 0;
         $('.req').each(function(i){
@@ -457,6 +459,7 @@
         if (temp != 0) {
             return false;
         }
+        var index         = $('#index').val();
         var start         = $('#start').val();
         var end           = $('#end').val();
         var adult_price   = $('#adult_price').val();
@@ -466,10 +469,15 @@
         var seat          = $('#seat').val();
         var child_w_price = $('#child_w_price').val();
 
+
+        var par = $('.index_'+index).parents('tr');
+        detail.row(par).remove().draw();
+
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
             '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
-            '<input type="hidden" name="detail_id[]" value="0" class="detail_id">',
+            '<input type="hidden" name="detail_id[]" value="0" class="detail_id">'+
+            '<input type="hidden" value="'+inc+'" class="index index_'+inc+'">',
 
             '<p class="end_text">'+end+'</p>'+
             '<input type="hidden" name="end[]" value="'+end+'" class="end">',
@@ -492,9 +500,12 @@
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
-            '<a type="button" onclick="hapus(this)" class="btn btn-danger waves-effect "><i class=material-icons>delete</i></a>',
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
+            '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
+            '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
+            '</div>',
         ]).draw();
-
+        inc++;
         $('.add_departure input').val('');
         $('.add_departure textarea').val('');
     })
@@ -502,6 +513,31 @@
     function hapus(a) {
         var par = $(a).parents('tr');
         detail.row(par).remove().draw();
+    }
+
+    function edit(a) {
+        var par = $(a).parents('tr');
+
+        var index         = $('.index').val();
+        var start         = $('.start').val();
+        var end           = $('.end').val();
+        var adult_price   = $('.adult_price').val();
+        var child_price   = $('.child_price').val();
+        var infant_price  = $('.infant_price').val();
+        var child_w_price = $('.child_w_price').val();
+        var term          = $('.term').val();
+        var seat          = $('.seat').val();
+
+
+        $('#index').val(index);
+        $('#start').val(start);
+        $('#end').val(end);
+        $('#adult_price').val(adult_price);
+        $('#child_price').val(child_price);
+        $('#infant_price').val(infant_price);
+        $('#child_w_price').val(child_w_price);
+        $('#term').val(term);
+        $('#seat').val(seat);
     }
 
     $('#chooseFile').bind('change', function () {
@@ -687,15 +723,18 @@
 
         if (seat != seat_remain) {
            
-            var action = '<a type="button" class="btn btn-success waves-effect btn-sm" title="Data sudah berjalan"><i class=material-icons>report_problem</i></a>';
+            var action = '<a title="Kursi Telah Terjual" type="button" class="btn bg-green  waves-effect "><i class=fa fa-danger>danger</i></a>'
+                         ;
         }else{
-            var action = '<a type="button" onclick="hapus(this)" class="btn btn-sm btn-danger waves-effect" ><i class=material-icons>delete</i></a>';
+            var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
+                         '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
         }
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
             '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
-            '<input type="hidden" name="detail_id[]" value="'+md_detail+'" class="detail_id">',
+            '<input type="hidden" name="detail_id[]" value="'+md_detail+'" class="detail_id">'+
+            '<input type="hidden" value="'+'{{ $i }}'+'" class="index index_'+'{{ $i }}'+'">',
 
             '<p class="end_text">'+end+'</p>'+
             '<input type="hidden" name="end[]" value="'+end+'" class="end">',
@@ -718,8 +757,11 @@
             '<p class="term_text">'+term+'</p>'+
             '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
-            action,
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
+            action+
+            '</div>',
         ]).draw();
+        inc++;
     @endforeach
 </script>
 @endsection

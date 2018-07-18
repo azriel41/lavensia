@@ -312,7 +312,7 @@
                                 <a href="{{ route('master_additional') }}">Additional</a>
                             </li>
                             <li>
-                                <a href="{{ route('master_intinerary') }}">Master Intinerary</a>
+                                <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
                             </li>
                         </ul>
                     </li>
@@ -327,7 +327,7 @@
                                 <a href="">Book</a>
                             </li>
                             <li>
-                                <a href="">Detail Intinerary</a>
+                                <a href="">Detail Itinerary</a>
                             </li>
                             <li>
                                 <a href="{{ route('operational_payment') }}">Payment</a>
