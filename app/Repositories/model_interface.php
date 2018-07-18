@@ -24,6 +24,7 @@ interface model_interface
     public function max_detail($column,$value,$param);
 
     public function deleteNotSame($column,$value,$column1,$value1);
+    
     public function show_detail_one($column,$value,$column1,$value1);
 
 

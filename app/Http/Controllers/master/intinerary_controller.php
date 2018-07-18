@@ -107,6 +107,7 @@ class intinerary_controller extends Controller
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
+            dd($req->additional);
             $name = Auth::user()->name;
             $intinerary = new intinerary();
             $intinerary = new TestRepo($intinerary);
@@ -190,6 +191,7 @@ class intinerary_controller extends Controller
                     'md_adult_price'    => filter_var($req->adult_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_child_price'    => filter_var($req->child_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_infant_price'   => filter_var($req->infant_price[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_child_w_price'  => filter_var($req->child_w_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_seat'           => $req->seat[$i],
                     'md_seat_remain'    => $req->seat[$i],
                     'md_term'           => $req->term[$i],
@@ -200,7 +202,6 @@ class intinerary_controller extends Controller
 
                 if ($req->detail_id[$i] != '0') {
                     $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
-                    // $cari_seat
                     if ($cari_seat->md_seat == $cari_seat->md_seat_remain) {
                         $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
                     }

@@ -212,6 +212,18 @@
                                         </div>
                                     </div>
                                     <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Child With Bed Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="child_w_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="start">Infant Price</label>
                                         </div>
@@ -273,7 +285,8 @@
                                             <td>Start</td>
                                             <td>End</td>
                                             <td>Adult Price</td>
-                                            <td>Child Price</td>
+                                            <td>CnB Price</td>
+                                            <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Seat</td>
                                             <td>Term and Condition</td>
@@ -326,6 +339,12 @@
     });
 
     $("#infant_price").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+    });
+
+    $("#child_w_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
@@ -414,6 +433,7 @@
         var infant_price  = $('#infant_price').val();
         var term          = $('#term').val();
         var seat          = $('#seat').val();
+        var child_w_price = $('#child_w_price').val();
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
@@ -428,6 +448,9 @@
 
             '<p class="child_price_text">'+child_price+'</p>'+
             '<input type="hidden" name="child_price[]" value="'+child_price+'" class="child_price">',
+
+            '<p class="child_w_price_text">'+child_w_price+'</p>'+
+            '<input type="hidden" name="child_w_price[]" value="'+child_w_price+'" class="child_w_price">',
 
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
@@ -602,6 +625,7 @@
         var end           = '{{ Carbon\carbon::parse($data->md_end)->format('d-m-Y') }}';
         var adult_price   = '{{ number_format($data->md_adult_price, 0, ",", ".") }}';
         var child_price   = '{{ number_format($data->md_child_price, 0, ",", ".") }}';
+        var child_w_price = '{{ number_format($data->md_child_w_price, 0, ",", ".") }}';
         var infant_price  = '{{ number_format($data->md_infant_price, 0, ",", ".") }}';
         var term          = '{{ $data->md_term }}';
         var seat          = '{{ $data->md_seat }}';
@@ -628,6 +652,9 @@
 
             '<p class="child_price_text">'+child_price+'</p>'+
             '<input type="hidden" name="child_price[]" value="'+child_price+'" class="child_price">',
+
+            '<p class="child_w_price_text">'+child_w_price+'</p>'+
+            '<input type="hidden" name="child_w_price[]" value="'+child_w_price+'" class="child_w_price">',
 
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',

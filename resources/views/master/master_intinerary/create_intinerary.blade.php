@@ -52,20 +52,20 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <input type="text" name="intinerary" id="intinerary" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
+                            <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="intinerary">Category</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line ">
-                                            <select name="category" id="category" class="form-control ">
+                                        <div class="form-line page_1_req">
+                                            <select name="category" id="category" class="form-control js-example-basic-single">
                                                     <option value="">Select Category</option>
                                                 @foreach ($data as $val)
                                                     <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize" placeholder="Field Required"></textarea>
                                         </div>
                                     </div>
@@ -93,8 +93,24 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
+                                        <div class="form-line page_1_req">
                                             <input type="text" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="additional">Additional Selection</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line page_1_req">
+                                            <select class="form-control js-example-basic-single" id="additional" name="additional[]" multiple="">
+                                                <option>tes</option>
+                                                <option>tes</option>
+                                                <option>tes</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -142,15 +158,15 @@
                                                         </div>
                                                         <div class="col-sm-5">
                                                             <div class="form-group form-float">
-                                                                <div class="form-line" >
-                                                                    <input type="text" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule">
+                                                                <div class="form-line " >
+                                                                    <input type="text" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control sch_req caption_schedule">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-5">
                                                             <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule" placeholder="Description"></textarea>
+                                                                <div class="form-line ">
+                                                                    <textarea rows="4" name="description_schedule[]" class="form-control no-resize description_schedule sch_req" placeholder="Description"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -199,12 +215,24 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Child Price</label>
+                                            <label class="form-control-label" for="start">Child No Bed Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req">
                                                     <input type="text" id="child_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Child With Bed Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="child_w_price" class="form-control " placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -264,14 +292,15 @@
                                     <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
                                 </div>
                             </div>
-                            <div class="detail_departure col-sm-12">
+                            <div class="detail_departure col-sm-12" style="overflow-x: auto;width: 100%">
                                <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: auto;">
                                     <thead>
                                         <tr>
                                             <td>Start</td>
                                             <td>End</td>
                                             <td>Adult Price</td>
-                                            <td>Child Price</td>
+                                            <td>CnB Price</td>
+                                            <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Seat</td>
                                             <td>Term and Condition</td>
@@ -303,7 +332,12 @@
 @section('extra_scripts')
 
 <script>
-
+    window.onload = function(){
+        $('.form-line').each(function(){
+            $(this).removeClass('error');
+            $(this).removeClass('focused');
+        })
+    }
     $("#adult_price").maskMoney({
         precision:0,
         thousands:'.',
@@ -316,11 +350,23 @@
         allowZero:true,
     });
 
+    $("#child_w_price").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+    });
+
     $("#infant_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
     });
+
+    
+    $('.js-example-basic-single').select2({
+        placeholder:'Select a Option'
+    });
+
 
 
     $('.add').on('click',function(){
@@ -408,6 +454,7 @@
         var infant_price  = $('#infant_price').val();
         var term          = $('#term').val();
         var seat          = $('#seat').val();
+        var child_w_price = $('#child_w_price').val();
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
@@ -422,6 +469,9 @@
 
             '<p class="child_price_text">'+child_price+'</p>'+
             '<input type="hidden" name="child_price[]" value="'+child_price+'" class="child_price">',
+
+            '<p class="child_w_price_text">'+child_w_price+'</p>'+
+            '<input type="hidden" name="child_w_price[]" value="'+child_w_price+'" class="child_w_price">',
 
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
@@ -482,30 +532,38 @@
 
     $(document).on('click','.save',function(){
         var temp1 = 0;
-        $('.page_1 .form-control').each(function(i){
-            if ($('.page_1 .form-control').eq(i).val() == '') {
+        $('.page_1_req .form-control').each(function(i){
+            if ($('.page_1_req  .form-control').eq(i).val() == '' ) {
                 temp1+=1;
-                $('.page_1 .form-line').eq(i).addClass('error');
-                $('.page_1 .form-line').eq(i).addClass('focused');
+                $('.page_1_req').eq(i).addClass('error');
+                $('.page_1_req').eq(i).addClass('focused');
             }
         })
+        if ($('#additional').val() == null) {
+            $('#additional').parents('.form-line').addClass('error');
+            $('#additional').parents('.form-line').addClass('focused');
+            temp1 +=1;
+        }
+
+        $('.sch_req').each(function(i){
+            if ($('.sch_req').eq(i).val() == '' ) {
+                temp1+=1;
+                $('.sch_req').eq(i).parents('.form-line').addClass('error');
+                $('.sch_req').eq(i).parents('.form-line').addClass('focused');
+            }
+        })
+
         
-
-        var temp0 = 0;
-        $('.all_schedule .caption_schedule').each(function(i){
-            if ($('.all_schedule .caption_schedule').eq(i).val() == '') {
-                temp0+=1;
-                $('.all_schedule .form-line').eq(i).addClass('error');
-                $('.all_schedule .form-line').eq(i).addClass('focused');
-            }
-        })
         if (temp1 != 0) {
+            iziToast.warning({
+                icon: 'fa fa-info',
+                title: 'Error!',
+                position:'topRight',
+                message: 'Check Your Data Again!',
+            }); 
             return false;
         } 
 
-        if (temp0 != 0) {
-            return false;
-        } 
         var temp = 0;
         detail.$('.start').each(function(){
             temp +=1;
@@ -514,6 +572,8 @@
         if (temp == 0) {
             iziToast.warning({
                 icon: 'fa fa-notice',
+                title: 'Error!',
+                position:'topRight',
                 message: 'No inputed periode data!',
             });
             return false;
@@ -557,6 +617,8 @@
                         if (data.status == '1') {
                             iziToast.success({
                                 icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Success!',
                                 message: 'Data Berhasil Disimpan!',
                             });
 
@@ -564,6 +626,8 @@
                         }else if (data.status == '0') {
                             iziToast.success({
                                 icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
                                 message:data.message,
                             });
 
@@ -571,6 +635,8 @@
                       },error:function(){
                         iziToast.warning({
                             icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
                             message: 'Terjadi Kesalahan!',
                         });
                       }

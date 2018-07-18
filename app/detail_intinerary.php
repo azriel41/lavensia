@@ -19,6 +19,7 @@ class detail_intinerary extends Model
 						   'md_adult_price',
 						   'md_child_price',
 						   'md_infant_price',
+						   'md_child_w_price',
 						   'md_seat',
 						   'md_seat_remain',
 						   'md_term',

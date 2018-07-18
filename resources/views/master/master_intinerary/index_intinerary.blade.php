@@ -125,7 +125,7 @@ function deleting(mi_id) {
             close: false,
             timeout: 20000, 
             color: 'dark',
-            icon: 'fas fa-question-circle',
+            icon: 'fa fa-question-circle',
             title: 'Hapus Data!',
             message: 'Apakah Anda Yakin ?!',
             position: 'center',
@@ -149,22 +149,25 @@ function deleting(mi_id) {
                       success:function(data){
                         if (data.status == '1') {
                             iziToast.success({
-                                icon: 'fa fa-save',
                                 message: 'Data Berhasil Dihapus!',
+                                position:'topRight',
+                                icon:'fa fa-delete'
                             });
                             var table = $('.intinerary').DataTable();
                             table.ajax.reload();
                         }else if (data.status == '0') {
-                            iziToast.success({
-                                icon: 'fa fa-save',
+                            iziToast.warning({
+                                position:'topRight',
                                 message:data.message,
+                                iconText:'fa fa-warning'
                             });
 
                         }
                       },error:function(){
                         iziToast.warning({
-                            icon: 'fa fa-info',
                             message: 'Terjadi Kesalahan!',
+                            position:'topRight',
+                            iconText:'fa fa-warning'
                         });
                       }
                     });

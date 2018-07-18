@@ -93,7 +93,7 @@
 {{-- DATEPICKER --}}
 <script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 {{-- SELECT2 --}}
-<link href="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}" rel="stylesheet" />
+<script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"  /></script>
 
 <script type="text/javascript">
 		
@@ -108,11 +108,13 @@
         weekStart: 1,
         time: false,
         onSet: function (ele) {
-	    if(ele.select){
-	          this.close();
-	    }
-}
+		    if(ele.select){
+		          this.close();
+		    }
+		}
     });
+
+    
 
 
 

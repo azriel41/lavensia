@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 @yield('content')
             </div>
-        </section>
+        </section>  
     </body>
     
 </html>

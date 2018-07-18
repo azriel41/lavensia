@@ -56,10 +56,13 @@
 <link href="{{ asset ('assets/plugins/iziToast/dist/css/iziToast.min.css') }}" rel="stylesheet" />
 
 <!-- font awesome-->
-<link href="{{ asset ('assets/plugins/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
-<link href="{{ asset ('assets/plugins/fontawesome/css/all.css') }}" rel="stylesheet" />
+<link href="{{ asset ('assets/plugins/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-all.min.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{{-- <link href="{{ asset ('assets/plugins/fontawesome/css/all.css') }}" rel="stylesheet" /> --}}
 {{-- SELECT2 --}}
 <link href="{{ asset ('assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+{{-- Bootstrap-select --}}
+<link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
 
 
 
@@ -130,7 +133,12 @@
 		opacity: 0;
 		display: none;
 	}
-
+	.select2-container{
+		border: none !important;
+	}
+	.select2-selection{
+		border: none !important;
+	}
 	th { font-size: 12px; }
 	td { font-size: 11px; }
 	
