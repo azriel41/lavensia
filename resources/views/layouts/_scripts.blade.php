@@ -107,13 +107,13 @@
         weekStart: 1,
         time: false,
         onSet: function (ele) {
-	    if(ele.select){
-	          this.close();
-	    }
-}
+		    if(ele.select){
+		          this.close();
+		    }
+		}
     });
 
-
+	
 
     $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
 

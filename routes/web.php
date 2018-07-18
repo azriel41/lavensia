@@ -12,15 +12,16 @@
 */
 Route::get('/', function () {
 	$category = App\category::all();
-    return view('welcome',compact('category'));
+	$intinerary = App\intinerary::with('category')->get();
+    return view('welcome',compact('category','intinerary'));
 
-});
+})->name('dashboard');
 Auth::routes();
 
 // Route::get('/test', 'HomeController@test')->name('test');
 
 //Halaman See more 
-Route::get('/package/package', 'package\packageController@package')->name('package');
+Route::get('/package/{id}/package', 'package\packageController@package');
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
@@ -30,7 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
-
+	//Profile
+	Route::get('/profile', 'HomeController@profile')->name('profile');
 
 	/******** END HALAMAN UTAMA ***********/
 	

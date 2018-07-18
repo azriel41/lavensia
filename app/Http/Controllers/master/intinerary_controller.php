@@ -27,7 +27,8 @@ class intinerary_controller extends Controller
 	}
     public function index()
     {
-    	return view('master.master_intinerary.index_intinerary');
+        $data = intinerary::all();
+    	return view('master.master_intinerary.index_intinerary',compact('data'));
     }
 
     public function create()

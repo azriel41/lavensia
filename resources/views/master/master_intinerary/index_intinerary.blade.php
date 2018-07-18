@@ -36,37 +36,35 @@
                                 <tr>
                                     <th class="center">No</th>
                                     <th class="center">Tour Name</th>
-                                    <th class="center">Periode</th>
-                                    <th class="center">Price</th>
-                                    <th class="center">Total Seat</th>
-                                    <th class="center">Seat Remain</th>
+                                    {{-- <th class="center">Periode</th> --}}
+                                    {{-- <th class="center">Price</th> --}}
+                                    {{-- <th class="center">Total Seat</th> --}}
+                                    {{-- <th class="center">Seat Remain</th> --}}
                                     <th class="center">Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td>Travel to Mardakaripura</td>
-                                    <td>17 agustus 1945</td>
-                                    <td align="right">Rp. 3.500.000</td>
-                                    <td>60</td>
-                                    <td>30</td>
-                                    <td class="center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <i class="material-icons">settings</i>
-                                                Manage <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Separated link</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($data as $index => $dt)
+                                    <tr>
+                                        <td class="center">{{ $index+1 }}</td>
+                                        <td>{{ $dt->mi_name }}</td>
+                                        <td class="center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">settings</i>
+                                                    Manage <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Separated link</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

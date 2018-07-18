@@ -183,13 +183,9 @@
                         <ul class="text-center">
                             @foreach ($category as $cat) 
                                 <li>
-                                    <a href="javascript:;" data-filter="{{ $cat->mc_name }}" class="active filter">{{ $cat->mc_name }}</a>
+                                    <a href="javascript:;" data-filter=".{{ $cat->mc_name }}" class="active filter">{{ $cat->mc_name }}</a>
                                 </li>
                             @endforeach
-                            <li><a href="javascript:;" data-filter=".domestik" class="filter">Tour Domestik</a></li>
-                            <li><a href="javascript:;" data-filter=".internasional" class="filter">Tour Internasional</a></li>
-                            <li><a href="javascript:;" data-filter=".china" class="filter">China</a></li>
-                            <li><a href="javascript:;" data-filter=".photography" class="filter">photography</a></li>
                         </ul>
                     </div>
                     
@@ -197,81 +193,18 @@
             </div>
             
             <div class="project-wrapper">
-            
-                <figure class="mix work-item domestik">
-                    <img src="{{ asset ('assets_frontend/img/11.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/11.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>TOUR BANGKOK  PATTAYA</h4>
-                        <p>PERIODE :  7 Sep & 18 Aug 2018</p>
-                        <br>
-                        <button class="btn btn-small btn-book" onclick="more()"><b>See More!</b></button>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item internasional">
-                    <img src="{{ asset ('assets_frontend/img/22.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/22.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item china">
-                    <img src="{{ asset ('assets_frontend/img/33.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-3.jpg')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item photography">
-                    <img src="{{ asset ('assets_frontend/img/44.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-4.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-            
-                <figure class="mix work-item domestik">
-                    <img src="{{ asset ('assets_frontend/img/55.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-5.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item internasional">
-                    <img src="{{ asset ('assets_frontend/img/66.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-6.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item china">
-                    <img src="{{ asset ('assets_frontend/img/77.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-7.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
-                <figure class="mix work-item photography">
-                    <img src="{{ asset ('assets_frontend/img/88.png')}}" alt="">
-                    <figcaption class="overlay">
-                        <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{ asset ('assets_frontend/img/works/item-8.png')}}"><i class="fa fa-eye fa-lg"></i></a>
-                        <h4>Labore et dolore magnam</h4>
-                        <p>Photography</p>
-                    </figcaption>
-                </figure>
-                
+                @foreach ($intinerary as $index => $iti)
+                    <figure class="mix work-item {{ $intinerary[$index]['category']['mc_name'] }}">
+                        <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="">
+                        <figcaption class="overlay">
+                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}"><i class="fa fa-eye fa-lg"></i></a>
+                            <h4>{{ $intinerary[$index]['mi_name'] }}</h4>
+                            <p></p>
+                            <br>
+                            <button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button>
+                        </figcaption>
+                    </figure>                
+                @endforeach   
             </div>
         
 
@@ -432,8 +365,25 @@
 <script type="text/javascript">
     
 
-    function more(argument) {
-        window.location=('{{ route('package') }}');
-    }
+    // function more(argument) {
+    //     var parent = $(argument).data('id');
+    //     console.log('a');
+    //     $.ajax({
+    //         data : {id:parent},
+    //         url : ('/lavensia/package/'+parent+'/package'),
+    //         type : 'get',
+    //         success: function (data) {
+    //             window.location = ('/lavensia/package/'+parent+'/package');
+    //         },
+    //         error:function(){
+    //             alert('Error');
+    //         }
+    //     })
 
+    // }
+
+    function more(argument) {
+        var parent = $(argument).data('id');
+        window.location = ('/lavensia/package/'+parent+'/package');
+    }
 </script>

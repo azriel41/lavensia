@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <!-- Always force latest IE rendering engine or request Chrome Frame -->
 <meta http-equiv="X-UA-`atible" content="IE=edge,chrome=1">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <!-- Page Title -->
 <title>Lavensia Tour & Travel</title>        
 <!-- Meta Description -->
@@ -59,8 +60,8 @@ Fixed Navigation
                                       </button>
 
                                       <ul class="dropdown-menu" role="menu">
-                                        <li><a href=""><i class="fa fa-user"></i> Dashboard</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                        <li><a href="" onclick="home()"><i class="fa fa-user"></i> Dashboard</a></li>
+                                        <li><a href="" onclick="profile()"><i class="fa fa-user"></i> Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
@@ -120,8 +121,14 @@ End Fixed Navigation
 <!-- Data table-->
 
 <style type="text/css">
-    
-    /* Jquery DataTable ============================ */
-
 
 </style>
+
+<script type="text/javascript">
+    function home(argument) {
+        window.location = ('{{ route('home') }}')
+    }
+    function profile(argument) {
+        window.location = ('{{ route('profile') }}')
+    }
+</script>

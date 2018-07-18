@@ -29,4 +29,5 @@ class detail_intinerary extends Model
 	{
         return $this->belongsTo('App\intinerary','md_intinerary_id');
 	}
+	
 }

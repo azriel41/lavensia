@@ -154,7 +154,9 @@
             textarea{
                 max-width: 100%;
             }
-
+            .pointer_dis{
+                pointer-events: none;
+            }
           
         </style>
     </head>
@@ -185,14 +187,14 @@
                                   <div class="contact-form col1" >
                                     <div class="input-group margin-top-20px">
                                         <div class="input-field">
-                                            <input type="text" name="bk_name" id="bk_name" placeholder="Name" class="form-control">
+                                            <input type="text" name="bk_name" id="bk_name" placeholder="Name" value="{{ auth::user()->name }}" class="form-control pointer_dis" readonly="">
                                          
-                                            <input type="text" name="bk_add" id="bk_add" placeholder="Address" class="form-control">
+                                            <input type="text" name="bk_add" id="bk_add" placeholder="Address" value="{{ auth::user()->address }}" class="form-control pointer_dis" readonly="">
                                         </div>
                                         <div class="input-field">
-                                            <input type="text" name="bk_cp" id="bk_cp" placeholder="Contact Person" class="form-control">
+                                            <input type="text" name="bk_cp" id="bk_cp" placeholder="Contact Person" value="{{ auth::user()->phone }}" class="form-control pointer_dis" readonly="">
                                         
-                                            <input type="email" name="bk_email" id="bk_email" placeholder="E-mail" class="form-control">
+                                            <input type="email" name="bk_email" id="bk_email" placeholder="E-mail" value="{{ auth::user()->email }}" class="form-control pointer_dis" readonly="">
                                         </div>
                                     </div>
                                   </div>
@@ -387,12 +389,10 @@
                           </fieldset>
 
 
-                         <div class="contact-form col1 col-sm-1" >
+                         <div class="contact-form col5 col-sm-5 col-sm-10 col-sm-12" >
                             <div class="input-group margin-top-20px">
                                 <div>
                                     <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
-                                </div>
-                                <div>
                                     <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
                                 </div>
                             </div>
@@ -424,9 +424,7 @@
 <script type="text/javascript">
     
 
-    function more(argument) {
-        window.location=('{{ route('package') }}');
-    }
+    
 
     function add_room(argument) {
 

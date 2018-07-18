@@ -176,7 +176,7 @@ body > section,
    margin-top: 2.5%;
 }
 .button_group_name{
-  margin-top: 8%;
+  margin-top: 5%;
 }
     width: 100px !important;
 }
@@ -280,6 +280,7 @@ top: -8px;
 
 .features {
   background-color: #f4f7f9;
+  margin-top: 2%;
 }
 
 .owl-controls {
