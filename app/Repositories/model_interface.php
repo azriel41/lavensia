@@ -13,7 +13,7 @@ interface model_interface
 
     public function delete($column,$value);
 
-    public function show($id);
+    public function show($column,$value);
 
     public function max($param);
 
@@ -22,6 +22,9 @@ interface model_interface
     public function same($column,$value);
 
     public function max_detail($column,$value,$param);
+
+    public function deleteNotSame($column,$value,$column1,$value1);
+    public function show_detail_one($column,$value,$column1,$value1);
 
 
 }

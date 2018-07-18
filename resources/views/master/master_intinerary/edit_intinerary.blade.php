@@ -600,9 +600,9 @@
     @foreach ($data->detail_intinerarys as $i => $data)
         var start         = '{{ Carbon\carbon::parse($data->md_start)->format('d-m-Y') }}';
         var end           = '{{ Carbon\carbon::parse($data->md_end)->format('d-m-Y') }}';
-        var adult_price   = '{{ number_format($data->md_adult_price, 2, ",", ".") }}';
-        var child_price   = '{{ number_format($data->md_child_price, 2, ",", ".") }}';
-        var infant_price  = '{{ number_format($data->md_infant_price, 2, ",", ".") }}';
+        var adult_price   = '{{ number_format($data->md_adult_price, 0, ",", ".") }}';
+        var child_price   = '{{ number_format($data->md_child_price, 0, ",", ".") }}';
+        var infant_price  = '{{ number_format($data->md_infant_price, 0, ",", ".") }}';
         var term          = '{{ $data->md_term }}';
         var seat          = '{{ $data->md_seat }}';
         var seat_remain   = '{{ $data->md_seat_remain }}';

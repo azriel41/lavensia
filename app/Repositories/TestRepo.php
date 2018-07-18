@@ -37,7 +37,7 @@ class TestRepo implements model_interface
     {
         return $this->model
                     ->where($column,$value)
-                    ->where($column,$value)
+                    ->where($column1,$value1)
                     ->update($data);
     }
 
@@ -54,9 +54,9 @@ class TestRepo implements model_interface
     }
 
     // show the record with the given id
-    public function show($id)
+    public function show($column,$value)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->where($column,$value)->get();
     }
     public function cari($column,$value)
     {
@@ -90,5 +90,16 @@ class TestRepo implements model_interface
     public function same($column,$value)
     {
         return $this->model->where($column,$value)->first();
+    }
+
+    public function deleteNotSame($column,$value,$column1,$value1)
+    {
+        return $this->model->where($column,$value)->whereNotIn($column1,$value1)->delete();
+    }
+
+    // show the record with the given id
+    public function show_detail_one($column,$value,$column1,$value1)
+    {
+        return $this->model->where($column,$value)->where($column1,$value1)->first();
     }
 }

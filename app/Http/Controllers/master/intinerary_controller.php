@@ -56,7 +56,7 @@ class intinerary_controller extends Controller
                                         </a>
                                     </li>
                                     <li class="bg-red">
-                                        <a class=" waves-effect waves-block" style="color:white">
+                                        <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -169,7 +169,19 @@ class intinerary_controller extends Controller
 
                 $save_schedule = $schedule->create($sched);
             }
+            $all_detail = $detail_intinerary->show('md_intinerary_id',$id)->toArray();
 
+            $temp = [];
+
+            for ($i=0; $i < count($req->detail_id); $i++) { 
+                for ($a=0; $a < count($all_detail); $a++) { 
+                    if ($all_detail[$a]['md_detail'] == $req->detail_id[$i]) {
+                        array_push($temp, $req->detail_id[$i]);
+                    }
+                }
+            }
+            $detail_intinerary->deleteNotSame('md_intinerary_id',$id,'md_detail',$temp);
+            // dd($req->term);
             for ($i=0; $i < count($req->detail_id); $i++) { 
                 $det = array(
                     'md_intinerary_id'  => $id,
@@ -185,8 +197,13 @@ class intinerary_controller extends Controller
                     'updated_by'        => $name
                 );
 
+
                 if ($req->detail_id[$i] != '0') {
-                    $update_detail = $detail_intinerary->update($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
+                    $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
+                    // $cari_seat
+                    if ($cari_seat->md_seat == $cari_seat->md_seat_remain) {
+                        $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
+                    }
                 }else{
                     $id_dt = $detail_intinerary->max_detail('md_intinerary_id',$id,'md_detail');
                     $index = str_pad($id_dt, 3, '0', STR_PAD_LEFT);
@@ -199,7 +216,7 @@ class intinerary_controller extends Controller
                 }
             }
 
-
+            // dd($detail_intinerary->show('md_intinerary_id',$id)->toArray());
 
             return Response::json(['status'=>1]);
         });
@@ -219,5 +236,28 @@ class intinerary_controller extends Controller
 
         return view('master.master_intinerary.table_departure',compact('data'));
 
+    }
+
+    public function delete(Request $req)
+    {
+        return DB::transaction(function() use ($req) {  
+            $detail_intinerary   = new detail_intinerary();
+            $detail_intinerary   = new TestRepo($detail_intinerary);
+            $all_detail = $detail_intinerary->show('md_intinerary_id',$req->id)->toArray();
+            $temp = [];
+            for ($a=0; $a < count($all_detail); $a++) { 
+                if ($all_detail[$a]['md_seat'] != $all_detail[$a]['md_seat_remain']) {
+                    array_push($temp, 0);
+                }else{
+                    array_push($temp, 1);
+                }
+            }
+            if (in_array(0, $temp)) {
+                return Response::json(['status'=>0,'message'=>'Data Tidak Bisa Dihapus Karena Terdapat Seat Yang Berkurang']);
+            }else{
+                $this->model->delete('mi_id',$req->id);
+                return Response::json(['status'=>1]);
+            }
+        });
     }
 }
