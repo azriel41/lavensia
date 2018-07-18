@@ -114,9 +114,6 @@
 		}
     });
 
-    
-
-
 
     $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
 

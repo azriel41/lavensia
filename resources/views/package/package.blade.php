@@ -121,6 +121,9 @@
               display: inline-block;
               vertical-align: middle;
             }
+            .center-al{
+                text-align: center;
+            }
         </style>
     </head>
     
@@ -138,34 +141,25 @@
 
                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">TOUR THE NEW BEIJING SHANGHAI HUANGSHAN</h2>
-                        <h4 class="support">By : Singapore Airlines</h4>
+                        <h2 class="count_h2">{{ $data[0]['intinerary']['mi_name'] }}</h2>
+                        <h4 class="support">By : {{ $data[0]['intinerary']['mi_by'] }}</h4>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
 
                     <!-- Image--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                        <img src="{{ asset ('assets_frontend/img/11.png')}}" alt="">
+                        <img src="{{  asset('storage/app/'.$data[0]['intinerary']['mi_image'])  }}" alt="">
                     </div>
 
                     <!-- Hightlight--> 
+
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <table width="100%"> 
                             <tr>
                                 <td align="left" valign="top"><h4>HIGHLIGHT<h4></td>
                                 <td valign="top">:</td>
-                                <td align="left" style="padding-left: 30px;"><h4>Great Wall, Tian An Men, Forbidden City, Nanjing Road, Dll</h4></td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"><h4>PERIODE</h4></td>
-                                <td valign="top">:</td>
-                                <td align="left" style="padding-left: 30px;"><h4>8 September 2018</h4></td>
-                            </tr>
-                            <tr>
-                                <td align="left" valign="top"><h4>SEAT REMAIN</h4></td>
-                                <td valign="top">:</td>
-                                <td align="left" style="padding-left: 30px;"><h4>40</h4></td>
+                                <td align="left" style="padding-left: 30px;"><h4>{{ $data[0]['intinerary']['mi_highlight'] }}</h4></td>
                             </tr>
                         </table>
                       </div>
@@ -183,158 +177,25 @@
                             <div id="home" class="tab-pane fade in active">
                                 <table width="100%" class="kiri">
                                     <br>
-                                    <!-- Day 1--> 
-                                    <tr>
-                                        <th><b>DAY 1 SURABAYA – SINGAPORE – SHANGHA  |   No Meal</b></th>
-                                    </tr>
-
+                                    @foreach ($schedule as $sch)
                                         <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr >
-                                        <td>Berkumpul di Juanda Surabaya / Cengkareng Jakarta untuk penerbangan ke Beijing dengan transit terlebih dahulu di Singapore. Tiba di Beijing diantar ke hotel untuk istirahat.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
+                                        <th><b>DAY {{ $sch->ms_detail }} - {{ $sch->ms_caption }}</b></th>
                                         </tr>
 
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 2 BEIJING  |   B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        
+                                        <tr >
+                                            <td>{{ $sch->ms_description }}</td>
                                         </tr>
-                                    
-                                    <tr>
-                                        <td>Tour mengunjungi Great Wall di pintu Joyungguan , Photo Stop di Bird Nest & Water Cube Building dan dilanjutkan makan malam Bebek Peking yang terkenal.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 3-->   
-                                    <tr>
-                                        <th><b>DAY 3 BEIJING   |  B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Tour ke Tian An Men yang merupakan lapangan di pusat kota Beijing yang terkenal, kemudian ke Forbidden City yang merupakan pusat pemerintahan jaman kekaisaran, dilanjutkan ke WangFujing yang merupakan pusat pertokoan terkenal di Beijing.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 4 BEIJING – HUANGSHAN  |  B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Naik Bullet Train Ke Huangshan, tiba di Tunxi yang terletak di khaki Huangshan dan pegunungan dilanjutkan berjalan jalan di Tunxi Old Street yang merupakan pusat kota kuno di Tunxi.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 5  HUANGSHAN |   B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Menikmati keindahan Gunung Huangshan yang merupakan tempat pembuatan film Croaching Tiger Hidden Dragon yang dibintangi oleh Cho Yun Fat & Michelle Yeoh.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 6  HUANGSHAN – SHANGHAI |   B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Berkunjung ke Shanghai Fim Park yang merupakan replika Shanghai jaman kuno dan pusat pembuatan film.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 7   SHANGHAI – SINGAPORE  |   B / L / D</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Tour ke The Bund-Pusat bisnis sejak jaman dulu, dilanjutkan ke Nanjing Road – Pusat Pertokoan terkemuka di Shanghai, dan Chenghuangmiao untuk melihat kota kuno Shanghai. Malam hari diantar ke Airport.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                    <!-- Day 2-->   
-                                    <tr>
-                                        <th><b>DAY 8 SINGAPORE – SURABAYA</b></th>
-                                    </tr>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    
-                                    <tr>
-                                        <td>Transit di Singapore untuk penerbangan kembali ke Surabaya / Jakarta. Terima kasih atas kepercayaan yang diberikan kepada LAVENSIA.</td>
-                                    </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                    @endforeach
                                 </table>
                             </div>
 
@@ -348,45 +209,39 @@
                                 <i class="devider"></i>
                                 <div style="margin-top: 20px"></div>
                                 <table width="100%" class="table table-striped" align="center">
+                                    <thead>
                                        <tr >
-                                           <th align="center">No</th>
-                                           <th align="center">Code Tour</th>
-                                           <th align="center">Date</th>
-                                           <th align="center">Price</th>
-                                           <th align="center">Seat Remain</th>
-                                           <th align="center">Term & con</th>
-                                           <th align="center">Book</th>
+                                           <th class="center-al">No</th>
+                                           <th class="center-al">Code Tour</th>
+                                           <th class="center-al">Date</th>
+                                           <th class="center-al">Price Adult</th>
+                                           <th class="center-al">Price Child</th>
+                                           <th class="center-al">Price Invent</th>
+                                           <th class="center-al">Seat Remain</th>
+                                           <th class="center-al">Term & con</th>
+                                           <th class="center-al">Book</th>
                                        </tr>
-                                   
-                                       <tr align="left">
-                                           <td>1</td>
-                                           <td>TR001/1817</td>
-                                           <td>20 July 2018</td>
-                                           <td>Rp. 1.8000.000,-</td>
-                                           <td>40 / 60</td>
-                                           <td>tidak ada</td>
-                                           <td>
-                                               <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                           </td>
-                                       </tr>
-                                       <tr align="left">
-                                           <td>1</td>
-                                           <td>TR001/1817</td>
-                                           <td>20 July 2018</td>
-                                           <td>Rp. 1.8000.000,-</td>
-                                           <td>40 / 60</td>
-                                           <td>tidak ada</td>
-                                           <td>
-                                               <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                           </td>
-                                       </tr>
-
+                                    </thead>
+                                    <tbody>
+                                       @foreach ($data as $index => $element)
+                                           <tr align="left">
+                                               <td>{{ $index+1 }}</td>
+                                               <td>{{ $data[$index]['md_nota'] }}</td>
+                                               <td>{{ $data[$index]['md_start'] }} - {{ $data[$index]['md_end'] }}</td>
+                                               <td align="right">{{ number_format($data[$index]['md_adult_price'],0,'','.') }}</td>
+                                               <td align="right">{{ number_format($data[$index]['md_child_price'],0,'','.') }}</td>
+                                               <td align="right">{{ number_format($data[$index]['md_infant_price'],0,'','.') }}</td>
+                                               <td>{{ $data[$index]['md_seat_remain'] }}</td>
+                                               <td>{{ $data[$index]['md_term'] }}</td>
+                                               <td>
+                                                   <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                               </td>
+                                            </tr>
+                                      @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
-                        
-
-
                       </div>
                     </div>
                 </div>
@@ -411,9 +266,7 @@
 <script type="text/javascript">
     
 
-    function more(argument) {
-        window.location=('{{ route('package') }}');
-    }
+    
     function booking(argument) {
         window.location=('{{ route('booking') }}');
     }

@@ -5,6 +5,7 @@
         display: inline-block;
     }
 </style>
+
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
