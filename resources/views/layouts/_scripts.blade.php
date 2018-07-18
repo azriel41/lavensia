@@ -1,5 +1,6 @@
 <!-- Jquery Core Js -->
 {{-- <script src="{{ asset ('assets/plugins/jquery/jquery.js') }}"></script> --}}
+{{-- <script src="{{ asset ('assets/js/jquery-3.2.1.min.js') }}"></script> --}}
 <script src="{{ asset ('assets/plugins/jquery/jquery-1.11.3.min.js') }}"></script>
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <!-- Bootstrap Core Js -->

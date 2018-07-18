@@ -15,6 +15,6 @@ class category extends Model
 
 	public function intinerary()
 	{
-		return $this->hasMany('App\intinerary');
+		return $this->hasMany('App\intinerary','mc_id');
 	}
 }

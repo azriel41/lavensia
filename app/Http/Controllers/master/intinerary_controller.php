@@ -16,19 +16,71 @@ use Auth;
 use Response;
 use File;
 use Storage;
+use Yajra\Datatables\Datatables;
 class intinerary_controller extends Controller
 {
-	protected $model;
+    protected $model;
+	protected $category;
 
-	public function __construct(intinerary $intinerary)
+	public function __construct(intinerary $intinerary,category $category)
 	{
 	   // set the model
 	   $this->model = new TestRepo($intinerary);
+       $this->category = new TestRepo($category);
+
 	}
     public function index()
     {
         $data = intinerary::all();
     	return view('master.master_intinerary.index_intinerary',compact('data'));
+    }
+
+    public function datatable_intinerary()
+    {
+        $data = $this->model->all();
+           
+        
+        $data = collect($data);
+
+        return Datatables::of($data)
+                        ->addColumn('aksi', function ($data) {
+                            return'<div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="material-icons">settings</i>
+                                    Manage <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" style="padding:0px">
+                                    <li class="bg-orange">
+                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
+                                            <i class="material-icons">edit</i>
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li class="bg-red">
+                                        <a class=" waves-effect waves-block" style="color:white">
+                                            <i class="material-icons">delete</i>
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>';
+                        })
+                        ->addColumn('departure', function ($data) {
+                            return'<button onclick="departure(\''.$data->mi_id.'\')" type="button" class="btn bg-pink waves-effect m-r-20" data-toggle="modal" data-target="#departure">
+                                    <i class="material-icons">extensions</i>
+                                   </button>';
+                        })
+                        ->addColumn('schedule', function ($data) {
+                            return'<button onclick="schedule(\''.$data->mi_id.'\')" type="button" class="btn bg-cyan waves-effect m-r-20" data-toggle="modal" data-target="#schedule">
+                                    <i class="material-icons">extensions</i>
+                                   </button>';
+                        })
+                        ->addColumn('category', function ($data) {
+                            return $data->category->mc_name;
+                        })
+                        ->rawColumns(['aksi','schedule','departure'])
+                        ->addIndexColumn()
+                        ->make(true);
     }
 
     public function create()
@@ -44,6 +96,14 @@ class intinerary_controller extends Controller
         $data =  $category->all();
     	return view('master.master_intinerary.create_intinerary',compact('data','nota'));
     }
+
+    public function edit($id)
+    {
+        $data = $this->model->same('mi_id',$id);
+        $category =  $this->category->all();
+        return view('master.master_intinerary.edit_intinerary',compact('category','data'));
+    }
+
 
     public function save(Request $req)
     {
@@ -100,7 +160,7 @@ class intinerary_controller extends Controller
                 $sched = array(
                     'ms_intinerary_id'  => $id,
                     'ms_detail'         => $i+1,
-                    'ms_caption'        => $req->caption_schedule[$i],
+                    'ms_caption'        => strtoupper($req->caption_schedule[$i]),
                     'ms_description'    => $req->description_schedule[$i],
                     'created_at'        => Carbon::now(),
                     'updated_at'        => Carbon::now(),
@@ -126,7 +186,7 @@ class intinerary_controller extends Controller
                     'updated_by'        => $name
                 );
 
-                if ($req->detail_id[$i] != 0) {
+                if ($req->detail_id[$i] != '0') {
                     $update_detail = $detail_intinerary->update($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
                 }else{
                     $id_dt = $detail_intinerary->max_detail('md_intinerary_id',$id,'md_detail');
@@ -144,5 +204,21 @@ class intinerary_controller extends Controller
 
             return Response::json(['status'=>1]);
         });
+    }
+
+    public function schedule(Request $req)
+    {
+        $data = $this->model->same('mi_id',$req->mc_id);
+
+
+        return view('master.master_intinerary.table_schedule',compact('data'));
+    }
+
+    public function departure(Request $req)
+    {
+        $data = $this->model->same('mi_id',$req->mc_id);
+
+        return view('master.master_intinerary.table_departure',compact('data'));
+
     }
 }

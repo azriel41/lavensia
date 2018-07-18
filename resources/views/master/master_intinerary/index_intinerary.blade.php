@@ -5,75 +5,120 @@
         display: inline-block;
     }
 </style>
-<section class="content">
-    <div class="container-fluid">
-        <div class="block-header">
-            <h2>DASHBOARD</h2>
-        </div>
-        @include('layouts.task')
-        <div class="header">
-            <ol class="breadcrumb breadcrumb-bg-pink">
-                <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-                <li class="active"><i class="material-icons"></i>Master Intinerary</li>
-            </ol>
-        </div>
-        <div class="row clearfix">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header bg-cyan">
-                        <h4 class="inline-block">
-                            Master Intinerary
-                        </h4>
-                        <div class="pull-right">
-                            <a href="{{ route('master_intinerary_create') }}">
-                                <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
-                            </a>
-                        </div>
+
+@section('content')
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    @include('layouts.task')
+    <div class="header">
+        <ol class="breadcrumb breadcrumb-bg-pink">
+            <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
+            <li class="active"><i class="material-icons"></i>Master Intinerary</li>
+        </ol>
+    </div>
+    <div class="row clearfix ">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header bg-cyan">
+                    <h4 class="inline-block">
+                        Master Intinerary
+                    </h4>
+                    <div class="pull-right">
+                        <a href="{{ route('master_intinerary_create') }}">
+                            <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
+                        </a>
                     </div>
-                    <div class="body">
-                        <table class="table table-bordered dataTable">
-                            <thead>
-                                <tr>
-                                    <th class="center">No</th>
-                                    <th class="center">Tour Name</th>
-                                    {{-- <th class="center">Periode</th> --}}
-                                    {{-- <th class="center">Price</th> --}}
-                                    {{-- <th class="center">Total Seat</th> --}}
-                                    {{-- <th class="center">Seat Remain</th> --}}
-                                    <th class="center">Detail</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $index => $dt)
-                                    <tr>
-                                        <td class="center">{{ $index+1 }}</td>
-                                        <td>{{ $dt->mi_name }}</td>
-                                        <td class="center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    <i class="material-icons">settings</i>
-                                                    Manage <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                </div>
+                <div class="body table-responsive">
+                    <table class="table table-bordered intinerary" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th class="center">No</th>
+                                <th class="center">Tour Code</th>
+                                <th class="center">Tour Name</th>
+                                <th class="center">Tour By</th>
+                                <th class="center">Category</th>
+                                <th class="center">Schedule</th>
+                                <th class="center">Departure</th>
+                                <th class="center">Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+@include('master.master_intinerary.modal_intinerary')
+@endsection
+@section('extra_scripts')
 <script>
-    
+window.onload = function(){
+    $('.intinerary').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url:'{{ route('datatable_intinerary') }}',
+        },
+        columnDefs: [
+                {
+                    targets: 0 ,
+                    className: 'center'
+                },
+                {
+                    targets: 5 ,
+                    className: 'center'
+                },
+                {
+                    targets: 6 ,
+                    className: 'center'
+                },
+            ],
+        columns: [
+            {data: 'DT_Row_Index', name: 'DT_Row_Index'},
+            {data: 'mi_nota', name: 'mi_nota'},
+            {data: 'mi_name', name: 'mi_name'},
+            {data: 'mi_by', name: 'mi_by'},
+            {data: 'category', name: 'category'},
+            {data: 'schedule', name: 'schedule'},
+            {data: 'departure', name: 'departure'},
+            {data: 'aksi', name: 'aksi'},
+        ]
+    });
+
+}
+
+function schedule(mc_id) {
+    $.ajax({
+        url:'{{ route('schedule') }}',
+        data:{mc_id},
+        success:function(data){
+            $('.schedule_table').html(data);
+        },
+        error:function(){
+
+        }
+    })
+}
+
+function departure(mc_id) {
+    $.ajax({
+        url:'{{ route('departure') }}',
+        data:{mc_id},
+        success:function(data){
+            $('.departure_table').html(data);
+        },
+        error:function(){
+            
+        }
+    })
+}
+
 </script>
+@endsection
   
