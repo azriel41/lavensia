@@ -135,6 +135,9 @@
                 background-color: #ff6b6b;
                 border-color: white;
             }
+            .img-responsive{
+                margin: auto !important;
+            }
         </style>
     </head>
     
@@ -158,12 +161,13 @@
                     </div>
 
                     <!-- Image--> 
-                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                        <img src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="" width="39%" height="24%">
+                    <div class="sec-sub-title text-center wow fadeInUp  animated " data-wow-duration="1000ms">
+                        <div class="container">
+                            <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="">
+                        </div>
                     </div>
 
                     <!-- Hightlight--> 
-
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <table width="100%"> 
@@ -184,7 +188,7 @@
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <ul class="nav nav-tabs ">
-                            <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour Detail</a></li>
+                            <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
                             <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
                         </ul>
@@ -197,20 +201,12 @@
                                         <tr>
                                         <th><b>DAY {{ $sch->ms_detail }} - {{ $sch->ms_caption }}</b></th>
                                         </tr>
-
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                        
-                                        <tr >
+                                        <tr><td>&nbsp;</td></tr>
+                                        <tr>
                                             <td>{{ $sch->ms_description }}</td>
                                         </tr>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                            </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                        <tr><td>&nbsp;</td></tr>
                                     @endforeach
                                 </table>
                             </div>
@@ -224,22 +220,23 @@
                                 </table>
                                 <i class="devider"></i>
                                 <div style="margin-top: 20px"></div>
-                                <table width="100%" class="table table-striped" align="center">
-                                    <thead>
-                                       <tr >
-                                           <th class="center-al">No</th>
-                                           <th class="center-al">Code Tour</th>
-                                           <th class="center-al">Date</th>
-                                           <th class="center-al">Price Adult</th>
-                                           <th class="center-al">Price Child</th>
-                                           <th class="center-al">Price Invent</th>
-                                           <th class="center-al">Seat Remain</th>
-                                           <th class="center-al">Term & con</th>
-                                           <th class="center-al">Book</th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       @foreach ($detail as $index => $det)
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-striped" align="center">
+                                        <thead>
+                                           <tr >
+                                               <th class="center-al">No</th>
+                                               <th class="center-al">Code Tour</th>
+                                               <th class="center-al">Date</th>
+                                               <th class="center-al">Price Adult</th>
+                                               <th class="center-al">Price Child</th>
+                                               <th class="center-al">Price Invent</th>
+                                               <th class="center-al">Seat Remain</th>
+                                               <th class="center-al">Term & con</th>
+                                               <th class="center-al">Book</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody>
+                                          @foreach ($detail as $index => $det)
                                            <tr align="left">
                                                <td>{{ $index+1 }}</td>
                                                <td>{{ $det->md_nota }}</td>
@@ -253,9 +250,10 @@
                                                    <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
                                             </tr>
-                                      @endforeach
-                                    </tbody>
-                                </table>
+                                          @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <table width="100%" class="kiri">
@@ -266,38 +264,40 @@
                                 </table>
                                 <i class="devider"></i>
                                 <div style="margin-top: 20px"></div>
-                                <table width="100%" class="table table-striped" align="center">
-                                    <thead>
-                                       <tr >
-                                           <th class="center-al">No</th>
-                                           <th class="center-al">Code Tour</th>
-                                           <th class="center-al">Date</th>
-                                           <th class="center-al">Price Adult</th>
-                                           <th class="center-al">Price Child</th>
-                                           <th class="center-al">Price Invent</th>
-                                           <th class="center-al">Seat Remain</th>
-                                           <th class="center-al">Term & con</th>
-                                           <th class="center-al">Book</th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       @foreach ($data as $index => $element)
-                                           <tr align="left">
-                                               <td>{{ $index+1 }}</td>
-                                               <td>{{ $data[$index]['md_nota'] }}</td>
-                                               <td>{{ $data[$index]['md_start'] }} - {{ $data[$index]['md_end'] }}</td>
-                                               <td align="right">{{ number_format($data[$index]['md_adult_price'],0,'','.') }}</td>
-                                               <td align="right">{{ number_format($data[$index]['md_child_price'],0,'','.') }}</td>
-                                               <td align="right">{{ number_format($data[$index]['md_infant_price'],0,'','.') }}</td>
-                                               <td>{{ $data[$index]['md_seat_remain'] }}</td>
-                                               <td>{{ $data[$index]['md_term'] }}</td>
-                                               <td>
-                                                   <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                               </td>
-                                            </tr>
-                                      @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-striped" align="center">
+                                        <thead>
+                                           <tr >
+                                               <th class="center-al">No</th>
+                                               <th class="center-al">Code Tour</th>
+                                               <th class="center-al">Date</th>
+                                               <th class="center-al">Price Adult</th>
+                                               <th class="center-al">Price Child</th>
+                                               <th class="center-al">Price Invent</th>
+                                               <th class="center-al">Seat Remain</th>
+                                               <th class="center-al">Term & con</th>
+                                               <th class="center-al">Book</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody>
+                                           @foreach ($data as $index => $element)
+                                               <tr align="left">
+                                                   <td>{{ $index+1 }}</td>
+                                                   <td>{{ $data[$index]['md_nota'] }}</td>
+                                                   <td>{{ $data[$index]['md_start'] }} - {{ $data[$index]['md_end'] }}</td>
+                                                   <td align="right">{{ number_format($data[$index]['md_adult_price'],0,'','.') }}</td>
+                                                   <td align="right">{{ number_format($data[$index]['md_child_price'],0,'','.') }}</td>
+                                                   <td align="right">{{ number_format($data[$index]['md_infant_price'],0,'','.') }}</td>
+                                                   <td>{{ $data[$index]['md_seat_remain'] }}</td>
+                                                   <td>{{ $data[$index]['md_term'] }}</td>
+                                                   <td>
+                                                       <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                                   </td>
+                                                </tr>
+                                          @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                       </div>
