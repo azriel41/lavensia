@@ -159,7 +159,7 @@
 
                     <!-- Image--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                        <img src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="">
+                        <img src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="" width="39%" height="24%">
                     </div>
 
                     <!-- Hightlight--> 
