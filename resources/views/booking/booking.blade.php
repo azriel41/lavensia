@@ -156,7 +156,23 @@
             }
             .pointer_dis{
                 pointer-events: none;
+                opacity: 0.5;
             }
+
+            .borderimg2 { 
+                border: 10px solid transparent;
+                padding: 15px;
+                -webkit-border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch; /* Safari 3.1-5 */
+                -o-border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch; /* Opera 11-12.1 */
+                border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch;
+            }
+
+
+
+
+           /* .bootstrap-select:hover{
+                border: 1px solid;
+            }*/
           
         </style>
     </head>
@@ -181,8 +197,8 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <form action="#" id="contact-form">
-                          <!-- Agent detail-->
-                          <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
+                              <!-- Agent detail-->
+                            <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
                               <legend class="scheduler-border">Agent Detail</legend>
                                   <div class="contact-form col1" >
                                     <div class="input-group margin-top-20px">
@@ -198,10 +214,10 @@
                                         </div>
                                     </div>
                                   </div>
-                          </fieldset>
+                            </fieldset>
 
-                          <!-- Guest-->
-                          <fieldset class="scheduler-border col-sm-6">
+                              <!-- Guest-->
+                            <fieldset class="scheduler-border col-sm-6">
                               <legend class="scheduler-border">Guest</legend>
                                   <div class="contact-form col1" >
                                     <div class="input-group margin-top-20px">
@@ -212,49 +228,85 @@
                                         </div>
                                     </div>
                                   </div>
-                          </fieldset>
+                            </fieldset>
 
-
-
-                          <!-- Room Type 1-->
-                          <fieldset class="scheduler-border col-sm-12">
-                              <legend class="scheduler-border">Room type</legend>                              
-                                  <div class="contact-form col2" >
-                                    <div class="input-group margin-top-20px">
-                                            <table width="100%">
-                                                <tbody>
-                                                    <tr class="drop_here">
-                                                        <td>
-                                                            <div class="file-upload">
-                                                                <label for="upload" class="file-upload__label">Upload <i class="fa fa-upload"></i></label>
-                                                                <input id="upload" class="file-upload__input" type="file" name="file-upload">
-                                                            </div>
-                                                        </td>
-                                                        <td class="drop_here"></td>
-                                                        <td width="40%">
-                                                            <select class="form-control bk_bed"  onchange="bed(this)">
-                                                                <option value="single">Single</option>
-                                                                <option value="double">Double</option>
-                                                                <option value="triple">Triple</option>
-                                                                <option value="twin">Twin</option>
-                                                                <option value="doubletwin&cnb">Double/Twin + CNB</option>
-                                                                <option value="doubletwin&invent">Double/Twin + Invent</option>
-                                                            </select>
-                                                        </td>
-                                                        <td width="4%"><button class="btn btn-plus" type="button" onclick="add_room()" style="margin-bottom: 10px;"><i class="fa fa-plus"></i></button></td>
-                                                        <td width="4%"><button class="btn btn-minus" type="button" onclick="remove_room(this)" style="margin-bottom: 10px;" ><i class="fa fa-times" style="color: white;"></i></button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table> 
+                              <!-- Room Type 1-->
+                            <fieldset class="scheduler-border col-sm-12 dropping ">
+                                <legend class="count_h2"><b>Room Tour</legend>
+                                <div class="col-sm-12 room_append">
+                                    <div class="col-sm-12 all_room">
+                                        <div class="col-sm-8 change  single" style="">
+                                            <div class="col-sm-4 preview_div satu ">
+                                                <div>
+                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                                </div>
+                                                <div class="file-upload" style="width: 100%"    >
+                                                    <div class="file-select">
+                                                        <div class="file-select-button fileName" >Image</div>
+                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <input type="file" class="chooseFile" name="image[]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 preview_div dua pointer_dis">
+                                                <div>
+                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                                </div>
+                                                <div class="file-upload" style="width: 100%">
+                                                    <div class="file-select">
+                                                        <div class="file-select-button fileName" >Image</div>
+                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <input type="file" class="chooseFile" name="image[]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 preview_div tiga pointer_dis">
+                                                <div>
+                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                                </div>
+                                                <div class="file-upload" style="width: 100%">
+                                                    <div class="file-select">
+                                                        <div class="file-select-button fileName" >Image</div>
+                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <input type="file" class="chooseFile" name="image[]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4"  >
+                                            <div class="col-sm-12">
+                                                <label align="left">BED</label>
+                                                <select  class="form-control selectpicker bk_bed">
+                                                    <option value="single" data-val="1">Single</option>
+                                                    <option value="double" data-val="2">Double</option>
+                                                    <option value="twin" data-val="2">Twin</option>
+                                                    <option value="triple" data-val="3">Triple</option>
+                                                    <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
+                                                    <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
+                                                    <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label align="left">BED</label>
+                                                <select  class="form-control selectpicker bk_bed">
+                                                    <option value="single" data-val="1">Single</option>
+                                                    <option value="double" data-val="2">Double</option>
+                                                    <option value="twin" data-val="2">Twin</option>
+                                                    <option value="triple" data-val="3">Triple</option>
+                                                    <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
+                                                    <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
+                                                    <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="drop"></div>
-                                  </div>
-                          </fieldset>
-                          <hr>
-                          <!-- Additional-->
-                          <fieldset class="scheduler-border col-sm-12">
-                              <legend class="scheduler-border">Additional</legend>
+                                </div>
+                                    
+                            </fieldset>
+                            <hr>
+                              <!-- Additional-->
+                            <fieldset class="scheduler-border col-sm-12">
+                              <legend class="count_h2"><b>Additional</legend>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
                                         <table width="100%" class="table table-striped table-hover table-bordered">
@@ -280,10 +332,9 @@
                                         </table>
                                     </div>
                                   </div>
-                          </fieldset>
-
-                          <!-- Status-->
-                          <fieldset class="scheduler-border col-sm-12">
+                            </fieldset>
+                              <!-- Status-->
+                            <fieldset class="scheduler-border col-sm-12">
                               <legend class="scheduler-border">Invoice</legend>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
@@ -328,10 +379,10 @@
                                         </table>
                                     </div>
                                   </div>
-                          </fieldset>
+                            </fieldset>
 
-                          <!-- Payment-->
-                          <fieldset class="scheduler-border col-sm-12">
+                              <!-- Payment-->
+                            <fieldset class="scheduler-border col-sm-12">
                               <legend class="scheduler-border">Payment</legend>
                                   <div class="contact-form col1" >
                                     <div style="min-height: 100px">
@@ -374,10 +425,10 @@
                                         </div>
                                     </div>
                                   </div>
-                          </fieldset>
+                            </fieldset>
 
-                           <!-- Additional-->
-                           <fieldset class="scheduler-border col-sm-12">
+                               <!-- Additional-->
+                            <fieldset class="scheduler-border col-sm-12">
                               <legend class="scheduler-border">Remark</legend>
                               <div class="contact-form col1 col-sm-12" >
                                 <div class="input-group margin-top-20px">
@@ -386,104 +437,83 @@
                                     </div>
                                 </div>
                               </div>
-                          </fieldset>
-
-
-                         <div class="contact-form col5 col-sm-5 col-sm-10 col-sm-12" >
-                            <div class="input-group margin-top-20px">
-                                <div>
-                                    <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
-                                    <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
+                            </fieldset>
+                            <div class="contact-form col5 col-sm-5 col-sm-10 col-sm-12" >
+                                <div class="input-group margin-top-20px">
+                                    <div>
+                                        <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
+                                        <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
+                                    </div>
                                 </div>
                             </div>
-                          </div>
-
-                          
-
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-        
         <!--
         End Contact Us
         ==================================== -->
-        
-        
         @include('layouts_frontend._footer')
-        
-        
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
-
         @include('layouts_frontend._scripts')
-        
     </body>
 </html>
-
 <script type="text/javascript">
-    
-
-    
-
-    function add_room(argument) {
-
-        $('.drop').append(
-                        '<table width="100%">'+
-                            '<tr>'+
-                                '<td class="drop_here"></td>'+
-                                '<td><input type="file" class="imgInp"/></td>'+
-                                '<td width="">'+
-                                    '<select class="form-control bk_bed"  onchange="bed(this)">'+
-                                    '<option value="single">Single</option>'+
-                                    '<option value="double">Double</option>'+
-                                    '<option value="triple">Triple</option>'+
-                                    '<option value="twin">Twin</option>'+
-                                    '<option value="doubletwin&cnb">Double/Twin + CNB</option>'+
-                                    '<option value="doubletwin&invent">Double/Twin + Invent</option>'+
-                                '</select>'+
-                                '</td>'+
-                                '<td><button class="btn btn-minus" type="button" onclick="remove_room(this)" style="margin-bottom: 10px;" ><i class="fa fa-times" style="color: white;"></i></button></td>'+
-                            '</tr>'+
-                        '</table>'
-                            );
-        return false;
-    }
-
-    function remove_room (argument) {
-        var par = $(argument).parents('tr');
-        var remove = $(par).remove();
-
-    }
-
-    function bed(argument) {
-
-        var par = $(argument).parents('tr');
-        var bed = $(par).find(':selected').val();
-        console.log(bed);
-        if (bed == 'single') {
-            var remove = $(par).find('.file-upload_append').remove();
-        }else if(bed == 'double'){
-           $(par).find('.drop_here').html('<div class="file-upload file-upload_append">'+
-                                                '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
-                                                '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
-                                            '</div>');
-            console.log('b');
-        }else if (bed == 'triple') {
-            $(par).find('.drop_here').html('<div class="file-upload file-upload_append">'+
-                                                '<label for="upload" class="file-upload__label">Css only file upload button</label>'+
-                                                '<input id="upload" class="file-upload__input" type="file" name="file-upload">'+
-                                            '</div>');
-        }else if (bed == 'doubletwin&cnb') {
-            console.log('e');
-        }else if (bed == 'doubletwin&invent') {
-            console.log('f');
+    {{-- GAMBAR --}}
+    $('.chooseFile').bind('change', function () {
+        var filename = $(this).val();
+        var fsize = $(this)[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          return false;
         }
-    }
+        var parent = $(this).parents(".preview_div");
+        if (/^\s*$/.test(filename)) {
+            $(parent).find('.file-upload').removeClass('active');
+            $(parent).find(".noFile").text("No file chosen..."); 
+        }
+        else {
+            $(parent).find('.file-upload').addClass('active');
+            $(parent).find(".noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+        load(parent,this);
+    });
 
-    function save(argument) {
-        windw.location=('')
+    function load(parent,file) {
+        var fsize = $(file)[0].files[0].size;
+        if(fsize>2048576) //do something if file size more than 1 mb (1048576)
+        {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
+          return false;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e){
+            console.log(parent);
+            $(parent).find('.output').attr('src',e.target.result);
+        };
+        // console.log(file[0].files[0]);
+        reader.readAsDataURL(file.files[0]);
     }
+    // END GAMBAR
 
-        
+    $('.bk_bed').change(function(){
+        var val = $(this).find(':selected').attr('data-val');
+
+        if (val == 1) {
+            var dua = $(this).parents('.all_room').find('.dua');
+            var tiga = $(this).parents('.all_room').find('.tiga');
+            $(dua).find('.chooseFile').val('');
+            $(dua).find('.noFile').text('Choose Image...');
+            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+
+            $(tiga).find('.chooseFile').val('');
+            $(tiga).find('.noFile').text('Choose Image...');
+            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        }
+
+    })
 </script>

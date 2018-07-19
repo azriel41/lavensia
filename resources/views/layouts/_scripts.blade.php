@@ -20,6 +20,8 @@
 
 <!-- Custom Js -->
 <script src="{{ asset ('assets/js/pages/forms/basic-form-elements.js') }}"></script>
+{{-- DROPZONE --}}
+<script src="{{ asset ('assets/js/dropzone.js') }}"></script>
 
 <!-- Autosize Plugin Js -->
 <script src="{{ asset ('assets/plugins/autosize/autosize.js') }}"></script>
