@@ -61,24 +61,27 @@
                                         <h4><b>Contact</b></h4>
                                         <table width="100%" class="table table-striped">
                                             <tr>
-                                                <td class="table_right">Name</td>
+                                                <td class="table_right">Name PIC</td>
                                                 <td class="table_left">{{ auth::user()->name }}</td>
                                             </tr>
                                             <tr>
-                                                <td class="table_right">Name</td>
+                                                <td class="table_right">Phone PIC</td>
+                                                <td class="table_left">{{ auth::user()->phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Email PIC</td>
+                                                <td class="table_left">{{ auth::user()->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">ROLE</td>
+                                                @if (auth::user()->name)
+                                                    {{-- expr --}}
+                                                @endif
                                                 <td class="table_left">{{ auth::user()->name }}</td>
                                             </tr>
                                             <tr>
-                                                <td class="table_right">Name</td>
-                                                <td class="table_left">{{ auth::user()->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Name</td>
-                                                <td class="table_left">{{ auth::user()->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Name</td>
-                                                <td class="table_left">{{ auth::user()->name }}</td>
+                                                <td class="table_right">Address</td>
+                                                <td class="table_left">{{ auth::user()->address }}</td>
                                             </tr>
                                         </table>
                                     </div>
