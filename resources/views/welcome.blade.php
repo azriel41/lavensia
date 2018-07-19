@@ -224,7 +224,7 @@
         Our Works
         ==================================== -->
         
-        <section id="works" class="works clearfix">
+        <section id="package" class="works clearfix">
             <div class="container">
                 <div class="row">
                 
@@ -422,24 +422,6 @@
 
 <script type="text/javascript">
     
-
-    // function more(argument) {
-    //     var parent = $(argument).data('id');
-    //     console.log('a');
-    //     $.ajax({
-    //         data : {id:parent},
-    //         url : ('/lavensia/package/'+parent+'/package'),
-    //         type : 'get',
-    //         success: function (data) {
-    //             window.location = ('/lavensia/package/'+parent+'/package');
-    //         },
-    //         error:function(){
-    //             alert('Error');
-    //         }
-    //     })
-
-    // }
-
     function more(argument) {
         var parent = $(argument).data('id');
         window.location = ('/lavensia/package/'+parent+'/package');

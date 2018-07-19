@@ -28,7 +28,8 @@ Auth::routes();
 // Route::get('/test', 'HomeController@test')->name('test');
 
 //Halaman See more 
-Route::get('/package/{id}/package', 'package\packageController@package');
+Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
+Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {

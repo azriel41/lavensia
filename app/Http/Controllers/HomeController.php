@@ -32,8 +32,6 @@ class HomeController extends Controller
     }
     public function profile()
     {
-        
-        return view('home');
-        
+        return view('auth.profile');
     }
 }

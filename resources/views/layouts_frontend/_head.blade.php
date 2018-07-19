@@ -49,7 +49,7 @@ Fixed Navigation
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="#package">Package</a></li>
                 <li><a href="#footer">Contact</a></li>
-                <li><a href="http://google.com">Contact</a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
                 @if (Route::has('login'))
                         @if (Auth::check())
                             <li>
