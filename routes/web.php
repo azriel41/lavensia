@@ -12,8 +12,15 @@
 */
 Route::get('/', function () {
 	$category = App\category::all();
-	$intinerary = App\intinerary::with('category')->get();
-    return view('welcome',compact('category','intinerary'));
+
+	$intinerary = App\intinerary::all();
+
+	foreach ($intinerary as $index => $val) {
+		$det = $val->detail_intinerarys;
+		$cat = $val->category;
+	}
+	// return $det;
+    return view('welcome',compact('category','intinerary','det'));
 
 })->name('dashboard');
 Auth::routes();
@@ -21,7 +28,8 @@ Auth::routes();
 // Route::get('/test', 'HomeController@test')->name('test');
 
 //Halaman See more 
-Route::get('/package/{id}/package', 'package\packageController@package');
+Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
+Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {

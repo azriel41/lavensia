@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title><marquee>Lavensia Tour & Travel</marquee></title>
+    <title>Lavensia Tour & Travel</title>
     <!-- Favicon-->
 
     
@@ -256,7 +256,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href=""><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href="{{ route('profile') }}"><i class="material-icons">person</i>Profile</a></li>
                             {{-- <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>

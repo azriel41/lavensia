@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use auth;
 use App\detail_intinerary;
+use App\intinerary;
 use App\schedule;
 
 class packageController extends Controller
@@ -14,9 +15,14 @@ class packageController extends Controller
     public function package(Request $request,$id)
     {
     	$id = $request->id;
-    	$data = detail_intinerary::where('md_intinerary_id','=',$id)->with('intinerary')->get();
+    	$data = intinerary::where('mi_id','=',$id)->get();
+    	foreach ($data as $index => $det) {
+    		$detail = $det->detail_intinerarys;
+    	}
+    	// return $detail;
     	$schedule = schedule::where('ms_intinerary_id','=',$id)->get();
-        return view('package.package',compact('data','schedule'));
+
+        return view('package.package',compact('data','schedule','detail'));
     }
     
 }

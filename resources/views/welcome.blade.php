@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,6 +8,7 @@
         <!-- meta charec set -->
        
         @include('layouts_frontend._head')
+        @include('additional.modal_intinerary')
         <style type="text/css">
             .btn-primary {
                 color: white;
@@ -30,6 +32,62 @@
                 background-color: #face03;
                 border-color: #ffffff;
             }
+            /* MODAL */
+            
+            .modal-content {
+                border-radius: 0px; 
+            }
+            .modal {
+                text-align: center;
+            }
+            .modal-dialog {
+              margin-top: 0;
+              margin-bottom: 0;
+              height: 100vh;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+                z-index: 1100 !important;
+            }
+
+            .modal.fade .modal-dialog {
+              transform: translate(0, -100%);
+            }
+
+            .modal.in .modal-dialog {
+              transform: translate(0, 0);
+            }
+            .modal-dialog {
+              margin-top: 0;
+              margin-bottom: 0;
+              height: 100vh;
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -webkit-flex-direction: column;
+                  -ms-flex-direction: column;
+                      flex-direction: column;
+              -webkit-box-pack: center;
+              -webkit-justify-content: center;
+                  -ms-flex-pack: center;
+                      justify-content: center;
+            }
+
+            .modal.fade .modal-dialog {
+              -webkit-transform: translate(0, -100%);
+                      transform: translate(0, -100%);
+            }
+            .modal.in .modal-dialog {
+              -webkit-transform: translate(0, 0);
+                      transform: translate(0, 0);
+            }
+            .modal-header{
+                background-color: deepskyblue;
+            }
+            
         </style>
     </head>
     
@@ -166,7 +224,7 @@
         Our Works
         ==================================== -->
         
-        <section id="works" class="works clearfix">
+        <section id="package" class="works clearfix">
             <div class="container">
                 <div class="row">
                 
@@ -197,7 +255,7 @@
                     <figure class="mix work-item {{ $intinerary[$index]['category']['mc_name'] }}">
                         <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="">
                         <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}"><i class="fa fa-eye fa-lg"></i></a>
+                            <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-toggle="modal" data-target="#myModal"><b><i class="fa fa-search"></i></b></button>
                             <h4>{{ $intinerary[$index]['mi_name'] }}</h4>
                             <p></p>
                             <br>
@@ -364,24 +422,6 @@
 
 <script type="text/javascript">
     
-
-    // function more(argument) {
-    //     var parent = $(argument).data('id');
-    //     console.log('a');
-    //     $.ajax({
-    //         data : {id:parent},
-    //         url : ('/lavensia/package/'+parent+'/package'),
-    //         type : 'get',
-    //         success: function (data) {
-    //             window.location = ('/lavensia/package/'+parent+'/package');
-    //         },
-    //         error:function(){
-    //             alert('Error');
-    //         }
-    //     })
-
-    // }
-
     function more(argument) {
         var parent = $(argument).data('id');
         window.location = ('/lavensia/package/'+parent+'/package');
