@@ -287,8 +287,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-12">
-                                                <label align="left">BED</label>
-                                                <select  class="form-control selectpicker bk_bed">
+                                                <label align="left">Name </label>
+                                                {{-- <select  class="form-control selectpicker bk_bed">
                                                     <option value="single" data-val="1">Single</option>
                                                     <option value="double" data-val="2">Double</option>
                                                     <option value="twin" data-val="2">Twin</option>
@@ -296,7 +296,7 @@
                                                     <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
                                                     <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
                                                     <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
-                                                </select>
+                                                </select> --}}
                                             </div>
                                         </div>
                                     </div>
