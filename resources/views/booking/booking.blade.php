@@ -231,8 +231,9 @@
                             </fieldset>
 
                               <!-- Room Type 1-->
-                            <fieldset class="scheduler-border col-sm-12 dropping ">
-                                <legend class="count_h2"><b>Room Tour</legend>
+                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms">
+                                <h3>ROOM TOUR</h3>
+                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
                                     <div class="col-sm-12 all_room">
                                         <div class="col-sm-8 change  single" style="">
@@ -305,8 +306,9 @@
                             </fieldset>
                             <hr>
                               <!-- Additional-->
-                            <fieldset class="scheduler-border col-sm-12">
-                              <legend class="count_h2"><b>Additional</legend>
+                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                              <h3>ADDITIONAL</h3>
+                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
                                         <table width="100%" class="table table-striped table-hover table-bordered">
@@ -334,8 +336,9 @@
                                   </div>
                             </fieldset>
                               <!-- Status-->
-                            <fieldset class="scheduler-border col-sm-12">
-                              <legend class="scheduler-border">Invoice</legend>
+                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                              <h3>INVOICE</h3>
+                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
                                         <table width="100%" class="table table-striped table-hover table-bordered">
