@@ -167,7 +167,11 @@
                 border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch;
             }
 
-
+            .readonly{
+                pointer-events: none;
+                opacity: 0.8;
+                background: #8888;
+            }
 
 
            /* .bootstrap-select:hover{
@@ -231,8 +235,8 @@
                             </fieldset>
 
                               <!-- Room Type 1-->
-                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms">
-                                <h3>ROOM TOUR</h3>
+                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
+                                <h3 class="count_h2"><b>ROOM TOUR</b></h3>
                                 <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
                                     <div class="col-sm-12 all_room">
@@ -244,7 +248,7 @@
                                                 <div class="file-upload" style="width: 100%"    >
                                                     <div class="file-select">
                                                         <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <div class="file-select-name noFile" >Passport Image</div> 
                                                         <input type="file" class="chooseFile" name="image[]">
                                                     </div>
                                                 </div>
@@ -256,7 +260,7 @@
                                                 <div class="file-upload" style="width: 100%">
                                                     <div class="file-select">
                                                         <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <div class="file-select-name noFile" >Passport Image</div> 
                                                         <input type="file" class="chooseFile" name="image[]">
                                                     </div>
                                                 </div>
@@ -268,16 +272,16 @@
                                                 <div class="file-upload" style="width: 100%">
                                                     <div class="file-select">
                                                         <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Choose Image...</div> 
+                                                        <div class="file-select-name noFile" >Passport Image</div> 
                                                         <input type="file" class="chooseFile" name="image[]">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4"  >
-                                            <div class="col-sm-12">
-                                                <label align="left">BED</label>
-                                                <select  class="form-control selectpicker bk_bed">
+                                            <div class="col-sm-12 row clearfix" align="left">
+                                                <label>BED</label>
+                                                <select  class="form-control  bk_bed">
                                                     <option value="single" data-val="1">Single</option>
                                                     <option value="double" data-val="2">Double</option>
                                                     <option value="twin" data-val="2">Twin</option>
@@ -287,17 +291,25 @@
                                                     <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-12 row clearfix" align="left">
                                                 <label align="left">Name </label>
-                                                {{-- <select  class="form-control selectpicker bk_bed">
-                                                    <option value="single" data-val="1">Single</option>
-                                                    <option value="double" data-val="2">Double</option>
-                                                    <option value="twin" data-val="2">Twin</option>
-                                                    <option value="triple" data-val="3">Triple</option>
-                                                    <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
-                                                    <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
-                                                    <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
-                                                </select> --}}
+                                                <div class="contact-form">
+                                                    <div class="form-group-sm">
+                                                        <input type="text" name="name_1"  placeholder="First Name" class="form-control name_1">
+                                                        <input type="text" name="name_2"  placeholder="Second Name" class="form-control name_2 readonly">
+                                                        <input type="text" name="name_3"  placeholder="Third Name" class="form-control name_3 readonly">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12" align="center">
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">
+                                                        <a title="Edit" type="button"  class="btn btn-info add waves-effect ">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                        <a title="Delete" type="button"  class="btn btn-danger del waves-effect ">
+                                                            <i class="fa fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -307,7 +319,7 @@
                             <hr>
                               <!-- Additional-->
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
-                              <h3>ADDITIONAL</h3>
+                              <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
@@ -337,7 +349,7 @@
                             </fieldset>
                               <!-- Status-->
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
-                              <h3>INVOICE</h3>
+                              <h3 class="count_h2"><b>INVOICE</h3>
                                 <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
@@ -505,18 +517,81 @@
 
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
-
+        var dua = $(this).parents('.all_room').find('.dua');
+        var tiga = $(this).parents('.all_room').find('.tiga');
+        var name_2 = $(this).parents('.all_room').find('.name_2');
+        var name_3 = $(this).parents('.all_room').find('.name_3');
         if (val == 1) {
-            var dua = $(this).parents('.all_room').find('.dua');
-            var tiga = $(this).parents('.all_room').find('.tiga');
             $(dua).find('.chooseFile').val('');
-            $(dua).find('.noFile').text('Choose Image...');
+            $(dua).find('.noFile').text('Passport Image');
             $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-
+            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(dua).find('.file-upload').removeClass('active');
+            $(dua).addClass('pointer_dis');
             $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Choose Image...');
+            $(tiga).find('.noFile').text('Passport Image');
             $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(tiga).find('.file-upload').removeClass('active');
+            $(tiga).addClass('pointer_dis');
+            $(name_2).addClass('readonly');
+            $(name_3).addClass('readonly');
+        }else if (val == 2) {
+            $(dua).removeClass('pointer_dis');
+            $(tiga).find('.chooseFile').val('');
+            $(tiga).find('.noFile').text('Passport Image');
+            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(tiga).addClass('pointer_dis');
+            $(name_2).removeClass('readonly');
+            $(name_3).addClass('readonly');
+        }else if (val == 3) {
+            $(dua).removeClass('pointer_dis');
+            $(tiga).find('.chooseFile').val('');
+            $(tiga).find('.noFile').text('Passport Image');
+            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(tiga).removeClass('pointer_dis');
+            $(name_2).removeClass('readonly');
+            $(name_3).removeClass('readonly');
         }
+    })
 
+    $(document).on('click','.add',function(){
+        var par = $(this).parents('.all_room');
+        var satu = $('.all_room').eq(0).find('.satu');
+        var dua = $('.all_room').eq(0).find('.dua');
+        var tiga = $('.all_room').eq(0).find('.tiga');
+        var name_2 = $('.all_room').eq(0).find('.name_2');
+        var name_3 = $('.all_room').eq(0).find('.name_3');
+        $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
+
+        $(satu).find('.chooseFile').val('');
+        $(satu).find('.noFile').text('Passport Image');
+        $(satu).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        $(satu).find('.file-upload').removeClass('active');
+        $(dua).find('.chooseFile').val('');
+        $(dua).find('.noFile').text('Passport Image');
+        $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        $(dua).find('.file-upload').removeClass('active');
+        $(dua).addClass('pointer_dis');
+        $(tiga).find('.chooseFile').val('');
+        $(tiga).find('.noFile').text('Passport Image');
+        $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        $(tiga).find('.file-upload').removeClass('active');
+        $(tiga).addClass('pointer_dis');
+        $(name_2).addClass('readonly');
+        $(name_3).addClass('readonly');
+    })
+
+    $(document).on('click','.del',function(){
+        var temp = 0;
+        $('.all_room').each(function(){
+            temp +=1;
+        })
+        if (temp != 1) {
+            var par = $(this).parents('.all_room');
+            $(par).remove();
+
+
+        }
+        
     })
 </script>
