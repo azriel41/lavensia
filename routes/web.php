@@ -12,8 +12,15 @@
 */
 Route::get('/', function () {
 	$category = App\category::all();
-	$intinerary = App\intinerary::with('category')->get();
-    return view('welcome',compact('category','intinerary'));
+
+	$intinerary = App\intinerary::all();
+
+	foreach ($intinerary as $index => $val) {
+		$det = $val->detail_intinerarys;
+		$cat = $val->category;
+	}
+	// return $det;
+    return view('welcome',compact('category','intinerary','det'));
 
 })->name('dashboard');
 Auth::routes();

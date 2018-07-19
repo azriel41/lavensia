@@ -124,6 +124,17 @@
             .center-al{
                 text-align: center;
             }
+            /*btn orange*/
+            .btn-orange {
+                color: white;
+                background-color: #eb4d4b;
+                border-color: #ffffff;
+            }
+            .btn-orange:hover {
+                color: #534c4c;
+                background-color: #ff6b6b;
+                border-color: white;
+            }
         </style>
     </head>
     
@@ -141,14 +152,14 @@
 
                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">{{ $data[0]['intinerary']['mi_name'] }}</h2>
-                        <h4 class="support">By : {{ $data[0]['intinerary']['mi_by'] }}</h4>
+                        <h2 class="count_h2">{{ $data[0]->mi_name }}</h2>
+                        <h4 class="support">By : {{ $data[0]->mi_by }}</h4>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
 
                     <!-- Image--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                        <img src="{{  asset('storage/app/'.$data[0]['intinerary']['mi_image'])  }}" alt="">
+                        <img src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="">
                     </div>
 
                     <!-- Hightlight--> 
@@ -159,10 +170,14 @@
                             <tr>
                                 <td align="left" valign="top"><h4>HIGHLIGHT<h4></td>
                                 <td valign="top">:</td>
-                                <td align="left" style="padding-left: 30px;"><h4>{{ $data[0]['intinerary']['mi_highlight'] }}</h4></td>
+                                <td align="left" style="padding-left: 30px;"><h4>{{ $data[0]->mi_highlight }}</h4></td>
                             </tr>
                         </table>
                       </div>
+                    </div>
+
+                    <div class="container">
+                        <button class="btn btn-small btn-orange" onclick="pdf()" ><b><i class="fa fa-cloud-download"></i> Download</b></button>
                     </div>
 
                     <!-- Tabs--> 
@@ -171,6 +186,7 @@
                         <ul class="nav nav-tabs ">
                             <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour Detail</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
+                            <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -200,6 +216,48 @@
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
+                                <table width="100%" class="kiri">
+                                    <br>
+                                    <tr>
+                                        <th><b>Price Table</b></th>
+                                    </tr>
+                                </table>
+                                <i class="devider"></i>
+                                <div style="margin-top: 20px"></div>
+                                <table width="100%" class="table table-striped" align="center">
+                                    <thead>
+                                       <tr >
+                                           <th class="center-al">No</th>
+                                           <th class="center-al">Code Tour</th>
+                                           <th class="center-al">Date</th>
+                                           <th class="center-al">Price Adult</th>
+                                           <th class="center-al">Price Child</th>
+                                           <th class="center-al">Price Invent</th>
+                                           <th class="center-al">Seat Remain</th>
+                                           <th class="center-al">Term & con</th>
+                                           <th class="center-al">Book</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       @foreach ($detail as $index => $det)
+                                           <tr align="left">
+                                               <td>{{ $index+1 }}</td>
+                                               <td>{{ $det->md_nota }}</td>
+                                               <td>{{ date('d M Y',strtotime($det->md_start))  }} - {{ date('d M Y',strtotime($det->md_end))  }}</td>
+                                               <td align="right">{{ number_format($det->md_adult_price,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
+                                               <td>{{ $det->md_seat }}</td>
+                                               <td>{{ $det->md_term }}</td>
+                                               <td>
+                                                   <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                               </td>
+                                            </tr>
+                                      @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>

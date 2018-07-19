@@ -32,9 +32,9 @@ $(document).ready(function(){
 	
     $(window).scroll(function () {
         if ($(window).scrollTop() > 100) {
-            $("#navigation").css("background-color","#2117bbdb");
+            $("#navigation").css("background-color","rgb(61, 193, 211)");
         } else {
-            $("#navigation").css("background-color","#2117bbdb");
+            $("#navigation").css("background-color","rgb(15, 188, 249)");
         }
     });
 	

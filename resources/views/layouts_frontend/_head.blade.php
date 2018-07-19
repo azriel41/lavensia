@@ -19,9 +19,7 @@
 <!-- end preloader -->
 
 <style type="text/css">
-     .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-            background-color:red;
-        }
+     
 </style>
 
 <!-- 
@@ -49,7 +47,8 @@ Fixed Navigation
         <!-- main nav -->
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li><a href="#works">Package</a></li>
+                <li><a href="#package">Package</a></li>
+                <li><a href="#footer">Contact</a></li>
                 <li><a href="http://google.com">Contact</a></li>
                 @if (Route::has('login'))
                         @if (Auth::check())
