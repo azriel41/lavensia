@@ -26,8 +26,10 @@
 <script src="{{ asset ('assets_frontend/js/jquery.easing.min.js') }}"></script>
 <!-- jquery easing -->
 <script src="{{ asset ('assets_frontend/js/wow.min.js') }}"></script>
-
-
+{{-- DROPZONE --}}
+<script src="{{ asset ('assets_frontend/dropzone/dropzone.js') }}"></script>
+<!-- Select Plugin Js -->
+<script src="{{ asset ('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
 <script>
     var wow = new WOW ({
