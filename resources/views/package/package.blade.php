@@ -247,7 +247,7 @@
                                                <td>{{ $det->md_seat }}</td>
                                                <td>{{ $det->md_term }}</td>
                                                <td>
-                                                   <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_intinerary_id }}','{{ $det->md_detail }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
                                             </tr>
                                           @endforeach
@@ -325,10 +325,10 @@
     
 
     
-    function booking(argument) {
-        window.location=('{{ route('booking') }}');
+    function booking(id,dt) {
+        window.location=('{{ url('booking/booking') }}'+'?id='+id+'&dt='+dt);
     }
-    $(document).ready( function () {
-        $('.datatable').DataTable();
-    });
+    // $(document).ready( function () {
+    //     $('.datatable').DataTable();
+    // });
 </script>

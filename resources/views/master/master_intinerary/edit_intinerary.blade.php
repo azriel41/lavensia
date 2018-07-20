@@ -142,7 +142,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;border:1px solid pink" class="gambar" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}" >
+                                        <img style="width: 100%;border:1px solid pink" class="gambar" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}?'{{ time() }}'" >
                                     </div>
                                 </div>
                             </div>

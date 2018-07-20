@@ -332,16 +332,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($intinerary->add as $val)
                                                 <tr>
-                                                    <td>Isurance</td>
-                                                    <td>Rp.3.000.000,-</td>
+                                                    <td align="left">{{ $val->ma_name }}</td>
+                                                    <td align="right">{{ number_format($val->ma_price, 0, ",", ".") }}</td>
                                                     <td></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Optional Tour</td>
-                                                    <td>Rp.3.000.000,-</td>
-                                                    <td></td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -535,6 +532,8 @@
             $(tiga).addClass('pointer_dis');
             $(name_2).addClass('readonly');
             $(name_3).addClass('readonly');
+            $(name_2).val('');
+            $(name_3).val('');
         }else if (val == 2) {
             $(dua).removeClass('pointer_dis');
             $(tiga).find('.chooseFile').val('');
@@ -543,6 +542,7 @@
             $(tiga).addClass('pointer_dis');
             $(name_2).removeClass('readonly');
             $(name_3).addClass('readonly');
+            $(name_3).val('');
         }else if (val == 3) {
             $(dua).removeClass('pointer_dis');
             $(tiga).find('.chooseFile').val('');
@@ -556,12 +556,15 @@
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
-        var satu = $('.all_room').eq(0).find('.satu');
-        var dua = $('.all_room').eq(0).find('.dua');
-        var tiga = $('.all_room').eq(0).find('.tiga');
-        var name_2 = $('.all_room').eq(0).find('.name_2');
-        var name_3 = $('.all_room').eq(0).find('.name_3');
+        
         $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
+
+        var satu = $('.all_room').last().find('.satu');
+        var dua = $('.all_room').last().find('.dua');
+        var tiga = $('.all_room').last().find('.tiga');
+        var name_1 = $('.all_room').last().find('.name_1');
+        var name_2 = $('.all_room').last().find('.name_2');
+        var name_3 = $('.all_room').last().find('.name_3');
 
         $(satu).find('.chooseFile').val('');
         $(satu).find('.noFile').text('Passport Image');
@@ -579,6 +582,9 @@
         $(tiga).addClass('pointer_dis');
         $(name_2).addClass('readonly');
         $(name_3).addClass('readonly');
+        $(name_1).val('');
+        $(name_2).val('');
+        $(name_3).val('');
     })
 
     $(document).on('click','.del',function(){
@@ -592,6 +598,5 @@
 
 
         }
-        
     })
 </script>
