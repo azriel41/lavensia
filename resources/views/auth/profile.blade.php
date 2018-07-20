@@ -25,15 +25,15 @@
                             <h2>
                                 Profile <small></small>
                             </h2>
-                            <ul class="header-dropdown m-r--5">
+                            <ul class="header-dropdown">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                        <li><a href="{{ route('edit_profile') }}">Edit</a></li>
+                                        {{-- <li><a href="javascript:void(0);">Another action</a></li> --}}
+                                        {{-- <li><a href="javascript:void(0);">Something else here</a></li> --}}
                                     </ul>
                                 </li>
                             </ul>
@@ -42,48 +42,87 @@
                     <div class="body">
                         <form id="save_data" method="get" accept-charset="utf-8" >
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                    <label for="intinerary">Name</label>
+                                <div class="col-lg-offset-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 form-control-label">
+                                    <div >
+                                        <img class="image_drop img-responsive" 
+                                        @if ( auth::user()->image == null )
+                                           src="{{ asset('/assets/images/NoImage.png') }}" 
+                                        @else 
+                                           src="{{ asset('storage/app/user/ttl.png') }}"
+                                        @endif width="400px" height="300px" >
+                                    </div>
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <table width="100%" class="table table-striped">
                                             <tr>
-                                                <td>ssss</td>
+                                                <td class="table_right">Company Name</td>
+                                                <td class="table_left">{{ auth::user()->co_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Company Phone</td>
+                                                <td class="table_left">{{ auth::user()->co_phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Company Address</td>
+                                                <td class="table_left">{{ auth::user()->co_address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Company Email</td>
+                                                <td class="table_left">{{ auth::user()->co_email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Manager Name</td>
+                                                <td class="table_left">{{ auth::user()->mg_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Manager Phone</td>
+                                                <td class="table_left">{{ auth::user()->mg_phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_right">Manager Email</td>
+                                                <td class="table_left">{{ auth::user()->mg_email }}</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
+                                <div class="col-lg-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <h4><b>Contact</b></h4>
-                                        <table width="100%" class="table table-striped">
-                                            <tr>
-                                                <td class="table_right">Name PIC</td>
-                                                <td class="table_left">{{ auth::user()->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Phone PIC</td>
-                                                <td class="table_left">{{ auth::user()->phone }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Email PIC</td>
-                                                <td class="table_left">{{ auth::user()->email }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">ROLE</td>
-                                                @if (auth::user()->name)
-                                                    {{-- expr --}}
-                                                @endif
-                                                <td class="table_left">{{ auth::user()->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Address</td>
-                                                <td class="table_left">{{ auth::user()->address }}</td>
-                                            </tr>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped">
+                                                <tr>
+                                                    <td class="table_right">Name PIC</td>
+                                                    <td class="table_left">{{ auth::user()->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Phone PIC</td>
+                                                    <td class="table_left">{{ auth::user()->phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Email PIC</td>
+                                                    <td class="table_left">{{ auth::user()->email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">ROLE</td>
+                                                    @if (auth::user()->role_id == 1)
+                                                        <td class="table_left">Master Admim</td>
+                                                    @elseif(auth::user()->role_id == 2)
+                                                        <td class="table_left">Super Admin</td>
+                                                    @elseif(auth::user()->role_id == 3)
+                                                        <td class="table_left">Admin</td>
+                                                    @elseif(auth::user()->role_id == 4)
+                                                        <td class="table_left">Agent</td>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Address PIC</td>
+                                                    <td class="table_left">{{ auth::user()->address }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +135,8 @@
 
 <script>
     
+
+
 
     function save() {
         $.ajaxSetup({

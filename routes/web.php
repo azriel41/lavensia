@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');
+	Route::get('/profile/edit', 'HomeController@edit_profile')->name('edit_profile');
 
 	/******** END HALAMAN UTAMA ***********/
 	

@@ -34,4 +34,8 @@ class HomeController extends Controller
     {
         return view('auth.profile');
     }
+    public function edit_profile(Request $request)
+    {
+        return view('auth.edit_profile');
+    }
 }
