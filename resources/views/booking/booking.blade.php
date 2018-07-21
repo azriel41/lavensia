@@ -208,7 +208,7 @@
                 border-color: purple !important;
             }
             .tab-content{
-              overflow-y:hidden;
+              overflow-y:scroll;
               overflow-x:hidden;
               height:250px;
             }
@@ -363,7 +363,7 @@
                             </fieldset>
                             <hr>
                               <!-- Additional-->
-                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
@@ -388,7 +388,7 @@
                                                         <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
                                                     </td>
                                                     <td class="sel_opt">
-                                                        <select class=" additional form-control selectpicker" multiple data-size="5">
+                                                        <select class=" additional form-control selectpicker" multiple data-size="4">
                                                         
                                                         </select>
                                                     </td>
@@ -445,7 +445,7 @@
                                     </div>
                                   </div>
                             </fieldset> --}}
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" style="margin-top: 150px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                             </div>
                         </form>
@@ -487,6 +487,31 @@
                                     </div>
                                   </div>
                                 </div> 
+                            </div>
+                            <div class="col-sm-12" style="text-align: right;margin-bottom: 50px" >
+                                <form class="form_total">
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Room</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_room"></h4>
+                                        <input type="hidden" class="total_room_input" name="total_room_input">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Additional</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_additional"></h4>
+                                        <input type="hidden" class="total_additional_input" name="total_additional_input">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Total</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_harga"></h4>
+                                        <input type="hidden" class="total_harga_input" name="total_harga_input">
+                                    </div>
+                                </form>
                             </div>
                             <div class="col-sm-12">
                                 <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
