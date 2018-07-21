@@ -110,6 +110,8 @@ End Fixed Navigation
 <!-- animate -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/animate.css')}}">
 
+{{-- Bootstrap Datatable --}}
+<link href="{{ asset ('assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 <!-- media-queries -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/media-queries.css')}}">
 <!-- Tabs -->
@@ -150,6 +152,9 @@ End Fixed Navigation
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 #logo{
     margin-top: -12px;
+}
+.dropdown-menu{
+    color: black !important;
 }
 </style>
 

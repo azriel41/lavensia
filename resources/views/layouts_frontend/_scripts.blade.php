@@ -37,6 +37,16 @@
 <script src="{{ asset ('assets/plugins/accounting/accounting.min.js')}}"></script>
 {{-- SELECT2 --}}
 <script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"  /></script>
+<!-- Jquery DataTable Plugin Js -->
+<script src="{{ asset ('assets/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
+<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)
