@@ -113,6 +113,7 @@ End Fixed Navigation
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/media-queries.css')}}">
 <!-- Tabs -->
 <link href="{{ asset ('assets_frontend/css/tabs/tabs.css') }}" rel="stylesheet" />
+<link href="{{ asset ('assets_frontend/css/awesome-bootstrap-checkbox.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets_frontend/dropzone/dropzone.css') }}" rel="stylesheet" />
 
 {{-- DROPZONE --}}
@@ -130,7 +131,8 @@ End Fixed Navigation
 <!-- Izi toast-->
 <link href="{{ asset ('assets/plugins/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets/plugins/iziToast/dist/css/iziToast.min.css') }}" rel="stylesheet" />
-
+{{-- SELECT2 --}}
+<link href="{{ asset ('assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 <style type="text/css">
 .file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
 .file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}

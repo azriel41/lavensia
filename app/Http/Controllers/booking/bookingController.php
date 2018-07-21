@@ -37,5 +37,11 @@ class bookingController extends Controller
     	$detail_intinerary  = $this->detail_intinerary->show_detail_one('md_intinerary_id',$req->id,'md_detail',$req->dt);
         return view('booking.booking',compact('intinerary','detail_intinerary'));
     }
+    public function save(Request $req)
+    {
+        return DB::transaction(function() use ($req) {  
+    		dd($req->all());
+    	});
+    }
     
 }

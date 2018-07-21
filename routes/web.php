@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//booking form
 	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
+	Route::post('/booking/save', 'booking\bookingController@save')->name('save_book');
 	
 
 	/*************** END BOOK *************/

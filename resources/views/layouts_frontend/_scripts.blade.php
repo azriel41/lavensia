@@ -35,6 +35,8 @@
 <script src="{{ asset ('assets/plugins/iziToast/dist/js/iziToast.min.js')}}"></script>
 {{-- ACCOUNTING --}}
 <script src="{{ asset ('assets/plugins/accounting/accounting.min.js')}}"></script>
+{{-- SELECT2 --}}
+<script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"  /></script>
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)
