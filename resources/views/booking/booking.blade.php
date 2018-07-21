@@ -646,7 +646,7 @@
             var bed = $(par).find('.bk_bed').val();
             var tr = '<tr>';
             $(par).find('.name').each(function(){
-                ''
+                // ''
             })
         })
         $('#invoice').modal('show');
