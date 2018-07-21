@@ -259,7 +259,7 @@
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th><b>Price Table</b></th>
+                                        <th><b>Additional Table</b></th>
                                     </tr>
                                 </table>
                                 <i class="devider"></i>
@@ -269,30 +269,14 @@
                                         <thead>
                                            <tr >
                                                <th class="center-al">No</th>
-                                               <th class="center-al">Code Tour</th>
-                                               <th class="center-al">Date</th>
-                                               <th class="center-al">Price Adult</th>
-                                               <th class="center-al">Price Child</th>
-                                               <th class="center-al">Price Invent</th>
-                                               <th class="center-al">Seat Remain</th>
-                                               <th class="center-al">Term & con</th>
-                                               <th class="center-al">Book</th>
+                                               <th class="center-al">Additional</th>
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           @foreach ($data as $index => $element)
+                                           @foreach ($additional as $index => $element)
                                                <tr align="left">
                                                    <td>{{ $index+1 }}</td>
-                                                   <td>{{ $data[$index]['md_nota'] }}</td>
-                                                   <td>{{ $data[$index]['md_start'] }} - {{ $data[$index]['md_end'] }}</td>
-                                                   <td align="right">{{ number_format($data[$index]['md_adult_price'],0,'','.') }}</td>
-                                                   <td align="right">{{ number_format($data[$index]['md_child_price'],0,'','.') }}</td>
-                                                   <td align="right">{{ number_format($data[$index]['md_infant_price'],0,'','.') }}</td>
-                                                   <td>{{ $data[$index]['md_seat_remain'] }}</td>
-                                                   <td>{{ $data[$index]['md_term'] }}</td>
-                                                   <td>
-                                                       <button class="btn btn-small btn-book" onclick="booking()" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
-                                                   </td>
+                                                   <td>{{ $additional[$index]['additional_ma_id'] }}</td>
                                                 </tr>
                                           @endforeach
                                         </tbody>

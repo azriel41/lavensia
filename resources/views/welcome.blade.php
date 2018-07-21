@@ -22,14 +22,14 @@
         
         <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            
+                    
                 <!-- Indicators bullet -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 </ol>
-                <!-- End Indicators bullet -->              
-                
+                <!-- End Indicators bullet -->     
+                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:400px;margin-top: 34%;margin-left: 5%;">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     
@@ -37,9 +37,8 @@
                     <div class="item active" style="background-image: url(assets_frontend/img/image-gallery/12.jpg); height: 100%">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> Travel Agent.</h3>
+                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">CREATIVE</span> Travel Agent.</h3>
                             <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a professionals Travel Agent</p>
-                            
                             <ul class="social-links text-center">
                                 <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
                                 <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
@@ -48,13 +47,15 @@
                             </ul>
                         </div>
                     </div>
+
+
                     <!-- end single slide -->
                     
                     <!-- single slide -->
                     <div class="item" style="background-image: url(assets_frontend/img/banner.jpg);">
                         <div class="carousel-caption">
-                            <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
-                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/ssssss</span> ONE PAGE.</h3>
+                            <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
+                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">CREATIVE</span> Travel Agent.</h3>
                             <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
                             
                             <ul class="social-links text-center">

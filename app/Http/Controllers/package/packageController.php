@@ -9,6 +9,7 @@ use auth;
 use App\detail_intinerary;
 use App\intinerary;
 use App\schedule;
+use App\m_additional_intinerary;
 
 class packageController extends Controller
 {
@@ -20,9 +21,10 @@ class packageController extends Controller
     		$detail = $det->detail_intinerarys;
     	}
     	// return $detail;
-    	$schedule = schedule::where('ms_intinerary_id','=',$id)->get();
-
-        return view('package.package',compact('data','schedule','detail'));
+        $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
+    	$additional = m_additional_intinerary::where('intinerary_mi_id','=',$id)->get();
+        
+        return view('package.package',compact('data','schedule','detail','additional'));
     }
     
 }

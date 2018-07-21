@@ -23,7 +23,7 @@ figure, p {
 }
 
 a {
-    color: #fff !important;
+    color: #fff;
 	
     -webkit-transition: all .3s ease-in 0s;
        -moz-transition: all .3s ease-in 0s;
@@ -77,7 +77,7 @@ body > section,
 .sec-title {}
 
 .sec-title h2 {
-  color: #34e7e4;
+  color:  #a60036e6;
   font-size: 28px;
   font-weight: 800;
   text-transform: uppercase;
@@ -163,6 +163,7 @@ body > section,
 
 .navbar-nav li a {
 	border-top: 1px solid transparent;
+  color: white;
 }
 
 .navbar-nav li a.current,
@@ -665,7 +666,7 @@ label.error {
 
 
 .footer {
-  background-color:  rgb(61, 193, 211);
+  background-color:   #a60036e6;
   border-top: 5px solid #062033;
   color: #fff;
 }
