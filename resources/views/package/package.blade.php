@@ -163,7 +163,7 @@
                     <!-- Image--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated " data-wow-duration="1000ms">
                         <div class="container">
-                            <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" alt="">
+                            <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
                         </div>
                     </div>
 

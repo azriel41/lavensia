@@ -54,7 +54,7 @@ Fixed Navigation
                         @if (Auth::check())
                             <li>
                                 <div class="btn-group">
-                                      <button type="button" class="btn btn-primary dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->name }} 
+                                      <button type="button" class="btn btn-nav dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->name }} 
                                         &nbsp;<span class="caret"></span>
                                       </button>
 
@@ -99,6 +99,8 @@ End Fixed Navigation
 
 <!-- CSS
 ================================================== -->
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="{{ asset ('assets_frontend/css/main.css')}}">
 <!-- Fontawesome Icon font -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/font-awesome.min.css') }}">
 <!-- Twitter Bootstrap css -->
@@ -107,8 +109,7 @@ End Fixed Navigation
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/jquery.fancybox.css')}}">
 <!-- animate -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/animate.css')}}">
-<!-- Main Stylesheet -->
-<link rel="stylesheet" href="{{ asset ('assets_frontend/css/main.css')}}">
+
 <!-- media-queries -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/media-queries.css')}}">
 <!-- Tabs -->
