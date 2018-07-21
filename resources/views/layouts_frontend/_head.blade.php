@@ -119,8 +119,16 @@ End Fixed Navigation
 <link href="{{ asset ('assets_frontend/css/tabs/tabstyles.css') }}" rel="stylesheet" />
 <!-- Modernizer Script for old Browsers -->
 <script src="{{ asset ('assets_frontend/js/modernizr-2.6.2.min.js')}}"></script>
+<!-- Bootstrap Core Css -->
+<link href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+
+<!-- Waves Effect Css -->
+<link href="{{ asset ('assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
+
 {{-- Bootstrap-select --}}
 <link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
+
+
 <style type="text/css">
 .file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
 .file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
