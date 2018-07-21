@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
@@ -173,15 +173,37 @@
                 background: #8888;
             }
 
-
+            thead{
+                background: purple;
+                color: white
+            }
            /* .bootstrap-select:hover{
                 border: 1px solid;
             }*/
-          
+            .table-responsive {
+              overflow-y: visible !important;
+            }
+            @media (max-width: 767px) {
+                .table-responsive .dropdown-menu {
+                    position: static !important;
+                }
+            }
+            @media (min-width: 768px) {
+                .table-responsive {
+                    overflow: inherit;
+                }
+            }
+            .dropdown-menu .inner{
+                z-index: 99999999 !important;
+            }
+            .invoice_field{
+                z-index: -1;
+            }
+
         </style>
     </head>
     
-    <body id="body">  
+    <body id="body" style="font-size: 12px">  
 
         <!--
         Contact Us
@@ -237,7 +259,7 @@
                               <!-- Room Type 1-->
                             <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
                                 <h3 class="count_h2"><b>ROOM TOUR</b></h3>
-                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
                                     <div class="col-sm-12 all_room">
                                         <div class="col-sm-8 change  single" style="">
@@ -280,6 +302,14 @@
                                         </div>
                                         <div class="col-sm-4"  >
                                             <div class="col-sm-12 row clearfix" align="left">
+                                                <label align="left">Family Name </label>
+                                                <div class="contact-form">
+                                                    <div class="form-group-sm">
+                                                        <input type="text" name="name_fam"  placeholder="Family Name" class="form-control name_fam">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 row clearfix" align="left">
                                                 <label>BED</label>
                                                 <select  class="form-control  bk_bed">
                                                     <option value="single" data-val="1">Single</option>
@@ -295,9 +325,9 @@
                                                 <label align="left">Name </label>
                                                 <div class="contact-form">
                                                     <div class="form-group-sm">
-                                                        <input type="text" name="name_1"  placeholder="First Name" class="form-control name_1">
-                                                        <input type="text" name="name_2"  placeholder="Second Name" class="form-control name_2 readonly">
-                                                        <input type="text" name="name_3"  placeholder="Third Name" class="form-control name_3 readonly">
+                                                        <input type="text" name="name_1"  placeholder="First Name" class="form-control name name_1">
+                                                        <input type="text" name="name_2"  placeholder="Second Name" class="form-control name name_2 readonly">
+                                                        <input type="text" name="name_3"  placeholder="Third Name" class="form-control name name_3 readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12" align="center">
@@ -320,48 +350,49 @@
                               <!-- Additional-->
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
-                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
-                                        <table width="100%" class="table table-striped table-hover table-bordered">
-                                            <thead>
+                                        <table width="100%" class="table table-striped table-bordered table-hover ">
+                                            <thead >
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Procie</th>
-                                                    <th>Status</th>
+                                                    <th style="width: 25%" align="center">Name</th>
+                                                    <th style="width: 20%" align="center">Procie</th>
+                                                    <th align="center">Select Person</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($intinerary->add as $val)
                                                 <tr>
-                                                    <td>Isurance</td>
-                                                    <td>Rp.3.000.000,-</td>
-                                                    <td></td>
+                                                    <td align="left" class="add_name">{{ $val->ma_name }}</td>
+                                                    <td align="right" class="add_price">{{ number_format($val->ma_price, 0, ",", ".") }}</td>
+                                                    <td class="sel_opt">
+                                                        <select class=" additional form-control selectpicker" name="additional[]" multiple>
+                                                        </select>
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Optional Tour</td>
-                                                    <td>Rp.3.000.000,-</td>
-                                                    <td></td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                                     </div>
                                   </div>
                             </fieldset>
                               <!-- Status-->
-                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <fieldset hidden="" class="scheduler-border col-sm-12 wow fadeInUp  animated invoice_field" data-wow-duration="1000ms">
                               <h3 class="count_h2"><b>INVOICE</h3>
-                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive">
                                         <table width="100%" class="table table-striped table-hover table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Party Name</th>
-                                                    <th>Total</th>
-                                                    <th>Desc</th>
+                                                    <th>Family Name</th>
+                                                    <th>Name</th>
                                                     <th>Price</th>
-                                                    <th>Term&Cond</th>
                                                     <th>Total Price</th>
                                                 </tr>
                                             </thead>
@@ -369,25 +400,14 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Asep</td>
-                                                    <td>2</td>
-                                                    <td>Ga ada</td>
-                                                    <td>Rp.1.0000.000,-</td>
-                                                    <td>Tidak ada</td>
-                                                    <td>Rp.2.0000.000,-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
                                                     <td>Asep</td>
-                                                    <td>2</td>
-                                                    <td>Ga ada</td>
-                                                    <td>Rp.1.0000.000,-</td>
                                                     <td>Tidak ada</td>
-                                                    <td>Rp.2.0000.000,-</td>
+                                                    <td>Total Price</td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="6">Total</td>
+                                                    <td colspan="4 ">Total</td>
                                                     <td >Rp.4.0000.000,-</td>
                                                 </tr>
                                             </tfoot>
@@ -397,7 +417,7 @@
                             </fieldset>
 
                               <!-- Payment-->
-                            <fieldset class="scheduler-border col-sm-12">
+                            <fieldset hidden="" class="scheduler-border col-sm-12">
                               <legend class="scheduler-border">Payment</legend>
                                   <div class="contact-form col1" >
                                     <div style="min-height: 100px">
@@ -431,7 +451,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <span style="color:red;background-color:#fdff6e;padding: 5px 5px 5px 5px"><b>*Batas Pembayran Dilakukan 1x24 jam</b></span>
+                                                            <span style="color:red;background-color:#fdff6e;padding: 5px 5px 5px 5px"><b>*Batas Pembayaran Dilakukan 1x24 jam</b></span>
                                                         </td>
                                                     </tr>
 
@@ -443,7 +463,7 @@
                             </fieldset>
 
                                <!-- Additional-->
-                            <fieldset class="scheduler-border col-sm-12">
+                            <fieldset hidden="" class="scheduler-border col-sm-12">
                               <legend class="scheduler-border">Remark</legend>
                               <div class="contact-form col1 col-sm-12" >
                                 <div class="input-group margin-top-20px">
@@ -453,14 +473,6 @@
                                 </div>
                               </div>
                             </fieldset>
-                            <div class="contact-form col5 col-sm-5 col-sm-10 col-sm-12" >
-                                <div class="input-group margin-top-20px">
-                                    <div>
-                                        <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
-                                        <button type="button" class="bk_save btn btn-book btm-sm" onclick="save()"><i class="fa fa-share-square"></i> <b>Submit</b></button>
-                                    </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -472,6 +484,7 @@
         @include('layouts_frontend._footer')
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
         @include('layouts_frontend._scripts')
+        @include('booking.booking_modal')
     </body>
 </html>
 <script type="text/javascript">
@@ -535,6 +548,8 @@
             $(tiga).addClass('pointer_dis');
             $(name_2).addClass('readonly');
             $(name_3).addClass('readonly');
+            $(name_2).val('');
+            $(name_3).val('');
         }else if (val == 2) {
             $(dua).removeClass('pointer_dis');
             $(tiga).find('.chooseFile').val('');
@@ -543,6 +558,7 @@
             $(tiga).addClass('pointer_dis');
             $(name_2).removeClass('readonly');
             $(name_3).addClass('readonly');
+            $(name_3).val('');
         }else if (val == 3) {
             $(dua).removeClass('pointer_dis');
             $(tiga).find('.chooseFile').val('');
@@ -556,12 +572,16 @@
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
-        var satu = $('.all_room').eq(0).find('.satu');
-        var dua = $('.all_room').eq(0).find('.dua');
-        var tiga = $('.all_room').eq(0).find('.tiga');
-        var name_2 = $('.all_room').eq(0).find('.name_2');
-        var name_3 = $('.all_room').eq(0).find('.name_3');
+        
         $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
+
+        var satu = $('.all_room').last().find('.satu');
+        var dua = $('.all_room').last().find('.dua');
+        var tiga = $('.all_room').last().find('.tiga');
+        var name_1 = $('.all_room').last().find('.name_1');
+        var name_2 = $('.all_room').last().find('.name_2');
+        var name_3 = $('.all_room').last().find('.name_3');
+        var name_fam = $('.all_room').last().find('.name_fam');
 
         $(satu).find('.chooseFile').val('');
         $(satu).find('.noFile').text('Passport Image');
@@ -579,6 +599,10 @@
         $(tiga).addClass('pointer_dis');
         $(name_2).addClass('readonly');
         $(name_3).addClass('readonly');
+        $(name_1).val('');
+        $(name_2).val('');
+        $(name_3).val('');
+        $(name_fam).val('');
     })
 
     $(document).on('click','.del',function(){
@@ -589,9 +613,45 @@
         if (temp != 1) {
             var par = $(this).parents('.all_room');
             $(par).remove();
-
-
         }
-        
     })
+    $(document).on('keyup','.name',function(){
+        $('.sel_opt').each(function(a){
+            $(this).html('');
+            var par     = $(this).parents('tr');
+            var add_name= $(par).find('.add_name').text();
+            var pertama = '<select class="additional_'+add_name+' additional form-control selectpicker" name="additional[]" multiple>';
+            var kedua;
+            var d= 1;
+            $('.name').each(function(i){
+                if ($(this).val() != '') {
+                    var nama = $(this).val();
+                    kedua = kedua + '<option value="'+nama+'" add-index="'+d+'">'+nama+'</option>';
+                    d++;
+                }
+            })
+
+            var terakhir = '</select>'
+
+            var fix = pertama + kedua + terakhir;
+            $(this).append(fix);
+        });
+        $('.additional').selectpicker();
+    });
+
+    $('.calc').click(function(){
+        // ADD TO TABLE INVOICE
+        $('.name_fam').each(function(){
+            var par = $(this).parents('.all_room');
+            var bed = $(par).find('.bk_bed').val();
+            var tr = '<tr>';
+            $(par).find('.name').each(function(){
+                // ''
+            })
+        })
+        $('#invoice').modal('show');
+    })
+
+
+        
 </script>
