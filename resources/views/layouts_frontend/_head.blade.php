@@ -110,10 +110,13 @@ End Fixed Navigation
 <!-- animate -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/animate.css')}}">
 
+{{-- Bootstrap Datatable --}}
+<link href="{{ asset ('assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 <!-- media-queries -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/media-queries.css')}}">
 <!-- Tabs -->
 <link href="{{ asset ('assets_frontend/css/tabs/tabs.css') }}" rel="stylesheet" />
+<link href="{{ asset ('assets_frontend/css/awesome-bootstrap-checkbox.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets_frontend/dropzone/dropzone.css') }}" rel="stylesheet" />
 
 {{-- DROPZONE --}}
@@ -131,7 +134,8 @@ End Fixed Navigation
 <!-- Izi toast-->
 <link href="{{ asset ('assets/plugins/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" />
 <link href="{{ asset ('assets/plugins/iziToast/dist/css/iziToast.min.css') }}" rel="stylesheet" />
-
+{{-- SELECT2 --}}
+<link href="{{ asset ('assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 <style type="text/css">
 .file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
 .file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
@@ -148,6 +152,9 @@ End Fixed Navigation
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 #logo{
     margin-top: -12px;
+}
+.dropdown-menu{
+    color: black !important;
 }
 </style>
 

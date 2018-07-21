@@ -202,7 +202,19 @@
             .errors{
                 border-color: red;
             }
-
+            li.active > a{
+                background-color: purple !important;
+                color: white !important;
+                border-color: purple !important;
+            }
+            .tab-content{
+              overflow-y:scroll;
+              overflow-x:hidden;
+              height:250px;
+            }
+            .calc{
+                z-index: 99999;
+            }
         </style>
     </head>
     
@@ -225,7 +237,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                        <form action="#" id="contact-form">
+                        <form action="#" id="save">
                               <!-- Agent detail-->
                             <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
                               <legend class="scheduler-border">Agent Detail</legend>
@@ -253,7 +265,7 @@
                                         <div>
                                             <input type="text" name="bk_partyname" id="bk_partyname" placeholder="Party Name" class="form-control">
                                          
-                                            <input type="text" name="bk_totalpac" id="bk_totalpac" placeholder="Total Pax" class="form-control">
+                                            <input type="number" name="bk_totalpac" id="bk_totalpac" placeholder="Total Pax" class="form-control">
                                         </div>
                                     </div>
                                   </div>
@@ -308,13 +320,13 @@
                                                 <label align="left">Family Name </label>
                                                 <div class="contact-form">
                                                     <div class="form-group-sm">
-                                                        <input type="text" name="name_fam"  placeholder="Family Name" class="form-control name_fam">
+                                                        <input type="text" name="name_fam[]"  placeholder="Family Name" class="form-control name_fam">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 row clearfix" align="left">
                                                 <label>BED</label>
-                                                <select  class="form-control  bk_bed">
+                                                <select  class="form-control  bk_bed" name="bk_bed[]" >
                                                     <option value="single" data-val="1">Single</option>
                                                     <option value="double" data-val="2">Double</option>
                                                     <option value="twin" data-val="2">Twin</option>
@@ -328,9 +340,9 @@
                                                 <label align="left">Name </label>
                                                 <div class="contact-form">
                                                     <div class="form-group-sm">
-                                                        <input type="text" name="name_1"  placeholder="First Name" class="form-control name name_1">
-                                                        <input type="text" name="name_2"  placeholder="Second Name" class="form-control name name_2 readonly">
-                                                        <input type="text" name="name_3"  placeholder="Third Name" class="form-control name name_3 readonly">
+                                                        <input type="text" name="name_1[]"  placeholder="First Name" class="form-control name name_1">
+                                                        <input type="text" name="name_2[]"  placeholder="Second Name" class="form-control name name_2 readonly">
+                                                        <input type="text" name="name_3[]"  placeholder="Third Name" class="form-control name name_3 readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12" align="center">
@@ -351,7 +363,7 @@
                             </fieldset>
                             <hr>
                               <!-- Additional-->
-                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
@@ -366,11 +378,18 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($intinerary->add as $val)
-                                                <tr>
-                                                    <td align="left" class="add_name">{{ $val->ma_name }}</td>
-                                                    <td align="right" class="add_price">{{ number_format($val->ma_price, 0, ",", ".") }}</td>
+                                                <tr class="add_tr">
+                                                    <td align="left">
+                                                        <p class="add_name">{{ $val->ma_name }}</p>
+                                                        <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
+                                                    </td>
+                                                    <td align="right">
+                                                        <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
+                                                        <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
+                                                    </td>
                                                     <td class="sel_opt">
-                                                        <select class=" additional form-control selectpicker" name="additional[]" multiple>
+                                                        <select class=" additional form-control selectpicker" multiple data-size="4">
+                                                        
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -378,47 +397,11 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
-                                    </div>
+                                    
                                   </div>
                             </fieldset>
-                              <!-- Status-->
-                            <fieldset hidden="" class="scheduler-border col-sm-12 wow fadeInUp  animated invoice_field" data-wow-duration="1000ms">
-                              <h3 class="count_h2"><b>INVOICE</h3>
-                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
-                                  <div class="contact-form col1" >
-                                    <div class="table-responsive">
-                                        <table width="100%" class="table table-striped table-hover table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Family Name</th>
-                                                    <th>Name</th>
-                                                    <th>Price</th>
-                                                    <th>Total Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Asep</td>
-                                                    <td>Asep</td>
-                                                    <td>Tidak ada</td>
-                                                    <td>Total Price</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="4 ">Total</td>
-                                                    <td >Rp.4.0000.000,-</td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                  </div>
-                            </fieldset>
-
                               <!-- Payment-->
-                            <fieldset hidden="" class="scheduler-border col-sm-12">
+                            {{-- <fieldset hidden="" class="scheduler-border col-sm-6">
                               <legend class="scheduler-border">Payment</legend>
                                   <div class="contact-form col1" >
                                     <div style="min-height: 100px">
@@ -461,34 +444,138 @@
                                         </div>
                                     </div>
                                   </div>
-                            </fieldset>
-
-                               <!-- Additional-->
-                            <fieldset hidden="" class="scheduler-border col-sm-12">
-                              <legend class="scheduler-border">Remark</legend>
-                              <div class="contact-form col1 col-sm-12" >
-                                <div class="input-group margin-top-20px">
-                                    <div>
-                                        <textarea class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
-                                    </div>
-                                </div>
-                              </div>
-                            </fieldset>
+                            </fieldset> --}}
+                            <div class="col-sm-12" style="margin-top: 150px;">
+                                <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
+                            </div>
                         </form>
+                        <div class="col-sm-12 invoice_tab" hidden="">
+                            <div class="col-sm-12">
+                               <ul class="nav nav-tabs">
+                                  <li class="active"><a data-toggle="tab" href="#home">Room</a></li>
+                                  <li><a data-toggle="tab" href="#menu1">Additional</a></li>
+                                </ul>
+                                <div class="tab-content"  >
+                                  <div id="home" class="tab-pane fade in active">
+                                    <table width="100%" class="table table-striped table-hover table_room">
+                                        <thead >
+                                            <tr>
+                                                <th style="text-align: center;">No</th>
+                                                <th style="text-align: center;">Family Name</th>
+                                                <th style="text-align: center;">Name</th>
+                                                <th style="text-align: center;">Room</th>
+                                                <th style="text-align: center;">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="append_invoice">
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                  <div id="menu1" class="tab-pane fade" >
+                                    <div>
+                                        <table width="100%" class="table table-striped table-hover table_addition">
+                                            <thead >
+                                                <tr>
+                                                    <th style="text-align: center;">Name</th>
+                                                    <th style="text-align: center;">Additional</th>
+                                                    <th style="text-align: center;">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="append_additional">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                                </div> 
+                            </div>
+                            <div class="col-sm-12" style="text-align: right;margin-bottom: 50px" >
+                                <form class="form_total">
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Room</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_room"></h4>
+                                        <input type="hidden" class="total_room_input" name="total_room_input">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Additional</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_additional"></h4>
+                                        <input type="hidden" class="total_additional_input" name="total_additional_input">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h4 colspan="3">Total</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4 class="total_harga"></h4>
+                                        <input type="hidden" class="total_harga_input" name="total_harga_input">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-12">
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div>
+                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </fieldset>
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div class="checkbox checkbox-info checkbox-circle">
+                                            <input id="check_agree" type="checkbox" name="check_agree">
+                                            <label for="Kwitansi">
+                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
+                                            </label>
+                                        </div> 
+                                    </div>
+                                  </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        @include('booking.booking_modal')
+
         <!--
         End Contact Us
         ==================================== -->
         @include('layouts_frontend._footer')
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
         @include('layouts_frontend._scripts')
-        @include('booking.booking_modal')
     </body>
 </html>
 <script type="text/javascript">
+    $('#bk_totalpac').keyup(function(){
+        if ($(this).val() > 15) {
+            $(this).val(15)
+        }
+        if ($(this).val() < 0) {
+            $(this).val(0)
+        }
+
+    })
+    // var table_room      = $('.table_room').DataTable({
+    //     sorting:false,
+    //     paging:false,
+    //     searching:false,
+    // });
+    // var table_addition  = $('.table_addition').DataTable({
+    //     sorting:false,
+    //     paging:false,
+    //     searching:false,
+    // });
     {{-- GAMBAR --}}
     $('.chooseFile').bind('change', function () {
         var filename = $(this).val();
@@ -521,10 +608,8 @@
         }
         var reader = new FileReader();
         reader.onload = function(e){
-            console.log(parent);
             $(parent).find('.output').attr('src',e.target.result);
         };
-        // console.log(file[0].files[0]);
         reader.readAsDataURL(file.files[0]);
     }
     // END GAMBAR
@@ -573,7 +658,18 @@
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
-        
+        var limit = 1;
+        $('.all_room').each(function(){
+            limit +=1;
+        })
+        if (limit == 15) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Limit Append!',
+            });
+            return false;
+        }
         $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
 
         var satu = $('.all_room').last().find('.satu');
@@ -619,45 +715,44 @@
         }
     })
     $(document).on('keyup','.name',function(){
-        $('.sel_opt').each(function(a){
-            $(this).html('');
+        $('.additional').find('option').remove();
+        $('.additional').each(function(a){
+            var select  = $(this);
             var par     = $(this).parents('tr');
             var add_name= $(par).find('.add_name').text();
-            var pertama = '<select class="additional_'+add_name+' additional form-control selectpicker" name="additional[]" multiple>';
-            var kedua;
             var d= 1;
             $('.name').each(function(i){
                 if ($(this).val() != '') {
                     var nama = $(this).val();
-                    kedua = kedua + '<option value="'+nama+'" add-index="'+d+'">'+nama+'</option>';
+                    $(select).find('select').append('<option value="'+nama+'" add-index="'+d+'">'+nama+'</option>')
+                           .selectpicker('refresh');
                     d++;
                 }
             })
-
-            var terakhir = '</select>'
-
-            var fix = pertama + kedua + terakhir;
-            $(this).append(fix);
         });
-        $('.additional').selectpicker();
     });
 
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })
 
-    $('.calc').click(function(){
+    $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
+        
         $('.append_invoice').html('');
+        $('.append_additional').html('');
         var validate = [];
         var total_arr = [];
+        var tr1 = '</tr>';
+        var total_room = 0;
+        var total_add  = 0;
+        var indexing = 1;
         $('.name_fam').each(function(i){
             var par = $(this).parents('.all_room');
             var bed = $(par).find('.bk_bed').val();
+            var text_bed = $(par).find('.bk_bed :selected').text();
             var tr  = '<tr class="tr_'+i+'">';
-            var tr1 = '</tr>';
             var nama_keluarga = $(this).val();
-            var total = 0;
             $(par).find('.name:not(.readonly)').each(function(){
                 if ($(this).val() ==  '') {
                     validate.push(0);
@@ -668,31 +763,81 @@
             $(par).find('.name:not(.readonly)').each(function(a){
                 if (a != 2) {
                     var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
-                    total_arr.push('{{ $detail_intinerary->md_adult_price}}')
+                    total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
                 }else{
                     if (bed == 'doubletwin&cnb') {
                         var harga = '{{ number_format($detail_intinerary->md_child_price, 0, ",", ".") }}';
-                        total_arr.push('{{ $detail_intinerary->md_child_price}}')
+                        total_room += ('{{ $detail_intinerary->md_child_price}}'*1)
                     }else if (bed == 'doubletwin&cwb'){
                         var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
-                        total_arr.push('{{ $detail_intinerary->md_child_w_price}}')
+                        total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
                     }else if (bed == 'doubletwin&invent'){
                         var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
-                        total_arr.push('{{ $detail_intinerary->md_infant_price}}')
+                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+                    }else if (bed == 'triple'){
+                        var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
                     }
                 }
-                var td1 = '<td class="nama_fam_td">'+nama_keluarga+'</td>';
-                var td2 = '<td class="nama_td">'+$(this).val()+'</td>';
-                var td3 = '<td class="room_td">'+bed+'</td>';
-                var td4 = '<td class="price_td">'+harga+'</td>';
-                var all = tr + td1 + td2 + td3 + td4 + tr1;
+
+                var td0 = '<td class="i_indexing">'+indexing+'</td>';
+                var td1 = '<td class="i_nama_fam_td">'+
+                            nama_keluarga+
+                            '<input type="hidden" name="r_name_fam[]" class="r_name_fam" value="'+nama_keluarga+'">'+
+                          '</td>';
+                var td2 = '<td class="i_nama_td">'+
+                            $(this).val()+
+                            '<input type="hidden" name="r_name[]" class="r_name" value="'+$(this).val()+'">'+
+                          '</td>';
+                var td3 = '<td class="i_room_td">'+
+                            text_bed+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                          '</td>';
+                var td4 = '<td class="i_price_td">'+
+                            harga+
+                            '<input type="hidden" name="r_harga[]" class="r_harga" value="'+harga+'">'+
+                          '</td>';
+                var all = tr + td0 + td1 + td2 + td3 + td4 + tr1;
                 $('.append_invoice').append(all);
+                indexing++;
             })
-            for (var d = 0; d < total_arr.length; d++) {
-                total += (total_arr[d]*1);
-            }
-            $('.total_harga').html(accounting.formatMoney(total,"", 2, ".",','));
+          
         })
+
+        $('.sel_opt').each(function(f){
+            var all_name = $(this).find('select').val();
+            var par      = $(this).parents('tr');
+            var add_name = $(par).find('.add_name').text();
+            var add_id   = $(par).find('.add_id').val();
+            var add_p_te = $(par).find('.add_price_text').text();
+            var add_pric = $(par).find('.add_price').val();
+            var tr = '<tr class="tr_add_'+add_name+'">';
+            try{
+                for (var dex = 0; dex < all_name.length; dex++) {
+                    var td1 = '<td class="a_nama_orang">'+
+                                all_name[dex]+
+                                '<input type="hidden" name="a_name[]" class="a_name" value="'+all_name[dex]+'">'+
+                              '</td>';
+                    var td2 = '<td class="a_nama_td">'+
+                                add_name+
+                                '<input type="hidden" name="a_id[]" class="a_id" value="'+add_id+'">'+
+                              '</td>';
+                    var td3 = '<td class="a_price_td">'+add_p_te+'</td>';
+                    var all = tr + td1 + td2 + td3 + tr1;
+                    $('.append_additional').append(all);
+                    total_add+=(add_pric*1);
+                }
+            }catch(e){
+
+            }
+            
+        })
+        $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
+        $('.total_room_input').val(total_room);
+        $('.total_additional').html(accounting.formatMoney(total_add,"", 2, ".",','));
+        $('.total_additional_input').val(total_add);
+        $('.total_harga').html(accounting.formatMoney(total_add + total_room,"", 2, ".",','));
+        $('.total_harga_input').val(total_add + total_room);
 
         var valid = validate.indexOf(0);
         if (valid != -1) {
@@ -704,9 +849,113 @@
             $("html, body").animate({ scrollTop: 350 }, "slow");
             return false;
         }
-        $('#invoice').modal('show');
+        if (indexing < $('#bk_totalpac').val()) {
+            var kurang = $('#bk_totalpac').val()*1 - indexing*1;
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please Input '+kurang+' More Data!',
+            });
+            $("html, body").animate({ scrollTop: 350 }, "slow");
+            return false;
+        }
+        if (indexing-1 > $('#bk_totalpac').val()) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Exceeds the pax limit!',
+            });
+            $("html, body").animate({ scrollTop: 350 }, "slow");
+            return false;
+        }
+        $('.invoice_tab').prop('hidden',false);
+    })
+    
+    $('.save').click(function(){
+        if ($('#check_agree').is(':checked') == false) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please Check Term & Condition!',
+            });
+            return false;
+        }
+        var form  = $('#save');
+        var formdata = false;
+        if (window.FormData){
+            formdata = new FormData(form[0]);
+        }
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-save',
+            title: 'Simpan Data!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button style="background-color:#32CD32;">Save</button>',
+                function (instance, toast) {
+
+                  $.ajaxSetup({
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url:'{{ route('save_book') }}',
+                        data: formdata ? formdata : form.serialize(),
+                        dataType:'json',
+                        processData: false,
+                        contentType: false,
+                      success:function(data){
+                        if (data.status == '1') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Success!',
+                                message: 'Data Berhasil Disimpan!',
+                            });
+
+                        }else if (data.status == '0') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
+                                message:data.message,
+                            });
+
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
+                            message: 'Terjadi Kesalahan!',
+                        });
+                      }
+                    });
+                    instance.hide({
+                        transitionOut: 'fadeOutUp'
+                    }, toast);
+                }
+            ],
+            [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+        });
     })
 
 
-        
 </script>

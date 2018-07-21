@@ -23,7 +23,9 @@ figure, p {
 }
 
 a {
+
     color: #fff;
+
 	
     -webkit-transition: all .3s ease-in 0s;
        -moz-transition: all .3s ease-in 0s;
