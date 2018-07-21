@@ -8,26 +8,19 @@
                 <table width="100%" class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Family Name</th>
                             <th>Name</th>
+                            <th>Room</th>
                             <th>Price</th>
-                            <th>Total Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Asep</td>
-                            <td>Asep</td>
-                            <td>Tidak ada</td>
-                            <td>Total Price</td>
-                        </tr>
+                    <tbody class="append_invoice">
+                        
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4 ">Total</td>
-                            <td >Rp.4.0000.000,-</td>
+                            <td colspan="3">Total</td>
+                            <td class="total_harga">Rp.3.0000.000,-</td>
                         </tr>
                     </tfoot>
                 </table>

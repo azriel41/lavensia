@@ -199,6 +199,9 @@
             .invoice_field{
                 z-index: -1;
             }
+            .errors{
+                border-color: red;
+            }
 
         </style>
     </head>
@@ -389,7 +392,6 @@
                                         <table width="100%" class="table table-striped table-hover table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
                                                     <th>Family Name</th>
                                                     <th>Name</th>
                                                     <th>Price</th>
@@ -398,7 +400,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
                                                     <td>Asep</td>
                                                     <td>Asep</td>
                                                     <td>Tidak ada</td>
@@ -582,6 +583,7 @@
         var name_2 = $('.all_room').last().find('.name_2');
         var name_3 = $('.all_room').last().find('.name_3');
         var name_fam = $('.all_room').last().find('.name_fam');
+        var name = $('.all_room').last().find('.name');
 
         $(satu).find('.chooseFile').val('');
         $(satu).find('.noFile').text('Passport Image');
@@ -603,6 +605,7 @@
         $(name_2).val('');
         $(name_3).val('');
         $(name_fam).val('');
+        $(name).removeClass('errors');
     })
 
     $(document).on('click','.del',function(){
@@ -639,16 +642,68 @@
         $('.additional').selectpicker();
     });
 
+    $('.name').focus(function(){
+        $(this).removeClass('errors');
+    })
+
     $('.calc').click(function(){
         // ADD TO TABLE INVOICE
-        $('.name_fam').each(function(){
+        $('.append_invoice').html('');
+        var validate = [];
+        var total_arr = [];
+        $('.name_fam').each(function(i){
             var par = $(this).parents('.all_room');
             var bed = $(par).find('.bk_bed').val();
-            var tr = '<tr>';
-            $(par).find('.name').each(function(){
-                // ''
+            var tr  = '<tr class="tr_'+i+'">';
+            var tr1 = '</tr>';
+            var nama_keluarga = $(this).val();
+            var total = 0;
+            $(par).find('.name:not(.readonly)').each(function(){
+                if ($(this).val() ==  '') {
+                    validate.push(0);
+                    $(this).addClass('errors');
+                }
             })
+            
+            $(par).find('.name:not(.readonly)').each(function(a){
+                if (a != 2) {
+                    var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
+                    total_arr.push('{{ $detail_intinerary->md_adult_price}}')
+                }else{
+                    if (bed == 'doubletwin&cnb') {
+                        var harga = '{{ number_format($detail_intinerary->md_child_price, 0, ",", ".") }}';
+                        total_arr.push('{{ $detail_intinerary->md_child_price}}')
+                    }else if (bed == 'doubletwin&cwb'){
+                        var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
+                        total_arr.push('{{ $detail_intinerary->md_child_w_price}}')
+                    }else if (bed == 'doubletwin&invent'){
+                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
+                        total_arr.push('{{ $detail_intinerary->md_infant_price}}')
+                    }
+                }
+                var td1 = '<td class="nama_fam_td">'+nama_keluarga+'</td>';
+                var td2 = '<td class="nama_td">'+$(this).val()+'</td>';
+                var td3 = '<td class="room_td">'+bed+'</td>';
+                var td4 = '<td class="price_td">'+harga+'</td>';
+                var all = tr + td1 + td2 + td3 + td4 + tr1;
+                $('.append_invoice').append(all);
+            })
+            for (var d = 0; d < total_arr.length; d++) {
+                total += (total_arr[d]*1);
+            }
+            $('.total_harga').html(accounting.formatMoney(total,"", 2, ".",','));
         })
+
+        var valid = validate.indexOf(0);
+        if (valid != -1) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please check your data!',
+            });
+            $("html, body").animate({ scrollTop: 350 }, "slow");
+            return false;
+        }
         $('#invoice').modal('show');
     })
 
