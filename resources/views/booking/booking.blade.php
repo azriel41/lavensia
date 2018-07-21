@@ -203,7 +203,7 @@
         </style>
     </head>
     
-    <body id="body">  
+    <body id="body" style="font-size: 12px">  
 
         <!--
         Contact Us
@@ -640,6 +640,15 @@
     });
 
     $('.calc').click(function(){
+        // ADD TO TABLE INVOICE
+        $('.name_fam').each(function(){
+            var par = $(this).parents('.all_room');
+            var bed = $(par).find('.bk_bed').val();
+            var tr = '<tr>';
+            $(par).find('.name').each(function(){
+                ''
+            })
+        })
         $('#invoice').modal('show');
     })
 
