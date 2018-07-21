@@ -54,36 +54,39 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <table width="100%" class="table table-striped">
-                                            <tr>
-                                                <td class="table_right">Company Name</td>
-                                                <td class="table_left">{{ auth::user()->co_name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Company Phone</td>
-                                                <td class="table_left">{{ auth::user()->co_phone }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Company Address</td>
-                                                <td class="table_left">{{ auth::user()->co_address }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Company Email</td>
-                                                <td class="table_left">{{ auth::user()->co_email }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Manager Name</td>
-                                                <td class="table_left">{{ auth::user()->mg_name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Manager Phone</td>
-                                                <td class="table_left">{{ auth::user()->mg_phone }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table_right">Manager Email</td>
-                                                <td class="table_left">{{ auth::user()->mg_email }}</td>
-                                            </tr>
-                                        </table>
+                                        <h4><b>Company Profile</b></h4>
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped">
+                                                <tr>
+                                                    <td class="table_right">Company Name</td>
+                                                    <td class="table_left">{{ auth::user()->co_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Company Phone</td>
+                                                    <td class="table_left">{{ auth::user()->co_phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Company Address</td>
+                                                    <td class="table_left">{{ auth::user()->co_address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Company Email</td>
+                                                    <td class="table_left">{{ auth::user()->co_email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Manager Name</td>
+                                                    <td class="table_left">{{ auth::user()->mg_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Manager Phone</td>
+                                                    <td class="table_left">{{ auth::user()->mg_phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_right">Manager Email</td>
+                                                    <td class="table_left">{{ auth::user()->mg_email }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
