@@ -19,8 +19,8 @@ Route::get('/', function () {
 		$det = $val->detail_intinerarys;
 		$cat = $val->category;
 	}
-	// return $det;
-    return view('welcome',compact('category','intinerary','det'));
+	
+    return view('welcome',compact('category','intinerary','det','response'));
 
 })->name('dashboard');
 Auth::routes();

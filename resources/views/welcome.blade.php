@@ -209,6 +209,9 @@
                             </div>
                         </div>
                     </div>
+
+                  
+
                     <!-- end service item -->
                         
                 </div>
@@ -246,10 +249,9 @@
                             @endforeach
                         </ul>
                     </div>
-                    
                 </div>
             </div>
-            
+
             <div class="project-wrapper">
                 @foreach ($intinerary as $index => $iti)
                     <figure class="mix work-item {{ $intinerary[$index]['category']['mc_name'] }}">
@@ -264,6 +266,8 @@
                     </figure>                
                 @endforeach   
             </div>
+            
+            
         
 
         </section>
