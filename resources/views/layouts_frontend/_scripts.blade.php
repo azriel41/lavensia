@@ -30,7 +30,11 @@
 <script src="{{ asset ('assets_frontend/dropzone/dropzone.js') }}"></script>
 <!-- Select Plugin Js -->
 <script src="{{ asset ('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
-
+<!-- Izi toast-->
+<script src="{{ asset ('assets/plugins/iziToast/dist/js/iziToast.js')}}"></script>
+<script src="{{ asset ('assets/plugins/iziToast/dist/js/iziToast.min.js')}}"></script>
+{{-- ACCOUNTING --}}
+<script src="{{ asset ('assets/plugins/accounting/accounting.min.js')}}"></script>
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)

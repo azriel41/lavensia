@@ -553,6 +553,7 @@
         {
           iziToast.warning({
             icon: 'fa fa-times',
+            position:'topRight',
             message: 'File Is To Big!',
           });
           return false;
