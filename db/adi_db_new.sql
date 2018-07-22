@@ -11,6 +11,144 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumping structure for table lavensia.d_additonal_booking
+CREATE TABLE IF NOT EXISTS `d_additonal_booking` (
+  `da_booking_id` int(11) NOT NULL,
+  `da_detail` int(11) NOT NULL,
+  `da_name` varchar(50) DEFAULT NULL,
+  `da_additional_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`da_booking_id`,`da_detail`),
+  CONSTRAINT `FK_d_additonal_booking_d_booking` FOREIGN KEY (`da_booking_id`) REFERENCES `d_booking` (`db_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_additonal_booking: ~4 rows (approximately)
+DELETE FROM `d_additonal_booking`;
+/*!40000 ALTER TABLE `d_additonal_booking` DISABLE KEYS */;
+INSERT INTO `d_additonal_booking` (`da_booking_id`, `da_detail`, `da_name`, `da_additional_id`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+	(1, 1, 'Raiden Mei', 1, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(1, 2, 'Yae Sakura', 1, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(1, 3, 'Himeko', 1, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(1, 4, 'Himeko', 2, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(1, 5, 'Raiden Mei', 3, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(1, 6, 'Yae Sakura', 3, '2018-07-22 04:20:42', '2018-07-22 04:20:42', '1', '1'),
+	(2, 1, 'Yae Sakura', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 2, 'Raiden Mei', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 3, 'Himeko', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 4, 'Kallen', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 5, 'Kiana', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 6, 'Karen', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 7, 'Saya', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 8, 'Sita', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 9, 'Sina', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 10, 'Sine', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 11, 'Sinau', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 12, 'Sinai', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 13, 'Bambang', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 14, 'Rahma', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 15, 'Rita', 1, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 16, 'Yae Sakura', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 17, 'Raiden Mei', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 18, 'Himeko', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 19, 'Kallen', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 20, 'Kiana', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 21, 'Karen', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 22, 'Saya', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 23, 'Sita', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 24, 'Sina', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 25, 'Sine', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 26, 'Sinau', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 27, 'Sinai', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 28, 'Bambang', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 29, 'Rahma', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 30, 'Rita', 2, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 31, 'Yae Sakura', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 32, 'Raiden Mei', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 33, 'Himeko', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 34, 'Kallen', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 35, 'Kiana', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 36, 'Karen', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 37, 'Saya', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 38, 'Sita', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 39, 'Sina', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 40, 'Sine', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 41, 'Sinau', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 42, 'Sinai', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 43, 'Bambang', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 44, 'Rahma', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1'),
+	(2, 45, 'Rita', 3, '2018-07-22 04:31:28', '2018-07-22 04:31:28', '1', '1');
+/*!40000 ALTER TABLE `d_additonal_booking` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.d_booking
+CREATE TABLE IF NOT EXISTS `d_booking` (
+  `db_id` int(11) NOT NULL,
+  `db_users` int(11) DEFAULT NULL,
+  `db_intinerary_id` int(11) DEFAULT NULL,
+  `db_detail_intinerary_id` int(11) DEFAULT NULL,
+  `db_name` varchar(50) DEFAULT NULL,
+  `db_pax` int(11) DEFAULT NULL,
+  `db_remark` mediumtext,
+  `db_total_additional` double DEFAULT NULL,
+  `db_total_room` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`db_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_booking: ~3 rows (approximately)
+DELETE FROM `d_booking`;
+/*!40000 ALTER TABLE `d_booking` DISABLE KEYS */;
+INSERT INTO `d_booking` (`db_id`, `db_users`, `db_intinerary_id`, `db_detail_intinerary_id`, `db_name`, `db_pax`, `db_remark`, `db_total_additional`, `db_total_room`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+	(1, 1, 8, 1, 'asd', 3, 'sd', 37200, 210000, '2018-07-22 04:20:42', '2018-07-22 04:20:42', 1, 1),
+	(2, 1, 8, 1, 'Safira Jaya', 15, 'Bahwa Harus Dibayar Segera', 21900000, 105000000, '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1);
+/*!40000 ALTER TABLE `d_booking` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.d_party_name
+CREATE TABLE IF NOT EXISTS `d_party_name` (
+  `dp_booking_id` int(11) NOT NULL,
+  `dp_detail` int(11) NOT NULL,
+  `dp_fam_name` varchar(50) DEFAULT NULL,
+  `dp_name` varchar(50) DEFAULT NULL,
+  `dp_price` double NOT NULL,
+  `dp_bed` varchar(50) DEFAULT NULL,
+  `dp_image` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`dp_booking_id`,`dp_detail`),
+  CONSTRAINT `FK_d_party_name_d_booking` FOREIGN KEY (`dp_booking_id`) REFERENCES `d_booking` (`db_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_party_name: ~7 rows (approximately)
+DELETE FROM `d_party_name`;
+/*!40000 ALTER TABLE `d_party_name` DISABLE KEYS */;
+INSERT INTO `d_party_name` (`dp_booking_id`, `dp_detail`, `dp_fam_name`, `dp_name`, `dp_price`, `dp_bed`, `dp_image`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+	(1, 1, 'Yae Sakura', 'Raiden Mei', 7000000, 'Triple', 'booking/Yae Sakura_Raiden Mei_1_1.jpg', '2018-07-22 04:20:42', '2018-07-22 04:20:42', 1, 1),
+	(1, 2, 'Yae Sakura', 'Yae Sakura', 7000000, 'Triple', 'booking/Yae Sakura_Yae Sakura_1_2.jpg', '2018-07-22 04:20:42', '2018-07-22 04:20:42', 1, 1),
+	(1, 3, 'Yae Sakura', 'Himeko', 7000000, 'Triple', 'booking/Yae Sakura_Himeko_1_3.jpg', '2018-07-22 04:20:42', '2018-07-22 04:20:42', 1, 1),
+	(2, 1, 'Yae Sakura', 'Yae Sakura', 7000000, 'Triple', 'booking/Yae Sakura_Yae Sakura_2_1.png', '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1),
+	(2, 2, 'Yae Sakura', 'Raiden Mei', 7000000, 'Triple', 'booking/Yae Sakura_Raiden Mei_2_2.png', '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1),
+	(2, 3, 'Yae Sakura', 'Himeko', 7000000, 'Triple', 'booking/Yae Sakura_Himeko_2_3.png', '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1),
+	(2, 4, 'Kaslana', 'Kallen', 7000000, 'Triple', 'booking/Kaslana_Kallen_2_4.png', '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1),
+	(2, 5, 'Kaslana', 'Kiana', 7000000, 'Triple', 'booking/Kaslana_Kiana_2_5.png', '2018-07-22 04:31:27', '2018-07-22 04:31:27', 1, 1),
+	(2, 6, 'Kaslana', 'Karen', 7000000, 'Triple', 'booking/Kaslana_Karen_2_6.png', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 7, 'Saya', 'Saya', 7000000, 'Triple', 'booking/Saya_Saya_2_7.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 8, 'Saya', 'Sita', 7000000, 'Triple', 'booking/Saya_Sita_2_8.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 9, 'Saya', 'Sina', 7000000, 'Triple', 'booking/Saya_Sina_2_9.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 10, 'Sine', 'Sine', 7000000, 'Triple', 'booking/Sine_Sine_2_10.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 11, 'Sine', 'Sinau', 7000000, 'Triple', 'booking/Sine_Sinau_2_11.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 12, 'Sine', 'Sinai', 7000000, 'Triple', 'booking/Sine_Sinai_2_12.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 13, 'Bambang', 'Bambang', 7000000, 'Triple', 'booking/Bambang_Bambang_2_13.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 14, 'Bambang', 'Rahma', 7000000, 'Triple', 'booking/Bambang_Rahma_2_14.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1),
+	(2, 15, 'Bambang', 'Rita', 7000000, 'Triple', 'booking/Bambang_Rita_2_15.jpg', '2018-07-22 04:31:28', '2018-07-22 04:31:28', 1, 1);
+/*!40000 ALTER TABLE `d_party_name` ENABLE KEYS */;
+
 -- Dumping structure for table lavensia.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -37,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `m_additional` (
   `ma_created_at` timestamp NULL DEFAULT NULL,
   `ma_updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ma_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table lavensia.m_additional: ~3 rows (approximately)
 DELETE FROM `m_additional`;
@@ -54,16 +192,17 @@ CREATE TABLE IF NOT EXISTS `m_additional_intinerary` (
   `intinerary_mi_id` int(11) DEFAULT NULL,
   `additional_ma_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`mai_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_additional_intinerary: ~4 rows (approximately)
+-- Dumping data for table lavensia.m_additional_intinerary: ~5 rows (approximately)
 DELETE FROM `m_additional_intinerary`;
 /*!40000 ALTER TABLE `m_additional_intinerary` DISABLE KEYS */;
 INSERT INTO `m_additional_intinerary` (`mai_id`, `intinerary_mi_id`, `additional_ma_id`) VALUES
 	(4, 7, 1),
 	(5, 7, 2),
-	(6, 8, 1),
-	(7, 8, 3);
+	(20, 8, 1),
+	(21, 8, 2),
+	(22, 8, 3);
 /*!40000 ALTER TABLE `m_additional_intinerary` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_category
@@ -120,7 +259,7 @@ INSERT INTO `m_detail_intinerary` (`md_intinerary_id`, `md_detail`, `md_nota`, `
 	(6, 2, 'TR0718/006/002', 23, 23, '2018-07-18', '2018-07-22', 232333, 333333, 111111, 333222, 'xxx', '2018-07-18 14:46:21', '2018-07-18 14:46:21', 'adi', 'adi'),
 	(7, 1, 'TR0718/007/001', 23, 23, '2018-07-19', '2018-07-21', 232323, 232323, 2323, 232332, 'xxx', '2018-07-18 17:48:15', '2018-07-18 18:31:18', 'adi', 'adi'),
 	(7, 2, 'TR0718/007/002', 23, 23, '2018-07-19', '2018-07-19', 232323, 232323, 323232, 232323, '23232', '2018-07-18 17:48:15', '2018-07-18 18:31:18', 'adi', 'adi'),
-	(8, 1, 'TR0718/008/001', 23, 23, '2018-07-19', '2018-07-21', 23232, 232323, 3232, 23232, 'sdsdsd', '2018-07-18 18:34:40', '2018-07-18 18:34:40', 'adi', 'adi');
+	(8, 1, 'TR0718/008/001', 50, 50, '2018-07-19', '2018-07-21', 7000000, 5000000, 3000000, 6000000, 'Harus mematuhi peraturan', '2018-07-20 12:52:20', '2018-07-20 12:59:22', 'adi', 'adi');
 /*!40000 ALTER TABLE `m_detail_intinerary` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_intinerary
@@ -148,7 +287,7 @@ INSERT INTO `m_intinerary` (`mi_id`, `mi_nota`, `mi_name`, `category_id`, `mi_im
 	(5, 'TR0718/005', 'TOUR THE NEW BEIJING SHANGHAI HUANGSHAN', 1, 'itinerary/TR0718-005.jpg', 'Great Wall, Tian An Men, Forbidden City, Nanjing Road, Dll', 'Singapore Airlines', '2018-07-17 15:46:46', '2018-07-18 13:10:48', 'adi', 'adi'),
 	(6, 'TR0718/006', 'sadsad', 2, 'itinerary/TR0718-006.jpg', 'dssad', 'dsadsad', '2018-07-18 14:43:32', '2018-07-18 14:46:21', 'adi', 'adi'),
 	(7, 'TR0718/007', 'xxx', 2, 'itinerary/TR0718-007.jpg', 'xxx', 'xxx', '2018-07-18 17:48:15', '2018-07-18 18:31:17', 'adi', 'adi'),
-	(8, 'TR0718/008', 'xxx', 1, 'itinerary/TR0718-008.jpg', 'xxx', 'xxx', '2018-07-18 18:34:40', '2018-07-18 18:34:40', 'adi', 'adi');
+	(8, 'TR0718/008', 'JALAN JALAN KE SINGAPORE', 1, 'itinerary/TR0718-008.jpg', 'KE SINGAPORE', 'xxx', '2018-07-18 18:34:40', '2018-07-20 12:59:22', 'adi', 'adi');
 /*!40000 ALTER TABLE `m_intinerary` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_schedule
@@ -165,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `m_schedule` (
   CONSTRAINT `FK_m_schedule_m_intinerary` FOREIGN KEY (`ms_intinerary_id`) REFERENCES `m_intinerary` (`mi_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_schedule: ~17 rows (approximately)
+-- Dumping data for table lavensia.m_schedule: ~18 rows (approximately)
 DELETE FROM `m_schedule`;
 /*!40000 ALTER TABLE `m_schedule` DISABLE KEYS */;
 INSERT INTO `m_schedule` (`ms_intinerary_id`, `ms_detail`, `ms_caption`, `ms_description`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
@@ -185,7 +324,8 @@ INSERT INTO `m_schedule` (`ms_intinerary_id`, `ms_detail`, `ms_caption`, `ms_des
 	(7, 2, 'XXX', 'xxx', '2018-07-18 18:31:18', '2018-07-18 18:31:18', 'adi', 'adi'),
 	(7, 3, 'XXX', 'xxx', '2018-07-18 18:31:18', '2018-07-18 18:31:18', 'adi', 'adi'),
 	(7, 4, 'XXX', 'xxx', '2018-07-18 18:31:18', '2018-07-18 18:31:18', 'adi', 'adi'),
-	(8, 1, 'XXX', 'xxx', '2018-07-18 18:34:40', '2018-07-18 18:34:40', 'adi', 'adi');
+	(8, 1, 'GATHERING', 'Berkumpul dulu diseberang kalimantan', '2018-07-20 12:59:22', '2018-07-20 12:59:22', 'adi', 'adi'),
+	(8, 2, 'GOJEK', 'Gojek sampai singapore', '2018-07-20 12:59:22', '2018-07-20 12:59:22', 'adi', 'adi');
 /*!40000 ALTER TABLE `m_schedule` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.password_resets
