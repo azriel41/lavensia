@@ -112,12 +112,13 @@ class bookingController extends Controller
 					'da_detail'		   => $dt,
 					'da_name'		   => $req->a_name[$b],
 					'da_additional_id' => $req->a_id[$b],
+					'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
 					'created_by'	   => Auth::user()->id,
 					'updated_by'	   => Auth::user()->id,
 				);
     			$this->d_additional_booking->create($data);
 			}
-			return Response::json(['status'=>1]);
+			return Response::json(['status'=>1,'id'=>$id]);
     	});
     }
     

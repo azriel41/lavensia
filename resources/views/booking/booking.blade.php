@@ -796,7 +796,10 @@
                                 add_name+
                                 '<input type="hidden" name="a_id[]" class="a_id" value="'+add_id+'">'+
                               '</td>';
-                    var td3 = '<td class="a_price_td">'+add_p_te+'</td>';
+                    var td3 = '<td class="a_price_td">'+
+                                add_p_te+
+                              '<input type="hidden" name="a_price[]" class="a_price" value="'+add_p_te+'">'+
+                              '</td>';
                     var all = tr + td1 + td2 + td3 + tr1;
                     $('.append_additional').append(all);
                     total_add+=(add_pric*1);
@@ -855,75 +858,42 @@
             formdata.append('id','{{ $id }}');
             formdata.append('dt','{{ $dt }}');
         }
-        iziToast.show({
-            overlay: true,
-            close: false,
-            timeout: 20000, 
-            color: 'dark',
-            icon: 'fa fa-save',
-            title: 'Simpan Data!',
-            message: 'Apakah Anda Yakin ?!',
-            position: 'center',
-            progressBarColor: 'rgb(0, 255, 184)',
-            buttons: [
-            [
-                '<button style="background-color:#32CD32;">Save</button>',
-                function (instance, toast) {
 
-                  $.ajaxSetup({
-                      headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-                    $.ajax({
-                        type: "POST",
-                        url:'{{ route('save_book') }}',
-                        data: formdata ? formdata : form.serialize(),
-                        dataType:'json',
-                        processData: false,
-                        contentType: false,
-                      success:function(data){
-                        if (data.status == '1') {
-                            iziToast.success({
-                                icon: 'fa fa-save',
-                                position:'topRight',
-                                title: 'Success!',
-                                message: 'Data Berhasil Disimpan!',
-                            });
-
-                        }else if (data.status == '0') {
-                            iziToast.success({
-                                icon: 'fa fa-save',
-                                position:'topRight',
-                                title: 'Error!',
-                                message:data.message,
-                            });
-
-                        }
-                      },error:function(){
-                        iziToast.warning({
-                            icon: 'fa fa-info',
-                            position:'topRight',
-                            title: 'Error!',
-                            message: 'Terjadi Kesalahan!',
-                        });
-                      }
-                    });
-                    instance.hide({
-                        transitionOut: 'fadeOutUp'
-                    }, toast);
-                }
-            ],
-            [
-                '<button style="background-color:#44d7c9;">Cancel</button>',
-                function (instance, toast) {
-                  instance.hide({
-                    transitionOut: 'fadeOutUp'
-                  }, toast);
-                }
-              ]
-            ]
+        $.ajax({
+            type: "POST",
+            url:'{{ route('save_book') }}',
+            data: formdata ? formdata : form.serialize(),
+            dataType:'json',
+            processData: false,
+            contentType: false,
+          success:function(data){
+            if (data.status == '1') {
+                var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
+                var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
+                var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
+                window.location=('{{ url('/payment_page/payment') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+data.id);
+            }else if (data.status == '0') {
+                iziToast.success({
+                    icon: 'fa fa-save',
+                    position:'topRight',
+                    title: 'Error!',
+                    message:data.message,
+                });
+            }
+          },error:function(){
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Terjadi Kesalahan!',
+            });
+          }
         });
     })
 
