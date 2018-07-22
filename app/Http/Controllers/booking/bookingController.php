@@ -22,6 +22,7 @@ use Yajra\Datatables\Datatables;
 use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
+use Exception;
 class bookingController extends Controller
 {
 	protected $intinerary;
@@ -78,8 +79,11 @@ class bookingController extends Controller
     		$this->d_booking->create($data);
 			for ($b=0; $b < count($req->r_name_fam); $b++) { 
 				$dt = $this->d_party_name->max_detail('dp_booking_id',$id,'dp_detail');
-
-				$file = $req->file('image')[$b];
+				try{
+					$file = $req->file('image')[$b];
+				}catch(Exception $err){
+					$file = null;
+				}
 	            if ($file != null) {
 
 	                $tour_code = str_replace('/', '-', $req->tour_code);
@@ -104,20 +108,22 @@ class bookingController extends Controller
     			$this->d_party_name->create($data);
 			}
 
-
-			for ($b=0; $b < count($req->a_id); $b++) { 
-				$dt = $this->d_additional_booking->max_detail('da_booking_id',$id,'da_detail');
-				$data = array(	
-					'da_booking_id'    => $id,
-					'da_detail'		   => $dt,
-					'da_name'		   => $req->a_name[$b],
-					'da_additional_id' => $req->a_id[$b],
-					'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
-					'created_by'	   => Auth::user()->id,
-					'updated_by'	   => Auth::user()->id,
-				);
-    			$this->d_additional_booking->create($data);
+			if ($req->a_id != null) {
+				for ($b=0; $b < count($req->a_id); $b++) { 
+					$dt = $this->d_additional_booking->max_detail('da_booking_id',$id,'da_detail');
+					$data = array(	
+						'da_booking_id'    => $id,
+						'da_detail'		   => $dt,
+						'da_name'		   => $req->a_name[$b],
+						'da_additional_id' => $req->a_id[$b],
+						'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
+						'created_by'	   => Auth::user()->id,
+						'updated_by'	   => Auth::user()->id,
+					);
+	    			$this->d_additional_booking->create($data);
+				}
 			}
+			
 			return Response::json(['status'=>1,'id'=>$id]);
     	});
     }

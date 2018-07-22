@@ -91,7 +91,8 @@
       </div>
       <div class="modal-footer">
             <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
-            <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
+            <button type="button" class="btn btn-danger waves-effect save_back" data-dismiss="modal" ><i class="fa fa-back"></i> SAVE AND BACK TO DASHBOARD</button>
+            <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE AND GO TO PAYMENT PAGE</button>
       </div>
     </div>
   </div>
