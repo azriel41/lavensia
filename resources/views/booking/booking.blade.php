@@ -210,7 +210,7 @@
             .tab-content{
               overflow-y:scroll;
               overflow-x:hidden;
-              height:250px;
+              max-height: 250px;
             }
             .calc{
                 z-index: 99999;
@@ -363,6 +363,7 @@
                             </fieldset>
                             <hr>
                               <!-- Additional-->
+
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -400,6 +401,31 @@
                                     
                                   </div>
                             </fieldset>
+                            <div class="col-sm-12" style="margin-top: 100px">
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div>
+                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </fieldset>
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div class="checkbox checkbox-info checkbox-circle">
+                                            <input id="check_agree" type="checkbox" name="check_agree">
+                                            <label for="Kwitansi">
+                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
+                                            </label>
+                                        </div> 
+                                    </div>
+                                  </div>
+                                </fieldset>
+                            </div>
                               <!-- Payment-->
                             {{-- <fieldset hidden="" class="scheduler-border col-sm-6">
                               <legend class="scheduler-border">Payment</legend>
@@ -445,108 +471,49 @@
                                     </div>
                                   </div>
                             </fieldset> --}}
-                            <div class="col-sm-12" style="margin-top: 150px;">
+                            <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                             </div>
                         </form>
                         <div class="col-sm-12 invoice_tab" hidden="">
                             <div class="col-sm-12">
-                               <ul class="nav nav-tabs">
-                                  <li class="active"><a data-toggle="tab" href="#home">Room</a></li>
-                                  <li><a data-toggle="tab" href="#menu1">Additional</a></li>
-                                </ul>
-                                <div class="tab-content"  >
-                                  <div id="home" class="tab-pane fade in active">
-                                    <table width="100%" class="table table-striped table-hover table_room">
-                                        <thead >
-                                            <tr>
-                                                <th style="text-align: center;">No</th>
-                                                <th style="text-align: center;">Family Name</th>
-                                                <th style="text-align: center;">Name</th>
-                                                <th style="text-align: center;">Room</th>
-                                                <th style="text-align: center;">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="append_invoice">
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                  <div id="menu1" class="tab-pane fade" >
-                                    <div>
-                                        <table width="100%" class="table table-striped table-hover table_addition">
-                                            <thead >
-                                                <tr>
-                                                    <th style="text-align: center;">Name</th>
-                                                    <th style="text-align: center;">Additional</th>
-                                                    <th style="text-align: center;">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="append_additional">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                  </div>
-                                </div> 
+                                <table width="100%" class="table table-striped table-hover table_room">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;">Family Name</th>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Room</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_invoice">
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="table table-striped table-hover table_addition">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Additional</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_additional">
+                                    </tbody>
+                                </table>
+                                <input type="hidden" class="total_room_input" name="total_room_input">
+                                <input type="hidden" class="total_additional_input" name="total_additional_input">
+                                <input type="hidden" class="total_harga_input" name="total_harga_input">
                             </div>
-                            <div class="col-sm-12" style="text-align: right;margin-bottom: 50px" >
-                                <form class="form_total">
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Room</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_room"></h4>
-                                        <input type="hidden" class="total_room_input" name="total_room_input">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Additional</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_additional"></h4>
-                                        <input type="hidden" class="total_additional_input" name="total_additional_input">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Total</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_harga"></h4>
-                                        <input type="hidden" class="total_harga_input" name="total_harga_input">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-sm-12">
-                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
-                                  <div class="contact-form col1 col-sm-12" >
-                                    <div class="input-group margin-top-20px">
-                                        <div>
-                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
-                                        </div>
-                                    </div>
-                                  </div>
-                                </fieldset>
-                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
-                                  <div class="contact-form col1 col-sm-12" >
-                                    <div class="input-group margin-top-20px">
-                                        <div class="checkbox checkbox-info checkbox-circle">
-                                            <input id="check_agree" type="checkbox" name="check_agree">
-                                            <label for="Kwitansi">
-                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
-                                            </label>
-                                        </div> 
-                                    </div>
-                                  </div>
-                                </fieldset>
-                            </div>
-                            <div class="col-sm-12">
+                          {{--   <div class="col-sm-12">
                                 <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
+            @include('booking.booking_modal')
         </section>
-        @include('booking.booking_modal')
 
         <!--
         End Contact Us
@@ -738,7 +705,14 @@
 
     $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
-        
+        if ($('#check_agree').is(':checked') == false) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please Check Term & Condition!',
+            });
+            return false;
+        }
         $('.append_invoice').html('');
         $('.append_additional').html('');
         var validate = [];
@@ -868,22 +842,18 @@
             $("html, body").animate({ scrollTop: 350 }, "slow");
             return false;
         }
-        $('.invoice_tab').prop('hidden',false);
+        // $('.invoice_tab').prop('hidden',false);
+        $('#invoice').modal('show');
     })
     
     $('.save').click(function(){
-        if ($('#check_agree').is(':checked') == false) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Please Check Term & Condition!',
-            });
-            return false;
-        }
+        
         var form  = $('#save');
         var formdata = false;
         if (window.FormData){
             formdata = new FormData(form[0]);
+            formdata.append('id','{{ $id }}');
+            formdata.append('dt','{{ $dt }}');
         }
         iziToast.show({
             overlay: true,
