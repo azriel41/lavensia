@@ -210,7 +210,7 @@
             .tab-content{
               overflow-y:scroll;
               overflow-x:hidden;
-              height:250px;
+              max-height: 250px;
             }
             .calc{
                 z-index: 99999;
@@ -363,6 +363,7 @@
                             </fieldset>
                             <hr>
                               <!-- Additional-->
+
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -400,6 +401,31 @@
                                     
                                   </div>
                             </fieldset>
+                            <div class="col-sm-12" style="margin-top: 100px">
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div>
+                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </fieldset>
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div class="checkbox checkbox-info checkbox-circle">
+                                            <input id="check_agree" type="checkbox" name="check_agree">
+                                            <label for="Kwitansi">
+                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
+                                            </label>
+                                        </div> 
+                                    </div>
+                                  </div>
+                                </fieldset>
+                            </div>
                               <!-- Payment-->
                             {{-- <fieldset hidden="" class="scheduler-border col-sm-6">
                               <legend class="scheduler-border">Payment</legend>
@@ -445,108 +471,49 @@
                                     </div>
                                   </div>
                             </fieldset> --}}
-                            <div class="col-sm-12" style="margin-top: 150px;">
+                            <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                             </div>
                         </form>
                         <div class="col-sm-12 invoice_tab" hidden="">
                             <div class="col-sm-12">
-                               <ul class="nav nav-tabs">
-                                  <li class="active"><a data-toggle="tab" href="#home">Room</a></li>
-                                  <li><a data-toggle="tab" href="#menu1">Additional</a></li>
-                                </ul>
-                                <div class="tab-content"  >
-                                  <div id="home" class="tab-pane fade in active">
-                                    <table width="100%" class="table table-striped table-hover table_room">
-                                        <thead >
-                                            <tr>
-                                                <th style="text-align: center;">No</th>
-                                                <th style="text-align: center;">Family Name</th>
-                                                <th style="text-align: center;">Name</th>
-                                                <th style="text-align: center;">Room</th>
-                                                <th style="text-align: center;">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="append_invoice">
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                  <div id="menu1" class="tab-pane fade" >
-                                    <div>
-                                        <table width="100%" class="table table-striped table-hover table_addition">
-                                            <thead >
-                                                <tr>
-                                                    <th style="text-align: center;">Name</th>
-                                                    <th style="text-align: center;">Additional</th>
-                                                    <th style="text-align: center;">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="append_additional">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                  </div>
-                                </div> 
+                                <table width="100%" class="table table-striped table-hover table_room">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;">Family Name</th>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Room</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_invoice">
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="table table-striped table-hover table_addition">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Additional</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_additional">
+                                    </tbody>
+                                </table>
+                                <input type="hidden" class="total_room_input" name="total_room_input">
+                                <input type="hidden" class="total_additional_input" name="total_additional_input">
+                                <input type="hidden" class="total_harga_input" name="total_harga_input">
                             </div>
-                            <div class="col-sm-12" style="text-align: right;margin-bottom: 50px" >
-                                <form class="form_total">
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Room</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_room"></h4>
-                                        <input type="hidden" class="total_room_input" name="total_room_input">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Additional</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_additional"></h4>
-                                        <input type="hidden" class="total_additional_input" name="total_additional_input">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h4 colspan="3">Total</h4>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="total_harga"></h4>
-                                        <input type="hidden" class="total_harga_input" name="total_harga_input">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-sm-12">
-                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
-                                  <div class="contact-form col1 col-sm-12" >
-                                    <div class="input-group margin-top-20px">
-                                        <div>
-                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
-                                        </div>
-                                    </div>
-                                  </div>
-                                </fieldset>
-                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
-                                  <div class="contact-form col1 col-sm-12" >
-                                    <div class="input-group margin-top-20px">
-                                        <div class="checkbox checkbox-info checkbox-circle">
-                                            <input id="check_agree" type="checkbox" name="check_agree">
-                                            <label for="Kwitansi">
-                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
-                                            </label>
-                                        </div> 
-                                    </div>
-                                  </div>
-                                </fieldset>
-                            </div>
-                            <div class="col-sm-12">
+                          {{--   <div class="col-sm-12">
                                 <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
+            @include('booking.booking_modal')
         </section>
-        @include('booking.booking_modal')
 
         <!--
         End Contact Us
@@ -738,7 +705,14 @@
 
     $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
-        
+        if ($('#check_agree').is(':checked') == false) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please Check Term & Condition!',
+            });
+            return false;
+        }
         $('.append_invoice').html('');
         $('.append_additional').html('');
         var validate = [];
@@ -822,7 +796,10 @@
                                 add_name+
                                 '<input type="hidden" name="a_id[]" class="a_id" value="'+add_id+'">'+
                               '</td>';
-                    var td3 = '<td class="a_price_td">'+add_p_te+'</td>';
+                    var td3 = '<td class="a_price_td">'+
+                                add_p_te+
+                              '<input type="hidden" name="a_price[]" class="a_price" value="'+add_p_te+'">'+
+                              '</td>';
                     var all = tr + td1 + td2 + td3 + tr1;
                     $('.append_additional').append(all);
                     total_add+=(add_pric*1);
@@ -868,92 +845,55 @@
             $("html, body").animate({ scrollTop: 350 }, "slow");
             return false;
         }
-        $('.invoice_tab').prop('hidden',false);
+        // $('.invoice_tab').prop('hidden',false);
+        $('#invoice').modal('show');
     })
     
     $('.save').click(function(){
-        if ($('#check_agree').is(':checked') == false) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Please Check Term & Condition!',
-            });
-            return false;
-        }
+        
         var form  = $('#save');
         var formdata = false;
         if (window.FormData){
             formdata = new FormData(form[0]);
+            formdata.append('id','{{ $id }}');
+            formdata.append('dt','{{ $dt }}');
         }
-        iziToast.show({
-            overlay: true,
-            close: false,
-            timeout: 20000, 
-            color: 'dark',
-            icon: 'fa fa-save',
-            title: 'Simpan Data!',
-            message: 'Apakah Anda Yakin ?!',
-            position: 'center',
-            progressBarColor: 'rgb(0, 255, 184)',
-            buttons: [
-            [
-                '<button style="background-color:#32CD32;">Save</button>',
-                function (instance, toast) {
 
-                  $.ajaxSetup({
-                      headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-                    $.ajax({
-                        type: "POST",
-                        url:'{{ route('save_book') }}',
-                        data: formdata ? formdata : form.serialize(),
-                        dataType:'json',
-                        processData: false,
-                        contentType: false,
-                      success:function(data){
-                        if (data.status == '1') {
-                            iziToast.success({
-                                icon: 'fa fa-save',
-                                position:'topRight',
-                                title: 'Success!',
-                                message: 'Data Berhasil Disimpan!',
-                            });
-
-                        }else if (data.status == '0') {
-                            iziToast.success({
-                                icon: 'fa fa-save',
-                                position:'topRight',
-                                title: 'Error!',
-                                message:data.message,
-                            });
-
-                        }
-                      },error:function(){
-                        iziToast.warning({
-                            icon: 'fa fa-info',
-                            position:'topRight',
-                            title: 'Error!',
-                            message: 'Terjadi Kesalahan!',
-                        });
-                      }
-                    });
-                    instance.hide({
-                        transitionOut: 'fadeOutUp'
-                    }, toast);
-                }
-            ],
-            [
-                '<button style="background-color:#44d7c9;">Cancel</button>',
-                function (instance, toast) {
-                  instance.hide({
-                    transitionOut: 'fadeOutUp'
-                  }, toast);
-                }
-              ]
-            ]
+        $.ajax({
+            type: "POST",
+            url:'{{ route('save_book') }}',
+            data: formdata ? formdata : form.serialize(),
+            dataType:'json',
+            processData: false,
+            contentType: false,
+          success:function(data){
+            if (data.status == '1') {
+                var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
+                var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
+                var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
+                window.location=('{{ url('/payment_page/payment') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+data.id);
+            }else if (data.status == '0') {
+                iziToast.success({
+                    icon: 'fa fa-save',
+                    position:'topRight',
+                    title: 'Error!',
+                    message:data.message,
+                });
+            }
+          },error:function(){
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Terjadi Kesalahan!',
+            });
+          }
         });
     })
 

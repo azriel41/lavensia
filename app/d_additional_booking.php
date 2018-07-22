@@ -15,6 +15,7 @@ class d_additional_booking extends Model
 						   'da_detail',
 						   'da_name',
 						   'da_additional_id',
+						   'da_price',
 						   'created_by',
 						   'updated_by',
 						];

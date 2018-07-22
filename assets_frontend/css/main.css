@@ -177,8 +177,8 @@ body > section,
 }
 
 .nav > li > a:hover, .nav > li > a:focus{
-  background-color: white !important;
-  color: #484849 !important;
+  background-color: white ;
+  color: #484849 ;
 }
 
 .icon_login_logout{
@@ -187,8 +187,8 @@ body > section,
 .button_group_name{
   margin-top: 5%;
 }
-    width: 100px !important;
-}
+/*    width: 100px !important;
+}*/
 
 /*=========================================
 	Slider

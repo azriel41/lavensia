@@ -22,6 +22,7 @@ use Yajra\Datatables\Datatables;
 use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
+use Exception;
 class bookingController extends Controller
 {
 	protected $intinerary;
@@ -50,32 +51,80 @@ class bookingController extends Controller
 	
     	$intinerary  		= $this->intinerary->cari('mi_id',$req->id);
     	$detail_intinerary  = $this->detail_intinerary->show_detail_one('md_intinerary_id',$req->id,'md_detail',$req->dt);
-        return view('booking.booking',compact('intinerary','detail_intinerary'));
+    	$id 				= $req->id;
+    	$dt 				= $req->dt;
+
+        return view('booking.booking',compact('intinerary','detail_intinerary','id','dt'));
     }
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
 
-    		// Save Head
-
     		$id = $this->d_booking->max('db_id');
-    		dd($req->a_name);
+    		// dd($req->total_room_input);
     		$data = array(
-    						'db_id'				    => $id,
-						    'db_users'				=> Auth::user()->id,
-						    'db_name'				=> $req->bk_partyname,
-						    'db_pax'				=> $req->bk_totalpac,
-						    'db_remark'				=> $req->bk_remark,
-						    'db_total_additional'	=> filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT)/100,
-						    'db_total_room'			=> filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT)/100,
-						    'created_by'			=> Auth::user()->id,
-						    'updated_by'			=> Auth::user()->id,
+    						'db_id'				    	=> $id,
+						    'db_users'					=> Auth::user()->id,
+						    'db_name'					=> $req->bk_partyname,
+						    'db_intinerary_id'			=> $req->id,
+						   	'db_detail_intinerary_id'   => $req->dt,
+						    'db_pax'					=> $req->bk_totalpac,
+						    'db_remark'					=> $req->bk_remark,
+						    'db_total_additional'		=> filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT),
+						    'db_total_room'				=> filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT),
+						    'created_by'				=> Auth::user()->id,
+						    'updated_by'				=> Auth::user()->id,
     					 );
 
     		$this->d_booking->create($data);
+			for ($b=0; $b < count($req->r_name_fam); $b++) { 
+				$dt = $this->d_party_name->max_detail('dp_booking_id',$id,'dp_detail');
+				try{
+					$file = $req->file('image')[$b];
+				}catch(Exception $err){
+					$file = null;
+				}
+	            if ($file != null) {
 
-    		dd($this->d_booking->all()->toArray());
+	                $tour_code = str_replace('/', '-', $req->tour_code);
+	                $filename = 'booking/'.$req->r_name_fam[$b].'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 
+	                Storage::put($filename,file_get_contents($file));
+	            }else{
+                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+	            }
+
+				$data = array(	
+					'dp_booking_id' => $id,
+					'dp_detail'		=> $dt,
+					'dp_fam_name'	=> $req->r_name_fam[$b],
+					'dp_name'		=> $req->r_name[$b],
+					'dp_price'		=> filter_var($req->r_harga[$b],FILTER_SANITIZE_NUMBER_INT),
+					'dp_bed'		=> $req->r_bed[$b],
+					'dp_image'		=> $filename,
+					'created_by'	=> Auth::user()->id,
+					'updated_by'	=> Auth::user()->id,
+				);
+    			$this->d_party_name->create($data);
+			}
+
+			if ($req->a_id != null) {
+				for ($b=0; $b < count($req->a_id); $b++) { 
+					$dt = $this->d_additional_booking->max_detail('da_booking_id',$id,'da_detail');
+					$data = array(	
+						'da_booking_id'    => $id,
+						'da_detail'		   => $dt,
+						'da_name'		   => $req->a_name[$b],
+						'da_additional_id' => $req->a_id[$b],
+						'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
+						'created_by'	   => Auth::user()->id,
+						'updated_by'	   => Auth::user()->id,
+					);
+	    			$this->d_additional_booking->create($data);
+				}
+			}
+			
+			return Response::json(['status'=>1,'id'=>$id]);
     	});
     }
     

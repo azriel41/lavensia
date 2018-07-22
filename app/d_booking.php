@@ -14,6 +14,8 @@ class d_booking extends Model
 	protected $fillable = ['db_id',
 						   'db_users',
 						   'db_name',
+						   'db_intinerary_id',
+						   'db_detail_intinerary_id',
 						   'db_pax',
 						   'db_remark',
 						   'db_total_additional',

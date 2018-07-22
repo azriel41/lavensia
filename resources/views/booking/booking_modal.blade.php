@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-cyan">
-                <h4 class="modal-title" id="largeModalLabel">Invoice</h4>
+                <h3 class="modal-title" id="largeModalLabel">Term & Condition</h3>
             </div>
             <div class="modal-body">
                 <p>
@@ -11,17 +11,17 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
-                {{-- <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button> --}}
+                <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
             </div>
         </div>
     </div>
 </div>
 
-{{-- <div class="modal fade" id="invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Term & Condition </h5>
+        <h3 class="modal-title" id="exampleModalLabel"><b>INVOICE</b></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -33,21 +33,19 @@
         </ul>
         <div class="tab-content"  >
           <div id="home" class="tab-pane fade in active">
-            <form id="form_table_room">
-                <table width="100%" class="table table-striped table-hover table_room">
-                    <thead >
-                        <tr>
-                            <th style="text-align: center;">No</th>
-                            <th style="text-align: center;">Family Name</th>
-                            <th style="text-align: center;">Name</th>
-                            <th style="text-align: center;">Room</th>
-                            <th style="text-align: center;">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody class="append_invoice">
-                    </tbody>
-                </table>
-            </form>
+            <table width="100%" class="table table-striped table-hover table_room">
+                <thead >
+                    <tr>
+                        <th style="text-align: center;">No</th>
+                        <th style="text-align: center;">Family Name</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Room</th>
+                        <th style="text-align: center;">Price</th>
+                    </tr>
+                </thead>
+                <tbody class="append_invoice">
+                </tbody>
+            </table>
           </div>
           <div id="menu1" class="tab-pane fade" >
             <div>
@@ -92,9 +90,10 @@
         </div>
       </div>
       <div class="modal-footer">
-         <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
+            <button type="button" class="btn btn-danger waves-effect save_back" data-dismiss="modal" ><i class="fa fa-back"></i> SAVE AND BACK TO DASHBOARD</button>
+            <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE AND GO TO PAYMENT PAGE</button>
       </div>
     </div>
   </div>
-</div> --}}
+</div>
