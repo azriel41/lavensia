@@ -7,6 +7,7 @@ use App\User;
 use App\roles;
 use Session;
 use Auth;
+use pdf;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,14 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        // $products = Products::all();
+        // view()->share('products',$products);
+        // if($request->has('download')){
+        //     $pdf = PDF::loadView('htmltopdfview');
+        //     return $pdf->download('htmltopdfview');
+        // }
+
         
         return view('home');
         
