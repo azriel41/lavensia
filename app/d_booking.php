@@ -15,8 +15,8 @@ class d_booking extends Model
 						   'db_users',
 						   'db_name',
 						   'db_intinerary_id',
-						   'db_detail_intinerary_id',
 						   'db_pax',
+						   'db_status',
 						   'db_remark',
 						   'db_total_additional',
 						   'db_total_room',
@@ -27,6 +27,11 @@ class d_booking extends Model
 	public function user()
 	{
         return $this->belongsTo('App\User','id');
+	}
+
+	public function detail_itin()
+	{
+        return $this->belongsTo('App\detail_intinerary','db_intinerary_id','md_id');
 	}
 
 	public function additional_book()

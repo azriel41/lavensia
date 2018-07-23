@@ -25,7 +25,13 @@ use App\d_party_name;
 class payment_page_controller extends Controller
 {
     public function payment(Request $req)
-    {
-    	# code...
+    {	
+    	if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking);
+    		return view('operational.payment_user.payment_user',compact('cart','jumlah'));
+        }else{
+    		return view('operational.payment_user.payment_user');
+        }
     }
 }

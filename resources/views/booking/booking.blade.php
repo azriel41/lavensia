@@ -378,7 +378,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($intinerary->add as $val)
+                                                @foreach ($detail_intinerary->intinerary->add as $val)
                                                 <tr class="add_tr">
                                                     <td align="left">
                                                         <p class="add_name">{{ $val->ma_name }}</p>
@@ -856,7 +856,6 @@
         if (window.FormData){
             formdata = new FormData(form[0]);
             formdata.append('id','{{ $id }}');
-            formdata.append('dt','{{ $dt }}');
         }
 
         $.ajaxSetup({

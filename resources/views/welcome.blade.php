@@ -353,6 +353,6 @@
     
     function more(argument) {
         var parent = $(argument).data('id');
-        window.location = ('/lavensia/package/'+parent+'/package');
+        window.location = ('/lavensia/package/package/'+parent);
     }
 </script>
