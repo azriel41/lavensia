@@ -34,13 +34,16 @@ Route::get('/', function () {
 	// return$data = Auth::User()->booking;
 })->name('dashboard');
 
-Auth::routes();
-
-//intinerary ajax modal
 Route::get('/intinerary/intinerary_modal_detail', 'HomeController@intinerary_modal_detail')->name('intinerary_modal_detail');
 
 
+Auth::routes();
+
+//intinerary ajax modal
+
+
 //Halaman See more 
+
 //package 
 Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
 Route::get('/package/package_pdf', 'package\packageController@package_pdf')->name('package_pdf');
