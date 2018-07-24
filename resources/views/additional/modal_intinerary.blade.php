@@ -15,13 +15,19 @@
                 <th>Remain / Seat</th>
                 <th>Date</th>
               </tr>
-              @foreach ($det as $detil)
-              <tr>
+              @foreach ($detail as $detil)
+             <tr>
                 <td>{{ $detil->md_nota }}</td>
-                <td>{{ $detil->md_seat_remain }} / {{ $detil->md_seat }} </td>
+                <td> 
+                  @if ($detil->md_seat_remain == null)
+                    0 / {{ $detil->md_seat }} 
+                  @else
+                    {{ $detil->md_seat_remain }} / {{ $detil->md_seat }}
+                  @endif
+                </td>
                 <td>{{ date('d M Y',strtotime($detil->md_start))  }} - {{ date('d M Y',strtotime($detil->md_end))  }}</td>
               </tr>
-              @endforeach
+              @endforeach 
              <tr>
                 <td colspan="3">&nbsp;</td>
               </tr>

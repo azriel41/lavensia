@@ -41,5 +41,14 @@ class packageController extends Controller
         $pdf = PDF::loadView('report.pdf.pdf_intinerary',$data);
         return $pdf->stream('report.pdf');
     }
-    
+    public function package_modal_detail(Request $request)
+    {
+        // dd($request->all());
+        // return $data = detail_intinerary::all();
+        $data = intinerary::where('mi_id','=',$request->id)->get();
+        foreach ($data as $in => $det) {
+            $detail = $det->detail_intinerarys; 
+        }
+        return view('additional.modal_intinerary',compact('data','detail'));
+    }
 }
