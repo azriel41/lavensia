@@ -133,12 +133,32 @@ CREATE TABLE IF NOT EXISTS `d_booking` (
 -- Dumping data for table lavensia.d_booking: ~5 rows (approximately)
 /*!40000 ALTER TABLE `d_booking` DISABLE KEYS */;
 REPLACE INTO `d_booking` (`db_id`, `db_users`, `db_intinerary_id`, `db_status`, `db_name`, `db_pax`, `db_remark`, `db_total_additional`, `db_total_room`, `db_total`, `db_total_remain`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-	(1, 1, 10, 'Waiting List', 'Sejahtera', 15, 'Check', 21900000, 101000000, NULL, NULL, '2018-07-23 14:14:32', '2018-07-23 14:14:32', 1, 1),
+	(1, 1, 10, 'Holding Confirm', 'Sejahtera', 15, 'Check', 21900000, 101000000, NULL, NULL, '2018-07-23 14:14:32', '2018-07-24 11:29:37', 1, 1),
 	(3, 1, 10, 'Waiting List', 'Kencana', 5, 'Tes', 7300000, 34000000, NULL, NULL, '2018-07-23 14:52:47', '2018-07-23 14:52:47', 1, 1),
 	(4, 1, 10, 'Waiting List', 'Siskamling', 5, 'asdasd', 5380000, 35000000, NULL, NULL, '2018-07-23 14:55:47', '2018-07-23 14:55:47', 1, 1),
 	(5, 1, 10, 'Waiting List', 'Tes', 3, 'asd', 2720000, 21000000, NULL, NULL, '2018-07-23 14:57:26', '2018-07-23 14:57:26', 1, 1),
 	(6, 1, 11, 'Waiting List', 'Tes', 3, 'asdasd', 2260000, 36963936, NULL, NULL, '2018-07-23 14:58:28', '2018-07-23 14:58:28', 1, 1);
 /*!40000 ALTER TABLE `d_booking` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.d_history_bayar
+CREATE TABLE IF NOT EXISTS `d_history_bayar` (
+  `dh_id` int(11) NOT NULL,
+  `dh_booking_id` int(11) DEFAULT NULL,
+  `dh_account_name` varchar(50) NOT NULL,
+  `dh_account_number` int(50) NOT NULL,
+  `dh_image` varchar(100) DEFAULT NULL,
+  `dh_nominal` int(11) DEFAULT NULL,
+  `dh_payment_method` enum('dp','fp') DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`dh_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_history_bayar: ~1 rows (approximately)
+/*!40000 ALTER TABLE `d_history_bayar` DISABLE KEYS */;
+REPLACE INTO `d_history_bayar` (`dh_id`, `dh_booking_id`, `dh_account_name`, `dh_account_number`, `dh_image`, `dh_nominal`, `dh_payment_method`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'Bambang', 2361287, 'payment_proof/bukti_Bambang_2361287_1.jpg', 70000000, 'dp', '2018-07-24 11:29:37', '2018-07-24 11:29:37');
+/*!40000 ALTER TABLE `d_history_bayar` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.d_party_name
 CREATE TABLE IF NOT EXISTS `d_party_name` (
@@ -421,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table lavensia.users: ~3 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `password`, `username`, `birthday`, `phone`, `email`, `address`, `studies`, `education`, `class`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'dewa17a', NULL, NULL, 'dewa17a@gmail.com', NULL, NULL, NULL, NULL, 2, 'oHm4tdWNYO9wlxbyTsH7iVKxoWAngovjMvHQA8fyAvRsEfZM1o8un4xTrGyD', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
+	(1, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'dewa17a', NULL, NULL, 'dewa17a@gmail.com', NULL, NULL, NULL, NULL, 2, '5SDjvO4zkRPjw9FOGKAmEALS2j94SjidsOTIJIRZGvshNtdHql7AtXl1TIy4', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
 	(2, 'adi', '$2y$10$bTFFCxRtCVNNRMygHy9qCuRD8ejUyMrxnunNlxwq1w/i191mSXXLW', 'teses', NULL, NULL, 'a@gmail.com', NULL, NULL, NULL, NULL, 2, 'oWxRve1a9qVO8tgiwHNAqp9tDGzWgdiW8kcAW0nRezRw2RuGKV4xeJRkAgin', '2018-07-12 17:52:15', '2018-07-12 17:52:15'),
 	(3, 'adi', '$2y$10$bVwcj838opIS/FHpGLWZiOuKgB3g5BJllZWzOsWXsgLU0Qwxfe9m.', 'dewa17aa', NULL, NULL, 'dewa17aa@gmail.com', NULL, NULL, NULL, NULL, 2, 'GipeeG6KOGFeuv2XCsLWN2i4cTzYPDg7ZXeNmVoCHVRxK6nJbCqqcduUSQYf', '2018-07-15 08:11:17', '2018-07-15 08:11:17');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;

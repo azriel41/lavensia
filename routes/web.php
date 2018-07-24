@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 	if (Auth::User() != null) {
 		$cart = Auth::User()->booking;
-		$jumlah = count(Auth::User()->booking);
+		$jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
     	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
 	}else{
     	return view('welcome',compact('category','intinerary','det','response'));
@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// PAYMENT USER
 	Route::get('/payment_page/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
+	Route::post('/payment_page/save_first_payment', 'payment_page\payment_page_controller@save_first_payment')->name('save_first_payment');
 
 
 	/*************** END BOOK *************/
