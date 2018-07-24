@@ -253,12 +253,12 @@
                                 <div class="col-sm-6" align="right">
                                     <table class="table">
                                         <tr>
-                                            <td align="right">Pax :</td>
+                                            <td align="right">Number of Pax :</td>
                                             <td>{{ $booking->db_pax }}</td>
                                         </tr>
                                         <tr>
                                             <td align="right">Total Price :</td>
-                                            <td> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
+                                            <td style="color: red"> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
                                         </tr>
                                     </table>
                                 </div>
