@@ -248,7 +248,20 @@
                                 <img src="{{ asset('storage/app')}}/{{ $booking->detail_itin->intinerary->mi_image  }}" style="width: 50%;height: 25%" class="output" >
                             </div>
                             <div class="col-sm-12" style="color: grey;margin-top: 20px">
-                                Total Price
+                                <div class="col-sm-3" align="right">
+                                </div>
+                                <div class="col-sm-6" align="right">
+                                    <table class="table">
+                                        <tr>
+                                            <td align="right">Pax :</td>
+                                            <td>{{ $booking->db_pax }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">Total Price :</td>
+                                            <td> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
