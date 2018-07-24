@@ -21,6 +21,7 @@ Route::get('/', function () {
 		$cat = $val->category;
 	}
 	$book = App\User::all();
+
 	if (Auth::User() != null) {
 		$cart = Auth::User()->booking;
 		$jumlah = count(Auth::User()->booking);
@@ -28,12 +29,15 @@ Route::get('/', function () {
 	}else{
     	return view('welcome',compact('category','intinerary','det','response'));
 	}
+
 	// return$data =  \App\d_booking::all();
 	// return$data = Auth::User()->booking;
 })->name('dashboard');
 
 Auth::routes();
 
+//intinerary ajax modal
+Route::get('/intinerary/intinerary_modal_detail', 'HomeController@intinerary_modal_detail')->name('intinerary_modal_detail');
 
 
 //Halaman See more 
