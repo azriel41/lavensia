@@ -247,7 +247,7 @@
                                                <td>{{ $det->md_seat }}</td>
                                                <td>{{ $det->md_term }}</td>
                                                <td>
-                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_intinerary_id }}','{{ $det->md_detail }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
                                             </tr>
                                           @endforeach
@@ -309,11 +309,11 @@
     
 
     
-    function booking(id,dt) {
+    function booking(id) {
         var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
         var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
         var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
-        window.location=('{{ url('booking/booking') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id+'&dt='+dt);
+        window.location=('{{ url('booking/booking') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id);
     }
     function pdf(argument) {
         var parent = $(argument).data('id');

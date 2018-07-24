@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
 	$category = App\category::all();
 
@@ -19,24 +20,33 @@ Route::get('/', function () {
 		$det = $val->detail_intinerarys;
 		$cat = $val->category;
 	}
-	
-    return view('welcome',compact('category','intinerary','det','response'));
-
+	$book = App\User::all();
+	if (Auth::User() != null) {
+		$cart = Auth::User()->booking;
+		$jumlah = count(Auth::User()->booking);
+    	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+	}else{
+    	return view('welcome',compact('category','intinerary','det','response'));
+	}
+	// return$data =  \App\d_booking::all();
+	// return$data = Auth::User()->booking;
 })->name('dashboard');
+
 Auth::routes();
 
-// Route::get('/test', 'HomeController@test')->name('test');
+
 
 //Halaman See more 
 //package 
 Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
 Route::get('/package/package_pdf', 'package\packageController@package_pdf')->name('package_pdf');
 //partner
+=======
+Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
-	
 	/*********** HALAMAN UTAMA ************/  
 	
 	// STORAGE URL
@@ -57,6 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//booking form
 	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
 	Route::post('/booking/save', 'booking\bookingController@save')->name('save_book');
+
+
 	// PAYMENT USER
 	Route::get('/payment_page/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
 

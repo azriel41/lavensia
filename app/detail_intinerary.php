@@ -11,7 +11,9 @@ class detail_intinerary extends Model
 	const CREATED_AT = 'created_at';
 	const UPDATED_AT = 'updated_at';
 
-	protected $fillable = ['md_intinerary_id',
+	protected $fillable = [
+						   'md_id',
+						   'md_intinerary_id',
 						   'md_detail',
 						   'md_nota',
 						   'md_start',
@@ -28,6 +30,11 @@ class detail_intinerary extends Model
 
 	public function intinerary()
 	{
-        return $this->belongsTo('App\intinerary','mi_id');
+        return $this->belongsTo('App\intinerary','md_intinerary_id','mi_id');
+	}
+
+	public function book()
+	{
+        return $this->belongsTo('App\d_booking','db_intinerary_id','db_detail_intinerary_id');
 	}
 }

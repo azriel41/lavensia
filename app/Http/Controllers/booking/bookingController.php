@@ -31,6 +31,7 @@ class bookingController extends Controller
 	protected $d_party_name;
 	protected $d_additional_booking;
 	protected $additional;
+
 	public function __construct(detail_intinerary $detail_intinerary,
 								intinerary $intinerary,
 								d_booking $d_booking,
@@ -49,12 +50,17 @@ class bookingController extends Controller
     public function booking(Request $req)
     {
 	
-    	$intinerary  		= $this->intinerary->cari('mi_id',$req->id);
-    	$detail_intinerary  = $this->detail_intinerary->show_detail_one('md_intinerary_id',$req->id,'md_detail',$req->dt);
-    	$id 				= $req->id;
-    	$dt 				= $req->dt;
+    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
-        return view('booking.booking',compact('intinerary','detail_intinerary','id','dt'));
+    	$id 				= $req->id;
+
+    	if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking);
+        	return view('booking.booking',compact('detail_intinerary','id','cart','jumlah'));
+        }else{
+        	return view('booking.booking',compact('detail_intinerary','id'));
+        }
     }
     public function save(Request $req)
     {
@@ -67,7 +73,6 @@ class bookingController extends Controller
 						    'db_users'					=> Auth::user()->id,
 						    'db_name'					=> $req->bk_partyname,
 						    'db_intinerary_id'			=> $req->id,
-						   	'db_detail_intinerary_id'   => $req->dt,
 						    'db_pax'					=> $req->bk_totalpac,
 						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT),
@@ -76,11 +81,21 @@ class bookingController extends Controller
 						    'updated_by'				=> Auth::user()->id,
     					 );
 
+    		$kurang = $this->detail_intinerary->cari('md_id',$req->id);
+    		$hasil  = $kurang->md_seat_remain - $req->bk_totalpac;
+
+    		$updt = array(
+    						'md_seat_remain'			=> $hasil,
+    					 );
+    		$this->detail_intinerary->update($updt,'md_id',$req->id);
+
+
     		$this->d_booking->create($data);
+    		$gambar = array_values($req->file('image'));
 			for ($b=0; $b < count($req->r_name_fam); $b++) { 
 				$dt = $this->d_party_name->max_detail('dp_booking_id',$id,'dp_detail');
 				try{
-					$file = $req->file('image')[$b];
+					$file = $gambar[$b];
 				}catch(Exception $err){
 					$file = null;
 				}
@@ -92,6 +107,7 @@ class bookingController extends Controller
 	                Storage::put($filename,file_get_contents($file));
 	            }else{
                     return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+                    DB::rollBack();
 	            }
 
 				$data = array(	
@@ -123,7 +139,7 @@ class bookingController extends Controller
 	    			$this->d_additional_booking->create($data);
 				}
 			}
-			
+			DB::commit();
 			return Response::json(['status'=>1,'id'=>$id]);
     	});
     }

@@ -33,6 +33,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\jabatan','role_id');
     }
+
+    public function booking()
+    {
+        return $this->hasMany('App\d_booking','db_users');
+    }
 }
 
    

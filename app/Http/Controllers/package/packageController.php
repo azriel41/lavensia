@@ -26,7 +26,13 @@ class packageController extends Controller
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
     	$additional = m_additional_intinerary::where('intinerary_mi_id','=',$id)->get();
         
-        return view('package.package',compact('data','schedule','detail','additional'));
+        if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking);
+            return view('package.package',compact('data','schedule','detail','additional','cart','jumlah'));
+        }else{
+            return view('package.package',compact('data','schedule','detail','additional'));
+        }
     }
     public function package_pdf(Request $request)
     {
