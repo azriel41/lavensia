@@ -41,7 +41,6 @@ Auth::routes();
 Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
 Route::get('/package/package_pdf', 'package\packageController@package_pdf')->name('package_pdf');
 //partner
-=======
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 
