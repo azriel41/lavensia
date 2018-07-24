@@ -218,6 +218,9 @@
             .label_new{
                 color: rgba(189, 94, 91, 1) !important;
             }
+            .marron{
+                color: rgba(189, 94, 91, 1);
+            }
         </style>
     </head>
     
@@ -257,6 +260,14 @@
                                             <td>{{ $booking->db_pax }}</td>
                                         </tr>
                                         <tr>
+                                            <td align="right">Room Price :</td>
+                                            <td > Rp.  {{ number_format($booking->db_total_room, 2, ",", ".") }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">Additional Price :</td>
+                                            <td > Rp.  {{ number_format($booking->db_total_additional, 2, ",", ".") }}</td>
+                                        </tr>
+                                        <tr>
                                             <td align="right">Total Price :</td>
                                             <td style="color: red"> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
                                         </tr>
@@ -267,7 +278,7 @@
                         <div class="col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
-                                <div class="col-sm-12" style="margin-bottom: 100px"> 
+                                <div class="col-sm-12" style="margin-bottom: 50px"> 
                                     <h4 class="count_h2">FORM CHECKOUT</h4>
                                     <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                 </div>
@@ -277,7 +288,7 @@
                                             <img src="{{ asset('assets_frontend/img/dp.png') }}" style="width: 50px;height: 50px;display: inline;">
                                         </div>
                                         <div class="col-sm-12">
-                                            <input type="radio" name="one" id="dp" checked="checked">
+                                            <input type="radio" name="one" id="dp">
                                             <label for="dp " class="label_new" style="font-size: 12px">Down Payment</label>
                                         </div>
                                     </div>
@@ -291,10 +302,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-4">
-                                        Account Bank Name
-                                    </div>
+                                <div class="col-sm-12" style="margin-top: 50px">
+                                    <table>
+                                        <tr>
+                                            <td><h5 class="marron">Account Bank Number</h5></td>
+                                            <td><input type="text" class="form-control"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5 class="marron">Account Bank Name</h5></td>
+                                            <td><input type="text" class="form-control"></td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
