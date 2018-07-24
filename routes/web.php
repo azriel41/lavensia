@@ -28,7 +28,10 @@ Auth::routes();
 // Route::get('/test', 'HomeController@test')->name('test');
 
 //Halaman See more 
+//package 
 Route::get('/package/{id}/package', 'package\packageController@package')->name('package');
+Route::get('/package/package_pdf', 'package\packageController@package_pdf')->name('package_pdf');
+//partner
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
@@ -43,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');
 	Route::get('/profile/edit', 'HomeController@edit_profile')->name('edit_profile');
+	Route::post('/profile/save', 'HomeController@save_profile')->name('save_profile');
 
 	/******** END HALAMAN UTAMA ***********/
 	

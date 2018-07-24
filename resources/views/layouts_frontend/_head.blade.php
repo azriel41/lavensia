@@ -77,9 +77,9 @@ Fixed Navigation
                             </li>
 
                         @else
-                            <button class="btn btn-small btn-primary icon_login_logout" onclick="login()">Login</button>
+                            <button class="btn btn-small btn-nav icon_login_logout" onclick="login()">Login</button>
 
-                            <button class="btn btn-small btn-primary icon_login_logout" onclick="register()">Register</button>
+                            <button class="btn btn-small btn-nav icon_login_logout" onclick="register()">Register</button>
                         @endif
                 @endif
 

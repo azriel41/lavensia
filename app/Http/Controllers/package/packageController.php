@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use auth;
+use PDF;
 use App\detail_intinerary;
 use App\intinerary;
 use App\schedule;
 use App\m_additional_intinerary;
+
 
 class packageController extends Controller
 {
@@ -25,6 +27,13 @@ class packageController extends Controller
     	$additional = m_additional_intinerary::where('intinerary_mi_id','=',$id)->get();
         
         return view('package.package',compact('data','schedule','detail','additional'));
+    }
+    public function package_pdf(Request $request)
+    {
+        $data = schedule::where('ms_intinerary_id','2')->get();
+
+        $pdf = PDF::loadView('report.pdf.pdf_intinerary',$data);
+        return $pdf->stream('report.pdf');
     }
     
 }

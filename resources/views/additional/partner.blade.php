@@ -9,34 +9,15 @@
         @include('layouts_frontend._head')
        
         <style type="text/css">
-            .btn-primary {
-                color: white;
-                background-color: transparent;
-                border-color: #ffffff;
-            }
-            .btn-primary:hover {
-                color: black;
-                background-color: #f4c800;
-                border-color: #ffffff;
-            }
-            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-                color: #000;
-                background-color: #face03;
-                border-color: #ffffff;
-            }
-            .btn-book{
-                color: black;
-                background-color: #f9ce05;
-            }
-            .logo{
-                width: 100px;
-            }
-            .support{
-                margin-top: 10px;
-            }
+           .background-hitam{
+                background-color: #0000006e;
+                padding-top: 40px;
+                margin-bottom: -50px;
+           }
             .mb50{
                 margin-top: 30px;
                 background-color: white;
+                padding-bottom: 60px;
             }
             .package{
                 background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
@@ -48,93 +29,7 @@
                 background-repeat: no-repeat;
                 background-size: cover;
             }
-            .nav-tabs { 
-                border-bottom: 2px solid #DDD; 
-            }
-            .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-                border-width: 0; 
-            }
-            .nav-tabs > li > a {
-                border: none; 
-                color: #666; 
-            }
-            .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
-                border: none; 
-                color: #630247 !important; 
-                background: #f8cd04 !important; 
-            }
-            .nav-tabs > li > a::after {
-                content: ""; 
-                background: #dd0000; 
-                height: 2px; position: absolute; 
-                width: 100%; 
-                left: 0px; 
-                bottom: -1px; 
-                transition: all 250ms ease 0s; 
-                transform: scale(0); 
-            }
-            .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
-                transform: scale(1); 
-            }
-            .tab-nav > li > a::after {
-                background: #21527d none repeat scroll 0% 0%; 
-                color: #fff; 
-            }
-
-            .tab-pane {
-                padding: 5px 0; 
-                margin-left: 20px;
-            }
-            .tab-content {
-                padding:5px;
-                background-color:#f6f6f6;
-                min-height: 400px;
-            }
-            .kiri{
-                text-align:left;
-            }
-            /* MODAL */
-            .modal-backdrop {
-                z-index: 1040 !important;
-            }
-            .modal-dialog {
-                margin: auto;
-                z-index: 1100 !important;
-                width: 700px;
-            }
-            .modal-content {
-                border-radius: 0px; 
-            }
-            .modal {
-              text-align: center;
-            }
-
-            @media screen and (min-width: 768px) { 
-              .modal:before {
-                display: inline-block;
-                vertical-align: middle;
-                content: " ";
-                height: 100%;
-              }
-            }
-            .modal-dialog {
-              display: inline-block;
-              vertical-align: middle;
-            }
-            .center-al{
-                text-align: center;
-            }
-            /*btn orange*/
-            .btn-orange {
-                color: white;
-                background-color: #eb4d4b;
-                border-color: #ffffff;
-            }
-            .btn-orange:hover {
-                color: #534c4c;
-                background-color: #ff6b6b;
-                border-color: white;
-            }
+          
         </style>
     </head>
     
@@ -144,13 +39,52 @@
         Contact Us
         ==================================== -->        
         <section id="package" class="package">
+          <div class="background-hitam">
             <div class="container">
 
                 <div class="row mb50">
-
-
+                    <section id="team" class="team ">
+                        <div class="container">
+                            <div class="row">
+                    
+                                <div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
+                                    <h2>Meet Our Agent</h2>
+                                    <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                </div>
+                                
+                                {{-- <div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+                                </div> --}}
+                                <div style="margin-top: 40px">
+                                    
+                                </div>
+                                <!-- single member -->
+                                @foreach ($array as $element)
+                                    {{-- expr --}}
+                                @endforeach
+                                <figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                                    <div class="member-thumb">
+                                        <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}" alt="Team Member" class="img-responsive agent">
+                                        <figcaption class="overlay">
+                                            <h5>voluptatem quia voluptas </h5>
+                                            <p>sit aspernatur aut odit aut fugit,</p>
+                                            <ul class="social-links text-center">
+                                                <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                                <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                                <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                            </ul>
+                                        </figcaption>
+                                    </div>
+                                    <h4>John Filmr Doe</h4>
+                                    <span>Managing Director</span>
+                                </figure>
+                                <!-- end single member -->
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
+          </div>
         </section>
         
         <!--

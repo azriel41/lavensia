@@ -28,7 +28,8 @@
                         </div>
 
                     <div class="body">
-                        <form id="save_data" method="get" accept-charset="utf-8" >
+                        <form id="save_data" action="{{ route('save_profile') }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             {{-- company --}}
                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
                                     <h3 class="font-bold col-cyan"><i class="fa fa-home"></i> Company</h3>
@@ -53,7 +54,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control" value="{{ auth::user()->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +67,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control maskMoney" style="text-align: : right;"  placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" class="form-control numberonly" style="text-align: : right;"  value="{{ auth::user()->co_phone }}" placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +80,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control" placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control" value="{{ auth::user()->co_email }}" placeholder="Company Email">
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address"></textarea>
+                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address">{{ auth::user()->co_address }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -110,15 +111,27 @@
                                                 @if ( auth::user()->image == null )
                                                    src="{{ asset('/assets/images/NoImage.png') }}" 
                                                 @else 
-                                                   src="{{ asset('storage/app/user/ttl.png') }}"
-                                                @endif width="400px" height="300px" >
+                                                   src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
+                                                @endif width="400px" height="300px" name="image-drop">
                                             </div>
                                             <br>
                                             <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
                                                 <div class="file-select">
                                                     <div class="file-select-button fileName" >Image</div>
-                                                    <div class="file-select-name noFile" >Company Image</div> 
-                                                    <input type="file" class="chooseFile" name="image">
+                                                        <div class="file-select-name noFile">
+                                                            @if (auth::user()->image != null)
+                                                                {{ auth::user()->image }}
+                                                            @else
+                                                                Company Image
+                                                            @endif 
+                                                        </div> 
+                                                    <input type="file" class="chooseFile" name="image"  
+                                                        @if ( auth::user()->image == null )
+                                                           src="{{ asset('/assets/images/NoImage.png') }}" 
+                                                        @else 
+                                                           src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
+                                                        @endif
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +163,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control" placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control" value="{{ auth::user()->mg_name }}" placeholder="Manager Name">
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +176,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control maskMoney" style="text-align: : right;"  placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control numberonly" style="text-align: : right;"  value="{{ auth::user()->mg_phone }}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +189,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control" value="{{ auth::user()->mg_email }}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +219,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" placeholder="PIC Name">
+                                            <input type="text" name="name" id="name" class="form-control" value="{{ auth::user()->name }}" placeholder="PIC Name">
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +232,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control maskMoney" style="text-align: : right;"  placeholder="PIC Phone">
+                                            <input type="text" name="phone" id="phone" class="form-control numberonly" style="text-align: : right;"  value="{{ auth::user()->phone }}" placeholder="PIC Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +245,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control" placeholder="PIC Email">
+                                            <input type="text" name="email" id="email" class="form-control" value="{{ auth::user()->email }}" placeholder="PIC Email">
                                         </div>
                                     </div>
                                 </div>
@@ -245,7 +258,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="PIC Address"></textarea>
+                                            <textarea name="address" id="address" class="form-control" placeholder="PIC Address">{{ auth::user()->address }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +268,7 @@
 
                             <div class="row clearfix">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form-control-label">
-                                    <button type="button" class="btn bg-blue waves-effect" onclick="save()"><i class="fa fa-save"></i> Submit</button>
+                                    <button class="btn bg-blue waves-effect" onclick="save()" id="save"><i class="fa fa-save"></i> Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -299,7 +312,6 @@
         reader.onload = function(e){
             $('.image_drop').attr('src',e.target.result);
         };
-        // console.log(file[0].files[0]);
         reader.readAsDataURL(file.files[0]);
     }
 
@@ -313,7 +325,7 @@
 
         $.ajax({
             data : $('#save_data').serialize(),
-            url  : ('{{ route('master_additional_save') }}'),
+            url  : ('{{ route('save_profile') }}'),
             type : 'POST',
             success: function (data) {
                 if (data.status == 'sukses') {
@@ -322,7 +334,7 @@
                         title: 'Success!',
                         message: 'Data Saved!',
                     });
-                    window.location=('{{ route('master_additional') }}');
+                    window.location=('{{ route('profile') }}')
                 }else{
                     iziToast.error({
                         icon: 'fas fa-times-circle',

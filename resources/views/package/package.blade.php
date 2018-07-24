@@ -181,7 +181,7 @@
                     </div>
 
                     <div class="container">
-                        <button class="btn btn-small btn-orange" onclick="pdf()" ><b><i class="fa fa-cloud-download"></i> Download</b></button>
+                        <button class="btn btn-small btn-orange download" data-id="{{ $data[0]->mi_id }}" onclick="pdf(this)" ><b><i class="fa fa-cloud-download"></i> Download</b></button>
                     </div>
 
                     <!-- Tabs--> 
@@ -315,7 +315,49 @@
         var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
         window.location=('{{ url('booking/booking') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id+'&dt='+dt);
     }
-    // $(document).ready( function () {
-    //     $('.datatable').DataTable();
-    // });
+    function pdf(argument) {
+        var parent = $(argument).data('id');
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            data : {id:parent},
+            url  : ('{{ route('package_pdf') }}'),
+            type : 'get',
+            success: function (data) {
+                
+
+                if (data.status == 'sukses') {
+                    iziToast.success({
+                        icon: 'fa fa-user',
+                        title: 'Success!',
+                        message: 'Data Openes!',
+                    });
+
+                }else{
+                    iziToast.error({
+                        icon: 'fas fa-times-circle',
+                        title: 'Error!',
+                        message: 'Something Wrong,Call Developer!',
+                    });
+                }
+            },
+            complete: function(data){
+                  window.location.href = this.url;
+
+            },
+            error:function(){
+                iziToast.error({
+                    icon: 'fas fa-times-circle',
+                    title: 'Error!',
+                    message: 'Something Wrong,Call Developer',
+                });
+            }
+        })
+    
+    }
 </script>

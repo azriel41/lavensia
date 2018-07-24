@@ -456,7 +456,7 @@ top: -8px;
 ==========================================*/
 
 .member-thumb {
-  width: 273px;
+  width: 273px; 
   position: relative;
 }
 
@@ -472,7 +472,9 @@ top: -8px;
 	padding: 20px;
 	line-height: 24px;
 }
-
+.team-member{
+  color:red;
+}
 .team-member h4 {
   color: #062033;
   font-size: 18px;
@@ -845,4 +847,7 @@ label.error {
   */
   .dropdown-menu > li > a{
     padding: 12px !important;
+  }
+  .color-maroon{
+    color: #fe3a85;
   }

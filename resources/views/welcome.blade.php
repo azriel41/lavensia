@@ -37,7 +37,7 @@
                     <div class="item active" style="background-image: url(assets_frontend/img/image-gallery/12.jpg); height: 100%">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">CREATIVE</span> Travel Agent.</h3>
+                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
                             <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a professionals Travel Agent</p>
                             <ul class="social-links text-center">
                                 <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
@@ -55,7 +55,7 @@
                     <div class="item" style="background-image: url(assets_frontend/img/banner.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">CREATIVE</span> Travel Agent.</h3>
+                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
                             <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
                             
                             <ul class="social-links text-center">
