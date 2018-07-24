@@ -215,6 +215,9 @@
             .calc{
                 z-index: 99999;
             }
+            .label_new{
+                color: rgba(189, 94, 91, 1) !important;
+            }
         </style>
     </head>
     
@@ -237,7 +240,51 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-
+                        <div class="col-sm-12">
+                          <h3 class="count_h2"><b>{{ $booking->detail_itin->intinerary->mi_name }}</b></h3>  
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom: 50px">
+                            <div class="col-sm-12">
+                                <img src="{{ asset('storage/app')}}/{{ $booking->detail_itin->intinerary->mi_image  }}" style="width: 50%;height: 25%" class="output" >
+                            </div>
+                            <div class="col-sm-12" style="color: grey;margin-top: 20px">
+                                Total Price
+                            </div>
+                        </div>
+                        <div class="col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="col-sm-12" style="margin-bottom: 100px"> 
+                                    <h4 class="count_h2">FORM CHECKOUT</h4>
+                                    <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                </div>
+                                <div class="col-sm-12 current_items">
+                                    <div class="col-sm-6" >
+                                        <div class="col-sm-12" style="margin-bottom: 20px">
+                                            <img src="{{ asset('assets_frontend/img/dp.png') }}" style="width: 50px;height: 50px;display: inline;">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <input type="radio" name="one" id="dp" checked="checked">
+                                            <label for="dp " class="label_new" style="font-size: 12px">Down Payment</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="col-sm-12" style="margin-bottom: 20px">
+                                            <img width="50" src="{{ asset('assets_frontend/img/money_bag.png') }}" style="width: 50px;height: 50px;display: inline;">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <input type="radio" name="one" id="fp">
+                                            <label for="fp" class="label_new" style="font-size: 12px">Full Payment</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        Account Bank Name
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

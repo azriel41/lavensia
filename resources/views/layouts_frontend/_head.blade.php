@@ -180,6 +180,9 @@ End Fixed Navigation
 <!-- Waves Effect Css -->
 <link href="{{ asset ('assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
+
+<link href="{{ asset ('assets_frontend/radio/css/style.css') }}" rel="stylesheet" />
+
 {{-- Bootstrap-select --}}
 <link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
 <!-- Izi toast-->
@@ -219,11 +222,11 @@ End Fixed Navigation
     padding: 10px;
 }
 .dis-table{
-    display: table;;
+    display: table;
 }
 
 .dis-cell{
-    display: table;;
+    display: table;
 }
 
 .v-align {

@@ -426,51 +426,7 @@
                                   </div>
                                 </fieldset>
                             </div>
-                              <!-- Payment-->
-                            {{-- <fieldset hidden="" class="scheduler-border col-sm-6">
-                              <legend class="scheduler-border">Payment</legend>
-                                  <div class="contact-form col1" >
-                                    <div style="min-height: 100px">
-                                        <div class="table-responsive">
-                                            <table width="100%" style="min-height: 100px" class="">
-                                                <thead>
-                                                    <tr>
-                                                        <th width="25%">Down Payment</th>
-                                                        <th width="25%">
-                                                            <label class="radio-inline">
-                                                              <input type="radio" name="optradio">Bayar Dp
-                                                            </label>
-                                                            
-                                                        </th>
-                                                        <th >Full Payment</th>
-                                                        <th>
-                                                            <label class="radio-inline">
-                                                              <input type="radio" name="optradio">Bayar Fp
-                                                            </label>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody align="left">
-                                                    <tr height="40px">
-                                                        <td colspan="2" valign="bottom">
-                                                            <span style="color:red;background-color:#fdff6e;padding: 5px 5px 5px 5px"><b>*Dp Jatuh Tempo 21 Hari</b></span>
-                                                        </td>
-                                                        <td>
-                                                            <span style="color:red;background-color:#fdff6e;padding: 5px 5px 5px 5px"><b>*Harap Telepon Administrasi Untuk Confirm</b></span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span style="color:red;background-color:#fdff6e;padding: 5px 5px 5px 5px"><b>*Batas Pembayaran Dilakukan 1x24 jam</b></span>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                  </div>
-                            </fieldset> --}}
+                            
                             <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                             </div>

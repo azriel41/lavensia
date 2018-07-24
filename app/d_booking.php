@@ -20,6 +20,8 @@ class d_booking extends Model
 						   'db_remark',
 						   'db_total_additional',
 						   'db_total_room',
+						   'db_total',
+						   'db_total_remain',
 						   'created_by',
 						   'updated_by',
 						];

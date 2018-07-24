@@ -68,15 +68,22 @@ class bookingController extends Controller
 
     		$id = $this->d_booking->max('db_id');
     		// dd($req->total_room_input);
+    		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
+    		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
+    		$db_total 		 	 = $db_total_additional+$db_total_room;
+
+
     		$data = array(
     						'db_id'				    	=> $id,
 						    'db_users'					=> Auth::user()->id,
 						    'db_name'					=> $req->bk_partyname,
 						    'db_intinerary_id'			=> $req->id,
 						    'db_pax'					=> $req->bk_totalpac,
-						    'db_remark'					=> $req->bk_remark,
-						    'db_total_additional'		=> filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT),
-						    'db_total_room'				=> filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT),
+						    'db_remark'					=> $req->bk_remark,)
+						    'db_total_additional'		=> $db_total_additional,
+						    'db_total_room'				=> $db_total_room,
+						    'db_total'					=> $db_total,
+						    'db_total_remain'			=> $db_total,
 						    'created_by'				=> Auth::user()->id,
 						    'updated_by'				=> Auth::user()->id,
     					 );
