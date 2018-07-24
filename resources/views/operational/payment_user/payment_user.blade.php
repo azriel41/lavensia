@@ -235,13 +235,6 @@
                 <div class="row mb50">
 
                  @include('package.modal_book')
-
-                    <!-- Header--> 
-                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">Check Out</h2>
-                        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-                    </div>
-
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <div class="col-sm-12">
                           <h3 class="count_h2"><b>{{ $booking->detail_itin->intinerary->mi_name }}</b></h3>  
@@ -282,38 +275,80 @@
                                     <h4 class="count_h2">FORM CHECKOUT</h4>
                                     <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                 </div>
-                                <div class="col-sm-12 current_items">
-                                    <div class="col-sm-6" >
-                                        <div class="col-sm-12" style="margin-bottom: 20px">
-                                            <img src="{{ asset('assets_frontend/img/dp.png') }}" style="width: 50px;height: 50px;display: inline;">
+                                <form class="form_all" action="{{ url('/payment_page/save_first_payment') }}" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="col-sm-12">
+
+                                        <table class="table">
+                                            <tr>
+                                                <td><h5 class="marron">Account Bank Number</h5></td>
+                                                <td align="right">
+                                                    <input type="number" class="form-control bank_number" name="bank_number">
+                                                    <input type="hidden" class="form-control" name="id" value="{{ $booking->db_id }}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5 class="marron">Account Bank Name</h5></td>
+                                                <td align="right"><input type="text" class="form-control bank_name" name="bank_name"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5 class="marron">Nominal Transfer</h5></td>
+                                                <td align="right"><input type="text" class="form-control nominal" name="nominal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5 class="marron">Proof of Payment</h5>
+                                                </td>
+                                                <td style="width: 50%">
+                                                    <div class="file-upload" style="width: 100%">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button" id="fileName">Image</div>
+                                                            <div class="file-select-name" id="noFile">Choose Image...</div> 
+                                                            <input type="file" name="image" onchange="loadFile(event)" id="chooseFile">
+                                                        </div>
+                                                    </div>
+                                                    <div class="preview_td">
+                                                        <img style="width: 100%;height: 200px;border:1px solid pink" id="output" >
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-12 current_items">
+                                        <div class="col-sm-6" >
+                                            <div class="col-sm-12" style="margin-bottom: 20px">
+                                                <img src="{{ asset('assets_frontend/img/dp.png') }}" style="width: 50px;height: 50px;display: inline;">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <input type="radio" name="payment" id="dp" value="dp">
+                                                <label for="dp " class="label_new" style="font-size: 12px">Down Payment</label>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="one" id="dp">
-                                            <label for="dp " class="label_new" style="font-size: 12px">Down Payment</label>
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-12" style="margin-bottom: 20px">
+                                                <img width="50" src="{{ asset('assets_frontend/img/money_bag.png') }}" style="width: 50px;height: 50px;display: inline;">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <input type="radio" name="payment" id="fp" value="fp">
+                                                <label for="fp" class="label_new" style="font-size: 12px">Full Payment</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="col-sm-12" style="margin-bottom: 20px">
-                                            <img width="50" src="{{ asset('assets_frontend/img/money_bag.png') }}" style="width: 50px;height: 50px;display: inline;">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="one" id="fp">
-                                            <label for="fp" class="label_new" style="font-size: 12px">Full Payment</label>
-                                        </div>
+                                    <div class="col-sm-12" style="margin-top: 20px;text-align: left; font-size: 10px">
+                                        <h5 class="marron">ATTENTION :</h5>
+                                       <ol style="list-style-type: decimal;color: grey">
+                                           <li>Harap Melakukan Pembayaran Dalam 1 x 24 jam</li>
+                                           <li>Pastikan Nominal Sesuai Dengan Bukti Transfer</li>
+                                           <li>Minimal Down Payment 50% Dari Total Harga</li>
+                                           <li>Kelengkapan Dan Kevalid-an Data Mempercepat Proses Verifikasi</li>
+                                       </ol>
                                     </div>
-                                </div>
-                                <div class="col-sm-12" style="margin-top: 50px">
-                                    <table>
-                                        <tr>
-                                            <td><h5 class="marron">Account Bank Number</h5></td>
-                                            <td><input type="text" class="form-control"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><h5 class="marron">Account Bank Name</h5></td>
-                                            <td><input type="text" class="form-control"></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-success save" style="">
+                                            <i class="fa fa-money"> Pay Out</i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -328,7 +363,117 @@
         @include('layouts_frontend._scripts')
     </body>
 </html>
+<script src="{{ asset ('assets/plugins/mask-money/jquery.maskMoney.min.js')}}"></script>
 <script type="text/javascript">
-  
+$(".nominal").maskMoney({
+    precision:0,
+    thousands:'.',
+    allowZero:true,
+});
 
+$('#chooseFile').bind('change', function () {
+    var filename = $("#chooseFile").val();
+    var fsize = $('#chooseFile')[0].files[0].size;
+    if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+    {
+      return false;
+    }
+    if (/^\s*$/.test(filename)) {
+        $(".file-upload").removeClass('active');
+        $("#noFile").text("No file chosen..."); 
+    }
+    else {
+        $(".file-upload").addClass('active');
+        $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+    }
+});
+
+var loadFile = function(event) {
+    var fsize = $('#chooseFile')[0].files[0].size;
+    if(fsize>2048576) //do something if file size more than 1 mb (1048576)
+    {
+      iziToast.warning({
+        icon: 'fa fa-times',
+        position:'topRight',
+        message: 'File Is To Big!',
+      });
+      return false;
+    }
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('output');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+};
+
+$('.save').click(function(){
+    var total = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+    var nominal = $('.nominal').val().replace(/[^0-9\-]+/g,"");
+
+    if ($('.bank_number').val() == '') {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Nomor Akun Bank Harus Diisi!',
+        });
+        return false;
+    }
+
+    if ($('.bank_name').val() == '') {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Nama Akun Bank Harus Diisi!',
+        });
+        return false;
+    }
+
+    if (nominal == '') {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Nominal Harus Diisi!',
+        });
+        return false;
+    }
+   
+
+    if (nominal < (total/2)) {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Minimal Down Payment Adalah 50 %!',
+        });
+        return false;
+    }
+    console.log(nominal);
+    console.log(total);
+    if (nominal*1 > total*1) {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Nominal Melebihi Total Harga',
+        });
+        return false;
+    }
+
+    if ($('#chooseFile').val() == '') {
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Bukti Bayar Harus Disertakan!',
+        });
+        return false;
+    }
+
+    $('.form_all').submit();
+
+})
 </script>
