@@ -182,7 +182,7 @@
                     <figure class="mix work-item {{ $intinerary[$index]['category']['mc_name'] }}">
                         <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="">
                         <figcaption class="overlay">
-                            <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-toggle="modal" data-target="#myModal"><b><i class="fa fa-search"></i></b></button>
+                            <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="intinerary(this)" ><b><i class="fa fa-search"></i></b></button>
                             <h4>{{ $intinerary[$index]['mi_name'] }}</h4>
                             <p></p>
                             <br>
@@ -191,7 +191,9 @@
                     </figure>                
                 @endforeach   
             </div>
-            
+            <div class="drop_here">
+                
+            </div>
             
         
 
@@ -354,5 +356,29 @@
     function more(argument) {
         var parent = $(argument).data('id');
         window.location = ('/lavensia/package/package/'+parent);
+    }
+
+    function intinerary(argument) {
+        var parent = $(argument).data('id');
+        $.ajax({
+            type: "get",
+            url:'{{ route('intinerary_modal_detail') }}',
+            data: { id:parent },
+            success:function(data){
+            
+            $('.drop_here').html(data);
+            $('#modal').show();
+
+
+          },error:function(){
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Terjadi Kesalahan!',
+            });
+          }
+        });
+
     }
 </script>
