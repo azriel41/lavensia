@@ -36,7 +36,7 @@ Route::get('/', function () {
 	// return$data = Auth::User()->booking;
 })->name('dashboard');
 
-Route::get('/intinerary/intinerary_modal_detail', 'HomeController@intinerary_modal_detail')->name('intinerary_modal_detail');
+Route::get('/package/package_modal_detail', 'package\packageController@package_modal_detail')->name('package_modal_detail');
 
 
 Auth::routes();

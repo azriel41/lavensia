@@ -8,7 +8,6 @@
         <!-- meta charec set -->
        
         @include('layouts_frontend._head')
-        @include('additional.modal_intinerary')
         <style type="text/css">
            
             
@@ -362,12 +361,12 @@
         var parent = $(argument).data('id');
         $.ajax({
             type: "get",
-            url:'{{ route('intinerary_modal_detail') }}',
+            url:'{{ route('package_modal_detail') }}',
             data: { id:parent },
             success:function(data){
             
             $('.drop_here').html(data);
-            $('#modal').show();
+            $('#myModal').modal('show');
 
 
           },error:function(){
