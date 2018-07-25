@@ -79,7 +79,7 @@ class bookingController extends Controller
 						    'db_name'					=> $req->bk_partyname,
 						    'db_intinerary_id'			=> $req->id,
 						    'db_pax'					=> $req->bk_totalpac,
-						    'db_remark'					=> $req->bk_remark,)
+						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> $db_total_additional,
 						    'db_total_room'				=> $db_total_room,
 						    'db_total'					=> $db_total,

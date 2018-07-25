@@ -71,6 +71,6 @@ class HomeController extends Controller
     }
     public function intinerary_modal_detail(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
     }
 }

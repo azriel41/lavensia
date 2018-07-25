@@ -16,6 +16,8 @@ Route::get('/', function () {
 
 	$intinerary = App\intinerary::all();
 
+	$det = [];
+	$cat = [];
 	foreach ($intinerary as $index => $val) {
 		$det = $val->detail_intinerarys;
 		$cat = $val->category;
