@@ -6,7 +6,7 @@
 <!-- Single Page Nav -->
 <script src="{{ asset ('assets_frontend/js/jquery.singlePageNav.min.js') }}"></script>
 <!-- Twitter Bootstrap -->
-<script src="{{ asset ('assets_frontend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset ('assets_frontend/bootstrap-4.0.0/dist/js/bootstrap.bundle.min.js') }}"></script>
 <!-- jquery.fancybox.pack -->
 <script src="{{ asset ('assets_frontend/js/jquery.fancybox.pack.js') }}"></script>
 <!-- jquery.mixitup.min -->
