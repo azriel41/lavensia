@@ -7,7 +7,7 @@ body {
     background-color: #fff;
     font-family: 'Open Sans', sans-serif;
     line-height: 21px;
-	font-size: 13px;
+	   font-size: 13px;
     color: #6a737b;
 }
 
@@ -80,8 +80,7 @@ body > section,
 
 .sec-title h2 {
   color:  #a60036e6;
-  font-size: 28px;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -850,4 +849,41 @@ label.error {
   }
   .color-maroon{
     color: #fe3a85;
+  }
+  /*Highlight*/
+  .Hightlight{
+    font-size: 17px;
+  }
+  /*margin*/
+  .margin_top_10px{
+    margin-top: 10px;
+  }
+  .margin_top_2px{
+    margin-top: 20px;
+  }
+  .margin_top_30px{
+    margin-top: 30px;
+  }
+  .margin_top_-40px{
+    margin-top: -40px;
+  }
+  /*Day tour*/
+  .day-tour{
+    font-size: 20px;
+    color: #606060;
+  }
+  /*initnerary detail tanggal dan deskripsi*/
+  .title-itin{
+    color: #505050 !important;
+    font-weight: 100 !important;
+    line-height: 24px !important;
+    font-size: 19px !important;
+    text-align: left;
+  }
+  .desc-itin{
+    color: #656565 !important;
+    font-weight: 100 !important;
+    line-height: 24px !important;
+    font-size: 15px !important;
+    text-align: left;
   }
