@@ -35,11 +35,12 @@
                 margin-top: 10px;
             }
             .mb50{
-                margin-top: 30px;
+                /*margin-top: 30px;*/
                 background-color: white;
             }
+
             .package{
-                background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
+                background-color: #f5f5f5;
                 /* Full height */
                 height: 100%; 
 
@@ -87,7 +88,7 @@
             }
             .tab-content {
                 padding:5px;
-                background-color:#f6f6f6;
+                background-color:white;
                 min-height: 400px;
             }
             .kiri{
@@ -137,7 +138,10 @@
             }
             .img-responsive{
                 margin: auto !important;
+                border: 1px solid #bcbcbc;
+                padding: 5px;
             }
+
         </style>
     </head>
     
@@ -148,12 +152,8 @@
         ==================================== -->        
         <section id="package" class="package">
             <div class="container">
-
-                <div class="row mb50">
-
-                 @include('package.modal_book')
-
-                    <!-- Header--> 
+                <div class="row mb50 margin_top_30px">
+                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
                         <h2 class="count_h2">{{ $data[0]->mi_name }}</h2>
                         <h4 class="support">By : {{ $data[0]->mi_by }}</h4>
@@ -161,29 +161,31 @@
                     </div>
 
                     <!-- Image--> 
-                    <div class="sec-sub-title text-center wow fadeInUp  animated " data-wow-duration="1000ms">
-                        <div class="container">
-                            <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
+                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-4" data-wow-duration="1000ms">
+                                <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
+                        </div>
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
+                            <table width="100%"> 
+                                <tr>
+                                    {{-- <td align="left" valign="top"><h4>HIGHLIGHT<h4></td> --}}
+                                    <td align="left" class="Hightlight">{{ $data[0]->mi_highlight }}</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    {{-- <td align="left"></td> --}}
+                                    <td align="left"><button class="btn btn-small btn-orange download" data-id="{{ $data[0]->mi_id }}" onclick="pdf(this)" ><b><i class="fa fa-cloud-download"></i> PDF</b></button></td>
+                                </tr>
+                            </table>
+
+
                         </div>
                     </div>
-
-                    <!-- Hightlight--> 
-                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                      <div class="container">
-                        <table width="100%"> 
-                            <tr>
-                                <td align="left" valign="top"><h4>HIGHLIGHT<h4></td>
-                                <td valign="top">:</td>
-                                <td align="left" style="padding-left: 30px;"><h4>{{ $data[0]->mi_highlight }}</h4></td>
-                            </tr>
-                        </table>
-                      </div>
-                    </div>
-
-                    <div class="container">
-                        <button class="btn btn-small btn-orange download" data-id="{{ $data[0]->mi_id }}" onclick="pdf(this)" ><b><i class="fa fa-cloud-download"></i> Download</b></button>
-                    </div>
-
+                </div>
+                <div class="row mb50 margin_top_-40px">
+                 {{-- @include('package.modal_book') --}}
                     <!-- Tabs--> 
                     <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
@@ -195,20 +197,57 @@
 
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-                                <table width="100%" class="kiri">
-                                    <br>
-                                    @foreach ($schedule as $sch)
-                                        <tr>
-                                        <th><b>DAY {{ $sch->ms_detail }} - {{ $sch->ms_caption }}</b></th>
-                                        </tr>
-                                        <tr><td>&nbsp;</td></tr>
-                                        <tr>
-                                            <td>{{ $sch->ms_description }}</td>
-                                        </tr>
-                                        <tr><td>&nbsp;</td></tr>
-                                        <tr><td>&nbsp;</td></tr>
-                                    @endforeach
-                                </table>
+                               <div class="container">
+                                    <div class="col-md-12">
+                                        @foreach ($schedule as $index => $sch)
+                                          <div style="margin-top: 100px">
+                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #e74c3c;">
+                                                <span>Day</span><br>
+                                                <span class="day-tour">{{ $index+1 }}</span>
+                                            </div>
+
+                                            <div class="col-md-11 col-md-11 col-md-11">
+                                                <p class="title-itin">{{ $sch->ms_caption }}</p>
+                                                <p class="desc-itin">{{ $sch->ms_description }}</p>
+                                            </div>
+                                          </div>
+                                          <br>
+                                        @endforeach
+                                    </div>
+                            </div>
+                            
+                               {{--  <div class="container">
+                                    <div class="row row-striped">
+                                    <div class="col-2 text-right">
+                                        <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
+                                        <h2>OCT</h2>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
+                                            <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
+                                            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+                                        </ul>
+                                        <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                                <div class="row row-striped">
+                                    <div class="col-2 text-right">
+                                        <h1 class="display-4"><span class="badge badge-secondary">27</span></h1>
+                                        <h2>OCT</h2>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="text-uppercase"><strong>Operations Meeting</strong></h3>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Friday</li>
+                                            <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 2:30 PM - 4:00 PM</li>
+                                            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Room 4019</li>
+                                        </ul>
+                                        <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                            </div> --}}
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
@@ -218,7 +257,6 @@
                                         <th><b>Price Table</b></th>
                                     </tr>
                                 </table>
-                                <i class="devider"></i>
                                 <div style="margin-top: 20px"></div>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped" align="center">
@@ -262,7 +300,6 @@
                                         <th><b>Additional Table</b></th>
                                     </tr>
                                 </table>
-                                <i class="devider"></i>
                                 <div style="margin-top: 20px"></div>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped" align="center">
