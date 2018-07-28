@@ -28,7 +28,7 @@
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 </ol>
                 <!-- End Indicators bullet -->     
-                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:400px;margin-top: 34%;margin-left: 5%;">
+                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:300px;margin-top: 34%;margin-left: 5%;">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     
