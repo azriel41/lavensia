@@ -307,7 +307,7 @@
                                 <h3 class="count_h2"><b>ROOM TOUR</b></h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
-                                    <div class="col-sm-12 all_room" style="border:1px solid hotpink">
+                                    <div class="col-sm-12 all_room" >
                                         <div class="col-sm-12 header_room" style="margin-bottom: 20px;margin-top: 20px;">
                                             <div class="col-sm-8 row clearfix" align="left">
                                                 <div class="col-sm-3">
@@ -340,13 +340,13 @@
                                         <div class="col-sm-12 detail_room_append">
                                             <div class="detail_room col-sm-12">
                                                 <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
-                                                    <div>
-                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                    <div >
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_1" >
                                                     </div>
-                                                    <div class="file-upload" style="width: 80%;">
+                                                    <div class="file-upload upl_1" style="width: 80%;">
                                                         <div class="file-select">
                                                             <div class="file-select-button fileName" >Image</div>
-                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
                                                             <input type="file" class="chooseFile" name="image[]">
                                                         </div>
                                                     </div>
@@ -410,17 +410,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                             <div class="detail_room col-sm-12 disabled">
                                                 <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                     <div>
-                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
                                                     </div>
-                                                    <div class="file-upload" style="width: 80%;">
+                                                    <div class="file-upload upl_2" style="width: 80%;">
                                                         <div class="file-select">
                                                             <div class="file-select-button fileName" >Image</div>
-                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
                                                             <input type="file" class="chooseFile" name="image[]">
                                                         </div>
                                                     </div>
@@ -482,15 +481,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="detail_room col-sm-12 disabled">
+                                            <div class="detail_room col-sm-12 disabled room_3">
                                                 <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                     <div>
-                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
                                                     </div>
-                                                    <div class="file-upload" style="width: 80%;">
+                                                    <div class="file-upload upl_3" style="width: 80%;">
                                                         <div class="file-select">
                                                             <div class="file-select-button fileName" >Image</div>
-                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
                                                             <input type="file" class="chooseFile" name="image[]">
                                                         </div>
                                                     </div>
@@ -553,7 +552,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-sm-12" style="text-align: center !important;">
+                                            <div class="text-center  btn-group">
+                                                <a type="button" class="btn btn-info add"><i class="fa fa-plus">ADD ROOM</i></a>
+                                                <a type="button" class="btn btn-danger del"><i class="fa fa-minus"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </fieldset>
@@ -747,11 +751,26 @@
 
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
-        var dua = $(this).parents('.all_room').find('.dua');
-        var tiga = $(this).parents('.all_room').find('.tiga');
-        var name_2 = $(this).parents('.all_room').find('.name_2');
-        var name_3 = $(this).parents('.all_room').find('.name_3');
-        total()
+        var par = $(this).parents('.all_room');
+        if (val == 1) {
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.disabled input').val('');
+            $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(par).find('.disabled .noFile').text('Passport Image');
+            $(par).find('.disabled .file-upload').removeClass('active');
+        }else if (val == 2) {
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.detail_room').eq(1).removeClass('disabled');
+            $(par).find('.room_3 input').val('');
+            $(par).find('.disabled .tag_image_3').text('Passport Image');
+            $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(par).find('.disabled .upl_3').removeClass('active');
+        }else if (val == 3) {
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.detail_room').eq(1).removeClass('disabled');
+            $(par).find('.detail_room').eq(2).removeClass('disabled');
+        }
+        total();
     })
     function baby_total() {
         var temp = 0;
@@ -793,12 +812,16 @@
 
     $(document).on('click','.add_infant',function(){
         var parent = $(this).parents('.all_room');
+        console.log(parent);
         var infant = $(this).parents('.all_room').find('.infant_tot');
+        var room_append = $(this).parents('.all_room').find('.detail_room_append');
+        console.log(infant);
         var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
         if (infant.val() < 2) {
             var room = $(parent).find('.detail_room').eq(0);
-            $(room).clone(true, true).fadeIn().appendTo(".detail_room_append");
+            $(room).clone(true, true).fadeIn().appendTo(room_append);
             $(parent).find('.detail_room').last().addClass('baby');
+            $(parent).find('.baby').last().removeClass('detail_room');
             $(parent).find('.remove_append').last().html(remove);
 
             var temp = 0;
@@ -821,7 +844,7 @@
         var parent = $(this).parents('.all_room');
         var infant = $(this).parents('.all_room').find('.infant_tot');
 
-        var dt = $(this).parents('.detail_room');
+        var dt = $(this).parents('.baby');
         $(dt).remove();
         var temp = 0;
         $(parent).find('.baby').each(function(){
@@ -833,11 +856,11 @@
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
-        var limit = 1;
+        var limit = 0;
         $('.all_room').each(function(){
             limit +=1;
         })
-        if (limit == 15) {
+        if (limit == 10) {
             iziToast.warning({
                 icon: 'fa fa-times',
                 position:'topRight',
@@ -847,36 +870,17 @@
         }
         $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
 
-        var satu = $('.all_room').last().find('.satu');
-        var dua = $('.all_room').last().find('.dua');
-        var tiga = $('.all_room').last().find('.tiga');
-        var name_1 = $('.all_room').last().find('.name_1');
-        var name_2 = $('.all_room').last().find('.name_2');
-        var name_3 = $('.all_room').last().find('.name_3');
-        var name_fam = $('.all_room').last().find('.name_fam');
+        var last = $('.all_room').last();
         var name = $('.all_room').last().find('.name');
 
-        $(satu).find('.chooseFile').val('');
-        $(satu).find('.noFile').text('Passport Image');
-        $(satu).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(satu).find('.file-upload').removeClass('active');
-        $(dua).find('.chooseFile').val('');
-        $(dua).find('.noFile').text('Passport Image');
-        $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(dua).find('.file-upload').removeClass('active');
-        $(dua).addClass('pointer_dis');
-        $(tiga).find('.chooseFile').val('');
-        $(tiga).find('.noFile').text('Passport Image');
-        $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(tiga).find('.file-upload').removeClass('active');
-        $(tiga).addClass('pointer_dis');
-        $(name_2).addClass('readonly');
-        $(name_3).addClass('readonly');
-        $(name_1).val('');
-        $(name_2).val('');
-        $(name_3).val('');
-        $(name_fam).val('');
+        $(last).find('input').val('')
+        $(last).find('.detail_room input').val('');
+        $(last).find('.detail_room .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        $(last).find('.detail_room .noFile').text('Passport Image');
+        $(last).find('.baby').remove();
         $(name).removeClass('errors');
+
+        total();
     })
 
     $(document).on('click','.del',function(){
