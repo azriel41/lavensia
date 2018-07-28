@@ -22,10 +22,33 @@
      
 </style>
 
+<header id="navigation" class="navbar-fixed-top navbar">
+<nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-left">
+    <a href="/" class="navbar-brand d-flex w-50 mr-auto">Navbar 3</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+        
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Right</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Right</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Right</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</header>
+
 <!-- 
 Fixed Navigation
 ==================================== -->
-<header id="navigation" class="navbar-fixed-top navbar">
+{{-- <header id="navigation" class="navbar-fixed-top navbar">
     <div class="container">
         <div class="navbar-header">
             <!-- responsive nav button -->
@@ -45,6 +68,7 @@ Fixed Navigation
         </div>
 
         <!-- main nav -->
+
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="{{ url('/') }}">Home</a></li>
@@ -139,7 +163,7 @@ Fixed Navigation
         <!-- /main nav -->
         
     </div>
-</header>
+</header> --}}
 <!--
 End Fixed Navigation
 ==================================== -->
