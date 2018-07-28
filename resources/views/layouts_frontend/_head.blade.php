@@ -237,6 +237,9 @@ End Fixed Navigation
     text-align: center;
     vertical-align: middle;
 }
+.left{
+    text-align: left;
+}
 </style>
 
 <script type="text/javascript">

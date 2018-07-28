@@ -258,67 +258,29 @@
                             </fieldset>
 
                               <!-- Guest-->
-                            <fieldset class="scheduler-border col-sm-6">
-                              <legend class="scheduler-border">Guest</legend>
-                                  <div class="contact-form col1" >
-                                    <div class="input-group margin-top-20px">
-                                        <div>
-                                            <input type="text" name="bk_partyname" id="bk_partyname" placeholder="Party Name" class="form-control">
-                                         
-                                            <input type="number" name="bk_totalpac" id="bk_totalpac" placeholder="Total Pax" class="form-control">
-                                        </div>
+                            <fieldset class="scheduler-border col-sm-6 left">
+                                <legend class="scheduler-border">Guest</legend>
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class=""><b>Party Name</b></h5>
                                     </div>
-                                  </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Party Name" name="party_name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class=""><b>Telp</b></h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Telp" name="party_telephone">
+                                    </div>
+                                </div>
                             </fieldset>
+                            <!-- Room Type 1-->
 
-                              <!-- Room Type 1-->
-                            <div id="accordion">
-                              <div class="card">
-                                <div class="card-header" id="headingOne">
-                                  <h5 class="mb-0">
-                                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                      Collapsible Group Item #1
-                                    </button>
-                                  </h5>
-                                </div>
-
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                  <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                  <h5 class="mb-0">
-                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                      Collapsible Group Item #2
-                                    </button>
-                                  </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                  <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card">
-                                <div class="card" id="headingThree">
-                                  <h5 class="mb-0">
-                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                      Collapsible Group Item #3
-                                    </button>
-                                  </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                  <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <!-- Additional-->
                             <hr>
-                              <!-- Additional-->
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
