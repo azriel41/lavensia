@@ -18,7 +18,10 @@
 </div>
 <!-- end preloader -->
 
-<style type="text/css">     
+<style type="text/css">   
+    .navbar-nav {
+        margin-right: 50px !important; 
+    }  
 </style>
 
 
@@ -26,7 +29,7 @@
 Fixed Navigation
 ==================================== -->
 <header id="navigation" class="navbar-fixed-top" style="padding: 10px 0px;">
-    <div class="container">
+    {{-- <div class="container"> --}}
         <div class="navbar-header">
             <!-- responsive nav button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -139,7 +142,7 @@ Fixed Navigation
         </nav>
         <!-- /main nav -->
         
-    </div>
+    {{-- </div> --}}
 </header>
 <!--
 End Fixed Navigation
