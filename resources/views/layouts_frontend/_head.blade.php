@@ -244,6 +244,13 @@ End Fixed Navigation
 .left{
     text-align: left;
 }
+.center{
+    text-align: center;
+}
+.grey{
+    color: grey;
+}
+
 </style>
 
 <script type="text/javascript">

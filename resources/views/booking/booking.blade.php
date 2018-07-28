@@ -215,6 +215,11 @@
             .calc{
                 z-index: 99999;
             }
+        
+            .disabled{
+                opacity: 0.3;
+                pointer-events: none;
+            }
         </style>
     </head>
     
@@ -262,7 +267,7 @@
                                 <legend class="scheduler-border">Guest</legend>
                                 <div class="col-sm-12 contact-form">
                                     <div class="col-sm-3">
-                                        <h5 class=""><b>Party Name</b></h5>
+                                        <h5 class="grey"><b>Party Name</b></h5>
                                     </div>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" placeholder="Party Name" name="party_name">
@@ -270,15 +275,288 @@
                                 </div>
                                 <div class="col-sm-12 contact-form">
                                     <div class="col-sm-3">
-                                        <h5 class=""><b>Telp</b></h5>
+                                        <h5 class="grey"><b>Telp</b></h5>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Telp" name="party_telephone">
+                                        <input type="number" class="form-control party_telephone" placeholder="Telp" name="party_telephone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 20px">
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Adult</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_adult"  name="total_adult">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Child</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_child"  name="total_child">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Infant</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_infant"  name="total_infant">
                                     </div>
                                 </div>
                             </fieldset>
                             <!-- Room Type 1-->
-
+                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
+                                <h3 class="count_h2"><b>ROOM TOUR</b></h3>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="col-sm-12 room_append">
+                                    <div class="col-sm-12 all_room" style="border:1px solid hotpink">
+                                        <div class="col-sm-12 header_room" style="margin-bottom: 20px;margin-top: 20px;">
+                                            <div class="col-sm-8 row clearfix" align="left">
+                                                <div class="col-sm-3">
+                                                    <label>Type Of Bed</label>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <select  class="form-control  bk_bed" name="bk_bed[]" >
+                                                        <option value="single" data-val="1">Single</option>
+                                                        <option value="double" data-val="2">Double</option>
+                                                        <option value="twin" data-val="2">Twin</option>
+                                                        <option value="triple" data-val="3">Triple</option>
+                                                        <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
+                                                        <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-sm-4 row clearfix" align="left">
+                                                <div class="col-sm-2">
+                                                    <label>Infant</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text" readonly="" value="0" name="infant_tot" class="form-control infant_tot">
+                                                </div>
+                                                <div class="btn-group col-sm-7">
+                                                    <button type="button" class="btn btn-info add_infant"><i class="fa fa-plus"> ADD INFANT</i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 detail_room_append">
+                                            <div class="detail_room col-sm-12">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div>
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                    </div>
+                                                    <div class="file-upload" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="detail_room col-sm-12 disabled">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div>
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                    </div>
+                                                    <div class="file-upload" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail_room col-sm-12 disabled">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div>
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output" >
+                                                    </div>
+                                                    <div class="file-upload" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
                             <!-- Additional-->
                             <hr>
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
@@ -396,9 +674,23 @@
     </body>
 </html>
 <script type="text/javascript">
+
+    $(".bk_totalpac").keyup(function (e) {
+       if (e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57 ) && e.which != 46  ) {
+            //display error message
+            return false;
+        }
+    });
+    $(".party_telephone").keyup(function (e) {
+        console.log('asd');
+       if ($(this).val() < 0){
+           $(this).val(0)
+       }
+    });
+
     $('#bk_totalpac').keyup(function(){
-        if ($(this).val() > 15) {
-            $(this).val(15)
+        if ($(this).val() > 10) {
+            $(this).val(10)
         }
         if ($(this).val() < 0) {
             $(this).val(0)
@@ -459,40 +751,84 @@
         var tiga = $(this).parents('.all_room').find('.tiga');
         var name_2 = $(this).parents('.all_room').find('.name_2');
         var name_3 = $(this).parents('.all_room').find('.name_3');
-        if (val == 1) {
-            $(dua).find('.chooseFile').val('');
-            $(dua).find('.noFile').text('Passport Image');
-            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(dua).find('.file-upload').removeClass('active');
-            $(dua).addClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).find('.file-upload').removeClass('active');
-            $(tiga).addClass('pointer_dis');
-            $(name_2).addClass('readonly');
-            $(name_3).addClass('readonly');
-            $(name_2).val('');
-            $(name_3).val('');
-        }else if (val == 2) {
-            $(dua).removeClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).addClass('pointer_dis');
-            $(name_2).removeClass('readonly');
-            $(name_3).addClass('readonly');
-            $(name_3).val('');
-        }else if (val == 3) {
-            $(dua).removeClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).removeClass('pointer_dis');
-            $(name_2).removeClass('readonly');
-            $(name_3).removeClass('readonly');
+        total()
+    })
+    function baby_total() {
+        var temp = 0;
+        $('.baby').each(function(){
+            temp+=1;
+        })
+        $('.total_infant').val(temp);
+    }
+
+    function total() {
+        var adult = 0;
+        var child = 0;
+
+        $('.bk_bed').each(function(){
+            if ($(this).val() == 'single') {
+                adult+=1;
+            }else if($(this).val() == 'double'){
+                adult+=2;
+            }else if($(this).val() == 'twin'){
+                adult+=2;
+            }else if($(this).val() == 'triple'){
+                adult+=3;
+            }else if($(this).val() == 'doubletwin&cnb'){
+                adult+=2;
+                child+=1;
+            }else if($(this).val() == 'doubletwin&cwb'){
+                adult+=2;
+                child+=1;
+            }
+        })
+
+        $('.total_adult').val(adult);
+        $('.total_child').val(child);
+        
+    }
+    window.onload = function(){
+        total();
+    }
+
+    $(document).on('click','.add_infant',function(){
+        var parent = $(this).parents('.all_room');
+        var infant = $(this).parents('.all_room').find('.infant_tot');
+        var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
+        if (infant.val() < 2) {
+            var room = $(parent).find('.detail_room').eq(0);
+            $(room).clone(true, true).fadeIn().appendTo(".detail_room_append");
+            $(parent).find('.detail_room').last().addClass('baby');
+            $(parent).find('.remove_append').last().html(remove);
+
+            var temp = 0;
+            $(parent).find('.baby').each(function(){
+                temp+=1;
+            })
+            infant.val(temp);
+            baby_total();
+        }else{
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Limit Append Achieved!',
+            });
+            return false;
         }
+    })
+
+    $(document).on('click','.remove_infant',function(){
+        var parent = $(this).parents('.all_room');
+        var infant = $(this).parents('.all_room').find('.infant_tot');
+
+        var dt = $(this).parents('.detail_room');
+        $(dt).remove();
+        var temp = 0;
+        $(parent).find('.baby').each(function(){
+            temp+=1;
+        })
+        infant.val(temp);
+        baby_total();
     })
 
     $(document).on('click','.add',function(){
