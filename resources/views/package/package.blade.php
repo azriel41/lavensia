@@ -62,7 +62,7 @@
             .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
                 border: none; 
                 color: #630247 !important; 
-                background: #f8cd04 !important; 
+                background: transparent !important; 
             }
             .nav-tabs > li > a::after {
                 content: ""; 
