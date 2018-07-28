@@ -155,7 +155,7 @@ End Fixed Navigation
 <!-- Fontawesome Icon font -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/font-awesome.min.css') }}">
 <!-- Twitter Bootstrap css -->
-<link rel="stylesheet" href="{{ asset ('assets_frontend/bootstrap-4.0.0/dist/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ asset ('assets_frontend/css/bootstrap.min.css')}}">
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/main.css')}}">
 <!-- jquery.fancybox  -->
