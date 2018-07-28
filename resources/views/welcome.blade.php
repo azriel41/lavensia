@@ -28,7 +28,7 @@
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 </ol>
                 <!-- End Indicators bullet -->     
-                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:400px;margin-top: 34%;margin-left: 5%;">
+                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:300px;margin-top: 34%;margin-left: 5%;">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     
@@ -85,7 +85,7 @@
             <div class="container">
                 <div class="row">
                 
-                    <div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
+                    <div class="col-md-12 sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
                         <h2>Features</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>

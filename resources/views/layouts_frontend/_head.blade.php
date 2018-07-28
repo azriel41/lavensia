@@ -18,15 +18,18 @@
 </div>
 <!-- end preloader -->
 
-<style type="text/css">
-     
+<style type="text/css">   
+    .navbar-nav {
+        margin-right: 50px !important; 
+    }  
 </style>
+
 
 <!-- 
 Fixed Navigation
 ==================================== -->
-<header id="navigation" class="navbar-fixed-top navbar">
-    <div class="container">
+<header id="navigation" class="navbar-fixed-top" style="padding: 10px 0px;">
+    {{-- <div class="container"> --}}
         <div class="navbar-header">
             <!-- responsive nav button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,6 +48,7 @@ Fixed Navigation
         </div>
 
         <!-- main nav -->
+       
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="{{ url('/') }}">Home</a></li>
@@ -138,7 +142,7 @@ Fixed Navigation
         </nav>
         <!-- /main nav -->
         
-    </div>
+    {{-- </div> --}}
 </header>
 <!--
 End Fixed Navigation
