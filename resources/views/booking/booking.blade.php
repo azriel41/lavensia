@@ -879,7 +879,7 @@
         $(last).find('.detail_room .noFile').text('Passport Image');
         $(last).find('.baby').remove();
         $(name).removeClass('errors');
-
+        $('.infant_tot').last().val(0);
         total();
     })
 
