@@ -890,8 +890,4 @@ label.error {
     text-align: left;
   }
   /*link nav*/
-  .nav-link{
-    color: whitesmoke;
-    background-color: #ff0303;
-    padding: 15px 15px 15px 15px;
-  }
+  

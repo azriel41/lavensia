@@ -54,30 +54,28 @@ Fixed Navigation
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="#footer">Booking List</a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
+                
                 @if (Route::has('login'))
                         @if (Auth::check())
-                            <li style="margin-right: 20px;">
-                                <div class="btn-group">
-                                      <button type="button" class="btn btn-nav dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->name }} 
-                                        &nbsp;<span class="caret"></span>
-                                      </button>
-
-                                      <ul class="dropdown-menu" role="menu">
-                                        <li><a href="" onclick="home()"><i class="fa fa-home"></i> Dashboard</a></li>
-                                        <li><a href="" onclick="profile()"><i class="fa fa-user"></i> Profile</a></li>
-                                        <li>
-                                            <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                                         <i class="fa fa-sign-out"></i>
-                                                Logout
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                      </ul>
-                                </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Hy, {{ auth::user()->name }}  &nbsp;<i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="" onclick="home()"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li><a href="" onclick="profile()"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="fa fa-sign-out"></i>
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                  </ul>
                             </li>
                             <li>
                                 <div class="btn-group" >
