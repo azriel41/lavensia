@@ -239,6 +239,16 @@ End Fixed Navigation
     text-align: center;
     vertical-align: middle;
 }
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.grey{
+    color: grey;
+}
+
 </style>
 
 <script type="text/javascript">
