@@ -19,16 +19,6 @@
                 background-color: white;
                 padding-bottom: 60px;
             }
-            .package{
-                background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
-                /* Full height */
-                height: 100%; 
-
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
           
         </style>
     </head>
@@ -38,7 +28,7 @@
         <!--
         Contact Us
         ==================================== -->        
-        <section id="package" class="package">
+        <section id="package" class="package background_page">
           <div class="background-hitam">
             <div class="container">
 

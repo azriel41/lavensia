@@ -99,9 +99,7 @@
             label{
                 margin-top: 10px;
             }
-            .package{
-                background-color: whitesmoke;
-            }
+            
             fieldset.scheduler-border {
                 padding: 0 1.4em 1.4em 1.4em !important;
                 margin: 0 0 1.5em 0 !important;
@@ -226,7 +224,7 @@
         <!--
         Contact Us
         ==================================== -->        
-        <section id="package" class="package">
+        <section id="package" class="package background_page">
             <div class="container">
 
                 <div class="row mb50">

@@ -51,8 +51,8 @@ Fixed Navigation
        
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="#footer">Booking List</a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')">Home</a></li>
+                <li><a href="">Booking List</a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
                 
                 @if (Route::has('login'))
