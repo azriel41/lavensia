@@ -37,7 +37,7 @@
                 <thead >
                     <tr>
                         <th style="text-align: center;">No</th>
-                        <th style="text-align: center;">Family Name</th>
+                        <th style="text-align: center;">Paspport No</th>
                         <th style="text-align: center;">Name</th>
                         <th style="text-align: center;">Room</th>
                         <th style="text-align: center;">Price</th>

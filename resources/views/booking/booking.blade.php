@@ -370,7 +370,7 @@
                                                                 <div class="form-group-sm input_place">
                                                                     <input type="text" name="name[]"  placeholder="Name" class="form-control name">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
                                                                 </div>
                                                             </div>
@@ -396,8 +396,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
-                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
                                                                     <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
                                                                     <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
                                                                 </div>
@@ -443,7 +446,7 @@
                                                                 <div class="form-group-sm input_place">
                                                                     <input type="text" name="name[]"  placeholder="Name" class="form-control name">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
                                                                 </div>
                                                             </div>
@@ -469,8 +472,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
-                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
                                                                     <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
                                                                     <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
                                                                 </div>
@@ -513,7 +519,7 @@
                                                                 <div class="form-group-sm input_place">
                                                                     <input type="text" name="name[]"  placeholder="Name" class="form-control name">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
                                                                 </div>
                                                             </div>
@@ -539,8 +545,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="gender[]"  placeholder="Gender" class="form-control gender">
-                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
                                                                     <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
                                                                     <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
                                                                 </div>
@@ -633,7 +642,7 @@
                                     <thead >
                                         <tr>
                                             <th style="text-align: center;">No</th>
-                                            <th style="text-align: center;">Family Name</th>
+                                            <th style="text-align: center;">Paspport No</th>
                                             <th style="text-align: center;">Name</th>
                                             <th style="text-align: center;">Room</th>
                                             <th style="text-align: center;">Price</th>
@@ -684,7 +693,6 @@
         }
     });
     $(".party_telephone").keyup(function (e) {
-        console.log('asd');
        if ($(this).val() < 0){
            $(this).val(0)
        }
@@ -709,6 +717,24 @@
     //     paging:false,
     //     searching:false,
     // });
+
+    $('.date').datepicker({
+        format:'dd/mm/yyyy'
+    }).on('changeDate', function (ev) {
+        $('.date').change();
+    });
+    
+
+    function remove_date_error() {
+        // body...
+        $('.date').change(function(){
+            $(this).removeClass('error');
+        })
+    }
+    $('.date').change(function(){
+        $(this).removeClass('error');
+    })
+        
     {{-- GAMBAR --}}
     $('.chooseFile').bind('change', function () {
         var filename = $(this).val();
@@ -810,10 +836,9 @@
 
     $(document).on('click','.add_infant',function(){
         var parent = $(this).parents('.all_room');
-        console.log(parent);
         var infant = $(this).parents('.all_room').find('.infant_tot');
         var room_append = $(this).parents('.all_room').find('.detail_room_append');
-        console.log(infant);
+        
         var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
         if (infant.val() < 2) {
             var room = $(parent).find('.detail_room').eq(0);
@@ -821,7 +846,13 @@
             $(parent).find('.detail_room').last().addClass('baby');
             $(parent).find('.baby').last().removeClass('detail_room');
             $(parent).find('.remove_append').last().html(remove);
-
+            $(parent).find('.baby').last().find('input').val('');
+            $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(parent).find('.baby .noFile').last().text('Passport Image');
+            $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
+                                                        .removeData('datepicker')
+                                                        .unbind()
+                                                        .datepicker();
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -876,7 +907,13 @@
         $(last).find('.detail_room .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
         $(last).find('.detail_room .noFile').text('Passport Image');
         $(last).find('.baby').remove();
-        $(name).removeClass('errors');
+        $(name).removeClass('error');
+
+        $(last).last().find('.date').removeClass('hasDatepicker')
+                                                        .removeData('datepicker')
+                                                        .unbind()
+                                                        .datepicker();
+        console.log($(last).find('.detail_room').last().find('.date'));
         $('.infant_tot').last().val(0);
         total();
     })
@@ -908,7 +945,7 @@
             })
         });
     });
-
+    
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })
@@ -925,53 +962,47 @@
         }
         $('.append_invoice').html('');
         $('.append_additional').html('');
-        var validate = [];
-        var total_arr = [];
-        var tr1 = '</tr>';
+        var validate   = [];
+        var total_arr  = [];
+        var tr         = '<tr>';
+        var tr1        = '</tr>';
         var total_room = 0;
         var total_add  = 0;
-        var indexing = 1;
-        $('.name_fam').each(function(i){
-            var par = $(this).parents('.all_room');
-            var bed = $(par).find('.bk_bed').val();
-            var text_bed = $(par).find('.bk_bed :selected').text();
-            var tr  = '<tr class="tr_'+i+'">';
-            var nama_keluarga = $(this).val();
-            $(par).find('.name:not(.readonly)').each(function(){
-                if ($(this).val() ==  '') {
-                    validate.push(0);
-                    $(this).addClass('errors');
-                }
-            })
-            
-            $(par).find('.name:not(.readonly)').each(function(a){
-                if (a != 2) {
+        var indexing   = 1;
+
+        $('.all_room').each(function(i){
+            var ini      = $(this);
+            var bed      = ini.find('.bk_bed').val();
+            var text_bed = ini.find('.bk_bed :selected').text();
+            // ROOM
+            ini.find('.detail_room:not(.disabled)').each(function(a){
+                var passport = $(this).find('.passport').val();
+                var name     = $(this).find('.passport').val();
+                if (a == 0 || a == 1) {
                     var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                     total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
                 }else{
-                    if (bed == 'doubletwin&cnb') {
-                        var harga = '{{ number_format($detail_intinerary->md_child_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_child_price}}'*1)
-                    }else if (bed == 'doubletwin&cwb'){
-                        var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
-                    }else if (bed == 'doubletwin&invent'){
-                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
-                    }else if (bed == 'triple'){
+                    if (bed == 'triple') {
                         var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                         total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
+                    }else if(bed == 'doubletwin&cnb'){
+                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+                    }else if(bed == 'doubletwin&cwb'){
+                        var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
                     }
                 }
 
+
                 var td0 = '<td class="i_indexing">'+indexing+'</td>';
                 var td1 = '<td class="i_nama_fam_td">'+
-                            nama_keluarga+
-                            '<input type="hidden" name="r_name_fam[]" class="r_name_fam" value="'+nama_keluarga+'">'+
+                            passport+
+                            '<input type="hidden" name="r_passport[]" class="r_passport" value="'+passport+'">'+
                           '</td>';
                 var td2 = '<td class="i_nama_td">'+
-                            $(this).val()+
-                            '<input type="hidden" name="r_name[]" class="r_name" value="'+$(this).val()+'">'+
+                            name+
+                            '<input type="hidden" name="r_name[]" class="r_name" value="'+name+'">'+
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
@@ -984,10 +1015,53 @@
                 var all = tr + td0 + td1 + td2 + td3 + td4 + tr1;
                 $('.append_invoice').append(all);
                 indexing++;
-            })
-          
-        })
 
+                $(this).find('input:not(.chooseFile)').each(function(z){
+                    if ($(this).val() == '') {
+                    console.log($(this));
+                        $(this).addClass('error');
+                        validate.push(0);
+                    }
+                })
+            });
+
+
+            ini.find('.baby:not(.disabled)').each(function(a){
+                var passport = $(this).find('.passport').val();
+                var name     = $(this).find('.name').val();
+
+
+                var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
+                total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+               
+
+
+                var td0 = '<td class="i_indexing">'+indexing+'</td>';
+                var td1 = '<td class="i_nama_fam_td">'+
+                            passport+
+                            '<input type="hidden" name="r_passport[]" class="r_passport" value="'+passport+'">'+
+                          '</td>';
+                var td2 = '<td class="i_nama_td">'+
+                            name+
+                            '<input type="hidden" name="r_name[]" class="r_name" value="'+name+'">'+
+                          '</td>';
+                var td3 = '<td class="i_room_td">'+
+                            text_bed+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                          '</td>';
+                var td4 = '<td class="i_price_td">'+
+                            harga+
+                            '<input type="hidden" name="r_harga[]" class="r_harga" value="'+harga+'">'+
+                          '</td>';
+                var all = tr + td0 + td1 + td2 + td3 + td4 + tr1;
+                $('.append_invoice').append(all);
+                indexing++;
+            });
+        })
+        
+        $('input').keyup(function(){
+            $(this).removeClass('error');
+        })
         $('.sel_opt').each(function(f){
             var all_name = $(this).find('select').val();
             var par      = $(this).parents('tr');
@@ -1036,25 +1110,8 @@
             $("html, body").animate({ scrollTop: 350 }, "slow");
             return false;
         }
-        if (indexing < $('#bk_totalpac').val()) {
-            var kurang = $('#bk_totalpac').val()*1 - indexing*1;
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Please Input '+kurang+' More Data!',
-            });
-            $("html, body").animate({ scrollTop: 350 }, "slow");
-            return false;
-        }
-        if (indexing-1 > $('#bk_totalpac').val()) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Exceeds the pax limit!',
-            });
-            $("html, body").animate({ scrollTop: 350 }, "slow");
-            return false;
-        }
+      
+       
         // $('.invoice_tab').prop('hidden',false);
         $('#invoice').modal('show');
     })

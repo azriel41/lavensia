@@ -184,7 +184,8 @@ End Fixed Navigation
 
 
 <link href="{{ asset ('assets_frontend/radio/css/style.css') }}" rel="stylesheet" />
-
+{{-- DATEPICKER --}}
+<link href="{{ asset ('assets/plugins/datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
 {{-- Bootstrap-select --}}
 <link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
 <!-- Izi toast-->
