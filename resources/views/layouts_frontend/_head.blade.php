@@ -77,58 +77,56 @@ Fixed Navigation
                                     </li>
                                   </ul>
                             </li>
-                            <li>
-                                <div class="btn-group" >
-                                      <button type="button" class="btn btn-nav dropdown-toggle button_group_name" data-toggle="dropdown"><i class="fa fa-shopping-cart" title="Shop Cart"></i>
-                                        <span class="badge">{{ $jumlah }}</span>
-                                      </button>
-                                      <div class="dropdown-menu" role="menu">
-                                            <div class="col-sm-12 footer-drop dis-table" style="text-align: center;height: 50px;">
-                                                <div class="v-align">
-                                                    <h3 style="color: white">Order Cart</h3>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12" style="height: 290px !important; overflow-y: scroll; min-width: 350px">
-                                                @foreach ($cart as $i=>$val)
-                                                    @if ($val->db_status == 'Waiting List')
-                                                        <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">
-                                                            <div class="col-sm-5">
-                                                                <img src="{{ asset('storage/app')}}/{{ $val->detail_itin->intinerary->mi_image  }}"
-                                                                style="width: 100px;height: 75px;">
-                                                            </div>
-                                                            <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
-                                                                <div class="col-sm-12">
-                                                                    <h6  style="color: #a60036e6"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
-                                                                </div>
-                                                                <div class="col-sm-12" style="color: grey">
-                                                                    <h7>Pax : {{ $val->db_pax }}</h7>
-                                                                </div>
-                                                                <div class="col-sm-12" style="color: grey">
-                                                                    <h7>Price : {{ number_format($val->db_total_additional+$val->db_total_room, 0, ",", ".") }}</h7>
-                                                                </div>
-                                                            </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fa fa-shopping-cart" title="Shop Cart"></i> &nbsp; <span class="badge">{{ $jumlah }}</span>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <div class="col-sm-12">
+                                        <h4 style="color: grey">Order Cart</h4>
+                                    </div>
+                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 294px !important; overflow-y: scroll;overflow: hidden; min-width: 350px">
+                                        @foreach ($cart as $i=>$val)
+                                            @if ($val->db_status == 'Waiting List')
+                                                <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">
+                                                    <div class="col-sm-5">
+                                                        <img src="{{ asset('storage/app')}}/{{ $val->detail_itin->intinerary->mi_image  }}"
+                                                        style="width: 100px;height: 75px;">
+                                                    </div>
+                                                    <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
+                                                        <div class="col-sm-12">
+                                                            <h6  style="color: #a60036e6"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
                                                         </div>
-                                                        <div class="col-sm-12" 
-                                                            @if ($i == count($cart)-1)
-                                                                style="margin-bottom: 15px;" 
-                                                            @endif>
-                                                            <button class="btn btn-danger" style="width: 100%" onclick="check_out('{{ $val->db_id }}')">
-                                                                Check Out
-                                                            </button>
-                                                    </div> 
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <div class="col-sm-12 footer-drop dis-table" style="text-align: center;height: 75px;">
-                                                <div class="v-align">
-                                                    <button class="btn btn-danger ">
-                                                        See Cart
-                                                    </button>
+                                                        <div class="col-sm-12" style="color: grey">
+                                                            <h7>Pax : {{ $val->db_pax }}</h7>
+                                                        </div>
+                                                        <div class="col-sm-12" style="color: grey">
+                                                            <h7>Price : {{ number_format($val->db_total_additional+$val->db_total_room, 0, ",", ".") }}</h7>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                      </div>
-                                </div>
+                                                <div class="col-sm-12" 
+                                                    @if ($i == count($cart)-1)
+                                                        style="margin-bottom: 15px;" 
+                                                    @endif>
+                                                    <button class="btn btn-danger" style="width: 100%" onclick="check_out('{{ $val->db_id }}')">
+                                                        Check Out
+                                                    </button>
+                                                </div> 
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="col-sm-12 pull-right" style="text-align: center;">
+                                        <div class="v-align">
+                                            <button class="btn btn-danger ">
+                                                See Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                              </div>
                             </li>
+
+                            
                         @else
                             <button class="btn btn-small btn-nav icon_login_logout" onclick="login()">Login</button>
 

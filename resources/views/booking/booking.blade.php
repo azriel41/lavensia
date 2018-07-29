@@ -100,9 +100,7 @@
                 margin-top: 10px;
             }
             .package{
-                background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
-                background-repeat: no-repeat;
-                background-size: cover; 
+                background-color: whitesmoke;
             }
             fieldset.scheduler-border {
                 padding: 0 1.4em 1.4em 1.4em !important;
