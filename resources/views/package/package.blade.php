@@ -39,16 +39,7 @@
                 background-color: white;
             }
 
-            .package{
-                background-color: #f5f5f5;
-                /* Full height */
-                height: 100%; 
 
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
             .nav-tabs { 
                 border-bottom: 2px solid #DDD; 
             }
@@ -150,7 +141,7 @@
         <!--
         Contact Us
         ==================================== -->        
-        <section id="package" class="package">
+        <section id="package" class="package background_page">
             <div class="container">
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
