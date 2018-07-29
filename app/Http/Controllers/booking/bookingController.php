@@ -65,25 +65,41 @@ class bookingController extends Controller
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
-
+        	// dd($req->all());
     		$id = $this->d_booking->max('db_id');
     		// dd($req->total_room_input);
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$name 				 = array_values(array_filter($req->name));
+    		$passport 			 = array_values(array_filter($req->passport));
+    		$exp_date 			 = array_values(array_filter($req->exp_date));
+    		$issue 			 	 = array_values(array_filter($req->issue));
+    		$gender 		 	 = array_values(array_filter($req->gender));
+    		$date_birth 		 = array_values(array_filter($req->date_birth));
+    		$place_birth 		 = array_values(array_filter($req->place_birth));
+    		$reference 		 	 = array_values(array_filter($req->reference));
+    		try{
+    			$gambar 		 	 = array_values(array_filter($req->file('image')));
+    		}catch(Exception $err){
+	            return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
 
-
+    		}
+    		// HEADER
     		$data = array(
     						'db_id'				    	=> $id,
 						    'db_users'					=> Auth::user()->id,
-						    'db_name'					=> $req->bk_partyname,
+						    'db_name'					=> $req->party_name,
 						    'db_intinerary_id'			=> $req->id,
-						    'db_pax'					=> $req->bk_totalpac,
+						    'db_telp'					=> $req->party_telephone,
 						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> $db_total_additional,
 						    'db_total_room'				=> $db_total_room,
 						    'db_total'					=> $db_total,
 						    'db_total_remain'			=> $db_total,
+						    'db_total_adult'			=> $req->total_adult,
+						    'db_total_child'			=> $req->total_child,
+						    'db_total_infant'			=> $req->total_infant,
 						    'created_by'				=> Auth::user()->id,
 						    'updated_by'				=> Auth::user()->id,
     					 );
@@ -95,40 +111,59 @@ class bookingController extends Controller
     						'md_seat_remain'			=> $hasil,
     					 );
     		$this->detail_intinerary->update($updt,'md_id',$req->id);
-
-
     		$this->d_booking->create($data);
-    		$gambar = array_values($req->file('image'));
-			for ($b=0; $b < count($req->r_name_fam); $b++) { 
-				$dt = $this->d_party_name->max_detail('dp_booking_id',$id,'dp_detail');
-				try{
-					$file = $gambar[$b];
-				}catch(Exception $err){
-					$file = null;
+
+    		// PARTY 
+			for ($b=0; $b < count($name); $b++) { 
+				if ($req->name != null) {
+					$dt = $this->d_party_name->max_detail('dp_booking_id',$id,'dp_detail');
+					try{
+						$file = $gambar[$b];
+					}catch(Exception $err){
+						$file = null;
+					}
+		            if ($file != null) {
+
+		                $tour_code = str_replace('/', '-', $req->tour_code);
+		                $filename = 'booking/'.$req->r_name_fam[$b].'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+
+		                Storage::put($filename,file_get_contents($file));
+		            }else{
+	                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+	                    DB::rollBack();
+		            }
+
+		            $birth  = str_replace('/', '-', $date_birth[$b]);
+		            $exp  	= str_replace('/', '-', $exp_date[$b]);
+		            $birth  = explode('-', $birth);
+		            $exp  	= explode('-', $exp);
+
+		            $birth  = Carbon::createFromDate($birth[2], $birth[1], $birth[0],'00');
+		        	
+		            $exp	= Carbon::createFromDate($exp[2], $exp[1], $exp[0],'00');
+		            if ($b == 4) {
+		            	dd($exp);
+		        	}
+					$data = array(	
+						'dp_booking_id'	=> $id,
+						'dp_detail'		=> $b+1,
+						'dp_bed'		=> $req->r_bed[$b],
+						'dp_name'		=> $name[$b],
+						'dp_passport'	=> $passport[$b],
+						'dp_exp_date'	=> $exp,
+						'dp_issuing'	=> $issue[$b],
+						'dp_gender'		=> $gender[$b],
+						'dp_birth_date'	=> $birth,
+						'dp_birth_place'=> $place_birth[$b],
+						'dp_reference'	=> $reference[$b],
+						'dp_image'		=> $filename[$b],
+						'created_by'	=> Auth::user()->m_id,
+						'updated_by'	=> Auth::user()->m_id,
+					);
+
+	    			$this->d_party_name->create($data);
 				}
-	            if ($file != null) {
-
-	                $tour_code = str_replace('/', '-', $req->tour_code);
-	                $filename = 'booking/'.$req->r_name_fam[$b].'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
-
-	                Storage::put($filename,file_get_contents($file));
-	            }else{
-                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
-                    DB::rollBack();
-	            }
-
-				$data = array(	
-					'dp_booking_id' => $id,
-					'dp_detail'		=> $dt,
-					'dp_fam_name'	=> $req->r_name_fam[$b],
-					'dp_name'		=> $req->r_name[$b],
-					'dp_price'		=> filter_var($req->r_harga[$b],FILTER_SANITIZE_NUMBER_INT),
-					'dp_bed'		=> $req->r_bed[$b],
-					'dp_image'		=> $filename,
-					'created_by'	=> Auth::user()->id,
-					'updated_by'	=> Auth::user()->id,
-				);
-    			$this->d_party_name->create($data);
+				
 			}
 
 			if ($req->a_id != null) {

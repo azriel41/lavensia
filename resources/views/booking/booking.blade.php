@@ -326,7 +326,7 @@
                                                     <label>Infant</label>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <input type="text" readonly="" value="0" name="infant_tot" class="form-control infant_tot">
+                                                    <input type="text" readonly="" value="0" name="infant_tot[]" class="form-control infant_tot">
                                                 </div>
                                                 <div class="btn-group col-sm-7">
                                                     <button type="button" class="btn btn-info add_infant"><i class="fa fa-plus"> ADD INFANT</i></button>
@@ -847,10 +847,10 @@
             $(parent).find('.baby').last().find('input').val('');
             $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(parent).find('.baby .noFile').last().text('Passport Image');
+            $(parent).find('.baby').last().find('.file-upload').removeClass('active');
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .unbind()
-                                                        .datepicker();
+                                                        .datepicker({format:'dd/mm/yyyy'});
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -909,8 +909,9 @@
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .unbind()
-                                                        .datepicker();
+                                                        .datepicker({format:'dd/mm/yyyy'});
+        $('.bk_bed').last().change();
+        $(last).find('.file-upload').removeClass('active');
         console.log($(last).find('.detail_room').last().find('.date'));
         $('.infant_tot').last().val(0);
         total();
