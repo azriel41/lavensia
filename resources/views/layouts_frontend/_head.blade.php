@@ -22,6 +22,7 @@
     .navbar-nav {
         margin-right: 50px !important; 
     }  
+    
 </style>
 
 
