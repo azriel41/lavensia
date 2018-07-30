@@ -52,7 +52,7 @@ Fixed Navigation
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')">Home</a></li>
-                <li><a href="">Booking List</a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')">Booking List</a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
                 
                 @if (Route::has('login'))
@@ -77,7 +77,7 @@ Fixed Navigation
                                     </li>
                                   </ul>
                             </li>
-                            <li class="nav-item dropdown">
+                           {{--  <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fa fa-shopping-cart" title="Shop Cart"></i> &nbsp; <span class="badge">{{ $jumlah }}</span>
                                 </a>
@@ -124,7 +124,7 @@ Fixed Navigation
                                         </div>
                                     </div>
                               </div>
-                            </li>
+                            </li> --}}
 
                             
                         @else
