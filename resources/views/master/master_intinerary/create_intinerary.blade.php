@@ -547,7 +547,7 @@
         }
     });
 
-    var loadFile = function(event) {
+    var loadFile = function(event) { 
         var fsize = $('#chooseFile')[0].files[0].size;
         if(fsize>2048576) //do something if file size more than 1 mb (1048576)
         {
