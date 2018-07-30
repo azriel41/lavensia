@@ -912,7 +912,6 @@
                                                         .datepicker({format:'dd/mm/yyyy'});
         $('.bk_bed').last().change();
         $(last).find('.file-upload').removeClass('active');
-        console.log($(last).find('.detail_room').last().find('.date'));
         $('.infant_tot').last().val(0);
         total();
     })
@@ -951,6 +950,27 @@
 
     $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
+        if ($('#check_agree').is(':checked') == false) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Please Check Term & Condition!',
+            });
+            return false;
+        }
+        var temp = 0;
+        $('.detail_room:not(.disabled)').each(function(a){
+            temp += 1;
+        });
+
+        if (temp > 10) {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Pax Limit Achieved!',
+            });
+            return false;
+        }
         if ($('#check_agree').is(':checked') == false) {
             iziToast.warning({
                 icon: 'fa fa-times',

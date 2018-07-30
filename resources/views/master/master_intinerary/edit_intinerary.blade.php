@@ -90,6 +90,18 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="highlight">Term & Condition</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line page_1_req">
+                                            <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_term }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="caption_by">Caption By</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -168,6 +180,11 @@
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line" >
                                                                         <input type="text" value="{{ $val->ms_caption }}" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control caption_schedule sch_req">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group form-float col-sm-12">
+                                                                    <div class="form-line " >
+                                                                        <input type="text" style="font-weight: bold; text-transform: uppercase;" name="BLD[]" placeholder="BLD" class="form-control sch_req BLD" value="{{ $val->ms_bld }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -313,7 +330,6 @@
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Seat</td>
-                                            <td>Term and Condition</td>
                                             <td>Action</td>
                                         </tr>
                                     </thead>
@@ -496,9 +512,6 @@
 
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
-
-            '<p class="term_text">'+term+'</p>'+
-            '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
             '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
             '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
@@ -753,9 +766,6 @@
 
             '<p class="seat_text">'+seat_remain+'/'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
-
-            '<p class="term_text">'+term+'</p>'+
-            '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
             '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
             action+

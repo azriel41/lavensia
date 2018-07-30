@@ -14,6 +14,7 @@ class schedule extends Model
 	protected $fillable = ['ms_intinerary_id',
 						   'ms_detail',
 						   'ms_caption',
+						   'ms_bld',
 						   'ms_description',
 						   'created_by',
 						   'updated_by'];

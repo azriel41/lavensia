@@ -89,6 +89,18 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="highlight">Term & Condition</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line page_1_req">
+                                            <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="caption_by">Caption By</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -157,9 +169,14 @@
                                                             <input type="text" style="width: 70px"name="day[]" class="day_1 day form-control " readonly value="Day 1">
                                                         </div>
                                                         <div class="col-sm-5">
-                                                            <div class="form-group form-float">
+                                                            <div class="form-group form-float col-sm-12">
                                                                 <div class="form-line " >
                                                                     <input type="text" style="font-weight: bold; text-transform: uppercase;" name="caption_schedule[]" placeholder="Caption" class="form-control sch_req caption_schedule">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group form-float col-sm-12">
+                                                                <div class="form-line " >
+                                                                    <input type="text" style="font-weight: bold; text-transform: uppercase;" name="BLD[]" placeholder="BLD" class="form-control sch_req BLD">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -277,18 +294,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="end">Term & Condition</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <textarea rows="4" id="term" class="form-control no-resize " placeholder="Please type what you want..."></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
@@ -305,7 +310,6 @@
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Seat</td>
-                                            <td>Term and Condition</td>
                                             <td>Action</td>
                                         </tr>
                                     </thead>
@@ -379,6 +383,7 @@
         $('.schedule .all_schedule').last().find('.day').val('Day '+temp);
         $('.schedule .all_schedule').last().find('.caption_schedule').val('');
         $('.schedule .all_schedule').last().find('.description_schedule').val('');
+        $('.schedule .all_schedule').last().find('.BLD').val('');
 
         
   
@@ -453,7 +458,6 @@
         var adult_price   = $('#adult_price').val();
         var child_price   = $('#child_price').val();
         var infant_price  = $('#infant_price').val();
-        var term          = $('#term').val();
         var seat          = $('#seat').val();
         var child_w_price = $('#child_w_price').val();
 
@@ -484,9 +488,6 @@
 
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
-
-            '<p class="term_text">'+term+'</p>'+
-            '<input type="hidden" name="term[]" value="'+term+'" class="term">',
 
             '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
             '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+

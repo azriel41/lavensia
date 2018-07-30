@@ -24,7 +24,6 @@ class detail_intinerary extends Model
 						   'md_child_w_price',
 						   'md_seat',
 						   'md_seat_remain',
-						   'md_term',
 						   'created_by',
 						   'updated_by'];
 
