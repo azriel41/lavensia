@@ -76,7 +76,9 @@ body > section,
 	padding: 50px 0;
 }
 
-.sec-title {}
+.sec-title {
+
+}
 
 .sec-title h2 {
   color:  #a60036e6;
@@ -145,7 +147,7 @@ body > section,
 #navigation {
   background-color: #a60036e6;
   border: 0 none;
-  margin: 0;
+  /*margin: 0;*/
   
     -webkit-transition: background-color 800ms linear;
        -moz-transition: background-color 800ms linear;
@@ -887,3 +889,12 @@ label.error {
     font-size: 15px !important;
     text-align: left;
   }
+  /*Image*/
+  .package {
+    background: url("../img/image-gallery/12.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  

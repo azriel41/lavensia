@@ -99,11 +99,7 @@
             label{
                 margin-top: 10px;
             }
-            .package{
-                background-image: url({{ asset('assets_frontend/img/image-gallery/12.jpg') }});
-                background-repeat: no-repeat;
-                background-size: cover; 
-            }
+            
             fieldset.scheduler-border {
                 padding: 0 1.4em 1.4em 1.4em !important;
                 margin: 0 0 1.5em 0 !important;
@@ -215,6 +211,11 @@
             .calc{
                 z-index: 99999;
             }
+        
+            .disabled{
+                opacity: 0.3;
+                pointer-events: none;
+            }
         </style>
     </head>
     
@@ -223,7 +224,7 @@
         <!--
         Contact Us
         ==================================== -->        
-        <section id="package" class="package">
+        <section id="package" class="package background_page">
             <div class="container">
 
                 <div class="row mb50">
@@ -258,112 +259,315 @@
                             </fieldset>
 
                               <!-- Guest-->
-                            <fieldset class="scheduler-border col-sm-6">
-                              <legend class="scheduler-border">Guest</legend>
-                                  <div class="contact-form col1" >
-                                    <div class="input-group margin-top-20px">
-                                        <div>
-                                            <input type="text" name="bk_partyname" id="bk_partyname" placeholder="Party Name" class="form-control">
-                                         
-                                            <input type="number" name="bk_totalpac" id="bk_totalpac" placeholder="Total Pax" class="form-control">
-                                        </div>
+                            <fieldset class="scheduler-border col-sm-6 left">
+                                <legend class="scheduler-border">Guest</legend>
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class="grey"><b>Party Name</b></h5>
                                     </div>
-                                  </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Party Name" name="party_name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class="grey"><b>Telp</b></h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control party_telephone" placeholder="Telp" name="party_telephone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 20px">
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Adult</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_adult"  name="total_adult">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Child</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_child"  name="total_child">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Infant</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="0" class="form-control center total_infant"  name="total_infant">
+                                    </div>
+                                </div>
                             </fieldset>
-
-                              <!-- Room Type 1-->
+                            <!-- Room Type 1-->
                             <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
                                 <h3 class="count_h2"><b>ROOM TOUR</b></h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
-                                    <div class="col-sm-12 all_room">
-                                        <div class="col-sm-8 change  single" style="">
-                                            <div class="col-sm-4 preview_div satu ">
-                                                <div>
-                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                    <div class="col-sm-12 all_room" >
+                                        <div class="col-sm-12 header_room" style="margin-bottom: 20px;margin-top: 20px;">
+                                            <div class="col-sm-8 row clearfix" align="left">
+                                                <div class="col-sm-3">
+                                                    <label>Type Of Bed</label>
                                                 </div>
-                                                <div class="file-upload" style="width: 100%"    >
-                                                    <div class="file-select">
-                                                        <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Passport Image</div> 
-                                                        <input type="file" class="chooseFile" name="image[]">
+                                                <div class="col-sm-7">
+                                                    <select  class="form-control  bk_bed" name="bk_bed[]" >
+                                                        <option value="single" data-val="1">Single</option>
+                                                        <option value="double" data-val="2">Double</option>
+                                                        <option value="twin" data-val="2">Twin</option>
+                                                        <option value="triple" data-val="3">Triple</option>
+                                                        <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
+                                                        <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-sm-4 row clearfix" align="left">
+                                                <div class="col-sm-2">
+                                                    <label>Infant</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text" readonly="" value="0" name="infant_tot[]" class="form-control infant_tot">
+                                                </div>
+                                                <div class="btn-group col-sm-7">
+                                                    <button type="button" class="btn btn-info add_infant"><i class="fa fa-plus"> ADD INFANT</i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 detail_room_append">
+                                            <div class="detail_room col-sm-12">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div >
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_1" >
+                                                    </div>
+                                                    <div class="file-upload upl_1" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4 preview_div dua pointer_dis">
-                                                <div>
-                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                            <div class="detail_room col-sm-12 disabled">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div>
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
+                                                    </div>
+                                                    <div class="file-upload upl_2" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="file-upload" style="width: 100%">
-                                                    <div class="file-select">
-                                                        <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Passport Image</div> 
-                                                        <input type="file" class="chooseFile" name="image[]">
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4 preview_div tiga pointer_dis">
-                                                <div>
-                                                    <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 100%;height: 150px" class="output" >
+                                            <div class="detail_room col-sm-12 disabled room_3">
+                                                <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                    <div>
+                                                        <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                    </div>
+                                                    <div class="file-upload upl_3" style="width: 80%;">
+                                                        <div class="file-select">
+                                                            <div class="file-select-button fileName" >Image</div>
+                                                            <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                            <input type="file" class="chooseFile" name="image[]">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="file-upload" style="width: 100%">
-                                                    <div class="file-select">
-                                                        <div class="file-select-button fileName" >Image</div>
-                                                        <div class="file-select-name noFile" >Passport Image</div> 
-                                                        <input type="file" class="chooseFile" name="image[]">
+                                                <div class="col-sm-4 input_1">
+                                                    <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Name</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Passport No</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Expired Date</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Issuing</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                    <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 input_2">
+                                                    <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                        <div class="col-sm-6 row clearfix" align="left">
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Gender</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Date of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Place of Birth</b></h5>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 row clearfix" align="left">
+                                                            <div class="contact-form ">
+                                                                <div class="form-group-sm input_place">
+                                                                    <select class="form-control gender" name="gender[]">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                    <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
+                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4"  >
-                                            <div class="col-sm-12 row clearfix" align="left">
-                                                <label align="left">Family Name </label>
-                                                <div class="contact-form">
-                                                    <div class="form-group-sm">
-                                                        <input type="text" name="name_fam[]"  placeholder="Family Name" class="form-control name_fam">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 row clearfix" align="left">
-                                                <label>BED</label>
-                                                <select  class="form-control  bk_bed" name="bk_bed[]" >
-                                                    <option value="single" data-val="1">Single</option>
-                                                    <option value="double" data-val="2">Double</option>
-                                                    <option value="twin" data-val="2">Twin</option>
-                                                    <option value="triple" data-val="3">Triple</option>
-                                                    <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
-                                                    <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
-                                                    <option value="doubletwin&invent" data-val="3">Double/Twin + Invent</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-12 row clearfix" align="left">
-                                                <label align="left">Name </label>
-                                                <div class="contact-form">
-                                                    <div class="form-group-sm">
-                                                        <input type="text" name="name_1[]"  placeholder="First Name" class="form-control name name_1">
-                                                        <input type="text" name="name_2[]"  placeholder="Second Name" class="form-control name name_2 readonly">
-                                                        <input type="text" name="name_3[]"  placeholder="Third Name" class="form-control name name_3 readonly">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-12" align="center">
-                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">
-                                                        <a title="Edit" type="button"  class="btn btn-info add waves-effect ">
-                                                            <i class="fa fa-plus"></i>
-                                                        </a>
-                                                        <a title="Delete" type="button"  class="btn btn-danger del waves-effect ">
-                                                            <i class="fa fa-minus"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                        <div class="col-sm-12" style="text-align: center !important;">
+                                            <div class="text-center  btn-group">
+                                                <a type="button" class="btn btn-info add"><i class="fa fa-plus">ADD ROOM</i></a>
+                                                <a type="button" class="btn btn-danger del"><i class="fa fa-minus"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                    
                             </fieldset>
+                            <!-- Additional-->
                             <hr>
-                              <!-- Additional-->
-
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -398,7 +602,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    
                                   </div>
                             </fieldset>
                             <div class="col-sm-12" style="margin-top: 100px">
@@ -437,7 +640,7 @@
                                     <thead >
                                         <tr>
                                             <th style="text-align: center;">No</th>
-                                            <th style="text-align: center;">Family Name</th>
+                                            <th style="text-align: center;">Paspport No</th>
                                             <th style="text-align: center;">Name</th>
                                             <th style="text-align: center;">Room</th>
                                             <th style="text-align: center;">Price</th>
@@ -480,9 +683,22 @@
     </body>
 </html>
 <script type="text/javascript">
+
+    $(".bk_totalpac").keyup(function (e) {
+       if (e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57 ) && e.which != 46  ) {
+            //display error message
+            return false;
+        }
+    });
+    $(".party_telephone").keyup(function (e) {
+       if ($(this).val() < 0){
+           $(this).val(0)
+       }
+    });
+
     $('#bk_totalpac').keyup(function(){
-        if ($(this).val() > 15) {
-            $(this).val(15)
+        if ($(this).val() > 10) {
+            $(this).val(10)
         }
         if ($(this).val() < 0) {
             $(this).val(0)
@@ -499,6 +715,24 @@
     //     paging:false,
     //     searching:false,
     // });
+
+    $('.date').datepicker({
+        format:'dd/mm/yyyy'
+    }).on('changeDate', function (ev) {
+        $('.date').change();
+    });
+    
+
+    function remove_date_error() {
+        // body...
+        $('.date').change(function(){
+            $(this).removeClass('error');
+        })
+    }
+    $('.date').change(function(){
+        $(this).removeClass('error');
+    })
+        
     {{-- GAMBAR --}}
     $('.chooseFile').bind('change', function () {
         var filename = $(this).val();
@@ -539,53 +773,121 @@
 
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
-        var dua = $(this).parents('.all_room').find('.dua');
-        var tiga = $(this).parents('.all_room').find('.tiga');
-        var name_2 = $(this).parents('.all_room').find('.name_2');
-        var name_3 = $(this).parents('.all_room').find('.name_3');
+        var par = $(this).parents('.all_room');
         if (val == 1) {
-            $(dua).find('.chooseFile').val('');
-            $(dua).find('.noFile').text('Passport Image');
-            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(dua).find('.file-upload').removeClass('active');
-            $(dua).addClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).find('.file-upload').removeClass('active');
-            $(tiga).addClass('pointer_dis');
-            $(name_2).addClass('readonly');
-            $(name_3).addClass('readonly');
-            $(name_2).val('');
-            $(name_3).val('');
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.disabled input').val('');
+            $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(par).find('.disabled .noFile').text('Passport Image');
+            $(par).find('.disabled .file-upload').removeClass('active');
         }else if (val == 2) {
-            $(dua).removeClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).addClass('pointer_dis');
-            $(name_2).removeClass('readonly');
-            $(name_3).addClass('readonly');
-            $(name_3).val('');
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.detail_room').eq(1).removeClass('disabled');
+            $(par).find('.room_3 input').val('');
+            $(par).find('.disabled .tag_image_3').text('Passport Image');
+            $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(par).find('.disabled .upl_3').removeClass('active');
         }else if (val == 3) {
-            $(dua).removeClass('pointer_dis');
-            $(tiga).find('.chooseFile').val('');
-            $(tiga).find('.noFile').text('Passport Image');
-            $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-            $(tiga).removeClass('pointer_dis');
-            $(name_2).removeClass('readonly');
-            $(name_3).removeClass('readonly');
+            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
+            $(par).find('.detail_room').eq(1).removeClass('disabled');
+            $(par).find('.detail_room').eq(2).removeClass('disabled');
         }
+        total();
+    })
+    function baby_total() {
+        var temp = 0;
+        $('.baby').each(function(){
+            temp+=1;
+        })
+        $('.total_infant').val(temp);
+    }
+
+    function total() {
+        var adult = 0;
+        var child = 0;
+
+        $('.bk_bed').each(function(){
+            if ($(this).val() == 'single') {
+                adult+=1;
+            }else if($(this).val() == 'double'){
+                adult+=2;
+            }else if($(this).val() == 'twin'){
+                adult+=2;
+            }else if($(this).val() == 'triple'){
+                adult+=3;
+            }else if($(this).val() == 'doubletwin&cnb'){
+                adult+=2;
+                child+=1;
+            }else if($(this).val() == 'doubletwin&cwb'){
+                adult+=2;
+                child+=1;
+            }
+        })
+
+        $('.total_adult').val(adult);
+        $('.total_child').val(child);
+        
+    }
+    window.onload = function(){
+        total();
+    }
+
+    $(document).on('click','.add_infant',function(){
+        var parent = $(this).parents('.all_room');
+        var infant = $(this).parents('.all_room').find('.infant_tot');
+        var room_append = $(this).parents('.all_room').find('.detail_room_append');
+        
+        var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
+        if (infant.val() < 2) {
+            var room = $(parent).find('.detail_room').eq(0);
+            $(room).clone(true, true).fadeIn().appendTo(room_append);
+            $(parent).find('.detail_room').last().addClass('baby');
+            $(parent).find('.baby').last().removeClass('detail_room');
+            $(parent).find('.remove_append').last().html(remove);
+            $(parent).find('.baby').last().find('input').val('');
+            $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
+            $(parent).find('.baby .noFile').last().text('Passport Image');
+            $(parent).find('.baby').last().find('.file-upload').removeClass('active');
+            $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
+                                                        .removeData('datepicker')
+                                                        .datepicker({format:'dd/mm/yyyy'});
+            var temp = 0;
+            $(parent).find('.baby').each(function(){
+                temp+=1;
+            })
+            infant.val(temp);
+            baby_total();
+        }else{
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Limit Append Achieved!',
+            });
+            return false;
+        }
+    })
+
+    $(document).on('click','.remove_infant',function(){
+        var parent = $(this).parents('.all_room');
+        var infant = $(this).parents('.all_room').find('.infant_tot');
+
+        var dt = $(this).parents('.baby');
+        $(dt).remove();
+        var temp = 0;
+        $(parent).find('.baby').each(function(){
+            temp+=1;
+        })
+        infant.val(temp);
+        baby_total();
     })
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
-        var limit = 1;
+        var limit = 0;
         $('.all_room').each(function(){
             limit +=1;
         })
-        if (limit == 15) {
+        if (limit == 10) {
             iziToast.warning({
                 icon: 'fa fa-times',
                 position:'topRight',
@@ -595,36 +897,24 @@
         }
         $(par).last().clone(true, true).fadeIn().appendTo(".room_append");
 
-        var satu = $('.all_room').last().find('.satu');
-        var dua = $('.all_room').last().find('.dua');
-        var tiga = $('.all_room').last().find('.tiga');
-        var name_1 = $('.all_room').last().find('.name_1');
-        var name_2 = $('.all_room').last().find('.name_2');
-        var name_3 = $('.all_room').last().find('.name_3');
-        var name_fam = $('.all_room').last().find('.name_fam');
+        var last = $('.all_room').last();
         var name = $('.all_room').last().find('.name');
 
-        $(satu).find('.chooseFile').val('');
-        $(satu).find('.noFile').text('Passport Image');
-        $(satu).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(satu).find('.file-upload').removeClass('active');
-        $(dua).find('.chooseFile').val('');
-        $(dua).find('.noFile').text('Passport Image');
-        $(dua).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(dua).find('.file-upload').removeClass('active');
-        $(dua).addClass('pointer_dis');
-        $(tiga).find('.chooseFile').val('');
-        $(tiga).find('.noFile').text('Passport Image');
-        $(tiga).find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
-        $(tiga).find('.file-upload').removeClass('active');
-        $(tiga).addClass('pointer_dis');
-        $(name_2).addClass('readonly');
-        $(name_3).addClass('readonly');
-        $(name_1).val('');
-        $(name_2).val('');
-        $(name_3).val('');
-        $(name_fam).val('');
-        $(name).removeClass('errors');
+        $(last).find('input').val('')
+        $(last).find('.detail_room input').val('');
+        $(last).find('.detail_room .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
+        $(last).find('.detail_room .noFile').text('Passport Image');
+        $(last).find('.baby').remove();
+        $(name).removeClass('error');
+
+        $(last).last().find('.date').removeClass('hasDatepicker')
+                                                        .removeData('datepicker')
+                                                        .datepicker({format:'dd/mm/yyyy'});
+        $('.bk_bed').last().change();
+        $(last).find('.file-upload').removeClass('active');
+        console.log($(last).find('.detail_room').last().find('.date'));
+        $('.infant_tot').last().val(0);
+        total();
     })
 
     $(document).on('click','.del',function(){
@@ -654,7 +944,7 @@
             })
         });
     });
-
+    
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })
@@ -671,53 +961,47 @@
         }
         $('.append_invoice').html('');
         $('.append_additional').html('');
-        var validate = [];
-        var total_arr = [];
-        var tr1 = '</tr>';
+        var validate   = [];
+        var total_arr  = [];
+        var tr         = '<tr>';
+        var tr1        = '</tr>';
         var total_room = 0;
         var total_add  = 0;
-        var indexing = 1;
-        $('.name_fam').each(function(i){
-            var par = $(this).parents('.all_room');
-            var bed = $(par).find('.bk_bed').val();
-            var text_bed = $(par).find('.bk_bed :selected').text();
-            var tr  = '<tr class="tr_'+i+'">';
-            var nama_keluarga = $(this).val();
-            $(par).find('.name:not(.readonly)').each(function(){
-                if ($(this).val() ==  '') {
-                    validate.push(0);
-                    $(this).addClass('errors');
-                }
-            })
-            
-            $(par).find('.name:not(.readonly)').each(function(a){
-                if (a != 2) {
+        var indexing   = 1;
+
+        $('.all_room').each(function(i){
+            var ini      = $(this);
+            var bed      = ini.find('.bk_bed').val();
+            var text_bed = ini.find('.bk_bed :selected').text();
+            // ROOM
+            ini.find('.detail_room:not(.disabled)').each(function(a){
+                var passport = $(this).find('.passport').val();
+                var name     = $(this).find('.passport').val();
+                if (a == 0 || a == 1) {
                     var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                     total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
                 }else{
-                    if (bed == 'doubletwin&cnb') {
-                        var harga = '{{ number_format($detail_intinerary->md_child_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_child_price}}'*1)
-                    }else if (bed == 'doubletwin&cwb'){
-                        var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
-                    }else if (bed == 'doubletwin&invent'){
-                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
-                    }else if (bed == 'triple'){
+                    if (bed == 'triple') {
                         var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                         total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
+                    }else if(bed == 'doubletwin&cnb'){
+                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+                    }else if(bed == 'doubletwin&cwb'){
+                        var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
                     }
                 }
 
+
                 var td0 = '<td class="i_indexing">'+indexing+'</td>';
                 var td1 = '<td class="i_nama_fam_td">'+
-                            nama_keluarga+
-                            '<input type="hidden" name="r_name_fam[]" class="r_name_fam" value="'+nama_keluarga+'">'+
+                            passport+
+                            '<input type="hidden" name="r_passport[]" class="r_passport" value="'+passport+'">'+
                           '</td>';
                 var td2 = '<td class="i_nama_td">'+
-                            $(this).val()+
-                            '<input type="hidden" name="r_name[]" class="r_name" value="'+$(this).val()+'">'+
+                            name+
+                            '<input type="hidden" name="r_name[]" class="r_name" value="'+name+'">'+
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
@@ -730,10 +1014,53 @@
                 var all = tr + td0 + td1 + td2 + td3 + td4 + tr1;
                 $('.append_invoice').append(all);
                 indexing++;
-            })
-          
-        })
 
+                $(this).find('input:not(.chooseFile)').each(function(z){
+                    if ($(this).val() == '') {
+                    console.log($(this));
+                        $(this).addClass('error');
+                        validate.push(0);
+                    }
+                })
+            });
+
+
+            ini.find('.baby:not(.disabled)').each(function(a){
+                var passport = $(this).find('.passport').val();
+                var name     = $(this).find('.name').val();
+
+
+                var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
+                total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+               
+
+
+                var td0 = '<td class="i_indexing">'+indexing+'</td>';
+                var td1 = '<td class="i_nama_fam_td">'+
+                            passport+
+                            '<input type="hidden" name="r_passport[]" class="r_passport" value="'+passport+'">'+
+                          '</td>';
+                var td2 = '<td class="i_nama_td">'+
+                            name+
+                            '<input type="hidden" name="r_name[]" class="r_name" value="'+name+'">'+
+                          '</td>';
+                var td3 = '<td class="i_room_td">'+
+                            text_bed+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                          '</td>';
+                var td4 = '<td class="i_price_td">'+
+                            harga+
+                            '<input type="hidden" name="r_harga[]" class="r_harga" value="'+harga+'">'+
+                          '</td>';
+                var all = tr + td0 + td1 + td2 + td3 + td4 + tr1;
+                $('.append_invoice').append(all);
+                indexing++;
+            });
+        })
+        
+        $('input').keyup(function(){
+            $(this).removeClass('error');
+        })
         $('.sel_opt').each(function(f){
             var all_name = $(this).find('select').val();
             var par      = $(this).parents('tr');
@@ -782,25 +1109,8 @@
             $("html, body").animate({ scrollTop: 350 }, "slow");
             return false;
         }
-        if (indexing < $('#bk_totalpac').val()) {
-            var kurang = $('#bk_totalpac').val()*1 - indexing*1;
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Please Input '+kurang+' More Data!',
-            });
-            $("html, body").animate({ scrollTop: 350 }, "slow");
-            return false;
-        }
-        if (indexing-1 > $('#bk_totalpac').val()) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Exceeds the pax limit!',
-            });
-            $("html, body").animate({ scrollTop: 350 }, "slow");
-            return false;
-        }
+      
+       
         // $('.invoice_tab').prop('hidden',false);
         $('#invoice').modal('show');
     })

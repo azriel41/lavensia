@@ -18,15 +18,18 @@
 </div>
 <!-- end preloader -->
 
-<style type="text/css">
-     
+<style type="text/css">   
+    .navbar-nav {
+        margin-right: 50px !important; 
+    }  
 </style>
+
 
 <!-- 
 Fixed Navigation
 ==================================== -->
-<header id="navigation" class="navbar-fixed-top navbar">
-    <div class="container">
+<header id="navigation" class="navbar-fixed-top" style="padding: 10px 0px;">
+    {{-- <div class="container"> --}}
         <div class="navbar-header">
             <!-- responsive nav button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,88 +48,85 @@ Fixed Navigation
         </div>
 
         <!-- main nav -->
+       
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="#footer">Booking List</a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')">Home</a></li>
+                <li><a href="">Booking List</a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
+                
                 @if (Route::has('login'))
                         @if (Auth::check())
-                            <li style="margin-right: 20px;">
-                                <div class="btn-group">
-                                      <button type="button" class="btn btn-nav dropdown-toggle button_group_name" data-toggle="dropdown">Hy, {{ auth::user()->name }} 
-                                        &nbsp;<span class="caret"></span>
-                                      </button>
-
-                                      <ul class="dropdown-menu" role="menu">
-                                        <li><a href="" onclick="home()"><i class="fa fa-home"></i> Dashboard</a></li>
-                                        <li><a href="" onclick="profile()"><i class="fa fa-user"></i> Profile</a></li>
-                                        <li>
-                                            <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                                         <i class="fa fa-sign-out"></i>
-                                                Logout
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                      </ul>
-                                </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Hy, {{ auth::user()->name }}  &nbsp;<i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="" onclick="home()"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li><a href="" onclick="profile()"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="fa fa-sign-out"></i>
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                  </ul>
                             </li>
-                            <li>
-                                <div class="btn-group" >
-                                      <button type="button" class="btn btn-nav dropdown-toggle button_group_name" data-toggle="dropdown"><i class="fa fa-shopping-cart" title="Shop Cart"></i>
-                                        <span class="badge">{{ $jumlah }}</span>
-                                      </button>
-                                      <div class="dropdown-menu" role="menu">
-                                            <div class="col-sm-12 footer-drop dis-table" style="text-align: center;height: 50px;">
-                                                <div class="v-align">
-                                                    <h3 style="color: white">Order Cart</h3>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12" style="height: 290px !important; overflow-y: scroll; min-width: 350px">
-                                                @foreach ($cart as $i=>$val)
-                                                    @if ($val->db_status == 'Waiting List')
-                                                        <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">
-                                                            <div class="col-sm-5">
-                                                                <img src="{{ asset('storage/app')}}/{{ $val->detail_itin->intinerary->mi_image  }}"
-                                                                style="width: 100px;height: 75px;">
-                                                            </div>
-                                                            <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
-                                                                <div class="col-sm-12">
-                                                                    <h6  style="color: #a60036e6"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
-                                                                </div>
-                                                                <div class="col-sm-12" style="color: grey">
-                                                                    <h7>Pax : {{ $val->db_pax }}</h7>
-                                                                </div>
-                                                                <div class="col-sm-12" style="color: grey">
-                                                                    <h7>Price : {{ number_format($val->db_total_additional+$val->db_total_room, 0, ",", ".") }}</h7>
-                                                                </div>
-                                                            </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fa fa-shopping-cart" title="Shop Cart"></i> &nbsp; <span class="badge">{{ $jumlah }}</span>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <div class="col-sm-12">
+                                        <h4 style="color: grey">Order Cart</h4>
+                                    </div>
+                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 294px !important; overflow-y: scroll;overflow: hidden; min-width: 350px">
+                                        @foreach ($cart as $i=>$val)
+                                            @if ($val->db_status == 'Waiting List')
+                                                <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">
+                                                    <div class="col-sm-5">
+                                                        <img src="{{ asset('storage/app')}}/{{ $val->detail_itin->intinerary->mi_image  }}"
+                                                        style="width: 100px;height: 75px;">
+                                                    </div>
+                                                    <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
+                                                        <div class="col-sm-12">
+                                                            <h6  style="color: #a60036e6"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
                                                         </div>
-                                                        <div class="col-sm-12" 
-                                                            @if ($i == count($cart)-1)
-                                                                style="margin-bottom: 15px;" 
-                                                            @endif>
-                                                            <button class="btn btn-danger" style="width: 100%" onclick="check_out('{{ $val->db_id }}')">
-                                                                Check Out
-                                                            </button>
-                                                    </div> 
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <div class="col-sm-12 footer-drop dis-table" style="text-align: center;height: 75px;">
-                                                <div class="v-align">
-                                                    <button class="btn btn-danger ">
-                                                        See Cart
-                                                    </button>
+                                                        <div class="col-sm-12" style="color: grey">
+                                                            <h7>Pax : {{ $val->db_pax }}</h7>
+                                                        </div>
+                                                        <div class="col-sm-12" style="color: grey">
+                                                            <h7>Price : {{ number_format($val->db_total_additional+$val->db_total_room, 0, ",", ".") }}</h7>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                      </div>
-                                </div>
+                                                <div class="col-sm-12" 
+                                                    @if ($i == count($cart)-1)
+                                                        style="margin-bottom: 15px;" 
+                                                    @endif>
+                                                    <button class="btn btn-danger" style="width: 100%" onclick="check_out('{{ $val->db_id }}')">
+                                                        Check Out
+                                                    </button>
+                                                </div> 
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="col-sm-12 pull-right" style="text-align: center;">
+                                        <div class="v-align">
+                                            <button class="btn btn-danger ">
+                                                See Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                              </div>
                             </li>
+
+                            
                         @else
                             <button class="btn btn-small btn-nav icon_login_logout" onclick="login()">Login</button>
 
@@ -138,7 +138,7 @@ Fixed Navigation
         </nav>
         <!-- /main nav -->
         
-    </div>
+    {{-- </div> --}}
 </header>
 <!--
 End Fixed Navigation
@@ -155,7 +155,9 @@ End Fixed Navigation
 <!-- Fontawesome Icon font -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/font-awesome.min.css') }}">
 <!-- Twitter Bootstrap css -->
-<link rel="stylesheet" href="{{ asset ('assets_frontend/css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{ asset ('assets_frontend/css/bootstrap.min.css')}}">
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="{{ asset ('assets_frontend/css/main.css')}}">
 <!-- jquery.fancybox  -->
 <link rel="stylesheet" href="{{ asset ('assets_frontend/css/jquery.fancybox.css')}}">
 <!-- animate -->
@@ -182,7 +184,8 @@ End Fixed Navigation
 
 
 <link href="{{ asset ('assets_frontend/radio/css/style.css') }}" rel="stylesheet" />
-
+{{-- DATEPICKER --}}
+<link href="{{ asset ('assets/plugins/datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
 {{-- Bootstrap-select --}}
 <link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
 <!-- Izi toast-->
@@ -235,6 +238,16 @@ End Fixed Navigation
     text-align: center;
     vertical-align: middle;
 }
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.grey{
+    color: grey;
+}
+
 </style>
 
 <script type="text/javascript">

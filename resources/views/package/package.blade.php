@@ -39,16 +39,7 @@
                 background-color: white;
             }
 
-            .package{
-                background-color: #f5f5f5;
-                /* Full height */
-                height: 100%; 
 
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
             .nav-tabs { 
                 border-bottom: 2px solid #DDD; 
             }
@@ -62,7 +53,7 @@
             .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
                 border: none; 
                 color: #630247 !important; 
-                background: #f8cd04 !important; 
+                background: transparent !important; 
             }
             .nav-tabs > li > a::after {
                 content: ""; 
@@ -150,7 +141,7 @@
         <!--
         Contact Us
         ==================================== -->        
-        <section id="package" class="package">
+        <section id="package" class="package background_page">
             <div class="container">
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
@@ -193,6 +184,7 @@
                             <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
                             <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
+                            <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & CondAdditional</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -215,39 +207,6 @@
                                         @endforeach
                                     </div>
                             </div>
-                            
-                               {{--  <div class="container">
-                                    <div class="row row-striped">
-                                    <div class="col-2 text-right">
-                                        <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-                                        <h2>OCT</h2>
-                                    </div>
-                                    <div class="col-10">
-                                        <h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-                                            <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-                                            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-                                        </ul>
-                                        <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                                <div class="row row-striped">
-                                    <div class="col-2 text-right">
-                                        <h1 class="display-4"><span class="badge badge-secondary">27</span></h1>
-                                        <h2>OCT</h2>
-                                    </div>
-                                    <div class="col-10">
-                                        <h3 class="text-uppercase"><strong>Operations Meeting</strong></h3>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Friday</li>
-                                            <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 2:30 PM - 4:00 PM</li>
-                                            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Room 4019</li>
-                                        </ul>
-                                        <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                            </div> --}}
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
@@ -319,6 +278,16 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <table width="100%" class="kiri">
+                                    <br>
+                                    <tr>
+                                        <th><b>Term & Cond</b></th>
+                                    </tr>
+                                </table>
+                                <div style="margin-top: 20px"></div>
+                                
                             </div>
                         </div>
                       </div>

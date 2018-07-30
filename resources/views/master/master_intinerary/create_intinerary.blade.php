@@ -529,24 +529,6 @@
     }
 
 
-
-    $('#chooseFile').bind('change', function () {
-        var filename = $("#chooseFile").val();
-        var fsize = $('#chooseFile')[0].files[0].size;
-        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
-        {
-          return false;
-        }
-        if (/^\s*$/.test(filename)) {
-            $(".file-upload").removeClass('active');
-            $("#noFile").text("No file chosen..."); 
-        }
-        else {
-            $(".file-upload").addClass('active');
-            $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
-        }
-    });
-
     var loadFile = function(event) { 
         var fsize = $('#chooseFile')[0].files[0].size;
         if(fsize>2048576) //do something if file size more than 1 mb (1048576)

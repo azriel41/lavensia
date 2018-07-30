@@ -48,6 +48,8 @@
 <script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
 <script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 <script src="{{ asset ('assets_frontend/radio/js/index.js') }}"></script>
+{{-- DATEPICKER --}}
+<script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script>
     var wow = new WOW ({
         boxClass:     'wow',      // animated element css class (default is wow)
