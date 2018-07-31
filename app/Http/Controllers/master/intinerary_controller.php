@@ -133,8 +133,9 @@ class intinerary_controller extends Controller
                     'mi_nota'       => $req->tour_code,
                     'mi_name'       => $req->intinerary,
                     'mi_image'      => $filename,
+                    'mi_term'       => $req->term,
                     'category_id'   => $req->category,
-                    'mi_highlight'  => $req->highlight,
+                    'mi_highlight'  => strtoupper($req->highlight),
                     'mi_by'         => $req->caption_by,
                     'updated_at'    => Carbon::now(),
                     'updated_by'    => $name
@@ -166,6 +167,7 @@ class intinerary_controller extends Controller
                     'ms_detail'         => $i+1,
                     'ms_caption'        => strtoupper($req->caption_schedule[$i]),
                     'ms_description'    => $req->description_schedule[$i],
+                    'ms_bld'            => $req->BLD[$i],
                     'created_at'        => Carbon::now(),
                     'updated_at'        => Carbon::now(),
                     'created_by'        => $name,
@@ -197,7 +199,6 @@ class intinerary_controller extends Controller
                     'md_child_w_price'  => filter_var($req->child_w_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_seat'           => $req->seat[$i],
                     'md_seat_remain'    => $req->seat[$i],
-                    'md_term'           => $req->term[$i],
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );

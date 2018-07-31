@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// PAYMENT USER
 	Route::get('/payment_page/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
-	Route::post('/payment_page/save_first_payment', 'payment_page\payment_page_controller@save_first_payment')->name('save_first_payment');
+	Route::post('/payment_page/save', 'payment_page\payment_page_controller@save_first_payment')->name('save_payment_user');
 
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');

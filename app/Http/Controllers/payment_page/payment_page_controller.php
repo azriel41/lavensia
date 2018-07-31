@@ -13,6 +13,7 @@ use App\User;
 use App\additional;
 use App\m_additional_intinerary;
 use App\d_history_bayar;
+use App\d_history_bayar_d;
 use DB;
 use carbon\Carbon;
 use Auth;
@@ -34,13 +35,16 @@ class payment_page_controller extends Controller
     protected $d_additional_booking;
     protected $additional;
     protected $d_history_bayar;
+    protected $d_history_bayar_d;
     public function __construct(detail_intinerary $detail_intinerary,
                                 intinerary $intinerary,
                                 d_booking $d_booking,
                                 d_party_name $d_party_name,
                                 d_additional_booking $d_additional_booking,
                                 additional $additional,
-                                d_history_bayar $d_history_bayar)
+                                d_history_bayar $d_history_bayar,
+                                d_history_bayar_d $d_history_bayar_d
+                            )
     {
         $this->detail_intinerary    = new TestRepo($detail_intinerary);
         $this->intinerary           = new TestRepo($intinerary);
@@ -49,6 +53,7 @@ class payment_page_controller extends Controller
         $this->d_additional_booking = new TestRepo($d_additional_booking);
         $this->additional           = new TestRepo($additional);
         $this->d_history_bayar      = new TestRepo($d_history_bayar);
+        $this->d_history_bayar_d    = new TestRepo($d_history_bayar_d);
         
     }
 
@@ -70,36 +75,46 @@ class payment_page_controller extends Controller
     {   
         DB::beginTransaction();
         try{
-            DB::commit();
-            $file = $req->file('image');
-
-
             $id = $this->d_history_bayar->max('dh_id');
-
-            $filename = 'payment_proof/'.'bukti_'.$req->bank_name.'_'.$req->bank_number.'_'.$id.'.'.$file->getClientOriginalExtension();
-
-            Storage::put($filename,file_get_contents($file));
-
-            $data = array(
+            $head = array(
                            'dh_id'              => $id,
                            'dh_booking_id'      => $req->id,
-                           'dh_account_name'    => $req->bank_name,
-                           'dh_account_number'  => $req->bank_number,
-                           'dh_image'           => $filename,
-                           'dh_nominal'         => filter_var($req->nominal,FILTER_SANITIZE_NUMBER_INT),
+                           'dh_total_payment'   => $req->total_pay,
                            'dh_payment_method'  => $req->payment,
                         );
 
-            $this->d_history_bayar->create($data);
+            $this->d_history_bayar->create($head);
 
-            d_booking::where('db_id',$req->id)->update([
-                                    'db_status' => 'Holding Confirm'
-                                ]);
+            $d_booking = $this->d_booking->cari('db_id',$req->id);
 
-        return redirect()->route('dashboard');
+            for ($b=0; $b < count($req->bank_number); $b++) { 
+                $file = $req->file('image')[$b];
+                if ($file != null) {
+                    $filename = 'history_bayar/'.'BAYAR_PERTAMA'.'_'.$d_booking->db_kode_transaksi.'_'.$id.'.'.$file->getClientOriginalExtension();
+
+                    Storage::put($filename,file_get_contents($file));
+                }else{
+                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+                }
+
+                $detail = array(
+                           'dhd_id'              => $b+1,
+                           'dhd_history_id'      => $id,
+                           'dhd_bank'            => $req->bank_number[$b],
+                           'dhd_nominal'         => filter_var($req->nominal[$b],FILTER_SANITIZE_NUMBER_INT),
+                           'dhd_nama_rekening'   => $req->name[$b],
+                           'dhd_image'           => $filename,
+                           'dhd_tanggal'         => $req->date[$b],
+                        );
+                // dd($detail);
+                $save = $this->d_history_bayar_d->create($detail);
+            }
+
+            DB::commit();
+            return Response::json(['status'=>1]);
         }catch(Exception $error){
-        return redirect()->back()->withErrors(['msg', 'Server Mengalami Masalah']);
-        DB::rollBack();
+            return Response::json(['status'=>0,'message'=>$error]);
+            DB::rollBack();
         }
     }
 }

@@ -49,7 +49,6 @@ class bookingController extends Controller
 	}
     public function booking(Request $req)
     {
-	
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
     	$id 				= $req->id;
@@ -86,8 +85,13 @@ class bookingController extends Controller
 
     		}
     		// HEADER
+    		$bulan = Carbon::now()->format('m');
+    		$tahun = Carbon::now()->format('y');
+   			$index = str_pad($id, 5, '0', STR_PAD_LEFT);
+   			$index = $tahun.$bulan.$index;
     		$data = array(
     						'db_id'				    	=> $id,
+    						'db_kode_transaksi'	    	=> $index,
 						    'db_users'					=> Auth::user()->id,
 						    'db_name'					=> $req->party_name,
 						    'db_intinerary_id'			=> $req->id,
@@ -106,7 +110,6 @@ class bookingController extends Controller
 
     		$kurang = $this->detail_intinerary->cari('md_id',$req->id);
     		$hasil  = $kurang->md_seat_remain - $req->bk_totalpac;
-
     		$updt = array(
     						'md_seat_remain'			=> $hasil,
     					 );
@@ -141,9 +144,6 @@ class bookingController extends Controller
 		            $birth  = Carbon::createFromDate($birth[2], $birth[1], $birth[0],'00');
 		        	
 		            $exp	= Carbon::createFromDate($exp[2], $exp[1], $exp[0],'00');
-		            if ($b == 4) {
-		            	dd($exp);
-		        	}
 					$data = array(	
 						'dp_booking_id'	=> $id,
 						'dp_detail'		=> $b+1,
@@ -157,8 +157,8 @@ class bookingController extends Controller
 						'dp_birth_place'=> $place_birth[$b],
 						'dp_reference'	=> $reference[$b],
 						'dp_image'		=> $filename[$b],
-						'created_by'	=> Auth::user()->m_id,
-						'updated_by'	=> Auth::user()->m_id,
+						'created_by'	=> Auth::user()->id,
+						'updated_by'	=> Auth::user()->id,
 					);
 
 	    			$this->d_party_name->create($data);

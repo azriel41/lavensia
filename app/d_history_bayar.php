@@ -13,15 +13,17 @@ class d_history_bayar extends Model
 
 	protected $fillable = ['dh_id',
 						   'dh_booking_id',
-						   'dh_account_name',
-						   'dh_account_number',
-						   'dh_nominal',
+						   'dh_total_payment',
 						   'dh_payment_method',
-						   'dh_image'
 						];
 
 	public function booking()
 	{
         return $this->belongsTo('App\d_booking','db_id');
+	}
+
+	public function detail_history()
+	{
+        return $this->hasMany('App\d_history_bayar_d','dhd_history_id');
 	}
 }

@@ -12,6 +12,7 @@ class d_booking extends Model
 	const UPDATED_AT = 'updated_at';
 
 	protected $fillable = ['db_id',
+						   'db_kode_transaksi',
 						   'db_users',
 						   'db_name',
 						   'db_intinerary_id',
