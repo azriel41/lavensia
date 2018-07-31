@@ -54,13 +54,13 @@ class intinerary_controller extends Controller
                                 </button>
                                 <ul class="dropdown-menu" style="padding:0px">
                                     <li class="bg-orange">
-                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
+                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:white">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
                                     </li>
                                     <li class="bg-red">
-                                        <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
+                                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -68,20 +68,7 @@ class intinerary_controller extends Controller
                                 </ul>
                             </div>';
                         })
-                        ->addColumn('departure', function ($data) {
-                            return'<button onclick="departure(\''.$data->mi_id.'\')" type="button" class="btn bg-pink waves-effect m-r-20" data-toggle="modal" data-target="#departure">
-                                    <i class="material-icons">extensions</i>
-                                   </button>';
-                        })
-                        ->addColumn('schedule', function ($data) {
-                            return'<button onclick="schedule(\''.$data->mi_id.'\')" type="button" class="btn bg-cyan waves-effect m-r-20" data-toggle="modal" data-target="#schedule">
-                                    <i class="material-icons">extensions</i>
-                                   </button>';
-                        })
-                        ->addColumn('category', function ($data) {
-                            return $data->category->mc_name;
-                        })
-                        ->rawColumns(['aksi','schedule','departure'])
+                        ->rawColumns(['aksi'])
                         ->addIndexColumn()
                         ->make(true);
     }

@@ -325,7 +325,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="">Book</a>
+                                <a href="{{ route('booking_handle') }}">Book</a>
                             </li>
                             <li>
                                 <a href="">Detail Itinerary</a>

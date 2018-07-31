@@ -129,9 +129,8 @@ Fixed Navigation
 
                             
                         @else
-                            <button class="btn btn-small btn-nav icon_login_logout" onclick="login()">Login</button>
-
-                            <button class="btn btn-small btn-nav icon_login_logout" onclick="register()">Register</button>
+                            <li style="background-color: #c70025f2;"><a href="" style="color: whitesmoke !important;"  onclick="login()">Login</a></li>
+                            <li style="background-color: #af194a;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   
                         @endif
                 @endif
 

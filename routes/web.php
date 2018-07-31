@@ -84,7 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');
 
-
+	//BOOK ADMIN DAN HANDLE BY
+	Route::get('/booking/booking_handle', 'booking\booking_handleController@booking_handle')->name('booking_handle');
+	Route::get('/booking/datatable_booking_handle', 'booking\booking_handleController@datatable_booking_handle')->name('datatable_booking_handle');
 
 
 	/*************** END BOOK *************/
