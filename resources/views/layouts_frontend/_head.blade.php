@@ -78,7 +78,7 @@ Fixed Navigation
                                     </li>
                                   </ul>
                             </li>
-                           {{--  <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fa fa-shopping-cart" title="Shop Cart"></i> &nbsp; <span class="badge">{{ $jumlah }}</span>
                                 </a>
@@ -86,7 +86,7 @@ Fixed Navigation
                                     <div class="col-sm-12">
                                         <h4 style="color: grey">Order Cart</h4>
                                     </div>
-                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 294px !important; overflow-y: scroll;overflow: hidden; min-width: 350px">
+                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 294px !important; overflow-y: scroll; min-width: 350px">
                                         @foreach ($cart as $i=>$val)
                                             @if ($val->db_status == 'Waiting List')
                                                 <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">

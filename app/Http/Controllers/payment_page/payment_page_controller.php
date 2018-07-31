@@ -98,7 +98,6 @@ class payment_page_controller extends Controller
                 }
 
                 $detail = array(
-                           'dhd_id'              => $b+1,
                            'dhd_history_id'      => $id,
                            'dhd_bank'            => $req->bank_number[$b],
                            'dhd_nominal'         => filter_var($req->nominal[$b],FILTER_SANITIZE_NUMBER_INT),

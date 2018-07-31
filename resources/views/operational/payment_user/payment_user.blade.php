@@ -338,7 +338,7 @@
                                             <tr>
                                                 <td><h5 class="marron">Date Transfer</h5></td>
                                                 <td align="right">
-                                                    <input type="date" value="{{ carbon\carbon::now()->format('d/m/Y') }}" class="form-control date" name="date[]" min="2000-12-31" max="1979-12-31">
+                                                    <input type="date" value="{{ carbon\carbon::now()->format('d/m/Y') }}" class="form-control date" name="date[]" min="31-12-2000" max="31-12-1979`">
                                                 </td>
                                             </tr>
                                             <tr>
