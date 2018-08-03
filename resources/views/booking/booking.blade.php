@@ -213,8 +213,7 @@
             }
         
             .disabled{
-                opacity: 0.3;
-                pointer-events: none;
+                display: none;
             }
         </style>
     </head>
