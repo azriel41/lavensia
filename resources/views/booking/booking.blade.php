@@ -169,10 +169,10 @@
                 background: #8888;
             }
 
-            thead{
+   /*         thead{
                 background: purple;
                 color: white
-            }
+            }*/
            /* .bootstrap-select:hover{
                 border: 1px solid;
             }*/
@@ -214,6 +214,9 @@
         
             .disabled{
                 display: none;
+            }
+            .uppercase{
+                text-transform: uppercase;
             }
         </style>
     </head>
@@ -365,10 +368,10 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -387,7 +390,7 @@
                                                                 <h5 class="grey"><b>Place of Birth</b></h5>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                                <h5 class="grey"><b>Remark</b></h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 row clearfix" align="left">
@@ -398,8 +401,8 @@
                                                                         <option value="female">Female</option>
                                                                     </select>
                                                                     <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                    <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -849,7 +852,7 @@
             $(parent).find('.baby').last().find('.file-upload').removeClass('active');
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .datepicker({format:'dd/mm/yyyy'});
+                                                        .datepicker({format:'dd/mm/yyyy',startDate: '-2y'});
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -995,7 +998,7 @@
             // ROOM
             ini.find('.detail_room:not(.disabled)').each(function(a){
                 var passport = $(this).find('.passport').val();
-                var name     = $(this).find('.passport').val();
+                var name     = $(this).find('.name').val();
                 if (a == 0 || a == 1) {
                     var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                     total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
