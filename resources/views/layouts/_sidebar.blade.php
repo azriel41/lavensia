@@ -355,7 +355,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="">UNDER MAINTENANCE</a>
+                                <a href="{{ route('report_profit') }}">Report Income</a>
                             </li>
                         </ul>
                     </li>

@@ -88,6 +88,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking/booking_handle', 'booking\booking_handleController@booking_handle')->name('booking_handle');
 	Route::get('/booking/datatable_booking_handle', 'booking\booking_handleController@datatable_booking_handle')->name('datatable_booking_handle');
 
+	//REPORT 
+	Route::get('/report/report_profit', 'report\report_profitController@report_profit')->name('report_profit');
+
 
 	/*************** END BOOK *************/
 
