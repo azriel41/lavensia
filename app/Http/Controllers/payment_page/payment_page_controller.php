@@ -98,13 +98,12 @@ class payment_page_controller extends Controller
                 }
 
                 $detail = array(
-                           'dhd_id'              => $b+1,
                            'dhd_history_id'      => $id,
-                           'dhd_bank'            => $req->bank_number[$b],
+                           'dhd_bank'            => strtoupper($req->bank_number[$b]),
                            'dhd_nominal'         => filter_var($req->nominal[$b],FILTER_SANITIZE_NUMBER_INT),
-                           'dhd_nama_rekening'   => $req->name[$b],
+                           'dhd_nama_rekening'   => strtoupper($req->name[$b]),
                            'dhd_image'           => $filename,
-                           'dhd_tanggal'         => $req->date[$b],
+                           'dhd_tanggal'         => carbon::parse(str_replace('/', '-', $req->date[$b]))->format('Y-m-d'),
                         );
                 // dd($detail);
                 $save = $this->d_history_bayar_d->create($detail);

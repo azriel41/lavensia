@@ -68,7 +68,20 @@ class intinerary_controller extends Controller
                                 </ul>
                             </div>';
                         })
-                        ->rawColumns(['aksi'])
+                        ->addColumn('departure', function ($data) {
+                            return'<button onclick="departure(\''.$data->mi_id.'\')" type="button" class="btn bg-pink waves-effect m-r-20" data-toggle="modal" data-target="#departure">
+                                    <i class="material-icons">extensions</i>
+                                   </button>';
+                        })
+                        ->addColumn('schedule', function ($data) {
+                            return'<button onclick="schedule(\''.$data->mi_id.'\')" type="button" class="btn bg-cyan waves-effect m-r-20" data-toggle="modal" data-target="#schedule">
+                                    <i class="material-icons">extensions</i>
+                                   </button>';
+                        })
+                        ->addColumn('category', function ($data) {
+                            return $data->category->mc_name;
+                        })
+                        ->rawColumns(['aksi','category','schedule','departure'])
                         ->addIndexColumn()
                         ->make(true);
     }

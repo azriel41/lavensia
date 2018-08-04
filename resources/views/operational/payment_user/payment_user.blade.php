@@ -173,10 +173,10 @@
                 background: #8888;
             }
 
-            thead{
+/*            thead{
                 background: purple;
                 color: white
-            }
+            }*/
            /* .bootstrap-select:hover{
                 border: 1px solid;
             }*/
@@ -220,6 +220,9 @@
             }
             .marron{
                 color: rgba(189, 94, 91, 1);
+            }
+            .uppercase{
+                text-transform: uppercase;
             }
         </style>
     </head>
@@ -268,6 +271,7 @@
                                                         <td align="right">Total Payment :</td>
                                                         <td align="center">
                                                             <input type="text" value="Rp. 0,00" class="form-control total_pay input-sm" readonly="" style="color: red;text-align: right;">
+                                                            <input type="hidden" class="form-control" name="id" value="{{ $booking->db_id }}">
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -319,14 +323,13 @@
                                             <tr>
                                                 <td><h5 class="marron">Account Bank Name</h5></td>
                                                 <td align="right">
-                                                    <input type="text" class="form-control bank_number" placeholder="Account Bank Name" name="bank_number[]">
-                                                    <input type="hidden" class="form-control" name="id" value="{{ $booking->db_id }}">
+                                                    <input type="text" class="form-control bank_number uppercase" placeholder="Account Bank Name" name="bank_number[]">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td><h5 class="marron">Account Name</h5></td>
                                                 <td align="right">
-                                                    <input type="text" placeholder="Account Name" class="form-control name" name="name[]">
+                                                    <input type="text" placeholder="Account Name" class="form-control name uppercase" name="name[]">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -338,7 +341,7 @@
                                             <tr>
                                                 <td><h5 class="marron">Date Transfer</h5></td>
                                                 <td align="right">
-                                                    <input type="date" value="{{ carbon\carbon::now()->format('d/m/Y') }}" class="form-control date" name="date[]" min="2000-12-31" max="1979-12-31">
+                                                    <input type="text" value="{{ carbon\carbon::now()->format('d/m/Y') }}" class="form-control date" name="date[]" >
                                                 </td>
                                             </tr>
                                             <tr>
@@ -389,7 +392,11 @@ $(".nominal").maskMoney({
     thousands:'.',
     allowZero:true,
 });
-
+$('.date').datepicker({
+    format:'dd/mm/yyyy'
+}).on('changeDate', function (ev) {
+    $('.date').change();
+});
 {{-- GAMBAR --}}
 $('.chooseFile').bind('change', function () {
     var filename = $(this).val();
@@ -470,6 +477,9 @@ $(document).on('click','.add',function(){
     $('.table_payment').last().find('.output').attr('src','{{ asset('assets/images/Noimage.png') }}');
     $('.table_payment').last().find('.noFile').text('Proof of Payment');
     $('.table_payment').last().find('.nominal').val('0');
+    $('.table_payment').last().find('.date').removeClass('hasDatepicker')
+                                                        .removeData('datepicker')
+                                                        .datepicker({format:'dd/mm/yyyy'});
     $(".nominal").maskMoney({
         precision:0,
         thousands:'.',
