@@ -54,13 +54,13 @@ class intinerary_controller extends Controller
                                 </button>
                                 <ul class="dropdown-menu" style="padding:0px">
                                     <li class="bg-orange">
-                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:white">
+                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
                                     </li>
                                     <li class="bg-red">
-                                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:white">
+                                        <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -131,21 +131,37 @@ class intinerary_controller extends Controller
             if ($file != null) {
 
                 $tour_code = str_replace('/', '-', $req->tour_code);
-                $filename = 'itinerary/'.$tour_code.'.'.$file->getClientOriginalExtension();
+                $photo = 'itinerary/PHOTO_'.$tour_code.'.'.$file->getClientOriginalExtension();
 
-                Storage::put($filename,file_get_contents($req->file('image')));
+                Storage::put($photo,file_get_contents($req->file('image')));
             }else{
                 if ($check != null) {
-                    $filename = $check->mi_image;
+                    $photo = $check->mi_image;
                 }else{
                     return Response::json(['status'=>0,'message'=>'Please Put Your Photo...']);
+                }
+            }
+            // dd($req->file('pdf'));
+            $file = $req->file('pdf');
+            if ($file != null) {
+
+                $tour_code = str_replace('/', '-', $req->tour_code);
+                $pdf = 'itinerary/PDF_'.$tour_code.'.'.$file->getClientOriginalExtension();
+
+                Storage::put($pdf,file_get_contents($req->file('pdf')));
+            }else{
+                if ($check != null) {
+                    $pdf = $check->mi_pdf;
+                }else{
+                    return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
                 }
             }
             
             $head = array(
                     'mi_nota'       => $req->tour_code,
                     'mi_name'       => $req->intinerary,
-                    'mi_image'      => $filename,
+                    'mi_image'      => $photo,
+                    'mi_pdf'        => $pdf,
                     'mi_term'       => $req->term,
                     'category_id'   => $req->category,
                     'mi_highlight'  => strtoupper($req->highlight),
