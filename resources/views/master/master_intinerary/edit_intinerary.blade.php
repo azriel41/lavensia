@@ -83,7 +83,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_highlight }}</textarea>
+                                            <textarea rows="4" id="highlight" name="highlight" class="form-control no-resize uppercase" placeholder="Field Required">{{ $data->mi_highlight }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <input type="text" value="{{ $data->mi_by }}" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
+                                            <input type="text" value="{{ $data->mi_by }}" name="caption_by" id="caption_by" class="form-control uppercase" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="start" class="form-control datenormal" placeholder="Field Required">
+                                                    <input type="text" id="start" class="form-control datenormal" placeholder="DD/MM/YYYY">
                                                     <input type="hidden" id="index">
                                                 </div>
                                             </div>
@@ -285,7 +285,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
+                                                    <input type="text" id="end" class="form-control datenormal " placeholder="DD/MM/YYYY">
                                                 </div>
                                             </div>
                                         </div>

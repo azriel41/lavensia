@@ -165,7 +165,7 @@ class intinerary_controller extends Controller
                     'mi_term'       => $req->term,
                     'category_id'   => $req->category,
                     'mi_highlight'  => strtoupper($req->highlight),
-                    'mi_by'         => $req->caption_by,
+                    'mi_by'         => strtoupper($req->caption_by),
                     'updated_at'    => Carbon::now(),
                     'updated_by'    => $name
                     );
