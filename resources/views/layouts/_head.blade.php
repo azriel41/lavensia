@@ -150,4 +150,7 @@
 	.select2-results__options{
 		width: auto !important;
 	}
+	.uppercase{
+        text-transform: uppercase;
+    }
 </style>
