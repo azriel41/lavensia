@@ -95,7 +95,7 @@ class intinerary_controller extends Controller
         $tahun = Carbon::now()->format('y');
     	$id = $this->model->max('mi_id');
         $index = str_pad($id, 3, '0', STR_PAD_LEFT);
-        $nota = 'TR' .$bulan.$tahun.'/'. $index;  
+        $nota = 'LCV' .$bulan.$tahun.'/'. $index;  
         $additional = $this->additional->all();
         $category =  $this->category->all();
     	return view('master.master_intinerary.create_intinerary',compact('category','nota','additional'));
