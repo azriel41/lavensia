@@ -296,6 +296,18 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Minimal DP</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="minimal_dp" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Seat</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -321,6 +333,7 @@
                                             <td>CnB Price</td>
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
+                                            <td>Minimal DP</td>
                                             <td>Seat</td>
                                             <td>Action</td>
                                         </tr>
@@ -498,6 +511,9 @@
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
 
+            '<p class="minimal_dp_text">'+minimal_dp+'</p>'+
+            '<input type="hidden" name="minimal_dp[]" value="'+minimal_dp+'" class="minimal_dp">',
+
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
@@ -518,16 +534,16 @@
 
     function edit(a) {
         var par = $(a).parents('tr');
-
-        var index         = $('.index').val();
-        var start         = $('.start').val();
-        var end           = $('.end').val();
-        var adult_price   = $('.adult_price').val();
-        var child_price   = $('.child_price').val();
-        var infant_price  = $('.infant_price').val();
-        var child_w_price = $('.child_w_price').val();
-        var term          = $('.term').val();
-        var seat          = $('.seat').val();
+        var index         = $(par).find('.index').val();
+        var start         = $(par).find('.start').val();
+        var end           = $(par).find('.end').val();
+        var adult_price   = $(par).find('.adult_price').val();
+        var child_price   = $(par).find('.child_price').val();
+        var infant_price  = $(par).find('.infant_price').val();
+        var child_w_price = $(par).find('.child_w_price').val();
+        var term          = $(par).find('.term').val();
+        var seat          = $(par).find('.seat').val();
+        var minimal_dp    = $(par).find('.minimal_dp').val();
 
 
         $('#index').val(index);
@@ -539,6 +555,7 @@
         $('#child_w_price').val(child_w_price);
         $('#term').val(term);
         $('#seat').val(seat);
+        $('#minimal_dp').val(minimal_dp);
     }
 
 

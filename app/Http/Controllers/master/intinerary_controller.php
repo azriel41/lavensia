@@ -228,6 +228,7 @@ class intinerary_controller extends Controller
                     'md_child_w_price'  => filter_var($req->child_w_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_seat'           => $req->seat[$i],
                     'md_seat_remain'    => $req->seat[$i],
+                    'md_dp'             => filter_var($req->minimal_dp[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );
