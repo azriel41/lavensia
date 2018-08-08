@@ -565,6 +565,10 @@
         var fsize = $(this)[0].files[0].size;
         if(fsize>1048576) //do something if file size more than 1 mb (1048576)
         {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
           return false;
         }
         var parent = $(this).parents(".preview_div");
