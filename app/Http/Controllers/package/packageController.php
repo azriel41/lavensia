@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use auth;
 use PDF;
+use Storage;
 use App\detail_intinerary;
 use App\intinerary;
 use App\schedule;
@@ -34,12 +35,13 @@ class packageController extends Controller
             return view('package.package',compact('data','schedule','detail','additional'));
         }
     }
-    public function package_pdf(Request $request)
+    public function package_pdf(Request $req)
     {
-        $data = schedule::where('ms_intinerary_id','2')->get();
+        $id = str_replace('/', '-', $req->id);
+        
 
-        $pdf = PDF::loadView('report.pdf.pdf_intinerary',$data);
-        return $pdf->stream('report.pdf');
+        return response()->download('storage/app/itinerary/'.'PDF_'.$id.'.pdf');
+
     }
     public function package_modal_detail(Request $request)
     {

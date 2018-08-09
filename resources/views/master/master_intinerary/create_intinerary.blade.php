@@ -301,7 +301,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req">
-                                                    <input type="text" id="minimal_dp" class="form-control " placeholder="Field Required">
+                                                    <input type="text" id="minimal_dp" class="form-control" placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -485,6 +485,7 @@
         var infant_price  = $('#infant_price').val();
         var seat          = $('#seat').val();
         var child_w_price = $('#child_w_price').val();
+        var minimal_dp    = $('#minimal_dp').val();
 
 
         var par = $('.index_'+index).parents('tr');
