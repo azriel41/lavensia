@@ -246,9 +246,11 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}" width="48" height="48" alt="User" />
+            <div class="user-info" >
+                <div class="bg-image-side"  style="background: {{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}">
+                </div>
+                <div class="image"">
+                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}?'{{ time() }}'" style="z-index: 999;" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
@@ -258,10 +260,6 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="{{ route('profile') }}"><i class="material-icons">person</i>Profile</a></li>
                             <li><a href="{{ route('dashboard') }}"><i class="material-icons">dashboard</i>Dashboard</a></li>
-                            {{-- <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li> --}}
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}"

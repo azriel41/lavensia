@@ -173,7 +173,7 @@
                                     @foreach ($data as $element => $el)
                                         <tr>
                                             <td>{{ $element+1 }}</td>
-                                            <td>{{ $el->db_id }}</td>
+                                            <td>{{ $el->db_kode_transaksi }}</td>
                                             <td>{{ date('d-m-Y',strtotime($el->created_at)) }}</td>
                                             <td>{{ $el->db_name }}</td>
                                             <td>{{ $el->created_at }}</td>

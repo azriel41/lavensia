@@ -199,7 +199,7 @@
                                             </div>
 
                                             <div class="col-md-11 col-md-11 col-md-11">
-                                                <p class="title-itin">{{ $sch->ms_caption }}</p>
+                                                <p class="title-itin"><b>{{ $sch->ms_caption }}</b>   |   {{ $sch->ms_bld }}</p>
                                                 <p class="desc-itin">{{ $sch->ms_description }}</p>
                                             </div>
                                           </div>
