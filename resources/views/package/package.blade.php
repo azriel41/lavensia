@@ -146,8 +146,7 @@
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">{{ $data[0]->mi_name }}</h2>
-                        <h4 class="support">By : {{ $data[0]->mi_by }}</h4>
+                        
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
 
@@ -159,12 +158,20 @@
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
                             <table width="100%"> 
                                 <tr>
+                                    <td align="left" valign="top" class="Hightlight"><h2 class="count_h2" style="margin-top: -5px;">{{ $data[0]->mi_name }}</h2></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight"><h4 class="support">By : {{ $data[0]->mi_by }}</h4></td>
+                                </tr>
+                                <tr>
                                     {{-- <td align="left" valign="top"><h4>HIGHLIGHT<h4></td> --}}
+
                                     <td align="left" class="Hightlight">{{ $data[0]->mi_highlight }}</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                 </tr>
+
                                 <tr>
                                     {{-- <td align="left"></td> --}}
                                     <td align="left"><button class="btn btn-small btn-orange download" data-id="{{ $data[0]->mi_id }}" onclick="pdf(this)" ><b><i class="fa fa-cloud-download"></i> PDF</b></button></td>
@@ -228,7 +235,6 @@
                                                <th class="center-al">Price Child</th>
                                                <th class="center-al">Price Invent</th>
                                                <th class="center-al">Seat Remain</th>
-                                               <th class="center-al">Term & con</th>
                                                <th class="center-al">Book</th>
                                            </tr>
                                         </thead>
@@ -242,7 +248,6 @@
                                                <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
                                                <td>{{ $det->md_seat }}</td>
-                                               <td>{{ $det->md_term }}</td>
                                                <td>
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
