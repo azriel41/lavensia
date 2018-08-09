@@ -1,4 +1,4 @@
-     @extends('main')
+@extends('main')
 @include('layouts._sidebar')
 @section('content')
 <div class="container-fluid">
@@ -106,7 +106,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <input type="text" name="caption_by" id="caption_by" class="form-control" placeholder="Field Required">
+                                            <input type="text" name="caption_by" id="caption_by" class="form-control uppercase" placeholder="Field Required">
                                         </div>
                                     </div>
                                 </div>
@@ -127,27 +127,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
+                            <div class="row clearfix preview_div">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="caption_by">Photo</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                    <div class="file-upload">
+                                    <div class="file-upload upl_1" style="width: 100%;">
                                         <div class="file-select">
-                                            <div class="file-select-button" id="fileName">Image</div>
-                                            <div class="file-select-name" id="noFile">Choose Image...</div> 
-                                            <input type="file" name="image" onchange="loadFile(event)" id="chooseFile">
+                                            <div class="file-select-button fileName" >Image</div>
+                                            <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
+                                            <input type="file" class="chooseFile" name="image">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="caption_by">Preview</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;border:1px solid pink" id="output" >
+                                        <img style="width: 100%;border:1px solid pink" class="output" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix preview_div">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Upload PDF</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="file-upload upl_1" style="width: 100%;">
+                                        <div class="file-select">
+                                            <div class="file-select-button fileName" >Image</div>
+                                            <div class="file-select-name noFile tag_image_1" >PDF</div> 
+                                            <input type="file" class="chooseFile" name="pdf">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +225,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="start" class="form-control datenormal" placeholder="Field Required">
+                                                    <input type="text" id="start" class="form-control datenormal" placeholder="DD/MM/YYYY">
                                                     <input type="hidden" id="index">
                                                 </div>
                                             </div>
@@ -265,7 +277,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="end" class="form-control datenormal " placeholder="Field Required">
+                                                    <input type="text" id="end" class="form-control datenormal " placeholder="DD/MM/YYYY">
                                                 </div>
                                             </div>
                                         </div>
@@ -278,6 +290,18 @@
                                             <div class="form-group">
                                                 <div class="form-line req">
                                                     <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Minimal DP</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="minimal_dp" class="form-control " placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -309,6 +333,7 @@
                                             <td>CnB Price</td>
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
+                                            <td>Minimal DP</td>
                                             <td>Seat</td>
                                             <td>Action</td>
                                         </tr>
@@ -486,6 +511,9 @@
             '<p class="infant_price_text">'+infant_price+'</p>'+
             '<input type="hidden" name="infant_price[]" value="'+infant_price+'" class="infant_price">',
 
+            '<p class="minimal_dp_text">'+minimal_dp+'</p>'+
+            '<input type="hidden" name="minimal_dp[]" value="'+minimal_dp+'" class="minimal_dp">',
+
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
@@ -506,16 +534,16 @@
 
     function edit(a) {
         var par = $(a).parents('tr');
-
-        var index         = $('.index').val();
-        var start         = $('.start').val();
-        var end           = $('.end').val();
-        var adult_price   = $('.adult_price').val();
-        var child_price   = $('.child_price').val();
-        var infant_price  = $('.infant_price').val();
-        var child_w_price = $('.child_w_price').val();
-        var term          = $('.term').val();
-        var seat          = $('.seat').val();
+        var index         = $(par).find('.index').val();
+        var start         = $(par).find('.start').val();
+        var end           = $(par).find('.end').val();
+        var adult_price   = $(par).find('.adult_price').val();
+        var child_price   = $(par).find('.child_price').val();
+        var infant_price  = $(par).find('.infant_price').val();
+        var child_w_price = $(par).find('.child_w_price').val();
+        var term          = $(par).find('.term').val();
+        var seat          = $(par).find('.seat').val();
+        var minimal_dp    = $(par).find('.minimal_dp').val();
 
 
         $('#index').val(index);
@@ -527,27 +555,46 @@
         $('#child_w_price').val(child_w_price);
         $('#term').val(term);
         $('#seat').val(seat);
+        $('#minimal_dp').val(minimal_dp);
     }
 
 
-    var loadFile = function(event) { 
-        var fsize = $('#chooseFile')[0].files[0].size;
+     {{-- GAMBAR --}}
+    $('.chooseFile').bind('change', function () {
+        var filename = $(this).val();
+        var fsize = $(this)[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          return false;
+        }
+        var parent = $(this).parents(".preview_div");
+        if (/^\s*$/.test(filename)) {
+            $(parent).find('.file-upload').removeClass('active');
+            $(parent).find(".noFile").text("No file chosen..."); 
+        }
+        else {
+            $(parent).find('.file-upload').addClass('active');
+            $(parent).find(".noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+        load(parent,this);
+    });
+
+    function load(parent,file) {
+        var fsize = $(file)[0].files[0].size;
         if(fsize>2048576) //do something if file size more than 1 mb (1048576)
         {
           iziToast.warning({
             icon: 'fa fa-times',
-            position:'topRight',
             message: 'File Is To Big!',
           });
           return false;
         }
         var reader = new FileReader();
-        reader.onload = function(){
-            var output = document.getElementById('output');
-            output.src = reader.result;
+        reader.onload = function(e){
+            $(parent).find('.output').attr('src',e.target.result);
         };
-        reader.readAsDataURL(event.target.files[0]);
-    };
+        reader.readAsDataURL(file.files[0]);
+    }
 
 
     $(document).on('click','.save',function(){
