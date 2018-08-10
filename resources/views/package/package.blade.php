@@ -266,14 +266,18 @@
                                         <thead>
                                            <tr >
                                                <th class="center-al">No</th>
-                                               <th class="center-al">Additional</th>
+                                               <th class="center-al">Name</th>
+                                               <th class="center-al">Price</th>
+                                               <th class="center-al">Desc</th>
                                            </tr>
                                         </thead>
                                         <tbody>
                                            @foreach ($additional as $index => $element)
-                                               <tr align="left">
+                                               <tr align="center">
                                                    <td>{{ $index+1 }}</td>
-                                                   <td>{{ $additional[$index]['additional_ma_id'] }}</td>
+                                                   <td>{{ $element->ma_name }}</td>
+                                                   <td align="right">Rp. {{ number_format($element->ma_price,0,'','.') }}</td>
+                                                   <td>{{ $element->ma_desc }}</td>
                                                 </tr>
                                           @endforeach
                                         </tbody>

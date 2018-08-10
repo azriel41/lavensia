@@ -288,7 +288,7 @@
                                 <a href="">Akun</a>
                             </li>
                             <li>
-                                <a href="{{ route('master_category') }}">Agent</a>
+                                <a href="{{ route('master_agent') }}">Agent</a>
                             </li>
                             <li>
                                 <a href="{{ route('master_category') }}">Perusahaan</a>

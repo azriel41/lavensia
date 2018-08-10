@@ -25,7 +25,10 @@ class packageController extends Controller
     	}
     	// return $detail;
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
-    	$additional = m_additional_intinerary::where('intinerary_mi_id','=',$id)->get();
+       
+        $additional = DB::table('m_additional_intinerary')
+                                            ->join('m_additional','m_additional_intinerary.intinerary_mi_id','=','m_additional.ma_id')
+                                            ->where('intinerary_mi_id','=',$id)->get();
         
         if (Auth::User() != null) {
             $cart = Auth::User()->booking;

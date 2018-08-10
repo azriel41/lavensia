@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 
+	
+
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');
 	Route::get('/profile/edit', 'HomeController@edit_profile')->name('edit_profile');
@@ -121,6 +123,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_category/{id}/edit', 'master\categoryController@edit')->name('master_category_edit');
 	Route::post('/master/master_category/update', 'master\categoryController@update')->name('master_category_update');
 	Route::post('/master/master_category/delete', 'master\categoryController@delete')->name('master_category_delete');
+
+	//agent
+	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
+	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');
+	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
 
 	//Additional
 	Route::get('/master/master_additional', 'master\additionalController@index')->name('master_additional');
