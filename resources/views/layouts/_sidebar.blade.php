@@ -1,14 +1,3 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Lavensia Tour & Travel</title>
-    <!-- Favicon-->
-
-    
-    
-</head>
-
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="preloader">
@@ -323,7 +312,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('booking_handle') }}">Book</a>
+                                <a href="{{ route('booking_all') }}">Book</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('booking_handle') }}">Handled Booking</a>
                             </li>
                             <li>
                                 <a href="">Detail Itinerary</a>
@@ -362,15 +354,11 @@
                    
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+           {{--  <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2017 <a href="javascript:void(0);">Cpanel-Admin</a>.
+                    &copy; 2016 - 2017 <a href="#"></a>
                 </div>
-                <div class="version">
-                    <b>Version: </b> 1.0.5
-                </div>
-            </div>
+            </div> --}}
             <!-- #Footer -->
         </aside>
-        
-    </section>
+</section>

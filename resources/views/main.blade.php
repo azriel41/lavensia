@@ -5,9 +5,9 @@
         @yield('extra_styles')
     </head>
 
-    @include('layouts._sidebar')
 
     <body class="theme-red">
+    @include('layouts._sidebar')
        <section class="content">
             <div class="container-fluid">
                 @yield('content')

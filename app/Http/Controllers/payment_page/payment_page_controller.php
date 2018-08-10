@@ -110,7 +110,7 @@ class payment_page_controller extends Controller
             }
 
             DB::commit();
-            return Response::json(['status'=>1]);
+            return Response::json(['status'=>1,'id'=>$d_booking->db_kode_transaksi]);
         }catch(Exception $error){
             return Response::json(['status'=>0,'message'=>$error]);
             DB::rollBack();

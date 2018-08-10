@@ -55,6 +55,7 @@ Route::get('/partner/partner', 'additional\partnerController@partner')->name('pa
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
+
 	/*********** HALAMAN UTAMA ************/  
 	
 	// STORAGE URL
@@ -72,8 +73,6 @@ Route::group(['middleware' => 'auth'], function () {
 	
 
 	/***************** BOOK ***************/  
-
-
 	//booking form
 	Route::get('/booking/booking', 'booking\bookingController@booking')->name('booking');
 	Route::post('/booking/save', 'booking\bookingController@save')->name('save_book');
@@ -87,10 +86,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');
+		//bookingdetail
+		Route::get('/booking/bookingdetail/{id}', 'booking\booking_listController@bookingdetail')->name('bookingdetail');
+
+	//BOOKING ALL INDEX
+	Route::get('/booking/booking_all', 'booking\booking_allController@booking_all')->name('booking_all');
+		//Datatable
+		Route::get('/booking/datatable_booking_all', 'booking\booking_allController@datatable_booking_all')->name('datatable_booking_all');
+		//Function Handle
+		Route::post('/booking/booking_handling', 'booking\booking_allController@booking_handling')->name('booking_handling');
+
 
 	//BOOK ADMIN DAN HANDLE BY
 	Route::get('/booking/booking_handle', 'booking\booking_handleController@booking_handle')->name('booking_handle');
-	Route::get('/booking/datatable_booking_handle', 'booking\booking_handleController@datatable_booking_handle')->name('datatable_booking_handle');
+		//Datatable
+		Route::get('/booking/datatable_booking_handle', 'booking\booking_handleController@datatable_booking_handle')->name('datatable_booking_handle');
+		
+
 
 	//REPORT 
 	Route::get('/report/report_profit', 'report\report_profitController@report_profit')->name('report_profit');
@@ -132,7 +144,6 @@ Route::group(['middleware' => 'auth'], function () {
 	/************* END MASTER ***********/
 	
 	/*********** OPERATIONAL ************/  
-	
 
 	//payment
 	Route::get('/payment/operational_payment', 'payment\paymentController@index')->name('operational_payment');

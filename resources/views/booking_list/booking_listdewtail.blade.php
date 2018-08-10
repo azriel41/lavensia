@@ -114,14 +114,14 @@
                                     @foreach ($data as $element => $el)
                                         <tr>
                                             <td>{{ $element+1 }}</td>
-                                            <td><a class="btn btn-sm btn-book"  href="bookingdetail/{{ $el->db_kode_transaksi }}">{{ $el->db_kode_transaksi }}</a></td>
+                                            <td><a href="bookingdetail/{{ $el->db_kode_transaksi }}">{{ $el->db_kode_transaksi }}</a><button class="btn btn-sm btn-book" id="nota"></button></td>
                                             <td>{{ date('d-m-Y',strtotime($el->created_at)) }}</td>
                                             <td>{{ $el->db_name }}</td>
                                             <td>{{ $el->created_at }}</td>
                                             <td>{{ $el->mi_name }}</td>
                                             <td><span class="label label-primary">{{ $el->db_status }}</span></td>
                                             <td>{{ $el->created_by }}</td>
-                                            <td>{{ $el->name }}</td>
+                                            <td>-</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -149,6 +149,5 @@
 </html>
 
 <script type="text/javascript">
-
 
 </script>
