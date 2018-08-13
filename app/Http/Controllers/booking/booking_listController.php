@@ -68,7 +68,7 @@ class booking_listController extends Controller
 						->leftjoin('users','users.id','=','d_booking.db_handle_by')	
 						->where('db_kode_transaksi',$id)
 						->first();    	
-		// return json_encode($data);
+		return json_encode($data);
 		return view('booking_list.booking_listdetail',compact('data'));
     }
     

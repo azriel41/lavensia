@@ -98,7 +98,7 @@ class booking_allController extends Controller
     public function booking_handling(Request $req)
     {
     	$update = d_booking::where('db_id', $req->id)
-				             ->update(['db_handle_by' => Auth::user()->id,'status'=>'HC']);
+				             ->update(['db_handle_by' => Auth::user()->id]);
 
     	return Response()->json(['status'=>1]);
 

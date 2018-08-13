@@ -363,7 +363,85 @@
                     </div>
                 </div>
 
+            <div class="row mb50">
+                     <!-- Header--> 
+                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+                    </div>
+                    <!-- Image--> 
+                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-6" data-wow-duration="1000ms">
+                            <table width="100%" class="table table-striped"> 
+                                <h3 class="count_h2" style="margin-top: -5px;">Booking Detail</h3>
+                                <tr>
+                                    <td width="20%" align="left" class="Hightlight">Transaksi</td>
+                                    <td width="5%">: </td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data->db_kode_transaksi }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Status</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight" colspan="7"><span class="label label-warning"> {{ $data->db_status }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Name</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data->db_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Tlp</td>
+                                    <td >: </td>
+                                    <td  align="left" class="Hightlight" colspan="7">{{ $data->db_telp }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Adult</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight">{{ $data->db_total_adult }}</td>
+                                    <td align="left" class="Hightlight">Child</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight">{{ $data->db_total_child }}</td>
+                                    <td align="left" class="Hightlight">Infant</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight">{{ $data->db_total_infant }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Room Price</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight" colspan="7">Rp. {{ number_format($data->db_total_room,0,'','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Add Price</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight" colspan="7">Rp. {{ number_format($data->db_total_additional,0,'','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Total Price</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight" colspan="7"><b>Rp. {{ number_format($data->db_total,0,'','.') }}</b></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Book By</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data->created_by }}</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" align="left" class="Hightlight">Remark</td>
+                                    <td valign="top" >: </td>
+                                    <td valign="top"  align="left" class="Hightlight" colspan="7">{{ $data->db_remark }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-6" data-wow-duration="1000ms">
+                            <table width="100%" class="table table-striped"> 
+                                <h3 class="count_h2" style="margin-top: -5px;">Detail</h3>
+                                <tr>
+                                    <td align="left" class="Hightlight" colspan="7"><li>{{ $data->mi_term }}</li></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </section>
 
         <!--

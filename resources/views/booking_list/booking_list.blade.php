@@ -100,7 +100,7 @@
                                 <thead>
                                    <tr >
                                        <th class="center-al">No</th>
-                                       <th class="center-al">Code Tour</th>
+                                       <th class="center-al">Booking Code</th>
                                        <th class="center-al">Date</th>
                                        <th class="center-al">Party Name</th>
                                        <th class="center-al">Dep Date</th>
