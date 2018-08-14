@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use auth;
 use PDF;
+use Storage;
 use App\detail_intinerary;
 use App\intinerary;
 use App\schedule;
@@ -24,7 +25,10 @@ class packageController extends Controller
     	}
     	// return $detail;
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
-    	$additional = m_additional_intinerary::where('intinerary_mi_id','=',$id)->get();
+       
+        $additional = DB::table('m_additional_intinerary')
+                                            ->join('m_additional','m_additional_intinerary.intinerary_mi_id','=','m_additional.ma_id')
+                                            ->where('intinerary_mi_id','=',$id)->get();
         
         if (Auth::User() != null) {
             $cart = Auth::User()->booking;
@@ -34,12 +38,13 @@ class packageController extends Controller
             return view('package.package',compact('data','schedule','detail','additional'));
         }
     }
-    public function package_pdf(Request $request)
+    public function package_pdf(Request $req)
     {
-        $data = schedule::where('ms_intinerary_id','2')->get();
+        $id = str_replace('/', '-', $req->id);
+        
 
-        $pdf = PDF::loadView('report.pdf.pdf_intinerary',$data);
-        return $pdf->stream('report.pdf');
+        return response()->download('storage/app/itinerary/'.'PDF_'.$id.'.pdf');
+
     }
     public function package_modal_detail(Request $request)
     {

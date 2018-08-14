@@ -48,7 +48,7 @@
                                         @if ( auth::user()->image == null )
                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                         @else 
-                                           src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
+                                           src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}?'{{ time() }}'"
                                         @endif width="400px" height="300px" >
                                     </div>
                                 </div>

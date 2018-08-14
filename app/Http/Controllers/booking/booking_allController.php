@@ -23,7 +23,7 @@ use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
 use Exception;
-class booking_handleController extends Controller
+class booking_allController extends Controller
 {
 	protected $intinerary;
 	protected $detail_intinerary;
@@ -47,18 +47,17 @@ class booking_handleController extends Controller
         $this->additional 			= new TestRepo($additional);
         
 	}
-    public function booking_handle(Request $req)
+    public function booking_all(Request $req)
     {
 
-    	$data = d_booking::where('db_handle_by',Auth::user()->id)->get();
 
-		return view('booking_handle.booking_handle');
+		return view('booking_all.booking_all');
     	
     }
-    public function datatable_booking_handle(Request $req)
+    public function datatable_booking_all(Request $req)
     {
            
-    	$data = d_booking::where('db_handle_by',Auth::user()->id)->get();
+    	$data = d_booking::where('db_handle_by',null)->get();
         
         $data = collect($data);
 
@@ -70,6 +69,12 @@ class booking_handleController extends Controller
 			                    Manage <span class="caret"></span>
 			                </button>
 			                <ul class="dropdown-menu" style="padding:0px">
+			                	<li>
+			                        <a onclick="handle(\''.$data->db_id.'\')" class="waves-effect waves-block bg-teal" style="color:#607D8B;">
+			                            <i class="material-icons">touch_app</i>
+			                            Handle
+			                        </a>
+			                    </li>
 			                    <li>
 			                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
 			                            <i class="material-icons">edit</i>
@@ -92,7 +97,10 @@ class booking_handleController extends Controller
 
     public function booking_handling(Request $req)
     {
-    	dd($req->all());
+    	$update = d_booking::where('db_id', $req->id)
+				             ->update(['db_handle_by' => Auth::user()->id]);
+
+    	return Response()->json(['status'=>1]);
 
     }
     

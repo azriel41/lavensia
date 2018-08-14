@@ -50,10 +50,26 @@ class booking_listController extends Controller
     public function booking_list(Request $req)
     {
     	$user = Auth::user()->id;
-    	$data = DB::Table('d_booking as db')->join('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')->get();
+  		$data = DB::Table('d_booking as db')
+    					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
+						->leftjoin('users','users.id','=','db.db_handle_by')	
+    					->get();
 
-		return view('booking_list.booking_list',compact('data','lel'));
+		return view('booking_list.booking_list',compact('data'));
     	
+    }
+    public function bookingdetail($id)
+    {
+
+		$data = DB::table('d_booking')
+						->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
+						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')	
+						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')	
+						->leftjoin('users','users.id','=','d_booking.db_handle_by')	
+						->where('db_kode_transaksi',$id)
+						->first();    	
+		return json_encode($data);
+		return view('booking_list.booking_listdetail',compact('data'));
     }
     
 }

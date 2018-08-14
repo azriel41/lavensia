@@ -27,6 +27,7 @@ class d_booking extends Model
 						   'db_total_child',
 						   'db_total_infant',
 						   'created_by',
+						   'db_handle_by',
 						   'updated_by',
 						];
 

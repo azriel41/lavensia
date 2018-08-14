@@ -49,16 +49,19 @@ class bookingController extends Controller
 	}
     public function booking(Request $req)
     {
+
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
+    	$detil = DB::table('m_detail_intinerary')->join('m_intinerary','m_detail_intinerary.md_intinerary_id','=','m_intinerary.mi_id')->first();
+    	// return json_encode($detil);
     	$id 				= $req->id;
 
     	if (Auth::User() != null) {
             $cart = Auth::User()->booking;
             $jumlah = count(Auth::User()->booking);
-        	return view('booking.booking',compact('detail_intinerary','id','cart','jumlah'));
+        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
         }else{
-        	return view('booking.booking',compact('detail_intinerary','id'));
+        	return view('booking.booking',compact('detail_intinerary','detil','id'));
         }
     }
     public function save(Request $req)

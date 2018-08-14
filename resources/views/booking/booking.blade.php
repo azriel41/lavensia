@@ -238,6 +238,17 @@
                         <h2 class="count_h2">BOOK fORM</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detil->md_nota }}</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detil->mi_name }}</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detil->md_seat_remain }}</p>
+                        </div>
+                    </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <form action="#" id="save">

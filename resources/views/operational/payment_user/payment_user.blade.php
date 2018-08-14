@@ -561,8 +561,8 @@ $('.save').click(function(){
     }
 
     $.ajaxSetup({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
@@ -575,7 +575,8 @@ $('.save').click(function(){
             contentType: false,
           success:function(data){
             if (data.status == '1') {
-                location.href = '{{ url('/') }}'
+                // console.log('{{ url('/') }}'+'/booking/bookingdetail/'+data.id);
+                location.href = '{{ url('/') }}'+'/booking/bookingdetail/'+data.id;
             }else if (data.status == '0') {
                 iziToast.success({
                     icon: 'fa fa-save',

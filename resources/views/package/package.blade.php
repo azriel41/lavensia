@@ -146,9 +146,7 @@
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">{{ $data[0]->mi_name }}</h2>
-                        <h4 class="support">By : {{ $data[0]->mi_by }}</h4>
-                        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                        
                     </div>
 
                     <!-- Image--> 
@@ -159,15 +157,21 @@
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
                             <table width="100%"> 
                                 <tr>
-                                    {{-- <td align="left" valign="top"><h4>HIGHLIGHT<h4></td> --}}
+                                    <td align="left" valign="top" class="Hightlight"><h2 class="count_h2" style="margin-top: -5px;">{{ $data[0]->mi_name }}</h2></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight"><h4 class="support">By : {{ $data[0]->mi_by }}</h4></td>
+                                </tr>
+                                <tr>
                                     <td align="left" class="Hightlight">{{ $data[0]->mi_highlight }}</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                 </tr>
+
                                 <tr>
                                     {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-orange download" data-id="{{ $data[0]->mi_id }}" onclick="pdf(this)" ><b><i class="fa fa-cloud-download"></i> PDF</b></button></td>
+                                    <td align="left"><button class="btn btn-small btn-orange download" id="pdf" data-id="{{ $data[0]->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></td>
                                 </tr>
                             </table>
 
@@ -184,29 +188,28 @@
                             <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour</a></li>
                             <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
                             <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
-                            <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & CondAdditional</a></li>
+                            <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & Cond</a></li>
                         </ul>
 
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-                               <div class="container">
-                                    <div class="col-md-12">
-                                        @foreach ($schedule as $index => $sch)
-                                          <div style="margin-top: 100px">
+                                <div class="col-md-12">
+                                    @foreach ($schedule as $index => $sch)
+                                      <div style="margin-top: 20px"></div>
+                                      <div style="min-height: 100px">
                                             <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #e74c3c;">
                                                 <span>Day</span><br>
                                                 <span class="day-tour">{{ $index+1 }}</span>
                                             </div>
 
                                             <div class="col-md-11 col-md-11 col-md-11">
-                                                <p class="title-itin">{{ $sch->ms_caption }}</p>
+                                                <p class="title-itin"><b>{{ $sch->ms_caption }}</b>   |   {{ $sch->ms_bld }}</p>
                                                 <p class="desc-itin">{{ $sch->ms_description }}</p>
                                             </div>
-                                          </div>
-                                          <br>
-                                        @endforeach
-                                    </div>
-                            </div>
+                                       </div>
+                                      <br>
+                                    @endforeach
+                                </div>
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
@@ -228,7 +231,6 @@
                                                <th class="center-al">Price Child</th>
                                                <th class="center-al">Price Invent</th>
                                                <th class="center-al">Seat Remain</th>
-                                               <th class="center-al">Term & con</th>
                                                <th class="center-al">Book</th>
                                            </tr>
                                         </thead>
@@ -242,7 +244,6 @@
                                                <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
                                                <td>{{ $det->md_seat }}</td>
-                                               <td>{{ $det->md_term }}</td>
                                                <td>
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
@@ -265,14 +266,18 @@
                                         <thead>
                                            <tr >
                                                <th class="center-al">No</th>
-                                               <th class="center-al">Additional</th>
+                                               <th class="center-al">Name</th>
+                                               <th class="center-al">Price</th>
+                                               <th class="center-al">Desc</th>
                                            </tr>
                                         </thead>
                                         <tbody>
                                            @foreach ($additional as $index => $element)
-                                               <tr align="left">
+                                               <tr align="center">
                                                    <td>{{ $index+1 }}</td>
-                                                   <td>{{ $additional[$index]['additional_ma_id'] }}</td>
+                                                   <td>{{ $element->ma_name }}</td>
+                                                   <td align="right">Rp. {{ number_format($element->ma_price,0,'','.') }}</td>
+                                                   <td>{{ $element->ma_desc }}</td>
                                                 </tr>
                                           @endforeach
                                         </tbody>
@@ -285,9 +290,12 @@
                                     <tr>
                                         <th><b>Term & Cond</b></th>
                                     </tr>
+                                    
                                 </table>
                                 <div style="margin-top: 20px"></div>
-                                
+                                <div class="pull-left">
+                                    <span>{{ $data[0]->mi_term }}</span>
+                                </div>
                             </div>
                         </div>
                       </div>
@@ -321,49 +329,41 @@
         var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
         window.location=('{{ url('booking/booking') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id);
     }
-    function pdf(argument) {
-        var parent = $(argument).data('id');
+    window.onload = function(){
+       $('#pdf').click(function(){
+            var parent = $(this).data('id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            data : {id:parent},
-            url  : ('{{ route('package_pdf') }}'),
-            type : 'get',
-            success: function (data) {
-                
-
-                if (data.status == 'sukses') {
+            $.ajax({
+                data : {id:parent},
+                url  : ('{{ route('package_pdf') }}'),
+                type : 'get',
+                success: function (data) {
                     iziToast.success({
                         icon: 'fa fa-user',
                         title: 'Success!',
-                        message: 'Data Openes!',
+                        message: 'Downloaded!',
                     });
-
-                }else{
+                },
+                complete: function(data){
+                    window.location.href = this.url;
+                },
+                error:function(){
                     iziToast.error({
                         icon: 'fas fa-times-circle',
                         title: 'Error!',
-                        message: 'Something Wrong,Call Developer!',
+                        message: 'Something Wrong,Call Developer',
                     });
                 }
-            },
-            complete: function(data){
-                  window.location.href = this.url;
-
-            },
-            error:function(){
-                iziToast.error({
-                    icon: 'fas fa-times-circle',
-                    title: 'Error!',
-                    message: 'Something Wrong,Call Developer',
-                });
-            }
+            })
         })
+       }
+   
+            
     
-    }
+    
 </script>
