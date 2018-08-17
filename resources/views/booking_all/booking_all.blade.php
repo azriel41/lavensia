@@ -65,8 +65,9 @@
         </div>
     </section>
 
+<script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
-window.onload = function(){
+$(document).ready(function(){
     $('.dt_server').DataTable({
         processing: true,
         serverSide: true,
@@ -74,22 +75,21 @@ window.onload = function(){
           url:'{{ route('datatable_booking_all') }}',
         },
         columns: [
-            {data: 'DT_Row_Index', name: 'DT_Row_Index'},
-            {data: 'db_kode_transaksi',        name: 'db_kode_transaksi'},
-            {data: 'created_at',   name: 'created_at'},
-            {data: 'db_name',      name: 'db_name'},
-            {data: 'created_at',   name: 'created_at'},
-            
-            {data: 'db_status',    name: 'db_status'},
-            {data: 'created_by',   name: 'created_by'},
-            {data: 'db_handle_by', name: 'db_handle_by'},
-            {data: 'aksi',         name: 'aksi'},
+            {data: 'DT_Row_Index',      name: 'DT_Row_Index'},
+            {data: 'db_kode_transaksi', name: 'db_kode_transaksi'},
+            {data: 'created_at',        name: 'created_at'},
+            {data: 'db_name',           name: 'db_name'},
+            {data: 'created_at',        name: 'created_at'},
+            {data: 'db_status',         name: 'db_status'},
+            {data: 'book_by',           name: 'book_by'},
+            {data: 'handle_name',       name: 'handle_name'},
+            {data: 'aksi',              name: 'aksi'},
         ]
     });
-}
+})
+    
 
-    function handle(argument) {
-    var id = argument;
+    function handle(id) {
     iziToast.show({
             overlay: true,
             close: false,
@@ -105,42 +105,7 @@ window.onload = function(){
                 '<button style="background-color:#44d7c9;">Handle</button>',
                 function (instance, toast) {
 
-                  $.ajaxSetup({
-                      headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    $.ajax({
-                        type: "post",
-                        url:'{{ route('booking_handling') }}',
-                        data: {id},
-                        dataType:'json',
-                      success:function(data){
-                        if (data.status == '1') {
-                            iziToast.success({
-                                message: 'Booking telah Diambil alih!',
-                                position:'topRight',
-                                icon:'fa fa-delete'
-                            });
-                            var table = $('.intinerary').DataTable();
-                            table.ajax.reload();
-                        }else if (data.status == '0') {
-                            iziToast.warning({
-                                position:'topRight',
-                                message:data.message,
-                                iconText:'fa fa-warning'
-                            });
-
-                        }
-                      },error:function(){
-                        iziToast.warning({
-                            message: 'Terjadi Kesalahan!',
-                            position:'topRight',
-                            iconText:'fa fa-warning'
-                        });
-                      }
-                    });
+                    window.location ='{{ url('booking/booking_handling') }}'+'/'+id;
                     instance.hide({
                         transitionOut: 'fadeOutUp'
                     }, toast);

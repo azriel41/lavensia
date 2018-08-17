@@ -33,7 +33,13 @@ class d_booking extends Model
 
 	public function user()
 	{
-        return $this->belongsTo('App\User','id');
+        return $this->belongsTo('App\User','db_users','id');
+	}
+
+
+	public function handle()
+	{
+        return $this->belongsTo('App\User','db_handle_by','id');
 	}
 
 	public function detail_itin()

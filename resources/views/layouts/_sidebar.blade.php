@@ -314,9 +314,9 @@
                             <li>
                                 <a href="{{ route('booking_all') }}">Book</a>
                             </li>
-                            <li>
+               {{--              <li>
                                 <a href="{{ route('booking_handle') }}">Handled Booking</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="">Detail Itinerary</a>
                             </li>

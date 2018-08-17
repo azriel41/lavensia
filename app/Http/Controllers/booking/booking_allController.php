@@ -57,50 +57,83 @@ class booking_allController extends Controller
     public function datatable_booking_all(Request $req)
     {
            
-    	$data = d_booking::where('db_handle_by',null)->get();
-        
-        $data = collect($data);
+    	$data = $this->d_booking->all();
 
+        $data = collect($data);
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
-			        return'<div class="btn-group">
-			                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			                    <i class="material-icons">settings</i>
-			                    Manage <span class="caret"></span>
-			                </button>
-			                <ul class="dropdown-menu" style="padding:0px">
-			                	<li>
-			                        <a onclick="handle(\''.$data->db_id.'\')" class="waves-effect waves-block bg-teal" style="color:#607D8B;">
-			                            <i class="material-icons">touch_app</i>
-			                            Handle
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
-			                            <i class="material-icons">edit</i>
-			                            Edit
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:#607D8B">
-			                            <i class="material-icons">delete</i>
-			                            Delete
-			                        </a>
-			                    </li>
-			                </ul>
-			            </div>';
+		        	$a = '';
+		        	$b = '';
+		        	$c = '';
+		        	$d = '';
+
+
+		        			$a = '<div class="btn-group">
+					                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					                    <i class="material-icons">settings</i>
+					                    Manage <span class="caret"></span>
+					                </button>
+					                <ul class="dropdown-menu" style="padding:0px">';
+		        			if ($data->db_handle_by == null) {
+		                    	
+			                	$b = '<li>
+				                        <a onclick="handle(\''.$data->db_id.'\')" class="waves-effect waves-block bg-teal" style="color:#607D8B;">
+				                            <i class="material-icons">touch_app</i>
+				                            Handle
+				                        </a>
+				                     </li>';
+		                    }
+
+		                    if ($data->db_handle_by != null) {
+		                    	if ($data->db_handle_by == Auth::User()->id) {
+		                    		$c = 	'<li>
+						                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
+						                            <i class="material-icons">edit</i>
+						                            Edit
+						                        </a>
+						                    </li>
+						                    <li>
+						                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:#607D8B">
+						                            <i class="material-icons">delete</i>
+						                            Delete
+						                        </a>
+						                    </li>';
+		                    	}
+		                    }
+			                    
+			                $d = '</ul>
+			           			 </div>';
+
+			            return $a.$b.$c.$d;
+			        })->addColumn('handle_name', function ($data) {
+			        	if ($data->db_handle_by != null) {
+			        		return $data->handle->name;
+			        	}else{
+			        		return '-';
+			        	}
+			        })->addColumn('book_by', function ($data) {
+			        	if ($data->user != null) {
+			        		return $data->user->name;
+			        	}else{
+			        		return '-';
+			        	}
 			        })
-			        ->rawColumns(['aksi'])
+			        ->rawColumns(['aksi','handle_name'])
 			        ->addIndexColumn()
 			        ->make(true);
     }
 
-    public function booking_handling(Request $req)
+    public function booking_handling($id)
     {
-    	$update = d_booking::where('db_id', $req->id)
-				             ->update(['db_handle_by' => Auth::user()->id]);
+    	$booking = $this->d_booking->cari('db_id',$id);
 
-    	return Response()->json(['status'=>1]);
+
+    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$booking->db_intinerary_id);
+
+    	$id 				= $booking->db_intinerary_id;
+
+    
+		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id'));
 
     }
     

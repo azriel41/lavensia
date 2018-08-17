@@ -51,9 +51,7 @@ class bookingController extends Controller
     {
 
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
-
-    	$detil = DB::table('m_detail_intinerary')->join('m_intinerary','m_detail_intinerary.md_intinerary_id','=','m_intinerary.mi_id')->first();
-    	// return json_encode($detil);
+    	
     	$id 				= $req->id;
 
     	if (Auth::User() != null) {

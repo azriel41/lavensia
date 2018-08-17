@@ -235,24 +235,24 @@
 
                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">BOOK fORM</h2>
+                        <h2 class="count_h2">BOOK FORM</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->md_nota }}</p>
+                            <p>{{ $detail_intinerary->md_nota }}</p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->mi_name }}</p>
+                            <p>{{ $detail_intinerary->intinerary->mi_name }}</p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->md_seat_remain }}</p>
+                            <p>{{ $detail_intinerary->md_seat_remain }}</p>
                         </div>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <form action="#" id="save">
-                              <!-- Agent detail-->
+                            <!-- Agent detail-->
                             <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
                               <legend class="scheduler-border">Agent Detail</legend>
                                   <div class="contact-form col1" >
@@ -677,9 +677,6 @@
                                 <input type="hidden" class="total_additional_input" name="total_additional_input">
                                 <input type="hidden" class="total_harga_input" name="total_harga_input">
                             </div>
-                          {{--   <div class="col-sm-12">
-                                <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

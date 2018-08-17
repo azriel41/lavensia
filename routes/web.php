@@ -96,7 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
 		//Datatable
 		Route::get('/booking/datatable_booking_all', 'booking\booking_allController@datatable_booking_all')->name('datatable_booking_all');
 		//Function Handle
-		Route::post('/booking/booking_handling', 'booking\booking_allController@booking_handling')->name('booking_handling');
+		Route::get('/booking/booking_handling/{id}', 'booking\booking_allController@booking_handling')->name('booking_handling');
 
 
 	//BOOK ADMIN DAN HANDLE BY
