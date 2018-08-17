@@ -1,392 +1,355 @@
-@extends('main')
-@include('layouts._sidebar')
-<style type="text/css">
-    .col-sm-6{
-        width: 50% !important;
-    }
-    .col-sm-8{
-        width: 66.6666667% !important;
-    }
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <!-- meta charec set -->
+       
+        @include('layouts_frontend._head')
+       
+        <style type="text/css">
+            .btn-primary {
+                color: white;
+                background-color: transparent;
+                border-color: #ffffff;
+            }
+            .btn-plus {
+                color: black;
+                border-radius: 50%;
+                text-align: center;
+                height: 37px;
+                background-color: #f4c800;
+                border-color: #ffffff;
+            }
+            .btn-minus {
+                color: black;
+                border-radius: 50%;
+                text-align: center;
+                height: 37px;
+                background-color: red;
+                border-color: #ffffff;
+            }
+            .btn-primary:hover {
+                color: black;
+                background-color: #f4c800;
+                border-color: #ffffff;
+            }
+            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+                color: #000;
+                background-color: #face03;
+                border-color: #ffffff;
+            }
+            .btn-book{
+                color: black;
+                background-color: #f9ce05;
+            }
+            .logo{
+                width: 100px;
+            }
+            .support{
+                margin-top: 10px;
+            }
+            .mb50{
+                background-color: white;
+                margin-top: 30px;
+                padding: 0px 0px 0px 0px !important;
+            }
+            .kiri{
+                text-align:left;
+            }
+            /* MODAL */
+            .modal-backdrop {
+                z-index: 1040 !important;
+            }
+            .modal-dialog {
+                margin: auto;
+                z-index: 1100 !important;
+                width: 700px;
+            }
+            .modal-content {
+                border-radius: 0px; 
+            }
+            .modal {
+              text-align: center;
+            }
 
-    .readonly:read-only
-    {
-        background-color: #ebebeb;
-        pointer-events: none;
-    }
-    .center{
-        text-align: center;
-    }
-    .right{
-        text-align: right;
-    }
-    .left{
-        text-align: left;
-    }
-    .borderless{
-        border: none !important;
-    }
-    .form-control-label {
-        text-align: left;
-    }
-    table .v_center { 
-      display: table-cell;
-      vertical-align: center; 
-    }
-    .over-flow-x{
-        overflow-x: auto;
-    }
-    .paging-trans{
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-    }
-    .arrow{
-        color: green;
-        background: white;
-    }
-    .arrow:hover{
-        color: red;
-        background: #8888;
-    }
-    .on_screen{
-        left: 0;
-        opacity: 1;
-        display: inline-block;
-    }
-    .delayed{
-        left: /*1500*/;
-        opacity: 0;
-        display: none;
-    }
-    .select2-container{
-        border: none !important;
-    }
-    .select2-selection{
-        border: none !important;
-    }
-    .width100{
-        width: 100%;
-    }
-    th { font-size: 12px; }
-    td { font-size: 11px; }
-    .select2-selection__rendered{
-        width: auto !important;
-    }
-    .select2-results__options{
-        width: auto !important;
-    }
-    .uppercase{
-        text-transform: uppercase;
-    }
+            @media screen and (min-width: 768px) { 
+              .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+              }
+            }
+            .modal-dialog {
+              display: inline-block;
+              vertical-align: middle;
+            }
+            .col1{
+                min-height: 100px;
+            }
+            .col2{
+                background-color: #eeeeee94;
+                min-height: 100px;
+            }
+            .margin-top-20px{
+                margin-top: 20px;
+            }
+            label{
+                margin-top: 10px;
+            }
+            
+            fieldset.scheduler-border {
+                padding: 0 1.4em 1.4em 1.4em !important;
+                margin: 0 0 1.5em 0 !important;
+                -webkit-box-shadow:  0px 0px 0px 0px #000;
+                        box-shadow:  0px 0px 0px 0px #000;
+            }
+            legend.scheduler-border {
+                font-size: 1.2em !important;
+                font-weight: bold !important;
+                text-align: left !important;
+                width:auto;
+                padding:0 10px;
+                border-bottom:none;
+            }
 
-    body { 
-        background-color: white !important;
-    }
-    .black{
-        background: #24292e;
-    }
-    .header-logo-invertocat{
-        background: white;
-    }
-    .github{
-        fill: white;
-    }
-    .github-grey{
-        fill: grey;
-    }
-    .grey-input{
-        background-color: #8888;
-    }
-    .input-container{
-        width: 30%;
-        padding-top: 5px;
-        position: relative;
-    }
-    .HeaderNavlink{
-        margin-top: 13px !important;
-    }
-    .navbar-nav li .HeaderNavlink:hover{
-        color: #9999 !important;
-    }
-    .navbar-nav  li  .HeaderNavlink{
-        color: #fff!important;
-    }
-    .container{
-        width: 1000px;
-    }
-    .pl-2{
+            /*****************************************
+              upload button styles
+            ******************************************/
+            .file-upload {
+                position: relative;
+                display: inline-block;
+            }
 
-    }
-    .navbar-nav{
-        display: flex;
-    }
-    .white {
-      -webkit-filter: opacity(.8) drop-shadow(0 0 0 white);
-          filter: opacity(.8) drop-shadow(0 0 0 white);
-    }
-    .bell{
-        margin-top: 13px !important;
-    }
-    .green{
-        background:green;
-    }
-    .blue{
-        background:blue;
-    }
-    .yellow{
-        background:yellow;
-    }
-    .block{
-        width: 100%;
-        height: 500px;
-    }
-    .container-content{
-        width: 100%;
-        height: 55px;
-    }
-    .pt-2{
-        padding-top: 20px;
-    }
-    .pl-2{
-        padding-top: 20px;
-    }
-    .width-10{
-        width: 10%;
-    }
-    .width-20{
-        width: 20%;
-    }
-    .border-black{
-        border:1px solid #9999;
-    }
-    .box-git{
-        width: 100%;
-        height: 133px;
-    }
-    .nopadding-right {
-       padding-right: 0 !important;
-       margin-right: 0 !important;
-    }
+            .file-upload__label {
+              display: block;
+              padding: 1em 2em;
+              color: #fff;
+              background: #222;
+               transition: background .3s;
+              
+              &:hover {
+                 cursor: pointer;
+                 background: #000;
+              }
+            }
+                
+            .file-upload__input {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                font-size: 1;
+                width:0;
+                height: 100%;
+                opacity: 0;
+            }
+            textarea{
+                max-width: 100%;
+            }
+            .pointer_dis{
+                pointer-events: none;
+                opacity: 0.5;
+            }
 
-    .nopadding-left {
-       padding-left: 0 !important;
-       margin-left: 0 !important;
-    }
-    .mt-1{
-        margin-top: 10px !important;
-    }
-    .mt-2{
-        margin-top: 20px !important;
-    }
-    .mb-1{
-        margin-bottom: 10px !important;
-    }
-    .mb-2{
-        margin-bottom: 20px !important;
-    }
-    .mr-1{
-        margin-right: 10px !important;
-    }
-    .mr-2{
-        margin-right: 20px !important;
-    }
-    .ml-1{
-        margin-left: 10px !important;
-    }
-    .ml-2{
-        margin-left: 20px !important;
-    }
-    .grey{
-        color: grey;
-    }
-    .width-100{
-        width: 100%;
-    }
-    .none{
-        text-decoration: none;
-        list-style-type: none;
-    }
-    .d-inline-block{
-        display: inline-block;
-        vertical-align: middle;
-    }
-    .d-inline{
-        display: inline;
-        vertical-align: middle;
-    }
-    .d-inline li{
-        display: inline;
-    }
-    .m-auto{
-        margin: auto;
-    }
-    .nav-tabs li a{
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        text-align: center !important;
-    }
-    .font-small{
-        font-size: 12px;
-    }
-    .middle{
-        height: 47px;
-    }
-</style>
-<section class="content">
-    <div class="container-fluid">
-        @include('layouts.task')
-        <div class="header">
-            <ol class="breadcrumb breadcrumb-bg-pink">
-                <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-                <li class="active"><i class="material-icons"></i>Master Intinerary</li>
-            </ol>
-        </div>
-        <!-- CPU Usage -->
-        <div class="row clearfix">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header bg-cyan">
-                        <div class="row clearfix">
-                            <div class="col-xs-12 col-sm-6">
-                                <h2>Booking Approve</h2>
-                            </div>
+            .borderimg2 { 
+                border: 10px solid transparent;
+                padding: 15px;
+                -webkit-border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch; /* Safari 3.1-5 */
+                -o-border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch; /* Opera 11-12.1 */
+                border-image: url('{{ asset('assets/images/border.png') }}') 30 stretch;
+            }
+
+            .readonly{
+                pointer-events: none;
+                opacity: 0.8;
+                background: #8888;
+            }
+
+   /*         thead{
+                background: purple;
+                color: white
+            }*/
+           /* .bootstrap-select:hover{
+                border: 1px solid;
+            }*/
+            .table-responsive {
+              overflow-y: visible !important;
+            }
+            @media (max-width: 767px) {
+                .table-responsive .dropdown-menu {
+                    position: static !important;
+                }
+            }
+            @media (min-width: 768px) {
+                .table-responsive {
+                    overflow: inherit;
+                }
+            }
+            .dropdown-menu .inner{
+                z-index: 99999999 !important;
+            }
+            .invoice_field{
+                z-index: -1;
+            }
+            .errors{
+                border-color: red;
+            }
+            li.active > a{
+                background-color: purple !important;
+                color: white !important;
+                border-color: purple !important;
+            }
+            .tab-content{
+              overflow-y:scroll;
+              overflow-x:hidden;
+              max-height: 250px;
+            }
+            .calc{
+                z-index: 99999;
+            }
+        
+            .disabled{
+                display: none;
+            }
+            .uppercase{
+                text-transform: uppercase;
+            }
+        </style>
+    </head>
+    
+    <body id="body" style="font-size: 12px">  
+
+        <!--
+        Contact Us
+        ==================================== -->        
+        <section id="package" class="package background_page">
+            <div class="container">
+
+                <div class="row mb50">
+
+                 @include('package.modal_book')
+
+                    <!-- Header--> 
+                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+                        <h2 class="count_h2">BOOKING APPROVE</h2>
+                        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detail_intinerary->md_nota }}</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detail_intinerary->intinerary->mi_name }}</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>{{ $detail_intinerary->md_seat_remain }}</p>
                         </div>
                     </div>
-                    <div class="body row">
-                        {{-- DISINI --}}
-                        <div class="col-sm-12 clearfix">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
-                                <h4>{{ $detail_intinerary->md_nota }}</h4>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
-                                <h4>{{ $detail_intinerary->intinerary->mi_name }}</h4>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
-                                <h4>{{ $detail_intinerary->md_seat_remain }}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <form action="#" id="save">
-                                <div class="agent_detail" >
-                                    <div class="col-sm-6 left" style="border-right: 2px solid #00BCD4">
-                                        <div class="col-sm-6">
-                                            <h4 >AGENT DETAIL</h4>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                        <form action="#" id="save">
+                            <!-- Agent detail-->
+                            <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
+                              <legend class="scheduler-border">Agent Detail</legend>
+                                  <div class="contact-form col1" >
+                                    <div class="input-group margin-top-20px">
+                                        <div class="input-field">
+                                            <input type="text" name="bk_name" id="bk_name" placeholder="Name" value="{{ $booking->user->name }}" class="form-control pointer_dis" readonly="">
+                                         
+                                            <input type="text" name="bk_add" id="bk_add" placeholder="Address" value="{{ $booking->user->address }}" class="form-control pointer_dis" readonly="">
                                         </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Agent Name</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="text" name="bk_name" id="bk_name" placeholder="Name" value="{{ $booking->user->name }}" class="form-control pointer_dis" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Address</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="text" name="bk_add" id="bk_add" placeholder="Address" value="{{ $booking->user->address }}" class="form-control pointer_dis" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Telp</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="text" name="bk_cp" id="bk_cp" placeholder="Phone" value="{{ $booking->user->phone }}" class="form-control pointer_dis" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Email</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="text" name="bk_email" id="bk_email" placeholder="Email" value="{{ $booking->user->email }}" class="form-control pointer_dis" readonly="">
-                                            </div>
+                                        <div class="input-field">
+                                            <input type="text" name="bk_cp" id="bk_cp" placeholder="Contact Person" value="{{ $booking->user->phone }}" class="form-control pointer_dis" readonly="">
+                                        
+                                            <input type="email" name="bk_email" id="bk_email" placeholder="E-mail" value="{{ $booking->user->email }}" class="form-control pointer_dis" readonly="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="pax_detail">
-                                    <div class="col-sm-6 left">
-                                        <div class="col-sm-6">
-                                            <h4 >PAX DETAIL</h4>
-                                        </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Party Name</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="text" name="bk_name" id="bk_name" placeholder="Name" value="{{ $booking->db_name }}" class="form-control pointer_dis" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 contact-form">
-                                            <div class="col-sm-4 nopadding-left">
-                                                <h5 class="grey"><b>Telp</b></h5>
-                                            </div>
-                                            <div class="form-group col-sm-8 nopadding-left">
-                                                <input type="number" class="form-control party_telephone" placeholder="Telp" name="party_telephone" value="{{ $booking->db_telp }}" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12" style="margin-top: 20px">
-                                            <div class="col-sm-2 nopadding-left">
-                                                <h5 class="grey"><b>Adult</b></h5>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <input type="text" readonly="" value="{{ $booking->db_total_adult }}" class="form-control center total_adult"  name="total_adult">
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <h5 class="grey"><b>Child</b></h5>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <input type="text" readonly="" value="{{ $booking->db_total_child }}" class="form-control center total_child"  name="total_child">
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <h5 class="grey"><b>Infant</b></h5>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <input type="text" readonly="" value="{{ $booking->db_total_infant }}" class="form-control center total_infant"  name="total_infant">
-                                            </div>
-                                        </div>
+                                  </div>
+                            </fieldset>
+
+                              <!-- Guest-->
+                            <fieldset class="scheduler-border col-sm-6 left">
+                                <legend class="scheduler-border">Guest</legend>
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class="grey"><b>Party Name</b></h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="{{ $booking->db_name }}" placeholder="Party Name" name="party_name">
                                     </div>
                                 </div>
-                                <div class="scheduler-border col-sm-12 nopadding-left">
-                                    <h3 class="count_h2 mb-2"><b>ROOM TOUR</b></h3>
-                                    <div class="col-sm-12 nopadding-left room_append">
-                                        <div class="col-sm-12 nopadding-left all_room" >
-                                            <div class="col-sm-12 nopadding-left header_room">
-                                                <div class="col-sm-6 nopadding-left  nopadding-right row clearfix" align="left">
-                                                    <div class="col-sm-3 nopadding-left">
-                                                        <label>Type Of Bed</label>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <select  class="form-control  bk_bed" name="bk_bed[]" >
-                                                            <option value="single" data-val="1">Single</option>
-                                                            <option value="double" data-val="2">Double</option>
-                                                            <option value="twin" data-val="2">Twin</option>
-                                                            <option value="triple" data-val="3">Triple</option>
-                                                            <option value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
-                                                            <option value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
-                                                        </select>
-                                                    </div>
-                                                    
+                                <div class="col-sm-12 contact-form">
+                                    <div class="col-sm-3">
+                                        <h5 class="grey"><b>Telp</b></h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control party_telephone" placeholder="Telp" name="party_telephone" value="{{ $booking->db_telp }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 20px">
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Adult</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="{{ $booking->db_total_adult }}" class="form-control center total_adult"  name="total_adult">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Child</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="{{ $booking->db_total_child }}" class="form-control center total_child"  name="total_child">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5 class="grey"><b>Infant</b></h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" readonly="" value="{{ $booking->db_total_infant }}" class="form-control center total_infant"  name="total_infant">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- Room Type 1-->
+                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
+                                <h3 class="count_h2"><b>ROOM TOUR</b></h3>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="col-sm-12 room_append">
+                                    @foreach ($count as $i=>$val)
+                                    <div class="col-sm-12 all_room" >
+                                        <div class="col-sm-12 header_room" style="margin-bottom: 20px;margin-top: 20px;">
+                                            <div class="col-sm-8 row clearfix" align="left">
+                                                <div class="col-sm-3">
+                                                    <label>Type Of Bed</label>
                                                 </div>
-                                                <div class="col-sm-6 pull-right row clearfix" align="left">
-                                                    <div class="col-sm-2 mr-2">
-                                                        <label>Infant</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" readonly="" value="0" name="infant_tot[]" class="form-control infant_tot">
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <button class="btn btn-round bg-pink add_infant waves-effect">
-                                                            <i class="material-icons ">save</i>
-                                                        </button>
-                                                    </div>
+                                                <div class="col-sm-7">
+                                                    <select  class="form-control  bk_bed" name="bk_bed[]" >
+                                                        <option @if($count[$i][0]['dp_bed'] == 'single') selected="" @endif value="single" data-val="1">Single</option>
+                                                        <option @if($count[$i][0]['dp_bed'] == 'double') selected="" @endif value="double" data-val="2">Double</option>
+                                                        <option @if($count[$i][0]['dp_bed'] == 'twin') selected="" @endif value="twin" data-val="2">Twin</option>
+                                                        <option @if($count[$i][0]['dp_bed'] == 'triple') selected="" @endif value="triple" data-val="3">Triple</option>
+                                                        <option @if($count[$i][0]['dp_bed'] == 'doubletwin&cnb') selected="" @endif value="doubletwin&cnb" data-val="3">Double/Twin + CNB</option>
+                                                        <option @if($count[$i][0]['dp_bed'] == 'doubletwin&cwb') selected="" @endif value="doubletwin&cwb" data-val="3">Double/Twin + CwB</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 detail_room_append">
+                                            <div class="col-sm-4 row clearfix" align="left">
+                                                <div class="col-sm-2">
+                                                    <label>Infant</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text" readonly="" value="0" name="infant_tot[]" class="form-control infant_tot">
+                                                </div>
+                                                <div class="btn-group col-sm-7">
+                                                    <button type="button" class="btn btn-info add_infant"><i class="fa fa-plus"> ADD INFANT</i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 detail_room_append">
+                                        @foreach ($count[$i] as $a=>$val2)
+                                            @if ($a == 0)
+                                                @if (isset($count[$i][0]))
                                                 <div class="detail_room col-sm-12">
                                                     <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                         <div >
@@ -419,10 +382,11 @@
                                                             <div class="col-sm-8 row clearfix" align="left">
                                                                 <div class="contact-form ">
                                                                     <div class="form-group-sm input_place">
-                                                                        <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
-                                                                        <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                        <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                        <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                        <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][0]['dp_name'] }}">
+                                                                        <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][0]['dp_passport'] }}">
+                                                                        <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][0]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                        <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][0]['dp_issuing']}}">
+                                                                        <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][0]['dp_room'] }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -448,12 +412,12 @@
                                                                 <div class="contact-form ">
                                                                     <div class="form-group-sm input_place">
                                                                         <select class="form-control gender" name="gender[]">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="female">Female</option>
+                                                                            <option @if($count[$i][0]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                            <option @if($count[$i][0]['dp_gender'] == 'female') selected @endif value="female">Female</option>
                                                                         </select>
-                                                                        <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                        <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
-                                                                        <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
+                                                                        <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][0]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                        <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][0]['dp_birth_place'] }}">
+                                                                        <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][0]['dp_reference'] }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -463,175 +427,699 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="detail_room col-sm-12 disabled">
-                                                    <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
-                                                        <div>
-                                                            <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
-                                                        </div>
-                                                        <div class="file-upload upl_2" style="width: 80%;">
-                                                            <div class="file-select">
-                                                                <div class="file-select-button fileName" >Image</div>
-                                                                <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
-                                                                <input type="file" class="chooseFile" name="image[]">
+                                                @endif
+                                            @endif
+                                            @if ($a == 1)
+                                                @if ($count[$i][$a]['dp_bed'] != 'single')
+                                                    <div class="detail_room col-sm-12">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
+                                                            </div>
+                                                            <div class="file-upload upl_2" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-4 input_1">
-                                                        <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
-                                                            <div class="col-sm-6 row clearfix" align="left">
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Name</b></h5>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Passport No</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Expired Date</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Issuing</b></h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-8 row clearfix" align="left">
-                                                                <div class="contact-form ">
-                                                                    <div class="form-group-sm input_place">
-                                                                        <input type="text" name="name[]"  placeholder="Name" class="form-control name">
-                                                                        <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                        <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                        <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][1]['dp_name'] }}">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][1]['dp_passport'] }}">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][1]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][1]['dp_issuing']}}">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][1]['dp_room'] }}">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-4 input_2">
-                                                        <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
-                                                            <div class="col-sm-6 row clearfix" align="left">
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Gender</b></h5>
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option @if($count[$i][1]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                                <option @if($count[$i][1]['dp_gender'] == 'female') selected @endif value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][1]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][1]['dp_birth_place'] }}">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][1]['dp_reference'] }}">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Place of Birth</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Reference</b></h5>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-8 row clearfix" align="left">
-                                                                <div class="contact-form ">
-                                                                    <div class="form-group-sm input_place">
-                                                                        <select class="form-control gender" name="gender[]">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="female">Female</option>
-                                                                        </select>
-                                                                        <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                        <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                        <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="detail_room col-sm-12 disabled">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
+                                                            </div>
+                                                            <div class="file-upload upl_2" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail_room col-sm-12 disabled room_3">
-                                                    <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
-                                                        <div>
-                                                            <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
-                                                        </div>
-                                                        <div class="file-upload upl_3" style="width: 80%;">
-                                                            <div class="file-select">
-                                                                <div class="file-select-button fileName" >Image</div>
-                                                                <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
-                                                                <input type="file" class="chooseFile" name="image[]">
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-4 input_1">
-                                                        <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
-                                                            <div class="col-sm-6 row clearfix" align="left">
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Name</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Passport No</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Expired Date</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Issuing</b></h5>
+                                                @endif
+                                            @endif
+
+                                            @if ($a == 2)
+                                                @if ($count[$i][$a]['dp_bed'] == 'doubletwin&cwb' or 
+                                                 $count[$i][$a]['dp_bed'] == 'doubletwin&cnb' or
+                                                 $count[$i][$a]['dp_bed'] == 'triple')
+                                                    <div class="detail_room col-sm-12">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                            </div>
+                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-8 row clearfix" align="left">
-                                                                <div class="contact-form ">
-                                                                    <div class="form-group-sm input_place">
-                                                                        <input type="text" name="name[]"  placeholder="Name" class="form-control name">
-                                                                        <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
-                                                                        <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                        <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][2]['dp_name'] }}">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][2]['dp_passport'] }}">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][2]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][2]['dp_issuing']}}">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][2]['dp_room'] }}">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-4 input_2">
-                                                        <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
-                                                            <div class="col-sm-6 row clearfix" align="left">
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Gender</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Date of Birth</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Place of Birth</b></h5>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h5 class="grey"><b>Reference</b></h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-8 row clearfix" align="left">
-                                                                <div class="contact-form ">
-                                                                    <div class="form-group-sm input_place">
-                                                                        <select class="form-control gender" name="gender[]">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="female">Female</option>
-                                                                        </select>
-                                                                        <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                        <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                        <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
                                                                     </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option @if($count[$i][2]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                                <option @if($count[$i][2]['dp_gender'] == 'female') selected @endif value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][2]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][2]['dp_birth_place'] }}">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][2]['dp_reference'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12" style="text-align: center !important;">
-                                                <div class="text-center  btn-group">
-                                                    <a type="button" class="btn btn-info add"><i class="fa fa-plus">ADD ROOM</i></a>
-                                                    <a type="button" class="btn btn-danger del"><i class="fa fa-minus"></i></a>
-                                                </div>
+                                                @else
+                                                    <div class="detail_room col-sm-12 disabled">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                            </div>
+                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
+
+                                            @if ($count[$i][$a]['dp_bed'] == 'single')
+                                                @if ($a > 0)
+                                                    <div class="col-sm-12 baby">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                            </div>
+                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][$a]['dp_name'] }}">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][$a]['dp_passport'] }}">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'female') selected @endif value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][$a]['dp_birth_place'] }}">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][$a]['dp_reference'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @elseif($count[$i][$a]['dp_bed'] == 'double' or
+                                                    $count[$i][$a]['dp_bed'] == 'twin' )
+                                                @if ($a > 1)
+                                                    <div class="col-sm-12 baby">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                            </div>
+                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][$a]['dp_name'] }}">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][$a]['dp_passport'] }}">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'female') selected @endif value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][$a]['dp_birth_place'] }}">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][$a]['dp_reference'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @elseif($count[$i][$a]['dp_bed'] == 'doubletwin&cwb' or 
+                                                 $count[$i][$a]['dp_bed'] == 'doubletwin&cnb' or
+                                                 $count[$i][$a]['dp_bed'] == 'triple')
+                                                 @if ($a > 2)
+                                                    <div class="col-sm-12 baby">
+                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                            <div>
+                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                            </div>
+                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                                <div class="file-select">
+                                                                    <div class="file-select-button fileName" >Image</div>
+                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <input type="file" class="chooseFile" name="image[]">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_1">
+                                                            <div class="col-sm-12 input_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Name</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Passport No</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Expired Date</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Issuing</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase" value="{{ $count[$i][$a]['dp_name'] }}">
+                                                                            <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport" value="{{ $count[$i][$a]['dp_passport'] }}">
+                                                                            <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
+                                                                            <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 input_2">
+                                                            <div class="col-sm-12 input1_one" style="margin-bottom: 70px;margin-top: 20px;">
+                                                                <div class="col-sm-6 row clearfix" align="left">
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Gender</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Date of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Place of Birth</b></h5>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <h5 class="grey"><b>Remark</b></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 row clearfix" align="left">
+                                                                    <div class="contact-form ">
+                                                                        <div class="form-group-sm input_place">
+                                                                            <select class="form-control gender" name="gender[]">
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'male') selected @endif value="male">Male</option>
+                                                                                <option @if($count[$i][$a]['dp_gender'] == 'female') selected @endif value="female">Female</option>
+                                                                            </select>
+                                                                            <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
+                                                                            <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase" value="{{ $count[$i][$a]['dp_birth_place'] }}">
+                                                                            <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase" value="{{ $count[$i][$a]['dp_reference'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 remove_append">
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                        <div class="col-sm-12" style="text-align: center !important;">
+                                            <div class="text-center  btn-group">
+                                                <a type="button" class="btn btn-info add"><i class="fa fa-plus">ADD ROOM</i></a>
+                                                <a type="button" class="btn btn-danger del"><i class="fa fa-minus"></i></a>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
-                            </form>
+                            </fieldset>
+                            <!-- Additional-->
+                            <hr>
+                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
+                              <h3 class="count_h2"><b>ADDITIONAL</h3>
+                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
+                                  <div class="contact-form col1" >
+                                    <div class="table-responsive">
+                                        <table width="100%" class="table table-striped table-bordered table-hover ">
+                                            <thead >
+                                                <tr>
+                                                    <th style="width: 25%" align="center">Name</th>
+                                                    <th style="width: 20%" align="center">Procie</th>
+                                                    <th align="center">Select Person</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($detail_intinerary->intinerary->add as $val)
+                                                <tr class="add_tr">
+                                                    <td align="left">
+                                                        <p class="add_name">{{ $val->ma_name }}</p>
+                                                        <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
+                                                    </td>
+                                                    <td align="right">
+                                                        <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
+                                                        <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
+                                                    </td>
+                                                    <td class="sel_opt">
+                                                        <select class=" additional form-control selectpicker" multiple data-size="4">
+                                                        
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                            </fieldset>
+                            <div class="col-sm-12" style="margin-top: 100px">
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div>
+                                            <textarea style="" class="form-control" name="bk_remark" id="bk_remark" placeholder="Remark"></textarea>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </fieldset>
+                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
+                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
+                                  <div class="contact-form col1 col-sm-12" >
+                                    <div class="input-group margin-top-20px">
+                                        <div class="checkbox checkbox-info checkbox-circle">
+                                            <input id="check_agree" type="checkbox" name="check_agree">
+                                            <label for="Kwitansi">
+                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
+                                            </label>
+                                        </div> 
+                                    </div>
+                                  </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="col-sm-12" style="margin-top: 50px;">
+                                <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
+                            </div>
+                        </form>
+                        <div class="col-sm-12 invoice_tab" hidden="">
+                            <div class="col-sm-12">
+                                <table width="100%" class="table table-striped table-hover table_room">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;">Paspport No</th>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Room</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_invoice">
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="table table-striped table-hover table_addition">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">Name</th>
+                                            <th style="text-align: center;">Additional</th>
+                                            <th style="text-align: center;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="append_additional">
+                                    </tbody>
+                                </table>
+                                <input type="hidden" class="total_room_input" name="total_room_input">
+                                <input type="hidden" class="total_additional_input" name="total_additional_input">
+                                <input type="hidden" class="total_harga_input" name="total_harga_input">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- #END# CPU Usage -->
-    </div>
-</section>
+            @include('booking.booking_modal')
+        </section>
 
-<script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+        <!--
+        End Contact Us
+        ==================================== -->
+        @include('layouts_frontend._footer')
+        <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+        @include('layouts_frontend._scripts')
+    </body>
+</html>
 <script type="text/javascript">
 
     $(".bk_totalpac").keyup(function (e) {
@@ -655,6 +1143,14 @@
         }
 
     })
+
+
+    $(document).ready(function(){
+        var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
+
+        $('.baby').find('.remove_append').html(remove);
+
+    })
     // var table_room      = $('.table_room').DataTable({
     //     sorting:false,
     //     paging:false,
@@ -672,10 +1168,7 @@
         $('.date').change();
     });
     
-    $(document).ready(function(){
-        $('.agent_detail').removeClass('focused');
-        console.log($('.agent_detail'));
-    })
+
     function remove_date_error() {
         // body...
         $('.date').change(function(){
@@ -727,6 +1220,7 @@
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
         var par = $(this).parents('.all_room');
+        var room = $(par).find('.room_val').eq(0).val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled input').val('');
@@ -736,14 +1230,14 @@
         }else if (val == 2) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.room_3 input').val('');
+            $(par).find('.detail_room').eq(1).find('.room_val').val(room);
+            $(par).find('.detail_room input').eq(2).val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
         }else if (val == 3) {
-            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.detail_room').eq(2).removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
         }
         total();
     })
@@ -781,9 +1275,6 @@
         $('.total_child').val(child);
         
     }
-    window.onload = function(){
-        total();
-    }
 
     $(document).on('click','.add_infant',function(){
         var parent = $(this).parents('.all_room');
@@ -797,7 +1288,7 @@
             $(parent).find('.detail_room').last().addClass('baby');
             $(parent).find('.baby').last().removeClass('detail_room');
             $(parent).find('.remove_append').last().html(remove);
-            $(parent).find('.baby').last().find('input').val('');
+            $(parent).find('.baby').last().find('input:not(.room_val)').val('');
             $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(parent).find('.baby .noFile').last().text('Passport Image');
             $(parent).find('.baby').last().find('.file-upload').removeClass('active');
@@ -834,6 +1325,7 @@
         baby_total();
     })
 
+    var room = 1;
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
         var limit = 0;
@@ -866,6 +1358,9 @@
         $('.bk_bed').last().change();
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
+
+        room++;
+        $('.all_room').last().find('.room_val').eq(0).val(room);
         total();
     })
 
@@ -978,7 +1473,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+
@@ -1137,4 +1632,3 @@
 
 
 </script>
-  

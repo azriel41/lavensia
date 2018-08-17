@@ -129,11 +129,14 @@ class booking_allController extends Controller
 
 
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$booking->db_intinerary_id);
+    	$count = [];
 
-    	$id 				= $booking->db_intinerary_id;
+    	$count = $booking->party_name->groupBy('dp_room')->toArray();
+    	$count = array_values($count);
+    	$id    = $booking->db_intinerary_id;
 
     
-		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id'));
+		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count'));
 
     }
     

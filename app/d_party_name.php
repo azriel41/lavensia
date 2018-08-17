@@ -23,6 +23,7 @@ class d_party_name extends Model
 						   'dp_birth_place',
 						   'dp_reference',
 						   'dp_image',
+						   'dp_room',
 						   'created_by',
 						   'updated_by',
 						];

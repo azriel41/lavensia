@@ -383,6 +383,7 @@
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -455,10 +456,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -477,7 +479,7 @@
                                                                 <h5 class="grey"><b>Place of Birth</b></h5>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                                <h5 class="grey"><b>Remark</b></h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 row clearfix" align="left">
@@ -488,15 +490,18 @@
                                                                         <option value="female">Female</option>
                                                                     </select>
                                                                     <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                    <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="detail_room col-sm-12 disabled room_3">
+                                            <div class="detail_room col-sm-12 disabled">
                                                 <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                     <div>
                                                         <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
@@ -528,10 +533,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -550,7 +556,7 @@
                                                                 <h5 class="grey"><b>Place of Birth</b></h5>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                                <h5 class="grey"><b>Remark</b></h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 row clearfix" align="left">
@@ -561,10 +567,13 @@
                                                                         <option value="female">Female</option>
                                                                     </select>
                                                                     <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                    <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -784,6 +793,7 @@
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
         var par = $(this).parents('.all_room');
+        var room = $(par).find('.room_val').eq(0).val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled input').val('');
@@ -793,14 +803,14 @@
         }else if (val == 2) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.room_3 input').val('');
+            $(par).find('.detail_room').eq(1).find('.room_val').val(room);
+            $(par).find('.detail_room input').eq(2).val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
         }else if (val == 3) {
-            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.detail_room').eq(2).removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
         }
         total();
     })
@@ -854,7 +864,7 @@
             $(parent).find('.detail_room').last().addClass('baby');
             $(parent).find('.baby').last().removeClass('detail_room');
             $(parent).find('.remove_append').last().html(remove);
-            $(parent).find('.baby').last().find('input').val('');
+            $(parent).find('.baby').last().find('input:not(.room_val)').val('');
             $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(parent).find('.baby .noFile').last().text('Passport Image');
             $(parent).find('.baby').last().find('.file-upload').removeClass('active');
@@ -891,6 +901,7 @@
         baby_total();
     })
 
+    var room = 1;
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
         var limit = 0;
@@ -923,6 +934,9 @@
         $('.bk_bed').last().change();
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
+
+        room++;
+        $('.all_room').last().find('.room_val').eq(0).val(room);
         total();
     })
 
@@ -1035,7 +1049,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+
