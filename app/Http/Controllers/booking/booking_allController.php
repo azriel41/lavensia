@@ -134,9 +134,18 @@ class booking_allController extends Controller
     	$count = $booking->party_name->groupBy('dp_room')->toArray();
     	$count = array_values($count);
     	$id    = $booking->db_intinerary_id;
+		$add_name = [];
+		$additional_book = $booking->additional_book->groupBy('da_additional_id');
 
-    
-		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count'));
+		for ($z=0; $z < count($detail_intinerary->intinerary->add); $z++) { 
+			$data = $detail_intinerary->intinerary->add[$z]->ma_id;
+
+			for ($i=0; $i < count($additional_book[$data]); $i++) { 
+				$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
+			}    	
+		}
+		
+		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name'));
 
     }
     

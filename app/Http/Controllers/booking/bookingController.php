@@ -66,7 +66,7 @@ class bookingController extends Controller
     {
         return DB::transaction(function() use ($req) {  
     		$id = $this->d_booking->max('db_id');
-    		dd($req->all());
+    		// dd($req->all());
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total 		 	 = $db_total_additional+$db_total_room;
@@ -129,7 +129,7 @@ class bookingController extends Controller
 		            if ($file != null) {
 
 		                $tour_code = str_replace('/', '-', $req->tour_code);
-		                $filename = 'booking/'.$req->r_name_fam[$b].'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+		                $filename = 'booking/'.$index.'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 
 		                Storage::put($filename,file_get_contents($file));
 		            }else{
@@ -174,7 +174,7 @@ class bookingController extends Controller
 					$data = array(	
 						'da_booking_id'    => $id,
 						'da_detail'		   => $dt,
-						'da_name'		   => $req->a_name[$b],
+						'da_name'		   => strtoupper($req->a_name[$b]),
 						'da_additional_id' => $req->a_id[$b],
 						'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
 						'created_by'	   => Auth::user()->id,

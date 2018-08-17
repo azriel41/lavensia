@@ -736,7 +736,8 @@
     // });
 
     $('.date').datepicker({
-        format:'dd/mm/yyyy'
+        format:'dd/mm/yyyy',
+        autoclose: true
     }).on('changeDate', function (ev) {
         $('.date').change();
     });
@@ -804,7 +805,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
-            $(par).find('.detail_room input').eq(2).val('');
+            $(par).find('.detail_room').eq(2).find('input').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
@@ -870,7 +871,7 @@
             $(parent).find('.baby').last().find('.file-upload').removeClass('active');
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .datepicker({format:'dd/mm/yyyy',startDate: '-2y'});
+                                                        .datepicker({format:'dd/mm/yyyy',startDate: '-2y',autoclose: true});
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -930,7 +931,7 @@
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .datepicker({format:'dd/mm/yyyy'});
+                                                        .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
@@ -1090,7 +1091,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+

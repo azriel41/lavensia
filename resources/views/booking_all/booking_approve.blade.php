@@ -353,12 +353,12 @@
                                                 <div class="detail_room col-sm-12">
                                                     <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                         <div >
-                                                            <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_1" >
+                                                            <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_1" >
                                                         </div>
-                                                        <div class="file-upload upl_1" style="width: 80%;">
+                                                        <div class="file-upload upl_1 active" style="width: 80%;">
                                                             <div class="file-select">
                                                                 <div class="file-select-button fileName" >Image</div>
-                                                                <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
+                                                                <div class="file-select-name noFile tag_image_1" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                 <input type="file" class="chooseFile" name="image[]">
                                                             </div>
                                                         </div>
@@ -434,12 +434,12 @@
                                                     <div class="detail_room col-sm-12">
                                                         <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                             <div>
-                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_2" >
+                                                                <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_2" >
                                                             </div>
-                                                            <div class="file-upload upl_2" style="width: 80%;">
+                                                            <div class="file-upload upl_2 active" style="width: 80%;">
                                                                 <div class="file-select">
                                                                     <div class="file-select-button fileName" >Image</div>
-                                                                    <div class="file-select-name noFile tag_image_2" >Passport Image</div> 
+                                                                    <div class="file-select-name noFile tag_image_2" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                     <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
@@ -596,12 +596,12 @@
                                                     <div class="detail_room col-sm-12">
                                                         <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                             <div>
-                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                                <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_3" >
                                                             </div>
-                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                            <div class="file-upload upl_3 active" style="width: 80%;">
                                                                 <div class="file-select">
                                                                     <div class="file-select-button fileName" >Image</div>
-                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <div class="file-select-name noFile tag_image_3" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                     <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
@@ -756,12 +756,12 @@
                                                     <div class="col-sm-12 baby">
                                                         <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                             <div>
-                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                                <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_3" >
                                                             </div>
-                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                            <div class="file-upload upl_3 active" style="width: 80%;">
                                                                 <div class="file-select">
                                                                     <div class="file-select-button fileName" >Image</div>
-                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <div class="file-select-name noFile tag_image_3" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                     <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
@@ -837,12 +837,12 @@
                                                     <div class="col-sm-12 baby">
                                                         <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                             <div>
-                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                                <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_3" >
                                                             </div>
-                                                            <div class="file-upload upl_3" style="width: 80%;">
+                                                            <div class="file-upload upl_3 active" style="width: 80%;">
                                                                 <div class="file-select">
                                                                     <div class="file-select-button fileName" >Image</div>
-                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <div class="file-select-name noFile tag_image_3" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                     <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
@@ -917,14 +917,14 @@
                                                  $count[$i][$a]['dp_bed'] == 'triple')
                                                  @if ($a > 2)
                                                     <div class="col-sm-12 baby">
-                                                        <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                                        <div class="col-sm-4 preview_div satu active" style="margin-bottom: 20px;margin-top: 20px;">
                                                             <div>
-                                                                <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
+                                                                <img src="{{ route('storage') }}/{{ $count[$i][$a]['dp_image']}}?'{{ time() }}'" style="width: 80%;height: 160px" class="output gambar_3" >
                                                             </div>
                                                             <div class="file-upload upl_3" style="width: 80%;">
                                                                 <div class="file-select">
                                                                     <div class="file-select-button fileName" >Image</div>
-                                                                    <div class="file-select-name noFile tag_image_3" >Passport Image</div> 
+                                                                    <div class="file-select-name noFile tag_image_3" >{{ $count[$i][$a]['dp_image']}}</div> 
                                                                     <input type="file" class="chooseFile" name="image[]">
                                                                 </div>
                                                             </div>
@@ -1023,7 +1023,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($detail_intinerary->intinerary->add as $val)
+                                                @foreach ($detail_intinerary->intinerary->add as $a=>$val)
                                                 <tr class="add_tr">
                                                     <td align="left">
                                                         <p class="add_name">{{ $val->ma_name }}</p>
@@ -1035,7 +1035,13 @@
                                                     </td>
                                                     <td class="sel_opt">
                                                         <select class=" additional form-control selectpicker" multiple data-size="4">
-                                                        
+                                                        @foreach ($booking->party_name as $i=>$val1)
+                                                            @if (in_array($val1->dp_name, $add_name[$val->ma_id]))
+                                                                <option selected="" value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
+                                                            @else
+                                                                <option value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
+                                                            @endif
+                                                        @endforeach
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -1057,17 +1063,21 @@
                                   </div>
                                 </fieldset>
                                 <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" ><b>Term & Condition Agreement</b></h4>
-                                  <div class="contact-form col1 col-sm-12" >
-                                    <div class="input-group margin-top-20px">
-                                        <div class="checkbox checkbox-info checkbox-circle">
-                                            <input id="check_agree" type="checkbox" name="check_agree">
-                                            <label for="Kwitansi">
-                                                <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
-                                            </label>
-                                        </div> 
+                                  <h4 class="scheduler-border count_h2" style="margin-bottom: 50px" ><b>Status</b></h4>
+                                    <div class="col-sm-12 current_items">
+                                        <div class="col-sm-6" >
+                                            <div class="col-sm-12">
+                                                <input type="radio" name="payment" class="payment" id="dp" value="dp">
+                                                <label for="dp " class="label_new" style="font-size: 12px;color: black">Hold</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-12">
+                                                <input type="radio" name="payment" class="payment" id="fp" value="fp">
+                                                <label for="fp" class="label_new" style="font-size: 12px;color: black">Full Payment</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
                                 </fieldset>
                             </div>
                             
@@ -1231,7 +1241,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
-            $(par).find('.detail_room input').eq(2).val('');
+            $(par).find('.detail_room').eq(2).find('input').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
@@ -1514,7 +1524,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+
