@@ -850,6 +850,7 @@
         
     }
     window.onload = function(){
+        $('.detail_room').addClass('all_detail_room');
         total();
     }
 
@@ -941,6 +942,40 @@
         total();
     })
 
+    var passport = [];
+    $(document).on('blur','.passport',function(){
+        var indexs = $(this).index('.passport');
+        console.log(indexs);    
+        var passport_temp = $(this).val();
+        $('.all_detail_room').find('.passport').each(function(i){
+            var parent = $(this).parents('.detail_room');
+            if (!parent.hasClass('disabled')) {
+                try{
+                    if (passport_temp != passport[indexs]) {
+                        console.log(passport_temp);
+                        console.log(passport[indexs]);
+                        var index = passport.indexOf(passport_temp);
+                        console.log(index);
+                        if (index != -1) {
+                            if (passport[i] != '') {
+                                $('.passport').eq(indexs).val('');
+                                iziToast.warning({
+                                    icon: 'fa fa-times',
+                                    position:'topRight',
+                                    message: 'Passport Already Input!',
+                                });
+                                return false;
+                            }
+                        }
+                    }
+                }catch(err){
+                    
+                }
+            }
+            passport[i] = $(this).val();
+        })
+    })
+
     $(document).on('click','.del',function(){
         var temp = 0;
         $('.all_room').each(function(){
@@ -951,22 +986,29 @@
             $(par).remove();
         }
     })
-    $(document).on('keyup','.name',function(){
-        $('.additional').find('option').remove();
+    name_additional = [];
+    $(document).on('blur','.name',function(){
+        var name_temp = $(this).val();
+        var indexs = $(this).index('.name');
+
         $('.additional').each(function(a){
-            var select  = $(this);
-            var par     = $(this).parents('tr');
-            var add_name= $(par).find('.add_name').text();
-            var d= 1;
-            $('.name').each(function(i){
-                if ($(this).val() != '') {
-                    var nama = $(this).val();
-                    $(select).find('select').append('<option value="'+nama+'" add-index="'+d+'">'+nama+'</option>')
+            try{
+                var select  = $(this);
+                var d = 1;
+                select.find('[value='+name_additional[indexs]+']').remove();
+                console.log(select.find('[value='+name_additional[indexs]+']'));
+                if (name_temp != '') {
+                    $(select).find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
                            .selectpicker('refresh');
                     d++;
                 }
-            })
+            }catch(err){
+
+            }
+            
         });
+
+        name_additional[indexs] = name_temp;
     });
     
     $('.name').focus(function(){
