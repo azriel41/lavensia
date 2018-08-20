@@ -87,7 +87,7 @@ class booking_allController extends Controller
 		                    if ($data->db_handle_by != null) {
 		                    	if ($data->db_handle_by == Auth::User()->id) {
 		                    		$c = 	'<li>
-						                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
+						                        <a href="'.url('/booking/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
 						                            <i class="material-icons">edit</i>
 						                            Edit
 						                        </a>
@@ -144,7 +144,6 @@ class booking_allController extends Controller
 				$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
 			}    	
 		}
-		
 		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name'));
 
     }
@@ -152,7 +151,6 @@ class booking_allController extends Controller
 
     public function update_book(request $req)
     {
-    	// dd($req->all());
     	return DB::transaction(function() use ($req) {  
     		DB::beginTransaction();
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
@@ -168,9 +166,20 @@ class booking_allController extends Controller
     		}else{
     			$status = 'Holding Confirm';
     		}
+
+    		$file = $req->file('pdf');
+    		if ($file == null) {
+		        return Response::json(['status'=>0,'message'=>'Please Upload PDF']);
+			}
+
+			$filename = 'booking/'.$book->db_kode_transaksi.'_'.'DETAIL_TOUR'.'_'.$req->booking_id.'.'.$file->getClientOriginalExtension();
+			
+        	Storage::put($filename,file_get_contents($file));
+
     		$data = array(
 						    'db_name'					=> strtoupper($req->party_name),
 						    'db_intinerary_id'			=> $req->id,
+						    'db_pdf'					=> $filename,
 						    'db_telp'					=> $req->party_telephone,
 						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> $db_total_additional,
@@ -200,14 +209,15 @@ class booking_allController extends Controller
 					$dt = $this->d_party_name->max_detail('dp_booking_id',$req->booking_id,'dp_detail');
 					if ($req->dp_detail[$b] != null) {
 
-						try{
+						if (isset($req->file('image')[$b])) {
 							$file = $req->file('image')[$b];
 							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
-
 		                	Storage::put($filename,file_get_contents($file));
-						}catch(Exception $err){
+						}else{
 							$filename =  $this->d_party_name->show_detail_one('dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b])->dp_image;
 						}
+							
+					
 
 						
 						$data = array(	
@@ -285,6 +295,30 @@ class booking_allController extends Controller
 			DB::commit();
 			return Response::json(['status'=>1,'id'=>$req->booking_id]);
     	});
+    }
+
+    public function edit_booking($id)
+    {
+    	$booking = $this->d_booking->cari('db_id',$id);
+
+
+    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$booking->db_intinerary_id);
+    	$count = [];
+
+    	$count = $booking->party_name->groupBy('dp_room')->toArray();
+    	$count = array_values($count);
+    	$id    = $booking->db_intinerary_id;
+		$add_name = [];
+		$additional_book = $booking->additional_book->groupBy('da_additional_id');
+
+		for ($z=0; $z < count($detail_intinerary->intinerary->add); $z++) { 
+			$data = $detail_intinerary->intinerary->add[$z]->ma_id;
+
+			for ($i=0; $i < count($additional_book[$data]); $i++) { 
+				$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
+			}    	
+		}
+		return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name'));
     }
     
 }

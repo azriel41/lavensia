@@ -15,6 +15,7 @@ class d_booking extends Model
 						   'db_kode_transaksi',
 						   'db_users',
 						   'db_name',
+						   'db_pdf',
 						   'db_intinerary_id',
 						   'db_telp',
 						   'db_status',

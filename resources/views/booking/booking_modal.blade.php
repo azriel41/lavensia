@@ -11,7 +11,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
-                <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
             </div>
         </div>
     </div>
@@ -95,4 +94,23 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="preview_pdf" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-cyan">
+                <h3 class="modal-title" id="largeModalLabel">Preview PDF</h3>
+            </div>
+            <div class="modal-body">
+                <div style="clear:both;top: 20px" class="col-sm-12" >
+                   <iframe id="viewer" frameborder="0" scrolling="no" width="400" height="600"></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
 </div>

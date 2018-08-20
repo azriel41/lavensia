@@ -1064,23 +1064,7 @@
                                     </div>
                                   </div>
                             </fieldset>
-                            <div class="col-sm-5 col-xs-4">
-                                <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
-                                    <div class="file-upload upl_3 col-sm-8">
-                                        <div class="file-select">
-                                            <div class="file-select-button fileName" >Upload PDF</div>
-                                            <div class="file-select-name noFile">PDF Name</div> 
-                                            <input type="file" class="chooseFile" id="uploadPDF" name="pdf">
-                                        </div>
-                                    </div>
-                                    <div class="preview_pdf col-sm-4">
-                                        <div>
-                                            <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-eye"></i> Preview PDF</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                            
                             <div class="col-sm-12" style="margin-top: 100px">
                                 <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
                                   <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
@@ -1092,23 +1076,22 @@
                                     </div>
                                   </div>
                                 </fieldset>
-                                <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
-                                  <h4 class="scheduler-border count_h2" style="margin-bottom: 50px" ><b>Status</b></h4>
-                                    <div class="col-sm-12 current_items">
-                                        <div class="col-sm-6" >
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="payment" class="payment" id="dp" value="dp">
-                                                <label for="dp " class="label_new" style="font-size: 12px;color: black">Hold</label>
+                                <div class="col-sm-6 col-xs-4">
+                                    <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
+                                        <div class="file-upload active upl_3 col-sm-8">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName" >Upload PDF</div>
+                                                <div class="file-select-name noFile">{{ $booking->db_pdf }}</div> 
+                                                <input type="file" class="chooseFile" id="uploadPDF" name="pdf">
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="payment" class="payment" id="fp" value="fp">
-                                                <label for="fp" class="label_new" style="font-size: 12px;color: black">Holding Confirm</label>
+                                        <div class="preview_pdf col-sm-4">
+                                            <div>
+                                                <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-eye"></i> Preview PDF</button>
                                             </div>
                                         </div>
                                     </div>
-                                </fieldset>
+                                </div>
                             </div>
                             <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> See New Invoice</button>
@@ -1690,9 +1673,14 @@
     })
     
     function PreviewImage() {
-        pdffile=document.getElementById("uploadPDF").files[0];
-        pdffile_url=URL.createObjectURL(pdffile);
-        $('#viewer').attr('src',pdffile_url);
+        try{
+            pdffile=document.getElementById("uploadPDF").files[0];
+            pdffile_url=URL.createObjectURL(pdffile);
+            $('#viewer').attr('src',pdffile_url);
+        }catch(err){
+            $('#viewer').attr('src','{{ asset('storage/app') }}'+'/'+'{{ $booking->db_pdf }}');
+        }
+        
 
         $('#preview_pdf').modal('show');
     }
