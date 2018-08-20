@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/booking_handling/{id}', 'booking\booking_allController@booking_handling')->name('booking_handling');
 		Route::post('/booking/booking_handling/update_book', 'booking\booking_allController@update_book')->name('update_book');
 		Route::get('/booking/edit/{id}', 'booking\booking_allController@edit_booking')->name('edit_booking');
+		Route::post('/booking/booking_handling/update_book_edit', 'booking\booking_allController@update_book_edit')->name('update_book_edit');
 
 
 	//BOOK ADMIN DAN HANDLE BY

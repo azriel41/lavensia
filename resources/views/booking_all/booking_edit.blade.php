@@ -1508,14 +1508,14 @@
             });
             // return false;
         }
-        if ($('.payment:checked').val() == undefined) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Please Select Status!',
-            });
-            return false;
-        }
+        // if ($('.payment:checked').val() == undefined) {
+        //     iziToast.warning({
+        //         icon: 'fa fa-times',
+        //         position:'topRight',
+        //         message: 'Please Select Status!',
+        //     });
+        //     return false;
+        // }
         $('.append_invoice').html('');
         $('.append_additional').html('');
         var validate   = [];
@@ -1703,7 +1703,7 @@
 
         $.ajax({
             type: "POST",
-            url:'{{ route('update_book') }}',
+            url:'{{ route('update_book_edit') }}',
             data: formdata ? formdata : form.serialize(),
             dataType:'json',
             processData: false,

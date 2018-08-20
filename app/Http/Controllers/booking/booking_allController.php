@@ -320,6 +320,149 @@ class booking_allController extends Controller
 		}
 		return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name'));
     }
+
+    public function update_book_edit(request $req)
+    {
+    	return DB::transaction(function() use ($req) {  
+    		DB::beginTransaction();
+    		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
+    		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
+    		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$book 		   = $this->d_booking->cari('db_id',$req->booking_id);
+    		$total_pax 	   = $req->total_adult + $req->total_child;
+    		$total_pax_old = $book->db_total_adult + $book->db_total_child;
+    		// HEADER
+
+
+    		$file = $req->file('pdf');
+    		if ($file != null) {
+		        $filename = 'booking/'.$book->db_kode_transaksi.'_'.'DETAIL_TOUR'.'_'.$req->booking_id.'.'.$file->getClientOriginalExtension();
+			
+        		Storage::put($filename,file_get_contents($file));
+			}else{
+				$filename = $book->db_pdf;
+			}
+
+			
+
+    		$data = array(
+						    'db_name'					=> strtoupper($req->party_name),
+						    'db_intinerary_id'			=> $req->id,
+						    'db_pdf'					=> $filename,
+						    'db_telp'					=> $req->party_telephone,
+						    'db_remark'					=> $req->bk_remark,
+						    'db_total_additional'		=> $db_total_additional,
+						    'db_total_room'				=> $db_total_room,
+						    'db_total'					=> $db_total,
+						    'db_total_remain'			=> $db_total,
+						    'db_total_adult'			=> $req->total_adult,
+						    'db_total_child'			=> $req->total_child,
+						    'db_total_infant'			=> $req->total_infant,
+						    'updated_by'				=> Auth::user()->id,
+    					 );
+
+    		$itinerary = $this->detail_intinerary->cari('md_id',$req->id);
+    		$hasil  = $itinerary->md_seat_remain + $total_pax_old - $total_pax;
+    		$updt   = array(
+    						'md_seat_remain'			=> $hasil,
+    					   );
+    		$this->detail_intinerary->update($updt,'md_id',$req->id);
+
+    		$this->d_booking->update($data,'db_id',$book->db_id);
+
+    		// PARTY 
+			for ($b=0; $b < count($req->name); $b++) { 
+				if ($req->name[$b] != null) {
+					$dt = $this->d_party_name->max_detail('dp_booking_id',$req->booking_id,'dp_detail');
+					if ($req->dp_detail[$b] != null) {
+
+						if (isset($req->file('image')[$b])) {
+							$file = $req->file('image')[$b];
+							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+		                	Storage::put($filename,file_get_contents($file));
+						}else{
+							$filename =  $this->d_party_name->show_detail_one('dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b])->dp_image;
+						}
+							
+					
+
+						
+						$data = array(	
+							'dp_bed'		=> $req->dp_bed[$b],
+							'dp_name'		=> strtoupper($req->name[$b]),
+							'dp_passport'	=> $req->passport[$b],
+							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'	=> strtoupper($req->issue[$b]),
+							'dp_gender'		=> $req->gender[$b],
+							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
+							'dp_reference'	=> strtoupper($req->reference[$b]),
+							'dp_image'		=> $filename,
+							'dp_room'		=> $req->room_val[$b],
+							'updated_by'	=> Auth::user()->id,
+						);
+
+		    			$this->d_party_name->update_detail($data,'dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b]);
+					}else{
+						try{
+							$file = $req->file('image')[$b];
+						}catch(Exception $err){
+							$file = null;
+						}
+
+						if ($file != null) {
+			                $filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+
+			                Storage::put($filename,file_get_contents($file));
+			            }else{
+		                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+		                    DB::rollBack();
+			            }
+
+
+						$data = array(	
+							'dp_booking_id'	=> $req->booking_id,
+							'dp_detail'		=> $dt,
+							'dp_bed'		=> $req->dp_bed[$b],
+							'dp_name'		=> strtoupper($req->name[$b]),
+							'dp_passport'	=> $req->passport[$b],
+							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'	=> strtoupper($req->issue[$b]),
+							'dp_gender'		=> $req->gender[$b],
+							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
+							'dp_reference'	=> strtoupper($req->reference[$b]),
+							'dp_image'		=> $filename,
+							'dp_room'		=> $req->room_val[$b],
+							'created_by'	=> Auth::user()->id,
+							'updated_by'	=> Auth::user()->id,
+						);
+
+		    			$this->d_party_name->create($data);
+					}          
+				}
+			}
+
+			if ($req->a_id != null) {
+				$dt = $this->d_additional_booking->delete('da_booking_id',$req->booking_id);
+				for ($b=0; $b < count($req->a_id); $b++) { 
+					$dt = $this->d_additional_booking->max_detail('da_booking_id',$req->booking_id,'da_detail');
+					$data = array(	
+						'da_booking_id'    => $req->booking_id,
+						'da_detail'		   => $dt,
+						'da_name'		   => strtoupper($req->a_name[$b]),
+						'da_additional_id' => $req->a_id[$b],
+						'da_price'		   => filter_var($req->a_price[$b],FILTER_SANITIZE_NUMBER_INT),
+						'updated_by'	   => Auth::user()->id,
+					);
+	    			$this->d_additional_booking->create($data);
+				}
+			}
+
+			DB::commit();
+			return Response::json(['status'=>1,'id'=>$req->booking_id]);
+    	});
+    }
     
 }
 
