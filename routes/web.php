@@ -112,6 +112,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking/booking_print', 'booking\booking_printController@booking_print')->name('booking_print');
 		//Datatable
 		Route::get('/booking/datatable_booking_print', 'booking\booking_printController@datatable_booking_print')->name('datatable_booking_print');
+		//Print excel
+		Route::get('/booking/booking_print/print_excel/{id}', 'booking\booking_printController@print_excel')->name('print_excel');
+		//Print pdf
+		Route::get('/booking/booking_print/print_pdf/{id}', 'booking\booking_printController@print_pdf')->name('print_pdf');
+		//Print passport
+		Route::get('/booking/booking_print/print_passport/{id}', 'booking\booking_printController@print_passport')->name('print_passport');
 
 	//REPORT 
 	Route::get('/report/report_profit', 'report\report_profitController@report_profit')->name('report_profit');

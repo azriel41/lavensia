@@ -340,6 +340,7 @@
                                     <td>: </td>
                                     <td align="right" class="Hightlight" colspan="7"><b>Rp. {{ number_format($data->db_total,0,'','.') }}</b></td>
                                 </tr>
+                               
                                 <tr>
                                     <td align="left" class="Hightlight">Book By</td>
                                     <td>: </td>
@@ -363,6 +364,53 @@
                     </div>
                 </div>
 
+                <div class="row mb50 margin_top_30px">
+                     <!-- Header--> 
+                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+                    </div>
+                    <!-- Image--> 
+                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
+                        
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
+                            <table width="100%"> 
+                                <tr>
+                                    <td align="left" valign="top" class="Hightlight" colspan="3"><h2 class="count_h2" style="margin-top: -5px;">{{ $data->mi_name }}</h2></td>
+                                </tr>
+                                <tr>
+                                    <td width="10px" align="left" class="Hightlight">Itinerary </td>
+                                    <td width="10px">: </td>
+                                    <td align="left" class="Hightlight"><h4 class="count_h2" style="margin-top: -5px;"><span class="label label-warning">{{ $data->md_nota }}</span></h4></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight"><h4 class="support">Flight</h4></td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight"><h4 class="support">{{ $data->mi_by }}</h4></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Highlight</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight">{{ $data->mi_highlight }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Periode</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight">{{ $data->md_start }} - {{ $data->md_start }}</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    {{-- <td align="left"></td> --}}
+                                    <td align="left"><button class="btn btn-small btn-orange download" id="pdf" data-id="{{ $data->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
         </section>
 
         <!--

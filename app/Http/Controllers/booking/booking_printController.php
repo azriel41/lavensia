@@ -63,40 +63,19 @@ class booking_printController extends Controller
 
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
-			        return'<div class="btn-group">
-			                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			                    <i class="material-icons">settings</i>
-			                    Manage <span class="caret"></span>
-			                </button>
-			                <ul class="dropdown-menu" style="padding:0px">
-			                	<li>
-			                        <a onclick="handle(\''.$data->db_id.'\')" class="waves-effect waves-block bg-teal" style="color:#607D8B;">
-			                            <i class="material-icons">touch_app</i>
-			                            Handle
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
-			                            <i class="material-icons">edit</i>
-			                            Edit
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:#607D8B">
-			                            <i class="material-icons">delete</i>
-			                            Delete
-			                        </a>
-			                    </li>
-			                </ul>
-			                <div class="btn-group mr-2" role="group" aria-label="Second group">
-							    <button type="button" class="btn btn-secondary">5</button>
-							    <button type="button" class="btn btn-secondary">6</button>
-							    <button type="button" class="btn btn-secondary">7</button>
-							  </div>
-							  <div class="btn-group" role="group" aria-label="Third group">
-							    <button type="button" class="btn btn-secondary">8</button>
-							  </div>
-			            </div>';
+			        return'<div class="icon-button-demo">                              
+                                <a href="'.url('/booking/booking_print/print_excel').'/'.$data->db_intinerary_id.'" class="btn btn-danger btn-circle waves-effect waves-circle waves-float">
+                                	<i class="material-icons">print</i>
+                                </a>
+						              
+                                <a href="'.url('/booking/booking_print/print_pdf').'/'.$data->db_intinerary_id.'" class="btn bg-purple btn-circle waves-effect waves-circle waves-float">
+                                	<i class="material-icons">picture_as_pdf</i>
+                                </a>
+
+                                <a href="'.url('/booking/booking_print/print_passport').'/'.$data->db_intinerary_id.'" class="btn bg-cyan btn-circle waves-effect waves-circle waves-float">
+                                	<i class="material-icons">layers</i>
+                                </a>
+                            </div>';
 			        })
 			        ->rawColumns(['aksi'])
 			        ->addIndexColumn()
@@ -110,5 +89,38 @@ class booking_printController extends Controller
 
     	return Response()->json(['status'=>1]);
 
+    }
+    public function print_excel($id)
+    {	
+    	$data = DB::table('m_intinerary')
+						->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+						->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+						->where('db_intinerary_id','=',$id)
+						->get();
+    	return $data;
+		return view('booking_print.booking_print');
+    }
+    public function print_pdf($id)
+    {
+    	$data = DB::table('m_intinerary')
+						->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+						->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+						->where('db_intinerary_id','=',$id)
+						->get();
+    	// return $data;
+		return view('booking_print.booking_print_pdf',compact('data'));
+    }
+    public function print_passport($id)
+    {
+    	$data = DB::table('m_intinerary')
+						->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+						->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+						->where('db_intinerary_id','=',$id)
+						->get();
+    	// return $data;
+		return view('booking_print.booking_print_passport',compact('data'));
     }
 }
