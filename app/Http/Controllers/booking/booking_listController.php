@@ -66,9 +66,10 @@ class booking_listController extends Controller
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')	
 						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')	
 						->leftjoin('users','users.id','=','d_booking.db_handle_by')	
+						->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')	
 						->where('db_kode_transaksi',$id)
-						->first();    	
-		// return json_encode($data);
+						->get();    	
+		// return $data;
 		return view('booking_list.booking_listdetail',compact('data'));
     }
     
