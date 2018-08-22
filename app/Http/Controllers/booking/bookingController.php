@@ -65,6 +65,7 @@ class bookingController extends Controller
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
+    		DB::beginTransaction();
     		$id = $this->d_booking->max('db_id');
     		// dd($req->all());
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
