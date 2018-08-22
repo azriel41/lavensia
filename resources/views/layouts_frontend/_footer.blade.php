@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="copyright text-center">
-                            Copyright © 2018 <a href="http://lavensia.com/"><b>LAVENSIA</b></a>. All rights reserved. Designed & developed by <a href="http://esensicreative.com/"><b>Esensi Creative</b></a>
+                            Copyright © 2018 <a href="http://lavensia.com/"><b>LAVENSIA</b></a>. All rights reserved. Designed & developed by <a href="http://esensicreative.com/"><b style="color:white">Esensi Creative</b></a>
                         </p>
                     </div>
                 </div>

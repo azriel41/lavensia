@@ -105,6 +105,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/datatable_booking_handle', 'booking\booking_handleController@datatable_booking_handle')->name('datatable_booking_handle');
 		
 
+	//BOOKING PRINT 
+	Route::get('/booking/booking_print', 'booking\booking_printController@booking_print')->name('booking_print');
+		//Datatable
+		Route::get('/booking/datatable_booking_print', 'booking\booking_printController@datatable_booking_print')->name('datatable_booking_print');
 
 	//REPORT 
 	Route::get('/report/report_profit', 'report\report_profitController@report_profit')->name('report_profit');
