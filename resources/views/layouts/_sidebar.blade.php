@@ -349,16 +349,23 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="{{ route('booking_print') }}">
+                            <i class="material-icons">print</i>
+                            <span>BOOK</span>
+                        </a>
+                    </li>
                     
                     
                    
             <!-- #Menu -->
             <!-- Footer -->
-           {{--  <div class="legal">
+            <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2017 <a href="#"></a>
+                    &copy; 2018 <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
                 </div>
-            </div> --}}
+            </div>
             <!-- #Footer -->
         </aside>
 </section>
