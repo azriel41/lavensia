@@ -38,6 +38,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\d_booking','db_users');
     }
+
+    public function handle()
+    {
+        return $this->hasMany('App\d_booking','db_handle_by');
+    }
 }
 
    

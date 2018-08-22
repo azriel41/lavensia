@@ -235,24 +235,24 @@
 
                     <!-- Header--> 
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2 class="count_h2">BOOK fORM</h2>
+                        <h2 class="count_h2">BOOK FORM</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->md_nota }}</p>
+                            <p>{{ $detail_intinerary->md_nota }}</p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->mi_name }}</p>
+                            <p>{{ $detail_intinerary->intinerary->mi_name }}</p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <p>{{ $detil->md_seat_remain }}</p>
+                            <p>{{ $detail_intinerary->md_seat_remain }}</p>
                         </div>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                         <form action="#" id="save">
-                              <!-- Agent detail-->
+                            <!-- Agent detail-->
                             <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
                               <legend class="scheduler-border">Agent Detail</legend>
                                   <div class="contact-form col1" >
@@ -383,6 +383,7 @@
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -455,10 +456,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -477,7 +479,7 @@
                                                                 <h5 class="grey"><b>Place of Birth</b></h5>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                                <h5 class="grey"><b>Remark</b></h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 row clearfix" align="left">
@@ -488,15 +490,18 @@
                                                                         <option value="female">Female</option>
                                                                     </select>
                                                                     <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                    <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="detail_room col-sm-12 disabled room_3">
+                                            <div class="detail_room col-sm-12 disabled">
                                                 <div class="col-sm-4 preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                                     <div>
                                                         <img src="{{ asset('assets/images/Noimage.png') }}" style="width: 80%;height: 160px" class="output gambar_3" >
@@ -528,10 +533,11 @@
                                                         <div class="col-sm-8 row clearfix" align="left">
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
-                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name">
+                                                                    <input type="text" name="name[]"  placeholder="Name" class="form-control name uppercase">
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
-                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue">
+                                                                    <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -550,7 +556,7 @@
                                                                 <h5 class="grey"><b>Place of Birth</b></h5>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <h5 class="grey"><b>Reference</b></h5>
+                                                                <h5 class="grey"><b>Remark</b></h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 row clearfix" align="left">
@@ -561,10 +567,13 @@
                                                                         <option value="female">Female</option>
                                                                     </select>
                                                                     <input type="text" name="date_birth[]"  placeholder="Date of Birth" class="form-control date_birth date">
-                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth">
-                                                                    <input type="text" name="reference[]"  placeholder="Not Required" class="form-control reference">
+                                                                    <input type="text" name="place_birth[]"  placeholder="Place of Birth" class="form-control place_birth uppercase">
+                                                                    <input type="text" name="reference[]"  placeholder="Remark" class="form-control reference uppercase">
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-12 remove_append">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -677,9 +686,6 @@
                                 <input type="hidden" class="total_additional_input" name="total_additional_input">
                                 <input type="hidden" class="total_harga_input" name="total_harga_input">
                             </div>
-                          {{--   <div class="col-sm-12">
-                                <button type="button" class="btn btn-info waves-effect save" data-dismiss="modal" ><i class="fa fa-money"></i> SAVE BOOK AND GO TO PAYMENT PAGE</button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -730,7 +736,8 @@
     // });
 
     $('.date').datepicker({
-        format:'dd/mm/yyyy'
+        format:'dd/mm/yyyy',
+        autoclose: true
     }).on('changeDate', function (ev) {
         $('.date').change();
     });
@@ -787,6 +794,7 @@
     $('.bk_bed').change(function(){
         var val = $(this).find(':selected').attr('data-val');
         var par = $(this).parents('.all_room');
+        var room = $(par).find('.room_val').eq(0).val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled input').val('');
@@ -796,14 +804,14 @@
         }else if (val == 2) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.room_3 input').val('');
+            $(par).find('.detail_room').eq(1).find('.room_val').val(room);
+            $(par).find('.detail_room').eq(2).find('input').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
         }else if (val == 3) {
-            $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.detail_room').eq(1).removeClass('disabled');
-            $(par).find('.detail_room').eq(2).removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
+            $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
         }
         total();
     })
@@ -842,6 +850,7 @@
         
     }
     window.onload = function(){
+        $('.detail_room').addClass('all_detail_room');
         total();
     }
 
@@ -857,13 +866,13 @@
             $(parent).find('.detail_room').last().addClass('baby');
             $(parent).find('.baby').last().removeClass('detail_room');
             $(parent).find('.remove_append').last().html(remove);
-            $(parent).find('.baby').last().find('input').val('');
+            $(parent).find('.baby').last().find('input:not(.room_val)').val('');
             $(parent).find('.baby .output').last().attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(parent).find('.baby .noFile').last().text('Passport Image');
             $(parent).find('.baby').last().find('.file-upload').removeClass('active');
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .datepicker({format:'dd/mm/yyyy',startDate: '-2y'});
+                                                        .datepicker({format:'dd/mm/yyyy',startDate: '-2y',autoclose: true});
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -894,6 +903,7 @@
         baby_total();
     })
 
+    var room = 1;
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
         var limit = 0;
@@ -922,11 +932,48 @@
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
-                                                        .datepicker({format:'dd/mm/yyyy'});
+                                                        .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
+
+        room++;
+        $('.all_room').last().find('.room_val').eq(0).val(room);
         total();
+    })
+
+    var passport = [];
+    $(document).on('blur','.passport',function(){
+        var indexs = $(this).index('.passport');
+        console.log(indexs);    
+        var passport_temp = $(this).val();
+        $('.all_detail_room').find('.passport').each(function(i){
+            var parent = $(this).parents('.detail_room');
+            if (!parent.hasClass('disabled')) {
+                try{
+                    if (passport_temp != passport[indexs]) {
+                        console.log(passport_temp);
+                        console.log(passport[indexs]);
+                        var index = passport.indexOf(passport_temp);
+                        console.log(index);
+                        if (index != -1) {
+                            if (passport[i] != '') {
+                                $('.passport').eq(indexs).val('');
+                                iziToast.warning({
+                                    icon: 'fa fa-times',
+                                    position:'topRight',
+                                    message: 'Passport Already Input!',
+                                });
+                                return false;
+                            }
+                        }
+                    }
+                }catch(err){
+                    
+                }
+            }
+            passport[i] = $(this).val();
+        })
     })
 
     $(document).on('click','.del',function(){
@@ -939,22 +986,29 @@
             $(par).remove();
         }
     })
-    $(document).on('keyup','.name',function(){
-        $('.additional').find('option').remove();
+    name_additional = [];
+    $(document).on('blur','.name',function(){
+        var name_temp = $(this).val();
+        var indexs = $(this).index('.name');
+
         $('.additional').each(function(a){
-            var select  = $(this);
-            var par     = $(this).parents('tr');
-            var add_name= $(par).find('.add_name').text();
-            var d= 1;
-            $('.name').each(function(i){
-                if ($(this).val() != '') {
-                    var nama = $(this).val();
-                    $(select).find('select').append('<option value="'+nama+'" add-index="'+d+'">'+nama+'</option>')
+            try{
+                var select  = $(this);
+                var d = 1;
+                select.find('[value='+name_additional[indexs]+']').remove();
+                console.log(select.find('[value='+name_additional[indexs]+']'));
+                if (name_temp != '') {
+                    $(select).find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
                            .selectpicker('refresh');
                     d++;
                 }
-            })
+            }catch(err){
+
+            }
+            
         });
+
+        name_additional[indexs] = name_temp;
     });
     
     $('.name').focus(function(){
@@ -1038,7 +1092,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+
@@ -1079,7 +1133,7 @@
                           '</td>';
                 var td3 = '<td class="i_room_td">'+
                             text_bed+
-                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+text_bed+'">'+
+                            '<input type="hidden" name="r_bed[]" class="r_bed" value="'+bed+'">'+
                           '</td>';
                 var td4 = '<td class="i_price_td">'+
                             harga+

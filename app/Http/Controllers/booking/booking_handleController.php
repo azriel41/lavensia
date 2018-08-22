@@ -90,10 +90,9 @@ class booking_handleController extends Controller
 			        ->make(true);
     }
 
-    public function booking_handling(Request $req)
+    public function booking_handling($id)
     {
-    	dd($req->all());
-
+		return view('booking_handle.booking_handle');
     }
     
 }

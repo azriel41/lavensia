@@ -15,6 +15,7 @@ class d_booking extends Model
 						   'db_kode_transaksi',
 						   'db_users',
 						   'db_name',
+						   'db_pdf',
 						   'db_intinerary_id',
 						   'db_telp',
 						   'db_status',
@@ -33,7 +34,13 @@ class d_booking extends Model
 
 	public function user()
 	{
-        return $this->belongsTo('App\User','id');
+        return $this->belongsTo('App\User','db_users','id');
+	}
+
+
+	public function handle()
+	{
+        return $this->belongsTo('App\User','db_handle_by','id');
 	}
 
 	public function detail_itin()
