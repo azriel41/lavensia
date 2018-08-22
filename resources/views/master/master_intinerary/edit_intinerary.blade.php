@@ -783,14 +783,9 @@
         var md_detail     = '{{ $data->md_detail }}';
         var md_dp         = '{{ number_format($data->md_dp, 0, ",", ".") }}';
 
-        if (seat != seat_remain) {
-           
-            var action = '<a title="Kursi Telah Terjual" type="button" class="btn bg-green  waves-effect "><i class=fa fa-danger>danger</i></a>'
-                         ;
-        }else{
-            var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
-                         '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
-        }
+
+        var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
+            '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
