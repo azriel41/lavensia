@@ -218,6 +218,9 @@
             .uppercase{
                 text-transform: uppercase;
             }
+            .passport{
+                text-transform: uppercase;
+            }
         </style>
     </head>
     
@@ -384,6 +387,7 @@
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                    <input type="hidden" class="status" name="status[]" value="adult">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -461,6 +465,7 @@
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                    <input type="hidden" class="status" name="status[]" value="adult">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -538,6 +543,7 @@
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                    <input type="hidden" class="status" name="status[]" value="adult">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -795,6 +801,7 @@
         var val = $(this).find(':selected').attr('data-val');
         var par = $(this).parents('.all_room');
         var room = $(par).find('.room_val').eq(0).val();
+        var bed = $(this).find(':selected').val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled input').val('');
@@ -812,6 +819,11 @@
         }else if (val == 3) {
             $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
             $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
+            if (bed == 'triple') {
+                $(par).find('.detail_room').last().find('.status').val('adult');
+            }else if (bed == 'doubletwin&cnb' || bed == 'doubletwin&cwb'){
+                $(par).find('.detail_room').last().find('.status').val('child');
+            }
         }
         total();
     })
@@ -873,6 +885,7 @@
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',startDate: '-2y',autoclose: true});
+            $(parent).find('.baby').last().find('.status').val('baby');
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -929,11 +942,13 @@
         $(last).find('.detail_room .noFile').text('Passport Image');
         $(last).find('.baby').remove();
         $(name).removeClass('error');
+        $(last).find('.bk_bed').val('single').selectpicker('refresh');
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
+        $(last).find('.detail_room').eq(0).find('.status').val('adult');
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
 
@@ -1103,8 +1118,8 @@
                 indexing++;
 
                 $(this).find('input:not(.chooseFile)').each(function(z){
-                    if ($(this).val() == '') {
-                    console.log($(this));
+                    if ($(this).not('.status').val() == '') {
+                        console.log($(this));
                         $(this).addClass('error');
                         validate.push(0);
                     }

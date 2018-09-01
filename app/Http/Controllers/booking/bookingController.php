@@ -67,12 +67,11 @@ class bookingController extends Controller
         return DB::transaction(function() use ($req) {  
     		DB::beginTransaction();
     		$id = $this->d_booking->max('db_id');
-    		// dd($req->all());
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total 		 	 = $db_total_additional+$db_total_room;
     		$name 				 = array_values(array_filter($req->name));
-    		$passport 			 = array_values(array_filter($req->passport));
+    		$passport 			 = array_values(array_filter(strtoupper($req->passport)));
     		$exp_date 			 = array_values(array_filter($req->exp_date));
     		$issue 			 	 = array_values(array_filter($req->issue));
     		$gender 		 	 = array_values(array_filter($req->gender));
@@ -80,6 +79,7 @@ class bookingController extends Controller
     		$date_birth 		 = array_values(array_filter($req->date_birth));
     		$place_birth 		 = array_values(array_filter($req->place_birth));
     		$reference 		 	 = array_values(array_filter($req->reference));
+    		$status 		 	 = array_values(array_filter($req->status));
     		try{
     			$gambar 		 	 = array_values(array_filter($req->file('image')));
     		}catch(Exception $err){
@@ -147,21 +147,22 @@ class bookingController extends Controller
 		        	
 		            $exp	= Carbon::createFromDate($exp[2], $exp[1], $exp[0],'00');
 					$data = array(	
-						'dp_booking_id'	=> $id,
-						'dp_detail'		=> $b+1,
-						'dp_bed'		=> $req->r_bed[$b],
-						'dp_name'		=> strtoupper($name[$b]),
-						'dp_passport'	=> $passport[$b],
-						'dp_exp_date'	=> $exp,
-						'dp_issuing'	=> strtoupper($issue[$b]),
-						'dp_gender'		=> $gender[$b],
-						'dp_birth_date'	=> $birth,
-						'dp_birth_place'=> strtoupper($place_birth[$b]),
-						'dp_reference'	=> strtoupper($reference[$b]),
-						'dp_image'		=> $filename,
-						'dp_room'		=> $room_val[$b],
-						'created_by'	=> Auth::user()->id,
-						'updated_by'	=> Auth::user()->id,
+						'dp_booking_id'		=> $id,
+						'dp_detail'			=> $b+1,
+						'dp_bed'			=> $req->r_bed[$b],
+						'dp_name'			=> strtoupper($name[$b]),
+						'dp_passport'		=> $passport[$b],
+						'dp_exp_date'		=> $exp,
+						'dp_issuing'		=> strtoupper($issue[$b]),
+						'dp_gender'			=> $gender[$b],
+						'dp_birth_date'		=> $birth,
+						'dp_birth_place'	=> strtoupper($place_birth[$b]),
+						'dp_reference'		=> strtoupper($reference[$b]),
+						'dp_image'			=> $filename,
+						'dp_room'			=> $room_val[$b],
+						'dp_status_person'	=> $status[$b],
+						'created_by'		=> Auth::user()->id,
+						'updated_by'		=> Auth::user()->id,
 					);
 
 	    			$this->d_party_name->create($data);

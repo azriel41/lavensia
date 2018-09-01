@@ -479,6 +479,17 @@
         // $('par').find('.day').val('da')
         $('.flight .all_flight').eq(0).clone().fadeIn().appendTo(".flight");
         $('.flight .all_flight').last().find('input').val('');
+        $('.datenormal').bootstrapMaterialDatePicker({
+            format: 'DD-MM-YYYY',
+            clearButton: true,
+            weekStart: 1,
+            time: false,
+            onSet: function (ele) {
+                if(ele.select){
+                      this.close();
+                }
+            }
+        });
     });
 
     $('.remove_fl').on('click',function(){

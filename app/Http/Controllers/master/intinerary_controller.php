@@ -301,10 +301,12 @@ class intinerary_controller extends Controller
     {
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
 
-        $booking = $detail_intinerary->book;
+        $booking   = $detail_intinerary->book;
         $passenger = [];
         $id        = [];
         $room      = [];
+        $bed       = [];
+        $person    = [];
         for ($i=0; $i < count($booking); $i++) { 
             for ($a=0; $a < count($booking[$i]->party_name); $a++) { 
                 array_push($passenger, $booking[$i]->party_name[$a]);
@@ -314,9 +316,85 @@ class intinerary_controller extends Controller
             $room[$i] = array_unique($room[$i]);
             $room[$i] = array_values($room[$i]);
         }
+
         $id = array_unique($id);
         $id = array_values($id);
-        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room'));
 
+
+        for ($i=0; $i < count($id); $i++) { 
+            for ($a=0; $a < count($room[$i]); $a++) { 
+                for ($z=0; $z < count($booking[$i]->party_name); $z++) { 
+                    if ($id[$i] == $booking[$i]->party_name[$z]->dp_booking_id and $room[$i][$a] == $booking[$i]->party_name[$z]->dp_room) {
+                        $bed[$i][$a] = $booking[$i]->party_name[$z]->dp_bed;
+                    }
+                }
+            }
+        }
+        
+        
+        for ($a=0; $a < count($room); $a++) { 
+            for ($z=0; $z < count($room[$a]); $z++) { 
+                for ($c=0; $c < count($booking[$a]->party_name); $c++) { 
+                    if ($id[$a] == $booking[$a]->party_name[$c]->dp_booking_id and $room[$a][$z] == $booking[$a]->party_name[$c]->dp_room) {
+                        $person[$a][$z][$c] = $booking[$a]->party_name[$c]->dp_bed;
+                    }
+                }
+            }
+            
+        }
+        
+        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+
+    }
+    public function save_detail(Request $req)
+    {
+        DB::beginTransaction();
+
+
+        $check = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
+
+        $fc = $req->file('fc');
+        $tt = $req->file('tt');
+        if ($fc != null) {
+
+            $tour_code = str_replace('/', '-', $req->tour_code);
+            $fc1 = 'detail_itin/FINAL_'.$req->id.'.'.$fc->getClientOriginalExtension();
+
+            Storage::put($fc1,file_get_contents($fc));
+        }else{
+            $check1 = $check->md_tata_tertib;
+            if ($check1 != null) {
+                $fc1 = $check->md_final;
+            }else{
+                return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
+            }
+        }
+
+        if ($tt != null) {
+
+            $tt1 = 'detail_itin/TATA_TERTIB_'.$req->id.'.'.$tt->getClientOriginalExtension();
+
+            Storage::put($tt1,file_get_contents($tt));
+        }else{
+            $check1 = $check->md_tata_tertib;
+            if ($check1 != null) {
+                $tt1 = $check->md_tata_tertib;
+            }else{
+                return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
+            }
+        }
+        $save = array(
+                    'md_tata_tertib'=>$tt1,
+                    'md_final'=>$fc1,
+                );
+
+        $update   =  $this->all_variable->detail_intinerary()->update($save,'md_id',$req->id);
+        if ($update != 1) {
+            return Response::json(['status'=>0,'message'=>'Data Gagal Disimpan']);
+            DB::rollBack();
+        }
+
+        DB::commit();
+        return Response::json(['status'=>1,'message'=>'Saving Success']);
     }
 }
