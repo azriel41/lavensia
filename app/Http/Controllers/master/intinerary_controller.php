@@ -5,13 +5,6 @@ namespace App\Http\Controllers\master;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\TestRepo;
-use App\intinerary;
-use App\category;
-use App\schedule;
-use App\detail_intinerary;
-use App\User;
-use App\additional;
-use App\m_additional_intinerary;
 use DB;
 use carbon\Carbon;
 use Auth;
@@ -19,28 +12,24 @@ use Response;
 use File;
 use Storage;
 use Yajra\Datatables\Datatables;
+use App\all_variable;
 class intinerary_controller extends Controller
 {
-    protected $model;
-    protected $category;
-	protected $additional;
+    protected $all_variable;
 
-	public function __construct(intinerary $intinerary,category $category,additional $additional)
+	public function __construct()
 	{
-	   // set the model
-	   $this->model = new TestRepo($intinerary);
-       $this->category = new TestRepo($category);
-       $this->additional = new TestRepo($additional);
+	   $this->all_variable = new all_variable();
 	}
     public function index()
     {
-        $data = intinerary::all();
+        $data = $this->all_variable->intinerary()->all();
     	return view('master.master_intinerary.index_intinerary',compact('data'));
     }
 
     public function datatable_intinerary()
     {
-        $data = $this->model->all();
+        $data = $this->all_variable->intinerary()->all();
            
         
         $data = collect($data);
@@ -89,23 +78,22 @@ class intinerary_controller extends Controller
     public function create()
     {
 
-
-
         $bulan = Carbon::now()->format('m');
         $tahun = Carbon::now()->format('y');
-    	$id = $this->model->max('mi_id');
+        $tanggal = Carbon::now()->format('d');
+    	$id = $this->all_variable->intinerary()->max('mi_id');
         $index = str_pad($id, 3, '0', STR_PAD_LEFT);
-        $nota = 'LCV' .$bulan.$tahun.'/'. $index;  
-        $additional = $this->additional->all();
-        $category =  $this->category->all();
+        $nota = 'TR' .$tahun.$bulan.$tanggal.'/'. $index;  
+        $additional = $this->all_variable->additional()->all();
+        $category =  $this->all_variable->category()->all();
     	return view('master.master_intinerary.create_intinerary',compact('category','nota','additional'));
     }
 
     public function edit($id)
     {
-        $data = $this->model->same('mi_id',$id);
-        $category =  $this->category->all();
-        $additional = $this->additional->all();
+        $data =  $this->all_variable->intinerary()->same('mi_id',$id);
+        $additional = $this->all_variable->additional()->all();
+        $category =  $this->all_variable->category()->all();
 
         return view('master.master_intinerary.edit_intinerary',compact('category','data','additional'));
     }
@@ -114,17 +102,13 @@ class intinerary_controller extends Controller
     public function save(Request $req)
     {
         return DB::transaction(function() use ($req) {  
-            $name = Auth::user()->name;
-            $intinerary = new intinerary();
-            $intinerary = new TestRepo($intinerary);
-            $schedule   = new schedule();
-            $schedule   = new TestRepo($schedule);
-            $detail_intinerary   = new detail_intinerary();
-            $detail_intinerary   = new TestRepo($detail_intinerary);
-            $m_additional_intinerary   = new m_additional_intinerary();
-            $m_additional_intinerary   = new TestRepo($m_additional_intinerary);
-
-
+            // dd($req->all());
+            $name                       = Auth::user()->name;
+            $intinerary                 = $this->all_variable->intinerary();
+            $schedule                   = $this->all_variable->schedule();
+            $detail_intinerary          = $this->all_variable->detail_intinerary();
+            $m_additional_intinerary    = $this->all_variable->m_additional_intinerary();
+            $flight_detail              = $this->all_variable->flight_detail();
             $check = $intinerary->same('mi_nota',$req->tour_code);
 
             $file = $req->file('image');
@@ -159,7 +143,7 @@ class intinerary_controller extends Controller
             
             $head = array(
                     'mi_nota'       => $req->tour_code,
-                    'mi_name'       => $req->intinerary,
+                    'mi_name'       => strtoupper($req->intinerary),
                     'mi_image'      => $photo,
                     'mi_pdf'        => $pdf,
                     'mi_term'       => $req->term,
@@ -226,8 +210,8 @@ class intinerary_controller extends Controller
                     'md_child_price'    => filter_var($req->child_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_infant_price'   => filter_var($req->infant_price[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_child_w_price'  => filter_var($req->child_w_price[$i],FILTER_SANITIZE_NUMBER_INT),
-                    'md_seat'           => $req->seat[$i]-1,
-                    'md_seat_remain'    => $req->seat[$i],
+                    'md_seat'           => $req->seat[$i],
+                    'md_seat_remain'    => $req->seat[$i]-1,
                     'md_dp'             => filter_var($req->minimal_dp[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
@@ -236,9 +220,7 @@ class intinerary_controller extends Controller
 
                 if ($req->detail_id[$i] != '0') {
                     $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
-                    if ($cari_seat->md_seat == $cari_seat->md_seat_remain) {
-                        $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
-                    }
+                    $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
                 }else{
                     $id_dt = $detail_intinerary->max_detail('md_intinerary_id',$id,'md_detail');
                     $index = str_pad($id_dt, 3, '0', STR_PAD_LEFT);
@@ -251,6 +233,20 @@ class intinerary_controller extends Controller
                 }
             }
 
+            $delete = $flight_detail->delete('fd_intinerary_id',$id);
+            for ($i=0; $i < count($req->fd_nomor); $i++) { 
+                $fl = array(
+                    'fd_intinerary_id'  => $id,
+                    'fd_detail'         => $i+1,
+                    'fd_nomor'          => strtoupper($req->fd_nomor[$i]),
+                    'fd_tanggal'        => Carbon::parse($req->fd_tanggal[$i])->format('Y-m-d'),
+                    'fd_route'          => strtoupper($req->fd_route[$i]),
+                    'fd_time'           => $req->fd_time[$i],
+                );
+                // dd($fl);
+                $save_schedule = $flight_detail->create($fl);
+            }
+
             // dd($detail_intinerary->show('md_intinerary_id',$id)->toArray());
 
             return Response::json(['status'=>1]);
@@ -259,7 +255,7 @@ class intinerary_controller extends Controller
 
     public function schedule(Request $req)
     {
-        $data = $this->model->same('mi_id',$req->mc_id);
+        $data = $this->all_variable->intinerary()->same('mi_id',$req->mc_id);
 
 
         return view('master.master_intinerary.table_schedule',compact('data'));
@@ -267,17 +263,22 @@ class intinerary_controller extends Controller
 
     public function departure(Request $req)
     {
-        $data = $this->model->same('mi_id',$req->mc_id);
+        $data = $this->all_variable->intinerary()->same('mi_id',$req->mc_id);
 
         return view('master.master_intinerary.table_departure',compact('data'));
 
     }
 
+    public function ganti_nama(Request $req)
+    {
+        $data = $this->all_variable->intinerary()->same('mi_id',$req->mc_id);
+        return Response::json(['data'=>$data->mi_name]);
+    }
+
     public function delete(Request $req)
     {
         return DB::transaction(function() use ($req) {  
-            $detail_intinerary   = new detail_intinerary();
-            $detail_intinerary   = new TestRepo($detail_intinerary);
+            $detail_intinerary   =  $this->all_variable->detail_intinerary();
             $all_detail = $detail_intinerary->show('md_intinerary_id',$req->id)->toArray();
             $temp = [];
             for ($a=0; $a < count($all_detail); $a++) { 
@@ -290,9 +291,32 @@ class intinerary_controller extends Controller
             if (in_array(0, $temp)) {
                 return Response::json(['status'=>0,'message'=>'Data Tidak Bisa Dihapus Karena Terdapat Seat Yang Berkurang']);
             }else{
-                $this->model->delete('mi_id',$req->id);
+                $this->all_variable->intinerary()->delete('mi_id',$req->id);
                 return Response::json(['status'=>1]);
             }
         });
+    }
+
+    public function intinerary_detail(Request $req)
+    {
+        $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
+
+        $booking = $detail_intinerary->book;
+        $passenger = [];
+        $id        = [];
+        $room      = [];
+        for ($i=0; $i < count($booking); $i++) { 
+            for ($a=0; $a < count($booking[$i]->party_name); $a++) { 
+                array_push($passenger, $booking[$i]->party_name[$a]);
+                array_push($id, $booking[$i]->party_name[$a]->dp_booking_id);
+                $room[$i][$a] = $booking[$i]->party_name[$a]->dp_room; 
+            }
+            $room[$i] = array_unique($room[$i]);
+            $room[$i] = array_values($room[$i]);
+        }
+        $id = array_unique($id);
+        $id = array_values($id);
+        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room'));
+
     }
 }
