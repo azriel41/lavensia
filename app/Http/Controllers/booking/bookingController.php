@@ -23,6 +23,7 @@ use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
 use Exception;
+use Session;
 class bookingController extends Controller
 {
 	protected $intinerary;
@@ -49,18 +50,25 @@ class bookingController extends Controller
 	}
     public function booking(Request $req)
     {
+    	$dt = carbon::now();
+		$hours = $dt->format('H'); 
+		$range = [16,17,18,19,20,21,22,23,23,1,2,3,4,5,6];
+		if (!in_array($hours, $range)) {
+	    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
-    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
+	    	$id 				= $req->id;
 
-    	$id 				= $req->id;
-
-    	if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking);
-        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
-        }else{
-        	return view('booking.booking',compact('detail_intinerary','detil','id'));
-        }
+	    	if (Auth::User() != null) {
+	            $cart = Auth::User()->booking;
+	            $jumlah = count(Auth::User()->booking);
+	        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
+	        }else{
+	        	return view('booking.booking',compact('detail_intinerary','detil','id'));
+	        }
+		}else{
+			Session::flash('message','Tidak Dapat Diakses');
+			return redirect()->back();
+		}
     }
     public function save(Request $req)
     {
