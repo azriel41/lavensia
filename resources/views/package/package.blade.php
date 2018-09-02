@@ -148,7 +148,12 @@
                     <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
                         
                     </div>
-
+                    <div class="col-md-2" style="min-height: 100px">
+                        <div class="alert alert-info alert-dismissable" style="animation: fadein 0.5s, fadeout 0.5s 2.5s;">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                          <h2 style="text-align:center"> <b></b></h2> <h4 style="text-align:center">Nomor Seri Pajak Yang Aktif</h4>
+                        </div>
+                    </div>
                     <!-- Image--> 
                     <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-4" data-wow-duration="1000ms">

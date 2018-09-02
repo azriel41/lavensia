@@ -23,6 +23,7 @@ use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
 use Exception;
+use Session;
 class bookingController extends Controller
 {
 	protected $intinerary;
@@ -49,18 +50,25 @@ class bookingController extends Controller
 	}
     public function booking(Request $req)
     {
+    	$dt = carbon::now();
+		$hours = $dt->format('H'); 
+		$range = [16,17,18,19,20,21,22,23,23,1,2,3,4,5,6];
+		if (!in_array($hours, $range)) {
+	    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
-    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
+	    	$id 				= $req->id;
 
-    	$id 				= $req->id;
-
-    	if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking);
-        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
-        }else{
-        	return view('booking.booking',compact('detail_intinerary','detil','id'));
-        }
+	    	if (Auth::User() != null) {
+	            $cart = Auth::User()->booking;
+	            $jumlah = count(Auth::User()->booking);
+	        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
+	        }else{
+	        	return view('booking.booking',compact('detail_intinerary','detil','id'));
+	        }
+		}else{
+			Session::flash('message','Tidak Dapat Diakses');
+			return redirect()->back();
+		}
     }
     public function save(Request $req)
     {
@@ -71,7 +79,7 @@ class bookingController extends Controller
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total 		 	 = $db_total_additional+$db_total_room;
     		$name 				 = array_values(array_filter($req->name));
-    		$passport 			 = array_values(array_filter(strtoupper($req->passport)));
+    		$passport 			 = array_values(array_filter($req->passport));
     		$exp_date 			 = array_values(array_filter($req->exp_date));
     		$issue 			 	 = array_values(array_filter($req->issue));
     		$gender 		 	 = array_values(array_filter($req->gender));
@@ -144,14 +152,13 @@ class bookingController extends Controller
 		            $exp  	= explode('-', $exp);
 
 		            $birth  = Carbon::createFromDate($birth[2], $birth[1], $birth[0],'00');
-		        	
 		            $exp	= Carbon::createFromDate($exp[2], $exp[1], $exp[0],'00');
 					$data = array(	
 						'dp_booking_id'		=> $id,
 						'dp_detail'			=> $b+1,
 						'dp_bed'			=> $req->r_bed[$b],
 						'dp_name'			=> strtoupper($name[$b]),
-						'dp_passport'		=> $passport[$b],
+						'dp_passport'		=> strtoupper($passport[$b]),
 						'dp_exp_date'		=> $exp,
 						'dp_issuing'		=> strtoupper($issue[$b]),
 						'dp_gender'			=> $gender[$b],

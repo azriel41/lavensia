@@ -948,7 +948,7 @@
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
-        $(last).find('.detail_room').eq(0).find('.status').val('adult');
+        $(last).find('.detail_room').find('.status').val('adult');
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
 
