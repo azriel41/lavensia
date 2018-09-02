@@ -201,7 +201,7 @@ class bookingController extends Controller
     {
     	$detail_intinerary = $this->detail_intinerary->cari('md_id',$req->id);
     	$data = $req->name;
-    	return view('booking.additional_booking',compact('detail_intinerary','data'))
+    	return view('booking.additional_booking',compact('detail_intinerary','data'));
     }
     
 }

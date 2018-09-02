@@ -601,7 +601,7 @@
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive addition">
-                                        
+                                        <button type="button" class="btn btn-warning complete">CLICK TO ADD</button>
                                     </div>
                                   </div>
                             </fieldset>
@@ -799,7 +799,6 @@
             }
         }
         total();
-        hilang();
     })
     function baby_total() {
         var temp = 0;
@@ -976,7 +975,15 @@
         }
     })
     name_additional = [];
+
     $(document).on('blur','.name',function(){
+        var data = '<button type="button" class="btn btn-warning complete">CLICK TO ADD</button>';
+        
+        $('.addition').html(data);
+    });
+
+
+    $(document).on('click','.complete',function(){
         var name = [];
         var id   = '{{ $detail_intinerary->md_id }}';
         $('.name').each(function(){
@@ -984,6 +991,15 @@
                 name.push($(this).val());
             }
         })
+        if (name.length == 0) {
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'You Dont Have Any Passenger Data!',
+            });
+            return false;
+        }
         $.ajax({
             type: "get",
             url:'{{ route('booking_additional') }}',
@@ -1000,38 +1016,8 @@
           }
         });
     });
+
     
-
-    function hilang() {
-        $('.name').each(function(){
-            var par = $(this).parents('.detail_room');
-            if (par.hasClass('disabled')) {
-                var index = $(this).index('.name');
-                console.log(index);
-                $('.additional').each(function(a){
-                    try{
-                        var select  = $(this);
-                        var d = 1;
-                        // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
-                        console.log( select.find("option[add-index='" + index + "']"));
-                        select.find("option[add-index='" + index + "']").remove();
-
-                        select.find('select').selectpicker('refresh');
-                        // if (name_temp != '') {
-                        //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
-                        //            .selectpicker('refresh');
-                        //     d++;
-                        // }
-                    }catch(err){
-
-                    }
-                    $(this).css('text-transform','uppercase');
-                });
-            }
-        })
-    }
-    
-
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })
