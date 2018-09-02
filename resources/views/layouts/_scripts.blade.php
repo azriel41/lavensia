@@ -116,7 +116,7 @@
 		}
     });
 
-
+	var baseUrl = {{ url('/') }}
     $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
     $('.numberonly').maskMoney({thousands:'', decimal:'', precision:-1,allowZero: true});
 
