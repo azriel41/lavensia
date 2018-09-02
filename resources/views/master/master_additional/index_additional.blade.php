@@ -44,6 +44,39 @@
                                     <td class="center">{{ $index+1 }}</td>
                                     <td>{{ $e->ma_name }}</td>
                                     <td>{{ $e->ma_desc }}</td>
+                                    <td>
+                                        <!-- Trigger the modal with a button -->
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal_{{ $index }}">{{ $e->ma_image }}</button>
+
+                                        <!-- Modal -->
+                                        <div id="myModal_{{ $index }}" class="modal fade" role="dialog">
+                                          <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Gambar {{ $e->ma_image }}</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                {{-- <p>Some text in the modal.</p> --}}
+                                                <div >
+                                                    <img class="image_drop img-responsive" 
+                                                    @if ($e->ma_image == null )
+                                                       src="{{ asset('/assets/images/NoImage.png') }}" 
+                                                    @else 
+                                                       src="{{ asset('storage/app/additional/additional-'.$e->ma_image) }}"
+                                                    @endif width="400px" height="300px" name="image-drop">
+                                                </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                    </td>
                                     <td align="right">Rp. {{ number_format($e->ma_price,0,'','.') }},-</td>
                                     <td class="center">
                                         <div class="btn-group">

@@ -11,7 +11,7 @@ class additional extends Model
 	const CREATED_AT = 'ma_created_at';
 	const UPDATED_AT = 'ma_updated_at';
 
-	protected $fillable = ['ma_id','ma_name','ma_desc','ma_price','ma_created_at','ma_updated_at'];
+	protected $fillable = ['ma_id','ma_name','ma_image','ma_desc','ma_price','ma_created_at','ma_updated_at'];
 
 	public function intinerarys()
 	{

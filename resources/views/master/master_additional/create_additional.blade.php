@@ -43,29 +43,22 @@
                                         <div class="form-line">
                                             <div >
                                                 <img class="image_drop img-responsive" 
-                                                @if ( auth::user()->image == null )
                                                    src="{{ asset('/assets/images/NoImage.png') }}" 
-                                                @else 
-                                                   src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
-                                                @endif width="400px" height="300px" name="image-drop">
+                                                    width="400px" height="300px" name="image-drop">
                                             </div>
                                             <br>
                                             <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
                                                 <div class="file-select">
                                                     <div class="file-select-button fileName" >Image</div>
                                                         <div class="file-select-name noFile">
-                                                            @if (auth::user()->image != null)
-                                                                {{ auth::user()->image }}
-                                                            @else
-                                                                Company Image
-                                                            @endif 
+                                                            
+                                                                Image
+                                                             
                                                         </div> 
                                                     <input type="file" class="chooseFile" name="image"  
-                                                        @if ( auth::user()->image == null )
+                                                        
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
-                                                        @else 
-                                                           src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
-                                                        @endif
+                                                        
                                                     >
                                                 </div>
                                             </div>
