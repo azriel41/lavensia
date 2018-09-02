@@ -152,7 +152,6 @@ class bookingController extends Controller
 		            $exp  	= explode('-', $exp);
 
 		            $birth  = Carbon::createFromDate($birth[2], $birth[1], $birth[0],'00');
-		        	dd($req->all());
 		            $exp	= Carbon::createFromDate($exp[2], $exp[1], $exp[0],'00');
 					$data = array(	
 						'dp_booking_id'		=> $id,
