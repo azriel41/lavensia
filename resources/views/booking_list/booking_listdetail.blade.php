@@ -380,7 +380,7 @@
                                         <td align="left" class="Hightlight" colspan="7"><li>{{ $data[0]->mi_term }}</li></td>
                                     </tr>
                                 </table>
-                        </div>
+                            </div>
                     </div>
                 </div>
 
