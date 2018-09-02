@@ -282,7 +282,7 @@
                                         <h5 class="grey"><b>Party Name</b></h5>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Party Name" name="party_name">
+                                        <input type="text" class="form-control party_name" placeholder="Party Name" name="party_name">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 contact-form">
@@ -600,35 +600,8 @@
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
-                                    <div class="table-responsive">
-                                        <table width="100%" class="table table-striped table-bordered table-hover ">
-                                            <thead >
-                                                <tr>
-                                                    <th style="width: 25%" align="center">Name</th>
-                                                    <th style="width: 20%" align="center">Procie</th>
-                                                    <th align="center">Select Person</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($detail_intinerary->intinerary->add as $val)
-                                                <tr class="add_tr">
-                                                    <td align="left">
-                                                        <p class="add_name">{{ $val->ma_name }}</p>
-                                                        <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
-                                                    </td>
-                                                    <td align="right">
-                                                        <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
-                                                        <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
-                                                    </td>
-                                                    <td class="sel_opt">
-                                                        <select class=" additional form-control selectpicker" multiple data-size="4">
-                                                        
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                    <div class="table-responsive addition">
+                                        
                                     </div>
                                   </div>
                             </fieldset>
@@ -804,7 +777,7 @@
         var bed = $(this).find(':selected').val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.disabled input').val('');
+            $(par).find('.disabled').find('input:not(.status)').val('');
             $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .noFile').text('Passport Image');
             $(par).find('.disabled .file-upload').removeClass('active');
@@ -812,7 +785,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
-            $(par).find('.detail_room').eq(2).find('input').val('');
+            $(par).find('.detail_room').eq(2).find('input:not(.status)').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
@@ -826,6 +799,7 @@
             }
         }
         total();
+        hilang();
     })
     function baby_total() {
         var temp = 0;
@@ -1003,35 +977,86 @@
     })
     name_additional = [];
     $(document).on('blur','.name',function(){
-        var name_temp = $(this).val();
-        var indexs = $(this).index('.name');
-
-        $('.additional').each(function(a){
-            try{
-                var select  = $(this);
-                var d = 1;
-                select.find('[value='+name_additional[indexs]+']').remove();
-                console.log(select.find('[value='+name_additional[indexs]+']'));
-                if (name_temp != '') {
-                    $(select).find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
-                           .selectpicker('refresh');
-                    d++;
-                }
-            }catch(err){
-
+        var name = [];
+        var id   = '{{ $detail_intinerary->md_id }}';
+        $('.name').each(function(){
+            if ($(this).val() != '') {
+                name.push($(this).val());
             }
-            
+        })
+        $.ajax({
+            type: "get",
+            url:'{{ route('booking_additional') }}',
+            data: {name,id},
+            success:function(data){
+                $('.addition').html(data);
+            },error:function(){
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Terjadi Kesalahan!',
+            });
+          }
         });
-
-        name_additional[indexs] = name_temp;
     });
     
+
+    function hilang() {
+        $('.name').each(function(){
+            var par = $(this).parents('.detail_room');
+            if (par.hasClass('disabled')) {
+                var index = $(this).index('.name');
+                console.log(index);
+                $('.additional').each(function(a){
+                    try{
+                        var select  = $(this);
+                        var d = 1;
+                        // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
+                        console.log( select.find("option[add-index='" + index + "']"));
+                        select.find("option[add-index='" + index + "']").remove();
+
+                        select.find('select').selectpicker('refresh');
+                        // if (name_temp != '') {
+                        //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
+                        //            .selectpicker('refresh');
+                        //     d++;
+                        // }
+                    }catch(err){
+
+                    }
+                    $(this).css('text-transform','uppercase');
+                });
+            }
+        })
+    }
+    
+
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })
 
     $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
+        if ($('.party_name').val() == '') {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Party Name Must Be Filled!',
+            });
+            $('#back-top').click();
+            return false;
+        }
+
+        if ($('.party_telephone').val() == '') {
+            iziToast.warning({
+                icon: 'fa fa-times',
+                position:'topRight',
+                message: 'Party Telephone Must Be Filled!',
+            });
+            $('#back-top').click();
+            return false;
+        }
         if ($('#check_agree').is(':checked') == false) {
             iziToast.warning({
                 icon: 'fa fa-times',
