@@ -359,12 +359,27 @@
                             </table>
                         </div>
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-6" data-wow-duration="1000ms">
-                            <table width="100%" class="table table-striped"> 
-                                <h3 class="count_h2" style="margin-top: -5px;">Detail</h3>
-                                <tr>
-                                    <td align="left" class="Hightlight" colspan="7"><li>{{ $data[0]->mi_term }}</li></td>
-                                </tr>
-                            </table>
+                            <h3 class="count_h2" style="margin-top: -5px;">Detail</h3>
+                            
+                                <table  width="100%" class="table table-striped"> 
+                                    <tr >
+                                        <th>Nama</th>
+                                        <th>Passport</th>
+                                        <th>gender</th>
+                                        <th>Date of Birth</th>
+                                    </tr>
+                                    @foreach ($data as $index => $e)
+                                        <tr>
+                                            <td align="left">{{ $e->dp_name }}</td>
+                                            <td align="left">{{ $e->dp_passport }}</td>
+                                            <td align="left">{{ $e->dp_gender }}</td>
+                                            <td align="left">{{ $e->dp_birth_date }}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td align="left" class="Hightlight" colspan="7"><li>{{ $data[0]->mi_term }}</li></td>
+                                    </tr>
+                                </table>
                         </div>
                     </div>
                 </div>
@@ -377,7 +392,7 @@
                     <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
                         
                         <div class="sec-sub-title text-center wow fadeInUp animated col-sm-12" data-wow-duration="1000ms">
-                                @foreach ($data as $index => $e)
+{{--                                 @foreach ($data as $index => $e)
                                     <div class="col-sm-5">
                                         <img class="img-responsive" src="{{ url('storage/app/'.    $e->dp_image)  }}" width="300px" height="200px">
                                     </div>
@@ -410,7 +425,36 @@
                                         </table>
                                     </div>
                                     <br> 
+                                @endforeach --}}
 
+
+                                @foreach ($data as $index => $e)
+                                    <table class="table table-bordered text-left">
+                                            <tr>
+                                                <th>Nama</th>
+                                                <td>: {{ $e->dp_name }}</td>
+                                                <td>dp_gender</td>
+                                                <td>: {{ $e->dp_gender }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Passport </th>
+                                                <td>: {{ $e->dp_passport }}</td>
+                                                <td>Date of Birth</td>
+                                                <td>: {{ $e->dp_birth_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Expired Date </th>
+                                                <td>: {{ $e->dp_exp_date }}</td>
+                                                <td>Place of Birth</td>
+                                                <td>: {{ $e->dp_birth_place }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Issuing </th>
+                                                <td>: {{ $e->dp_issuing }}</td>
+                                                <td>Remark</td>
+                                                <td>: {{ $e->dp_reference }}</td>
+                                            </tr>
+                                        </table>
                                 @endforeach
 
 
