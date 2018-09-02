@@ -79,7 +79,7 @@ class bookingController extends Controller
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total 		 	 = $db_total_additional+$db_total_room;
     		$name 				 = array_values(array_filter($req->name));
-    		$passport 			 = array_values(array_filter(strtoupper($req->passport)));
+    		$passport 			 = array_values(array_filter($req->passport));
     		$exp_date 			 = array_values(array_filter($req->exp_date));
     		$issue 			 	 = array_values(array_filter($req->issue));
     		$gender 		 	 = array_values(array_filter($req->gender));
@@ -159,7 +159,7 @@ class bookingController extends Controller
 						'dp_detail'			=> $b+1,
 						'dp_bed'			=> $req->r_bed[$b],
 						'dp_name'			=> strtoupper($name[$b]),
-						'dp_passport'		=> $passport[$b],
+						'dp_passport'		=> strtoupper($passport[$b]),
 						'dp_exp_date'		=> $exp,
 						'dp_issuing'		=> strtoupper($issue[$b]),
 						'dp_gender'			=> $gender[$b],
