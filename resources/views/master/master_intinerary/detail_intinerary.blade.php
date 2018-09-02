@@ -339,7 +339,14 @@
                     </table>
                     <form id="save">
                         <div class="col-sm-12">
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                <div class=" col-sm-4">
+                                    <div>
+                                        <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-download"></i>Download Room List</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
                                 <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                     <div class="preview_pdf col-sm-4">
                                         <div>
@@ -360,7 +367,14 @@
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                <div class=" col-sm-4">
+                                    <div>
+                                        <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-download"></i>Download Room List</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
                                 <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                     <div class="preview_pdf col-sm-4">
                                         <div>
@@ -380,31 +394,15 @@
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="col-sm-9">
-                                <div class=" col-sm-3">
+                            <div class="col-sm-6">
+                                <div class=" col-sm-4">
                                     <div>
-                                        <a href="{{ route('print_passport', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-red waves-effectwaves-float">
-                                            <i class="material-icons">layers</i>
-                                        Excel</a>
-                                    </div>
-                                </div>
-                                <div class=" col-sm-3">
-                                    <div>
-                                        <a href="{{ route('print_passport', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-pink waves-effectwaves-float">
-                                            <i class="material-icons">layers</i>
-                                        Pdf</a>
-                                    </div>
-                                </div>
-                                <div class=" col-sm-3">
-                                    <div>
-                                        <a href="{{ route('print_passport', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-cyan waves-effectwaves-float">
-                                            <i class="material-icons">layers</i>
-                                        Passport</a>
+                                        <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-download"></i> Copy Passport</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class=" col-sm-3">
+                            <div class="col-sm-6">
+                                <div class=" col-sm-4">
                                     <div>
                                         <button type="button" class="btn btn-warning" onclick="saving()" style="margin-top: 5px;"><i class="fa fa-save"></i> Save PDF</button>
                                     </div>
