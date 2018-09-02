@@ -8,6 +8,8 @@ use App\additional;
 use DB;
 use auth;
 use Carbon\carbon;
+use Session;
+use Storage;
 
 class additionalController extends Controller
 {
@@ -22,12 +24,28 @@ class additionalController extends Controller
     }
     public function save(Request $request)
     {
-    	$price = str_replace( '.', '',$request->ad_price);
+
+        $ma_id = additional::max('ma_id');
+        // return $ma_id;
+        if ($ma_id == null) {
+            $ma_id = 1;
+        }else{
+            $ma_id += 1;
+        }
+
+
+        $image = $request->file('image');
+        $upload = 'additional/additional';
+        $filename = $ma_id.'.jpg';
+        Storage::put('additional/additional-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+        $price = str_replace( '.', '',$request->ad_price);
+
 
      	$data = new additional;
      	$data->ma_name  = $request->ad_name;
      	$data->ma_price = $price;
-     	$data->ma_desc  = $request->ad_desc;
+        $data->ma_desc  = $request->ad_desc;
+     	$data->ma_image = $filename;
      	$data->save();
 
       return response()->json(['status'=>'sukses']);
