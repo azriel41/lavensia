@@ -8,6 +8,8 @@ use App\additional;
 use DB;
 use auth;
 use Carbon\carbon;
+use Session;
+use Storage;
 
 class additionalController extends Controller
 {
@@ -22,7 +24,11 @@ class additionalController extends Controller
     }
     public function save(Request $request)
     {
-    	$price = str_replace( '.', '',$request->ad_price);
+        $image = $request->file('image');
+        $upload = 'additional/additional';
+        $filename = auth::user()->id.'.jpg';
+        Storage::put('additional/additional-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+        $price = str_replace( '.', '',$request->ad_price);
 
      	$data = new additional;
      	$data->ma_name  = $request->ad_name;
