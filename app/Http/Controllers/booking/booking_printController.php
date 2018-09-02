@@ -23,6 +23,7 @@ use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
 use Exception;
+use Excel;
 class booking_printController extends Controller
 {
 	protected $intinerary;
@@ -121,6 +122,13 @@ class booking_printController extends Controller
 						->where('db_intinerary_id','=',$id)
 						->get();
     	// return $data;
-		return view('booking_print.booking_print_passport',compact('data'));
+        Excel::create('Transaction '.date('d-m-y'), function($excel) use ($data){
+            $excel->sheet('New sheet', function($sheet) use ($data) {
+                $sheet->loadView('booking_print.booking_print_passport')
+                ->with('data',$data);
+            });
+
+        })->download('pdf');
+		// return view('booking_print.booking_print_passport',compact('data'));
     }
 }
