@@ -11,7 +11,7 @@
 	<tbody>
 		@foreach ($data->detail_intinerarys as $data)
 		<tr>
-			<td>{{ $data->md_nota }}</td>
+			<td><a onclick="" href="{{ route('intinerary_detail',['id'=>$data->md_id]) }}">{{ $data->md_nota }}</a></td>
 			<td>{{ Carbon\carbon::parse($data->md_start)->format('d-m-Y') }}</td>
 			<td>{{ Carbon\carbon::parse($data->md_end)->format('d-m-Y') }}</td>
 			<td>{{ number_format($data->md_adult_price, 2, ",", ".") }}</td>

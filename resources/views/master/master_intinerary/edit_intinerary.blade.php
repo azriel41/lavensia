@@ -222,7 +222,66 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>      
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading" role="tab" id="headingOne_1">
+                                            <h4 class="panel-title">
+                                                <a style="text-decoration: none; width: 100%" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne_1" aria-expanded="true" aria-controls="collapseOne_1" class="">
+                                                <i class="material-icons">add</i> Add Flight Detail
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_1" aria-expanded="true" style="">
+                                            <div class="panel-body">
+                                                <div class="flight">
+                                                    @foreach ($data->flight as $i=> $val)
+                                                        <div class="all_flight">
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line" >
+                                                                        <input type="text" value="{{ $val->fd_nomor }}" style="font-weight: bold; text-transform: uppercase;" name="fd_nomor[]" placeholder="No Flight" class="form-control fd_nomor sch_req">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line" >
+                                                                        <input type="text" value="{{ carbon\carbon::parse($val->fd_tanggal)->format('d-m-Y') }}" style="font-weight: bold; text-transform: uppercase;" name="fd_tanggal[]" placeholder="Date Flight" class="form-control fd_tanggal sch_req datenormal">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line" >
+                                                                        <input type="text" value="{{ $val->fd_route }}" style="font-weight: bold; text-transform: uppercase;" name="fd_route[]" placeholder="Route" class="form-control fd_route sch_req">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line" >
+                                                                        <input type="text" value="{{ $val->fd_time }}" style="font-weight: bold; text-transform: uppercase;" name="fd_time[]" placeholder="Time" class="form-control fd_time sch_req">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <div class="center col-sm-12" style="margin-bottom: 10px;">
+                                                    <button  class="btn add_fl btn-circle bg-cyan waves-effect" style="color: grey"  type="button"style="margin-bottom: 10px;">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                    <button  class="btn remove_fl btn-circle bg-pink waves-effect" style="color: grey" type="button"style="margin-bottom: 10px;"> 
+                                                        <i class="material-icons">remove</i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                       
                         </div>
                         <div class="paging-trans page_2 col-sm-12 delayed  table-responsive"  style="background: white">
                             <div class="add_departure col-sm-12">
@@ -234,7 +293,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="start" class="form-control datenormal" placeholder="DD/MM/YYYY">
+                                                    <input type="text" id="start" class="form-control datenormal" placeholder="DD-MM-YYYY">
                                                     <input type="hidden" id="index">
                                                 </div>
                                             </div>
@@ -285,7 +344,7 @@
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
-                                                    <input type="text" id="end" class="form-control datenormal " placeholder="DD/MM/YYYY">
+                                                    <input type="text" id="end" class="form-control datenormal " placeholder="DD-MM-YYYY">
                                                 </div>
                                             </div>
                                         </div>
@@ -378,6 +437,7 @@
             $(this).removeClass('focused');
         })
     }
+
     $("#adult_price").maskMoney({
         precision:0,
         thousands:'.',
@@ -408,12 +468,6 @@
         allowZero:true,
     });
 
-    
-    // $('.js-example-basic-single').select2({
-    //     placeholder:'Select a Option'
-    // });
-
-
 
     $('.add').on('click',function(){
         // $('par').find('.day').val('da')
@@ -425,19 +479,34 @@
         $('.schedule .all_schedule').last().find('.day').val('Day '+temp);
         $('.schedule .all_schedule').last().find('.caption_schedule').val('');
         $('.schedule .all_schedule').last().find('.description_schedule').val('');
-
-        
-  
     });
 
-    $('.remove').on('click',function(){
+
+    $('.add_fl').on('click',function(){
         // $('par').find('.day').val('da')
+        $('.flight .all_flight').eq(0).clone().fadeIn().appendTo(".flight");
+        $('.flight .all_flight').last().find('input').val('');
+
+        $('.datenormal').bootstrapMaterialDatePicker({
+            format: 'DD-MM-YYYY',
+            clearButton: true,
+            weekStart: 1,
+            time: false,
+            onSet: function (ele) {
+                if(ele.select){
+                      this.close();
+                }
+            }
+        });
+    });
+
+    $('.remove_fl').on('click',function(){
         var temp = 0;
-        $('.schedule .all_schedule').each(function(){
+        $('.flight .all_flight').each(function(){
             temp+=1
         })
         if (temp >1) {
-            $('.schedule .all_schedule').last().remove();
+            $('.flight .all_flight').last().remove();
         }
   
     });
@@ -783,14 +852,9 @@
         var md_detail     = '{{ $data->md_detail }}';
         var md_dp         = '{{ number_format($data->md_dp, 0, ",", ".") }}';
 
-        if (seat != seat_remain) {
-           
-            var action = '<a title="Kursi Telah Terjual" type="button" class="btn bg-green  waves-effect "><i class=fa fa-danger>danger</i></a>'
-                         ;
-        }else{
-            var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
-                         '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
-        }
+
+        var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
+            '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
 
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+

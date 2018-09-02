@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class detail_intinerary extends Model
 {
     protected $table = 'm_detail_intinerary';
-	protected $primaryKey = 'md_intinerary_id';
+	protected $primaryKey = 'md_id';
 	const CREATED_AT = 'created_at';
 	const UPDATED_AT = 'updated_at';
 
@@ -24,6 +24,8 @@ class detail_intinerary extends Model
 						   'md_child_w_price',
 						   'md_seat',
 						   'md_dp',
+						   'md_tata_tertib',
+						   'md_final',
 						   'md_seat_remain',
 						   'created_by',
 						   'updated_by'];
@@ -35,6 +37,6 @@ class detail_intinerary extends Model
 
 	public function book()
 	{
-        return $this->belongsTo('App\d_booking','db_intinerary_id','db_detail_intinerary_id');
+        return $this->hasMany('App\d_booking','db_intinerary_id','md_id');
 	}
 }

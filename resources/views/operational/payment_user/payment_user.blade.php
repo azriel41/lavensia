@@ -533,7 +533,7 @@ $('.save').click(function(){
     }
     
     if (method == 'dp') {
-        if (total_payment < total/2) {
+        if (total_payment < '{{ $booking->detail_itin->md_dp }}'*1) {
             iziToast.warning({
                 icon: 'fa fa-times',
                 position:'topRight',

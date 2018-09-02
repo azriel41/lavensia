@@ -136,13 +136,14 @@ class booking_allController extends Controller
     	$id    = $booking->db_intinerary_id;
 		$add_name = [];
 		$additional_book = $booking->additional_book->groupBy('da_additional_id');
-
 		for ($z=0; $z < count($detail_intinerary->intinerary->add); $z++) { 
 			$data = $detail_intinerary->intinerary->add[$z]->ma_id;
-
-			for ($i=0; $i < count($additional_book[$data]); $i++) { 
-				$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
-			}    	
+			if (isset($additional_book[$data])) {
+				for ($i=0; $i < count($additional_book[$data]); $i++) { 
+					$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
+				}  
+			}
+			  	
 		}
 		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name'));
 
@@ -221,18 +222,19 @@ class booking_allController extends Controller
 
 						
 						$data = array(	
-							'dp_bed'		=> $req->dp_bed[$b],
-							'dp_name'		=> strtoupper($req->name[$b]),
-							'dp_passport'	=> $req->passport[$b],
-							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
-							'dp_issuing'	=> strtoupper($req->issue[$b]),
-							'dp_gender'		=> $req->gender[$b],
-							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
-							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
-							'dp_reference'	=> strtoupper($req->reference[$b]),
-							'dp_image'		=> $filename,
-							'dp_room'		=> $req->room_val[$b],
-							'updated_by'	=> Auth::user()->id,
+							'dp_bed'			=> $req->dp_bed[$b],
+							'dp_name'			=> strtoupper($req->name[$b]),
+							'dp_passport'		=> $req->passport[$b],
+							'dp_exp_date'		=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'		=> strtoupper($req->issue[$b]),
+							'dp_gender'			=> $req->gender[$b],
+							'dp_birth_date'		=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'	=> strtoupper($req->place_birth[$b]),
+							'dp_reference'		=> strtoupper($req->reference[$b]),
+							'dp_image'			=> $filename,
+							'dp_status_person'	=> $req->status[$b],
+							'dp_room'			=> $req->room_val[$b],
+							'updated_by'		=> Auth::user()->id,
 						);
 
 		    			$this->d_party_name->update_detail($data,'dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b]);
@@ -254,21 +256,22 @@ class booking_allController extends Controller
 
 
 						$data = array(	
-							'dp_booking_id'	=> $req->booking_id,
-							'dp_detail'		=> $dt,
-							'dp_bed'		=> $req->dp_bed[$b],
-							'dp_name'		=> strtoupper($req->name[$b]),
-							'dp_passport'	=> $req->passport[$b],
-							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
-							'dp_issuing'	=> strtoupper($req->issue[$b]),
-							'dp_gender'		=> $req->gender[$b],
-							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
-							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
-							'dp_reference'	=> strtoupper($req->reference[$b]),
-							'dp_image'		=> $filename,
-							'dp_room'		=> $req->room_val[$b],
-							'created_by'	=> Auth::user()->id,
-							'updated_by'	=> Auth::user()->id,
+							'dp_booking_id'		=> $req->booking_id,
+							'dp_detail'			=> $dt,
+							'dp_bed'			=> $req->dp_bed[$b],
+							'dp_name'			=> strtoupper($req->name[$b]),
+							'dp_passport'		=> $req->passport[$b],
+							'dp_exp_date'		=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'		=> strtoupper($req->issue[$b]),
+							'dp_gender'			=> $req->gender[$b],
+							'dp_birth_date'		=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'	=> strtoupper($req->place_birth[$b]),
+							'dp_reference'		=> strtoupper($req->reference[$b]),
+							'dp_image'			=> $filename,
+							'dp_room'			=> $req->room_val[$b],
+							'dp_status_person'	=> $req->status[$b],
+							'created_by'		=> Auth::user()->id,
+							'updated_by'		=> Auth::user()->id,
 						);
 
 		    			$this->d_party_name->create($data);
@@ -388,18 +391,19 @@ class booking_allController extends Controller
 
 						
 						$data = array(	
-							'dp_bed'		=> $req->dp_bed[$b],
-							'dp_name'		=> strtoupper($req->name[$b]),
-							'dp_passport'	=> $req->passport[$b],
-							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
-							'dp_issuing'	=> strtoupper($req->issue[$b]),
-							'dp_gender'		=> $req->gender[$b],
-							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
-							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
-							'dp_reference'	=> strtoupper($req->reference[$b]),
-							'dp_image'		=> $filename,
-							'dp_room'		=> $req->room_val[$b],
-							'updated_by'	=> Auth::user()->id,
+							'dp_bed'			=> $req->dp_bed[$b],
+							'dp_name'			=> strtoupper($req->name[$b]),
+							'dp_passport'		=> $req->passport[$b],
+							'dp_exp_date'		=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'		=> strtoupper($req->issue[$b]),
+							'dp_gender'			=> $req->gender[$b],
+							'dp_birth_date'		=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'	=> strtoupper($req->place_birth[$b]),
+							'dp_reference'		=> strtoupper($req->reference[$b]),
+							'dp_image'			=> $filename,
+							'dp_room'			=> $req->room_val[$b],
+							'dp_status_person'	=> $req->status[$b],
+							'updated_by'		=> Auth::user()->id,
 						);
 
 		    			$this->d_party_name->update_detail($data,'dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b]);
@@ -421,21 +425,22 @@ class booking_allController extends Controller
 
 
 						$data = array(	
-							'dp_booking_id'	=> $req->booking_id,
-							'dp_detail'		=> $dt,
-							'dp_bed'		=> $req->dp_bed[$b],
-							'dp_name'		=> strtoupper($req->name[$b]),
-							'dp_passport'	=> $req->passport[$b],
-							'dp_exp_date'	=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
-							'dp_issuing'	=> strtoupper($req->issue[$b]),
-							'dp_gender'		=> $req->gender[$b],
-							'dp_birth_date'	=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
-							'dp_birth_place'=> strtoupper($req->place_birth[$b]),
-							'dp_reference'	=> strtoupper($req->reference[$b]),
-							'dp_image'		=> $filename,
-							'dp_room'		=> $req->room_val[$b],
-							'created_by'	=> Auth::user()->id,
-							'updated_by'	=> Auth::user()->id,
+							'dp_booking_id'		=> $req->booking_id,
+							'dp_detail'			=> $dt,
+							'dp_bed'			=> $req->dp_bed[$b],
+							'dp_name'			=> strtoupper($req->name[$b]),
+							'dp_passport'		=> $req->passport[$b],
+							'dp_exp_date'		=> carbon::parse(str_replace('/','-',$req->exp_date[$b]))->format('Y-m-d'),
+							'dp_issuing'		=> strtoupper($req->issue[$b]),
+							'dp_gender'			=> $req->gender[$b],
+							'dp_birth_date'		=> carbon::parse(str_replace('/','-',$req->date_birth[$b]))->format('Y-m-d'),
+							'dp_birth_place'	=> strtoupper($req->place_birth[$b]),
+							'dp_reference'		=> strtoupper($req->reference[$b]),
+							'dp_image'			=> $filename,
+							'dp_room'			=> $req->room_val[$b],
+							'dp_status_person'	=> $req->status[$b],
+							'created_by'		=> Auth::user()->id,
+							'updated_by'		=> Auth::user()->id,
 						);
 
 		    			$this->d_party_name->create($data);

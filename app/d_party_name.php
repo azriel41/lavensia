@@ -24,6 +24,7 @@ class d_party_name extends Model
 						   'dp_reference',
 						   'dp_image',
 						   'dp_room',
+						   'dp_status_person',
 						   'created_by',
 						   'updated_by',
 						];

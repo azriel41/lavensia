@@ -214,6 +214,9 @@
             .uppercase{
                 text-transform: uppercase;
             }
+            .passport{
+                text-transform: uppercase;
+            }       
         </style>
     </head>
     
@@ -385,6 +388,7 @@
                                                                         <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                         <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                         <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                        <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -468,6 +472,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                            <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -548,6 +553,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="1">
+                                                                            <input type="hidden" class="status" name="status[]" value="adult">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -634,6 +640,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                            <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -715,6 +722,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                         </div>
+                                                                            <input type="hidden" class="status" name="status[]" value="adult">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -799,6 +807,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                            <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -882,6 +891,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                            <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -966,6 +976,7 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date" value="{{ carbon\carbon::parse($count[$i][$a]['dp_exp_date'])->format('d/m/Y') }}">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
+                                                                            <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1049,8 +1060,12 @@
                                                     <td class="sel_opt">
                                                         <select class=" additional form-control selectpicker" multiple data-size="4">
                                                         @foreach ($booking->party_name as $i=>$val1)
-                                                            @if (in_array($val1->dp_name, $add_name[$val->ma_id]))
-                                                                <option selected="" value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
+                                                            @if (isset($add_name[$val->ma_id]))
+                                                                @if (in_array($val1->dp_name, $add_name[$val->ma_id]))
+                                                                    <option selected="" value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
+                                                                @else
+                                                                    <option value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
+                                                                @endif
                                                             @else
                                                                 <option value="{{ $val1->dp_name }}">{{ $val1->dp_name }}</option>
                                                             @endif
@@ -1284,13 +1299,13 @@
         var val = $(this).find(':selected').attr('data-val');
         var par = $(this).parents('.all_room');
         var room = $(par).find('.room_val').eq(0).val();
+        var bed = $(this).find(':selected').val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled input').val('');
             $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .noFile').text('Passport Image');
             $(par).find('.disabled .file-upload').removeClass('active');
-            $(par).find('.disabled').find('.dp_bed').val($(this).val());
         }else if (val == 2) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
@@ -1299,11 +1314,14 @@
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
-            $(par).find('.disabled').find('.dp_bed').val($(this).val());
         }else if (val == 3) {
             $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
             $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
-            $(par).find('.disabled').find('.dp_bed').val($(this).val());
+            if (bed == 'triple') {
+                $(par).find('.detail_room').last().find('.status').val('adult');
+            }else if (bed == 'doubletwin&cnb' || bed == 'doubletwin&cwb'){
+                $(par).find('.detail_room').last().find('.status').val('child');
+            }
         }
         total();
     })
@@ -1380,7 +1398,6 @@
         var parent = $(this).parents('.all_room');
         var infant = $(this).parents('.all_room').find('.infant_tot');
         var room_append = $(this).parents('.all_room').find('.detail_room_append');
-        var bed = parent.find('.bk_bed').val();
         
         var remove = '<button type="button" class="btn btn-danger remove_infant"><i class="fa fa-minus"></i></button>';
         if (infant.val() < 2) {
@@ -1396,7 +1413,7 @@
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',startDate: '-2y',autoclose: true});
-            $(parent).find('.baby').last().find('.dp_bed').val(bed);
+            $(parent).find('.baby').last().find('.status').val('baby');
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -1448,16 +1465,20 @@
 
         $(last).find('input').val('')
         $(last).find('.detail_room input').val('');
+        $(last).find('.detail_room ').find('.bk_bed').val('single').selectpicker('refresh');
         $(last).find('.detail_room .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
         $(last).find('.detail_room .noFile').text('Passport Image');
         $(last).find('.baby').remove();
         $(name).removeClass('error');
+        $(last).find('.bk_bed').val('single').selectpicker('refresh');
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
         $(last).find('.dp_bed').val('single');
+        $(last).find('.detail_room').eq(0).find('.status').val('adult');
+        $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
 
         room++;
@@ -1590,7 +1611,7 @@
                 indexing++;
 
                 $(this).find('input:not(.chooseFile):not([name*=dp_detail])').each(function(z){
-                    if ($(this).val() == '') {
+                    if ($(this).not('.status').val() == '') {
                         console.log($(this));
                         $(this).addClass('error');
                         validate.push(0);

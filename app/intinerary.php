@@ -33,4 +33,8 @@ class intinerary extends Model
 	{
         return $this->belongsToMany('App\additional','m_additional_intinerary','intinerary_mi_id','additional_ma_id');
 	}
+	public function flight()
+	{
+        return $this->hasMany('App\flight_detail','fd_intinerary_id');
+	}
 }

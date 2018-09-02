@@ -158,7 +158,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/datatable', 'master\intinerary_controller@datatable_intinerary')->name('datatable_intinerary');
 	Route::get('/master/master_intinerary/schedule', 'master\intinerary_controller@schedule')->name('schedule');
 	Route::get('/master/master_intinerary/departure', 'master\intinerary_controller@departure')->name('departure');
+	Route::get('/master/master_intinerary/ganti_nama', 'master\intinerary_controller@ganti_nama')->name('ganti_nama');
 	Route::get('/master/master_intinerary/delete', 'master\intinerary_controller@delete')->name('delete_intinerary');
+	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
+	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 	
 
 	/************* END MASTER ***********/

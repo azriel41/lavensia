@@ -99,9 +99,24 @@ function schedule(mc_id) {
         data:{mc_id},
         success:function(data){
             $('.schedule_table').html(data);
+            ganti_nama(mc_id);
         },
         error:function(){
 
+        }
+    })
+}
+
+function ganti_nama(mc_id) {
+    $.ajax({
+        url:'{{ route('ganti_nama') }}',
+        data:{mc_id},
+        dataType:'json',
+        success:function(data){
+            $('.departure').text('DEPARTURE '+data.data);
+        },
+        error:function(){
+            
         }
     })
 }
@@ -112,6 +127,7 @@ function departure(mc_id) {
         data:{mc_id},
         success:function(data){
             $('.departure_table').html(data);
+            ganti_nama(mc_id);
         },
         error:function(){
             

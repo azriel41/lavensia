@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document"  style="width:1200px">
         <div class="modal-content">
             <div class="modal-header bg-pink">
-                <h4 class="modal-title" id="largeModalLabel">Departure</h4>
+                <h4 class="modal-title departure" id="largeModalLabel">Departure</h4>
             </div>
             <div class="modal-body departure_table">
                 
