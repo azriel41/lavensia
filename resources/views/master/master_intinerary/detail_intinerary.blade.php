@@ -392,8 +392,8 @@
                                 </div>
                                 <div class=" col-sm-3">
                                     <div>
-                                        <a href="{{ route('print_passport', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-pink  waves-effect waves-float">
-                                            <i class="material-icons">layers</i>
+                                        <a href="{{ route('print_pdf', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-pink  waves-effect waves-float">
+                                            <i class="material-icons">picture_as_pdf</i>
                                         Pdf
                                         </a>
                                     </div>
