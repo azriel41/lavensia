@@ -179,7 +179,7 @@ class booking_allController extends Controller
     		// HEADER
     		$hapus_data = $this->d_party_name->cari('dp_booking_id',$req->booking_id);
     		$temp = [];
-    		
+
     		for ($i=0; $i < count($req->dp_detail); $i++) { 
     			if ($req->dp_detail[$i] != null) {
     				array_push($temp, $req->dp_detail[$i]);
