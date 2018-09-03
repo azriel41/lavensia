@@ -198,11 +198,11 @@
             .errors{
                 border-color: red;
             }
-            li.active > a{
+        /*    li.active > a{
                 background-color: purple !important;
                 color: white !important;
                 border-color: purple !important;
-            }
+            }*/
             .tab-content{
               overflow-y:scroll;
               overflow-x:hidden;
@@ -414,6 +414,7 @@
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
                                                                     <select class="form-control gender" name="gender[]">
+                                                                        <option value="">Select Gender</option>
                                                                         <option value="male">Male</option>
                                                                         <option value="female">Female</option>
                                                                     </select>
@@ -465,8 +466,8 @@
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
-                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
-                                                                    <input type="hidden" class="status" name="status[]" value="adult">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="">
+                                                                    <input type="hidden" class="status" name="status[]" value="">
                                                                     <input type="hidden" class="addition_index" value="2">
                                                                 </div>
                                                             </div>
@@ -493,6 +494,7 @@
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
                                                                     <select class="form-control gender" name="gender[]">
+                                                                        <option value="">Select Gender</option>
                                                                         <option value="male">Male</option>
                                                                         <option value="female">Female</option>
                                                                     </select>
@@ -544,8 +546,8 @@
                                                                     <input type="text" name="passport[]"  placeholder="Passport No" class="form-control passport">
                                                                     <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
-                                                                    <input type="hidden" class="room_val" name="room_val[]" value="1">
-                                                                    <input type="hidden" class="status" name="status[]" value="adult">
+                                                                    <input type="hidden" class="room_val" name="room_val[]" value="">
+                                                                    <input type="hidden" class="status" name="status[]" value="">
                                                                     <input type="hidden" class="addition_index" value="3">
                                                                 </div>
                                                             </div>
@@ -572,6 +574,7 @@
                                                             <div class="contact-form ">
                                                                 <div class="form-group-sm input_place">
                                                                     <select class="form-control gender" name="gender[]">
+                                                                        <option value="">Select Gender</option>
                                                                         <option value="male">Male</option>
                                                                         <option value="female">Female</option>
                                                                     </select>
@@ -815,6 +818,7 @@
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.disabled').find('input:not(.status):not(.addition_index)').val('');
+            $(par).find('.disabled').find('.gender').val('');
             $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .noFile').text('Passport Image');
             $(par).find('.disabled .file-upload').removeClass('active');
@@ -822,6 +826,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
+            $(par).find('.detail_room').eq(1).find('.status').val('adult');
             $(par).find('.detail_room').eq(2).find('input:not(.status):not(.addition_index)').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
@@ -955,7 +960,7 @@
         $(last).find('.detail_room .noFile').text('Passport Image');
         $(last).find('.baby').remove();
         $(name).removeClass('error');
-        $(last).find('.bk_bed').val('single').selectpicker('refresh');
+        $(last).find('.bk_bed').val('single');
 
         $(last).last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
@@ -966,7 +971,7 @@
             $(this).find('.addition_index').val(addition_index);
         });
 
-        $(last).find('.detail_room').find('.status').val('adult');
+        $(last).find('.detail_room').eq(0).find('.status').val('adult');
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
 
@@ -985,10 +990,7 @@
             if (!parent.hasClass('disabled')) {
                 try{
                     if (passport_temp != passport[indexs]) {
-                        console.log(passport_temp);
-                        console.log(passport[indexs]);
                         var index = passport.indexOf(passport_temp);
-                        console.log(index);
                         if (index != -1) {
                             if (passport[i] != '') {
                                 $('.passport').eq(indexs).val('');
@@ -1148,6 +1150,7 @@
         $('.all_room').each(function(i){
             var ini      = $(this);
             var bed      = ini.find('.bk_bed').val();
+            console.log(ini.find('.bk_bed').val());
             var text_bed = ini.find('.bk_bed :selected').text();
             // ROOM
             ini.find('.detail_room:not(.disabled)').each(function(a){
