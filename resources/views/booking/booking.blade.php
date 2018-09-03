@@ -388,6 +388,7 @@
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                     <input type="hidden" class="status" name="status[]" value="adult">
+                                                                    <input type="hidden" class="addition_index" value="1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -466,6 +467,7 @@
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                     <input type="hidden" class="status" name="status[]" value="adult">
+                                                                    <input type="hidden" class="addition_index" value="2">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -544,6 +546,7 @@
                                                                     <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                     <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                     <input type="hidden" class="status" name="status[]" value="adult">
+                                                                    <input type="hidden" class="addition_index" value="3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -601,7 +604,33 @@
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive addition">
-                                        <button type="button" class="btn btn-warning complete">CLICK TO ADD</button>
+                                        <table width="100%" class="table table-striped table-bordered table-hover ">
+                                            <thead >
+                                                <tr>
+                                                    <th style="width: 25%" align="center">Name</th>
+                                                    <th style="width: 20%" align="center">Procie</th>
+                                                    <th align="center">Select Person</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($detail_intinerary->intinerary->add as $a=>$val)
+                                                <tr class="add_tr">
+                                                    <td align="left">
+                                                        <p class="add_name">{{ $val->ma_name }}</p>
+                                                        <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
+                                                    </td>
+                                                    <td align="right">
+                                                        <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
+                                                        <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
+                                                    </td>
+                                                    <td class="sel_opt">
+                                                        <select class=" additional form-control selectpicker" multiple data-size="4" data-actions-box="true">
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                   </div>
                             </fieldset>
@@ -681,7 +710,15 @@
     </body>
 </html>
 <script type="text/javascript">
-
+    var addition_index = 0
+    $(document).ready(function(){
+       $('.name').each(function(){
+            addition_index+=1;
+            var par = $(this).parents('.input_place');
+            par.find('.addition_index').val(addition_index);
+        })
+    })
+        
     $(".bk_totalpac").keyup(function (e) {
        if (e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57 ) && e.which != 46  ) {
             //display error message
@@ -777,7 +814,7 @@
         var bed = $(this).find(':selected').val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.disabled').find('input:not(.status)').val('');
+            $(par).find('.disabled').find('input:not(.status):not(.addition_index)').val('');
             $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .noFile').text('Passport Image');
             $(par).find('.disabled .file-upload').removeClass('active');
@@ -785,7 +822,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
-            $(par).find('.detail_room').eq(2).find('input:not(.status)').val('');
+            $(par).find('.detail_room').eq(2).find('input:not(.status):not(.addition_index)').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
@@ -858,7 +895,9 @@
             $(parent).find('.baby').last().find('.date').removeClass('hasDatepicker')
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',startDate: '-2y',autoclose: true});
+            addition_index+=1;
             $(parent).find('.baby').last().find('.status').val('baby');
+            $(parent).find('.baby').last().find('.addition_index').val(addition_index);
             var temp = 0;
             $(parent).find('.baby').each(function(){
                 temp+=1;
@@ -880,6 +919,7 @@
         var infant = $(this).parents('.all_room').find('.infant_tot');
 
         var dt = $(this).parents('.baby');
+        hilang_infant(dt);
         $(dt).remove();
         var temp = 0;
         $(parent).find('.baby').each(function(){
@@ -921,6 +961,11 @@
                                                         .removeData('datepicker')
                                                         .datepicker({format:'dd/mm/yyyy',autoclose: true});
         $('.bk_bed').last().change();
+        $(last).find('.detail_room').each(function(){
+            addition_index+=1;
+            $(this).find('.addition_index').val(addition_index);
+        });
+
         $(last).find('.detail_room').find('.status').val('adult');
         $(last).find('.file-upload').removeClass('active');
         $('.infant_tot').last().val(0);
@@ -971,52 +1016,70 @@
         })
         if (temp != 1) {
             var par = $(this).parents('.all_room');
+            hilang(par);
             $(par).remove();
         }
     })
     name_additional = [];
 
     $(document).on('blur','.name',function(){
-        var data = '<button type="button" class="btn btn-warning complete">CLICK TO ADD</button>';
-        
-        $('.addition').html(data);
+        var par   = $(this).parents('.input_place');
+        var val   = $(this).val();
+        var index = $(par).find('.addition_index').val();
+        $('.additional').find("option[add-index='" + index + "']").remove();
+
+        $('.additional select').append('<option value="'+val+'" add-index="'+index+'">'+val+'</option>')
+                 .selectpicker('refresh');
+
+        $('.additional').css('text-transform','uppercase');
     });
 
 
-    $(document).on('click','.complete',function(){
-        var name = [];
-        var id   = '{{ $detail_intinerary->md_id }}';
-        $('.name').each(function(){
-            if ($(this).val() != '') {
-                name.push($(this).val());
-            }
+    function hilang(par) {
+        par.find('.addition_index').each(function(){
+            var index = $(this).val();
+            $('.additional').each(function(a){
+                try{
+                    var select  = $(this);
+                    // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
+                    select.find("option[add-index='" + index + "']").remove();
+
+                    select.find('select').selectpicker('refresh');
+                    // if (name_temp != '') {
+                    //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
+                    //            .selectpicker('refresh');
+                    //     d++;
+                    // }
+                }catch(err){
+
+                }
+                $(this).css('text-transform','uppercase');
+            });
         })
-        if (name.length == 0) {
-            iziToast.warning({
-                icon: 'fa fa-info',
-                position:'topRight',
-                title: 'Error!',
-                message: 'You Dont Have Any Passenger Data!',
-            });
-            return false;
-        }
-        $.ajax({
-            type: "get",
-            url:'{{ route('booking_additional') }}',
-            data: {name,id},
-            success:function(data){
-                $('.addition').html(data);
-            },error:function(){
-            iziToast.warning({
-                icon: 'fa fa-info',
-                position:'topRight',
-                title: 'Error!',
-                message: 'Terjadi Kesalahan!',
-            });
-          }
-        });
-    });
+    }
 
+    function hilang_infant(par) {
+        par.find('.addition_index').each(function(){
+            var index = $(this).val();
+            $('.additional').each(function(a){
+                try{
+                    var select  = $(this);
+                    // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
+                    select.find("option[add-index='" + index + "']").remove();
+
+                    select.find('select').selectpicker('refresh');
+                    // if (name_temp != '') {
+                    //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
+                    //            .selectpicker('refresh');
+                    //     d++;
+                    // }
+                }catch(err){
+
+                }
+                $(this).css('text-transform','uppercase');
+            });
+        })
+    }
     
     $('.name').focus(function(){
         $(this).removeClass('errors');

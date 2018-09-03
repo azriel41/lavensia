@@ -389,6 +389,7 @@
                                                                         <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                         <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                         <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                        <input type="hidden" class="addition_index" value="">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -473,6 +474,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                             <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -554,6 +556,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="1">
                                                                             <input type="hidden" class="status" name="status[]" value="adult">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -641,6 +644,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                             <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -721,8 +725,9 @@
                                                                             <input type="text" name="exp_date[]"  placeholder="Expired Date" class="form-control exp_date date">
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="1">
-                                                                        </div>
                                                                             <input type="hidden" class="status" name="status[]" value="adult">
+                                                                            <input type="hidden" class="addition_index" value="">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -808,6 +813,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                             <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -892,6 +898,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                             <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -977,6 +984,7 @@
                                                                             <input type="text" name="issue[]"  placeholder="Issuing" class="form-control issue uppercase" value="{{ $count[$i][$a]['dp_issuing']}}">
                                                                             <input type="hidden" class="room_val" name="room_val[]" value="{{ $count[$i][$a]['dp_room'] }}">
                                                                             <input type="hidden" class="status" name="status[]" value="{{ $count[$i][$a]['dp_status_person'] }}">
+                                                                            <input type="hidden" class="addition_index" value="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1058,7 +1066,7 @@
                                                         <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
                                                     </td>
                                                     <td class="sel_opt">
-                                                        <select class=" additional form-control selectpicker" multiple data-size="4">
+                                                        <select class=" additional form-control selectpicker" multiple data-size="4" data-actions-box="true">
                                                         @foreach ($booking->party_name as $i=>$val1)
                                                             @if (isset($add_name[$val->ma_id]))
                                                                 @if (in_array($val1->dp_name, $add_name[$val->ma_id]))
@@ -1176,6 +1184,11 @@
 </html>
 <script type="text/javascript">
 
+    $(document).ready(function(){
+       
+    })
+        
+
     $(".bk_totalpac").keyup(function (e) {
        if (e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57 ) && e.which != 46  ) {
             //display error message
@@ -1220,7 +1233,12 @@
             $(this).find('.infant_tot').val(temp);
             room+=1;
         })
-        console.log(room);
+
+        $('.name').each(function(){
+            addition_index+=1;
+            var par = $(this).parents('.input_place');
+            par.find('.addition_index').val(addition_index);
+        })
     })
 
     window.onload = function(){
@@ -1302,7 +1320,7 @@
         var bed = $(this).find(':selected').val();
         if (val == 1) {
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
-            $(par).find('.disabled input').val('');
+            $(par).find('.disabled').find('input:not(.status):not(.addition_index)').val('');
             $(par).find('.disabled .output').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .noFile').text('Passport Image');
             $(par).find('.disabled .file-upload').removeClass('active');
@@ -1310,7 +1328,7 @@
             $(par).find('.detail_room').not(':eq(0)').addClass('disabled');
             $(par).find('.detail_room').eq(1).removeClass('disabled');
             $(par).find('.detail_room').eq(1).find('.room_val').val(room);
-            $(par).find('.detail_room').eq(2).find('input').val('');
+            $(par).find('.detail_room').eq(2).find('input:not(.status):not(.addition_index)').val('');
             $(par).find('.disabled .tag_image_3').text('Passport Image');
             $(par).find('.disabled .gambar_3').attr('src','{{ asset('assets/images/Noimage.png') }}');
             $(par).find('.disabled .upl_3').removeClass('active');
@@ -1435,6 +1453,7 @@
         var infant = $(this).parents('.all_room').find('.infant_tot');
 
         var dt = $(this).parents('.baby');
+        hilang_infant(dt);
         $(dt).remove();
         var temp = 0;
         $(parent).find('.baby').each(function(){
@@ -1443,6 +1462,7 @@
         infant.val(temp);
         baby_total();
     })
+
 
     $(document).on('click','.add',function(){
         var par = $(this).parents('.all_room');
@@ -1493,32 +1513,70 @@
         })
         if (temp != 1) {
             var par = $(this).parents('.all_room');
+            hilang(par);
             $(par).remove();
         }
     })
+
+
     $(document).on('blur','.name',function(){
-        var name_temp = $(this).val();
-        var indexs = $(this).index('.name');
+        var par   = $(this).parents('.input_place');
+        var val   = $(this).val();
+        var index = $(par).find('.addition_index').val();
+        $('.additional').find("option[add-index='" + index + "']").remove();
 
-        $('.additional').each(function(a){
-            try{
-                var select  = $(this);
-                var d = 1;
-                select.find('[value='+name_additional[indexs]+']').remove();
-                if (name_temp != '') {
-                    $(select).find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
-                           .selectpicker('refresh');
-                    d++;
-                }
-            }catch(err){
+        $('.additional select').append('<option value="'+val+'" add-index="'+index+'">'+val+'</option>')
+                 .selectpicker('refresh');
 
-            }
-            
-        });
-
-        name_additional[indexs] = name_temp;
+        $('.additional').css('text-transform','uppercase');
     });
     
+    function hilang(par) {
+        par.find('.addition_index').each(function(){
+            var index = $(this).val();
+            $('.additional').each(function(a){
+                try{
+                    var select  = $(this);
+                    // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
+                    select.find("option[add-index='" + index + "']").remove();
+
+                    select.find('select').selectpicker('refresh');
+                    // if (name_temp != '') {
+                    //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
+                    //            .selectpicker('refresh');
+                    //     d++;
+                    // }
+                }catch(err){
+
+                }
+                $(this).css('text-transform','uppercase');
+            });
+        })
+    }
+
+    function hilang_infant(par) {
+        par.find('.addition_index').each(function(){
+            var index = $(this).val();
+            $('.additional').each(function(a){
+                try{
+                    var select  = $(this);
+                    // $("#select2 option[data-id='" + selectvar + "']").prop("selected", true);
+                    select.find("option[add-index='" + index + "']").remove();
+
+                    select.find('select').selectpicker('refresh');
+                    // if (name_temp != '') {
+                    //     select.find('select').append('<option value="'+name_temp+'" add-index="'+d+'">'+name_temp+'</option>')
+                    //            .selectpicker('refresh');
+                    //     d++;
+                    // }
+                }catch(err){
+
+                }
+                $(this).css('text-transform','uppercase');
+            });
+        })
+    }
+
     $('.name').focus(function(){
         $(this).removeClass('errors');
     })

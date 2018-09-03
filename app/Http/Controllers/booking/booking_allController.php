@@ -145,6 +145,7 @@ class booking_allController extends Controller
 			}
 			  	
 		}
+		dd($count);
 		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name'));
 
     }
