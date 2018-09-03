@@ -52,8 +52,8 @@ class bookingController extends Controller
     {
     	$dt = carbon::now();
 		$hours = $dt->format('H'); 
-		$range = [16,17,18,19,20,21,22,23,23,1,2,3,4,5,6];
-		if (!in_array($hours, $range)) {
+		$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
+		if (in_array($hours, $range)) {
 	    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
 	    	$id 				= $req->id;
@@ -195,6 +195,13 @@ class bookingController extends Controller
 			DB::commit();
 			return Response::json(['status'=>1,'id'=>$id]);
     	});
+    }
+
+    public function booking_additional(Request $req)
+    {
+    	$detail_intinerary = $this->detail_intinerary->cari('md_id',$req->id);
+    	$data = $req->name;
+    	return view('booking.additional_booking',compact('detail_intinerary','data'));
     }
     
 }
