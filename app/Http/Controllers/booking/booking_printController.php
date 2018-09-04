@@ -105,6 +105,10 @@ class booking_printController extends Controller
     }
     public function print_excel($id)
     {	
+        $gg = $id;
+        $detil = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
+        $flight = DB::table('m_flight_detail')->where('fd_intinerary_id',$detil[0]->md_intinerary_id)->get();
+
     	// $data = DB::table('m_intinerary')
 					// 	->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 					// 	->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
@@ -155,15 +159,16 @@ class booking_printController extends Controller
             
         }
         // return $detail_intinerary;
-        Excel::create('Excel '.date('d-m-y'), function($excel) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary){
-            $excel->sheet('New sheet', function($sheet) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary) {
-                $sheet->loadView('booking_print.booking_print_pdf')
+        Excel::create('Excel '.date('d-m-y'), function($excel) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
+            $excel->sheet('New sheet', function($sheet) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight) {
+                $sheet->loadView('booking_print.booking_print_excel')
                 ->with('passenger',$passenger)
                 ->with('id',$id)
                 ->with('room',$room)
                 ->with('bed',$bed)
                 ->with('person',$person)
                 ->with('booking',$booking)
+                ->with('flight',$flight)
                 ->with('detail_intinerary',$detail_intinerary);
             });
 
@@ -173,6 +178,9 @@ class booking_printController extends Controller
     }
     public function print_pdf($id)
     {
+        $gg = $id;
+        $detil = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
+
     	// $data = DB::table('m_intinerary')
 					// 	->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 					// 	->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
@@ -201,9 +209,8 @@ class booking_printController extends Controller
 
         $id = array_unique($id);
         $id = array_values($id);
-        return $id;
-        // $flight = DB::table('m_flight_detail')->where('')->get();
-        return $flight;
+        // return $id;
+        $flight = DB::table('m_flight_detail')->where('fd_intinerary_id',$detil[0]->md_intinerary_id)->get();
         for ($i=0; $i < count($id); $i++) { 
             for ($a=0; $a < count($room[$i]); $a++) { 
                 for ($z=0; $z < count($booking[$i]->party_name); $z++) { 
@@ -227,7 +234,7 @@ class booking_printController extends Controller
         }
         // return $person;
         
-        return view('booking_print.booking_print_pdf',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+        return view('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
 
 		// return view('',compact(''));
     }

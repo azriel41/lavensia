@@ -1,15 +1,13 @@
 <table class="table table-bordered intinerary" border="1px" style="width: 100%;vertical-align: middle;">
     <tr>
         <td height="100" width="30%" style="padding-left: 10px;">Flight Detail</td>
-        @foreach ($array as $element)
-        <td>
-            
-        </td>
+        @foreach ($flight as $f)
+        <td>{{ $f->fd_nomor }} | {{ date('d-M',strtotime($f->fd_tanggal)) }} | {{ $f->fd_route }} | {{ $f->fd_time }}</td>
         @endforeach
 
     </tr> 
 </table>
-
+<br>
 
 <table class="table table-bordered intinerary" border="1px" style="width: 100%;vertical-align: middle;" >
         <tr style="vertical-align: middle; border: 1px solid black">
@@ -50,7 +48,13 @@
                             @endif
                         @endforeach
                     </td>
-                  
+                    <td>
+                        @foreach ($passenger as $akhir)
+                            @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
+                                <label class="kena_dot">{{ $akhir->dp_passport }}</label><br>
+                            @endif
+                        @endforeach
+                    </td>
                     <td>
                         @php
                             $temp1 = 0;
@@ -73,32 +77,13 @@
                         @endforeach
                     </td>
                     <td>
-                        @foreach ($passenger as $akhir)
-                            @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
-                                <label class="kena_dot">{{ $akhir->dp_passport }}</label><br>
-                            @endif
-                        @endforeach
+                        
                     </td>
                     <td>
-                        @foreach ($passenger as $akhir)
-                            @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
-                                <label class="kena_dot">{{ $akhir->dp_issuing }}</label><br>
-                            @endif
-                        @endforeach
+                        
                     </td>
                     <td>
-                        @foreach ($passenger as $akhir)
-                            @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
-                                <label class="kena_dot">{{ carbon\carbon::parse($akhir->dp_expired)->format('d/m/Y')}}</label><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach ($passenger as $akhir)
-                            @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
-                                <label class="kena_dot">{{ carbon\carbon::parse($akhir->dp_expired)->format('d/m/Y')}}</label><br>
-                            @endif
-                        @endforeach
+                        
                     </td>
                     
                 </tr>
