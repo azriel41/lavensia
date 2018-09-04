@@ -5,12 +5,13 @@
     @include('layouts._head')
     <style type="text/css">
         
-
+	
     </style>
 </head>
 <body>
+
         @foreach ($data as $index => $e)
-            <img src="{{ url('/storage/app/'.$e->dp_image) }}" width="345px" height="230px">
+            <img src="{{ url('/storage/app/'.$e->dp_image) }}" width="340px" height="210px">
         @endforeach
 
 </body>

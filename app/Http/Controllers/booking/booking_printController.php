@@ -24,6 +24,11 @@ use App\d_booking;
 use App\d_party_name;
 use Exception;
 use App\all_variable;
+use Excel;
+use PDF;
+use PHPExcel_Worksheet_PageSetup;
+use Dompdf\Options;
+use Dompdf\Dompdf;
 
 class booking_printController extends Controller
 {
@@ -100,26 +105,13 @@ class booking_printController extends Controller
     }
     public function print_excel($id)
     {	
-    	$data = DB::table('m_intinerary')
-						->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
-						->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
-						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
-						->where('db_intinerary_id','=',$id)
-						->get();
-    	// return $data;
-		return view('booking_print.booking_print');
-    }
-    public function print_pdf($id)
-    {
     	// $data = DB::table('m_intinerary')
 					// 	->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 					// 	->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
 					// 	->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
 					// 	->where('db_intinerary_id','=',$id)
 					// 	->get();
-    	// return $data;
-
-        $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
+    	$detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
         $booking   = $detail_intinerary->book;
         $passenger = [];
@@ -162,6 +154,78 @@ class booking_printController extends Controller
             }
             
         }
+        // return $detail_intinerary;
+        Excel::create('Excel '.date('d-m-y'), function($excel) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary){
+            $excel->sheet('New sheet', function($sheet) use ($passenger,$id,$room,$bed,$person,$booking,$detail_intinerary) {
+                $sheet->loadView('booking_print.booking_print_pdf')
+                ->with('passenger',$passenger)
+                ->with('id',$id)
+                ->with('room',$room)
+                ->with('bed',$bed)
+                ->with('person',$person)
+                ->with('booking',$booking)
+                ->with('detail_intinerary',$detail_intinerary);
+            });
+
+        })->download('csv');
+		// return view('booking_print.booking_print');
+        // return view('',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+    }
+    public function print_pdf($id)
+    {
+    	// $data = DB::table('m_intinerary')
+					// 	->join('m_detail_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+					// 	->join('d_booking','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+					// 	->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+					// 	->where('db_intinerary_id','=',$id)
+					// 	->get();
+    	// return $data;
+
+        $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
+
+        $booking   = $detail_intinerary->book;
+        $passenger = [];
+        $id        = [];
+        $room      = [];
+        $bed       = [];
+        $person    = [];
+        for ($i=0; $i < count($booking); $i++) { 
+            for ($a=0; $a < count($booking[$i]->party_name); $a++) { 
+                array_push($passenger, $booking[$i]->party_name[$a]);
+                array_push($id, $booking[$i]->party_name[$a]->dp_booking_id);
+                $room[$i][$a] = $booking[$i]->party_name[$a]->dp_room; 
+            }
+            $room[$i] = array_unique($room[$i]);
+            $room[$i] = array_values($room[$i]);
+        }
+
+        $id = array_unique($id);
+        $id = array_values($id);
+        return $id;
+        // $flight = DB::table('m_flight_detail')->where('')->get();
+        return $flight;
+        for ($i=0; $i < count($id); $i++) { 
+            for ($a=0; $a < count($room[$i]); $a++) { 
+                for ($z=0; $z < count($booking[$i]->party_name); $z++) { 
+                    if ($id[$i] == $booking[$i]->party_name[$z]->dp_booking_id and $room[$i][$a] == $booking[$i]->party_name[$z]->dp_room) {
+                        $bed[$i][$a] = $booking[$i]->party_name[$z]->dp_bed;
+                    }
+                }
+            }
+        }
+        
+        
+        for ($a=0; $a < count($room); $a++) { 
+            for ($z=0; $z < count($room[$a]); $z++) { 
+                for ($c=0; $c < count($booking[$a]->party_name); $c++) { 
+                    if ($id[$a] == $booking[$a]->party_name[$c]->dp_booking_id and $room[$a][$z] == $booking[$a]->party_name[$c]->dp_room) {
+                        $person[$a][$z][$c] = $booking[$a]->party_name[$c]->dp_bed;
+                    }
+                }
+            }
+            
+        }
+        // return $person;
         
         return view('booking_print.booking_print_pdf',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
 
@@ -176,6 +240,10 @@ class booking_printController extends Controller
 						->where('db_intinerary_id','=',$id)
 						->get();
     	// return $data;
+        // $dompdf = new Dompdf();
+        // $dompdf->loadHtml('booking_print.booking_print_passport', compact('data'));
+        // $dompdf->stream();
+        // $pdf = PDF::loadView('booking_print.booking_print_passport', compact('data'))->setPaper('a4','landscape')->download('Passport '.date('d-m-y').'.pdf');
 		return view('booking_print.booking_print_passport',compact('data'));
     }
 }

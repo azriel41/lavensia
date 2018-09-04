@@ -384,7 +384,7 @@
                             <div class="col-sm-9">
                                 <div class=" col-sm-3">
                                     <div>
-                                        <a href="{{ route('print_passport', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-red  waves-effect waves-float">
+                                        <a href="{{ route('print_excel', ['id' => $detail_intinerary->md_id]) }}" class="btn bg-red  waves-effect waves-float">
                                             <i class="material-icons">layers</i>
                                         Excel
                                         </a>
