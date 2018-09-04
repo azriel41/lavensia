@@ -60,7 +60,6 @@ class booking_listController extends Controller
     }
     public function bookingdetail($id)
     {
-
 		$data = DB::table('d_booking')
 						->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')	
@@ -71,6 +70,110 @@ class booking_listController extends Controller
 						->get();    	
 		// return $data;
 		return view('booking_list.booking_listdetail',compact('data'));
+    }
+    public function bookingdetail_download_itin($id)
+    {
+
+    	$data = DB::table('m_intinerary')->where('mi_id',$id)->get();
+    	$gg = $data[0]->mi_pdf;
+    	if ($gg == null) {
+    		return view('pdf_kosong');
+    	}
+    	$file = realpath('.').'/storage/app/'.$gg;
+
+    	// return $file;
+		$headers = [
+              'Content-Type' => 'application/pdf',
+         ];
+
+		return response()->download($file);
+    }
+    public function bookingdetail_download_pdf($id)
+    {
+    	$detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
+
+        $booking   = $detail_intinerary->book;
+        $passenger = [];
+        $id        = [];
+        $room      = [];
+        $bed       = [];
+        $person    = [];
+        for ($i=0; $i < count($booking); $i++) { 
+            for ($a=0; $a < count($booking[$i]->party_name); $a++) { 
+                array_push($passenger, $booking[$i]->party_name[$a]);
+                array_push($id, $booking[$i]->party_name[$a]->dp_booking_id);
+                $room[$i][$a] = $booking[$i]->party_name[$a]->dp_room; 
+            }
+            $room[$i] = array_unique($room[$i]);
+            $room[$i] = array_values($room[$i]);
+        }
+
+        $id = array_unique($id);
+        $id = array_values($id);
+
+
+        for ($i=0; $i < count($id); $i++) { 
+            for ($a=0; $a < count($room[$i]); $a++) { 
+                for ($z=0; $z < count($booking[$i]->party_name); $z++) { 
+                    if ($id[$i] == $booking[$i]->party_name[$z]->dp_booking_id and $room[$i][$a] == $booking[$i]->party_name[$z]->dp_room) {
+                        $bed[$i][$a] = $booking[$i]->party_name[$z]->dp_bed;
+                    }
+                }
+            }
+        }
+        
+        
+        for ($a=0; $a < count($room); $a++) { 
+            for ($z=0; $z < count($room[$a]); $z++) { 
+                for ($c=0; $c < count($booking[$a]->party_name); $c++) { 
+                    if ($id[$a] == $booking[$a]->party_name[$c]->dp_booking_id and $room[$a][$z] == $booking[$a]->party_name[$c]->dp_room) {
+                        $person[$a][$z][$c] = $booking[$a]->party_name[$c]->dp_bed;
+                    }
+                }
+            }
+            
+        }
+        
+        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+        
+  //   	$data = DB::table('d_booking')->where('db_id',$id)->get();
+  //   	$gg = $data[0]->db_pdf;
+  //   	if ($gg == null) {
+  //   		return view('pdf_kosong');
+  //   	}
+  //   	$file = realpath('.').'/storage/app/'.$gg;
+
+  //   	// return $file;
+		// $headers = [
+  //             'Content-Type' => 'application/pdf',
+  //        ];
+
+		// return response()->download($file);
+    }
+    public function bookingdetail_download_final($id)
+    {
+
+    	$data = DB::table('d_booking')->where('db_id',$id)->get();
+    	$gg = $data[0]->db_pdf;
+    	if ($gg == null) {
+    		return view('pdf_kosong');
+    	}
+    	$file = realpath('.').'/storage/app/'.$gg;
+
+    	// return $file;
+		$headers = [
+              'Content-Type' => 'application/pdf',
+         ];
+
+		return response()->download($file);
+    }
+    public function bookingdetail_download_invoice($id)
+    {
+
+    	$data = DB::table('m_intinerary')->where('mi_id',$id)->get();
+		return $data;    	
+
+		return response()->download($file);
     }
     
 }

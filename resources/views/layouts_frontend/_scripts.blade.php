@@ -68,7 +68,8 @@
 <script src="{{ asset ('assets_frontend/js/pages/charts/sparkline.js') }}"></script>
 
 <script type="text/javascript">
-    
+    var baseUrl = ('{{ url('/') }}');
+
     $(function(){
         /* ========================================================================= */
         /*  Contact Form

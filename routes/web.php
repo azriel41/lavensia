@@ -89,8 +89,16 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');
-		//bookingdetail
+		//booking detail
 		Route::get('/booking/bookingdetail/{id}', 'booking\booking_listController@bookingdetail')->name('bookingdetail');
+		//booking detail print itin 
+		Route::get('/booking/bookingdetail_download_itin/{id}', 'booking\booking_listController@bookingdetail_download_itin')->name('bookingdetail_download_itin');
+		//booking detail print pdf 
+		Route::get('/booking/bookingdetail_download_pdf/{id}', 'booking\booking_listController@bookingdetail_download_pdf')->name('bookingdetail_download_pdf');
+		//booking detail print final 
+		Route::get('/booking/bookingdetail_download_final/{id}', 'booking\booking_listController@bookingdetail_download_final')->name('bookingdetail_download_final');
+		//booking detail print invoice 
+		Route::get('/booking/bookingdetail_download_invoice/{id}', 'booking\booking_listController@bookingdetail_download_invoice')->name('bookingdetail_download_invoice');
 
 	//BOOKING ALL INDEX
 	Route::get('/booking/booking_all', 'booking\booking_allController@booking_all')->name('booking_all');

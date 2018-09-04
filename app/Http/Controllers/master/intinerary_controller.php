@@ -77,7 +77,6 @@ class intinerary_controller extends Controller
 
     public function create()
     {
-
         $bulan = Carbon::now()->format('m');
         $tahun = Carbon::now()->format('y');
         $tanggal = Carbon::now()->format('d');

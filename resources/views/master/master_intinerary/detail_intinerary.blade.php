@@ -410,7 +410,7 @@
                             <div class="col-sm-3">
                                 <div class=" col-sm-4">
                                     <div>
-                                        <button type="button" class="btn btn-warning" onclick="saving()" style="margin-top: 5px;"><i class="fa fa-save"></i> Save PDF</button>
+                                        <button type="button" class="btn btn-warning" onclick="saving()" style="margin-top: 5px;"><i class="fa fa-save"></i> Save data</button>
                                     </div>
                                 </div>
                             </div>

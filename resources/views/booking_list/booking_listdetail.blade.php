@@ -9,11 +9,7 @@
         @include('layouts_frontend._head')
        
         <style type="text/css">
-            .btn-primary {
-                color: white;
-                background-color: transparent;
-                border-color: #ffffff;
-            }
+            
             .btn-plus {
                 color: black;
                 border-radius: 50%;
@@ -30,16 +26,7 @@
                 background-color: red;
                 border-color: #ffffff;
             }
-            .btn-primary:hover {
-                color: black;
-                background-color: #f4c800;
-                border-color: #ffffff;
-            }
-            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-                color: #000;
-                background-color: #face03;
-                border-color: #ffffff;
-            }
+           
             .btn-book{
                 color: black;
                 background-color: #f9ce05;
@@ -279,13 +266,20 @@
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                 </tr>
-                                <tr>
-                                    {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-orange download" id="pdf" data-id="{{ $data[0]->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></td>
-                                </tr>
+
                             </table>
-
-
+                            <tr>
+                                    {{-- <td align="left"></td> --}}
+                                    <td align="left"><button class="btn btn-small btn-orange download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
+                                    <td align="left">&nbsp;</td>
+                                    <td align="left"><button class="btn btn-small btn-primary download_pdf" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Pdf</b></button></td>
+                                    <td align="left">&nbsp;</td>
+                                    <td align="left"><button class="btn btn-small btn-info download_final" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Final</b></button></td>
+                                    <td align="left">&nbsp;</td>
+                                    <td align="left">&nbsp;</td>
+                                    <td align="left"><button class="btn btn-small btn-danger download_invoice" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
+                                    <td align="left">&nbsp;</td>
+                                </tr>
                         </div>
                     </div>
                 </div>
@@ -307,7 +301,17 @@
                                 <tr>
                                     <td align="left" class="Hightlight">Status</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight" colspan="7"><span class="label label-warning"> {{ $data[0]->db_status }}</span></td>
+                                    <td align="left" class="Hightlight" colspan="7">
+                                        @if ($data[0]->db_status == 'Waiting List')
+                                            <span class="label label-warning"> {{ $data[0]->db_status }}</span>
+                                        @elseif ($data[0]->db_status == 'Holding Confirm')
+                                            <span class="label label-success"> {{ $data[0]->db_status }}</span>
+                                        @elseif ($data[0]->db_status == 'Canceled')
+                                            <span class="label label-danger"> {{ $data[0]->db_status }}</span>
+                                        @else
+                                            <span class="label label-info"> {{ $data[0]->db_status }}</span>
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="Hightlight">Name</td>
@@ -352,6 +356,11 @@
                                     <td align="left" class="Hightlight" colspan="7">{{ $data[0]->created_by }}</td>
                                 </tr>
                                 <tr>
+                                    <td align="left" class="Hightlight">Book By</td>
+                                    <td>: </td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data[0]->name }}</td>
+                                </tr>
+                                <tr>
                                     <td valign="top" align="left" class="Hightlight">Remark</td>
                                     <td valign="top" >: </td>
                                     <td valign="top"  align="left" class="Hightlight" colspan="7">{{ $data[0]->db_remark }}</td>
@@ -392,42 +401,6 @@
                     <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
                         
                         <div class="sec-sub-title text-center wow fadeInUp animated col-sm-12" data-wow-duration="1000ms">
-{{--                                 @foreach ($data as $index => $e)
-                                    <div class="col-sm-5">
-                                        <img class="img-responsive" src="{{ url('storage/app/'.    $e->dp_image)  }}" width="300px" height="200px">
-                                    </div>
-                                    <div class="col-sm-7" style="min-height: 300px">
-                                        <table class="table text-left">
-                                            <tr>
-                                                <td>Nama</td>
-                                                <td>: {{ $e->dp_name }}</td>
-                                                <td>dp_gender</td>
-                                                <td>: {{ $e->dp_gender }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Passport </td>
-                                                <td>: {{ $e->dp_passport }}</td>
-                                                <td>Date of Birth</td>
-                                                <td>: {{ $e->dp_birth_date }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Expired Date </td>
-                                                <td>: {{ $e->dp_exp_date }}</td>
-                                                <td>Place of Birth</td>
-                                                <td>: {{ $e->dp_birth_place }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Issuing </td>
-                                                <td>: {{ $e->dp_issuing }}</td>
-                                                <td>Remark</td>
-                                                <td>: {{ $e->dp_reference }}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <br> 
-                                @endforeach --}}
-
-
                                 @foreach ($data as $index => $e)
                                     <table class="table table-bordered text-left">
                                             <tr>
@@ -472,5 +445,25 @@
     </body>
 </html>
 <script type="text/javascript">
+
+    $('.download_itin').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_itin/'+ini);
+    })
+
+    $('.download_pdf').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_pdf/'+ini);
+    })
+
+    $('.download_final').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_final/'+ini);
+    })
+
+    $('.download_invoice').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_invoice/'+ini);
+    })
 
 </script>

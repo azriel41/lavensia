@@ -119,7 +119,17 @@
                                             <td>{{ $el->db_name }}</td>
                                             <td>{{ $el->created_at }}</td>
                                             <td>{{ $el->mi_name }}</td>
-                                            <td><span class="label label-primary">{{ $el->db_status }}</span></td>
+                                            <td>
+                                                @if ($el->db_status == 'Waiting List')
+                                                    <span class="label label-warning"> {{ $el->db_status }}</span>
+                                                @elseif ($el->db_status == 'Holding Confirm')
+                                                    <span class="label label-success"> {{ $el->db_status }}</span>
+                                                @elseif ($el->db_status == 'Canceled')
+                                                    <span class="label label-danger"> {{ $el->db_status }}</span>
+                                                @else
+                                                    <span class="label label-info"> {{ $el->db_status }}</span>
+                                                @endif
+                                                </td>
                                             <td>{{ $el->created_by }}</td>
                                             <td>{{ $el->name }}</td>
                                         </tr>
