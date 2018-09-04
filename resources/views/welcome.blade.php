@@ -354,7 +354,7 @@
     
     function more(argument) {
         var parent = $(argument).data('id');
-        window.location = ('/lavensia/package/package/'+parent);
+        window.location = ('{{ url('/package/package') }}/'+parent);
     }
 
     function intinerary(argument) {

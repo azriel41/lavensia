@@ -57,7 +57,7 @@ class booking_allController extends Controller
     public function datatable_booking_all(Request $req)
     {
            
-    	$data = $this->d_booking->all();
+    	$data = $this->d_booking->all()->sortByDesc("created_at");;
 
         $data = collect($data);
         return Datatables::of($data)
@@ -121,6 +121,7 @@ class booking_allController extends Controller
 			        ->rawColumns(['aksi','handle_name'])
 			        ->addIndexColumn()
 			        ->make(true);
+
     }
 
     public function booking_handling($id)
@@ -131,8 +132,23 @@ class booking_allController extends Controller
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$booking->db_intinerary_id);
     	$count = [];
 
-    	$count = $booking->party_name->groupBy('dp_room')->toArray();
+    	$count = $booking->party_name->where('dp_status_person','!=','baby')->groupBy('dp_room')->toArray();
+    	$bab = $booking->party_name->where('dp_status_person','=','baby')->toArray();
+    	$bab = array_values($bab);
     	$count = array_values($count);
+    	$baby = [];
+    	for ($a=0; $a < count($count); $a++) { 
+    		$index = 0;
+    		for ($i=0; $i < count($bab); $i++) { 
+    			if ($bab[$i]['dp_room'] == $count[$a][0]['dp_room']) {
+    				$baby[$a][$index]= $bab[$i];
+    				$index++;
+    			}
+    		}
+    		if (isset($baby[$a])) {
+    			// $baby = array_values($baby[$a]);
+    		}
+    	}
     	$id    = $booking->db_intinerary_id;
 		$add_name = [];
 		$additional_book = $booking->additional_book->groupBy('da_additional_id');
@@ -145,7 +161,7 @@ class booking_allController extends Controller
 			}
 			  	
 		}
-		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name'));
+		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name','baby'));
 
     }
 
@@ -161,6 +177,16 @@ class booking_allController extends Controller
     		$total_pax 	   = $req->total_adult + $req->total_child;
     		$total_pax_old = $book->db_total_adult + $book->db_total_child;
     		// HEADER
+    		$hapus_data = $this->d_party_name->cari('dp_booking_id',$req->booking_id);
+    		$temp = [];
+
+    		for ($i=0; $i < count($req->dp_detail); $i++) { 
+    			if ($req->dp_detail[$i] != null) {
+    				array_push($temp, $req->dp_detail[$i]);
+    			}
+    		}
+
+			$this->d_party_name->deleteNotSame('dp_booking_id',$req->booking_id,'dp_detail',$temp);
 
     		if ($req->payment == 'dp') {
     			$status = 'Hold';
@@ -308,20 +334,36 @@ class booking_allController extends Controller
     	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$booking->db_intinerary_id);
     	$count = [];
 
-    	$count = $booking->party_name->groupBy('dp_room')->toArray();
+    	$count = $booking->party_name->where('dp_status_person','!=','baby')->groupBy('dp_room')->toArray();
+    	$bab = $booking->party_name->where('dp_status_person','=','baby')->toArray();
+    	$bab = array_values($bab);
     	$count = array_values($count);
+    	$baby = [];
+    	for ($a=0; $a < count($count); $a++) { 
+    		$index = 0;
+    		for ($i=0; $i < count($bab); $i++) { 
+    			if ($bab[$i]['dp_room'] == $count[$a][0]['dp_room']) {
+    				$baby[$a][$index]= $bab[$i];
+    				$index++;
+    			}
+    		}
+    		if (isset($baby[$a])) {
+    			// $baby = array_values($baby[$a]);
+    		}
+    	}
     	$id    = $booking->db_intinerary_id;
 		$add_name = [];
 		$additional_book = $booking->additional_book->groupBy('da_additional_id');
-
 		for ($z=0; $z < count($detail_intinerary->intinerary->add); $z++) { 
 			$data = $detail_intinerary->intinerary->add[$z]->ma_id;
-
-			for ($i=0; $i < count($additional_book[$data]); $i++) { 
-				$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
-			}    	
+			if (isset($additional_book[$data])) {
+				for ($i=0; $i < count($additional_book[$data]); $i++) { 
+					$add_name[$data][$i] = $additional_book[$data][$i]['da_name'];
+				}  
+			}
+			  	
 		}
-		return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name'));
+		return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name','baby'));
     }
 
     public function update_book_edit(request $req)
@@ -335,7 +377,15 @@ class booking_allController extends Controller
     		$total_pax 	   = $req->total_adult + $req->total_child;
     		$total_pax_old = $book->db_total_adult + $book->db_total_child;
     		// HEADER
+    		$hapus_data = $this->d_party_name->cari('dp_booking_id',$req->booking_id);
+    		$temp = [];
+    		for ($i=0; $i < count($req->dp_detail); $i++) { 
+    			if ($req->dp_detail[$i] != null) {
+    				array_push($temp, $req->dp_detail[$i]);
+    			}
+    		}
 
+			$this->d_party_name->deleteNotSame('dp_booking_id',$req->booking_id,'dp_detail',$temp);
 
     		$file = $req->file('pdf');
     		if ($file != null) {
@@ -346,7 +396,6 @@ class booking_allController extends Controller
 				$filename = $book->db_pdf;
 			}
 
-			
 
     		$data = array(
 						    'db_name'					=> strtoupper($req->party_name),
@@ -386,9 +435,6 @@ class booking_allController extends Controller
 						}else{
 							$filename =  $this->d_party_name->show_detail_one('dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b])->dp_image;
 						}
-							
-					
-
 						
 						$data = array(	
 							'dp_bed'			=> $req->dp_bed[$b],
