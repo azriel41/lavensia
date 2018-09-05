@@ -1,7 +1,14 @@
 @extends('main')
 @include('layouts._sidebar')
     
-
+<style type="text/css">
+    .gede{
+        font-size: 12px !important;
+    }
+    td{
+        vertical-align: middle!important;
+    }
+</style>
     <section class="content">
         <div class="container-fluid">
             @include('layouts.task')
@@ -35,6 +42,7 @@
                             </ul>
                         </div>
                         <div class="body">
+
                             <div class="responsive">
                                 <table width="100%" class="table dt_server table-striped" align="center">
                                     <thead>
@@ -51,7 +59,7 @@
                                            <th class="center-al">Detail</th>
                                        </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody align="center">
                                        
                                     </tbody>
                                 </table>
@@ -80,7 +88,7 @@ $(document).ready(function(){
             {data: 'created_at',        name: 'created_at'},
             {data: 'db_name',           name: 'db_name'},
             {data: 'created_at',        name: 'created_at'},
-            {data: 'db_status',         name: 'db_status'},
+            {data: 'label',         name: 'label'},
             {data: 'book_by',           name: 'book_by'},
             {data: 'handle_name',       name: 'handle_name'},
             {data: 'aksi',              name: 'aksi'},
@@ -109,6 +117,66 @@ $(document).ready(function(){
                     instance.hide({
                         transitionOut: 'fadeOutUp'
                     }, toast);
+                }
+            ],
+            [
+                '<button class="bg-red">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+        });
+    }
+
+    function deleting(id) {
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-question-circle',
+            title: 'Hapus Booking!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button style="background-color:#44d7c9;">Hapus</button>',
+                function (instance, toast) {
+
+                    $.ajax({
+                        type: "get",
+                        url:'{{ route('booking_all_delete') }}',
+                        data: {id},
+                        dataType:'json',
+                      success:function(data){
+                        if (data.status == '1') {
+                            var table = $('.dt_server').DataTable()
+                            table.ajax.reload();
+                            iziToast.success({
+                                icon: 'fas fa-check-circle',
+                                message: 'Data Telah Dihapus!',
+                            });
+                        }else if (data.status == '0') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
+                                message:data.message,
+                            });
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
+                            message: 'Terjadi Kesalahan!',
+                        });
+                      }
+                    });
                 }
             ],
             [

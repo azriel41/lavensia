@@ -1162,23 +1162,7 @@
                                     </div>
                                   </div>
                             </fieldset>
-                            <div class="col-sm-5 col-xs-4">
-                                <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
-                                    <div class="file-upload upl_3 col-sm-8">
-                                        <div class="file-select">
-                                            <div class="file-select-button fileName" >Upload PDF</div>
-                                            <div class="file-select-name noFile">PDF Name</div> 
-                                            <input type="file" class="chooseFile" id="uploadPDF" name="pdf">
-                                        </div>
-                                    </div>
-                                    <div class="preview_pdf col-sm-4">
-                                        <div>
-                                            <button type="button" class="btn btn-info" onclick="PreviewImage()" style="margin-top: 5px;"><i class="fa fa-eye"></i> Preview PDF</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                     
                             <div class="col-sm-12" style="margin-top: 100px">
                                 <fieldset class="scheduler-border col-sm-6 " style="text-align: center !important;">
                                   <h4 class="scheduler-border count_h2" ><b>REMARK</b></h4>
@@ -1210,6 +1194,7 @@
                             </div>
                             <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> See New Invoice</button>
+                                <button type="button" class="btn btn-danger waves-effect"><i class="fa fa-arrow-left"></i> Back</button>
                             </div>
                         </form>
                         <div class="col-sm-12 invoice_tab" hidden="">

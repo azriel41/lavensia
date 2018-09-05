@@ -22,6 +22,7 @@ use Yajra\Datatables\Datatables;
 use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
+use App\d_history_bayar;
 use Exception;
 class booking_allController extends Controller
 {
@@ -31,12 +32,14 @@ class booking_allController extends Controller
 	protected $d_party_name;
 	protected $d_additional_booking;
 	protected $additional;
+	protected $d_history_bayar;
 
 	public function __construct(detail_intinerary $detail_intinerary,
 								intinerary $intinerary,
 								d_booking $d_booking,
 								d_party_name $d_party_name,
 								d_additional_booking $d_additional_booking,
+								d_history_bayar $d_history_bayar,
 								additional $additional)
 	{
 		$this->detail_intinerary 	= new TestRepo($detail_intinerary);
@@ -45,6 +48,7 @@ class booking_allController extends Controller
         $this->d_party_name 	 	= new TestRepo($d_party_name);
         $this->d_additional_booking = new TestRepo($d_additional_booking);
         $this->additional 			= new TestRepo($additional);
+        $this->d_history_bayar 		= new TestRepo($d_history_bayar);
         
 	}
     public function booking_all(Request $req)
@@ -119,8 +123,20 @@ class booking_allController extends Controller
 			        	}
 			        })->addColumn('code', function ($data) {
 			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>';
+			        })->addColumn('label', function ($data) {
+
+			        	if($data->db_status == 'Waiting List')
+                            return '<span class="label label-warning gede">'.$data->db_status.'</span>';
+                        elseif ($data->db_status == 'Holding Confirm')
+                            return '<span class="label label-success gede">'.$data->db_status.'</span>';
+                        elseif ($data->db_status == 'Canceled')
+                            return '<span class="label label-danger gede">'.$data->db_status.'</span>';
+                        else
+                            return '<span class="label label-info gede">'. $data->db_status.'</span>';
+                        
 			        })
-			        ->rawColumns(['aksi','handle_name','code'])
+
+			        ->rawColumns(['aksi','handle_name','code','label'])
 			        ->addIndexColumn()
 			        ->make(true);
 
@@ -128,6 +144,23 @@ class booking_allController extends Controller
 
     public function booking_handling($id)
     {
+    	$user = Auth::user()->id;
+  		$data = DB::Table('d_booking as db')
+    					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
+						->leftjoin('users','users.id','=','db.db_handle_by')	
+    					->get();
+        $category = category::all();
+
+        $intinerary = intinerary::all();
+
+        $det = [];
+        $cat = [];
+        foreach ($intinerary as $index => $val) {
+            $det = $val->detail_intinerarys;
+            $cat = $val->category;
+        }
+        $book = User::all();
+
     	$booking = $this->d_booking->cari('db_id',$id);
 
 
@@ -163,7 +196,14 @@ class booking_allController extends Controller
 			}
 			  	
 		}
-		return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name','baby'));
+
+		if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+            return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name','baby','det','response','cart','jumlah'));
+        }else{
+            return view('booking_all.booking_approve',compact('detail_intinerary','booking','id','count','add_name','baby','det','response'));
+        }
 
     }
 
@@ -196,19 +236,10 @@ class booking_allController extends Controller
     			$status = 'Holding Confirm';
     		}
 
-    		$file = $req->file('pdf');
-    		if ($file == null) {
-		        return Response::json(['status'=>0,'message'=>'Please Upload PDF']);
-			}
-
-			$filename = 'booking/'.$book->db_kode_transaksi.'_'.'DETAIL_TOUR'.'_'.$req->booking_id.'.'.$file->getClientOriginalExtension();
-			
-        	Storage::put($filename,file_get_contents($file));
 
     		$data = array(
 						    'db_name'					=> strtoupper($req->party_name),
 						    'db_intinerary_id'			=> $req->id,
-						    'db_pdf'					=> $filename,
 						    'db_telp'					=> $req->party_telephone,
 						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> $db_total_additional,
@@ -330,6 +361,24 @@ class booking_allController extends Controller
 
     public function edit_booking($id)
     {
+
+    	$user = Auth::user()->id;
+  		$data = DB::Table('d_booking as db')
+    					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
+						->leftjoin('users','users.id','=','db.db_handle_by')	
+    					->get();
+        $category = category::all();
+
+        $intinerary = intinerary::all();
+
+        $det = [];
+        $cat = [];
+        foreach ($intinerary as $index => $val) {
+            $det = $val->detail_intinerarys;
+            $cat = $val->category;
+        }
+        $book = User::all();
+
     	$booking = $this->d_booking->cari('db_id',$id);
 
 
@@ -365,7 +414,13 @@ class booking_allController extends Controller
 			}
 			  	
 		}
-		return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name','baby'));
+		if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+            return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name','baby','det','response','cart','jumlah'));
+        }else{
+            return view('booking_all.booking_edit',compact('detail_intinerary','booking','id','count','add_name','baby','det','response'));
+        }
     }
 
     public function update_book_edit(request $req)
@@ -389,20 +444,9 @@ class booking_allController extends Controller
 
 			$this->d_party_name->deleteNotSame('dp_booking_id',$req->booking_id,'dp_detail',$temp);
 
-    		$file = $req->file('pdf');
-    		if ($file != null) {
-		        $filename = 'booking/'.$book->db_kode_transaksi.'_'.'DETAIL_TOUR'.'_'.$req->booking_id.'.'.$file->getClientOriginalExtension();
-			
-        		Storage::put($filename,file_get_contents($file));
-			}else{
-				$filename = $book->db_pdf;
-			}
-
-
     		$data = array(
 						    'db_name'					=> strtoupper($req->party_name),
 						    'db_intinerary_id'			=> $req->id,
-						    'db_pdf'					=> $filename,
 						    'db_telp'					=> $req->party_telephone,
 						    'db_remark'					=> $req->bk_remark,
 						    'db_total_additional'		=> $db_total_additional,
@@ -519,22 +563,22 @@ class booking_allController extends Controller
 
     public function booking_detail($id)
     {
-    	return view('booking_all.booking_detail');
+    	return view('booking_all.booking_detail',compact('id'));
     }
     
 
     public function datatable_booking_detail(Request $req)
     {
            
-    	$data = $this->d_booking->cari('db_id',$req->id)->payment->sortByDesc("created_at");;
-
+    	$data = $this->d_history_bayar->show('dh_booking_id',$req->id)->sortByDesc('created_at');
         $data = collect($data);
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
 		        	$a = '';
 		        	$b = '';
-		        	$c = '';
+		        	$c = '<li>';
 		        	$d = '';
+		        	$f = '</li>';
 
 
 		        			$a = '<div class="btn-group">
@@ -543,28 +587,29 @@ class booking_allController extends Controller
 					                    Manage <span class="caret"></span>
 					                </button>
 					                <ul class="dropdown-menu" style="padding:0px">';
-		        			if ($data->db_handle_by == null) {
+		        			if ($data->booking->db_handle_by == null) {
 		                    	
 			                	$b = '<li>
-				                        <a onclick="handle(\''.$data->db_id.'\')" class="waves-effect waves-block bg-teal" style="color:#607D8B;">
-				                            <i class="material-icons">touch_app</i>
-				                            Handle
+				                        <a  class="waves-effect waves-block bg-red" style="color:#607D8B;">
+				                            <i class="material-icons">stop</i>
+				                            Not Handled
 				                        </a>
 				                     </li>';
 		                    }
 
-		                    if ($data->db_handle_by != null) {
-		                    	if ($data->db_handle_by == Auth::User()->id) {
+		                    if ($data->booking->db_handle_by != null) {
+		                    	if ( $data->dh_status_payment != 'APPROVE') {
 		                    		$c = 	'<li>
-						                        <a href="'.url('/booking/edit').'/'.$data->db_id.'" class=" waves-effect waves-block" style="color:#607D8B">
+						                        <a onclick="approve(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-teal">
+						                            <i class="material-icons">touch_app</i>
+						                            Approve
+						                        </a>';
+		                    	}
+
+		                    	if ($data->booking->db_handle_by == Auth::User()->id ) {
+						            $f=           '<a onclick="check(\''.$data->dh_id.'\')" class="waves-effect waves-block" >
 						                            <i class="material-icons">edit</i>
-						                            Edit
-						                        </a>
-						                    </li>
-						                    <li>
-						                        <a onclick="deleting(\''.$data->db_id.'\')" class="waves-effect waves-block" style="color:#607D8B">
-						                            <i class="material-icons">delete</i>
-						                            Delete
+						                            Check
 						                        </a>
 						                    </li>';
 		                    	}
@@ -573,26 +618,74 @@ class booking_allController extends Controller
 			                $d = '</ul>
 			           			 </div>';
 
-			            return $a.$b.$c.$d;
+			            return $a.$b.$c.$f.$d;
+			        })->addColumn('nominal', function ($data) {
+			        		return '<div class="pull-left">'.'Rp .'.'</div>'.
+                            '<div class="pull-right">'.number_format($data->dh_total_payment,2,',','.').'</div>';
 			        })->addColumn('handle_name', function ($data) {
-			        	if ($data->db_handle_by != null) {
-			        		return $data->handle->name;
+			        	if ($data->booking->db_handle_by != null) {
+			        		return $data->booking->handle->name;
 			        	}else{
 			        		return '-';
 			        	}
-			        })->addColumn('book_by', function ($data) {
-			        	if ($data->user != null) {
-			        		return $data->user->name;
-			        	}else{
-			        		return '-';
-			        	}
-			        })->addColumn('code', function ($data) {
-			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>';
+			        })->addColumn('status', function ($data) {
+
+			        	if($data->dh_status_payment == 'RELEASED')
+                            return '<span class="label label-warning gede">'.$data->dh_status_payment.'</span>';
+                        else
+                            return '<span class="label label-success gede">'. $data->dh_status_payment.'</span>';
+                        
 			        })
-			        ->rawColumns(['aksi','handle_name','code'])
+			        ->rawColumns(['aksi','nominal','code','handle_name','status'])
 			        ->addIndexColumn()
 			        ->make(true);
 
+    }
+
+    public function approve_payment(request $req)
+    {
+    	DB::beginTransaction();
+    	try{
+	    	$data = $this->d_history_bayar->cari('dh_id',$req->id);
+
+	    	$upd  = array(
+	    			 'db_total_remain' => $data->booking->db_total_remain - $data->dh_total_payment
+	    		    );
+	    	$upd1  = array(
+	    			 'dh_status_payment'=>'APPROVE'
+	    		    );
+
+	    	$this->d_booking->update($upd,'db_id',$data->dh_booking_id);
+	    	$this->d_history_bayar->update($upd1,'dh_id',$data->dh_id);
+			DB::commit();
+			return Response::json(['status'=>1]);
+    	}catch(Exception $er){
+    		dd($er);
+    		DB::rollBack();
+    	}
+    }
+
+    public function delete(request $req)
+    {	
+    	DB::beginTransaction();
+    	try{
+	    	$book 		   = $this->d_booking->cari('db_id',$req->id);
+			$total_pax 	   = $book->db_total_adult + $book->db_total_child;
+    		$itinerary 	   = $this->detail_intinerary->cari('md_id',$book->db_intinerary_id);
+			$hasil  	   = $itinerary->md_seat_remain + $total_pax;
+			$updt   	   = array(
+	    							'md_seat_remain'			=> $hasil,
+						   		  );
+	    	$this->detail_intinerary->update($updt,'md_id',$book->db_intinerary_id);
+
+			$this->d_booking->delete('db_id',$req->id);
+			DB::commit();
+			return Response::json(['status'=>1]);
+    	}catch(Exception $er){
+    		dd($er);
+    		DB::rollBack();
+    	}
+    	
     }
 }
 

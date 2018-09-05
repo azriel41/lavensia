@@ -20,7 +20,7 @@ class d_history_bayar extends Model
 
 	public function booking()
 	{
-        return $this->belongsTo('App\d_booking','db_id','dh_booking_id');
+        return $this->belongsTo('App\d_booking','dh_booking_id','db_id');
 	}
 
 	public function detail_history()
