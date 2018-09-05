@@ -1,6 +1,5 @@
 @extends('main')
 @include('layouts._sidebar')
-    
 <style type="text/css">
     .gede{
         font-size: 12px !important;
@@ -9,13 +8,15 @@
         vertical-align: middle!important;
     }
 </style>
+
     <section class="content">
         <div class="container-fluid">
             @include('layouts.task')
             <div class="header">
                 <ol class="breadcrumb breadcrumb-bg-pink">
-                    <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-                    <li class="active"><i class="material-icons"></i>Master Intinerary</li>
+                    <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Operational</a></li>
+                    <li><a href="javascript:void(0);">Book</a></li>
+                    <li class="active"><i class="material-icons"></i>Detail Payment</li>
                 </ol>
             </div>
             <!-- CPU Usage -->
@@ -25,7 +26,7 @@
                         <div class="header bg-cyan">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Booking List</h2>
+                                    <h2>Payment History</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
@@ -42,21 +43,16 @@
                             </ul>
                         </div>
                         <div class="body">
-
                             <div class="responsive">
                                 <table width="100%" class="table dt_server table-striped" align="center">
                                     <thead>
                                        <tr >
                                            <th class="center-al">No</th>
-                                           <th class="center-al">Code Tour</th>
                                            <th class="center-al">Date</th>
-                                           <th class="center-al">Party Name</th>
-                                           <th class="center-al">Dep Date</th>
-                                           {{-- <th class="center-al">Group Name</th> --}}
+                                           <th class="center-al">Total</th>
+                                           <th class="center-al">Handled By</th>
                                            <th class="center-al">Status</th>
-                                           <th class="center-al">Book by</th>
-                                           <th class="center-al">Procces By</th>
-                                           <th class="center-al">Detail</th>
+                                           <th class="center-al">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody align="center">
@@ -72,25 +68,55 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
-
+    <div class="modal fade" id="modal_check" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-cyan">
+                    <h3 class="modal-title" id="largeModalLabel">Check Transfer</h3>
+                </div>
+                <div class="modal-body">
+                    <tr>
+                        <td><img class="img_transfer" width="100" height="100" style="border: 1px solid hotpink"></td>
+                        <td><a href=""></a></td>
+                    </tr>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+    var id = '{{ $id }}';
     $('.dt_server').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-          url:'{{ route('datatable_booking_all') }}',
+          url:'{{ route('datatable_booking_detail') }}',
+          data:{id}
         },
+        columnDefs: [
+                {
+                    targets: 3 ,
+                    className: 'center'
+                },
+                {
+                    targets: 0 ,
+                    className: 'center'
+                },
+                {
+                    targets: 3 ,
+                    className: 'center'
+                },
+            ],
         columns: [
             {data: 'DT_Row_Index',      name: 'DT_Row_Index'},
-            {data: 'code', name: 'code'},
             {data: 'created_at',        name: 'created_at'},
-            {data: 'db_name',           name: 'db_name'},
-            {data: 'created_at',        name: 'created_at'},
-            {data: 'label',         name: 'label'},
-            {data: 'book_by',           name: 'book_by'},
+            {data: 'nominal',           name: 'nominal'},
             {data: 'handle_name',       name: 'handle_name'},
+            {data: 'status',            name: 'status'},
             {data: 'aksi',              name: 'aksi'},
         ]
     });
@@ -98,7 +124,7 @@ $(document).ready(function(){
     
 
     function handle(id) {
-    iziToast.show({
+        iziToast.show({
             overlay: true,
             close: false,
             timeout: 20000, 
@@ -131,6 +157,75 @@ $(document).ready(function(){
         });
     }
 
+    function approve(id) {
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-question-circle',
+            title: 'Approve Pembayaran!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button style="background-color:#44d7c9;">Approve</button>',
+                function (instance, toast) {
+
+                    $.ajax({
+                        type: "get",
+                        url:'{{ route('approve_payment') }}',
+                        data: {id},
+                        dataType:'json',
+                      success:function(data){
+                        if (data.status == '1') {
+                            var table = $('.dt_server').DataTable()
+                            table.ajax.reload();
+                            iziToast.success({
+                                icon: 'fas fa-check-circle',
+                                position:'topRight',
+                                message: 'Pembayaran Telah Di Approve!',
+                            });
+
+                            instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
+                        }else if (data.status == '0') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
+                                message:data.message,
+                            });
+                            instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
+                            message: 'Terjadi Kesalahan!',
+                        });
+                      }
+                    });
+                }
+            ],
+            [
+                '<button class="bg-red">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+        });
+    }
+    
+
     function deleting(id) {
         iziToast.show({
             overlay: true,
@@ -138,7 +233,7 @@ $(document).ready(function(){
             timeout: 20000, 
             color: 'dark',
             icon: 'fa fa-question-circle',
-            title: 'Hapus Booking!',
+            title: 'Hapus Pembayaran!',
             message: 'Apakah Anda Yakin ?!',
             position: 'center',
             progressBarColor: 'rgb(0, 255, 184)',
@@ -149,7 +244,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type: "get",
-                        url:'{{ route('booking_all_delete') }}',
+                        url:'{{ route('delete_payment') }}',
                         data: {id},
                         dataType:'json',
                       success:function(data){
@@ -160,6 +255,9 @@ $(document).ready(function(){
                                 icon: 'fas fa-check-circle',
                                 message: 'Data Telah Dihapus!',
                             });
+                             instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
                         }else if (data.status == '0') {
                             iziToast.success({
                                 icon: 'fa fa-save',
@@ -167,6 +265,9 @@ $(document).ready(function(){
                                 title: 'Error!',
                                 message:data.message,
                             });
+                            instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
                         }
                       },error:function(){
                         iziToast.warning({

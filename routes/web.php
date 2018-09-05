@@ -117,11 +117,16 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking/booking_all', 'booking\booking_allController@booking_all')->name('booking_all');
 		//Datatable
 		Route::get('/booking/datatable_booking_all', 'booking\booking_allController@datatable_booking_all')->name('datatable_booking_all');
+		Route::get('/booking/datatable_booking_detail', 'booking\booking_allController@datatable_booking_detail')->name('datatable_booking_detail');
 		//Function Handle
 		Route::get('/booking/booking_handling/{id}', 'booking\booking_allController@booking_handling')->name('booking_handling');
 		Route::post('/booking/booking_handling/update_book', 'booking\booking_allController@update_book')->name('update_book');
 		Route::get('/booking/edit/{id}', 'booking\booking_allController@edit_booking')->name('edit_booking');
 		Route::post('/booking/booking_handling/update_book_edit', 'booking\booking_allController@update_book_edit')->name('update_book_edit');
+		Route::get('/booking/booking_detail/{id}', 'booking\booking_allController@booking_detail')->name('booking_detail');
+		Route::get('/booking/booking_all/delete', 'booking\booking_allController@delete')->name('booking_all_delete');
+		Route::get('/booking/booking_all/approve_payment', 'booking\booking_allController@approve_payment')->name('approve_payment');
+		Route::get('/booking/booking_all/delete_payment', 'booking\booking_allController@delete_payment')->name('delete_payment');
 
 
 	//BOOK ADMIN DAN HANDLE BY

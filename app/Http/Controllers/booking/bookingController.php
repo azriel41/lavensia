@@ -53,7 +53,8 @@ class bookingController extends Controller
     	$dt = carbon::now();
 		$hours = $dt->format('H'); 
 		$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
-		// if (!in_array($hours, $range)) {
+
+		if (in_array($hours, $range)) {
 	    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
 	    	$id 				= $req->id;
@@ -65,10 +66,10 @@ class bookingController extends Controller
 	        }else{
 	        	return view('booking.booking',compact('detail_intinerary','detil','id'));
 	        }
-		// }else{
-		// 	Session::flash('message','Tidak Dapat Diakses');
-		// 	return redirect()->back();
-		// }
+		}else{
+			Session::flash('message','Tidak Dapat Diakses');
+			return redirect()->back();
+		}
     }
     public function save(Request $req)
     {
@@ -120,7 +121,11 @@ class bookingController extends Controller
     					 );
 
     		$kurang = $this->detail_intinerary->cari('md_id',$req->id);
-    		$hasil  = $kurang->md_seat_remain - $req->bk_totalpac;
+    		$hasil  = $kurang->md_seat_remain - $req->total_adult - $req->total_child;
+    		if ($hasil < 0) {
+    			$sisa = $kurang->md_seat_remain - $hasil;
+    			return Response::json(['status'=>0,'message'=>'Exceed Remain Pax, Remaining Pax is '.$sisa]);
+    		}
     		$updt = array(
     						'md_seat_remain'			=> $hasil,
     					 );

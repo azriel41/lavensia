@@ -1174,7 +1174,7 @@
                                     </div>
                                   </div>
                                 </fieldset>
-                                <div class="col-sm-6 col-xs-4">
+                              {{--   <div class="col-sm-6 col-xs-4">
                                     <div class="preview_div satu" style="margin-bottom: 20px;margin-top: 20px;">
                                         <div class="file-upload active upl_3 col-sm-8">
                                             <div class="file-select">
@@ -1189,10 +1189,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-12" style="margin-top: 50px;">
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> See New Invoice</button>
+                                <a href="{{ url('booking/booking_all') }}">
+                                    <button type="button" class="btn btn-danger waves-effect"><i class="fa fa-arrow-left"></i> Back</button>
+                                </a>
                             </div>
                         </form>
                         <div class="col-sm-12 invoice_tab" hidden="">

@@ -15,11 +15,12 @@ class d_history_bayar extends Model
 						   'dh_booking_id',
 						   'dh_total_payment',
 						   'dh_payment_method',
+						   'dh_status_payment',
 						];
 
 	public function booking()
 	{
-        return $this->belongsTo('App\d_booking','db_id');
+        return $this->belongsTo('App\d_booking','dh_booking_id','db_id');
 	}
 
 	public function detail_history()
