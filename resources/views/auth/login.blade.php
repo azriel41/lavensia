@@ -7,14 +7,14 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="{{ url('/') }}">Admin<b>BSB</b></a>
-            <small>Admin BootStrap Based - Material Design</small>
+            <a href="{{ url('/') }}"><b>OKE-TRIP</b></a>
+            <small>Warmest Traveller - Solution your Holiday</small>
         </div>
         <div class="card">
             <div class="body">
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
-                    <div class="msg">Sign in to start your session</div>
+                    {{-- <div class="msg">Sign in</div> --}}
 
                     <div class="input-group{{ $errors->has('username') ? ' has-error' : '' }}">
                         <span class="input-group-addon">
@@ -48,7 +48,7 @@
                             <label for="rememberme">Remember Me</label>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                            <button class="btn btn-block waves-effect"  style="color:white;background-color: #0526ce;" type="submit">SIGN IN</button>
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">

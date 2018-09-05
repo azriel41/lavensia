@@ -28,7 +28,7 @@
             }
            
             .btn-book{
-                color: black;
+                color: white;
                 background-color: #f9ce05;
             }
             .logo{
@@ -239,12 +239,12 @@
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
                             <table width="100%"> 
                                 <tr>
-                                    <td align="left" valign="top" class="Hightlight" colspan="3"><h2 class="count_h2" style="margin-top: -5px;">{{ $data[0]->mi_name }}</h2></td>
+                                    <td align="left" valign="top" class="Hightlight" colspan="3"><h2 style="margin-top: -5px;font-weight: bold;">{{ $data[0]->mi_name }}</h2></td>
                                 </tr>
                                 <tr>
-                                    <td width="10px" align="left" class="Hightlight">Itinerary </td>
-                                    <td width="10px">: </td>
-                                    <td align="left" class="Hightlight"><h4 class="count_h2" style="margin-top: -5px;"><span class="label label-warning">{{ $data[0]->md_nota }}</span></h4></td>
+                                    <td width="20px" align="left" class="Hightlight">Itinerary </td>
+                                    <td width="70px">: </td>
+                                    <td align="left" class="Hightlight"><h4>{{ $data[0]->md_nota }}</h4></td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="Hightlight"><h4 class="support">Flight</h4></td>
@@ -252,14 +252,14 @@
                                     <td align="left" class="Hightlight"><h4 class="support">{{ $data[0]->mi_by }}</h4></td>
                                 </tr>
                                 <tr>
-                                    <td align="left" class="Hightlight">Highlight</td>
+                                    <td align="left" class="Hightlight"><h4 class="support">Highlight</h4></td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight">{{ $data[0]->mi_highlight }}</td>
+                                    <td align="left" class="Hightlight"><h4 class="support">{{ $data[0]->mi_highlight }}</h4></td>
                                 </tr>
                                 <tr>
-                                    <td align="left" class="Hightlight">Periode</td>
+                                    <td align="left" class="Hightlight"><h4 class="support">Periode</h4></td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight">{{ $data[0]->md_start }} - {{ $data[0]->md_start }}</td>
+                                    <td align="left" class="Hightlight"><h4 class="support">{{ $data[0]->md_start }} - {{ $data[0]->md_start }}</h4></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
@@ -270,14 +270,16 @@
                             </table>
                             <tr>
                                     {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-orange download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
+                                    <td align="left"><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
                                     <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-primary download_pdf" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Pdf</b></button></td>
+                                    <td align="left"><button class="btn btn-small btn-orange download_pdf" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Profil</b></button></td>
+                                    <td align="left">&nbsp;</td>
+                                    <td align="left"><button class="btn btn-small btn-primary download_md_tata_tertib" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Tata Tertib</b></button></td>
                                     <td align="left">&nbsp;</td>
                                     <td align="left"><button class="btn btn-small btn-info download_final" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Final</b></button></td>
                                     <td align="left">&nbsp;</td>
                                     <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-danger download_invoice" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
+                                    <td align="left"><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
                                     <td align="left">&nbsp;</td>
                                 </tr>
                         </div>
@@ -292,7 +294,8 @@
                     <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-6" data-wow-duration="1000ms">
                             <table width="100%" class="table table-striped"> 
-                                <h3 class="count_h2" style="margin-top: -5px;">Booking Detail</h3>
+                                <h3 class="count_h2" style="margin-top: -5px;font-weight: bold;">Booking Detail</h3>
+                                <br>
                                 <tr>
                                     <td width="20%" align="left" class="Hightlight">Transaksi</td>
                                     <td width="5%">: </td>
@@ -368,7 +371,8 @@
                             </table>
                         </div>
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-6" data-wow-duration="1000ms">
-                            <h3 class="count_h2" style="margin-top: -5px;">Detail</h3>
+                            <h3 class="count_h2" style="margin-top: -5px;font-weight: bold">Detail</h3>
+                                <br>
                             
                                 <table  width="100%" class="table table-striped"> 
                                     <tr >
@@ -402,12 +406,17 @@
                         
                         <div class="sec-sub-title text-center wow fadeInUp animated col-sm-12" data-wow-duration="1000ms">
                                 @foreach ($data as $index => $e)
-                                    <table class="table table-bordered text-left">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <table class="table table-striped table-bordered text-left">
                                             <tr>
-                                                <th>Nama</th>
-                                                <td>: {{ $e->dp_name }}</td>
-                                                <td>dp_gender</td>
-                                                <td>: {{ $e->dp_gender }}</td>
+                                                <th width="10%">Nama</th>
+                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
+                                                <td width="10%">dp_gender</td>
+                                                <td width="25%">: {{ $e->dp_gender }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Passport </th>
@@ -422,15 +431,16 @@
                                                 <td>: {{ $e->dp_birth_place }}</td>
                                             </tr>
                                             <tr>
-                                                <th>Issuing </th>
-                                                <td>: {{ $e->dp_issuing }}</td>
-                                                <td>Remark</td>
-                                                <td>: {{ $e->dp_reference }}</td>
+                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
                                             </tr>
                                         </table>
+                                    </div>
+                                <br>
+                                </div>
                                 @endforeach
-
-
                         </div>
                     </div>
                 </div>
@@ -454,6 +464,11 @@
     $('.download_pdf').click(function(){
         var ini = $(this).data('id');
         window.open(baseUrl+'/booking/bookingdetail_download_pdf/'+ini);
+    })
+
+    $('.download_md_tata_tertib').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_md_tata_tertib/'+ini);
     })
 
     $('.download_final').click(function(){

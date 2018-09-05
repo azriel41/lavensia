@@ -44,9 +44,9 @@ class HomeController extends Controller
     }
     public function save_profile(Request $request)
     {
+        // dd($request->all());
 
        $image = $request->file('image');
-       return $image;
        $upload = 'agent/agent';
        $filename = auth::user()->id.'.jpg';
        Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));

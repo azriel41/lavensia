@@ -168,13 +168,15 @@
             url  : ('{{ route('master_additional_save') }}'),
             type : 'POST',
             success: function (data) {
+                // console.log(data);
                 if (data.status == 'sukses') {
+                    window.location=('{{ route('master_additional') }}');
                     iziToast.success({
                         icon: 'fa fa-user',
                         title: 'Success!',
                         message: 'Data Saved!',
                     });
-                    window.location=('{{ route('master_additional') }}');
+                    
                 }else{
                     iziToast.error({
                         icon: 'fas fa-times-circle',

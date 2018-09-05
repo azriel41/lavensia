@@ -30,7 +30,7 @@
 Fixed Navigation
 ==================================== -->
 <header id="navigation" class="navbar-fixed-top" style="padding: 10px 0px;">
-    {{-- <div class="container"> --}}
+    <div class="container">
         <div class="navbar-header">
             <!-- responsive nav button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,9 +52,9 @@ Fixed Navigation
        
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')">Home</a></li>
-                <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')">Booking List</a></li>
-                <li><a href="" onclick="window.location.href=('{{ route('partner') }}')">Partner</a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                 
                 @if (Route::has('login'))
                         @if (Auth::check())
@@ -78,7 +78,7 @@ Fixed Navigation
                                     </li>
                                   </ul>
                             </li>
-                            {{-- <li class="nav-item dropdown">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fa fa-shopping-cart" title="Shop Cart"></i> &nbsp; <span class="badge">{{ $jumlah }}</span>
                                 </a>
@@ -96,7 +96,7 @@ Fixed Navigation
                                                     </div>
                                                     <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
                                                         <div class="col-sm-12">
-                                                            <h6  style="color: #a60036e6"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
+                                                            <h6  style="color: blue"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
                                                         </div>
                                                         <div class="col-sm-12" style="color: grey">
                                                             <h7>Pax : {{ $val->db_pax }}</h7>
@@ -110,7 +110,7 @@ Fixed Navigation
                                                     @if ($i == count($cart)-1)
                                                         style="margin-bottom: 15px;" 
                                                     @endif>
-                                                    <button class="btn btn-danger" style="width: 100%" onclick="check_out('{{ $val->db_id }}')">
+                                                    <button class="btn" style="width: 100%;color:white;background-color: #0526ce;" onclick="check_out('{{ $val->db_id }}')">
                                                         Check Out
                                                     </button>
                                                 </div> 
@@ -119,18 +119,18 @@ Fixed Navigation
                                     </div>
                                     <div class="col-sm-12 pull-right" style="text-align: center;">
                                         <div class="v-align">
-                                            <button class="btn btn-danger ">
+                                            <button class="btn " style="color:white;background-color: #0526ce;">
                                                 See Cart
                                             </button>
                                         </div>
                                     </div>
                               </div>
-                            </li> --}}
+                            </li>
 
                             
                         @else
-                            <li style="background-color: #c70025f2;"><a href="" style="color: whitesmoke !important;"  onclick="login()">Login</a></li>
-                            <li style="background-color: #af194a;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   
+                            <li style="background-color: #4262ff;"><a href="" style="color: whitesmoke !important;" onclick="login()">Login</a></li>
+                            <li style="background-color: #1c41fc;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   
                         @endif
                 @endif
 
@@ -138,7 +138,7 @@ Fixed Navigation
         </nav>
         <!-- /main nav -->
         
-    {{-- </div> --}}
+    </div>
 </header>
 <!--
 End Fixed Navigation

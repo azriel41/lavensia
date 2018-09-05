@@ -44,11 +44,11 @@ class additionalController extends Controller
      	$data = new additional;
      	$data->ma_name  = $request->ad_name;
      	$data->ma_price = $price;
-        $data->ma_desc  = $request->ad_desc;
+      $data->ma_desc  = $request->ad_desc;
      	$data->ma_image = $filename;
      	$data->save();
 
-      return response()->json(['status'=>'sukses']);
+      return redirect('master/master_additional');
     }
     public function update(Request $request)
     {

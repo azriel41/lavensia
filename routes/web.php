@@ -32,8 +32,6 @@ Route::get('/', function () {
     	return view('welcome',compact('category','intinerary','det','response'));
 	}
 
-	// return$data =  \App\d_booking::all();
-	// return$data = Auth::User()->booking;
 })->name('dashboard');
 
 Route::get('/package/package_modal_detail', 'package\packageController@package_modal_detail')->name('package_modal_detail');
@@ -97,6 +95,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/bookingdetail_download_pdf/{id}', 'booking\booking_listController@bookingdetail_download_pdf')->name('bookingdetail_download_pdf');
 		//booking detail print final 
 		Route::get('/booking/bookingdetail_download_final/{id}', 'booking\booking_listController@bookingdetail_download_final')->name('bookingdetail_download_final');
+		//booking detail print md_tata_tertib 
+		Route::get('/booking/bookingdetail_download_md_tata_tertib/{id}', 'booking\booking_listController@bookingdetail_download_md_tata_tertib')->name('bookingdetail_download_md_tata_tertib');
 		//booking detail print invoice 
 		Route::get('/booking/bookingdetail_download_invoice/{id}', 'booking\booking_listController@bookingdetail_download_invoice')->name('bookingdetail_download_invoice');
 

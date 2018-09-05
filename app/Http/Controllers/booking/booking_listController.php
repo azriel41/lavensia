@@ -54,8 +54,25 @@ class booking_listController extends Controller
     					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
 						->leftjoin('users','users.id','=','db.db_handle_by')	
     					->get();
+        $category = category::all();
 
-		return view('booking_list.booking_list',compact('data'));
+        $intinerary = intinerary::all();
+
+        $det = [];
+        $cat = [];
+        foreach ($intinerary as $index => $val) {
+            $det = $val->detail_intinerarys;
+            $cat = $val->category;
+        }
+        $book = User::all();
+
+        if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+            return view('booking_list.booking_list',compact('data','category','intinerary','det','response','cart','jumlah'));
+        }else{
+            return view('booking_list.booking_list',compact('data','category','intinerary','det','response'));
+        }
     	
     }
     public function bookingdetail($id)
@@ -69,7 +86,26 @@ class booking_listController extends Controller
 						->where('db_kode_transaksi',$id)
 						->get();    	
 		// return $data;
-		return view('booking_list.booking_listdetail',compact('data'));
+        $category = category::all();
+
+        $intinerary = intinerary::all();
+
+        $det = [];
+        $cat = [];
+        foreach ($intinerary as $index => $val) {
+            $det = $val->detail_intinerarys;
+            $cat = $val->category;
+        }
+        $book = User::all();
+
+        if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah'));
+        }else{
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response'));
+        }
+
     }
     public function bookingdetail_download_itin($id)
     {
@@ -150,11 +186,28 @@ class booking_listController extends Controller
 
 		// return response()->download($file);
     }
+    public function bookingdetail_download_md_tata_tertib($id)
+    {
+
+    	$data = DB::table('m_detail_intinerary')->where('md_intinerary_id',$id)->get();
+    	$gg = $data[0]->md_tata_tertib;
+    	if ($gg == null) {
+    		return view('pdf_kosong');
+    	}
+    	$file = realpath('.').'/storage/app/'.$gg;
+
+    	// return $file;
+		$headers = [
+              'Content-Type' => 'application/pdf',
+         ];
+
+		return response()->download($file);
+    }
     public function bookingdetail_download_final($id)
     {
 
-    	$data = DB::table('d_booking')->where('db_id',$id)->get();
-    	$gg = $data[0]->db_pdf;
+    	$data = DB::table('m_detail_intinerary')->where('md_intinerary_id',$id)->get();
+    	$gg = $data[0]->md_final;
     	if ($gg == null) {
     		return view('pdf_kosong');
     	}
@@ -170,10 +223,15 @@ class booking_listController extends Controller
     public function bookingdetail_download_invoice($id)
     {
 
-    	$data = DB::table('m_intinerary')->where('mi_id',$id)->get();
-		return $data;    	
+    	$data = DB::table('d_booking')
+    		->leftjoin('d_history_bayar','d_history_bayar.dh_booking_id','=','d_booking.db_id')
+    		// ->leftjoin('d_history_bayar_d','d_history_bayar_d.dhd_history_id','=','d_history_bayar.dh_id')
+    		->leftjoin('users','users.id','=','d_booking.db_users')
+    		->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+    		->where('db_id',$id)->get();
+		// return $data;    	
 
-		return response()->download($file);
+		return view('booking_print.booking_print_invoice',compact('data'));
     }
     
 }

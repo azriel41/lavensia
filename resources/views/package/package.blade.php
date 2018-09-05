@@ -52,12 +52,12 @@
             }
             .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
                 border: none; 
-                color: #630247 !important; 
+                color: black !important; 
                 background: transparent !important; 
             }
             .nav-tabs > li > a::after {
                 content: ""; 
-                background: #dd0000; 
+                background: #1d42fc; 
                 height: 2px; position: absolute; 
                 width: 100%; 
                 left: 0px; 
@@ -164,7 +164,7 @@
                         <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
                             <table width="100%"> 
                                 <tr>
-                                    <td align="left" valign="top" class="Hightlight"><h2 class="count_h2" style="margin-top: -5px;">{{ $data[0]->mi_name }}</h2></td>
+                                    <td align="left" valign="top" class="Hightlight"><h2 style="margin-top: -5px;font-weight: bold">{{ $data[0]->mi_name }}</h2></td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="Hightlight"><h4 class="support">By : {{ $data[0]->mi_by }}</h4></td>
@@ -178,7 +178,7 @@
 
                                 <tr>
                                     {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-orange download" id="pdf" data-id="{{ $data[0]->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></td>
+                                    <td align="left"><button class="btn btn-small btn-book download" id="pdf" data-id="{{ $data[0]->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
                                 </tr>
                             </table>
 
@@ -204,7 +204,7 @@
                                     @foreach ($schedule as $index => $sch)
                                       <div style="margin-top: 20px"></div>
                                       <div style="min-height: 100px">
-                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #e74c3c;">
+                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #1d42fc;">
                                                 <span>Day</span><br>
                                                 <span class="day-tour">{{ $index+1 }}</span>
                                             </div>
@@ -234,9 +234,10 @@
                                                <th class="center-al">No</th>
                                                <th class="center-al">Code Tour</th>
                                                <th class="center-al">Date</th>
-                                               <th class="center-al">Price Adult</th>
-                                               <th class="center-al">Price Child</th>
-                                               <th class="center-al">Price Invent</th>
+                                               <th class="center-al">Adult</th>
+                                               <th class="center-al">Child</th>
+                                               <th class="center-al">Child w Bed</th>
+                                               <th class="center-al">Infant</th>
                                                <th class="center-al">Seat Remain</th>
                                                <th class="center-al">Book</th>
                                            </tr>
@@ -249,6 +250,7 @@
                                                <td>{{ date('d M Y',strtotime($det->md_start))  }} - {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right">{{ number_format($det->md_adult_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_child_w_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
                                                <td>{{ $det->md_seat }}</td>
                                                <td>

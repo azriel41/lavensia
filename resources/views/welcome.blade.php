@@ -6,11 +6,8 @@
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
     <head>
         <!-- meta charec set -->
-       
         @include('layouts_frontend._head')
         <style type="text/css">
-           
-            
         </style>
     </head>
     
@@ -24,16 +21,16 @@
                     
                 <!-- Indicators bullet -->
                 <ol class="carousel-indicators">
+                    {{-- <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li> --}}
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 </ol>
                 <!-- End Indicators bullet -->     
-                <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:300px;margin-top: 34%;margin-left: 5%;">
+                {{-- <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:300px;margin-top: 34%;margin-left: 5%;"> --}}
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(assets_frontend/img/image-gallery/12.jpg); height: 100%">
+                  {{--   <div class="item active" style="background-image: url(assets_frontend/img/image-gallery/12.jpg); height: 100%">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
                             <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
@@ -45,24 +42,24 @@
                                 <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                     <!-- end single slide -->
                     
                     <!-- single slide -->
-                    <div class="item" style="background-image: url(assets_frontend/img/banner.jpg);">
+                    <div class="item active" style="background-image: url(assets_frontend/img/banner.jpg);">
                         <div class="carousel-caption">
-                            <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
+                           {{--  <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
-                            <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
+                            <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p> --}}
                             
-                            <ul class="social-links text-center">
+                            {{-- <ul class="social-links text-center">
                                 <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
                                 <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
                                 <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
                                 <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                     <!-- end single slide -->
@@ -280,16 +277,7 @@
                         <p>Keluh Kesah anda dan juga kritik anda sangat membangun perusahaan kami bertumbuh</p>
                     </div>
                     
-                    <!-- contact address -->
-                   {{--  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
-                        <div class="contact-address">
-                            <h3>Cras at ultrices erat, sed vulputate!</h3>
-                            <p>2345 Setwant natrer, 1234,</p>
-                            <p>Washington. United States.</p>
-                            <p>(401) 1234 567</p>
-                        </div>
-                    </div> --}}
-                    <!-- end contact address -->
+                    
                     
                     <!-- contact form -->
                     <div class="col-lg-11 col-md-11 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
@@ -330,7 +318,6 @@
             </div>
             
             <!-- Google map -->
-            <div id="map_canvas" class="wow bounceInDown animated" data-wow-duration="500ms"></div>
             <!-- End Google map -->
             
         </section>
@@ -338,13 +325,8 @@
         <!--
         End Contact Us
         ==================================== -->
-        
-        
         @include('layouts_frontend._footer')
-        
-        
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
-
         @include('layouts_frontend._scripts')
         
     </body>

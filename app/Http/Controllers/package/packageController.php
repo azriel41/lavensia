@@ -19,6 +19,7 @@ class packageController extends Controller
     public function package(Request $request,$id)
     {
     	$id = $request->id;
+
     	$data = intinerary::where('mi_id','=',$id)->get();
     	foreach ($data as $index => $det) {
     		$detail = $det->detail_intinerarys;
@@ -27,9 +28,9 @@ class packageController extends Controller
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
        
         $additional = DB::table('m_additional_intinerary')
-                                            ->join('m_additional','m_additional_intinerary.intinerary_mi_id','=','m_additional.ma_id')
+                                            ->leftjoin('m_additional','m_additional_intinerary.additional_ma_id','=','m_additional.ma_id')
                                             ->where('intinerary_mi_id','=',$id)->get();
-        
+        // return $additional;
         if (Auth::User() != null) {
             $cart = Auth::User()->booking;
             $jumlah = count(Auth::User()->booking);
