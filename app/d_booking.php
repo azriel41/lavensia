@@ -57,4 +57,9 @@ class d_booking extends Model
 	{
         return $this->hasMany('App\d_party_name','dp_booking_id');
 	}
+
+	public function payment()
+	{
+        return $this->hasMany('App\d_history_bayar','dh_booking_id');
+	}
 }

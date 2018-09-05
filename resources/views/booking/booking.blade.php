@@ -604,14 +604,14 @@
                             <hr>
                             <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
-                                <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
+                                <div class="devider" style="margin-bottom: 50px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive addition">
-                                        <table width="100%" class="table table-striped table-bordered table-hover ">
+                                        <table width="100%" class="table table-striped  table-hover ">
                                             <thead >
                                                 <tr>
                                                     <th style="width: 25%" align="center">Name</th>
-                                                    <th style="width: 20%" align="center">Procie</th>
+                                                    <th style="width: 20%" align="right">Procie</th>
                                                     <th align="center">Select Person</th>
                                                 </tr>
                                             </thead>
@@ -849,7 +849,13 @@
         })
         $('.total_infant').val(temp);
     }
-
+    $('.checkbox').click(function(){
+        if ($('#check_agree').is(':checked') == false) {
+            $('#check_agree').prop('checked',true);
+        }else{
+            $('#check_agree').prop('checked',false);
+        }
+    })
     function total() {
         var adult = 0;
         var child = 0;

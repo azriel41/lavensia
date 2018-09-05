@@ -81,12 +81,17 @@ class payment_page_controller extends Controller
                            'dh_booking_id'      => $req->id,
                            'dh_total_payment'   => $req->total_pay,
                            'dh_payment_method'  => $req->payment,
+                           'dh_status_payment'  => 'RELEASED',
+                        );
+
+            $upd = array(
+                           'db_status'          => 'Hold System',
                         );
 
             $this->d_history_bayar->create($head);
 
             $d_booking = $this->d_booking->cari('db_id',$req->id);
-
+            $this->d_booking->update($upd,'db_id',$req->id);
             for ($b=0; $b < count($req->bank_number); $b++) { 
                 $file = $req->file('image')[$b];
                 if ($file != null) {
