@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
             }
 
 
-        })->everyMinute();
+        })->dailyAt('16:00');
     }
 
     /**
