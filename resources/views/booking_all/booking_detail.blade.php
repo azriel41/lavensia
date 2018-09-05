@@ -55,7 +55,7 @@
                                            <th class="center-al">Action</th>
                                        </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody align="center">
                                        
                                     </tbody>
                                 </table>
@@ -68,7 +68,24 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
-
+    <div class="modal fade" id="modal_check" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-cyan">
+                    <h3 class="modal-title" id="largeModalLabel">Check Transfer</h3>
+                </div>
+                <div class="modal-body">
+                    <tr>
+                        <td><img class="img_transfer" width="100" height="100" style="border: 1px solid hotpink"></td>
+                        <td><a href=""></a></td>
+                    </tr>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -172,6 +189,73 @@ $(document).ready(function(){
                             });
 
                             instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
+                        }else if (data.status == '0') {
+                            iziToast.success({
+                                icon: 'fa fa-save',
+                                position:'topRight',
+                                title: 'Error!',
+                                message:data.message,
+                            });
+                            instance.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            icon: 'fa fa-info',
+                            position:'topRight',
+                            title: 'Error!',
+                            message: 'Terjadi Kesalahan!',
+                        });
+                      }
+                    });
+                }
+            ],
+            [
+                '<button class="bg-red">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+        });
+    }
+    
+
+    function deleting(id) {
+        iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-question-circle',
+            title: 'Hapus Pembayaran!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button style="background-color:#44d7c9;">Hapus</button>',
+                function (instance, toast) {
+
+                    $.ajax({
+                        type: "get",
+                        url:'{{ route('delete_payment') }}',
+                        data: {id},
+                        dataType:'json',
+                      success:function(data){
+                        if (data.status == '1') {
+                            var table = $('.dt_server').DataTable()
+                            table.ajax.reload();
+                            iziToast.success({
+                                icon: 'fas fa-check-circle',
+                                message: 'Data Telah Dihapus!',
+                            });
+                             instance.hide({
                                 transitionOut: 'fadeOutUp'
                             }, toast);
                         }else if (data.status == '0') {

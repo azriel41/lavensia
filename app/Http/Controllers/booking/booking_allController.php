@@ -578,7 +578,8 @@ class booking_allController extends Controller
 		        	$b = '';
 		        	$c = '<li>';
 		        	$d = '';
-		        	$f = '</li>';
+		        	$f = '';
+		        	$g = '</li>';
 
 
 		        			$a = '<div class="btn-group">
@@ -607,18 +608,27 @@ class booking_allController extends Controller
 		                    	}
 
 		                    	if ($data->booking->db_handle_by == Auth::User()->id ) {
-						            $f=           '<a onclick="check(\''.$data->dh_id.'\')" class="waves-effect waves-block" >
+						            $f =        '<a onclick="check(\''.$data->dh_id.'\')" class="waves-effect waves-block bg-cyan" >
 						                            <i class="material-icons">edit</i>
 						                            Check
+						                        </a>';
+		                    	}
+
+		                    	if ( $data->dh_status_payment == 'APPROVE') {
+		                    		$g = 	
+						                        '<a onclick="deleting(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-red">
+						                            <i class="material-icons">delete</i>
+						                            Delete
 						                        </a>
 						                    </li>';
 		                    	}
+		                    	
 		                    }
 			                    
 			                $d = '</ul>
 			           			 </div>';
 
-			            return $a.$b.$c.$f.$d;
+			            return $a.$b.$c.$f.$g.$d;
 			        })->addColumn('nominal', function ($data) {
 			        		return '<div class="pull-left">'.'Rp .'.'</div>'.
                             '<div class="pull-right">'.number_format($data->dh_total_payment,2,',','.').'</div>';
@@ -679,6 +689,20 @@ class booking_allController extends Controller
 	    	$this->detail_intinerary->update($updt,'md_id',$book->db_intinerary_id);
 
 			$this->d_booking->delete('db_id',$req->id);
+			DB::commit();
+			return Response::json(['status'=>1]);
+    	}catch(Exception $er){
+    		dd($er);
+    		DB::rollBack();
+    	}
+    	
+    }
+
+    public function delete_payment(request $req)
+    {	
+    	DB::beginTransaction();
+    	try{
+			$this->d_history_bayar->delete('dh_id',$req->id);
 			DB::commit();
 			return Response::json(['status'=>1]);
     	}catch(Exception $er){

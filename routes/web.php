@@ -113,6 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/booking_detail/{id}', 'booking\booking_allController@booking_detail')->name('booking_detail');
 		Route::get('/booking/booking_all/delete', 'booking\booking_allController@delete')->name('booking_all_delete');
 		Route::get('/booking/booking_all/approve_payment', 'booking\booking_allController@approve_payment')->name('approve_payment');
+		Route::get('/booking/booking_all/delete_payment', 'booking\booking_allController@delete_payment')->name('delete_payment');
 
 
 	//BOOK ADMIN DAN HANDLE BY
