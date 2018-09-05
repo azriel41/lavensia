@@ -43,8 +43,13 @@ class Kernel extends ConsoleKernel
                           ]);
             }
 
+            $data = DB::table('d_booking')
+                      ->whereRaw('db_total_remain = db_total')
+                      ->where('db_status','Waiting List')
+                      ->delete();
 
-        })->everyMinute();
+
+        })->dailyAt('16:00');
     }
 
     /**
