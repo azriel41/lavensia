@@ -218,14 +218,11 @@
             .label_new{
                 color: rgba(189, 94, 91, 1) !important;
             }
-            .bluec{
-                color: #1c41fc /*color: rgba(189, 94, 91, 1)*/;
+            .marron{
+                color: rgba(189, 94, 91, 1);
             }
             .uppercase{
                 text-transform: uppercase;
-            }
-            .blue{
-                color: #1c41fc.
             }
         </style>
     </head>
@@ -302,7 +299,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12" style="margin-top: 20px;text-align: left; font-size: 10px">
-                                        <h5 class="bluec">ATTENTION :</h5>
+                                        <h5 class="marron">ATTENTION :</h5>
                                        <ol style="list-style-type: decimal;color: grey">
                                            <li>Harap Melakukan Pembayaran Dalam 1 x 24 jam</li>
                                            <li>Pastikan Nominal Sesuai Dengan Bukti Transfer</li>
@@ -324,32 +321,32 @@
                                     <div class="col-sm-12 append_rekening" style="overflow-y: scroll;height: 550px;max-height: 550px;">
                                         <table class="table table-bordered table_payment" style="border-color: hotpink">
                                             <tr>
-                                                <td><h5 class="bluec">Account Bank Name</h5></td>
+                                                <td><h5 class="marron">Account Bank Name</h5></td>
                                                 <td align="right">
                                                     <input type="text" class="form-control bank_number uppercase" placeholder="Account Bank Name" name="bank_number[]">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><h5 class="bluec">Account Name</h5></td>
+                                                <td><h5 class="marron">Account Name</h5></td>
                                                 <td align="right">
                                                     <input type="text" placeholder="Account Name" class="form-control name uppercase" name="name[]">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><h5 class="bluec">Nominal Transfer</h5></td>
+                                                <td><h5 class="marron">Nominal Transfer</h5></td>
                                                 <td align="right" class="nominal_td">
                                                     <input type="text" placeholder="Nominal Transfer" value="0" class="form-control nominal" name="nominal[]">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><h5 class="bluec">Date Transfer</h5></td>
+                                                <td><h5 class="marron">Date Transfer</h5></td>
                                                 <td align="right">
                                                     <input type="text" value="{{ carbon\carbon::now()->format('d/m/Y') }}" class="form-control date" name="date[]" >
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <h5 class="bluec" style="margin-bottom: 170px">Proof of Payment</h5>
+                                                    <h5 class="marron" style="margin-bottom: 170px">Proof of Payment</h5>
                                                     <div class="btn_append btn-group" role="group">
                                                         <button title="Add New Bank Account" class="btn btn-info add" type="button" style=""><i class="fa fa-plus" ></i></button>
                                                     </div>

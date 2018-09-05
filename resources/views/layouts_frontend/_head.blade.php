@@ -86,20 +86,20 @@ Fixed Navigation
                                     <div class="col-sm-12">
                                         <h4 style="color: grey">Order Cart</h4>
                                     </div>
-                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 294px !important; overflow-y: scroll; min-width: 350px">
+                                    <div class="col-sm-12" style="min-height: 100px !important; max-height: 230px !important; overflow-y: scroll; min-width: 350px">
                                         @foreach ($cart as $i=>$val)
-                                            @if ($val->db_status == 'Waiting List')
+                                            @if ($val->db_total == $val->db_total_remain)
                                                 <div class="col-sm-12" style="margin-bottom: 15px;margin-top: 15px;">
                                                     <div class="col-sm-5">
-                                                        <img src="{{ asset('storage/app')}}/{{ $val->detail_itin->intinerary->mi_image  }}"
+                                                        <img src="{{ asset('storage/app')}}/{{ $val->mi_image  }}"
                                                         style="width: 100px;height: 75px;">
                                                     </div>
                                                     <div class="col-sm-7" style="text-align: right; padding-right: 0 !important;padding-left: 5px !important">
                                                         <div class="col-sm-12">
-                                                            <h6  style="color: blue"><b>{{ substr($val->detail_itin->intinerary->mi_name,0, 15) }}...</b></h6>
+                                                            <h6  style="color: blue"><b>{{ substr($val->mi_name,0, 15) }}...</b></h6>
                                                         </div>
                                                         <div class="col-sm-12" style="color: grey">
-                                                            <h7>Pax : {{ $val->db_pax }}</h7>
+                                                            <h7>Pax : {{ $val->db_total_adult+$val->db_total_child+$val->db_total_infant }}</h7>
                                                         </div>
                                                         <div class="col-sm-12" style="color: grey">
                                                             <h7>Price : {{ number_format($val->db_total_additional+$val->db_total_room, 0, ",", ".") }}</h7>
@@ -117,13 +117,13 @@ Fixed Navigation
                                             @endif
                                         @endforeach
                                     </div>
-                                    <div class="col-sm-12 pull-right" style="text-align: center;">
+                                    {{-- <div class="col-sm-12 pull-right" style="text-align: center;">
                                         <div class="v-align">
                                             <button class="btn " style="color:white;background-color: #0526ce;">
                                                 See Cart
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                               </div>
                             </li>
 

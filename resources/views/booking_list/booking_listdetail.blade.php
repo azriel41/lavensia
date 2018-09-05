@@ -259,7 +259,7 @@
                                 <tr>
                                     <td align="left" class="Hightlight"><h4 class="support">Periode</h4></td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight"><h4 class="support">{{ $data[0]->md_start }} - {{ $data[0]->md_start }}</h4></td>
+                                    <td align="left" class="Hightlight"><h4 class="support">{{ date('d F y',strtotime($data[0]->md_start)) }}  -  {{ date('d F y',strtotime($data[0]->md_start)) }}</h4></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
@@ -268,20 +268,27 @@
                                 </tr>
 
                             </table>
-                            <tr>
-                                    {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-orange download_pdf" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Profil</b></button></td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-primary download_md_tata_tertib" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Tata Tertib</b></button></td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-info download_final" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Final</b></button></td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left"><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
-                                    <td align="left">&nbsp;</td>
+                        </div>
+                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-12" data-wow-duration="1000ms">
+                            <table class="" align="center">
+                                <tr>
+                                        {{-- <td align="left"></td> --}}
+                                        <td align="left"><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
+                                        <td align="left">&nbsp;</td>
+                                        <td align="left"><button class="btn btn-small btn-orange download_pdf" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Profil</b></button></td>
+                                        <td align="left">&nbsp;</td>
+                                        <td align="left"><button class="btn btn-small btn-primary download_md_tata_tertib" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Tata Tertib</b></button></td>
+                                        <td align="left">&nbsp;</td>
+                                        <td align="left"><button class="btn btn-small btn-info download_final" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Final</b></button></td>
+                                        <td align="left">&nbsp;</td>
+                                        @if ($data[0]->db_total_remain == 0)
+                                        <td align="left"><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
+                                        @else
+                                         <td align="left"><button class="btn btn-small btn-default" id="pdf" ><b><i class="fa fa-cloud-download"></i> Invoice</b></button></td>
+                                        @endif                                        
+                                        <td align="left">&nbsp;</td>
                                 </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -352,14 +359,18 @@
                                     <td>: </td>
                                     <td align="right" class="Hightlight" colspan="7"><b>Rp. {{ number_format($data[0]->db_total,0,'','.') }}</b></td>
                                 </tr>
-                               
+                                <tr>
+                                    <td align="left" class="Hightlight">Remain Price</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight" colspan="7"><b>Rp. {{ number_format($data[0]->db_total_remain,0,'','.') }}</b></td>
+                                </tr>
                                 <tr>
                                     <td align="left" class="Hightlight">Book By</td>
                                     <td>: </td>
                                     <td align="left" class="Hightlight" colspan="7">{{ $data[0]->created_by }}</td>
                                 </tr>
                                 <tr>
-                                    <td align="left" class="Hightlight">Book By</td>
+                                    <td align="left" class="Hightlight">Handle By</td>
                                     <td>: </td>
                                     <td align="left" class="Hightlight" colspan="7">{{ $data[0]->name }}</td>
                                 </tr>
@@ -381,7 +392,7 @@
                                         <th>gender</th>
                                         <th>Date of Birth</th>
                                     </tr>
-                                    @foreach ($data as $index => $e)
+                                    @foreach ($simple_table as $s => $e)
                                         <tr>
                                             <td align="left">{{ $e->dp_name }}</td>
                                             <td align="left">{{ $e->dp_passport }}</td>
@@ -389,13 +400,30 @@
                                             <td align="left">{{ $e->dp_birth_date }}</td>
                                         </tr>
                                     @endforeach
-                                    <tr>
-                                        <td align="left" class="Hightlight" colspan="7"><li>{{ $data[0]->mi_term }}</li></td>
-                                    </tr>
+                                    
                                 </table>
                             </div>
                     </div>
+
+                   
+                    <!-- Image--> 
+                        <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
+                            <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-12" data-wow-duration="1000ms">
+                                <h3 class="count_h2" style="font-weight: bold;">Booking Detail</h3>
+                                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12" style="min-height: 250px">
+                                        <table width="100%" class="table">
+                                            <tr>
+                                                <td align="left" class="Hightlight" colspan="7" style="min-height: 250px">{{ $data[0]->mi_term }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                    
+
                 </div>
+
+                
 
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
@@ -405,7 +433,7 @@
                     <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
                         
                         <div class="sec-sub-title text-center wow fadeInUp animated col-sm-12" data-wow-duration="1000ms">
-                                @foreach ($data as $index => $e)
+                                @foreach ($simple_table as $index => $e)
                                 <div class="col-sm-12">
                                     <div class="col-sm-4">
                                         <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
@@ -438,7 +466,9 @@
                                             </tr>
                                         </table>
                                     </div>
-                                <br>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 30px;">
+                                    
                                 </div>
                                 @endforeach
                         </div>

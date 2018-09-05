@@ -25,8 +25,21 @@ Route::get('/', function () {
 	$book = App\User::all();
 
 	if (Auth::User() != null) {
-		$cart = Auth::User()->booking;
-		$jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+
+			$cart   = DB::table('d_booking')
+						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+						->where('db_users',Auth::User()->role_id)
+						->whereRaw('db_total = db_total_remain')
+						->get();
+
+
+			$jumlah = count(DB::table('d_booking')
+						->where('db_users',Auth::User()->role_id)
+						->whereRaw('db_total = db_total_remain')
+						->get());
+			// return $cart;
+
     	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
 	}else{
     	return view('welcome',compact('category','intinerary','det','response'));

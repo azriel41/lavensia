@@ -106,8 +106,10 @@
                                        <th class="center-al">Dep Date</th>
                                        <th class="center-al">Group Name</th>
                                        <th class="center-al">Status</th>
+                                       <th class="center-al">Stat Pay</th>
                                        <th class="center-al">Book by</th>
                                        <th class="center-al">Procces By</th>
+                                       <th class="center-al">Payment</th>
                                    </tr>
                                 </thead>
                                 <tbody>
@@ -130,8 +132,22 @@
                                                     <span class="label label-info"> {{ $el->db_status }}</span>
                                                 @endif
                                                 </td>
+                                            <td>
+                                                @if ($el->db_total_remain == 0)
+                                                    <span class="label label-success">Lunas</span>
+                                                @else
+                                                    <span class="label label-danger">Belum Lunas</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $el->created_by }}</td>
                                             <td>{{ $el->name }}</td>
+                                            <td>
+                                                @if ($el->db_total_remain == 0)
+                                                    <span class="label label-success">Lunas</span>
+                                                @else
+                                                    <button class="btn btn-sm btn-book payment" data-id={{ $el->db_id }}> <i class="fa fa-money"></i> Pay</button>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -160,5 +176,11 @@
 
 <script type="text/javascript">
 
+    $('.payment').click(function(){
+        var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
+        var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
+        var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
+        window.location=('{{ url('/payment_page/payment') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+$(this).data('id'));
+    })
 
 </script>

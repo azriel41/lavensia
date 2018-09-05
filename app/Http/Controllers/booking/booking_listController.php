@@ -23,6 +23,9 @@ use App\d_additional_booking;
 use App\d_booking;
 use App\d_party_name;
 use Exception;
+use Dompdf\Dompdf;
+use PDF;
+
 class booking_listController extends Controller
 {
 	protected $intinerary;
@@ -50,10 +53,13 @@ class booking_listController extends Controller
     public function booking_list(Request $req)
     {
     	$user = Auth::user()->id;
+
   		$data = DB::Table('d_booking as db')
     					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
 						->leftjoin('users','users.id','=','db.db_handle_by')	
-    					->get();
+                        ->where('db_users',Auth::User()->role_id)
+                    	->get();
+        // return $data;
         $category = category::all();
 
         $intinerary = intinerary::all();
@@ -67,8 +73,18 @@ class booking_listController extends Controller
         $book = User::all();
 
         if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
+            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->whereRaw('db_total = db_total_remain')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->whereRaw('db_total = db_total_remain')
+                        ->get());
             return view('booking_list.booking_list',compact('data','category','intinerary','det','response','cart','jumlah'));
         }else{
             return view('booking_list.booking_list',compact('data','category','intinerary','det','response'));
@@ -86,6 +102,8 @@ class booking_listController extends Controller
 						->where('db_kode_transaksi',$id)
 						->get();    	
 		// return $data;
+        $simple_table = DB::table('d_booking')->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')->where('db_kode_transaksi',$id)->get();
+                       
         $category = category::all();
 
         $intinerary = intinerary::all();
@@ -99,11 +117,21 @@ class booking_listController extends Controller
         $book = User::all();
 
         if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking->where('db_status','Waiting List'));
-            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah'));
+            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->whereRaw('db_total = db_total_remain')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->whereRaw('db_total = db_total_remain')
+                        ->get());
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah','simple_table'));
         }else{
-            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response'));
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','simple_table'));
         }
 
     }
@@ -126,6 +154,8 @@ class booking_listController extends Controller
     }
     public function bookingdetail_download_pdf($id)
     {
+        
+
     	$detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
 
         $booking   = $detail_intinerary->book;
@@ -222,14 +252,23 @@ class booking_listController extends Controller
     }
     public function bookingdetail_download_invoice($id)
     {
+        
 
     	$data = DB::table('d_booking')
-    		->leftjoin('d_history_bayar','d_history_bayar.dh_booking_id','=','d_booking.db_id')
-    		// ->leftjoin('d_history_bayar_d','d_history_bayar_d.dhd_history_id','=','d_history_bayar.dh_id')
+            ->leftjoin('d_history_bayar','d_history_bayar.dh_booking_id','=','d_booking.db_id')
+    		->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
     		->leftjoin('users','users.id','=','d_booking.db_users')
     		->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
     		->where('db_id',$id)->get();
-		// return $data;    	
+
+		// return $data;        	
+
+        $add_book = DB::table('d_additonal_booking')
+            ->leftjoin('m_additional','m_additional.ma_id','=','d_additonal_booking.da_additional_id')
+            ->where('da_booking_id',$id)->get();
+
+        $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('data','add_book'));
+        return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');
 
 		return view('booking_print.booking_print_invoice',compact('data'));
     }
