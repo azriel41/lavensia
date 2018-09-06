@@ -9,15 +9,13 @@
         @include('layouts_frontend._head')
        
         <style type="text/css">
-           .background-hitam{
-                background-color: #0000006e;
-                padding-top: 40px;
-                margin-bottom: -50px;
-           }
+           
             .mb50{
                 margin-top: 30px;
                 background-color: white;
                 padding-bottom: 60px;
+                margin-right: -50px;
+                margin-left: -50px;
             }
           
         </style>
@@ -32,7 +30,7 @@
           <div class="background-hitam">
             <div class="container">
 
-                <div class="row mb50">
+                <div class="mb50">
                     <section id="team" class="team ">
                         <div class="container">
                             <div class="row">
@@ -49,25 +47,39 @@
                                     
                                 </div>
                                 <!-- single member -->
-                                @foreach ($array as $element)
-                                    {{-- expr --}}
-                                @endforeach
-                                <figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                                    <div class="member-thumb">
-                                        <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}" alt="Team Member" class="img-responsive agent">
-                                        <figcaption class="overlay">
-                                            <h5>voluptatem quia voluptas </h5>
-                                            <p>sit aspernatur aut odit aut fugit,</p>
-                                            <ul class="social-links text-center">
-                                                <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                                                <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                                                <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                            </ul>
-                                        </figcaption>
+                                @foreach ($data as $e)
+                                <figure class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                                    <div  style="box-shadow: 0px 2px 30px 0px #888888;">
+                                        <div class="member-thumb">
+                                            @if ($e->image != null)
+                                                <img src="{{ asset('storage/app/agent/agent-'.$e->image) }}" alt="Team Member" class="agent" width="360" height="200">
+                                            @else
+                                                <img src="{{ asset('storage/app/NoImage'.'.png') }}" alt="Team Member" class="agent" width="360" height="200">
+                                            @endif
+                                        </div>
+                                        <div>
+                                            @if ($e->co_name != null)
+                                                <p style="background-color: rgba(0, 66, 104, 0.7);color: white;padding: 10px 0px 10px 0px;font-size: 17px;margin-bottom: 0px !important;"><b>{{$e->co_name }}</b></p>
+                                            @else
+                                                <p style="background-color: rgba(0, 66, 104, 0.7);color: white;padding: 10px 0px 10px 0px;font-size: 17px;margin-bottom: 0px !important;">&nbsp;</p>
+                                            @endif
+
+                                        </div>
+                                        <div style="background-color: white;color: #333333;padding: 10px 0px 10px 0px;font-size: 13px;min-height: 70px">
+                                            <table align="left" width="100%">
+                                                <tr>
+                                                    <td>{{ $e->co_address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ $e->co_phone }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <h4>John Filmr Doe</h4>
-                                    <span>Managing Director</span>
+                                    <br><br>
+                                    <br><br>
                                 </figure>
+                                @endforeach
                                 <!-- end single member -->
                             </div>
                         </div>

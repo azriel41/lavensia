@@ -53,11 +53,12 @@ Fixed Navigation
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
-                <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                 
                 @if (Route::has('login'))
+
                         @if (Auth::check())
+                            <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Hy, {{ auth::user()->name }}  &nbsp;<i class="fa fa-caret-down"></i>
