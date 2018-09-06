@@ -275,7 +275,7 @@
                                         {{-- <td align="left"></td> --}}
                                         <td align="left"><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
                                         <td align="left">&nbsp;</td>
-                                        <td align="left"><button class="btn btn-small btn-orange download_pdf" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Profil</b></button></td>
+                                        <td align="left"><button class="btn btn-small btn-orange download_pdf" id="pdf" data-id="{{ $data[0]->db_intinerary_id }}" ><b><i class="fa fa-cloud-download"></i> Profil</b></button></td>
                                         <td align="left">&nbsp;</td>
                                         <td align="left"><button class="btn btn-small btn-primary download_md_tata_tertib" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Tata Tertib</b></button></td>
                                         <td align="left">&nbsp;</td>
@@ -400,7 +400,9 @@
                                             <td align="left">{{ $e->dp_birth_date }}</td>
                                         </tr>
                                     @endforeach
-                                    
+                                    <tr>
+                                        <td align="left" class="Hightlight" colspan="7" style="min-height: 250px">{{ $data[0]->mi_term }}</td>
+                                    </tr>
                                 </table>
                             </div>
                     </div>

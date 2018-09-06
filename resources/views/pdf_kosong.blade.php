@@ -89,7 +89,7 @@
             <div class="content responsive">
                 <div class="title m-b-md">
                     
-                    Data Pdf Tidak ada</b>
+                    Data Pdf Belum ada</b>
                 </div>
             </div>
         </div>

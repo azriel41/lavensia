@@ -27,8 +27,7 @@ use App\all_variable;
 use Excel;
 use PDF;
 use PHPExcel_Worksheet_PageSetup;
-use Dompdf\Options;
-use Dompdf\Dompdf;
+
 
 class booking_printController extends Controller
 {
@@ -60,12 +59,10 @@ class booking_printController extends Controller
     {
        $this->all_variable = new all_variable();
     }
+
     public function booking_print(Request $req)
     {
-
-
 		return view('booking_print.booking_print');
-    	
     }
     public function datatable_booking_print(Request $req)
     {
@@ -252,5 +249,8 @@ class booking_printController extends Controller
         // $dompdf->stream();
         // $pdf = PDF::loadView('booking_print.booking_print_passport', compact('data'))->setPaper('a4','landscape')->download('Passport '.date('d-m-y').'.pdf');
 		return view('booking_print.booking_print_passport',compact('data'));
+
+        // $pdf = PDF::loadView('booking_print.booking_print_passport',compact('data'));
+        // return $pdf->setPaper('A4', 'landscape')->->stream('temp.pdf');
     }
 }

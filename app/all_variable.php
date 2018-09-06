@@ -8,6 +8,7 @@ use App\category;
 use App\schedule;
 use App\detail_intinerary;
 use App\User;
+use App\d_booking;
 use App\flight_detail;
 use App\additional;
 use App\m_additional_intinerary;
@@ -49,6 +50,12 @@ class all_variable extends Model
 	{
 		$detail_intinerary = new detail_intinerary();
         return $detail_intinerary = new TestRepo($detail_intinerary);
+	}
+
+	public function booking()
+	{
+		$booking = new d_booking();
+        return $booking = new TestRepo($booking);
 	}
 
 	public function flight_detail()

@@ -1,4 +1,20 @@
-<table class="table table-bordered intinerary" border="1px" style="width: 100%;vertical-align: middle;">
+
+<style type="text/css">
+    
+    .intinerary{
+    border-collapse: collapse;
+    }
+
+    .intinerary ,.intinerary th, .intinerary td {
+        border: 1px solid black;
+    }
+    .c {
+        border-bottom: 1px solid black;
+    }
+    
+</style>
+
+<table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;">
     <tr>
         <td height="100" width="30%" style="padding-left: 10px;">Flight Detail</td>
         @foreach ($flight as $f)
@@ -9,11 +25,11 @@
 </table>
 <br>
 
-<table class="table table-bordered intinerary" border="1px" style="width: 100%;vertical-align: middle;" >
-        <tr style="vertical-align: middle; border: 1px solid black">
-            <th class="center row2">No</th>
-            <th class="center row2">Passenger Name</th>
-            <th class="center row2">Passport</th>
+<table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;" >
+        <tr style="vertical-align: middle;">
+            <th class="center row2" width="5%" height="20">No</th>
+            <th class="center row2" width="35%">Passenger Name</th>
+            <th class="center row2" width="20%">Passport</th>
             <th class="center row2" colspan="4">Pembagian Kamar</th>
         </tr>
         @php
@@ -40,22 +56,21 @@
                             @endif
                         @endforeach
                     </td>
-                    <td>
+                    <td >
                         @foreach ($passenger as $akhir)
                             @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
-
                                 <label class="kena_dot">{{ $akhir->dp_name }}</label><br>
                             @endif
                         @endforeach
                     </td>
-                    <td>
+                    <td  >
                         @foreach ($passenger as $akhir)
                             @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
                                 <label class="kena_dot">{{ $akhir->dp_passport }}</label><br>
                             @endif
                         @endforeach
                     </td>
-                    <td>
+                    <td >
                         @php
                             $temp1 = 0;
                         @endphp
@@ -82,14 +97,58 @@
                     <td>
                         
                     </td>
-                    <td>
-                        
+
+                    <td style="background-color: white;border-bottom: 1px solid black">
+                    
                     </td>
                     
                 </tr>
             @endforeach
         @endforeach
+    </table>
+<br>
+<div style="width: 200px">
+    <table style="width: 100%;" border="0">
         <tr>
+            <td width="10" align="left">ADULT</td>
+            <td width="10" align="left">:</td>
+            <td width="10" align="left">
+                @php
+                    $adult = 0;
+                    for ($i=0; $i < count($booking); $i++) { 
+                        $adult+=$booking[$i]->db_total_adult;
+                    }
+                    echo $adult;
+                @endphp
+            </td>
+
             
         </tr>
+        <tr>
+            <td>CHILD</td>
+            <td>:</td>
+            <td>
+                @php
+                    $child = 0;
+                    for ($i=0; $i < count($booking); $i++) { 
+                        $child+=$booking[$i]->db_total_child;
+                    }
+                    echo $child;
+                @endphp
+            </td>
+        </tr>
+        <tr>
+            <td>INFANT</td>
+            <td>:</td>
+            <td>
+                @php
+                    $infant = 0;
+                    for ($i=0; $i < count($booking); $i++) { 
+                        $infant+=$booking[$i]->db_total_infant;
+                    }
+                    echo $infant;
+                @endphp
+            </td>
+        </tr>
     </table>
+</div>
