@@ -64,7 +64,8 @@ class booking_listController extends Controller
   		$data = DB::Table('d_booking as db')
     					->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
 						->leftjoin('users','users.id','=','db.db_handle_by')	
-                        ->where('db_users',Auth::User()->id)
+
+                        ->where('db_users',$user)
                     	->get();
         // return $data;
         $category = category::all();
