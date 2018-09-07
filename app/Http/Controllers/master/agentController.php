@@ -45,7 +45,7 @@ class agentController extends Controller
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="'.url('/master/master_agent/edit').'/'.$data->id.'" class=" waves-effect waves-block">
+                                        <a href="'.url('/master/master_agent').'/'.$data->id.'/edit'.'" class=" waves-effect waves-block">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
@@ -80,6 +80,10 @@ class agentController extends Controller
                              ->update(['status' => 'AKTIF']);
 
         return Response()->json(['status'=>1]);
+    }
+    public function agent_edit(Request $req)
+    {
+       return view('auth.edit_profile');
     }
 
 }

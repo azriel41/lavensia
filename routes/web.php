@@ -167,6 +167,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//agent
 	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
 	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');
+	Route::get('/master/master_agent/{id}/edit', 'master\agentController@agent_edit')->name('master_agent_edit');
+	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
 	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
 
 	//Additional
