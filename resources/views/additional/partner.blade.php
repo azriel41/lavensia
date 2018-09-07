@@ -73,6 +73,9 @@
                                                 <tr>
                                                     <td>{{ $e->co_phone }}</td>
                                                 </tr>
+                                                {{-- <tr>
+                                                    <td><a href=""><i class="fa fa-facebook"></i></a></td>
+                                                </tr> --}}
                                             </table>
                                         </div>
                                     </div>
