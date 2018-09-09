@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use DB;
+use Auth;
 class User extends Authenticatable
 {
 
@@ -45,19 +46,19 @@ class User extends Authenticatable
     }
 
     public function akses($fitur,$aksi){
-      // select * from  join  on = where ubah =true
-
-        //  $cek = DB::table('d_mem')
-        //         ->join('d_hak_akses', 'm_jabatan', '=', 'ha_level')
-        //         ->where('ha_menu', '=', $fitur)
-        //         ->where($aksi, '=', 1) 
-        //         ->where('m_id', '=', Auth::user()->m_id)             
-        //         ->get();        
         
-        // if(count($cek) != 0)
-        //     return true;
-        // else
-        //     return false;
+         $cek = DB::table('users')
+                ->leftjoin('m_hak_akses', 'mh_level', '=', 'role_id')
+                ->where('mh_menu', '=', $fitur)
+                ->where($aksi, '=', 'true') 
+                ->where('id', '=', Auth::user()->id)             
+                ->get();
+          // return $cek;
+        
+        if(count($cek) != 0)
+            return true;
+        else
+            return false;
     }
 }
 

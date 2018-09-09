@@ -287,21 +287,31 @@
                             <li>
                                 <a href="">Akun</a>
                             </li>
-                            <li>
-                                <a href="{{ route('master_agent') }}">Agent</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_category') }}">Perusahaan</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_category') }}">Category</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_additional') }}">Additional</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
-                            </li>
+                            @if(Auth::user()->akses('master agent','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_agent') }}">Agent</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master category','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_category') }}">Perusahaan</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master category','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_category') }}">Category</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master additional','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_additional') }}">Additional</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master intinerary','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 
