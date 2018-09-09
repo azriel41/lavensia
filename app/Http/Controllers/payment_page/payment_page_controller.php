@@ -75,7 +75,7 @@ class payment_page_controller extends Controller
     {   
         DB::beginTransaction();
         try{
-            $id = $this->d_history_bayar->max('dh_id')+1;
+            $id = $this->d_history_bayar->max('dh_id');
             $head = array(
                            'dh_id'              => $id,
                            'dh_booking_id'      => $req->id,
@@ -138,7 +138,7 @@ class payment_page_controller extends Controller
     {
         DB::beginTransaction();
         try{
-            $id = $this->d_history_bayar->max('dh_id')+1;
+            $id = $this->d_history_bayar->max('dh_id');
             $head = array(
                            'dh_id'              => $id,
                            'dh_booking_id'      => $req->id,
