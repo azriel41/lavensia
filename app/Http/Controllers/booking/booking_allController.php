@@ -62,7 +62,6 @@ class booking_allController extends Controller
     {
            
     	$data = $this->d_booking->all()->sortByDesc("created_at");;
-
         $data = collect($data);
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
@@ -116,13 +115,21 @@ class booking_allController extends Controller
 			        		return '-';
 			        	}
 			        })->addColumn('book_by', function ($data) {
-			        	if ($data->user != null) {
+			        	if ($data->db_users != null) {
 			        		return $data->user->name;
 			        	}else{
 			        		return '-';
 			        	}
 			        })->addColumn('code', function ($data) {
-			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>';
+
+			        	$pay = $data->payment;
+			        	$a = '';
+			        	for ($i=0; $i < count($pay); $i++) { 
+			        		if ($pay[$i]->dh_status_payment == 'RELEASED') {
+			        			$a = '<i class="material-icons" style="color: red;font-size:10px">brightness_1</i>';
+			        		}
+			        	}
+			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>'.$a;
 			        })->addColumn('label', function ($data) {
 
 			        	if($data->db_status == 'Waiting List')
