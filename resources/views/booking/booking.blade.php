@@ -1090,8 +1090,14 @@
     }
     
     $('.name').focus(function(){
-        $(this).removeClass('errors');
+        $(this).removeClass('error');
     })
+
+    $('.gender').change(function(){
+        $(this).removeClass('error');
+    })
+
+
 
     $(document).on('click','.calc',function(){
         // ADD TO TABLE INVOICE
@@ -1202,6 +1208,15 @@
 
                 $(this).find('input:not(.chooseFile)').each(function(z){
                     if ($(this).not('.status').val() == '') {
+                        console.log($(this));
+                        $(this).addClass('error');
+                        validate.push(0);
+                    }
+
+                })
+
+                $(this).find('.gender').each(function(z){
+                    if ($(this).val() == '') {
                         console.log($(this));
                         $(this).addClass('error');
                         validate.push(0);

@@ -277,7 +277,7 @@
                             <span>Home</span>
                         </a>
                     </li>
-
+                    @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 )
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -356,6 +356,9 @@
                             <span>BOOK</span>
                         </a>
                     </li>
+                    @else
+                    
+                    @endif
                     
                     
                    

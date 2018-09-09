@@ -20,13 +20,13 @@ class agentController extends Controller
 {
     public function agent()
     {
-        $data = user::where('role_id','4')->get();
+        $data = user::all();
     	return view('master.master_agent.index_agent',compact('data'));
     }
 
     public function datatable_agent()
     {
-        $data = user::where('role_id','4')->get();
+        $data = user::all();
         
         $data = collect($data);
 
@@ -45,13 +45,13 @@ class agentController extends Controller
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="'.url('/master/master_agent/edit').'/'.$data->id.'" class=" waves-effect waves-block">
+                                        <a href="'.url('/master/master_agent').'/'.$data->id.'/edit'.'" class="waves-effect waves-block">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
                                     </li>
                                     <li>
-                                        <a onclick="deleting(\''.$data->id.'\')" class="waves-effect waves-block">
+                                        <a href="'.url('/master/master_agent').'/'.$data->id.'/delete'.'" class="waves-effect waves-block">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -80,6 +80,48 @@ class agentController extends Controller
                              ->update(['status' => 'AKTIF']);
 
         return Response()->json(['status'=>1]);
+    }
+    public function agent_edit($id)
+    {
+        $data = DB::table('users')->where('id',$id)->first();
+        json_encode($data);
+        
+        return view('master.master_agent.edit_agent',compact('data'));
+    }
+    public function agent_update(Request $request,$id)
+    {
+
+        if ($request->file('image') == null) {
+           $filename = auth::user()->id.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'agent/agent';
+           $filename = auth::user()->id.'.jpg';
+           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+       
+       $image = DB::table('users')->where('id',$id)->update([
+                'co_name'       =>$request->co_name,
+                'co_phone'      =>$request->co_phone,
+                'co_email'      =>$request->co_email,
+                'co_address'    =>$request->co_address,
+                'mg_name'       =>$request->mg_name,
+                'mg_phone'      =>$request->mg_phone,
+                'mg_email'      =>$request->mg_email,
+                'name'          =>$request->name,
+                'phone'         =>$request->phone,
+                'email'         =>$request->email,
+                'address'       =>$request->address,
+                'image'         =>$filename,
+            ]);
+
+       return view('master.agent');
+    }
+    public function agent_delete($id)
+    {
+       $data = DB::table('users')->where('id',$id)->delete();
+        
+       return redirect()->back();
     }
 
 }

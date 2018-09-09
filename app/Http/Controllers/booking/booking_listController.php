@@ -224,7 +224,7 @@ class booking_listController extends Controller
         
         $pdf = PDF::loadView('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
         // return view('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
-        return $pdf->setPaper('A4', 'potrait')->stream('temp.pdf');
+        return $pdf->setPaper('A4', 'potrait')->download('booking_detail.pdf');
     }
     public function bookingdetail_download_md_tata_tertib($id)
     {
@@ -272,7 +272,7 @@ class booking_listController extends Controller
             // ->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
     		->where('db_id',$id)->get()->toArray();
 
-        // return $data;
+        return $data;
 
         $total_1 = [];
         $total_2 = [];
@@ -310,6 +310,8 @@ class booking_listController extends Controller
         $total_add = array_sum($add);
 
         $grand_total = $total_pax+$total_add;
+
+        
 
         $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('data','add_book','total_pax','total_add','grand_total'));
         return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');

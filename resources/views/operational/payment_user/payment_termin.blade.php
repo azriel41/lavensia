@@ -260,13 +260,18 @@
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_room, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td align="right">Additional Price :</td>
+                                                        <td align="right" width="150">Additional Price :</td>
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_additional, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td align="right">Total Price :</td>
-                                                        <td align="right"> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
+                                                        <td align="right">Paid :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_total-$booking->db_total_remain, 2, ",", ".") }}</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td align="right">Remaining :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_total_remain, 2, ",", ".") }}</td>
+                                                    </tr>
+
                                                     <tr>
                                                         <td align="right">Total Payment :</td>
                                                         <td align="center">
@@ -278,37 +283,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 current_items">
-                                        <div class="col-sm-6" >
-                                            <div class="col-sm-12" style="margin-bottom: 20px">
-                                                <img src="{{ asset('assets_frontend/img/dp.png') }}" style="width: 50px;height: 50px;display: inline;">
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="payment" class="payment" id="dp" value="dp">
-                                                <label for="dp " class="label_new" style="font-size: 12px">Down Payment</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="col-sm-12" style="margin-bottom: 20px">
-                                                <img width="50" src="{{ asset('assets_frontend/img/money_bag.png') }}" style="width: 50px;height: 50px;display: inline;">
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="payment" class="payment" id="fp" value="fp">
-                                                <label for="fp" class="label_new" style="font-size: 12px">Full Payment</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12" style="margin-top: 20px;text-align: left; font-size: 10px">
-                                        <h5 class="marron">ATTENTION :</h5>
-                                       <ol style="list-style-type: decimal;color: grey">
-                                           <li>Harap Melakukan Pembayaran Dalam 1 x 24 jam</li>
-                                           <li>Pastikan Nominal Sesuai Dengan Bukti Transfer</li>
-                                           <li>Minimal Down Payment 50% Dari Total Harga</li>
-                                           <li>Kelengkapan Dan Kevalid-an Data Mempercepat Proses Verifikasi</li>
-                                       </ol>
-                                    </div>
                                     <div class="col-sm-12">
-                                        <button type="button" class="btn btn-success save" style="">
+                                        <button type="button" class="btn btn-success save" style="margin-top: 100px;" >
                                             <i class="fa fa-money"> Pay Out</i>
                                         </button>
                                     </div>
@@ -436,7 +412,7 @@ function load(parent,file) {
 // END GAMBAR
 function hitung(a) {
     total_payment = 0;
-    var sisa = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+    var sisa = '{{ $booking->db_total_remain }}';
     $('.nominal').each(function(){
         total_payment +=  $(this).val().replace(/[^0-9\-]+/g,"")*1;
         sisa -= $(this).val().replace(/[^0-9\-]+/g,"")*1;
@@ -447,7 +423,7 @@ function hitung(a) {
             });
             temp -= $(this).val().replace(/[^0-9\-]+/g,"")*1;
             console.log(temp);
-            var sisa1 = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+            var sisa1 = '{{ $booking->db_total_remain }}';
              sisa1 = sisa1 - temp
             $(this).val(accounting.formatMoney(sisa1,"", 0, ".",','));
         }
@@ -499,19 +475,9 @@ $('input').focus(function(){
 })  
 
 $('.save').click(function(){
-    var total = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+    var total = '{{ $booking->db_total_remain }}';
     var nominal = $('.nominal').val().replace(/[^0-9\-]+/g,"");
     var validator = [];
-    var method    = $('.payment:checked').val()
-    if (method == undefined) {
-        iziToast.warning({
-            icon: 'fa fa-times',
-            position:'topRight',
-            message: 'Please Select a Payment Method!',
-        });
-        return false;
-    }
-
 
     $('.form_all').find('input').each(function(){
         if ($(this).val() == '') {
@@ -531,28 +497,7 @@ $('.save').click(function(){
 
         return false;
     }
-    
-    if (method == 'dp') {
-        if (total_payment < '{{ $booking->detail_itin->md_dp }}'*1) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Down Payment Minimal is 50 % From Total Booking!',
-            });
 
-            return false;
-        }
-    }else{
-        if (total_payment < total) {
-            iziToast.warning({
-                icon: 'fa fa-times',
-                position:'topRight',
-                message: 'Payment Does Not Reach Requirement !',
-            });
-
-            return false;
-        }
-    }
     var form  = $('.form_all');
     var formdata = false;
     if (window.FormData){
@@ -568,14 +513,13 @@ $('.save').click(function(){
 
         $.ajax({
             type: "POST",
-            url:'{{ url('/payment_page/save') }}',
+            url:'{{ url('/payment_page/save_termin') }}',
             data: formdata ? formdata : form.serialize(),
             dataType:'json',
             processData: false,
             contentType: false,
           success:function(data){
             if (data.status == '1') {
-                // console.log('{{ url('/') }}'+'/booking/bookingdetail/'+data.id);
                 location.href = '{{ url('/') }}'+'/booking/bookingdetail/'+data.id;
             }else if (data.status == '0') {
                 iziToast.success({

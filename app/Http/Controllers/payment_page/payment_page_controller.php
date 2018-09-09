@@ -75,7 +75,7 @@ class payment_page_controller extends Controller
     {   
         DB::beginTransaction();
         try{
-            $id = $this->d_history_bayar->max('dh_id');
+            $id = $this->d_history_bayar->max('dh_id')+1;
             $head = array(
                            'dh_id'              => $id,
                            'dh_booking_id'      => $req->id,
@@ -99,7 +99,65 @@ class payment_page_controller extends Controller
 
                     Storage::put($filename,file_get_contents($file));
                 }else{
-                    return Response::json(['status'=>0,'message'=>'Check Your Photo Passport...']);
+                    return Response::json(['status'=>0,'message'=>'Check Your Proof Payment Photo...']);
+                }
+
+                $detail = array(
+                           'dhd_history_id'      => $id,
+                           'dhd_bank'            => strtoupper($req->bank_number[$b]),
+                           'dhd_nominal'         => filter_var($req->nominal[$b],FILTER_SANITIZE_NUMBER_INT),
+                           'dhd_nama_rekening'   => strtoupper($req->name[$b]),
+                           'dhd_image'           => $filename,
+                           'dhd_tanggal'         => carbon::parse(str_replace('/', '-', $req->date[$b]))->format('Y-m-d'),
+                        );
+                // dd($detail);
+                $save = $this->d_history_bayar_d->create($detail);
+            }
+
+            DB::commit();
+            return Response::json(['status'=>1,'id'=>$d_booking->db_kode_transaksi]);
+        }catch(Exception $error){
+            return Response::json(['status'=>0,'message'=>$error]);
+            DB::rollBack();
+        }
+    }
+
+    public function payment_termin(Request $req)
+    {
+        $booking = $this->d_booking->cari('db_id',$req->id);
+
+        if (Auth::User() != null) {
+            $cart = Auth::User()->booking;
+            $jumlah = count(Auth::User()->booking);
+            return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
+        }else{
+            return view('operational.payment_user.payment_termin','booking');
+        }
+    }
+    public function save_termin(Request $req)
+    {
+        DB::beginTransaction();
+        try{
+            $id = $this->d_history_bayar->max('dh_id')+1;
+            $head = array(
+                           'dh_id'              => $id,
+                           'dh_booking_id'      => $req->id,
+                           'dh_total_payment'   => $req->total_pay,
+                           'dh_payment_method'  => 'DP',
+                           'dh_status_payment'  => 'RELEASED',
+                        );
+
+            $this->d_history_bayar->create($head);
+
+            $d_booking = $this->d_booking->cari('db_id',$req->id);
+            for ($b=0; $b < count($req->bank_number); $b++) { 
+                $file = $req->file('image')[$b];
+                if ($file != null) {
+                    $filename = 'history_bayar/'.'BAYAR_TERMIN'.'_'.$d_booking->db_kode_transaksi.'_'.$id.'.'.$file->getClientOriginalExtension();
+
+                    Storage::put($filename,file_get_contents($file));
+                }else{
+                    return Response::json(['status'=>0,'message'=>'Check Your Proof Payment Photo...']);
                 }
 
                 $detail = array(

@@ -93,7 +93,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//PAYMENT USER
 	Route::get('/payment_page/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
+	Route::get('/payment_page/payment_termin', 'payment_page\payment_page_controller@payment_termin')->name('payment_termin');
 	Route::post('/payment_page/save', 'payment_page\payment_page_controller@save_first_payment')->name('save_payment_user');
+	Route::post('/payment_page/save_termin', 'payment_page\payment_page_controller@save_termin')->name('save_termin');
 		//booking detail
 		Route::get('/detil_payment/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
 
@@ -167,6 +169,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//agent
 	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
 	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');
+	Route::get('/master/master_agent/{id}/edit', 'master\agentController@agent_edit')->name('master_agent_edit');
+	Route::post('/master/master_agent/{id}/update', 'master\agentController@agent_update')->name('master_agent_update');
+	Route::get('/master/master_agent/{id}/delete', 'master\agentController@agent_delete')->name('master_agent_delete');
 	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
 
 	//Additional

@@ -152,7 +152,7 @@
                         <div class="col-md-12" style="min-height: 100px">
                                 <div class="alert alert-danger alert-dismissable" style="animation: fadein 0.5s, fadeout 0.5s 2.5s;">
                                   <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                  <h2 style="text-align:left"><h4 style="text-align:center">BUKAN WAKTU SERVICE</h4>
+                                  <h2 style="text-align:left"><h4 style="text-align:center">{{ Session::get('message') }}</h4>
                                 </div>
                         </div>
                     @endif
