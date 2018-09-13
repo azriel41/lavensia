@@ -42,6 +42,7 @@
                                 <th class="center">Category</th>
                                 <th class="center">Schedule</th>
                                 <th class="center">Departure</th>
+                                <th class="center">Status</th>
                                 <th class="center">Detail</th>
                             </tr>
                         </thead>
@@ -78,6 +79,10 @@ window.onload = function(){
                     targets: 6 ,
                     className: 'center'
                 },
+                {
+                    targets: 7 ,
+                    className: 'center'
+                },
             ],
         columns: [
             {data: 'DT_Row_Index', name: 'DT_Row_Index'},
@@ -87,6 +92,7 @@ window.onload = function(){
             {data: 'category', name: 'category'},
             {data: 'schedule', name: 'schedule'},
             {data: 'departure', name: 'departure'},
+            {data: 'status', name: 'status'},
             {data: 'aksi', name: 'aksi'},
         ]
     });
@@ -133,6 +139,75 @@ function departure(mc_id) {
             
         }
     })
+}
+
+function approve(id) {
+    iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-question-circle',
+            title: 'Approve Data!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button class="bg-red">Approve</button>',
+                function (instance, toast) {
+
+                  $.ajaxSetup({
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: "get",
+                        url:'{{ route('approve_itinerary') }}',
+                        data: {id},
+                        dataType:'json',
+                      success:function(data){
+                        if (data.status == '1') {
+                            iziToast.success({
+                                message: data.message,
+                                position:'topRight',
+                                icon:'fa fa-success'
+                            });
+                            var table = $('.intinerary').DataTable();
+                            table.ajax.reload();
+                        }else if (data.status == '0') {
+                            iziToast.warning({
+                                position:'topRight',
+                                message:data.message,
+                                iconText:'fa fa-warning'
+                            });
+
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            message: 'Terjadi Kesalahan!',
+                            position:'topRight',
+                            iconText:'fa fa-warning'
+                        });
+                      }
+                    });
+                    instance.hide({
+                        transitionOut: 'fadeOutUp'
+                    }, toast);
+                }
+            ],
+            [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+    });
 }
 
 function deleting(mi_id) {
@@ -202,7 +277,7 @@ function deleting(mi_id) {
                 }
               ]
             ]
-        });
+    });
 }
 
 </script>
