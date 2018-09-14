@@ -1177,8 +1177,8 @@
                         var harga = '{{ number_format($detail_intinerary->md_adult_price, 0, ",", ".") }}';
                         total_room += ('{{ $detail_intinerary->md_adult_price}}'*1)
                     }else if(bed == 'doubletwin&cnb'){
-                        var harga = '{{ number_format($detail_intinerary->md_infant_price, 0, ",", ".") }}';
-                        total_room += ('{{ $detail_intinerary->md_infant_price}}'*1)
+                        var harga = '{{ number_format($detail_intinerary->md_child_price, 0, ",", ".") }}';
+                        total_room += ('{{ $detail_intinerary->md_child_price}}'*1)
                     }else if(bed == 'doubletwin&cwb'){
                         var harga = '{{ number_format($detail_intinerary->md_child_w_price, 0, ",", ".") }}';
                         total_room += ('{{ $detail_intinerary->md_child_w_price}}'*1)
