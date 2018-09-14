@@ -36,26 +36,40 @@ class intinerary_controller extends Controller
 
         return Datatables::of($data)
                         ->addColumn('aksi', function ($data) {
-                            return'<div class="btn-group">
+                            $c1 = '';
+                            $a = '<div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="material-icons">settings</i>
                                     Manage <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" style="padding:0px">
-                                    <li class="bg-orange">
+                                <ul class="dropdown-menu" style="padding:0px">';
+                                    $b = '<li class="bg-orange">
                                         <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
-                                    </li>
-                                    <li class="bg-red">
+                                    </li>';
+                                    $c = '<li class="bg-red">
                                         <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
-                                    </li>
-                                </ul>
+                                    </li>';
+
+                                    if ($data->mi_status != 'ACTIVE') {
+                                        if (Auth::user()->akses('approve itinerary','mh_aktif')) {
+                                            $c1 = '<li class="bg-cyan">
+                                                <a onclick="approve(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
+                                                    <i class="material-icons">check</i>
+                                                    Approve
+                                                </a>
+                                            </li>';
+                                        }
+                                    }
+                                $d = '</ul>
                             </div>';
+
+                            return $a.$b.$c.$c1.$d;
                         })
                         ->addColumn('departure', function ($data) {
                             return'<button onclick="departure(\''.$data->mi_id.'\')" type="button" class="btn bg-pink waves-effect m-r-20" data-toggle="modal" data-target="#departure">
@@ -70,7 +84,14 @@ class intinerary_controller extends Controller
                         ->addColumn('category', function ($data) {
                             return $data->category->mc_name;
                         })
-                        ->rawColumns(['aksi','category','schedule','departure'])
+                        ->addColumn('status', function ($data) {
+                            if ($data->mi_status == "ACTIVE") {
+                                return '<label class="label label-primary" style="font-size: 12px !important;">ACTIVE</label>';
+                            }else{
+                                return '<label class="label label-danger" style="font-size: 12px !important;">NOT ACTIVE</label>';
+                            }
+                        })
+                        ->rawColumns(['aksi','category','schedule','departure','status'])
                         ->addIndexColumn()
                         ->make(true);
     }
@@ -395,5 +416,14 @@ class intinerary_controller extends Controller
 
         DB::commit();
         return Response::json(['status'=>1,'message'=>'Saving Success']);
+    }
+
+    public function approve(Request $req)
+    {
+        if (Auth::user()->akses('approve itinerary','mh_aktif')) {
+            $array = array('mi_status'=>'ACTIVE');
+            $this->all_variable->intinerary()->update($array,'mi_id',$req->id);
+            return Response::json(['status'=>1,'message'=>'Update Success']);
+        }
     }
 }

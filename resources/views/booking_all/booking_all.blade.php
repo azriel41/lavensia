@@ -27,6 +27,7 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <h2>Booking List</h2>
                                 </div>
+
                             </div>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -95,6 +96,14 @@ $(document).ready(function(){
             {data: 'aksi',              name: 'aksi'},
         ]
     });
+    @if (Session::has('message')) 
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'You Not Authorized!',
+        });
+    @endif
 })
     
 

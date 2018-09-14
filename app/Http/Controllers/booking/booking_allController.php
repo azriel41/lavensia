@@ -24,6 +24,7 @@ use App\d_booking;
 use App\d_party_name;
 use App\d_history_bayar;
 use Exception;
+use Session;
 class booking_allController extends Controller
 {
 	protected $intinerary;
@@ -570,7 +571,12 @@ class booking_allController extends Controller
 
     public function booking_detail($id)
     {
-    	return view('booking_all.booking_detail',compact('id'));
+    	if (Auth::user()->akses('booking detail','mh_aktif')) {
+    		return view('booking_all.booking_detail',compact('id'));
+    	}else{
+    		Session::flash('message','You Not Authorized');
+    		return redirect()->back();
+    	}
     }
     
 
@@ -717,6 +723,13 @@ class booking_allController extends Controller
     		DB::rollBack();
     	}
     	
+    }
+
+    public function check_payment(Request $req)
+    {
+    	$data = $this->d_history_bayar->cari('dh_id',$req->id);
+		return view('booking_all.check',compact('data'));
+
     }
 }
 

@@ -129,6 +129,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/booking_all/delete', 'booking\booking_allController@delete')->name('booking_all_delete');
 		Route::get('/booking/booking_all/approve_payment', 'booking\booking_allController@approve_payment')->name('approve_payment');
 		Route::get('/booking/booking_all/delete_payment', 'booking\booking_allController@delete_payment')->name('delete_payment');
+		Route::get('/booking/booking_all/check_payment', 'booking\booking_allController@check_payment')->name('check_payment');
 
 
 	//BOOK ADMIN DAN HANDLE BY
@@ -192,6 +193,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/departure', 'master\intinerary_controller@departure')->name('departure');
 	Route::get('/master/master_intinerary/ganti_nama', 'master\intinerary_controller@ganti_nama')->name('ganti_nama');
 	Route::get('/master/master_intinerary/delete', 'master\intinerary_controller@delete')->name('delete_intinerary');
+	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
 	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 	
