@@ -834,6 +834,7 @@
         }else if (val == 3) {
             $(par).find('.detail_room').not(':eq(0)').removeClass('disabled');
             $(par).find('.detail_room').not(':eq(0)').find('.room_val').val(room);
+            $(par).find('.detail_room').eq(1).find('.status').val('adult');
             if (bed == 'triple') {
                 $(par).find('.detail_room').last().find('.status').val('adult');
             }else if (bed == 'doubletwin&cnb' || bed == 'doubletwin&cwb'){
