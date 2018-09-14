@@ -108,7 +108,7 @@
                                        <th class="center-al">Status</th>
                                        <th class="center-al">Stat Pay</th>
                                        <th class="center-al">Book by</th>
-                                       <th class="center-al">Procces By</th>
+                                       <th class="center-al">Handle By</th>
                                        <th class="center-al">Payment</th>
                                    </tr>
                                 </thead>
