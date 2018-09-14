@@ -3,14 +3,14 @@
 <meta http-equiv="X-UA-`atible" content="IE=edge,chrome=1">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <!-- Page Title -->
-<title>Lavensia Tour & Travel</title>        
+<title>Oke-Trip.com</title>        
 <!-- Meta Description -->
 <meta name="description" content="Blue One Page Creative HTML5 Template">
 <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
 <meta name="author" content="Muhammad Morshed">
 <!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/png" href="{{ asset('assets_frontend/img/lavensia_favicon.png') }}"/>
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets_frontend/img/favicon.png') }}"/>
 
 <!-- preloader -->
 <div id="preloader">
@@ -42,7 +42,7 @@ Fixed Navigation
             <!-- logo -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <h1 id="logo">
-                    <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="logo">
+                    <img src="{{ asset ('assets_frontend/img/head_logo.png')}}" alt="Brandi" class="logo">
                 </h1>
             </a>
             <!-- /logo -->
@@ -56,7 +56,6 @@ Fixed Navigation
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                 
                 @if (Route::has('login'))
-
                         @if (Auth::check())
                             <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                             <li class="nav-item dropdown">
@@ -130,8 +129,9 @@ Fixed Navigation
 
                             
                         @else
-                            <li style="background-color: #4262ff;"><a href="" style="color: whitesmoke !important;" onclick="login()">Login</a></li>
-                            <li style="background-color: #1c41fc;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   
+                        <li><button style="margin-top: 10px;" class="btn btn-info"><i class="fa fa-user"></i> Log In</button></li>
+                        {{-- <li style="background-color: #74b9ff;"><a href="" style="color: whitesmoke !important;" onclick="login()">Login</a></li> --}}
+                        {{-- <li style="background-color: #0984e3;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   --}} 
                         @endif
                 @endif
 

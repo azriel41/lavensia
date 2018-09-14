@@ -262,7 +262,17 @@ class booking_listController extends Controller
     }
     public function bookingdetail_download_invoice($id)
     {
+        $plus = DB::table('d_history_bayar')->where('dh_booking_id',$id)->get();
+
+        // return $plus;
+        // if ($plus[0]->dh_print == 0 ) {
+        //     $plus1 = 1;
+        // }else{
+        //     $plus1 =+ 1; 
+        // }
+        // return $plus1;
         
+        // $upd = DB::table('d_history_bayar')->where('dh_booking_id',$id)->update(['dh_print'=>$plus1]);
 
     	$data = DB::table('d_booking')
             ->leftjoin('d_history_bayar','d_history_bayar.dh_booking_id','=','d_booking.db_id')
@@ -272,7 +282,7 @@ class booking_listController extends Controller
             // ->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
     		->where('db_id',$id)->get()->toArray();
 
-        return $data;
+        // return $data;
 
         $total_1 = [];
         $total_2 = [];
@@ -316,7 +326,7 @@ class booking_listController extends Controller
         $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('data','add_book','total_pax','total_add','grand_total'));
         return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');
 
-		return view('booking_print.booking_print_invoice',compact('data'));
+		// return view('booking_print.booking_print_invoice',compact('data','add_book','total_pax','total_add','grand_total'));
     }
     
 }
