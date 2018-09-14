@@ -55,7 +55,7 @@ class bookingController extends Controller
 			$hours = $dt->format('H'); 
 			$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
 
-			if (!in_array($hours, $range)) {
+			if (in_array($hours, $range)) {
 		    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
 		    	$id 				= $req->id;
