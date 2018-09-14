@@ -48,18 +48,20 @@
                     <!-- end single slide -->
                     
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(assets_frontend/img/banner.jpg);">
-                        <div class="carousel-caption">
-                           {{--  <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
-                            <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p> --}}
-                            
-                            {{-- <ul class="social-links text-center">
-                                <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                                <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                                <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-                            </ul> --}}
+                    <div class="img-responsive">
+                        <div class="item active" style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
+                            <div class="carousel-caption">
+                               {{--  <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
+                                <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
+                                <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p> --}}
+                                
+                                {{-- <ul class="social-links text-center">
+                                    <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                    <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                    <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                    <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+                                </ul> --}}
+                            </div>
                         </div>
                     </div>
                     <!-- end single slide -->
@@ -78,11 +80,20 @@
         Features
         ==================================== -->
         
+  
+        <!--
+        End Features
+        ==================================== -->
+        
+        
+        <!--
+        Our Works
+        ==================================== -->
         <section id="features" class="features">
             <div class="container">
                 <div class="row">
                 
-                    <div class="col-md-12 sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
+                    <div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
                         <h2>Features</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
@@ -130,31 +141,18 @@
                             </div>
                         </div>
                     </div>
-
-                  
-
                     <!-- end service item -->
                         
                 </div>
             </div>
         </section>
-        
-        <!--
-        End Features
-        ==================================== -->
-        
-        
-        <!--
-        Our Works
-        ==================================== -->
-        
         <section id="package" class="works clearfix">
             <div class="container">
                 <div class="row">
                 
                     <div class="sec-title text-center">
                         <h2>LAVENSIA Tour & Travel</h2>
-                        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                        {{-- <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div> --}}
                     </div>
                     
                     <div class="sec-sub-title text-center">
@@ -193,133 +191,6 @@
             
         
 
-        </section>
-        
-        <!--
-        End Our Works
-        ==================================== -->
-        
-        
-        
-        <!--
-        Some fun facts
-        ==================================== -->        
-        
-        <section id="facts" class="facts">
-            <div class="parallax-overlay">
-                <div class="container">
-                    <div class="row number-counters">
-                        
-                        <div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-                            <h2 class="count_h2">Some Fun Facts</h2>
-                            <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-                        </div>
-                        
-                        <!-- first count item -->
-                        <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                            <div class="counters-item">
-                                <i class="fa fa-clock-o fa-3x"></i>
-                                <strong data-to="3200">0</strong>
-                                <!-- Set Your Number here. i,e. data-to="56" -->
-                                <p>Hours of Work</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <div class="counters-item">
-                                <i class="fa fa-users fa-3x"></i>
-                                <strong data-to="120">0</strong>
-                                <!-- Set Your Number here. i,e. data-to="56" -->
-                                <p>Satisfied Clients</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <div class="counters-item">
-                                <i class="fa fa-rocket fa-3x"></i>
-                                <strong data-to="360">0</strong>
-                                <!-- Set Your Number here. i,e. data-to="56" -->
-                                <p> Projects Delivered </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <div class="counters-item">
-                                <i class="fa fa-trophy fa-3x"></i>
-                                <strong data-to="6454">0</strong>
-                                <!-- Set Your Number here. i,e. data-to="56" -->
-                                <p>Awards Won</p>
-                            </div>
-                        </div>
-                        <!-- end first count item -->
-                
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!--
-        End Some fun facts
-        ==================================== -->
-        
-        
-        <!--
-        Contact Us
-        ==================================== -->        
-        
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="row mb50">
-                
-                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        <h2>Let’s Discuss</h2>
-                        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-                    </div>
-                    
-                    <div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
-                        <p>Keluh Kesah anda dan juga kritik anda sangat membangun perusahaan kami bertumbuh</p>
-                    </div>
-                    
-                    
-                    
-                    <!-- contact form -->
-                    <div class="col-lg-11 col-md-11 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <div class="contact-form">
-                            <h3>Say hello!</h3>
-                            <form action="#" id="contact-form">
-                                <div class="input-group name-email">
-                                    <div class="input-field">
-                                        <input type="text" name="name" id="name" placeholder="Name" class="form-control">
-                                    </div>
-                                    <div class="input-field">
-                                        <input type="email" name="email" id="email" placeholder="Email" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <textarea name="message" id="message" placeholder="Message" class="form-control"></textarea>
-                                </div>
-                                <div class="input-group">
-                                    <input type="submit" id="form-submit" class="pull-right" value="Send message">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- end contact form -->
-                    
-                    <!-- footer social links -->
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 wow fadeInRight animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                        <ul class="footer-social">
-                            <li><a href="https://www.behance.net/Themefisher"><i class="fa fa-behance fa-2x"></i></a></li>
-                            <li><a href="https://www.twitter.com/Themefisher"><i class="fa fa-twitter fa-2x"></i></a></li>
-                            <li><a href="https://dribbble.com/themefisher"><i class="fa fa-dribbble fa-2x"></i></a></li>
-                            <li><a href="https://www.facebook.com/Themefisher"><i class="fa fa-facebook fa-2x"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- end footer social links -->
-                    
-                </div>
-            </div>
-            
-            <!-- Google map -->
-            <!-- End Google map -->
-            
         </section>
         
         <!--

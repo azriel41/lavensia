@@ -51,6 +51,7 @@ h1, h2, h3,
 h4, h5, h6 {
 	font-weight: normal;
 	margin: 0;
+  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 .clear:before,
@@ -81,7 +82,7 @@ body > section,
 }
 
 .sec-title h2 {
-  color:  #1c41fc;
+  color:  #74b9ff;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -394,7 +395,7 @@ top: -8px;
 }
 
 .overlay {
-	background-color: #1c41fc70;
+	background-color: #00000091;
 	text-align: center;
 	position: absolute;
 	color: #fff;
@@ -520,7 +521,7 @@ top: -8px;
 ==========================================*/
 
 .count_h2 {
-  color: #f9ce05 !important;
+  color: #0984e3 !important;
 }
  
 #facts {
@@ -673,7 +674,7 @@ label.error {
 
 
 .footer {
-  background-color:   #1d42fc;
+  background-color:   #0984e3;
   border-top: 5px solid #062033;
   color: #fff;
 }
@@ -774,7 +775,7 @@ label.error {
       background-color: #f1c40f;
   }
   .logo{
-      width: 80px !important;
+      width: 170px !important;
   }
   .btn-nav:hover, .btn-nav:focus, .btn-nav.focus, .btn-nav:active, .btn-nav.active, .open>.dropdown-toggle.btn-nav {
       color: #000;
