@@ -3,14 +3,14 @@
 <meta http-equiv="X-UA-`atible" content="IE=edge,chrome=1">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <!-- Page Title -->
-<title>Lavensia Tour & Travel</title>        
+<title>Oke-Trip.com</title>        
 <!-- Meta Description -->
 <meta name="description" content="Blue One Page Creative HTML5 Template">
 <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
 <meta name="author" content="Muhammad Morshed">
 <!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/png" href="{{ asset('assets_frontend/img/lavensia_favicon.png') }}"/>
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets_frontend/img/favicon.png') }}"/>
 
 <!-- preloader -->
 <div id="preloader">
@@ -42,7 +42,7 @@ Fixed Navigation
             <!-- logo -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <h1 id="logo">
-                    <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="logo">
+                    <img src="{{ asset ('assets_frontend/img/head_logo.png')}}" alt="Brandi" class="logo">
                 </h1>
             </a>
             <!-- /logo -->
@@ -53,11 +53,11 @@ Fixed Navigation
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
-                <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                 <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                 
                 @if (Route::has('login'))
                         @if (Auth::check())
+                            <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Hy, {{ auth::user()->name }}  &nbsp;<i class="fa fa-caret-down"></i>
@@ -129,8 +129,7 @@ Fixed Navigation
 
                             
                         @else
-                            <li style="background-color: #4262ff;"><a href="" style="color: whitesmoke !important;" onclick="login()">Login</a></li>
-                            <li style="background-color: #1c41fc;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   
+                        <li><button style="margin-top: 10px;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
                         @endif
                 @endif
 
@@ -140,6 +139,39 @@ Fixed Navigation
         
     </div>
 </header>
+
+<div class="form_display" style="display: none;">
+    <div class="sec-title col-sm-12 text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+        <div class="contact-form">
+            <h3 style="color: white !important;">Log In</h3>
+        </div>
+        <hr>
+        <div class="contact-form">
+            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+              {{ csrf_field() }}
+               <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                <label for="exampleInputEmail1" class="pull-left">Email address</label>
+                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+              </div>
+                @if ($errors->has('username'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('username') }}</strong>
+                    </span>
+                @endif
+              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <label for="exampleInputPassword1" class="pull-left">Password</label>
+                <input id="password" type="password" class="form-control" name="password" required>
+              </div>
+               @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+              <button type="submit" class="btn btn-default">Send invitation</button>
+            </form>
+        </div>
+    </div>
+</div>
 <!--
 End Fixed Navigation
 ==================================== -->
@@ -247,10 +279,29 @@ End Fixed Navigation
 .grey{
     color: grey;
 }
-
+.form_display {
+    position: absolute;
+    z-index: 90;
+    top: 1px;
+    right: -0px;
+    padding: 100px 40px;
+    background: radial-gradient(circle, rgba(13, 18, 41, 0.8), rgba(0, 3, 19, 0.8));
+    color: #fff;
+    width: 465px;
+    height: 725px;
+}
 </style>
 
 <script type="text/javascript">
+    function login_log(argument) {
+         if (!$(".form_display").is(":visible")) {
+                $('.form_display').css('display','block');
+            }
+            else {
+                $('.form_display').css('display','none');
+            }
+
+    }
     function home(argument) {
         window.location = ('{{ route('home') }}')
     }

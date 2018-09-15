@@ -277,7 +277,16 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    @if (auth::user()->role_id == 4)
+                    <li class="active">
+                        <a href="{{ route('master_agent_agent') }}">
+                            <i class="material-icons">widgets</i>
+                            <span>Agent</span>
+                        </a>
+                    </li>
+                    @endif
 
+                    @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 )
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -287,21 +296,31 @@
                             <li>
                                 <a href="">Akun</a>
                             </li>
-                            <li>
-                                <a href="{{ route('master_agent') }}">Agent</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_category') }}">Perusahaan</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_category') }}">Category</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_additional') }}">Additional</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
-                            </li>
+                            @if(Auth::user()->akses('master agent','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_agent') }}">Agent</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master category','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_category') }}">Perusahaan</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master category','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_category') }}">Category</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master additional','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_additional') }}">Additional</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master intinerary','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 
@@ -356,6 +375,9 @@
                             <span>BOOK</span>
                         </a>
                     </li>
+                    @else
+                    
+                    @endif
                     
                     
                    

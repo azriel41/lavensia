@@ -252,7 +252,7 @@
                                                <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_child_w_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
-                                               <td>{{ $det->md_seat }}</td>
+                                               <td>{{ $det->md_seat_remain }}</td>
                                                <td>
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>

@@ -55,7 +55,7 @@ class bookingController extends Controller
 			$hours = $dt->format('H'); 
 			$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
 
-			if (!in_array($hours, $range)) {
+			if (in_array($hours, $range)) {
 		    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
 		    	$id 				= $req->id;
@@ -80,7 +80,7 @@ class bookingController extends Controller
     {
         return DB::transaction(function() use ($req) {  
     		DB::beginTransaction();
-    		// dd($req->all());
+    		dd($req->all());
     		$id = $this->d_booking->max('db_id');
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);

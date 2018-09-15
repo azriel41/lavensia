@@ -68,17 +68,15 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
+
     <div class="modal fade" id="modal_check" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-cyan">
                     <h3 class="modal-title" id="largeModalLabel">Check Transfer</h3>
                 </div>
-                <div class="modal-body">
-                    <tr>
-                        <td><img class="img_transfer" width="100" height="100" style="border: 1px solid hotpink"></td>
-                        <td><a href=""></a></td>
-                    </tr>
+                <div class="modal-body append_check">
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">CLOSE</button>
@@ -86,6 +84,7 @@
             </div>
         </div>
     </div>
+
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -292,6 +291,25 @@ $(document).ready(function(){
         });
     }
     
+    function check(id) {
+        $.ajax({
+            type: "get",
+            url:'{{ route('check_payment') }}',
+            data: {id},
+          success:function(data){
+
+            $('.append_check').html(data);
+            $('#modal_check').modal('show');
+          },error:function(){
+            iziToast.warning({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Terjadi Kesalahan!',
+            });
+          }
+        });
+    }
 
 
 </script>

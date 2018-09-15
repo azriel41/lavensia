@@ -67,6 +67,16 @@ Route::get('/partner/partner', 'additional\partnerController@partner')->name('pa
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
 
+	/*********** PAGE AGENT ************/  
+
+	Route::get('/agent/master_agent_agent', 'agent\agent_agentController@agent')->name('master_agent_agent');
+	Route::get('/agent/master_agent_agent_create', 'agent\agent_agentController@agent_create')->name('master_agent_agent_create');
+	Route::post('/agent/master_agent_agent_save', 'agent\agent_agentController@agent_save')->name('master_agent_agent_save');
+	Route::get('/agent/master_agent_agent_datatable', 'agent\agent_agentController@agent_datatable')->name('master_agent_agent_datatable');
+
+
+
+
 	/*********** HALAMAN UTAMA ************/  
 	
 	// STORAGE URL
@@ -93,7 +103,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//PAYMENT USER
 	Route::get('/payment_page/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
+	Route::get('/payment_page/payment_termin', 'payment_page\payment_page_controller@payment_termin')->name('payment_termin');
 	Route::post('/payment_page/save', 'payment_page\payment_page_controller@save_first_payment')->name('save_payment_user');
+	Route::post('/payment_page/save_termin', 'payment_page\payment_page_controller@save_termin')->name('save_termin');
 		//booking detail
 		Route::get('/detil_payment/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
 
@@ -127,6 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/booking/booking_all/delete', 'booking\booking_allController@delete')->name('booking_all_delete');
 		Route::get('/booking/booking_all/approve_payment', 'booking\booking_allController@approve_payment')->name('approve_payment');
 		Route::get('/booking/booking_all/delete_payment', 'booking\booking_allController@delete_payment')->name('delete_payment');
+		Route::get('/booking/booking_all/check_payment', 'booking\booking_allController@check_payment')->name('check_payment');
 
 
 	//BOOK ADMIN DAN HANDLE BY
@@ -167,6 +180,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//agent
 	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
 	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');
+	Route::get('/master/master_agent/{id}/edit', 'master\agentController@agent_edit')->name('master_agent_edit');
+	Route::post('/master/master_agent/{id}/update', 'master\agentController@agent_update')->name('master_agent_update');
+	Route::get('/master/master_agent/{id}/delete', 'master\agentController@agent_delete')->name('master_agent_delete');
 	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
 
 	//Additional
@@ -187,6 +203,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/departure', 'master\intinerary_controller@departure')->name('departure');
 	Route::get('/master/master_intinerary/ganti_nama', 'master\intinerary_controller@ganti_nama')->name('ganti_nama');
 	Route::get('/master/master_intinerary/delete', 'master\intinerary_controller@delete')->name('delete_intinerary');
+	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
 	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 	

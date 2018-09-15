@@ -44,13 +44,15 @@ class HomeController extends Controller
     }
     public function save_profile(Request $request)
     {
-        // dd($request->all());
-
-       $image = $request->file('image');
-       $upload = 'agent/agent';
-       $filename = auth::user()->id.'.jpg';
-       Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
-
+       if ($request->file('image') == null) {
+           $filename = auth::user()->id.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'agent/agent';
+           $filename = auth::user()->id.'.jpg';
+           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+       
        $image = DB::table('users')->where('id',auth::user()->id)->update([
                 'co_name'       =>$request->co_name,
                 'co_phone'      =>$request->co_phone,

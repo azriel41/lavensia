@@ -24,6 +24,7 @@ use App\d_booking;
 use App\d_party_name;
 use App\d_history_bayar;
 use Exception;
+use Session;
 class booking_allController extends Controller
 {
 	protected $intinerary;
@@ -62,7 +63,6 @@ class booking_allController extends Controller
     {
            
     	$data = $this->d_booking->all()->sortByDesc("created_at");;
-
         $data = collect($data);
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
@@ -116,13 +116,21 @@ class booking_allController extends Controller
 			        		return '-';
 			        	}
 			        })->addColumn('book_by', function ($data) {
-			        	if ($data->user != null) {
+			        	if ($data->db_users != null) {
 			        		return $data->user->name;
 			        	}else{
 			        		return '-';
 			        	}
 			        })->addColumn('code', function ($data) {
-			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>';
+
+			        	$pay = $data->payment;
+			        	$a = '';
+			        	for ($i=0; $i < count($pay); $i++) { 
+			        		if ($pay[$i]->dh_status_payment == 'RELEASED') {
+			        			$a = '<i class="material-icons" style="color: red;font-size:10px">brightness_1</i>';
+			        		}
+			        	}
+			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>'.$a;
 			        })->addColumn('label', function ($data) {
 
 			        	if($data->db_status == 'Waiting List')
@@ -563,7 +571,12 @@ class booking_allController extends Controller
 
     public function booking_detail($id)
     {
-    	return view('booking_all.booking_detail',compact('id'));
+    	if (Auth::user()->akses('booking detail','mh_aktif')) {
+    		return view('booking_all.booking_detail',compact('id'));
+    	}else{
+    		Session::flash('message','You Not Authorized');
+    		return redirect()->back();
+    	}
     }
     
 
@@ -710,6 +723,13 @@ class booking_allController extends Controller
     		DB::rollBack();
     	}
     	
+    }
+
+    public function check_payment(Request $req)
+    {
+    	$data = $this->d_history_bayar->cari('dh_id',$req->id);
+		return view('booking_all.check',compact('data'));
+
     }
 }
 
