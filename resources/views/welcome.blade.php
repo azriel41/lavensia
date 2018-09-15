@@ -113,11 +113,11 @@
                         </div> --}}
 
                         <!-- single member -->
-                        <figure class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                            <div class="member-thumb">
+                        <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                            <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
-                                <figcaption class="overlay_article">
+                                <img src="assets_frontend/img/team/6.png" alt="Team Member" class="img-responsive">
+                                <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
                                             <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
@@ -129,11 +129,11 @@
                         <!-- end single member -->
                         
                         <!-- single member -->
-                        <figure class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                            <div class="member-thumb">
+                        <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                            <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
-                                <figcaption class="overlay_article">
+                                <img src="assets_frontend/img/team/6.png" alt="Team Member" class="img-responsive">
+                                <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
                                             <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
@@ -144,8 +144,7 @@
                         </figure>
                         <!-- end single member -->
                         
-                        <!-- single member -->
-                        <figure class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
                                 <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
@@ -158,7 +157,34 @@
                                 </figcaption>
                             </div>
                         </figure>
-                        <!-- end single member -->
+
+                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                            <div class="member-thumb">
+                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
+                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                <figcaption class="overlay_article">
+                                    <div class="campaign-city-country-cta">
+                                        <div class="book"> 
+                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </div>
+                        </figure>
+
+                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                            <div class="member-thumb">
+                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
+                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                <figcaption class="overlay_article">
+                                    <div class="campaign-city-country-cta">
+                                        <div class="book"> 
+                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </div>
+                        </figure>
                         
                     </div>
                 </div>
