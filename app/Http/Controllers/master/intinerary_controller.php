@@ -33,7 +33,6 @@ class intinerary_controller extends Controller
            
         
         $data = collect($data);
-
         return Datatables::of($data)
                         ->addColumn('aksi', function ($data) {
                             $c1 = '';
@@ -82,7 +81,14 @@ class intinerary_controller extends Controller
                                    </button>';
                         })
                         ->addColumn('category', function ($data) {
-                            return $data->category->mc_name;
+                            $tes = [];
+                            // if (isset($data->destination)) {
+
+                                for ($i=0; $i < count($data->destination); $i++) { 
+                                    $tes[$i]= $data->destination[$i]->category->mc_name;
+                                }   
+                               return $tes = implode(',', $tes);
+                            // }
                         })
                         ->addColumn('status', function ($data) {
                             if ($data->mi_status == "ACTIVE") {
@@ -129,6 +135,7 @@ class intinerary_controller extends Controller
             $detail_intinerary          = $this->all_variable->detail_intinerary();
             $m_additional_intinerary    = $this->all_variable->m_additional_intinerary();
             $flight_detail              = $this->all_variable->flight_detail();
+            $destination                = $this->all_variable->destination();
             $check = $intinerary->same('mi_nota',$req->tour_code);
 
             $file = $req->file('image');
@@ -167,7 +174,6 @@ class intinerary_controller extends Controller
                     'mi_image'      => $photo,
                     'mi_pdf'        => $pdf,
                     'mi_term'       => $req->term,
-                    'category_id'   => $req->category,
                     'mi_highlight'  => strtoupper($req->highlight),
                     'mi_by'         => strtoupper($req->caption_by),
                     'updated_at'    => Carbon::now(),
@@ -200,7 +206,7 @@ class intinerary_controller extends Controller
                     'ms_detail'         => $i+1,
                     'ms_caption'        => strtoupper($req->caption_schedule[$i]),
                     'ms_description'    => $req->description_schedule[$i],
-                    'ms_bld'            => $req->BLD[$i],
+                    'ms_bld'            => strtoupper($req->BLD[$i]),
                     'created_at'        => Carbon::now(),
                     'updated_at'        => Carbon::now(),
                     'created_by'        => $name,
@@ -233,6 +239,7 @@ class intinerary_controller extends Controller
                     'md_seat'           => $req->seat[$i],
                     'md_seat_remain'    => $req->seat[$i]-1,
                     'md_dp'             => filter_var($req->minimal_dp[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );
@@ -265,6 +272,17 @@ class intinerary_controller extends Controller
                 );
                 // dd($fl);
                 $save_schedule = $flight_detail->create($fl);
+            }
+
+            $delete = $destination->delete('d_id',$id);
+            for ($i=0; $i < count($req->category); $i++) { 
+                $fl = array(
+                    'd_id'              => $id,
+                    'd_detail'          => $i+1,
+                    'd_category_id'     => $req->category[$i],
+                );
+                // dd($fl);
+                $destination->create($fl);
             }
 
             // dd($detail_intinerary->show('md_intinerary_id',$id)->toArray());

@@ -39,8 +39,11 @@ Route::get('/', function () {
 						->whereRaw('db_total = db_total_remain')
 						->get());
 			// return $cart;
-
-    	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
+    		return view('home');
+		}else{
+    		return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+		}
 	}else{
     	return view('welcome',compact('category','intinerary','det','response'));
 	}
@@ -53,7 +56,37 @@ Route::get('/package/package_modal_detail', 'package\packageController@package_m
 Auth::routes();
 
 //intinerary ajax modal
+Route::get('/welcome', function () {
+	$category = App\category::all();
 
+	$intinerary = App\intinerary::all();
+
+	$det = [];
+	$cat = [];
+	foreach ($intinerary as $index => $val) {
+		$det = $val->detail_intinerarys;
+		$cat = $val->category;
+	}
+	$book = App\User::all();
+
+
+	$cart   = DB::table('d_booking')
+				->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+				->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+				->where('db_users',Auth::User()->role_id)
+				->whereRaw('db_total = db_total_remain')
+				->get();
+
+
+	$jumlah = count(DB::table('d_booking')
+				->where('db_users',Auth::User()->role_id)
+				->whereRaw('db_total = db_total_remain')
+				->get());
+	// return $cart;
+	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+	
+
+})->name('welcome');
 
 //Halaman See more 
 
@@ -71,6 +104,8 @@ Route::get('/article/article', 'article\articleController@article')->name('artic
 Route::group(['middleware' => 'auth'], function () {
 
 	/*********** PAGE AGENT ************/  
+
+
 
 	Route::get('/agent/master_agent_agent', 'agent\agent_agentController@agent')->name('master_agent_agent');
 	Route::get('/agent/master_agent_agent_create', 'agent\agent_agentController@agent_create')->name('master_agent_agent_create');

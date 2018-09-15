@@ -80,7 +80,7 @@ class bookingController extends Controller
     {
         return DB::transaction(function() use ($req) {  
     		DB::beginTransaction();
-    		dd($req->all());
+    		// dd($req->all());
     		$id = $this->d_booking->max('db_id');
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
