@@ -581,7 +581,7 @@ top: -8px;
     transition: font-size 1s;
 }
 .team-member:hover .recommended-destinations-hp-destination {
-    font-size: 4.1em;
+    font-size: 3.7em;
 }
 .recommended-destinations-hp .interests {
     font-size: 15px;

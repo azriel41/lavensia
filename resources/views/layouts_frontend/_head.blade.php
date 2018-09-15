@@ -53,8 +53,6 @@ Fixed Navigation
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
-                <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
-                
                 @if (Route::has('login'))
                         @if (Auth::check())
                             <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
@@ -129,6 +127,7 @@ Fixed Navigation
 
                             
                         @else
+                        <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                         <li><button style="margin-top: 10px;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
                         @endif
                 @endif
@@ -150,7 +149,7 @@ Fixed Navigation
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
               {{ csrf_field() }}
                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                <label for="exampleInputEmail1" class="pull-left">Email address</label>
+                <label for="exampleInputEmail1" class="pull-left">Username</label>
                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
               </div>
                 @if ($errors->has('username'))
@@ -167,7 +166,7 @@ Fixed Navigation
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
                 @endif
-              <button type="submit" class="btn btn-default">Send invitation</button>
+              <button type="submit" class="btn btn-book"><i class="fa fa-sign-in"></i> Log in </button>
             </form>
         </div>
     </div>
