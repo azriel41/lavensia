@@ -272,7 +272,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ url('/welcome') }}">
                             <i class="material-icons">home</i>
                             <span>PAKET TOUR</span>
                         </a>
