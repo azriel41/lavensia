@@ -480,7 +480,7 @@ top: -8px;
   color:red;
 }
 .team-member h4 {
-  color: #062033;
+  color: #74b9ff;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -500,7 +500,7 @@ top: -8px;
 }
 
 .team-member:hover h4 {
-  color: #0eb493;
+  color: #0984e3;
 }
 
 .team-member .social-links {

@@ -129,9 +129,7 @@ Fixed Navigation
 
                             
                         @else
-                        <li><button style="margin-top: 10px;" class="btn btn-info"><i class="fa fa-user"></i> Log In</button></li>
-                        {{-- <li style="background-color: #74b9ff;"><a href="" style="color: whitesmoke !important;" onclick="login()">Login</a></li> --}}
-                        {{-- <li style="background-color: #0984e3;"><a href="" style="color: whitesmoke !important;" onclick="register()">Register</a></li>   --}} 
+                        <li><button style="margin-top: 10px;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
                         @endif
                 @endif
 
@@ -141,6 +139,39 @@ Fixed Navigation
         
     </div>
 </header>
+
+<div class="form_display" style="display: none;">
+    <div class="sec-title col-sm-12 text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+        <div class="contact-form">
+            <h3 style="color: white !important;">Log In</h3>
+        </div>
+        <hr>
+        <div class="contact-form">
+            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+              {{ csrf_field() }}
+               <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                <label for="exampleInputEmail1" class="pull-left">Email address</label>
+                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+              </div>
+                @if ($errors->has('username'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('username') }}</strong>
+                    </span>
+                @endif
+              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <label for="exampleInputPassword1" class="pull-left">Password</label>
+                <input id="password" type="password" class="form-control" name="password" required>
+              </div>
+               @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+              <button type="submit" class="btn btn-default">Send invitation</button>
+            </form>
+        </div>
+    </div>
+</div>
 <!--
 End Fixed Navigation
 ==================================== -->
@@ -248,10 +279,29 @@ End Fixed Navigation
 .grey{
     color: grey;
 }
-
+.form_display {
+    position: absolute;
+    z-index: 90;
+    top: 1px;
+    right: -0px;
+    padding: 100px 40px;
+    background: radial-gradient(circle, rgba(13, 18, 41, 0.8), rgba(0, 3, 19, 0.8));
+    color: #fff;
+    width: 465px;
+    height: 725px;
+}
 </style>
 
 <script type="text/javascript">
+    function login_log(argument) {
+         if (!$(".form_display").is(":visible")) {
+                $('.form_display').css('display','block');
+            }
+            else {
+                $('.form_display').css('display','none');
+            }
+
+    }
     function home(argument) {
         window.location = ('{{ route('home') }}')
     }

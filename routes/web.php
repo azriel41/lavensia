@@ -67,6 +67,16 @@ Route::get('/partner/partner', 'additional\partnerController@partner')->name('pa
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
 
+	/*********** PAGE AGENT ************/  
+
+	Route::get('/agent/master_agent_agent', 'agent\agent_agentController@agent')->name('master_agent_agent');
+	Route::get('/agent/master_agent_agent_create', 'agent\agent_agentController@agent_create')->name('master_agent_agent_create');
+	Route::post('/agent/master_agent_agent_save', 'agent\agent_agentController@agent_save')->name('master_agent_agent_save');
+	Route::get('/agent/master_agent_agent_datatable', 'agent\agent_agentController@agent_datatable')->name('master_agent_agent_datatable');
+
+
+
+
 	/*********** HALAMAN UTAMA ************/  
 	
 	// STORAGE URL

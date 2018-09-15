@@ -277,6 +277,15 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    @if (auth::user()->role_id == 4)
+                    <li class="active">
+                        <a href="{{ route('master_agent_agent') }}">
+                            <i class="material-icons">widgets</i>
+                            <span>Agent</span>
+                        </a>
+                    </li>
+                    @endif
+
                     @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 )
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
