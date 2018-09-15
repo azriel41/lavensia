@@ -24,6 +24,12 @@ class intinerary extends Model
         return $this->hasMany('App\detail_intinerary','md_intinerary_id');
 	}
 
+
+	public function destination()
+	{
+        return $this->hasMany('App\destination','d_id');
+	}
+
 	public function schedules()
 	{
         return $this->hasMany('App\schedule','ms_intinerary_id');
