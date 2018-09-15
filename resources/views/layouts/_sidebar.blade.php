@@ -321,6 +321,11 @@
                                     <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
                                 </li>
                             @endif
+                            @if(Auth::user()->akses('master leader','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_leader') }}">Master Tour Leader</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 

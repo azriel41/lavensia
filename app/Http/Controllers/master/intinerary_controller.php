@@ -426,4 +426,13 @@ class intinerary_controller extends Controller
             return Response::json(['status'=>1,'message'=>'Update Success']);
         }
     }
+    public function master_leader()
+    {
+        return view('master.master_leader.master_leader');
+    }
+
+    public function create_leader()
+    {
+        return view('master.master_leader.tambah');
+    }
 }
