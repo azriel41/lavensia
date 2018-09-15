@@ -9,8 +9,7 @@
         @include('layouts_frontend._head')
        
         <style type="text/css">
-           
-            .mb50{
+            .mb50 .team{
                 margin-top: 30px;
                 background-color: white;
                 padding-bottom: 60px;
@@ -39,10 +38,7 @@
                                     <h2>Meet Our Agent</h2>
                                     <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                                 </div>
-                                
-                                {{-- <div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
-                                </div> --}}
+                               
                                 <div style="margin-top: 40px">
                                     
                                 </div>

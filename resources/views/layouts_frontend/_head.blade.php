@@ -124,8 +124,6 @@ Fixed Navigation
                                     </div> --}}
                               </div>
                             </li>
-
-                            
                         @else
                         <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
                         <li><button style="margin-top: 10px;border-radius: 0px !important;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
@@ -142,7 +140,7 @@ Fixed Navigation
 <div class="form_display" style="display: none;">
     <div class="sec-title col-sm-12 text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
         <div class="contact-form">
-            <h3 style="color: white !important;">Log In</h3>
+            <h3 style="color: white !important;border-radius: 0px !important;">Log In</h3>
         </div>
         <hr>
         <div class="contact-form">
@@ -279,7 +277,7 @@ End Fixed Navigation
     color: grey;
 }
 .form_display {
-    position: absolute;
+    position: fixed;
     z-index: 90;
     top: 1px;
     right: -0px;
