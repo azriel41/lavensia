@@ -26,7 +26,7 @@
                         Master Tour Leader
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ route('create_leader') }}">
+                        <a href="{{ url('/master/master_intinerary/master_leader') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>
@@ -61,7 +61,7 @@ window.onload = function(){
         processing: true,
         serverSide: true,
         ajax: {
-          url:'{{ route('datatable_leader') }}',
+          url:'{{ url('/master/master_intinerary/datatable_leader') }}',
         },
         columnDefs: [
                 {
@@ -95,13 +95,11 @@ function deleting() {
 }
 
 function editing(id) {
-    location.href = '{{ route('edit_leader') }}?id='+id;
+    location.href = '{{ url('/master/master_intinerary/edit') }}?id='+id;
 }
 
 
-function look() {
-    location.href = '{{ route('edit_leader') }}';
-}
+// 
 </script>
 @endsection
   
