@@ -320,7 +320,7 @@ class intinerary_controller extends Controller
     public function intinerary_detail(Request $req)
     {
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
-
+        $tl = $this->all_variable->tour_leader()->all();
         $booking   = $detail_intinerary->book;
         $passenger = [];
         $id        = [];
@@ -363,7 +363,7 @@ class intinerary_controller extends Controller
             
         }
         
-        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary','tl'));
 
     }
     public function save_detail(Request $req)
@@ -406,6 +406,8 @@ class intinerary_controller extends Controller
         $save = array(
                     'md_tata_tertib'=>$tt1,
                     'md_final'=>$fc1,
+                    'md_tour_leader'=>$req->tl,
+                    'md_tip'=>filter_var($req->tip,FILTER_SANITIZE_NUMBER_INT),
                 );
 
         $update   =  $this->all_variable->detail_intinerary()->update($save,'md_id',$req->id);
@@ -438,6 +440,129 @@ class intinerary_controller extends Controller
 
     public function save_leader(Request $req)
     {
-        dd($req->all());
+        // dd($req->all());
+        DB::beginTransaction();
+        try{
+            $id = $this->all_variable->tour_leader()->max('tl_id');
+
+            $file = $req->file('image');
+            if ($file != null) {
+
+                $photo = 'tour_leader/PHOTO_'.$id.'.'.$file->getClientOriginalExtension();
+
+                Storage::put($photo,file_get_contents($req->file('image')));
+            }else{
+                return Response::json(['status'=>0,'message'=>'Please Put Your Photo...']);
+            }
+
+            $save = array(
+                        'tl_id' => $id,
+                        'tl_name' => $req->name,
+                        'tl_alamat' => $req->alamat,
+                        'tl_phone' => $req->phone,
+                        'tl_passport' => $req->alamat,
+                        'tl_exp_date' => carbon::parse($req->exp_date)->format('Y-m-d'),
+                        'tl_issuing' => $req->issued,
+                        'tl_gender' => $req->gender,
+                        'tl_birth_date' => carbon::parse($req->date_birth)->format('Y-m-d'),
+                        'tl_birth_place' => $req->place_birth,
+                        'tl_image' => $photo,
+                        'created_by'=>Auth::user()->name,
+                        'updated_by'=>Auth::user()->name,
+                    );
+            $this->all_variable->tour_leader()->create($save);
+            DB::commit();
+            return Response::json(['status'=>1]);
+        }catch(Exception $error){
+            DB::rollBack();
+            dd($error);
+        }
+    }
+
+    public function datatable_leader()
+    {
+        $data = $this->all_variable->tour_leader()->all();
+           
+        
+        $data = collect($data);
+
+        return Datatables::of($data)
+                        ->addColumn('aksi', function ($data) {
+                            $c1 = '';
+                            $a = '<div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="material-icons">settings</i>
+                                    Manage <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" style="padding:0px">';
+                                    $b = '<li>
+                                        <a onclick="look(\''.$data->tl_id.'\')" class=" waves-effect waves-block" >
+                                            <i class="material-icons">extensions</i>
+                                            Detail
+                                        </a>
+                                    </li>';
+                                    $c = '<li >
+                                        <a onclick="editing(\''.$data->tl_id.'\')" class="waves-effect waves-block" >
+                                            <i class="material-icons">edit</i>
+                                            Edit
+                                        </a>
+                                    </li>';
+                                    $d = '<li >
+                                        <a onclick="deleting(\''.$data->tl_id.'\')" class="waves-effect waves-block" >
+                                            <i class="material-icons">delete</i>
+                                            Delete
+                                        </a>
+                                    </li>';
+
+                                $e = '</ul>
+                            </div>';
+
+                            return $a.$b.$c.$d.$e;
+                        })
+                        ->rawColumns(['aksi'])
+                        ->addIndexColumn()
+                        ->make(true);
+    }
+
+    public function edit_leader(Request $req)
+    {
+        $data = $this->all_variable->tour_leader()->cari('tl_id',$req->id);
+        return view('master.master_leader.edit',compact('data'));
+    }
+    public function update_leader(Request $req)
+    {
+        DB::beginTransaction();
+        try{
+            $cari = $this->all_variable->tour_leader()->cari('tl_id',$req->id);
+            $file = $req->file('image');
+            if ($file != null) {
+                $photo = 'tour_leader/PHOTO_'.$req->id.'.'.$file->getClientOriginalExtension();
+                Storage::put($photo,file_get_contents($req->file('image')));
+            }else{
+                $photo = $cari->tl_image;
+            }
+
+            $save = array(
+                        'tl_name' => $req->name,
+                        'tl_alamat' => $req->alamat,
+                        'tl_phone' => $req->phone,
+                        'tl_passport' => $req->alamat,
+                        'tl_exp_date' => carbon::parse($req->exp_date)->format('Y-m-d'),
+                        'tl_issuing' => $req->issued,
+                        'tl_gender' => $req->gender,
+                        'tl_birth_date' => carbon::parse($req->date_birth)->format('Y-m-d'),
+                        'tl_birth_place' => $req->place_birth,
+                        'tl_image' => $photo,
+                        'created_by'=>Auth::user()->name,
+                        'updated_by'=>Auth::user()->name,
+                    );
+
+            $this->all_variable->tour_leader()->update($save,'tl_id',$req->id);
+            DB::commit();
+            return Response::json(['status'=>1]);
+        }catch(Exception $error){
+            DB::rollBack();
+            dd($error);
+        }
     }
 }

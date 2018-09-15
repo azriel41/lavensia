@@ -16,7 +16,7 @@
                         <div class="pull-right">
                             <a class="save">
                                 <button  class="btn btn-round bg-pink waves-effect" onclick="save()">
-                                    <i class="material-icons ">save</i> Save
+                                    <i class="material-icons ">save</i> Update
                                 </button>
                             </a>
                         </div>
@@ -31,7 +31,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="name" id="name" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="name" id="name" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="alamat" id="alamat" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="alamat" id="alamat" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_alamat }}">
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="phone" id="phone" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="phone" id="phone" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_phone }}">
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="passport" id="passport" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="passport" id="passport" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_passport }}">
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="exp_date" id="exp_date" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required">
+                                                <input type="text" name="exp_date" id="exp_date" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required" value="{{ carbon\carbon::parse($data->tl_exp_date)->format('d-m-Y') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="issued" id="issued" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="issued" id="issued" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_issuing }}">
                                             </div>
                                         </div>
                                     </div>
@@ -106,8 +106,12 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <select class="form-control gender" name="gender">
                                             <option value="">Select Gender</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
+                                            <option @if ($data->tl_gender == 'male')
+                                                selected="" 
+                                            @endif value="male">Male</option>
+                                            <option @if ($data->tl_gender ==  'female')
+                                                selected="" 
+                                            @endif value="female">Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -118,7 +122,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="date_birth" id="date_birth" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required">
+                                                <input type="text" name="date_birth" id="date_birth" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required" value="{{ carbon\carbon::parse($data->tl_birth_date)->format('d-m-Y') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +134,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="place_birth" id="place_birth" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="place_birth" id="place_birth" style="text-transform: uppercase;" class="form-control" placeholder="Field Required" value="{{ $data->tl_birth_place }}">
                                             </div>
                                         </div>
                                     </div>
@@ -140,11 +144,11 @@
                                         <label class="form-control-label" for="caption_by">Passport</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="file-upload upl_1" style="width: 100%;">
+                                        <div class="file-upload upl_1 active" style="width: 100%;">
                                             <div class="file-select">
                                                 <div class="file-select-button fileName" >Image</div>
-                                                <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
-                                                <input type="file" class="chooseFile" name="image">
+                                                <div class="file-select-name noFile tag_image_1" >{{ $data->tl_image }}</div> 
+                                                <input type="file" class="chooseFile" name="image" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -153,7 +157,7 @@
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="preview_td">
-                                            <img style="width: 100%;border:1px solid pink" class="output" >
+                                            <img src="{{ asset('storage/app').'/'.$data->tl_image }}" style="width: 100%;border:1px solid pink" class="output" >
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +220,7 @@
         }
         $.ajax({
             data : formdata,
-            url  : ('{{ route('save_leader') }}'),
+            url  : '{{ route('update_leader') }}?id='+'{{ $data->tl_id }}',
             type : 'POST',
             processData: false,
             contentType: false,
@@ -246,7 +250,9 @@
         })
     }
 
-
+    window.onload = function(){
+    $('.form-line').removeClass('focused');
+    }
 </script>
 @endsection
 

@@ -12,6 +12,7 @@ use App\d_booking;
 use App\flight_detail;
 use App\additional;
 use App\m_additional_intinerary;
+use App\tour_leader;
 use App\Repositories\TestRepo;
 
 class all_variable extends Model
@@ -68,5 +69,11 @@ class all_variable extends Model
 	{
 		$user = new User();
         return $user = new TestRepo($user);
+	}
+
+	public function tour_leader()
+	{
+		$tour_leader = new tour_leader();
+        return $tour_leader = new TestRepo($tour_leader);
 	}
 }
