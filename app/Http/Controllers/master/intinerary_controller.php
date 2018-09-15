@@ -435,4 +435,9 @@ class intinerary_controller extends Controller
     {
         return view('master.master_leader.tambah');
     }
+
+    public function save_leader(Request $req)
+    {
+        dd($req->all());
+    }
 }

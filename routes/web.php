@@ -209,6 +209,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/master_leader', 'master\intinerary_controller@master_leader')->name('master_leader');
 	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create_leader')->name('create_leader');
 	Route::get('/master/master_intinerary/edit', 'master\intinerary_controller@edit_leader')->name('edit_leader');
+	Route::post('/master/master_intinerary/save', 'master\intinerary_controller@save_leader')->name('save_leader');
+	Route::post('/master/master_intinerary/update', 'master\intinerary_controller@update_leader')->name('update_leader');
 	
 
 	/************* END MASTER ***********/
