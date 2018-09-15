@@ -33,7 +33,6 @@ class intinerary_controller extends Controller
            
         
         $data = collect($data);
-
         return Datatables::of($data)
                         ->addColumn('aksi', function ($data) {
                             $c1 = '';
@@ -82,7 +81,14 @@ class intinerary_controller extends Controller
                                    </button>';
                         })
                         ->addColumn('category', function ($data) {
-                            return $data->category->mc_name;
+                            $tes = [];
+                            // if (isset($data->destination)) {
+
+                                for ($i=0; $i < count($data->destination); $i++) { 
+                                    $tes[$i]= $data->destination[$i]->category->mc_name;
+                                }   
+                               return $tes = implode(',', $tes);
+                            // }
                         })
                         ->addColumn('status', function ($data) {
                             if ($data->mi_status == "ACTIVE") {
@@ -129,6 +135,7 @@ class intinerary_controller extends Controller
             $detail_intinerary          = $this->all_variable->detail_intinerary();
             $m_additional_intinerary    = $this->all_variable->m_additional_intinerary();
             $flight_detail              = $this->all_variable->flight_detail();
+            $destination                = $this->all_variable->destination();
             $check = $intinerary->same('mi_nota',$req->tour_code);
 
             $file = $req->file('image');
@@ -167,7 +174,6 @@ class intinerary_controller extends Controller
                     'mi_image'      => $photo,
                     'mi_pdf'        => $pdf,
                     'mi_term'       => $req->term,
-                    'category_id'   => $req->category,
                     'mi_highlight'  => strtoupper($req->highlight),
                     'mi_by'         => strtoupper($req->caption_by),
                     'updated_at'    => Carbon::now(),
@@ -200,7 +206,7 @@ class intinerary_controller extends Controller
                     'ms_detail'         => $i+1,
                     'ms_caption'        => strtoupper($req->caption_schedule[$i]),
                     'ms_description'    => $req->description_schedule[$i],
-                    'ms_bld'            => $req->BLD[$i],
+                    'ms_bld'            => strtoupper($req->BLD[$i]),
                     'created_at'        => Carbon::now(),
                     'updated_at'        => Carbon::now(),
                     'created_by'        => $name,
@@ -233,6 +239,7 @@ class intinerary_controller extends Controller
                     'md_seat'           => $req->seat[$i],
                     'md_seat_remain'    => $req->seat[$i]-1,
                     'md_dp'             => filter_var($req->minimal_dp[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );
@@ -265,6 +272,17 @@ class intinerary_controller extends Controller
                 );
                 // dd($fl);
                 $save_schedule = $flight_detail->create($fl);
+            }
+
+            $delete = $destination->delete('d_id',$id);
+            for ($i=0; $i < count($req->category); $i++) { 
+                $fl = array(
+                    'd_id'              => $id,
+                    'd_detail'          => $i+1,
+                    'd_category_id'     => $req->category[$i],
+                );
+                // dd($fl);
+                $destination->create($fl);
             }
 
             // dd($detail_intinerary->show('md_intinerary_id',$id)->toArray());
@@ -320,7 +338,7 @@ class intinerary_controller extends Controller
     public function intinerary_detail(Request $req)
     {
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
-
+        $tl = $this->all_variable->tour_leader()->all();
         $booking   = $detail_intinerary->book;
         $passenger = [];
         $id        = [];
@@ -363,7 +381,7 @@ class intinerary_controller extends Controller
             
         }
         
-        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary'));
+        return view('master.master_intinerary.detail_intinerary',compact('passenger','id','room','bed','person','booking','detail_intinerary','tl'));
 
     }
     public function save_detail(Request $req)
@@ -406,6 +424,8 @@ class intinerary_controller extends Controller
         $save = array(
                     'md_tata_tertib'=>$tt1,
                     'md_final'=>$fc1,
+                    'md_tour_leader'=>$req->tl,
+                    'md_tip'=>filter_var($req->tip,FILTER_SANITIZE_NUMBER_INT),
                 );
 
         $update   =  $this->all_variable->detail_intinerary()->update($save,'md_id',$req->id);
@@ -424,6 +444,143 @@ class intinerary_controller extends Controller
             $array = array('mi_status'=>'ACTIVE');
             $this->all_variable->intinerary()->update($array,'mi_id',$req->id);
             return Response::json(['status'=>1,'message'=>'Update Success']);
+        }
+    }
+    public function master_leader()
+    {
+        return view('master.master_leader.master_leader');
+    }
+
+    public function create_leader()
+    {
+        return view('master.master_leader.tambah');
+    }
+
+    public function save_leader(Request $req)
+    {
+        // dd($req->all());
+        DB::beginTransaction();
+        try{
+            $id = $this->all_variable->tour_leader()->max('tl_id');
+
+            $file = $req->file('image');
+            if ($file != null) {
+
+                $photo = 'tour_leader/PHOTO_'.$id.'.'.$file->getClientOriginalExtension();
+
+                Storage::put($photo,file_get_contents($req->file('image')));
+            }else{
+                return Response::json(['status'=>0,'message'=>'Please Put Your Photo...']);
+            }
+
+            $save = array(
+                        'tl_id' => $id,
+                        'tl_name' => $req->name,
+                        'tl_alamat' => $req->alamat,
+                        'tl_phone' => $req->phone,
+                        'tl_passport' => $req->alamat,
+                        'tl_exp_date' => carbon::parse($req->exp_date)->format('Y-m-d'),
+                        'tl_issuing' => $req->issued,
+                        'tl_gender' => $req->gender,
+                        'tl_birth_date' => carbon::parse($req->date_birth)->format('Y-m-d'),
+                        'tl_birth_place' => $req->place_birth,
+                        'tl_image' => $photo,
+                        'created_by'=>Auth::user()->name,
+                        'updated_by'=>Auth::user()->name,
+                    );
+            $this->all_variable->tour_leader()->create($save);
+            DB::commit();
+            return Response::json(['status'=>1]);
+        }catch(Exception $error){
+            DB::rollBack();
+            dd($error);
+        }
+    }
+
+    public function datatable_leader()
+    {
+        $data = $this->all_variable->tour_leader()->all();
+           
+        
+        $data = collect($data);
+
+        return Datatables::of($data)
+                        ->addColumn('aksi', function ($data) {
+                            $c1 = '';
+                            $a = '<div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="material-icons">settings</i>
+                                    Manage <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" style="padding:0px">';
+                                    $b = '<li>
+                                        <a onclick="look(\''.$data->tl_id.'\')" class=" waves-effect waves-block" >
+                                            <i class="material-icons">extensions</i>
+                                            Detail
+                                        </a>
+                                    </li>';
+                                    $c = '<li >
+                                        <a onclick="editing(\''.$data->tl_id.'\')" class="waves-effect waves-block" >
+                                            <i class="material-icons">edit</i>
+                                            Edit
+                                        </a>
+                                    </li>';
+                                    $d = '<li >
+                                        <a onclick="deleting(\''.$data->tl_id.'\')" class="waves-effect waves-block" >
+                                            <i class="material-icons">delete</i>
+                                            Delete
+                                        </a>
+                                    </li>';
+
+                                $e = '</ul>
+                            </div>';
+
+                            return $a.$b.$c.$d.$e;
+                        })
+                        ->rawColumns(['aksi'])
+                        ->addIndexColumn()
+                        ->make(true);
+    }
+
+    public function edit_leader(Request $req)
+    {
+        $data = $this->all_variable->tour_leader()->cari('tl_id',$req->id);
+        return view('master.master_leader.edit',compact('data'));
+    }
+    public function update_leader(Request $req)
+    {
+        DB::beginTransaction();
+        try{
+            $cari = $this->all_variable->tour_leader()->cari('tl_id',$req->id);
+            $file = $req->file('image');
+            if ($file != null) {
+                $photo = 'tour_leader/PHOTO_'.$req->id.'.'.$file->getClientOriginalExtension();
+                Storage::put($photo,file_get_contents($req->file('image')));
+            }else{
+                $photo = $cari->tl_image;
+            }
+
+            $save = array(
+                        'tl_name' => $req->name,
+                        'tl_alamat' => $req->alamat,
+                        'tl_phone' => $req->phone,
+                        'tl_passport' => $req->alamat,
+                        'tl_exp_date' => carbon::parse($req->exp_date)->format('Y-m-d'),
+                        'tl_issuing' => $req->issued,
+                        'tl_gender' => $req->gender,
+                        'tl_birth_date' => carbon::parse($req->date_birth)->format('Y-m-d'),
+                        'tl_birth_place' => $req->place_birth,
+                        'tl_image' => $photo,
+                        'created_by'=>Auth::user()->name,
+                        'updated_by'=>Auth::user()->name,
+                    );
+
+            $this->all_variable->tour_leader()->update($save,'tl_id',$req->id);
+            DB::commit();
+            return Response::json(['status'=>1]);
+        }catch(Exception $error){
+            DB::rollBack();
+            dd($error);
         }
     }
 }

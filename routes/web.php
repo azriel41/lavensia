@@ -39,8 +39,11 @@ Route::get('/', function () {
 						->whereRaw('db_total = db_total_remain')
 						->get());
 			// return $cart;
-
-    	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
+    		return view('home');
+		}else{
+    		return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+		}
 	}else{
     	return view('welcome',compact('category','intinerary','det','response'));
 	}
@@ -53,7 +56,37 @@ Route::get('/package/package_modal_detail', 'package\packageController@package_m
 Auth::routes();
 
 //intinerary ajax modal
+Route::get('/welcome', function () {
+	$category = App\category::all();
 
+	$intinerary = App\intinerary::all();
+
+	$det = [];
+	$cat = [];
+	foreach ($intinerary as $index => $val) {
+		$det = $val->detail_intinerarys;
+		$cat = $val->category;
+	}
+	$book = App\User::all();
+
+
+	$cart   = DB::table('d_booking')
+				->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+				->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+				->where('db_users',Auth::User()->role_id)
+				->whereRaw('db_total = db_total_remain')
+				->get();
+
+
+	$jumlah = count(DB::table('d_booking')
+				->where('db_users',Auth::User()->role_id)
+				->whereRaw('db_total = db_total_remain')
+				->get());
+	// return $cart;
+	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+	
+
+})->name('welcome');
 
 //Halaman See more 
 
@@ -63,9 +96,24 @@ Route::get('/package/package_pdf', 'package\packageController@package_pdf')->nam
 //partner
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
+//article
+Route::get('/article/article', 'article\articleController@article')->name('article');
+
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
+
+	/*********** PAGE AGENT ************/  
+
+
+
+	Route::get('/agent/master_agent_agent', 'agent\agent_agentController@agent')->name('master_agent_agent');
+	Route::get('/agent/master_agent_agent_create', 'agent\agent_agentController@agent_create')->name('master_agent_agent_create');
+	Route::post('/agent/master_agent_agent_save', 'agent\agent_agentController@agent_save')->name('master_agent_agent_save');
+	Route::get('/agent/master_agent_agent_datatable', 'agent\agent_agentController@agent_datatable')->name('master_agent_agent_datatable');
+
+
+
 
 	/*********** HALAMAN UTAMA ************/  
 	
@@ -157,7 +205,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	/**************** MASTER **************/  
-	
+    Route::get('/master/master_intinerary/master_leader', 'master\intinerary_controller@master_leader')->name('master_leader');
+	Route::get('/master/master_intinerary/create', 'master\intinerary_controller@create_leader')->name('create_leader');
+	Route::get('/master/master_intinerary/edit', 'master\intinerary_controller@edit_leader')->name('edit_leader');
+	Route::post('/master/master_intinerary/save', 'master\intinerary_controller@save_leader')->name('save_leader');
+	Route::post('/master/master_intinerary/update', 'master\intinerary_controller@update_leader')->name('update_leader');
+	Route::get('/master/master_intinerary/datatable_leader', 'master\intinerary_controller@datatable_leader')->name('datatable_leader');
 
 	//Category
 	Route::get('/master/master_category', 'master\categoryController@index')->name('master_category');
@@ -196,6 +249,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
 	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
+
+
 	
 
 	/************* END MASTER ***********/

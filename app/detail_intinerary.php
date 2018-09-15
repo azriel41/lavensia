@@ -27,6 +27,9 @@ class detail_intinerary extends Model
 						   'md_tata_tertib',
 						   'md_final',
 						   'md_seat_remain',
+						   'md_tour_leader',
+						   'md_tip',
+						   'md_agent_com',
 						   'created_by',
 						   'updated_by'];
 
@@ -39,4 +42,6 @@ class detail_intinerary extends Model
 	{
         return $this->hasMany('App\d_booking','db_intinerary_id','md_id');
 	}
+
+
 }

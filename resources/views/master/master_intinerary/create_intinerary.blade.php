@@ -60,13 +60,13 @@
                             </div>
                             <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="intinerary">Category</label>
+                                    <label class="form-control-label" for="intinerary">Destination</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <select name="category" id="category" class="form-control js-example-basic-single width100">
-                                                    <option value="">Select Category</option>
+                                            <select name="category[]" id="category" class="form-control js-example-basic-single width100" multiple="">
+                                                    <option disabled="" value="">Select Category</option>
                                                 @foreach ($category as $val)
                                                     <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
                                                 @endforeach  
@@ -101,7 +101,7 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="caption_by">Caption By</label>
+                                    <label class="form-control-label" for="caption_by">Flight By</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
@@ -365,6 +365,18 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Agent Com</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="agent_com" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Seat</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -391,6 +403,7 @@
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Minimal DP</td>
+                                            <td>Agent Com</td>
                                             <td>Seat</td>
                                             <td>Action</td>
                                         </tr>
@@ -451,6 +464,13 @@
     });
 
     $("#minimal_dp").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+    });
+
+
+    $("#agent_com").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
@@ -575,11 +595,11 @@
         var seat          = $('#seat').val();
         var child_w_price = $('#child_w_price').val();
         var minimal_dp    = $('#minimal_dp').val();
+        var agent_com     = $('#agent_com').val();
 
 
         var par = $('.index_'+index).parents('tr');
         detail.row(par).remove().draw();
-
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
             '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
@@ -604,6 +624,9 @@
             '<p class="minimal_dp_text">'+minimal_dp+'</p>'+
             '<input type="hidden" name="minimal_dp[]" value="'+minimal_dp+'" class="minimal_dp">',
 
+            '<p class="agent_com_text">'+agent_com+'</p>'+
+            '<input type="hidden" name="agent_com[]" value="'+agent_com+'" class="agent_com">',
+
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
@@ -612,6 +635,7 @@
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
             '</div>',
         ]).draw();
+        
         inc++;
         $('.add_departure input').val('');
         $('.add_departure textarea').val('');
@@ -634,6 +658,7 @@
         var term          = $(par).find('.term').val();
         var seat          = $(par).find('.seat').val();
         var minimal_dp    = $(par).find('.minimal_dp').val();
+        var agent_com    = $(par).find('.agent_com').val();
 
 
         $('#index').val(index);
@@ -646,6 +671,7 @@
         $('#term').val(term);
         $('#seat').val(seat);
         $('#minimal_dp').val(minimal_dp);
+        $('#agent_com').val(agent_com);
     }
 
 

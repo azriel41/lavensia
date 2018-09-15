@@ -32,7 +32,7 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="{{ route('home') }}">TRIP TO THAILAND</a>
+            <a class="navbar-brand" href="{{ route('home') }}">OKE-TRIP</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -272,21 +272,38 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ url('/welcome') }}">
                             <i class="material-icons">home</i>
-                            <span>Home</span>
+                            <span>PAKET TOUR</span>
                         </a>
                     </li>
+                    @if(Auth::user()->akses('booking list','mh_aktif'))
+                    <li>
+                        <li>
+                            <a href="{{ route('booking_all') }}">
+                                <i class="material-icons">list</i>
+                                <span>Booking List</span>
+                            </a>
+                        </li>
+                    </li>
+                    @endif
+                    @if(Auth::user()->akses('approve master agent','mh_aktif'))
+                    <li class="active">
+                        <a href="{{ route('master_agent_agent') }}">
+                            <i class="material-icons">widgets</i>
+                            <span>Agent</span>
+                        </a>
+                    </li>
+                    @endif
+
                     @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 )
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
-                            <span>Master</span>
+                            <span>Product</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="">Akun</a>
-                            </li>
+
                             @if(Auth::user()->akses('master agent','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_agent') }}">Agent</a>
@@ -309,33 +326,16 @@
                             @endif
                             @if(Auth::user()->akses('master intinerary','mh_aktif'))
                                 <li>
-                                    <a href="{{ route('master_intinerary') }}">Master Itinerary</a>
+                                    <a href="{{ route('master_intinerary') }}">Itinerary</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('master leader','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_leader') }}">Tour Leader</a>
                                 </li>
                             @endif
                         </ul>
                     </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Operational</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{ route('booking_all') }}">Book</a>
-                            </li>
-               {{--              <li>
-                                <a href="{{ route('booking_handle') }}">Handled Booking</a>
-                            </li> --}}
-                            <li>
-                                <a href="">Detail Itinerary</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('operational_payment') }}">Payment</a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
@@ -374,11 +374,11 @@
                    
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            {{-- <div class="legal"> --}}
                 <div class="copyright">
-                    &copy; 2018 <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
+                    <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
                 </div>
-            </div>
+            {{-- </div> --}}
             <!-- #Footer -->
         </aside>
 </section>

@@ -32,32 +32,43 @@ class agentController extends Controller
 
         return Datatables::of($data)
                         ->addColumn('aksi', function ($data) {
-                            return'<div class="btn-group">
+                             $a = '<div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="material-icons">settings</i>
                                     Manage <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" style="padding:0px">
-                                    <li class="bg-teal">
+                                <ul class="dropdown-menu" style="padding:0px">';
+
+                            $b = '<li class="bg-teal">
                                         <a onclick="approve(\''.$data->id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">spellcheck</i>
                                             Approve
                                         </a>
-                                    </li>
-                                    <li>
+                                    </li>';
+                            $c = '<li>
                                         <a href="'.url('/master/master_agent').'/'.$data->id.'/edit'.'" class="waves-effect waves-block">
                                             <i class="material-icons">edit</i>
                                             Edit
                                         </a>
-                                    </li>
-                                    <li>
+                                    </li>';
+                            $d = '<li>
                                         <a href="'.url('/master/master_agent').'/'.$data->id.'/delete'.'" class="waves-effect waves-block">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
-                                    </li>
-                                </ul>
+                                    </li>';
+                            $e = '</ul>
                             </div>';
+
+                            if (Auth::user()->akses('master agent','mh_aktif')) {
+                                if ($data->status == 'AKTIF') {
+                                    return $a.$c.$d.$e;
+                                }else{
+                                    return $a.$b.$c.$d.$e;
+                                }
+                            }else{
+                               return $a.$c.$d.$e;
+                            }
                         })
                         ->addColumn('departure', function ($data) {
                             return'<button onclick="departure(\''.$data->id.'\')" type="button" class="btn bg-pink waves-effect m-r-20" data-toggle="modal" data-target="#departure">

@@ -31,7 +31,7 @@
                 <div class="body row">
                     <div class="col-sm-2">
                     </div>
-                    <form action="{{ route('save_intinerary') }}" method="post" accept-charset="utf-8" id="save">
+                    <form  method="post" accept-charset="utf-8" id="save">
                         <div class="paging-trans page_1 col-sm-8 on_screen" style="background: white;font-size: 12px" >
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="category">Category</label>
+                                    <label class="form-control-label" for="category">Destination</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
@@ -68,7 +68,7 @@
                                             <select name="category" id="category" class="form-control js-example-basic-single width100">
                                                  <option value="">Select Category</option>
                                             @foreach ($category as $val)
-                                                <option @if($val->mc_id == $data->category_id) selected @endif value="{{ $val->mc_id }}">{{ $val->mc_name }}
+                                                <option  value="{{ $val->mc_id }}">{{ $val->mc_name }}
                                                 </option>
                                             @endforeach  
                                             </select>
@@ -102,7 +102,7 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="caption_by">Caption By</label>
+                                    <label class="form-control-label" for="caption_by">Flight By</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
@@ -790,7 +790,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url:'{{ route('save_intinerary') }}',
+                        url:'{{ url('/master/master_intinerary/save') }}',
                         data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize(),
                         dataType:'json',
                         processData: false,
