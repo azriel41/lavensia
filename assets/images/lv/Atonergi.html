@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://localhost/atonergi/master/bundle/bundle -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Required meta tags -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="orRfcLir9OHZMvrQJOsbEA5n2gce6sP3IcyD9Pmj">
+  <title>Atonergi</title>
+  <!-- plugin css for this page -->
+  <link rel="stylesheet" href="./Atonergi_files/css-stars.css">
+  
+  <link rel="stylesheet" href="./Atonergi_files/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/select2.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/select2-bootstrap.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/bootstrap-datepicker.min.css">
+  <!-- End plugin css for this page -->
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="./Atonergi_files/all.css">
+  <link rel="stylesheet" href="./Atonergi_files/materialdesignicons.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="./Atonergi_files/jquery.toast.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/switchery.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <link rel="stylesheet" href="./Atonergi_files/font-awesome.min.css">
+  <!-- End plugin css for this page -->
+
+  <!-- JP-list -->
+  <link rel="stylesheet" type="text/css" href="./Atonergi_files/jplist.core.min.css">
+  <link href="./Atonergi_files/jplist.textbox-filter.min.css" rel="stylesheet" type="text/css">
+  <link href="./Atonergi_files/jplist.pagination-bundle.min.css" rel="stylesheet" type="text/css"> 
+
+  <!-- demo pages styles -->
+  <link rel="stylesheet" href="./Atonergi_files/jplist.bootstrap-demo.min.css">
+  <!-- <link href="http://localhost/atonergi/assets/jp-list/css/jplist.demo-pages.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="./Atonergi_files/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="./Atonergi_files/atonergi-mini.png">
+  <!-- <link rel="stylesheet" type="text/css" href="http://localhost/atonergi/assets/css/data-table.min.css"> -->
+
+  <!-- <link rel="stylesheet" type="text/css" href="http://localhost/atonergi/assets/datepicker/css/bootstrap-datepicker3.min.css"> -->
+  
+  <link rel="stylesheet" href="./Atonergi_files/iziToast.min.css">
+  <link rel="stylesheet" href="./Atonergi_files/fontawesome-all.min.css">
+  
+  <link rel="stylesheet" href="./Atonergi_files/validetta.css">
+  <link rel="stylesheet" href="./Atonergi_files/validetta.min.css">
+
+  <!-- Lightgallery -->
+
+  <link rel="stylesheet" type="text/css" href="./Atonergi_files/lightgallery.min.css">
+
+
+
+
+
+<style type="text/css">
+small.text-muted {
+  position: absolute;
+  right: 0;
+  margin-right:10px;
+}
+
+td > div.form-check.form-check-flat > label.form-check-label {
+  margin-bottom: -25px;
+}
+body.modal-open{
+  overflow-y: hidden !important;
+}
+.modal {
+  overflow-y:auto;
+}
+.pilih-link:hover{
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.huruf_besar{
+  text-transform: uppercase;
+}
+.disabled{
+  pointer-events: none;
+  opacity: 0.7;
+}
+.center{
+  text-align: center;
+}
+
+.right{
+  text-align: right;
+}
+.left{
+  text-align: left;
+}
+
+.file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
+.file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+.file-upload .file-select:hover{border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select:hover .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
+.file-upload .file-select.file-select-disabled{opacity:0.65;}
+.file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+</style>
+</head>
+<body>
+	<!-- partial:partials/_settings-panel.html -->
+  <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
+  <div id="right-sidebar" class="settings-panel">
+    <i class="settings-close mdi mdi-close"></i>
+    <ul class="nav nav-tabs bg-gradient-primary" id="setting-panel" role="tablist">
+      <!-- <li class="nav-item">
+        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link active" id="logs-tab" data-toggle="tab" href="http://localhost/atonergi/master/bundle/bundle#user-log-activity" role="tab" aria-expanded="true" aria-controls="user-log-activity">User Log Activity</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="setting-content">
+      <!-- User log activity -->
+      <div class="tab-pane fade show active scroll-wrapper ps ps--theme_default" id="user-log-activity" role="tabpanel" aria-labelledby="user-log-activity" data-ps-id="c9dcd4b2-4c0a-ff6b-d07a-602a81e3f783">
+        <div class="d-flex align-items-center justify-content-between border-bottom">
+          <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Log Activity</p>
+        </div>
+        <ul class="chat-list">
+          <li class="list">
+            <div class="info">
+              <p style="font-weight: bold;">admin</p>
+              <p>Master Data Barang</p>
+              <p>Delete Data : Pompa Air</p>
+            </div>
+            <small class="text-muted my-auto">2018-05-28 14:54:56</small>
+          </li>
+          <li class="list">
+            <div class="info">
+              <p style="font-weight: bold;">admin</p>
+              <p>Master Data Barang</p>
+              <p>Add Data : Pompa Air</p>
+            </div>
+            <small class="text-muted my-auto">2018-05-28 14:49:56</small>
+          </li>
+          <li class="list">
+            <div class="info">
+              <p style="font-weight: bold;">admin</p>
+              <p>Master Data Barang</p>
+              <p>Edit Data : Controller to Kontroler</p>
+            </div>
+            <small class="text-muted my-auto">2018-05-28 14:45:56</small>
+          </li>
+          <li class="list">
+            <div class="info">
+              <p style="font-weight: bold;">admin</p>
+              <p>Master Data Barang</p>
+              <p>Add Data : Controller</p>
+            </div>
+            <small class="text-muted my-auto">2018-05-28 14:43:56</small>
+          </li>
+          
+        </ul>
+      <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+      
+      <!-- To do section tab ends -->
+      <div class="tab-pane fade" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+        <div class="add-items d-flex px-3 mb-0">
+          <form class="form w-100">
+            <div class="form-group d-flex">
+              <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+              <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+            </div>
+          </form>
+        </div>
+        <div class="list-wrapper px-3">
+          <ul class="d-flex flex-column-reverse todo-list">
+            <li>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="checkbox" type="checkbox">
+                  Team review meeting at 3.00 PM
+                <i class="input-helper"></i></label>
+              </div>
+              <i class="remove mdi mdi-close-circle-outline"></i>
+            </li>
+            <li>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="checkbox" type="checkbox">
+                  Prepare for presentation
+                <i class="input-helper"></i></label>
+              </div>
+              <i class="remove mdi mdi-close-circle-outline"></i>
+            </li>
+            <li>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="checkbox" type="checkbox">
+                  Resolve all the low priority tickets due today
+                <i class="input-helper"></i></label>
+              </div>
+              <i class="remove mdi mdi-close-circle-outline"></i>
+            </li>
+            <li class="completed">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="checkbox" type="checkbox" checked="">
+                  Schedule meeting for next week
+                <i class="input-helper"></i></label>
+              </div>
+              <i class="remove mdi mdi-close-circle-outline"></i>
+            </li>
+            <li class="completed">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="checkbox" type="checkbox" checked="">
+                  Project review
+                <i class="input-helper"></i></label>
+              </div>
+              <i class="remove mdi mdi-close-circle-outline"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="events py-4 border-bottom px-3">
+          <div class="wrapper d-flex mb-2">
+            <i class="mdi mdi-circle-outline text-primary mr-2"></i>
+            <span>Feb 11 2018</span>
+          </div>
+          <p class="mb-0 font-weight-thin text-gray">Creating component page</p>
+          <p class="text-gray mb-0">build a js based app</p>
+        </div>
+        <div class="events pt-4 px-3">
+          <div class="wrapper d-flex mb-2">
+            <i class="mdi mdi-circle-outline text-primary mr-2"></i>
+            <span>Feb 7 2018</span>
+          </div>
+          <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+          <p class="text-gray mb-0 ">Call Sarah Graves</p>
+        </div>
+      </div>
+      <!-- chat tab ends -->
+    </div>
+  </div>
+  <div id="theme-settings" class="settings-panel">
+    <i class="settings-close mdi mdi-close"></i>
+    <p class="settings-heading">SIDEBAR SKINS</p>
+    <div class="sidebar-bg-options selected" id="sidebar-default-theme"><div class="img-ss rounded-circle bg-gradient-dark border mr-3"></div>Default</div>
+    <div class="sidebar-bg-options" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+    <p class="settings-heading mt-2">HEADER SKINS</p>
+    <div class="color-tiles mx-0 px-4">
+      <div class="tiles primary"></div>
+      <div class="tiles success"></div>
+      <div class="tiles warning"></div>
+      <div class="tiles danger"></div>
+      <div class="tiles pink"></div>
+      <div class="tiles info"></div>
+      <div class="tiles dark"></div>
+      <div class="tiles light"></div>
+    </div>
+  </div>
+  <!-- partial -->
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-info">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="http://localhost/atonergi/home">
+          <img src="./Atonergi_files/atonergi.png" alt="logo" style="margin-left: auto;">
+          <!-- <h1 style="margin:auto; ">Kinaya</h1> -->
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="http://localhost/atonergi/home">
+          <img src="./Atonergi_files/atonergi-mini.png" alt="logo">
+          <!-- <h1 style="margin:auto; ">A</h1> -->
+        </a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <div class="search-field ml-4 d-none d-md-block">
+          <form class="d-flex align-items-stretch h-100" action="http://localhost/atonergi/master/bundle/bundle#">
+            <div class="input-group">
+              <input id="filterInput" type="text" class="form-control bg-transparent border-0" onchange="myFunction()" onfocus="myFunction()" onkeyup="myFunction()" placeholder="Search Menu">
+              <div class="input-group-btn">
+                <button id="btn-reset" type="button" class="btn bg-transparent px-0 d-none" onclick="btnReset()" style="cursor: pointer;"><i class="fa fa-times"></i></button>
+                <!-- <button type="button" class="btn bg-transparent dropdown-toggle px-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-earth"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Today</a>
+                  <a class="dropdown-item" href="#">This week</a>
+                  <a class="dropdown-item" href="#">This month</a>
+                  <div role="separator" class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Month and older</a>
+                </div> -->
+              </div>
+              <div class="input-group-addon bg-transparent border-0 search-button">
+                <button type="button" class="btn btn-sm bg-transparent px-0">
+                  <i class="mdi mdi-magnify"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+         <!--  <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <i class="mdi mdi-email-outline"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+              <h6 class="p-3 mb-0">Messages</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="http://localhost/atonergi/assets/images/faces/face4.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
+                  <p class="text-gray mb-0">
+                    1 Minutes ago
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="http://localhost/atonergi/assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
+                  <p class="text-gray mb-0">
+                    15 Minutes ago
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="http://localhost/atonergi/assets/images/faces/face3.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
+                  <p class="text-gray mb-0">
+                    18 Minutes ago
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+            </div>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="http://localhost/atonergi/master/bundle/bundle#" data-toggle="dropdown">
+              <i class="mdi mdi-bell-outline"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <h6 class="p-3 mb-0">Notifications</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-calendar"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    Just a reminder that you have an event today
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="mdi mdi-settings"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    Update dashboard
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="mdi mdi-link-variant"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    New admin wow!
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-profile" id="profileDropdown" href="http://localhost/atonergi/master/bundle/bundle#" data-toggle="dropdown" aria-expanded="false">
+              <img src="./Atonergi_files/user_1_.jpg" alt="image">
+              <span class="d-none d-lg-inline">admin</span>
+            </a>
+            <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="http://localhost/atonergi/master/bundle/bundle#">
+                <i class="mdi mdi-cached mr-2 text-success"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="http://localhost/atonergi/logout">
+                <i class="mdi mdi-logout mr-2 text-primary"></i>
+                Signout
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" href="http://localhost/atonergi/logout">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+          <form id="logout-form" action="http://localhost/atonergi/logout" method="post" style="display: none;">
+              <input type="hidden" name="_token" value="orRfcLir9OHZMvrQJOsbEA5n2gce6sP3IcyD9Pmj">
+          </form>
+          <li class="nav-item nav-settings d-none d-lg-block">
+            <a class="nav-link" href="http://localhost/atonergi/master/bundle/bundle#">
+              <i class="mdi mdi-format-line-spacing"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav" id="ayaysir">
+            <li class="nav-item ">
+              <a class="nav-link" href="http://localhost/atonergi/home">
+                <span class="menu-title">Dashboard</span>
+                <span class="menu-sub-title">( 2 new updates )</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#setting" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Setting</span>
+                <span class="d-none">
+                  Setting Level Account
+                  Setting Account 
+                  Setting Hak Akses
+                  Setting Daftar Menu
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-settings menu-icon mdi-spin"></i>
+              </a>
+              <div class="collapse " id="setting">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/setting/jabatan">Setting Level Account</a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/setting/akun">Setting Account </a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/setting/hak_akses">Setting Hak Akses</a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/setting/daftar_menu">Setting Daftar Menu</a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#master" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Master</span>
+                <span class="d-none">
+                  Master Data Customer
+                  Master Data Vendor
+                  Master Data Pegawai
+                  Master Data Akun Keuangan
+                  Master Data Transaksi Keuangan
+                  Master Data Barang
+                  Master Data Bundle Item
+                  Master Data Tipe Barang
+                  Master Data Status Q.O.#
+                  Master Data TTD
+                  Master Currency
+                  Master Data Bank
+                  Master Data Jasa
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              </a>
+              <div class="collapse show" id="master">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/vendor/vendor">Master Data Vendor</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/customer/cust">Master Data Customer</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/pegawai/pegawai">Master Data Pegawai</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/akun/a_keuangan">Master Data Akun Keuangan</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/transaksi/t_keuangan">Master Data Transaksi<br> Keuangan</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/barang/barang">Master Data Barang</a></li>
+                  <li class="nav-item">
+                    <a class=" nav-link" href="http://localhost/atonergi/master/jasa/jasa">
+                      Master Data Jasa
+                    </a>
+                  </li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/type/type">Master Data Tipe Barang</a></li>
+                  <li class="nav-item"> <a class="nav-link active" href="http://localhost/atonergi/master/bundle/bundle">Master Data Bundle Item</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/status/status">Master Data Status Q.O.#</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/ttd/ttd">Master Data TTD</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/master/currency/index">Master Currency</a></li>
+                  <li class="nav-item">
+                    <a class=" nav-link" href="http://localhost/atonergi/master/bank/bank">
+                      Master Data Bank
+                    </a>
+                  </li>
+                  
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#m_pembelian" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Quotation</span>
+                <span class="d-none">
+                  Tim Marketing
+                  
+                 
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-format-quote-close menu-icon"></i>
+              </a>
+              <div class="collapse " id="m_pembelian">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/quotation/q_quotation/q_quotation">Quotation</a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/quotation/marketing/marketing">Tim Marketing<span class="d-none">Quotation</span></a></li>
+               
+                  
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#m_stock" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Order</span>
+                <span class="d-none">
+                  Proforma Invoice
+                  Pembayaran Deposit
+                  Sales Order
+                  Check Stock
+                  Work Order
+                  Sales Invoice
+                  Checklist Form
+                  Payment Order
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-cart menu-icon"></i>
+              </a>
+              <div class="collapse " id="m_stock">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/proforma/proforma">Proforma Invoice<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/pembayarandeposit/pembayarandeposit">Pembayaran Deposit<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/salesorder/s_order"> Sales Order<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/cekbarang/cekbarang">Check Stock<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/workorder/w_order">Work Order<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/s_invoice/s_invoice">Sales Invoice<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/checklistform/checklistform">Checklist Form<span class="d-none">Order</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/order/pelunasanorder/pelunasanorder">Payment Order<span class="d-none">Order</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#m_penjualan" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Purchase</span>
+                <span class="d-none">
+                  
+                  Request Order
+                  Belanja Langsung
+                  Purchase Order
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-credit-card menu-icon"></i>
+              </a>
+              <div class="collapse " id="m_penjualan">
+                <ul class="nav flex-column sub-menu">
+                  
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/purchase/rencanapembelian/rencanapembelian">Request Order<span class="d-none">Purchase</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/purchase/belanjalangsung/belanjalangsung">Belanja Langsung<span class="d-none">Purchase</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/purchase/purchaseorder/purchaseorder">Purchase Order<span class="d-none">Purchase</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#pompa" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Project Manajemen <br>Pompa / SHS</span>
+                <span class="d-none">
+                  Pengadaan Barang
+                  Pengiriman Barang
+                  Pemasangan
+                  Schedule Uji Coba dan Dokumetasi
+                  Sales Common
+                  Technician Fee
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-engine menu-icon"></i>
+              </a>
+              <div class="collapse " id="pompa">
+                <ul class="nav flex-column sub-menu">
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/pengadaanbarang/pengadaanbarang">Pengadaan Barang<span class="d-none">Project Manajemen Pompa | SHS</span></a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/pengirimanbarang/pengirimanbarang">Pengiriman Barang<span class="d-none">Project Manajemen Pompa | SHS</span></a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/pemasangan/pemasangan">Pemasangan<span class="d-none">Project Manajemen Pompa | SHS</span></a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/jadwalujicoba/jadwalujicoba">Schedule Uji Coba dan <br>Dokumentasi<span class="d-none">Project Manajemen Pompa | SHS Schedule Uji Coba dan Dokumentasi</span></a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/salescommon/salescommon">Sales Common<span class="d-none">Project Manajemen Pompa | SHS</span></a></li>
+
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/project/technicianfee/technicianfee">Technician Fee<span class="d-none">Project Manajemen Pompa | SHS</span></a></li>
+
+
+                </ul>
+
+                </div>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#aftersales" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">After Sales Service</span>
+                <span class="d-none">
+                  Tanda Terima Service
+                  Kebutuhan Biaya
+                  Repair Order
+                  Rencana Tindakan
+                  Repair Report
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+              </a>
+              <div class="collapse " id="aftersales">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/aftersales/tandaterima/tandaterima">Tanda Terima Service<span class="d-none">After Sales Service</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/aftersales/kebutuhanbiaya/kebutuhanbiaya">Kebutuhan Biaya<span class="d-none">After Sales Service</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/aftersales/repairorder/repairorder">Repair Order<span class="d-none">After Sales Service</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/aftersales/rencanatindakan/rencanatindakan">Rencana Tindakan<span class="d-none">After Sales Service</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/aftersales/repairreport/repairreport">Repair Report<span class="d-none">After Sales Service</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#inven" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Inventory</span>
+                <span class="d-none">
+                  Penerimaan Barang
+                  Pengeluaran Barang
+                  Stock Opname
+                  Stock Gudang
+                  Maintenance
+                  
+                  Surat Pinjam Barang
+                  Barcode Support
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-arrow-up-bold-box-outline menu-icon"></i>
+              </a>
+              <div class="collapse " id="inven">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/penerimaan_barang/penerimaan_barang">Penerimaan Barang<span class="d-none">Inventory</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/barangkeluar/barangkeluar">Pengeluaran Barang<span class="d-none">Inventory</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/opname/opname">Stock Opname<span class="d-none">Inventory</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/stockgudang/stockgudang">Stock Gudang<span class="d-none">Inventory</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/maintenance/maintenance">Maintenance<span class="d-none">Inventory</span></a></li>
+                  
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/suratpinjambarang/suratpinjambarang">Surat Pinjam Barang<span class="d-none">Inventory</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/inventory/barcode/barcode">Barcode Support<span class="d-none">Inventory</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#hrd" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">HRD</span>
+                <span class="d-none">
+                  Rekruitment
+                  Payroll
+                  Freelance
+                  Kesejahteraan
+                  KPI
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+              </a>
+              <div class="collapse " id="hrd">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/hrd/rekruitment/rekruitment">Rekruitment<span class="d-none">HRD</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/hrd/payroll/payroll">Payroll<span class="d-none">HRD</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/hrd/freelance/freelance">Freelance<span class="d-none">HRD</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/hrd/kesejahteraan/kesejahteraan">Kesejahteraan<span class="d-none">HRD</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/hrd/kpi/kpi">KPI<span class="d-none">HRD</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#finance" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Finance</span>
+                <span class="d-none">
+                  Cost Manajemen
+                  Bookkeeping
+                  Reporting
+                  Evaluating
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-chart-areaspline menu-icon"></i>
+              </a>
+              <div class="collapse " id="finance">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/finance/costmanajemen/costmanajemen">Cost Manajemen<span class="d-none">Finance</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/finance/bookkeeping/bookkeeping">Bookkeeping<span class="d-none">Finance</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/finance/reporting/reporting">Reporting<span class="d-none">Finance</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/finance/evaluating/evaluating">Evaluating<span class="d-none">Finance</span></a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="http://localhost/atonergi/master/bundle/bundle#aset" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Manajemen Aset</span>
+                <span class="d-none">
+                  Irventarisasi
+                  History
+                  Penyusutan
+                </span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-chart-line menu-icon"></i>
+              </a>
+              <div class="collapse " id="aset">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/manajemenaset/irventarisasi/irventarisasi">Irventarisasi<span class="d-none">Manajemen Aset</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/manajemenaset/history/history">History<span class="d-none">Manajemen Aset</span></a></li>
+                  <li class="nav-item"> <a class="nav-link " href="http://localhost/atonergi/manajemenaset/penyusutan/penyusutan">Penyusutan<span class="d-none">Manajemen Aset</span></a></li>
+                </ul>
+                </div>
+            </li>
+          </ul>
+          
+        </nav>
+
+
+
+
+
+
+		
+<!-- Modal -->
+<form id="form-save">
+<div id="tambah" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header bg-gradient-info">
+        <h4 class="modal-title">Form Master Data Bundle Item</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+                                
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                  <label class="tebal">Bundle Name</label>
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <div class="form-group ">
+                  <input type="text" class="form-control huruf_besar form-control-sm ib_name" name="ib_name">                                    
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              
+                  <label class="tebal">Price (Factory)</label>
+             
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <div class="form-group disabled">
+                  <input type="text" readonly="" class="form-control form-control-sm format_money right ib_price" name="ib_price" style="text-align: right;">                               
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              
+                  <label class="tebal">Keterangan</label>
+             
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-sm huruf_besar  keterangan" name="keterangan">
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              
+                  <label class="tebal">Sell Price</label>
+             
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-sm format_money right sell_price" name="sell_price" value="0" style="text-align: right;">                               
+              </div>
+            </div>
+
+
+            <div class="col-md-6 col-sm-8 col-xs-12">
+              <div class="form-group">
+              </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              
+                  <label class="tebal">Lower Price</label>
+             
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-sm format_money right lower_price" name="lower_price" value="0" style="text-align: right;">                               
+              </div>
+            </div>
+
+        </div> 
+        <div class="row" style="border-top: 1px solid #98c3d1;padding-top: 15px;margin-top: 15px;margin-bottom: 15px;border-bottom: 1px solid #98c3d1;">
+          <div class="col-md-2 col-sm-4 col-xs-12">
+            <label>Item Name</label>
+          </div>
+          <div class="col-md-2 col-sm-8 col-xs-10">
+            <div class="form-group">  
+              <select class="form-control form-control-sm select2-hidden-accessible" name="" id="bund_kodeitem" tabindex="-1" aria-hidden="true"> 
+                  <option selected="" value="">- Pilih -</option>
+                                      <option value="BRG/0001" data-harga="117.00" data-name="WATER SENSOR, PIPE INST." data-currency="USD">BRG/0001 - WATER SENSOR, PIPE INST.</option>
+                                      <option value="BRG/0002" data-harga="40.05" data-name="WELL PROBE SENSOR" data-currency="USD">BRG/0002 - WELL PROBE SENSOR</option>
+                                      <option value="BRG/0003" data-harga="22.50" data-name="SS ADAPTOR" data-currency="USD">BRG/0003 - SS ADAPTOR</option>
+                                      <option value="BRG/0004" data-harga="10.80" data-name="STEEL ADAPTOR" data-currency="USD">BRG/0004 - STEEL ADAPTOR</option>
+                                      <option value="BRG/0005" data-harga="9.45" data-name="CABLE SPLICE KIT 2.5-6SQMM" data-currency="USD">BRG/0005 - CABLE SPLICE KIT 2.5-6SQMM</option>
+                                      <option value="BRG/0006" data-harga="11.70" data-name="CABLE SPLICE KIT 6-10SQMM" data-currency="USD">BRG/0006 - CABLE SPLICE KIT 6-10SQMM</option>
+                                      <option value="BRG/0007" data-harga="12.60" data-name="FLOAT SWITCH" data-currency="USD">BRG/0007 - FLOAT SWITCH</option>
+                                      <option value="BRG/0008" data-harga="130.50" data-name="SUN SWITCH LIGHT-SENSOR" data-currency="USD">BRG/0008 - SUN SWITCH LIGHT-SENSOR</option>
+                                      <option value="BRG/0009" data-harga="306.00" data-name="PV DISCONNECT 1000-40-5" data-currency="USD">BRG/0009 - PV DISCONNECT 1000-40-5</option>
+                                      <option value="BRG/0010" data-harga="157.50" data-name="PV COMBINER 1000-125-4" data-currency="USD">BRG/0010 - PV COMBINER 1000-125-4</option>
+                                      <option value="BRG/0011" data-harga="238.50" data-name="PV PROTECT 1000-125" data-currency="USD">BRG/0011 - PV PROTECT 1000-125</option>
+                                      <option value="BRG/0012" data-harga="148.50" data-name="PV DISCONNECT 440-40-6" data-currency="USD">BRG/0012 - PV DISCONNECT 440-40-6</option>
+                                      <option value="BRG/0013" data-harga="103.50" data-name="PV DISCONNECT 440-40-1" data-currency="USD">BRG/0013 - PV DISCONNECT 440-40-1</option>
+                                      <option value="BRG/0014" data-harga="1228.50" data-name="POWER PACK 4000 380VAC" data-currency="USD">BRG/0014 - POWER PACK 4000 380VAC</option>
+                                      <option value="BRG/0015" data-harga="85.50" data-name="PS BOOST INST. KIT" data-currency="USD">BRG/0015 - PS BOOST INST. KIT</option>
+                                      <option value="BRG/0016" data-harga="27.45" data-name="INLINE FILTER 10&quot; PS150 BOOST" data-currency="USD">BRG/0016 - INLINE FILTER 10" PS150 BOOST</option>
+                                      <option value="BRG/0017" data-harga="5.40" data-name="FILTER CARTRIDGE 10&quot; PS150 BOOST" data-currency="USD">BRG/0017 - FILTER CARTRIDGE 10" PS150 BOOST</option>
+                                      <option value="BRG/0018" data-harga="3.78" data-name="HOLDER KIT" data-currency="USD">BRG/0018 - HOLDER KIT</option>
+                                      <option value="BRG/0019" data-harga="40.05" data-name="FLOW SLEEVE KIT FOR 4&quot; HR PUMPS" data-currency="USD">BRG/0019 - FLOW SLEEVE KIT FOR 4" HR PUMPS</option>
+                                      <option value="BRG/0020" data-harga="40.05" data-name="FLOW SLEEVE KIT FOR 4&quot; C-SJ PUMPS WITH 4&quot; MOTOR" data-currency="USD">BRG/0020 - FLOW SLEEVE KIT FOR 4" C-SJ PUMPS WITH 4" MOTOR</option>
+                                      <option value="BRG/0021" data-harga="16.65" data-name="FLOW SLEEVE ADAPTOR FOR 4&quot; HR PUMPS" data-currency="USD">BRG/0021 - FLOW SLEEVE ADAPTOR FOR 4" HR PUMPS</option>
+                                      <option value="BRG/0022" data-harga="117.00" data-name="GROUNDING CONNECT KIT" data-currency="USD">BRG/0022 - GROUNDING CONNECT KIT</option>
+                                      <option value="BRG/0023" data-harga="13.50" data-name="SURGE PROTECTOR" data-currency="USD">BRG/0023 - SURGE PROTECTOR</option>
+                                      <option value="BRG/0024" data-harga="337.50" data-name="PS COMMUNICATOR WITHOUT BATTERY" data-currency="USD">BRG/0024 - PS COMMUNICATOR WITHOUT BATTERY</option>
+                                      <option value="BRG/0025" data-harga="37.80" data-name="PRESSURE SWITCH 1-5BAR" data-currency="USD">BRG/0025 - PRESSURE SWITCH 1-5BAR</option>
+                                      <option value="BRG/0026" data-harga="427.50" data-name="POWER PACK 600H, UL" data-currency="USD">BRG/0026 - POWER PACK 600H, UL</option>
+                                      <option value="BRG/0027" data-harga="522.00" data-name="POWER PACK 2000, UL" data-currency="USD">BRG/0027 - POWER PACK 2000, UL</option>
+                                      <option value="BRG/0028" data-harga="522.00" data-name="POWER PACK 600H SS, UL" data-currency="USD">BRG/0028 - POWER PACK 600H SS, UL</option>
+                                      <option value="BRG/0029" data-harga="616.50" data-name="POWER PACK 2000 SS, UL" data-currency="USD">BRG/0029 - POWER PACK 2000 SS, UL</option>
+                                      <option value="BRG/0030" data-harga="135.00" data-name="MNSPD-115" data-currency="USD">BRG/0030 - MNSPD-115</option>
+                                      <option value="BRG/0031" data-harga="135.00" data-name="MNSPD-300" data-currency="USD">BRG/0031 - MNSPD-300</option>
+                                      <option value="BRG/0032" data-harga="135.00" data-name="MNSPD-600" data-currency="USD">BRG/0032 - MNSPD-600</option>
+                                      <option value="BRG/0033" data-harga="166.50" data-name="WATER METER, WP-DN40, 0.1CBM/P" data-currency="USD">BRG/0033 - WATER METER, WP-DN40, 0.1CBM/P</option>
+                                      <option value="BRG/0034" data-harga="166.50" data-name="WATER METER, WP-DN65, 0.1CBM/P" data-currency="USD">BRG/0034 - WATER METER, WP-DN65, 0.1CBM/P</option>
+                                      <option value="BRG/0035" data-harga="166.50" data-name="WATER METER, WP-DN80, 0.1CBM/P" data-currency="USD">BRG/0035 - WATER METER, WP-DN80, 0.1CBM/P</option>
+                                      <option value="BRG/0036" data-harga="180.00" data-name="WATER METER, WP-DN100, 0.1CBM/P" data-currency="USD">BRG/0036 - WATER METER, WP-DN100, 0.1CBM/P</option>
+                                      <option value="BRG/0037" data-harga="211.50" data-name="WATER METER, WP-DN125, 0.1CBM/P" data-currency="USD">BRG/0037 - WATER METER, WP-DN125, 0.1CBM/P</option>
+                                      <option value="BRG/0038" data-harga="427.50" data-name="WATER METER, WP-DN200, 1CBM/P" data-currency="USD">BRG/0038 - WATER METER, WP-DN200, 1CBM/P</option>
+                                      <option value="BRG/0039" data-harga="346.50" data-name="WATER METER, WP-DN150, 1CBM/P" data-currency="USD">BRG/0039 - WATER METER, WP-DN150, 1CBM/P</option>
+                                      <option value="BRG/0040" data-harga="162.00" data-name="SMARTPSUK2" data-currency="USD">BRG/0040 - SMARTPSUK2</option>
+                                      <option value="BRG/0041" data-harga="54.00" data-name="&quot;LC20-12M, PV-MODULE, PRE-WIRED, FIXTURE&quot;" data-currency="USD">BRG/0041 - "LC20-12M, PV-MODULE, PRE-WIRED, FIXTURE"</option>
+                                      <option value="BRG/0042" data-harga="34.65" data-name="ANODE, SACRIFICIAL ZINC ANODE ASSEMBLY, DI42MM" data-currency="USD">BRG/0042 - ANODE, SACRIFICIAL ZINC ANODE ASSEMBLY, DI42MM</option>
+                                      <option value="BRG/0043" data-harga="34.65" data-name="ANODE, SACRIFICIAL ZINC ANODE ASSEMBLY, DI48MM" data-currency="USD">BRG/0043 - ANODE, SACRIFICIAL ZINC ANODE ASSEMBLY, DI48MM</option>
+                                      <option value="BRG/0044" data-harga="92.25" data-name="ANODE, SACRIFICIAL ZINC ANODE FOR 4&quot; MOTOR" data-currency="USD">BRG/0044 - ANODE, SACRIFICIAL ZINC ANODE FOR 4" MOTOR</option>
+                                      <option value="BRG/0045" data-harga="130.50" data-name="ANODE, SACRIFICIAL ZINC ANODE FOR 6&quot; MOTOR" data-currency="USD">BRG/0045 - ANODE, SACRIFICIAL ZINC ANODE FOR 6" MOTOR</option>
+                                      <option value="BRG/0046" data-harga="33.30" data-name="ANTENNA, EXTERNAL" data-currency="USD">BRG/0046 - ANTENNA, EXTERNAL</option>
+                                      <option value="BRG/0047" data-harga="99.90" data-name="POLE MOUNT PM-1-1" data-currency="USD">BRG/0047 - POLE MOUNT PM-1-1</option>
+                                      <option value="BRG/0048" data-harga="115.65" data-name="POLE MOUNT PM-1-2" data-currency="USD">BRG/0048 - POLE MOUNT PM-1-2</option>
+                                      <option value="BRG/0049" data-harga="131.40" data-name="POLE MOUNT PM-1-3" data-currency="USD">BRG/0049 - POLE MOUNT PM-1-3</option>
+                                      <option value="BRG/0050" data-harga="146.70" data-name="POLE MOUNT PM-1-4" data-currency="USD">BRG/0050 - POLE MOUNT PM-1-4</option>
+                                      <option value="BRG/0051" data-harga="162.00" data-name="POLE MOUNT PM-1-5" data-currency="USD">BRG/0051 - POLE MOUNT PM-1-5</option>
+                                      <option value="BRG/0052" data-harga="177.75" data-name="POLE MOUNT PM-1-6" data-currency="USD">BRG/0052 - POLE MOUNT PM-1-6</option>
+                                      <option value="BRG/0053" data-harga="25.20" data-name="POLE MOUNT PM-1, POLE-70-1" data-currency="USD">BRG/0053 - POLE MOUNT PM-1, POLE-70-1</option>
+                                      <option value="BRG/0054" data-harga="49.50" data-name="POLE MOUNT PM-1, POLE-114-1" data-currency="USD">BRG/0054 - POLE MOUNT PM-1, POLE-114-1</option>
+                                      <option value="BRG/0055" data-harga="14.85" data-name="POLE MOUNT PM-1, BEAM-70-1" data-currency="USD">BRG/0055 - POLE MOUNT PM-1, BEAM-70-1</option>
+                                      <option value="BRG/0056" data-harga="27.90" data-name="POLE MOUNT PM-1, BEAM-70-2" data-currency="USD">BRG/0056 - POLE MOUNT PM-1, BEAM-70-2</option>
+                                      <option value="BRG/0057" data-harga="45.45" data-name="POLE MOUNT PM-1, BEAM-70-3" data-currency="USD">BRG/0057 - POLE MOUNT PM-1, BEAM-70-3</option>
+                                      <option value="BRG/0058" data-harga="111.60" data-name="POLE MOUNT PM-1, BEAM-70-4" data-currency="USD">BRG/0058 - POLE MOUNT PM-1, BEAM-70-4</option>
+                                      <option value="BRG/0059" data-harga="8.91" data-name="PM ACCESSORY BRACKET 4-1" data-currency="USD">BRG/0059 - PM ACCESSORY BRACKET 4-1</option>
+                                      <option value="BRG/0060" data-harga="8.91" data-name="PM ACCESSORY BRACKET 2.5-1" data-currency="USD">BRG/0060 - PM ACCESSORY BRACKET 2.5-1</option>
+                                      <option value="BRG/0061" data-harga="153.00" data-name="SMARTSTART" data-currency="USD">BRG/0061 - SMARTSTART</option>
+                                      <option value="BRG/0062" data-harga="99.00" data-name="LIQUID PRESSURE SENSOR, LPS-500" data-currency="USD">BRG/0062 - LIQUID PRESSURE SENSOR, LPS-500</option>
+                                      <option value="BRG/0063" data-harga="99.00" data-name="LIQUID PRESSURE SENSOR, LPS-1000" data-currency="USD">BRG/0063 - LIQUID PRESSURE SENSOR, LPS-1000</option>
+                                      <option value="BRG/0064" data-harga="81.00" data-name="PLUG-KIT PS2-CONTROLLER" data-currency="USD">BRG/0064 - PLUG-KIT PS2-CONTROLLER</option>
+                                      <option value="BRG/0065" data-harga="44.10" data-name="SENSOR PLUG EXTENSION KIT 2 SENSORS" data-currency="USD">BRG/0065 - SENSOR PLUG EXTENSION KIT 2 SENSORS</option>
+                                      <option value="BRG/0066" data-harga="29.25" data-name="SUN SENSOR, LORENTZ BLUE" data-currency="USD">BRG/0066 - SUN SENSOR, LORENTZ BLUE</option>
+                                      <option value="BRG/0067" data-harga="281.25" data-name="&quot;LIQUID LEVEL SENSOR, 0-10M/30FT, 30M/100FT CABLE&quot;" data-currency="USD">BRG/0067 - "LIQUID LEVEL SENSOR, 0-10M/30FT, 30M/100FT CABLE"</option>
+                                      <option value="BRG/0068" data-harga="330.75" data-name="&quot;LIQUID LEVEL SENSOR, 0-20M/60FT, 40M/130FT CABLE&quot;" data-currency="USD">BRG/0068 - "LIQUID LEVEL SENSOR, 0-20M/60FT, 40M/130FT CABLE"</option>
+                                      <option value="BRG/0069" data-harga="130.50" data-name="FLOW SLEEVE KIT FOR C-SJ42-X PUMPS" data-currency="USD">BRG/0069 - FLOW SLEEVE KIT FOR C-SJ42-X PUMPS</option>
+                                      <option value="BRG/0070" data-harga="103.50" data-name="FLOW SLEEVE ADAPTOR FOR C-SJ42-X PUMPS" data-currency="USD">BRG/0070 - FLOW SLEEVE ADAPTOR FOR C-SJ42-X PUMPS</option>
+                                      <option value="BRG/0071" data-harga="330.75" data-name="PE HR-03H-3, RP 1 1/4&quot;" data-currency="USD">BRG/0071 - PE HR-03H-3, RP 1 1/4"</option>
+                                      <option value="BRG/0072" data-harga="330.75" data-name="PE HR-03-3, RP 1 1/4&quot;" data-currency="USD">BRG/0072 - PE HR-03-3, RP 1 1/4"</option>
+                                      <option value="BRG/0073" data-harga="330.75" data-name="PE HR-04-3, RP 1 1/4&quot;" data-currency="USD">BRG/0073 - PE HR-04-3, RP 1 1/4"</option>
+                                      <option value="BRG/0074" data-harga="330.75" data-name="PE HR-04S-3, RP 1&quot;" data-currency="USD">BRG/0074 - PE HR-04S-3, RP 1"</option>
+                                      <option value="BRG/0075" data-harga="330.75" data-name="PE HR-04H-3, RP 1 1/4&quot;" data-currency="USD">BRG/0075 - PE HR-04H-3, RP 1 1/4"</option>
+                                      <option value="BRG/0076" data-harga="438.75" data-name="PE HR-05HL-3, RP 1 1/4&quot;" data-currency="USD">BRG/0076 - PE HR-05HL-3, RP 1 1/4"</option>
+                                      <option value="BRG/0077" data-harga="330.75" data-name="PE HR-07-3, RP 1 1/4&quot;" data-currency="USD">BRG/0077 - PE HR-07-3, RP 1 1/4"</option>
+                                      <option value="BRG/0078" data-harga="330.75" data-name="PE HR-07H-3, RP 1 1/4&quot;" data-currency="USD">BRG/0078 - PE HR-07H-3, RP 1 1/4"</option>
+                                      <option value="BRG/0079" data-harga="330.75" data-name="PE HR-07S-3, RP 1&quot;" data-currency="USD">BRG/0079 - PE HR-07S-3, RP 1"</option>
+                                      <option value="BRG/0080" data-harga="330.75" data-name="PE HR-10-3, RP 1 1/4&quot;" data-currency="USD">BRG/0080 - PE HR-10-3, RP 1 1/4"</option>
+                                      <option value="BRG/0081" data-harga="330.75" data-name="PE HR-14-3, RP 1 1/4&quot;" data-currency="USD">BRG/0081 - PE HR-14-3, RP 1 1/4"</option>
+                                      <option value="BRG/0082" data-harga="438.75" data-name="PE HR-14HL-3, RP 1 1/4&quot;" data-currency="USD">BRG/0082 - PE HR-14HL-3, RP 1 1/4"</option>
+                                      <option value="BRG/0083" data-harga="33075.00" data-name="PE HR-23-3, RP 1 1/4" data-currency="USD">BRG/0083 - PE HR-23-3, RP 1 1/4</option>
+                                      <option value="BRG/0084" data-harga="438.75" data-name="PE HR-05HHL-3, RP 1 1/4&quot;" data-currency="USD">BRG/0084 - PE HR-05HHL-3, RP 1 1/4"</option>
+                                      <option value="BRG/0085" data-harga="330.75" data-name="PE HR-14H-3, RP 1 1/4&quot;" data-currency="USD">BRG/0085 - PE HR-14H-3, RP 1 1/4"</option>
+                                      <option value="BRG/0086" data-harga="437.00" data-name="PE BOOST-125, NPT 3/8&quot;" data-currency="USD">BRG/0086 - PE BOOST-125, NPT 3/8"</option>
+                                      <option value="BRG/0087" data-harga="254.25" data-name="PE BOOST-240, NPT 1/2&quot;" data-currency="USD">BRG/0087 - PE BOOST-240, NPT 1/2"</option>
+                                      <option value="BRG/0088" data-harga="254.25" data-name="PE BOOST-330, NPT 1/2&quot;" data-currency="USD">BRG/0088 - PE BOOST-330, NPT 1/2"</option>
+                                      <option value="BRG/0089" data-harga="207.00" data-name="PE BOOST-60, NPT 3/8&quot;" data-currency="USD">BRG/0089 - PE BOOST-60, NPT 3/8"</option>
+                                      <option value="BRG/0090" data-harga="330.75" data-name="PE C-SJ3-9, RP 1 1/4&quot;" data-currency="USD">BRG/0090 - PE C-SJ3-9, RP 1 1/4"</option>
+                                      <option value="BRG/0091" data-harga="330.75" data-name="PE C-SJ3-18, RP 1 1/4&quot;" data-currency="USD">BRG/0091 - PE C-SJ3-18, RP 1 1/4"</option>
+                                      <option value="BRG/0092" data-harga="492.75" data-name="PE C-SJ3-32, RP 1 1/4&quot;" data-currency="USD">BRG/0092 - PE C-SJ3-32, RP 1 1/4"</option>
+                                      <option value="BRG/0093" data-harga="330.75" data-name="PE C-SJ5-8, RP 1 1/2&quot;" data-currency="USD">BRG/0093 - PE C-SJ5-8, RP 1 1/2"</option>
+                                      <option value="BRG/0094" data-harga="330.75" data-name="PE C-SJ5-12, RP 1 1/2&quot;" data-currency="USD">BRG/0094 - PE C-SJ5-12, RP 1 1/2"</option>
+                                      <option value="BRG/0095" data-harga="492.75" data-name="PE C-SJ5-25, RP 1 1/2&quot;" data-currency="USD">BRG/0095 - PE C-SJ5-25, RP 1 1/2"</option>
+                                      <option value="BRG/0096" data-harga="330.75" data-name="PE C-SJ8-5, RP 2&quot;" data-currency="USD">BRG/0096 - PE C-SJ8-5, RP 2"</option>
+                                      <option value="BRG/0097" data-harga="330.75" data-name="PE C-SJ8-7, RP 2&quot;" data-currency="USD">BRG/0097 - PE C-SJ8-7, RP 2"</option>
+                                      <option value="BRG/0098" data-harga="492.75" data-name="PE C-SJ8-15, RP 2&quot;" data-currency="USD">BRG/0098 - PE C-SJ8-15, RP 2"</option>
+                                      <option value="BRG/0099" data-harga="756.00" data-name="PE C-SJ8-30, RP2&quot;" data-currency="USD">BRG/0099 - PE C-SJ8-30, RP2"</option>
+                                      <option value="BRG/0100" data-harga="963.00" data-name="PE C-SJ8-44, 6&quot;, RP 2&quot;" data-currency="USD">BRG/0100 - PE C-SJ8-44, 6", RP 2"</option>
+                                      <option value="BRG/0101" data-harga="330.75" data-name="PE C-SJ12-4, RP 2&quot;" data-currency="USD">BRG/0101 - PE C-SJ12-4, RP 2"</option>
+                                      <option value="BRG/0102" data-harga="330.75" data-name="PE C-SJ17-2, RP 2 1/2&quot;" data-currency="USD">BRG/0102 - PE C-SJ17-2, RP 2 1/2"</option>
+                                      <option value="BRG/0103" data-harga="492.75" data-name="PE C-SJ17-4, RP 2 1/2&quot;" data-currency="USD">BRG/0103 - PE C-SJ17-4, RP 2 1/2"</option>
+                                      <option value="BRG/0104" data-harga="855.00" data-name="PE C-SJ17-11, RP 2 1/2&quot;" data-currency="USD">BRG/0104 - PE C-SJ17-11, RP 2 1/2"</option>
+                                      <option value="BRG/0105" data-harga="1137.60" data-name="PE C-SJ17-18, RP 2 1/2&quot;" data-currency="USD">BRG/0105 - PE C-SJ17-18, RP 2 1/2"</option>
+                                      <option value="BRG/0106" data-harga="330.75" data-name="PE C-SJ30-1, RP 3&quot;" data-currency="USD">BRG/0106 - PE C-SJ30-1, RP 3"</option>
+                                      <option value="BRG/0107" data-harga="492.75" data-name="PE C-SJ30-2, RP 3&quot;" data-currency="USD">BRG/0107 - PE C-SJ30-2, RP 3"</option>
+                                      <option value="BRG/0108" data-harga="765.00" data-name="PE C-SJ30-7, RP 3&quot;" data-currency="USD">BRG/0108 - PE C-SJ30-7, RP 3"</option>
+                                      <option value="BRG/0109" data-harga="1022.40" data-name="PE C-SJ30-12, RP 3&quot;" data-currency="USD">BRG/0109 - PE C-SJ30-12, RP 3"</option>
+                                      <option value="BRG/0110" data-harga="1324.80" data-name="PE C-SJ30-16, RP 3&quot;" data-currency="USD">BRG/0110 - PE C-SJ30-16, RP 3"</option>
+                                      <option value="BRG/0111" data-harga="1809.00" data-name="PE C-SJ30-22, RP 3&quot;" data-currency="USD">BRG/0111 - PE C-SJ30-22, RP 3"</option>
+                                      <option value="BRG/0112" data-harga="416.25" data-name="PE C-SJ42-1, RP 3&quot;" data-currency="USD">BRG/0112 - PE C-SJ42-1, RP 3"</option>
+                                      <option value="BRG/0113" data-harga="492.75" data-name="PE C-SJ42-2, RP 3&quot;" data-currency="USD">BRG/0113 - PE C-SJ42-2, RP 3"</option>
+                                      <option value="BRG/0114" data-harga="1022.40" data-name="PE C-SJ42-6, RP 3&quot;" data-currency="USD">BRG/0114 - PE C-SJ42-6, RP 3"</option>
+                                      <option value="BRG/0115" data-harga="1324.80" data-name="PE C-SJ42-10, RP 3&quot;" data-currency="USD">BRG/0115 - PE C-SJ42-10, RP 3"</option>
+                                      <option value="BRG/0116" data-harga="1498.50" data-name="PE C-SJ42-12, RP 3&quot;" data-currency="USD">BRG/0116 - PE C-SJ42-12, RP 3"</option>
+                                      <option value="BRG/0117" data-harga="492.75" data-name="PE C-SJ60-1, RP 4&quot;" data-currency="USD">BRG/0117 - PE C-SJ60-1, RP 4"</option>
+                                      <option value="BRG/0118" data-harga="492.75" data-name="PE C-SJ60-2-2, RP 4&quot;" data-currency="USD">BRG/0118 - PE C-SJ60-2-2, RP 4"</option>
+                                      <option value="BRG/0119" data-harga="1073.25" data-name="PE C-SJ75-3, RP 5&quot;" data-currency="USD">BRG/0119 - PE C-SJ75-3, RP 5"</option>
+                                      <option value="BRG/0120" data-harga="1390.50" data-name="PE C-SJ75-4, RP 5&quot;" data-currency="USD">BRG/0120 - PE C-SJ75-4, RP 5"</option>
+                                      <option value="BRG/0121" data-harga="855.00" data-name="PE C-SJ95-1, RP 5&quot;" data-currency="USD">BRG/0121 - PE C-SJ95-1, RP 5"</option>
+                                      <option value="BRG/0122" data-harga="1022.40" data-name="PE C-SJ95-2, RP 5&quot;" data-currency="USD">BRG/0122 - PE C-SJ95-2, RP 5"</option>
+                                      <option value="BRG/0123" data-harga="1498.50" data-name="PE C-SJ95-4, RP 5&quot;" data-currency="USD">BRG/0123 - PE C-SJ95-4, RP 5"</option>
+                                      <option value="BRG/0124" data-harga="634.50" data-name="PE C-SJ17-9, RP 2 1/2&quot;" data-currency="USD">BRG/0124 - PE C-SJ17-9, RP 2 1/2"</option>
+                                      <option value="BRG/0125" data-harga="634.50" data-name="PE C-SJ30-6, RP 3&quot;" data-currency="USD">BRG/0125 - PE C-SJ30-6, RP 3"</option>
+                                      <option value="BRG/0126" data-harga="634.50" data-name="PE C-SJ42-3, RP 3&quot;" data-currency="USD">BRG/0126 - PE C-SJ42-3, RP 3"</option>
+                                      <option value="BRG/0127" data-harga="1755.00" data-name="PE C-SJ120-2-1, RP 6&quot;" data-currency="USD">BRG/0127 - PE C-SJ120-2-1, RP 6"</option>
+                                      <option value="BRG/0128" data-harga="1354.50" data-name="PE C-SJ150-1, RP 6&quot;" data-currency="USD">BRG/0128 - PE C-SJ150-1, RP 6"</option>
+                                      <option value="BRG/0129" data-harga="1617.75" data-name="PE C-SJ150-2-2, RP 6&quot;" data-currency="USD">BRG/0129 - PE C-SJ150-2-2, RP 6"</option>
+                                      <option value="BRG/0130" data-harga="337.50" data-name="PE CS-F3-7, 1 1/4&quot;" data-currency="USD">BRG/0130 - PE CS-F3-7, 1 1/4"</option>
+                                      <option value="BRG/0131" data-harga="337.50" data-name="PE CS-F4-3, 1 1/4&quot;" data-currency="USD">BRG/0131 - PE CS-F4-3, 1 1/4"</option>
+                                      <option value="BRG/0132" data-harga="330.75" data-name="PE CS-F4-6, 1 1/4&quot;" data-currency="USD">BRG/0132 - PE CS-F4-6, 1 1/4"</option>
+                                      <option value="BRG/0133" data-harga="353.25" data-name="PE CS-F12-2, 2&quot;" data-currency="USD">BRG/0133 - PE CS-F12-2, 2"</option>
+                                      <option value="BRG/0134" data-harga="720.00" data-name="PE CS-F8-8, 2&quot;" data-currency="USD">BRG/0134 - PE CS-F8-8, 2"</option>
+                                      <option value="BRG/0135" data-harga="720.00" data-name="PE CS-F16-3, 2&quot;" data-currency="USD">BRG/0135 - PE CS-F16-3, 2"</option>
+                                      <option value="BRG/0136" data-harga="1170.00" data-name="PE CS-F32-20-2, 2.5&quot;" data-currency="USD">BRG/0136 - PE CS-F32-20-2, 2.5"</option>
+                                      <option value="BRG/0137" data-harga="1255.50" data-name="PE CS-F42-10-1, 3&quot;" data-currency="USD">BRG/0137 - PE CS-F42-10-1, 3"</option>
+                                      <option value="BRG/0138" data-harga="756.00" data-name="PE CS-F12-9, 2&quot;" data-currency="USD">BRG/0138 - PE CS-F12-9, 2"</option>
+                                      <option value="BRG/0139" data-harga="963.00" data-name="PE CS-F20-5, 2&quot;" data-currency="USD">BRG/0139 - PE CS-F20-5, 2"</option>
+                                      <option value="BRG/0140" data-harga="1170.00" data-name="PE CS-F20-7, 2&quot;" data-currency="USD">BRG/0140 - PE CS-F20-7, 2"</option>
+                                      <option value="BRG/0141" data-harga="1170.00" data-name="PE CS-F32-60-2, 3&quot;" data-currency="USD">BRG/0141 - PE CS-F32-60-2, 3"</option>
+                                      <option value="BRG/0142" data-harga="1548.00" data-name="PE CS-F42-20, 3&quot;" data-currency="USD">BRG/0142 - PE CS-F42-20, 3"</option>
+                                      <option value="BRG/0143" data-harga="2844.00" data-name="PE CS-F42-40, 3&quot;" data-currency="USD">BRG/0143 - PE CS-F42-40, 3"</option>
+                                      <option value="BRG/0144" data-harga="2052.00" data-name="PE CS-F65-20, 4&quot;" data-currency="USD">BRG/0144 - PE CS-F65-20, 4"</option>
+                                      <option value="BRG/0145" data-harga="2889.00" data-name="PE CS-F85-20, 4&quot;" data-currency="USD">BRG/0145 - PE CS-F85-20, 4"</option>
+                                      <option value="BRG/0146" data-harga="3640.50" data-name="PE CS-F85-40, 4&quot;" data-currency="USD">BRG/0146 - PE CS-F85-40, 4"</option>
+                                      <option value="BRG/0147" data-harga="715.50" data-name="PE CS-G80-38/2, 3&quot;" data-currency="USD">BRG/0147 - PE CS-G80-38/2, 3"</option>
+                                      <option value="BRG/0148" data-harga="400.50" data-name="PE CS-G100-17/2, 4&quot;" data-currency="USD">BRG/0148 - PE CS-G100-17/2, 4"</option>
+                                      <option value="BRG/0149" data-harga="400.50" data-name="PE CS-G100-22/2, 4&quot;" data-currency="USD">BRG/0149 - PE CS-G100-22/2, 4"</option>
+                                      <option value="BRG/0150" data-harga="670.50" data-name="PE CS-G100-27/2, 4&quot;" data-currency="USD">BRG/0150 - PE CS-G100-27/2, 4"</option>
+                                      <option value="BRG/0151" data-harga="1300.50" data-name="PE CS-G150-12.5/4, 6&quot;" data-currency="USD">BRG/0151 - PE CS-G150-12.5/4, 6"</option>
+                                      <option value="BRG/0152" data-harga="1338.75" data-name="PE CS-G150-17/4, 6&quot;" data-currency="USD">BRG/0152 - PE CS-G150-17/4, 6"</option>
+                                      <option value="BRG/0153" data-harga="504.00" data-name="PE CS-G100-40/2, 4&quot;" data-currency="USD">BRG/0153 - PE CS-G100-40/2, 4"</option>
+                                      <option value="BRG/0154" data-harga="2425.50" data-name="PE CS-G200-15/4, 8&quot;" data-currency="USD">BRG/0154 - PE CS-G200-15/4, 8"</option>
+                                      <option value="BRG/0155" data-harga="2412.00" data-name="PE C-SJ42-19, RP 3&quot;" data-currency="USD">BRG/0155 - PE C-SJ42-19, RP 3"</option>
+                                      <option value="BRG/0156" data-harga="2301.00" data-name="PE C-SJ95-7, RP 5&quot;" data-currency="USD">BRG/0156 - PE C-SJ95-7, RP 5"</option>
+                                      <option value="BRG/0157" data-harga="2331.00" data-name="PE C-SJ120-3, RP 6&quot;" data-currency="USD">BRG/0157 - PE C-SJ120-3, RP 6"</option>
+                                      <option value="BRG/0158" data-harga="1716.75" data-name="PE CS-G125-40/4, 5&quot;" data-currency="USD">BRG/0158 - PE CS-G125-40/4, 5"</option>
+                                      <option value="BRG/0159" data-harga="3179.25" data-name="PE CS-G200-24/4, 8&quot;" data-currency="USD">BRG/0159 - PE CS-G200-24/4, 8"</option>
+                                      <option value="BRG/0160" data-harga="229.50" data-name="ECDRIVE 150-BOOST, 0.3KW" data-currency="USD">BRG/0160 - ECDRIVE 150-BOOST, 0.3KW</option>
+                                      <option value="BRG/0161" data-harga="348.75" data-name="ECDRIVE 150-C, 0.3KW, UL" data-currency="USD">BRG/0161 - ECDRIVE 150-C, 0.3KW, UL</option>
+                                      <option value="BRG/0162" data-harga="364.50" data-name="ECDRIVE 200-HR, 0.3KW, UL" data-currency="USD">BRG/0162 - ECDRIVE 200-HR, 0.3KW, UL</option>
+                                      <option value="BRG/0163" data-harga="364.50" data-name="ECDRIVE 200-C, 0.3KW, UL" data-currency="USD">BRG/0163 - ECDRIVE 200-C, 0.3KW, UL</option>
+                                      <option value="BRG/0164" data-harga="441.00" data-name="ECDRIVE 600-C, 0.7KW, UL" data-currency="USD">BRG/0164 - ECDRIVE 600-C, 0.7KW, UL</option>
+                                      <option value="BRG/0165" data-harga="441.00" data-name="ECDRIVE 600-HR, 0.7KW, UL" data-currency="USD">BRG/0165 - ECDRIVE 600-HR, 0.7KW, UL</option>
+                                      <option value="BRG/0166" data-harga="747.00" data-name="ECDRIVE 4000-C, 4.0KW, UL" data-currency="USD">BRG/0166 - ECDRIVE 4000-C, 4.0KW, UL</option>
+                                      <option value="BRG/0167" data-harga="747.00" data-name="ECDRIVE 4000-HR, 4.0KW, UL" data-currency="USD">BRG/0167 - ECDRIVE 4000-HR, 4.0KW, UL</option>
+                                      <option value="BRG/0168" data-harga="441.00" data-name="ECDRIVE 600-CS-F, 0.7KW" data-currency="USD">BRG/0168 - ECDRIVE 600-CS-F, 0.7KW</option>
+                                      <option value="BRG/0169" data-harga="441.00" data-name="ECDRIVE 1800-CS-F, 1.7KW" data-currency="USD">BRG/0169 - ECDRIVE 1800-CS-F, 1.7KW</option>
+                                      <option value="BRG/0170" data-harga="747.00" data-name="ECDRIVE 4000-CS-F, 4.0KW" data-currency="USD">BRG/0170 - ECDRIVE 4000-CS-F, 4.0KW</option>
+                                      <option value="BRG/0171" data-harga="441.00" data-name="ECDRIVE 1800-C, 1.7KW, UL" data-currency="USD">BRG/0171 - ECDRIVE 1800-C, 1.7KW, UL</option>
+                                      <option value="BRG/0172" data-harga="441.00" data-name="ECDRIVE 1800-HR, 1.7KW, UL" data-currency="USD">BRG/0172 - ECDRIVE 1800-HR, 1.7KW, UL</option>
+                                      <option value="BRG/0173" data-harga="837.00" data-name="AC DRIVE SUB 6&quot; 5.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0173 - AC DRIVE SUB 6" 5.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0174" data-harga="958.50" data-name="AC DRIVE SUB 6&quot; 7.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0174 - AC DRIVE SUB 6" 7.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0175" data-harga="1080.00" data-name="AC DRIVE SUB 6&quot; 11KW-380V-3PH-50HZ" data-currency="USD">BRG/0175 - AC DRIVE SUB 6" 11KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0176" data-harga="1255.50" data-name="AC DRIVE SUB 6&quot; 15KW-380V-3PH-50HZ" data-currency="USD">BRG/0176 - AC DRIVE SUB 6" 15KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0177" data-harga="330.75" data-name="PE C-SJ1-25, RP 1 1/4" data-currency="USD">BRG/0177 - PE C-SJ1-25, RP 1 1/4</option>
+                                      <option value="BRG/0178" data-harga="1399.50" data-name="AC DRIVE SUB 6&quot; 18.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0178 - AC DRIVE SUB 6" 18.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0179" data-harga="1800.00" data-name="AC DRIVE SUB 6&quot; 30KW-380V-3PH-50HZ" data-currency="USD">BRG/0179 - AC DRIVE SUB 6" 30KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0180" data-harga="337.50" data-name="PE CS-F3-7, 1 1/4&quot;" data-currency="USD">BRG/0180 - PE CS-F3-7, 1 1/4"</option>
+                                      <option value="BRG/0181" data-harga="16.65" data-name="FLOW SLEEVE ADAPTOR FOR 4&quot; C-SJ PUMPS WITH 4&quot; MOTOR" data-currency="USD">BRG/0181 - FLOW SLEEVE ADAPTOR FOR 4" C-SJ PUMPS WITH 4" MOTOR</option>
+                                      <option value="BRG/0182" data-harga="33.75" data-name="&quot;FLOW SLEEVE ADAPTOR FOR C-SJ17-X/30-X WITH 4&quot;&quot; MOTOR&quot;" data-currency="USD">BRG/0182 - "FLOW SLEEVE ADAPTOR FOR C-SJ17-X/30-X WITH 4"" MOTOR"</option>
+                                      <option value="BRG/0183" data-harga="207.00" data-name="&quot;POWER PACK 150, 120VAC, 47-63HZ, DC OUT= 24V, 0.4KVA&quot;" data-currency="USD">BRG/0183 - "POWER PACK 150, 120VAC, 47-63HZ, DC OUT= 24V, 0.4KVA"</option>
+                                      <option value="BRG/0184" data-harga="207.00" data-name="&quot;POWER PACK 200, 120VAC, 47-63HZ, DC OUT= 48V, 0.4KVA&quot;" data-currency="USD">BRG/0184 - "POWER PACK 200, 120VAC, 47-63HZ, DC OUT= 48V, 0.4KVA"</option>
+                                      <option value="BRG/0185" data-harga="369.00" data-name="&quot;LIQUID LEVEL SENSOR, 0-50M/160FT, 60M/200FT CABLE&quot;" data-currency="USD">BRG/0185 - "LIQUID LEVEL SENSOR, 0-50M/160FT, 60M/200FT CABLE"</option>
+                                      <option value="BRG/0186" data-harga="598.50" data-name="AC DRIVE CS-F 5.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0186 - AC DRIVE CS-F 5.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0187" data-harga="625.50" data-name="AC DRIVE CS-F 7.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0187 - AC DRIVE CS-F 7.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0188" data-harga="958.50" data-name="AC DRIVE CS-F 11KW-380V-3PH-50HZ" data-currency="USD">BRG/0188 - AC DRIVE CS-F 11KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0189" data-harga="1041.75" data-name="AC DRIVE CS-F 15KW-380V-3PH-50HZ" data-currency="USD">BRG/0189 - AC DRIVE CS-F 15KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0190" data-harga="1872.00" data-name="AC DRIVE CS-F 30KW-380V-3PH-50HZ" data-currency="USD">BRG/0190 - AC DRIVE CS-F 30KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0192" data-harga="585.00" data-name="AC DRIVE CS-G 5.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0192 - AC DRIVE CS-G 5.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0193" data-harga="585.00" data-name="AC DRIVE CS-G 7.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0193 - AC DRIVE CS-G 7.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0194" data-harga="882.00" data-name="AC DRIVE CS-G 11KW-380V-3PH-50HZ" data-currency="USD">BRG/0194 - AC DRIVE CS-G 11KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0195" data-harga="915.75" data-name="AC DRIVE CS-G 11KW/4P-380V-3PH-50HZ" data-currency="USD">BRG/0195 - AC DRIVE CS-G 11KW/4P-380V-3PH-50HZ</option>
+                                      <option value="BRG/0196" data-harga="958.50" data-name="AC DRIVE CS-G 15KW-380V-3PH-50HZ" data-currency="IDR">BRG/0196 - AC DRIVE CS-G 15KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0197" data-harga="999.00" data-name="AC DRIVE CS-G 15KW/4P-380V-3PH-50HZ" data-currency="USD">BRG/0197 - AC DRIVE CS-G 15KW/4P-380V-3PH-50HZ</option>
+                                      <option value="BRG/0198" data-harga="1041.75" data-name="AC DRIVE CS-G 18.5KW/4P-380V-3PH-50HZ" data-currency="USD">BRG/0198 - AC DRIVE CS-G 18.5KW/4P-380V-3PH-50HZ</option>
+                                      <option value="BRG/0199" data-harga="1291.50" data-name="AC DRIVE CS-G 18.5KW-380V-3PH-50HZ" data-currency="USD">BRG/0199 - AC DRIVE CS-G 18.5KW-380V-3PH-50HZ</option>
+                                      <option value="BRG/0200" data-harga="1957.50" data-name="18-000330  AC DRIVE CS-G 30KW/4P-380V-3PH-50HZ" data-currency="USD">BRG/0200 - 18-000330  AC DRIVE CS-G 30KW/4P-380V-3PH-50HZ</option>
+                                      <option value="BRG/0205" data-harga="274.50" data-name="PS2-150 CONTROLLER-0.3KVA" data-currency="USD">BRG/0205 - PS2-150 CONTROLLER-0.3KVA</option>
+                                      <option value="BRG/0206" data-harga="274.50" data-name="PS2-200 CONTROLLER-0.3KVA" data-currency="USD">BRG/0206 - PS2-200 CONTROLLER-0.3KVA</option>
+                                      <option value="BRG/0207" data-harga="459.00" data-name="PS2-600 CONTROLLER-0.7KVA" data-currency="USD">BRG/0207 - PS2-600 CONTROLLER-0.7KVA</option>
+                                      <option value="BRG/0209" data-harga="488.25" data-name="PS2-1800 CONTROLLER-1.8KVA" data-currency="USD">BRG/0209 - PS2-1800 CONTROLLER-1.8KVA</option>
+                                      <option value="BRG/0210" data-harga="823.50" data-name="PS2-4000 CONTROLLER-4.0KVA" data-currency="USD">BRG/0210 - PS2-4000 CONTROLLER-4.0KVA</option>
+                                      <option value="BRG/0211" data-harga="1512.00" data-name="PSK2-7 CONTROLLER-5.5KVA-D" data-currency="USD">BRG/0211 - PSK2-7 CONTROLLER-5.5KVA-D</option>
+                                      <option value="BRG/0212" data-harga="2011.50" data-name="PSK2-9 CONTROLLER-7.5KVA-D" data-currency="USD">BRG/0212 - PSK2-9 CONTROLLER-7.5KVA-D</option>
+                                      <option value="BRG/0213" data-harga="2682.00" data-name="PSK2-15 CONTROLLER-11KVA-D" data-currency="USD">BRG/0213 - PSK2-15 CONTROLLER-11KVA-D</option>
+                                      <option value="BRG/0214" data-harga="3033.00" data-name="PSK2-21 CONTROLLER-15KVA-D" data-currency="USD">BRG/0214 - PSK2-21 CONTROLLER-15KVA-D</option>
+                                      <option value="BRG/0215" data-harga="3390.75" data-name="PSK2-25 CONTROLLER-21KVA-D" data-currency="USD">BRG/0215 - PSK2-25 CONTROLLER-21KVA-D</option>
+                                      <option value="BRG/0216" data-harga="3721.50" data-name="09-000200  PSK2-40 CONTROLLER-40KVA-D" data-currency="USD">BRG/0216 - 09-000200  PSK2-40 CONTROLLER-40KVA-D</option>
+                                      <option value="BRG/0268" data-harga="348.75" data-name="ECDRIVE 150-HR, 0.3KW, UL" data-currency="USD">BRG/0268 - ECDRIVE 150-HR, 0.3KW, UL</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-bund_kodeitem-container"><span class="select2-selection__rendered" id="select2-bund_kodeitem-container" title="- Pilih -">- Pilih -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-6 col-xs-2">
+            <div class="form-group">  
+              <input style="text-align: right; width: 60%;" type="text" readonly="" class="form-control form-control-sm  right" id="currency">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-1 col-xs-1">
+            <label>Harga</label>
+          </div>
+          <div class="col-md-2 col-sm-6 col-xs-12">
+            <div class="form-group">  
+              <input type="text" class="form-control form-control-sm" name="" readonly="" id="bund_item">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-1 col-xs-1">
+            <label>Qty</label>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">  
+              <input type="text" class="form-control form-control-sm format_money right" name="bund_qty" id="bund_qty" disabled="disabled" style="text-align: right;">
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive ps ps--theme_default" data-ps-id="23ccd7bc-b2ca-1022-b9a4-e54834ba8b88">
+          <div id="bundle_table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="bundle_table_length"><label>Show <select name="bundle_table_length" aria-controls="bundle_table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="bundle_table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="bundle_table"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-hover table-bordered gogo dataTable no-footer" cellspacing="0" id="bundle_table" width="100%" role="grid" aria-describedby="bundle_table_info" style="width: 100%;">
+
+            <thead class="bg-gradient-info">
+              <tr role="row"><th width="20%" class="sorting_asc" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 20px;" aria-sort="ascending" aria-label="Item Code: activate to sort column descending">Item Code</th><th width="20%" class="sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 20px;" aria-label="Item Name: activate to sort column ascending">Item Name</th><th width="5%" class="sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 5px;" aria-label="Qty: activate to sort column ascending">Qty</th><th width="5%" class="sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 5px;" aria-label="Unit: activate to sort column ascending">Unit</th><th width="30%" class="sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 30px;" aria-label="Price: activate to sort column ascending">Price</th><th width="30%" class="sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 30px;" aria-label="Total Price: activate to sort column ascending">Total Price</th><th width="1%" class="center sorting" tabindex="0" aria-controls="bundle_table" rowspan="1" colspan="1" style="width: 1px;" aria-label="Action: activate to sort column ascending">Action</th></tr>
+            </thead>
+            <tbody id="edit_rep">
+              
+            <tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">No data available in table</td></tr></tbody>
+            
+          </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="bundle_table_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="bundle_table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="bundle_table_previous"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="bundle_table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item next disabled" id="bundle_table_next"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="bundle_table" data-dt-idx="1" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+      </div>
+      <div class="modal-footer">
+        <div id="change_function">
+          <button class="btn btn-primary" type="button" id="save_data">Save Data</button>
+        </div>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</form>
+
+<!-- Modal -->
+<div id="detail" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header bg-gradient-info">
+        <h4 class="modal-title">Item Detail</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive ps ps--theme_default" data-ps-id="3a549cf4-83a8-8d4e-da87-be8300e5a135">
+          <table class="table table-hover table-bordered" cellspacing="0">
+            <thead class="bg-gradient-info">
+              <tr>
+                <th align="center">Item Name</th>
+                <th align="center">Price</th>
+              </tr>
+            </thead>
+            <tbody id="detail_rep">
+              
+            </tbody>
+          </table>
+        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+</script>
+<!-- partial -->
+<div class="content-wrapper" style="min-height: 1018.67px;">
+  <div class="row">
+  	<div class="col-lg-12">	
+  		<nav aria-label="breadcrumb" role="navigation">
+  			<ol class="breadcrumb bg-info">
+  				<li class="breadcrumb-item"><i class="fa fa-home"></i>&nbsp;<a href="http://localhost/atonergi/master/bundle/bundle#">Home</a></li>
+  				<li class="breadcrumb-item">Master</li>
+  				<li class="breadcrumb-item active" aria-current="page">Master Data Bundle Item</li>
+  			</ol>
+  		</nav>
+  	</div>
+
+  	<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+  	                <h4 class="card-title">Master Data Bundle Item</h4>
+  		                <div class="col-md-12 col-sm-12 col-xs-12" align="right" style="margin-bottom: 15px;">
+  		                  	<button type="button" class="btn btn-info" data-toggle="modal" id="button_add" data-target="#tambah"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</button>
+  		                </div>
+                    <div class="table-responsive ps ps--theme_default" data-ps-id="d8e3d045-bfbb-faf0-9e7f-9d0969968d57">
+                            <div id="table-bundle_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="table-bundle_length"><label>Show <select name="table-bundle_length" aria-controls="table-bundle" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="table-bundle_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="table-bundle"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-hover table-bordered dataTable no-footer" id="table-bundle" cellspacing="0" role="grid" aria-describedby="table-bundle_info" style="width: 1440px;">
+                              <thead class="bg-gradient-info">
+                                  <tr role="row"><th class="wd-15p d_id center sorting_asc" width="5%" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 44px;" aria-sort="ascending" aria-label="Bundle Id: activate to sort column descending">Bundle Id</th><th class="wd-15p i_code center sorting" width="5%" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 49px;" aria-label="Bundle Code: activate to sort column ascending">Bundle Code</th><th class="wd-15p sorting" width="20%" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 241px;" aria-label="Bundle Name: activate to sort column ascending">Bundle Name</th><th class="wd-15p sorting" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 420px;" aria-label="Description: activate to sort column ascending">Description</th><th class="wd-15p right format_money sorting" width="20%" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 241px;" aria-label="Price Bundle: activate to sort column ascending">Price Bundle</th><th width="15%" class="center sorting" tabindex="0" aria-controls="table-bundle" rowspan="1" colspan="1" style="width: 170px;" aria-label="Action: activate to sort column ascending">Action</th></tr>
+                                </thead>
+                                <tbody>       
+                                <tr role="row" class="odd"><td class="d_id center sorting_1">1</td><td class=" i_code center">BND/0217</td><td>PS2-150 C-SJ 5-8, Rp 1 1/4"</td><td>Pump Set</td><td class=" right format_money">952.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;217&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="even"><td class="d_id center sorting_1">2</td><td class=" i_code center">BND/0218</td><td>PS2-150 HR-04S, Rp 1", UL</td><td>Pump Set</td><td class=" right format_money">952.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;218&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="odd"><td class="d_id center sorting_1">3</td><td class=" i_code center">BND/0219</td><td>PS2-150 HR-07S, Rp 1", UL</td><td>Pump Set</td><td class=" right format_money">952.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;219&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="even"><td class="d_id center sorting_1">4</td><td class=" i_code center">BND/0223</td><td>PS2-200 HR-04, Rp 1 1/4", UL</td><td>Pump Set</td><td class=" right format_money">14352300.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;223&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="odd"><td class="d_id center sorting_1">5</td><td class=" i_code center">BND/0224</td><td>PS2-200 HR-07, Rp 1 1/4", UL</td><td>Pump Set</td><td class=" right format_money">14352300.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;224&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="even"><td class="d_id center sorting_1">6</td><td class=" i_code center">BND/0225</td><td>PS2-200 HR-14, Rp 1 1/4", UL</td><td>Pump Set</td><td class=" right format_money">14352300.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;225&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="odd"><td class="d_id center sorting_1">7</td><td class=" i_code center">BND/0226</td><td>PS2-200 C-SJ3-9, Rp 1 1/4", UL</td><td>Pump Set</td><td class=" right format_money">14352300.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;226&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="even"><td class="d_id center sorting_1">8</td><td class=" i_code center">BND/0227</td><td>PS2-600 C-SJ 5-8, Rp 1 1/2", UL</td><td>Pump Set</td><td class=" right format_money">18215100.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;227&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="odd"><td class="d_id center sorting_1">9</td><td class=" i_code center">BND/0228</td><td>PS2-600 C-SJ3-9, Rp 1 1/4", UL</td><td>Pump Set</td><td class=" right format_money">18215100.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;228&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr><tr role="row" class="even"><td class="d_id center sorting_1">10</td><td class=" i_code center">BND/0229</td><td>PS2-600 C-SJ 8-5, Rp 2", UL</td><td>Pump Set</td><td class=" right format_money">18215100.00</td><td class=" center "><div class="btn-group"><button type="button" onclick="edit(&#39;229&#39;)" class="btn btn-primary btn-lg" title="edit"><label class="fa fa-pencil-alt"></label></button><button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus"><label class="fa fa-trash"></label></button></div></td></tr></tbody>
+                            
+                            </table><div id="table-bundle_processing" class="dataTables_processing card" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="table-bundle_info" role="status" aria-live="polite">Showing 1 to 10 of 172 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="table-bundle_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="table-bundle_previous"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="table-bundle_ellipsis"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="6" tabindex="0" class="page-link">…</a></li><li class="paginate_button page-item "><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="7" tabindex="0" class="page-link">18</a></li><li class="paginate_button page-item next" id="table-bundle_next"><a href="http://localhost/atonergi/master/bundle/bundle#" aria-controls="table-bundle" data-dt-idx="8" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div> 
+                          <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                  </div>
+              </div>
+    </div>
+  </div>
+</div>
+<!-- content-wrapper ends -->
+
+		<!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.alamraya.co.id/" target="_blank">Alamraya Sebar Barokah</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted &amp; made with <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->	</div>
+<!-- plugins:js -->
+  <script src="./Atonergi_files/jquery.min.js.download"></script>
+  
+  <script src="./Atonergi_files/popper.min.js.download"></script>
+  <script src="./Atonergi_files/bootstrap.min.js.download"></script>
+  <script src="./Atonergi_files/perfect-scrollbar.jquery.min.js.download"></script>
+  <script src="./Atonergi_files/select2.min.js.download"></script>
+  <script src="./Atonergi_files/bootstrap-datepicker.min.js.download"></script>
+  <script src="./Atonergi_files/jquery.toast.min.js.download"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="./Atonergi_files/Chart.min.js.download"></script>
+
+  <script src="./Atonergi_files/typeahead.bundle.min.js.download" tppabs="http://www.bootstrapdash.com/demo/purple/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+  <script src="./Atonergi_files/bootstrap-editable.js.download"></script>
+  <script src="./Atonergi_files/jquery.dataTables.js.download"></script>
+  <script src="./Atonergi_files/dataTables.bootstrap4.js.download"></script>
+  <script src="./Atonergi_files/switchery.min.js.download"></script>
+  <!-- End plugin js for  page-->
+  <!-- injectjs -->
+
+  <script src="./Atonergi_files/off-canvas.js.download"></script>
+  <script src="./Atonergi_files/accounting.min.js.download"></script>
+  <script src="./Atonergi_files/jquery.maskMoney.js.download"></script>
+  <script src="./Atonergi_files/misc.js.download"></script>
+  <script src="./Atonergi_files/hoverable-collapse.js.download"></script>
+  <script src="./Atonergi_files/settings.js.download" tppabs="http://www.bootstrapdash.com/demo/purple/js/settings.js"></script>
+  <script src="./Atonergi_files/todolist.js.download" tppabs="http://www.bootstrapdash.com/demo/purple/js/todolist.js"></script>
+  <script src="./Atonergi_files/tabs.js.download"></script>
+  <script src="./Atonergi_files/select2.js.download"></script>
+  <script src="./Atonergi_files/file-upload.js.download"></script>
+  <script src="./Atonergi_files/js.cookie.js.download"></script>
+
+  <!-- <script src="http://localhost/atonergi/assets/datepicker/js/bootstrap-datepicker.min.js"></script> -->
+
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="./Atonergi_files/dashboard.js.download"></script>
+  <!-- End custom js for this page-->
+
+  <script src="./Atonergi_files/data-table.js.download"></script>
+  
+  <script rel="stylesheet" src="./Atonergi_files/iziToast.min.js.download"></script>
+
+  
+  <script src="./Atonergi_files/validetta.js.download"></script>
+  <script src="./Atonergi_files/validetta.min.js.download"></script>
+
+  <!-- Light galery -->
+  <script src="./Atonergi_files/lightgallery-all.min.js.download"></script>
+
+  <script src="./Atonergi_files/jplist.core.min.js.download"></script>
+  
+  <!-- jPList textbox filter control -->
+  <script src="./Atonergi_files/jplist.textbox-filter.min.js.download"></script>
+  
+
+  <!-- jplist pagination bundle -->
+  <!-- <script src="http://localhost/atonergi/assets/jp-list/js/jplist.pagination-bundle.min.js"></script> -->
+
+
+  <script src="./Atonergi_files/jplist.pagination-bundle-custom.min.js.download"></script>
+
+  <script src="./Atonergi_files/jplist.bootstrap-pagination-bundle-custom.min.js.download"></script>
+  
+
+
+
+  <script type="text/javascript">
+  iziToast.settings({
+    timeout: 3000,
+    icon: 'material-icons',
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    closeOnClick: true,
+    position:'topRight'
+  });
+  $(document).ready(function(){
+    $("input[type='number'] .number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl/cmd+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+C
+            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+X
+            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+
+    var datepicker = $('.datepicker').datepicker({
+      format:"dd-mm-yyyy",
+      autoclose:true
+    });
+
+    var datepicker_today = $('.datepicker_today').datepicker({
+      format:"dd-mm-yyyy",
+      autoclose:true
+    }).datepicker("setDate", "0");
+    
+    $('select').select2({ 
+      width: '100%' 
+    });
+    $('.data-table').dataTable({
+          //"responsive":true,
+
+          "pageLength": 10,
+        "lengthMenu": [[10, 20, 50, - 1], [10, 20, 50, "All"]],
+        "language": {
+            "searchPlaceholder": "Search",
+            // "emptyTable": "Tidak ada data",
+            // "sInfo": "Menampilkan _START_ - _END_ Dari _TOTAL_ Data",
+            "sSearch": '<i class="fa fa-search"></i>'
+            // "sLengthMenu": "Menampilkan &nbsp; _MENU_ &nbsp; Data",
+            // "infoEmpty": "",
+            // "paginate": {
+            //         "previous": "Sebelumnya",
+            //         "next": "Selanjutnya",
+            //      }
+          }
+
+        });
+    $(".hanya_angka").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        return false;
+    }
+   });
+
+  });
+  var t ;
+  var baseUrl = 'http://localhost/atonergi';
+  // var regex_huruf = replace(/[A-Za-z$. ,-]/g, "");
+  // var regex_angka = replace(/[^0-9\-]+/g,"");
+
+  //function
+  // $('.format_money').maskMoney({prefix:' ', allowNegative: false, thousands:'.', decimal:',',precision:false, affixesStay: false});
+  // $('.format_money_kosongan').maskMoney({prefix:' ', allowNegative: false, thousands:'', decimal:'',precision:false, affixesStay: false});
+  $('.right').css('text-align','right')
+  $('.sembuyikan').css('display','none')
+  $('.tampilkan').css('display','block')
+  $('.bintang_merah').css('color','red')
+  $('.red').css('color','red')
+  $('.readonly').attr('readonly',true)
+
+   
+
+</script>
+<!-- sidebar -->
+<script>
+    // Get Cookie
+    var sidebar = Cookies.get('sidebar');
+
+    // Cookie Sidebar Exists
+    if (sidebar){
+        $('body').addClass(sidebar);
+
+        if (sidebar=='sidebar-light') 
+        {
+          $('#sidebar-light-theme').addClass('selected');
+          $('#sidebar-default-theme').removeClass('selected');
+
+        }
+        if (sidebar=='sidebar-default') 
+        {
+          $('#sidebar-default-theme').addClass('selected');
+          $('#sidebar-light-theme').removeClass('selected');
+
+        }
+    }
+    // Cookie Sidebar Doesn't Exist
+    else {
+        $('body').addClass();
+    }
+
+    // Sidebar Option Cookie
+    $('#sidebar-light-theme').on('click', function(){
+        $('body').addClass('sidebar-light');
+        $('#sidebar-light-theme').addClass('sidebar-light selected');
+        Cookies.set('sidebar', 'sidebar-light',{ expires : 365});
+
+    });
+
+    $('#sidebar-default-theme').on('click', function(){
+        $('body').removeClass('sidebar-light');
+        Cookies.set('sidebar', 'sidebar-default',{ expires : 365});
+    });
+
+    // Get Cookie
+    var navbar  = Cookies.get('navbar');
+    // Cookie Navbar Exists
+    if (navbar){
+        $('.navbar').addClass(navbar);
+        if(navbar=='navbar-primary')
+        {
+          $('div.tiles.primary').addClass('selected');
+        }
+        if(navbar=='navbar-success')
+        {
+          $('div.tiles.success').addClass('selected');
+        }
+        if(navbar=='navbar-warning')
+        {
+          $('div.tiles.warning').addClass('selected');
+        }
+        if(navbar=='navbar-danger')
+        {
+          $('div.tiles.danger').addClass('selected');
+        }
+        if(navbar=='navbar-pink')
+        {
+          $('div.tiles.pink').addClass('selected');
+        }
+        if(navbar=='navbar-dark')
+        {
+          $('div.tiles.dark').addClass('selected');
+        }
+        if(navbar=='navbar-light')
+        {
+          $('div.tiles.light').addClass('selected');
+        }
+    }
+    // Cookie Navbar Doesn't Exist
+    else {
+        $('.navbar').addClass('navbar-light');
+        $('div.tiles.light').addClass('selected');
+    }
+    // Navbar Option Cookie
+    $('div.tiles.primary').on('click', function(){
+        $('.navbar').addClass('navbar-primary');
+        Cookies.set('navbar', 'navbar-primary', {expires : 365});
+    });
+    $('div.tiles.success').on('click', function(){
+        $('.navbar').addClass('navbar-success');
+        Cookies.set('navbar', 'navbar-success', {expires : 365});
+    });
+    $('div.tiles.warning').on('click', function(){
+        $('.navbar').addClass('navbar-warning');
+        Cookies.set('navbar', 'navbar-warning', {expires : 365});
+    });
+    $('div.tiles.danger').on('click', function(){
+        $('.navbar').addClass('navbar-danger');
+        Cookies.set('navbar', 'navbar-danger', {expires : 365});
+    });
+    $('div.tiles.pink').on('click', function(){
+        $('.navbar').addClass('navbar-pink');
+        Cookies.set('navbar', 'navbar-pink', {expires : 365});
+    });
+    $('div.tiles.info').on('click', function(){
+        $('.navbar').addClass('navbar-info');
+        Cookies.set('navbar', 'navbar-info', {expires : 365});
+    });
+    $('div.tiles.dark').on('click', function(){
+        $('.navbar').addClass('navbar-dark');
+        Cookies.set('navbar', 'navbar-dark', {expires : 365});
+    });
+    $('div.tiles.light').on('click', function(){
+        $('.navbar').addClass('navbar-light');
+        Cookies.set('navbar', 'navbar-light', {expires : 365});
+    });
+
+  // Filter Search Menu Submenu Sidebar
+  function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("filterInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("ayaysir");
+    li = ul.getElementsByTagName("li");
+    button = document.getElementById('btn-reset');
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+    
+
+    if (input.value != 0 ) {
+      button.classList.remove('d-none');
+    } else {
+      button.classList.add('d-none');
+    }
+    
+  }
+  function btnReset() {
+    input = document.getElementById("filterInput");
+    input.value=null;
+    input.focus();
+  }
+
+
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $('#bund_qty').maskMoney({
+    //   precision : 0,
+    //   thousands:'',
+    // });
+
+    // $('.sell_price').maskMoney({
+    //   precision : 0,
+    //   thousands:'.',
+    //   allowZero:true,
+    //   defaultZero: true
+    // });
+
+    // $('.lower_price').maskMoney({
+    //   precision : 0,
+    //   thousands:'.',
+    //   allowZero:true,
+    //   defaultZero: true
+    // });
+
+
+    $('#button_add').click(function(){
+          $("input[name='ib_name']").val('');
+          $("input[name='ib_price']").val('');
+          $("input[name='ib_price']").val('');
+          $("input[name='keterangan']").val('');
+          $(".sell_price").val('');
+          $(".lower_price").val('');
+            var table = $('#bundle_table').DataTable();
+            table.clear().draw();
+            $('#change_function').html('<button class="btn btn-primary" type="button" id="save_data" >Save Data</button>')
+    })  
+
+    $('#bund_qty').attr('disabled',true); 
+    $('#bund_kodeitem').change(function(){
+          var ini = $('#bund_kodeitem').find(':selected').val();
+
+          if(ini != '') {
+            $('#bund_qty').attr('disabled',false);
+          }else{
+            $('#bund_qty').attr('disabled',true);          
+          }
+          var h_price = $(this).find(':selected').data('harga');
+          var currency = $(this).find(':selected').data('currency');
+          $('#bund_item').val(h_price*100/100);
+          $('#currency').val(currency);
+    })
+
+    $('#table-bundle').DataTable({
+            processing: true,
+            // responsive:true,
+            serverSide: true,
+            ajax: {
+                url:'http://localhost/atonergi/master/datatable_bundleitem/datatable_bundleitem',
+            },
+             columnDefs: [
+
+                  {
+                     targets: 0 ,
+                     className: 'd_id center'
+                  }, 
+                  {
+                     targets: 1 ,
+                     className: 'i_code center'
+                  }, 
+                  {
+                     targets: 5 ,
+                     className: 'center '
+                  },
+                  {
+                     targets: 4 ,
+                     className: 'right format_money'
+                  },
+                ],
+            "columns": [
+            {data: 'DT_Row_Index', name: 'DT_Row_Index'},
+            {data: 'i_code', name: 'i_code'},
+            {data: 'i_name', name: 'i_name'},
+            {data: 'i_description', name: 'i_description'},
+            {data: 'i_price'},
+            {data: 'aksi', name: 'aksi'},
+            ]
+      });
+
+        var table             = $("#bundle_table").DataTable({
+                                  columnDefs: [
+                                      {
+                                         targets: 6,
+                                         className: 'center'
+                                      }
+                                    ],
+                                });
+        var x = 1;
+    // $('#bund_qty').keyup(function(){
+    //   var jumlah = $('#bund_item').val().replace(/[^0-9.\-]+/g,"")*1;
+    //   var qty = $(this).val();
+    //   $('.ib_price').val(accounting.formatMoney(jumlah * qty,"",0,'.',','))
+    // })
+    $('#bund_qty').keypress(function(e) {
+      if(e.which == 13 || e.keyCode == 13){
+        var kode = $('#bund_kodeitem').val();
+        var qty = $('#bund_qty').val().replace(/[^0-9\-]+/g,"");
+        // harga_1 = harga_1.replace(/[^0-9\-]+/g,"");
+        $.ajax({
+         type: "get",
+         url: baseUrl + '/master/bundle/cari_item',
+         dataType:'json',
+         data:{kode},
+         success: function(data){
+
+            if (data.data.cu_value == null) {
+              var currency = 1;
+            } else{
+              var currency = 1;
+            }
+
+            var price  = parseInt(qty)*parseFloat(data.data.i_price)*currency;
+            table.row.add( [
+               '<input type="text" id="item_kode[]" name="ib_kode_dt[]" class="form-control input-sm min-width" readonly="" value="'+data.data.i_code+'">',
+                '<input type="text" id="item_name[]" name="ib_name_dt[]" class="form-control input-sm min-width" readonly="" value="'+data.data.i_name+'">',
+                '<input type="text" id="jumlah[]" name="ib_qty_dt[]" class="form-control input-sm min-width right format_money" readonly="" value="'+qty+'">',
+                '<input type="text" readonly id="[]" name="ib_unit_dt[]" class="form-control input-sm min-width right format_money" value="'+data.data.u_unit+'">',
+                '<input type="text" name="ib_price_dt[]" class="ib_price_dt form-control input-sm min-width right format_money" readonly="" value="'+data.data.i_price*currency  +'">',
+                '<input type="text" name="ib_total_price[]" class="ib_total_price form-control input-sm min-width right format_money" readonly="" value="'+ price +'">',
+                '<button type="button" class="delete btn btn-outline-danger btn-sm hapus"><i class="fa fa-trash"></i></button>',
+            ]).draw( false );
+    
+            x++;
+            var awal = 0;
+            table.$('.ib_total_price').each(function(){
+              var total = $(this).val();
+              awal += parseFloat(total);
+            });
+            console.log(awal);
+            $(".ib_price").val(awal);
+            $('#bund_kodeitem').val('').trigger('change');
+            $('#bund_qty').val('');
+            $('#bund_item').val('');
+            $('.lower_price').val(awal);
+            $('.sell_price').val(awal);
+         },
+         error: function(){
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'Terjadi Kesalahan!',
+          });
+         },
+         async: false
+       });
+      }
+    });
+    
+    
+
+    $('#bundle_table tbody').on( 'click', '.delete', function () {
+    var parents = $(this).parents('tr');
+    var ib_price_dt = $(parents).find('.ib_price_dt').val();
+    var ib_price = $("input[name='ib_price']").val();
+    
+    table
+        .row(parents)
+        .remove()
+        .draw();
+        
+    var awal = 0;
+    table.$('.ib_total_price').each(function(){
+      var total = $(this).val();
+      awal += parseFloat(total);
+    });  
+          
+
+    $("input[name='ib_price']").val(awal);
+    $(".sell_price").val(awal);
+    $(".lower_price").val(awal);
+
+    });
+
+  $('.form-control').keyup(function(){
+    $(this).removeClass('border-danger');
+  });
+    
+
+  $('#change_function').on("click", "#save_data",function(){
+
+    var name = $('.ib_name');
+    var price = $('.ib_price');
+    var sell_price = $('.sell_price');
+    var lower_price = $('.lower_price');
+    var keterangan = $('.keterangan');
+    var valid = [];
+
+    if (name.val() == '') {
+        name.addClass('border-danger');
+        valid.push(0);
+    } else {
+        name.removeClass('border-danger');
+        valid.push(1);
+    }
+
+    if (price.val() == '' || price.val() == '0') {
+        price.addClass('border-danger');
+        valid.push(0);
+    } else {
+        price.removeClass('border-danger');
+        valid.push(1);
+    }
+
+    if (sell_price.val() == '' || sell_price.val() == '0') {
+        sell_price.addClass('border-danger');
+        valid.push(0);
+    } else {
+        sell_price.removeClass('border-danger');
+        valid.push(1);
+    }
+
+    if (lower_price.val() == '' || lower_price.val() == '0') {
+        lower_price.addClass('border-danger');
+        valid.push(0);
+    } else {
+        lower_price.removeClass('border-danger');
+        valid.push(1);
+    }
+
+
+    if (keterangan.val() == '') {
+        keterangan.addClass('border-danger');
+        valid.push(0);
+    } else {
+        keterangan.removeClass('border-danger');
+        valid.push(1);
+    }
+
+    var index = valid.indexOf(0);
+    if (index !=  -1) {
+      iziToast.error({
+        icon: 'fa fa-exclamation-circle ',
+        message: 'Harap Lengkapi Data!',
+      });
+      return false;
+    }
+    $.ajax({
+         type: "get",
+         url: baseUrl + '/master/bundleitem/simpan_bundleitem',
+         data: $('#form-save').serialize(),
+         success: function(data){
+
+          if (data.status == 1) {
+            $('#tambah').modal('hide');
+            var table = $('#table-bundle').DataTable();
+            table.ajax.reload();
+
+            iziToast.success({
+              icon: 'fas fa-check-circle',
+              message: 'Data Telah Tersimpan!',
+            });
+          }
+         },
+         error: function(){
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'Terjadi Kesalahan!',
+          });
+         },
+         async: false
+       });
+  })
+
+  });
+
+function detail(parm) {
+    var par   = $(parm).parents('tr');
+    var id    = $(par).find('.d_id').text();
+    $('#detail').modal('show');
+    $.ajax({
+       type: "get",
+         url: 'http://localhost/atonergi/master/detailbundleitem/detail_bundleitem',
+         data: {id},
+         success: function(data){
+          console.log(data);
+          var array_nama='';
+          $.each(data, function(i, item) {
+              array_nama += '<tr>';
+                array_nama += '<td>'+data[i].ibd_barang+' - '+data[i].i_name+'</td>';
+                array_nama += '<td align="right">'+accounting.formatMoney(data[i].ibd_price,"",0,'.',',')+'</td>';
+              array_nama += '</tr>';
+          })
+          $('#detail_rep').html(array_nama);  
+
+
+         },
+         error: function(){
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'Terjadi Kesalahan!',
+          });
+         },
+         async: false
+       });
+}
+
+function edit(id){
+    window.location.href = (baseUrl +'/master/bundle/edit_bundle/'+id);
+  }
+
+  function hapus(parm){
+    var par   = $(parm).parents('tr');
+    var id    = $(par).find('.i_code').text();
+    console.log(id);
+    iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fas fa-question-circle',
+            title: 'Important!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+              [
+                '<button style="background-color:red;">Delete</button>',
+                function (instance, toast) {
+
+                  $.ajax({
+                   type: "get",
+                     url: 'http://localhost/atonergi/master/hapusbundleitem/hapus_bundleitem',
+                     data: {id},
+                     success: function(data){
+                      $('#tambah').modal('hide');
+                      var table = $('#table-bundle').DataTable();
+                      table.ajax.reload();
+
+                      iziToast.success({
+                        icon: 'fas fa-check-circle',
+                        message: 'Data Telah Terhapus!',
+                      });
+                     
+                     },
+                     error: function(){
+                      iziToast.warning({
+                        icon: 'fa fa-times',
+                        message: 'Terjadi Kesalahan!',
+                      });
+                     },
+                     async: false
+                   });
+                 
+                }
+              ],
+              [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+          });
+    }
+
+    function update() {
+      $.ajax({
+           type: "get",
+           url: 'http://localhost/atonergi/master/hapusbundleitem/hapus_bundleitem',
+           data: $('#form-save').serialize(),
+           success: function(data){
+              $('#tambah').modal('hide');
+              var table = $('#table-bundle').DataTable();
+              table.ajax.reload();
+
+              iziToast.success({
+                icon: 'fas fa-check-circle',
+                message: 'Data Telah Terupdate!',
+              });
+           },
+           error: function(){
+            iziToast.warning({
+              icon: 'fa fa-times',
+              message: 'Terjadi Kesalahan!',
+            });
+           },
+           async: false
+         });
+   }
+</script>
+
+</div></div></body></html>
