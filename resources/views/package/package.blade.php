@@ -145,9 +145,6 @@
             <div class="container">
                 <div class="row mb50 margin_top_30px">
                      <!-- Header--> 
-                    <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-                        
-                    </div>
                     @if (Session::has('message'))
                         <div class="col-md-12" style="min-height: 100px">
                                 <div class="alert alert-danger alert-dismissable" style="animation: fadein 0.5s, fadeout 0.5s 2.5s;">
@@ -230,7 +227,7 @@
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped" align="center">
                                         <thead>
-                                           <tr >
+                                           <tr style="background-color: #7ed6df;" >
                                                <th class="center-al">No</th>
                                                <th class="center-al">Code Tour</th>
                                                <th class="center-al">Date</th>
