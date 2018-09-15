@@ -22,8 +22,12 @@ class agent_agentController extends Controller
     public function agent()
     {
         $data = user::where('co_name',Auth::user()->co_name)->get();
-        // return $data;
-    	return view('agent.index_agent',compact('data'));
+        
+        if(Auth::user()->akses('approve master agent','mh_aktif')){
+    	   return view('agent.index_agent',compact('data'));
+        }else{
+            return view('home');
+        }
     }
 
     public function agent_datatable()
@@ -95,7 +99,11 @@ class agent_agentController extends Controller
     {
         $data = DB::table('users')->where('co_name',Auth::user()->co_name)->get();
         // return $data;
-        return view('agent.create_agent',compact('data'));
+        if(Auth::user()->akses('approve master agent','mh_aktif')){
+            return view('agent.create_agent',compact('data'));
+        }else{
+            return view('home');
+        }
     }
     public function agent_save(Request $request)
     {
@@ -131,8 +139,12 @@ class agent_agentController extends Controller
     {
         $data = DB::table('users')->where('id',$id)->first();
         json_encode($data);
-        
-        return view('agent.edit_agent',compact('data'));
+
+        if(Auth::user()->akses('approve master agent','mh_aktif')){
+            return view('agent.edit_agent',compact('data'));
+        }else{
+            return view('home');
+        }
     }
     public function agent_update(Request $request,$id)
     {

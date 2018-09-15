@@ -277,7 +277,7 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    @if (auth::user()->role_id == 4)
+                    @if(Auth::user()->akses('approve master agent','mh_aktif'))
                     <li class="active">
                         <a href="{{ route('master_agent_agent') }}">
                             <i class="material-icons">widgets</i>
@@ -383,11 +383,11 @@
                    
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            {{-- <div class="legal"> --}}
                 <div class="copyright">
-                    &copy; 2018 <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
+                    <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
                 </div>
-            </div>
+            {{-- </div> --}}
             <!-- #Footer -->
         </aside>
 </section>

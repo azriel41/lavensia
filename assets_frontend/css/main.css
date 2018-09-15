@@ -674,8 +674,7 @@ label.error {
 
 
 .footer {
-  background-color:   #0984e3;
-  border-top: 5px solid #062033;
+  background: url("../img/comingsonweb.jpg") no-repeat scroll 0 15px transparent;
   color: #fff;
 }
 
