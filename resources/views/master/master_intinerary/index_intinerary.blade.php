@@ -26,7 +26,7 @@
                         Master Intinerary
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ route('master_intinerary_create') }}">
+                        <a href="{{ url('/master/master_intinerary/create') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>

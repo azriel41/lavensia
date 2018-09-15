@@ -579,7 +579,6 @@
 
         var par = $('.index_'+index).parents('tr');
         detail.row(par).remove().draw();
-
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
             '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
@@ -612,6 +611,7 @@
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
             '</div>',
         ]).draw();
+        
         inc++;
         $('.add_departure input').val('');
         $('.add_departure textarea').val('');

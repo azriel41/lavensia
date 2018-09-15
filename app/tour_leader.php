@@ -6,25 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class tour_leader extends Model
 {
-    protected $table = 'd_party_name';
+    protected $table = 'd_tour_leader';
 	protected $primaryKey = 'tl_id';
 	const CREATED_AT = 'created_at';
 	const UPDATED_AT = 'updated_at';
 
-	protected $fillable = ['dp_booking_id',
-						   'dp_detail',
-						   'dp_bed',
-						   'dp_name',
-						   'dp_passport',
-						   'dp_exp_date',
-						   'dp_issuing',
-						   'dp_gender',
-						   'dp_birth_date',
-						   'dp_birth_place',
-						   'dp_reference',
-						   'dp_image',
-						   'dp_room',
-						   'dp_status_person',
+	protected $fillable = ['tl_id',
+						   'tl_name',
+						   'tl_alamat',
+						   'tl_passport',
+						   'tl_exp_date',
+						   'tl_phone',
+						   'tl_issuing',
+						   'tl_gender',
+						   'tl_birth_date',
+						   'tl_birth_place',
+						   'tl_image',
 						   'created_by',
 						   'updated_by',
 						];
