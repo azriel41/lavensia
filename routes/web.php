@@ -63,6 +63,9 @@ Route::get('/package/package_pdf', 'package\packageController@package_pdf')->nam
 //partner
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
+//article
+Route::get('/article/article', 'article\articleController@article')->name('article');
+
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {

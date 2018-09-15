@@ -128,7 +128,7 @@ Fixed Navigation
                             
                         @else
                         <li><a href="" onclick="window.location.href=('{{ route('partner') }}')"><b>Partner</b></a></li>
-                        <li><button style="margin-top: 10px;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
+                        <li><button style="margin-top: 10px;border-radius: 0px !important;" class="btn btn-info" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button></li>
                         @endif
                 @endif
 
