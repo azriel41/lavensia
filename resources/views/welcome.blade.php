@@ -62,42 +62,40 @@
 
             @else
 
-            <section id="slider">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        
-                    <!-- Indicators bullet -->
-                    <ol class="carousel-indicators">
-                        {{-- <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li> --}}
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    </ol>
-                    <!-- End Indicators bullet -->     
-                    {{-- <img src="{{ asset ('assets_frontend/img/t3.png')}}" alt="Brandi" class="pull-left img-responsive" style="position: absolute;z-index: 1000;width:300px;margin-top: 34%;margin-left: 5%;"> --}}
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <!-- single slide -->
-                        <div class="img-responsive">
-                            <div class="item active" style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
-                                <div class="carousel-caption">
-                                   {{--  <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> LAVENSIA</span>!</h2>
-                                    <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color-maroon">CREATIVE</span> Travel Agent.</h3>
-                                    <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p> --}}
-                                    
-                                    {{-- <ul class="social-links text-center">
-                                        <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                                        <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                                        <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                        <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-                                    </ul> --}}
-                                </div>
-                            </div>
+           <section id="slider">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            
+                <!-- Indicators bullet -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                </ol>
+                <!-- End Indicators bullet -->              
+                
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    
+                    <!-- single slide -->
+                    <div class="item active" style="background-image: url(assets_frontend/img/comingsnweb.jpg)">
+                        <div class="carousel-caption">
+                            
                         </div>
-                        <!-- end single slide -->
-                        
                     </div>
-                    <!-- End Wrapper for slides -->
+                    <!-- end single slide -->
+                    
+                    <!-- single slide -->
+                    <div class="item" style="background-image: url(assets_frontend/img/6.jpg);">
+                        <div class="carousel-caption">
+                           
+                        </div>
+                    </div>
+                    <!-- end single slide -->
                     
                 </div>
-            </section>
+                <!-- End Wrapper for slides -->
+                
+            </div>
+        </section>
 
              <section id="team" class="team">
                 <div class="container">
@@ -116,11 +114,11 @@
                         <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/6.png" alt="Team Member" class="img-responsive">
+                                <img src="assets_frontend/img/team/4.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                            <div class="campaign-city-country-cta"><div class="book"><a href="article/article/1" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -132,7 +130,7 @@
                         <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/6.png" alt="Team Member" class="img-responsive">
+                                <img src="assets_frontend/img/team/5.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
@@ -147,7 +145,7 @@
                         <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                <img src="assets_frontend/img/team/1.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
@@ -161,7 +159,7 @@
                         <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                <img src="assets_frontend/img/team/3.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 
@@ -175,7 +173,7 @@
                         <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                <img src="assets_frontend/img/team/2.png" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book"> 

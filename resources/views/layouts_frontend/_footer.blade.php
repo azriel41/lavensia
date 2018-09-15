@@ -1,4 +1,6 @@
-<footer id="footer" class="footer">
+@if (Route::has('login'))
+        @if (Auth::check())
+        <footer id="footer" class="footer">
             <div class="container">
                 <div class="row">
                 
@@ -98,3 +100,7 @@
                 </div>
             </div>
         </footer>
+        @else
+        
+        @endif
+@endif
