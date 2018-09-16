@@ -57,7 +57,7 @@ Fixed Navigation
                         @if (Auth::check())
                             <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                   Hy, {{ auth::user()->name }}  &nbsp;<i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
@@ -288,27 +288,24 @@ End Fixed Navigation
     height: 100%;
 }
 </style>
-        @include('layouts_frontend._scripts')
-
+<script src="{{ asset ('assets_frontend/js/jquery-1.11.1.min.js') }}"></script>
 <script type="text/javascript">
     $( window ).load(function() {
         if ($(window).width() < 465) {
-            // alert('a');
             $('.form_display').css('width','300px');
         }
         else {
             $('.form_display').css('width','465px');
-            // alert('b');
         }
     });
     
     function login_log(argument) {
-         if (!$(".form_display").is(":visible")) {
-                $('.form_display').css('display','block');
-            }
-            else {
-                $('.form_display').css('display','none');
-            }
+        if (!$(".form_display").is(":visible")) {
+            $('.form_display').css('display','block');
+        }
+        else {
+            $('.form_display').css('display','none');
+        }
 
     }
     function home(argument) {
