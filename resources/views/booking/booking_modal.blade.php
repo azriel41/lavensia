@@ -65,24 +65,24 @@
         <div class="col-sm-12" style="text-align: right">
             <form class="form_total">
                 <div class="col-sm-8">
-                    <h3 colspan="3">Room</h3>
+                    <h4 colspan="3">Room</h4>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="total_room"></h3>
+                    <h4 class="total_room"></h4>
                     <input type="hidden" class="total_room_input" name="total_room_input">
                 </div>
                 <div class="col-sm-8">
-                    <h3 colspan="3">Additional</h3>
+                    <h4 colspan="3">Additional</h4>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="total_additional"></h3>
+                    <h4 class="total_additional"></h4>
                     <input type="hidden" class="total_additional_input" name="total_additional_input">
                 </div>
                 <div class="col-sm-8">
-                    <h3 colspan="3">Total</h3>
+                    <h4 colspan="3">Total</h4>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="total_harga"></h3>
+                    <h4 class="total_harga"></h4>
                     <input type="hidden" class="total_harga_input" name="total_harga_input">
                 </div>
             </form>

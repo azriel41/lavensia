@@ -42,7 +42,7 @@ Fixed Navigation
             <!-- logo -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <h1 id="logo">
-                    <img src="{{ asset ('assets_frontend/img/head_logo.png')}}" alt="Brandi" class="logo">
+                    {{-- <img src="{{ asset ('assets_frontend/img/head_logo.png')}}" alt="Brandi" class="logo"> --}}
                 </h1>
             </a>
             <!-- /logo -->
