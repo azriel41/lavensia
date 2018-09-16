@@ -48,9 +48,9 @@
                                     <div  style="box-shadow: 0px 2px 30px 0px #888888;">
                                         <div class="member-thumb">
                                             @if ($e->image != null)
-                                                <img src="{{ asset('storage/app/agent/agent-'.$e->image) }}" alt="Team Member" class="agent" width="360" height="200">
+                                                <img src="{{ asset('storage/app/agent/agent-'.$e->image) }}" alt="Team Member" class="agent">
                                             @else
-                                                <img src="{{ asset('storage/app/NoImage'.'.png') }}" alt="Team Member" class="agent" width="360" height="200">
+                                                <img src="{{ asset('storage/app/NoImage'.'.png') }}" alt="Team Member" class="agent">
                                             @endif
                                         </div>
                                         <div>

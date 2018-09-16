@@ -40,17 +40,17 @@
                         <div class="col-md-9" style="border-right: 1px solid #ddd;">
                              <table width="100%" >
                                  <tr>
-                                    <th><h2><b>The Winning Team</b></h2></th>
+                                    <th><h2><b>{{ $data->da_header }}</b></h2></th>
                                  </tr>
                                  
                                  <tr>
-                                    <th><h5>15 August 2018 By Asep Hidayat</h5></th>
+                                    <th><h5>{{ date('d M Y',strtotime($data->da_created_at)) }} By {{ $data->da_created_by }}</h5></th>
                                  </tr>
                                  <tr>
                                     <th>&nbsp;</th>
                                  </tr>
                                  <tr>
-                                     <td><img src="{{ asset('/assets_frontend/img/team/4.jpg') }}?{{ time() }}" class="img-responsive"></td>
+                                     <td><img src="{{ asset('/storage/app/article/'.'article-'.$data->da_image) }}?{{ time() }}" class="img-responsive"></td>
                                  </tr>
                              </table>
                              <table width="95%">
@@ -58,31 +58,9 @@
                                     <th>&nbsp;</th>
                                  </tr>
                                  <tr>
-                                     <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Welcome to your blog post. Use this space to connect with your readers and potential customers in a way that’s current and interesting. Think of it as an ongoing conversation where you can share updates about business, trends, news, and more. </td>
-                                 </tr>
-                                 <tr>
-                                     <td>&nbsp;</td>
-                                 </tr>
-                                 <tr>
-                                     <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Design with Ease
-                                     “Do you have a design in mind for your blog? Whether you prefer a trendy postcard look or you’re going for a more editorial style blog - there’s a stunning layout for everyone.” 
-                                     Every layout comes with the latest social features built in. Readers will be able to easily share posts on social networks like Facebook and Twitter, view how many people have liked a post, made comments and more. With the Wix, building your online community has never been easier.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>&nbsp;</td>
-                                 </tr>
-                                 <tr>
-                                     <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Create Relevant Content
-                                    You’ll be posting loads of engaging content, so be sure to keep your blog organized with Categories that also allow readers to explore more of what interests them. Each category of your blog has its own page that’s fully customizable. Add a catchy title, a brief description and a beautiful image to the category page header to truly make it your own. You can also add tags (#vacation #dream #summer) throughout your posts to reach more people, and help readers search for relevant content. Using hashtags can expand your post reach and help people find the content that matters to them. Go ahead, #hashtag away.
+                                     <td>
+                                         {!! $data->da_desc !!}
                                      </td>
-                                 </tr>
-                                 <tr>
-                                     <td>&nbsp;</td>
-                                 </tr>
-                                 <tr>
-                                     <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Stun Your Readers 
-                                    “Be original, show off your style, and tell your story.”
-                                    Blogging gives your site a voice, so let your business’ personality shine through. Are you a creative agency? Go wild with original blog posts about recent projects, cool inspirational ideas, or what your company culture is like. Add images, and videos to really spice it up, and pepper it with slang to keep readers interested. Are you a programmer? Stay on the more technical side by offering weekly tips, tricks, and hacks that show off your knowledge of the industry. No matter what type of business you have, one thing is for sure - blogging gives your business the opportunity to be heard in a way in a different and unconventional way.  </td>
                                  </tr>
                              </table>
                         </div>
@@ -92,10 +70,14 @@
                                     <th> <h3>NEWS ARTICLE</h3> </th>
                                     <td><hr></td>
                                 </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
                             </table>
+                            
+                            @foreach ($news as $e)
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$e->da_image) }}?{{ time() }}" class="img-responsive">
+                                 <b style="font-size: 14px;">{{ substr(strip_tags($e->da_header), 0,30) }}{{ strlen($e->da_header) > 2 ?  ".." : "" }}</b>
+                                <hr>
+                                <br>
+                            @endforeach
                         </div>
                       </div>
                     </div>

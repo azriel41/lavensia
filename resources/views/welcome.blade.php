@@ -74,19 +74,21 @@
                     <div class="row">
                         <br>
                         <!-- single member -->
-                        <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        {{-- @foreach ($article1 as $a) --}}
+                        @if ($article1 != null)
+                            <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap">
                                     <div class="recommended-destinations-hp-content">
                                         <div class="recommended-destinations-hp-info">
-                                            <div class="recommended-destinations-hp-destination">Jakarta</div>
-                                            <div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div>
-                                            <div class="recommended-destinations-hp-price">IDR 480,220</div>
+                                            <div class="recommended-destinations-hp-destination">{{ $article1->da_header }}</div>
+                                            <div class="interests">{{ substr(strip_tags($article1->da_desc), 0,70) }}{{ strlen($article1->da_desc) > 70 ?  "..." : "" }}  </div>
+                                            {{-- <div class="recommended-destinations-hp-price">IDR 480,220</div> --}}
                                         </div>
                                     </div>
                                 </div>
                                <div class="img-responsive">
-                                <img src="assets_frontend/img/team/4.jpg?{{ time() }}" alt="Team Member" >
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$article1->da_image) }}?{{ time() }}" alt="Team Member" >
                                 </div>
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
@@ -97,13 +99,24 @@
                                 </figcaption>
                             </div>
                         </figure>
-                        <!-- end single member -->
+                        @else
+
+                        @endif
                         
-                        <!-- single member -->
+                        @if ($article2 != null)
                         <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
-                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/5.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
+                               <div class="recommended-destinations-hp-content-wrap">
+                                <div class="recommended-destinations-hp-content">
+                                    <div class="recommended-destinations-hp-info">
+                                        <div class="recommended-destinations-hp-destination">{{ $article2->da_header }}</div>
+                                            <div class="interests">{{ substr(strip_tags($article2->da_desc ), 0,70) }}{{ strlen($article2->da_desc ) > 70 ?  "..." : "" }}  </div>
+                                            {{-- <div class="recommended-destinations-hp-price">IDR 480,220</div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="img-responsive">
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$article2->da_image ) }}?{{ time() }}" alt="Team Member" >
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
@@ -113,12 +126,23 @@
                                 </figcaption>
                             </div>
                         </figure>
-                        <!-- end single member -->
-                        
+                        @else
+                        @endif
+
+                        @if ($article3 != null)
                         <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
-                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/1.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
+                               <div class="recommended-destinations-hp-content-wrap">
+                                <div class="recommended-destinations-hp-content">
+                                    <div class="recommended-destinations-hp-info">
+                                        <div class="recommended-destinations-hp-destination">{{ $article3->da_header }}</div>
+                                            <div class="interests">{{ substr(strip_tags($article3->da_desc), 0,70) }}{{ strlen($article3->da_desc) > 70 ?  "..." : "" }}  </div>
+                                            {{-- <div class="recommended-destinations-hp-price">IDR 480,220</div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="img-responsive">
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$article3->da_image) }}?{{ time() }}" alt="Team Member" >
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
@@ -128,11 +152,23 @@
                                 </figcaption>
                             </div>
                         </figure>
+                        @else
+                        @endif
 
+                        @if ($article4 != null)
                         <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
-                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/3.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
+                               <div class="recommended-destinations-hp-content-wrap">
+                                <div class="recommended-destinations-hp-content">
+                                    <div class="recommended-destinations-hp-info">
+                                        <div class="recommended-destinations-hp-destination">{{ $article4->da_header }}</div>
+                                            <div class="interests">{{ substr(strip_tags($article4->da_desc), 0,70) }}{{ strlen($article4->da_desc) > 70 ?  "..." : "" }}  </div>
+                                            {{-- <div class="recommended-destinations-hp-price">IDR 480,220</div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="img-responsive">
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$article4->da_image) }}?{{ time() }}" alt="Team Member" >
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
@@ -142,11 +178,23 @@
                                 </figcaption>
                             </div>
                         </figure>
+                        @else
+                        @endif
 
+                        @if ($article5 != null)
                         <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
-                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/2.png" alt="Team Member" class="img-responsive">
+                               <div class="recommended-destinations-hp-content-wrap">
+                                <div class="recommended-destinations-hp-content">
+                                    <div class="recommended-destinations-hp-info">
+                                        <div class="recommended-destinations-hp-destination">{{ $article5->da_header }}</div>
+                                            <div class="interests">{{ substr(strip_tags($article5->da_desc), 0,70) }}{{ strlen($article5->da_desc) > 70 ?  "..." : "" }}  </div>
+                                            {{-- <div class="recommended-destinations-hp-price">IDR 480,220</div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="img-responsive">
+                                <img src="{{ asset('/storage/app/article/'.'article-'.$article5->da_image) }}?{{ time() }}" alt="Team Member" >
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
@@ -156,6 +204,9 @@
                                 </figcaption>
                             </div>
                         </figure>
+                        @else
+                        @endif
+                        
                         
                     </div>
                 </div>

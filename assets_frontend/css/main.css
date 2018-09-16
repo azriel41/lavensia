@@ -634,7 +634,7 @@ top: -8px;
 }
 
 .member-thumb img{
-  width: 385px; 
+  width: 100%; 
   height: 300px; 
   position: relative;
   transition: all 1s ease;
