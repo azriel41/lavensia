@@ -37,13 +37,13 @@
                             <tr>
                                 <th class="center">No</th>
                                 <th class="center">Tour Code</th>
-                                <th class="center">Tour Name</th>
-                                <th class="center">Tour By</th>
-                                <th class="center">Category</th>
-                                <th class="center">Schedule</th>
-                                <th class="center">Departure</th>
-                                <th class="center">Status</th>
+                                <th class="center">Group Name</th>
+                                <th class="center">Flight By</th>
+                                <th class="center">Destination</th>
+                                <th class="center">Itinerary</th>
                                 <th class="center">Detail</th>
+                                <th class="center">Status</th>
+                                <th class="center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,7 +119,7 @@ function ganti_nama(mc_id) {
         data:{mc_id},
         dataType:'json',
         success:function(data){
-            $('.departure').text('DEPARTURE '+data.data);
+            $('.departure').text('DETAIL '+data.data);
         },
         error:function(){
             
