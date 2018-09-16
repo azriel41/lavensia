@@ -76,17 +76,11 @@
                 <div class="carousel-inner" role="listbox">
                     
                     <!-- single slide -->
-                    <div style="width: 100%;height: auto;">
-                        <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
-                        </div>
-                    </div>
+                        <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
                     <!-- end single slide -->
                     
                     <!-- single slide -->
-                    <div style="width: 100%;height: auto;">
-                        <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
-                        </div>
-                    </div>
+                        <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
                     <!-- end single slide -->
                     
                 </div>
