@@ -45,7 +45,6 @@
 <!-- Custom Functions -->
 <script src="{{ asset ('assets_frontend/js/custom.js') }}"></script>
 
-
 <script type="text/javascript">
     var baseUrl = ('{{ url('/') }}');
 

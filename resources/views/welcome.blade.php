@@ -62,7 +62,7 @@
 
             @else
 
-           <section id="slider">
+        <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             
                 <!-- Indicators bullet -->
@@ -76,18 +76,36 @@
                 <div class="carousel-inner" role="listbox">
                     
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(assets_frontend/img/comingsnweb.jpg)">
-                        <div class="carousel-caption">
+                    <div class="item active" style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
+                        {{-- <div class="carousel-caption">
+                            <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Brandi</span>!</h2>
+                            <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+                            <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
                             
-                        </div>
+                            <ul class="social-links text-center">
+                                <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+                            </ul>
+                        </div> --}}
                     </div>
                     <!-- end single slide -->
                     
                     <!-- single slide -->
-                    <div class="item" style="background-image: url(assets_frontend/img/6.jpg);">
-                        <div class="carousel-caption">
-                           
-                        </div>
+                    <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);">
+                        {{-- <div class="carousel-caption">
+                            <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
+                            <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+                            <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
+                            
+                            <ul class="social-links text-center">
+                                <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+                            </ul>
+                        </div> --}}
                     </div>
                     <!-- end single slide -->
                     
@@ -111,14 +129,24 @@
                         </div> --}}
 
                         <!-- single member -->
-                        <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
-                               <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
-                                <img src="assets_frontend/img/team/4.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
+                               <div class="recommended-destinations-hp-content-wrap">
+                                    <div class="recommended-destinations-hp-content">
+                                        <div class="recommended-destinations-hp-info">
+                                            <div class="recommended-destinations-hp-destination">Jakarta</div>
+                                            <div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div>
+                                            <div class="recommended-destinations-hp-price">IDR 480,220</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="img-responsive">
+                                <img src="assets_frontend/img/team/4.jpg?{{ time() }}" alt="Team Member" >
+                                </div>
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="article/article/1" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg" style="z-index: 99">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -127,14 +155,14 @@
                         <!-- end single member -->
                         
                         <!-- single member -->
-                        <figure class="team-member col-md-6 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
                                 <img src="assets_frontend/img/team/5.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -142,42 +170,42 @@
                         </figure>
                         <!-- end single member -->
                         
-                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
                                 <img src="assets_frontend/img/team/1.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
                             </div>
                         </figure>
 
-                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
                                 <img src="assets_frontend/img/team/3.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
                             </div>
                         </figure>
 
-                        <figure style="margin-top: 5px" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        <figure style="margin-top: 30px;" class="team-member col-md-4 col-sm-8 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                <div class="recommended-destinations-hp-content-wrap"><div class="recommended-destinations-hp-content"><div class="recommended-destinations-hp-info"><div class="recommended-destinations-hp-destination">Jakarta</div><div class="interests">Kehidupan Kota - Taman Hiburan - Belanja</div><div class="recommended-destinations-hp-price">IDR 480,220</div></div></div></div>
                                 <img src="assets_frontend/img/team/2.png" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
