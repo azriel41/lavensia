@@ -91,7 +91,9 @@ class payment_page_controller extends Controller
             $this->d_history_bayar->create($head);
 
             $d_booking = $this->d_booking->cari('db_id',$req->id);
-            $this->d_booking->update($upd,'db_id',$req->id);
+            if ($d_booking->db_status == 'Waiting List') {
+                $this->d_booking->update($upd,'db_id',$req->id);
+            }
             for ($b=0; $b < count($req->bank_number); $b++) { 
                 $file = $req->file('image')[$b];
                 if ($file != null) {

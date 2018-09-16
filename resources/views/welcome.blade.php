@@ -35,9 +35,9 @@
                         
                         <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                             <ul class="text-center">
-                                @foreach ($category as $cat) 
+                                @foreach ($category as $val) 
                                     <li>
-                                        <a href="javascript:;" data-filter=".{{ $cat->mc_name }}" class="active filter">{{ $cat->mc_name }}</a>
+                                        <a href="javascript:;" data-filter=".{{ str_replace(' ','-',$val->mc_name) }}" class="active filter">{{ $val->mc_name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -47,7 +47,11 @@
 
                 <div class="project-wrapper">
                     @foreach ($intinerary as $index => $iti)
-                        <figure class="mix work-item {{ $intinerary[$index]['category']['mc_name'] }}">
+                        <figure class="mix work-item 
+                            @foreach ($cat as $i=>$tes)
+                                {{ str_replace(' ','-',$cat[$index][$i])}}
+                            @endforeach
+                            ">
                             <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="">
                             <figcaption class="overlay">
                                 <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="intinerary(this)" ><b><i class="fa fa-search"></i></b></button>

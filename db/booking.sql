@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               10.1.34-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win32
+-- Host:                         www.oke-trip.com
+-- Server version:               10.1.31-MariaDB-cll-lve - MariaDB Server
+-- Server OS:                    Linux
 -- HeidiSQL Version:             9.4.0.5125
 -- --------------------------------------------------------
 
@@ -11,42 +11,43 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for table lavensia.d_booking
-CREATE TABLE IF NOT EXISTS `d_booking` (
-  `db_id` int(11) NOT NULL,
-  `db_kode_transaksi` varchar(50) NOT NULL,
-  `db_users` int(11) DEFAULT NULL,
-  `db_telp` varchar(50) DEFAULT NULL,
-  `db_intinerary_id` int(11) DEFAULT NULL,
-  `db_status` enum('Waiting List','Holding Confirm','Hx By Agent','Hx By System','Hold','Hold By System') DEFAULT 'Waiting List',
-  `db_name` varchar(50) DEFAULT NULL,
-  `db_pdf` varchar(50) DEFAULT NULL,
-  `db_total_adult` int(11) DEFAULT NULL,
-  `db_total_child` int(11) DEFAULT NULL,
-  `db_total_infant` int(11) DEFAULT NULL,
-  `db_remark` mediumtext,
-  `db_total_additional` double DEFAULT NULL,
-  `db_total_room` double DEFAULT NULL,
-  `db_tax` double DEFAULT NULL,
-  `db_visa` double DEFAULT NULL,
-  `db_agent_com` double DEFAULT NULL,
-  `db_tips` double DEFAULT NULL,
-  `db_handle_by` int(11) DEFAULT NULL,
-  `db_total` double DEFAULT NULL,
-  `db_total_remain` double DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
+-- Dumping structure for table oketripc_lavensia.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` date DEFAULT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_id` int(11) NOT NULL DEFAULT '4',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `co_name` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `co_phone` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `co_address` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `co_email` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mg_name` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mg_phone` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mg_email` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  PRIMARY KEY (`db_id`),
-  UNIQUE KEY `db_kode_transaksi` (`db_kode_transaksi`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` enum('AKTIF','TIDAK AKTIF') COLLATE utf8mb4_unicode_ci DEFAULT 'TIDAK AKTIF',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_username_unique` (`username`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lavensia.d_booking: ~1 rows (approximately)
-/*!40000 ALTER TABLE `d_booking` DISABLE KEYS */;
-REPLACE INTO `d_booking` (`db_id`, `db_kode_transaksi`, `db_users`, `db_telp`, `db_intinerary_id`, `db_status`, `db_name`, `db_pdf`, `db_total_adult`, `db_total_child`, `db_total_infant`, `db_remark`, `db_total_additional`, `db_total_room`, `db_tax`, `db_visa`, `db_agent_com`, `db_tips`, `db_handle_by`, `db_total`, `db_total_remain`, `updated_by`, `created_at`, `updated_at`, `created_by`) VALUES
-	(1, '180900001', 1, '323', 25, 'Hold By System', 'ER312', NULL, 4, 1, 2, 'fewfwexcd', 2641000, 499180, NULL, NULL, 33333, NULL, 1, 3106847, 3106847, 1, '2018-09-16 11:00:59', '2018-09-16 11:35:40', 1);
-/*!40000 ALTER TABLE `d_booking` ENABLE KEYS */;
+-- Dumping data for table oketripc_lavensia.users: ~2 rows (approximately)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+REPLACE INTO `users` (`id`, `name`, `password`, `username`, `birthday`, `phone`, `email`, `address`, `role_id`, `remember_token`, `image`, `co_name`, `co_phone`, `co_address`, `co_email`, `mg_name`, `mg_phone`, `mg_email`, `created_at`, `updated_at`, `status`) VALUES
+	(1, 'master', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'master', NULL, '9897878', 'oketrip1@gmail.com', 'admin1', 1, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(2, 'supervisor', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'supervisor', NULL, '9897878', 'oketrip2@gmail.com', 'admin1', 2, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(3, 'admin', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'admin', NULL, '9897878', 'oketrip3@gmail.com', 'admin1', 3, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(4, 'master agen', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'master_agen', NULL, '9897878', 'agen_master@gmail.com', 'admin1', 4, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(5, 'agen', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'agen', NULL, '9897878', 'agen@gmail.com', 'admin1', 4, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

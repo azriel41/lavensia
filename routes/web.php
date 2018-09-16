@@ -15,13 +15,15 @@ Route::get('/', function () {
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
-
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
+		foreach ($val->destination as $key => $val1) {
+			$cat[$index][$key] = $val1->category->mc_name;
+		}
 		$det = $val->detail_intinerarys;
-		$cat = $val->category;
 	}
+
 	$book = App\User::all();
 
 	if (Auth::User() != null) {
@@ -42,10 +44,10 @@ Route::get('/', function () {
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
     		return view('home');
 		}else{
-    		return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+    		return view('welcome',compact('category','intinerary','det','response','cart','jumlah','cat'));
 		}
 	}else{
-    	return view('welcome',compact('category','intinerary','det','response'));
+    	return view('welcome',compact('category','intinerary','det','response','cat'));
 	}
 
 })->name('dashboard');
@@ -63,9 +65,12 @@ Route::get('/welcome', function () {
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
+		foreach ($val->destination as $key => $val1) {
+			$cat[$index][$key] = $val1->category->mc_name;
+		}
 		$det = $val->detail_intinerarys;
-		$cat = $val->category;
 	}
+
 	$book = App\User::all();
 
 
@@ -81,7 +86,7 @@ Route::get('/welcome', function () {
 				->whereRaw('db_total = db_total_remain')
 				->get());
 	// return $cart;
-	return view('welcome',compact('category','intinerary','det','response','cart','jumlah'));
+	return view('welcome',compact('category','intinerary','det','response','cart','jumlah','cat'));
 	
 
 })->name('welcome');
