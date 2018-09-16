@@ -97,7 +97,7 @@ class bookingController extends Controller
     		$id = $this->d_booking->max('db_id');
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
-    		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$db_total 		 	 = $req->total_harga_input;
     		$name 				 = array_values(array_filter($req->name));
     		$passport 			 = array_values(array_filter($req->passport));
     		$exp_date 			 = array_values(array_filter($req->exp_date));
