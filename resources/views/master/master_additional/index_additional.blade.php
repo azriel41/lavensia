@@ -44,6 +44,7 @@
                                     <td class="center">{{ $index+1 }}</td>
                                     <td>{{ $e->ma_name }}</td>
                                     <td>{{ $e->ma_desc }}</td>
+                                    <td align="right">Rp. {{ number_format($e->ma_price,0,'','.') }},-</td>
                                     <td>
                                         <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal_{{ $index }}">{{ $e->ma_image }}</button>
@@ -77,7 +78,6 @@
                                           </div>
                                         </div>
                                     </td>
-                                    <td align="right">Rp. {{ number_format($e->ma_price,0,'','.') }},-</td>
                                     <td class="center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

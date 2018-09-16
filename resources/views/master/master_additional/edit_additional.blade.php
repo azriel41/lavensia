@@ -32,10 +32,52 @@
                         </div>
 
                     <div class="body">
-                        <form id="save_data" method="get" accept-charset="utf-8" >
+                        <form id="save_data" method="post" action="{{ route('master_additional_update', ['id' => $data->ma_id]) }}" accept-charset="utf-8" method="post" enctype="multipart/form-data"  accept-charset="utf-8">
                             {{-- Hiddem --}}
                             <input type="hidden" name="ad_id" value="{{ $data->ma_id }}">
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             {{--  --}}
+
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">Image</label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <div >
+                                                <img class="image_drop img-responsive" 
+                                                @if ( $data->ma_image  == null )
+                                                   src="{{ asset('/assets/images/NoImage.png') }}" 
+                                                @else 
+                                                   src="{{ asset('storage/app/additional/additional-'. $data->ma_image ) }}"
+                                                @endif width="400px" height="300px" name="image-drop">
+                                            </div>
+                                            <br>
+                                            <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                                <div class="file-select">
+                                                    <div class="file-select-button fileName" >Image</div>
+                                                        <div class="file-select-name noFile">
+                                                            @if ( $data->ma_image  != null)
+                                                                 {{ $data->ma_image  }}
+                                                            @else
+                                                                Image
+                                                            @endif 
+                                                        </div> 
+                                                    <input type="file" class="chooseFile" name="image"  
+                                                        @if ( $data->ma_image  == null )
+                                                           src="{{ asset('/assets/images/NoImage.png') }}" 
+                                                        @else 
+                                                           src="{{ asset('storage/app/additional/additional-'.$data->ma_image) }}"
+                                                        @endif
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Name</label>
@@ -48,6 +90,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
 
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
@@ -77,7 +121,7 @@
 
                             <div class="row clearfix">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form-control-label">
-                                    <button type="button" class="btn bg-blue waves-effect" onclick="update()"><i class="fa fa-save"></i> Submit</button>
+                                    <button class="btn bg-blue waves-effect" onclick="update()"><i class="fa fa-save"></i> Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -87,8 +131,43 @@
         </div>
     @endsection
 
+@section('extra_scripts')
 <script>
     
+    $('.chooseFile').bind('change', function () {
+        var filename = $(this).val();
+        var fsize = $(this)[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          return false;
+        }
+        if (/^\s*$/.test(filename)) {
+            $('.file-upload').removeClass('active');
+            $(".noFile").text("No file chosen..."); 
+        }
+        else {
+            $('.file-upload').addClass('active');
+            $(".noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+        load(parent,this);
+    });
+
+    function load(parent,file) {
+        var fsize = $(file)[0].files[0].size;
+        if(fsize>2048576) //do something if file size more than 1 mb (1048576)
+        {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
+          return false;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('.image_drop').attr('src',e.target.result);
+        };
+        reader.readAsDataURL(file.files[0]);
+    }
 
     function update() {
         $.ajaxSetup({
@@ -129,4 +208,4 @@
 
 
 </script>
-  
+@endsection  

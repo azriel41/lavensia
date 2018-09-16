@@ -303,7 +303,6 @@
                             <span>Product</span>
                         </a>
                         <ul class="ml-menu">
-
                             @if(Auth::user()->akses('master agent','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_agent') }}">Agent</a>
@@ -382,11 +381,6 @@
                     
                     
                    
-            <!-- #Menu -->
-            <!-- Footer -->
-            {{-- <div class="legal"> --}}
-             
-            {{-- </div> --}}
-            <!-- #Footer -->
+    
         </aside>
 </section>
