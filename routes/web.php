@@ -38,13 +38,13 @@ Route::get('/', function () {
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
 						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 						->where('db_users',Auth::User()->role_id)
-						->whereRaw('db_total = db_total_remain')
+						->where('db_status','Waiting List')
 						->get();
 
 
 			$jumlah = count(DB::table('d_booking')
 						->where('db_users',Auth::User()->role_id)
-						->whereRaw('db_total = db_total_remain')
+						->where('db_status','Waiting List')
 						->get());
 			// return $cart;
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
@@ -84,12 +84,12 @@ Route::get('/welcome', function () {
 					->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
 					->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 					->where('db_users',Auth::User()->role_id)
-					->whereRaw('db_total = db_total_remain')
+					->where('db_status','Waiting List')
 					->get();
 
 		$jumlah = count(DB::table('d_booking')
 					->where('db_users',Auth::User()->role_id)
-					->whereRaw('db_total = db_total_remain')
+					->where('db_status','Waiting List')
 					->get());
 		// return $cart;
 

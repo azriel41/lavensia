@@ -246,6 +246,34 @@
         var parent = $(argument).data('id');
         window.location = ('{{ url('/package/package') }}/'+parent);
     }
+    
+    $( window ).load(function() {
+        if ($(window).width() <= 600 && $(window).width() >= 401) {
+            $('.item').css('background-size','100%');
+            $('.item').css('background-repeat','no-repeat');
+            $('#slider').css('height','330px');
+            $('.carousel-example-generic').css('height','330px');
+            $('.carousel-inner').css('height','330px');
+
+            // 
+
+            $('.carousel-indicators').css('margin-top','-35%');
+
+        }
+        else if($(window).width() <= 400){
+            $('.item').css('background-size','100%');
+            $('.item').css('background-repeat','no-repeat');
+            $('#slider').css('height','200px');
+            $('.carousel-example-generic').css('height','200px');
+            $('.carousel-inner').css('height','200px');
+            // 
+            $('.carousel-indicators').css('margin-top','-50%');
+        }
+        else {
+            $('.item').css('background-size','cover');
+
+        }
+    });
 
     function intinerary(argument) {
         var parent = $(argument).data('id');

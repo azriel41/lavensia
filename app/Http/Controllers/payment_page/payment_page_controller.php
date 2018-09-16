@@ -64,8 +64,18 @@ class payment_page_controller extends Controller
         $booking = $this->d_booking->cari('db_id',$req->id);
 
     	if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking);
+            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get());
     		return view('operational.payment_user.payment_user',compact('cart','jumlah','booking'));
         }else{
     		return view('operational.payment_user.payment_user','booking');
@@ -130,16 +140,36 @@ class payment_page_controller extends Controller
         $history = $booking->payment;
         if ($history == null) {
             if (Auth::User() != null) {
-                $cart = Auth::User()->booking;
-                $jumlah = count(Auth::User()->booking);
+                $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get());
                 return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
             }else{
                 return view('operational.payment_user.payment_termin','booking');
             }
         }else{
             if (Auth::User() != null) {
-                $cart = Auth::User()->booking;
-                $jumlah = count(Auth::User()->booking);
+                $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get());
                 return view('operational.payment_user.payment_user',compact('cart','jumlah','booking'));
             }else{
                 return view('operational.payment_user.payment_user','booking');
