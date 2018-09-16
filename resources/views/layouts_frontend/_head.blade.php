@@ -13,9 +13,9 @@
 <link rel="shortcut icon" type="image/png" href="{{ asset('assets_frontend/img/favicon.png') }}"/>
 
 <!-- preloader -->
-<div id="preloader">
+{{-- <div id="preloader">
     <img src="{{ asset ('assets_frontend/img/preloader.gif')}}" alt="Preloader" width="100px">
-</div>
+</div> --}}
 <!-- end preloader -->
 
 <style type="text/css">   

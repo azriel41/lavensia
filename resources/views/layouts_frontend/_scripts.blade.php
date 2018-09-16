@@ -11,17 +11,6 @@
 <script src="{{ asset ('assets_frontend/js/jquery.fancybox.pack.js') }}"></script>
 <!-- jquery.mixitup.min -->
 <script src="{{ asset ('assets_frontend/js/jquery.mixitup.min.js') }}"></script>
-<!-- jquery.parallax -->
-<script src="{{ asset ('assets_frontend/js/jquery.parallax-1.1.3.js') }}"></script>
-<!-- jquery.countTo -->
-<script src="{{ asset ('assets_frontend/js/jquery-countTo.js') }}"></script>
-<!-- jquery.appear -->
-<script src="{{ asset ('assets_frontend/js/jquery.appear.js') }}"></script>
-<!-- Contact form validation -->
-{{-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script> --}}
-{{-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script> --}}
-<!-- Google Map -->
-{{-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> --}}
 <!-- jquery easing -->
 <script src="{{ asset ('assets_frontend/js/jquery.easing.min.js') }}"></script>
 <!-- jquery easing -->
@@ -40,13 +29,6 @@
 <!-- Jquery DataTable Plugin Js -->
 <script src="{{ asset ('assets/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
 <script src="{{ asset ('assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
-<script src="{{ asset ('assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
 <script src="{{ asset ('assets_frontend/radio/js/index.js') }}"></script>
 {{-- DATEPICKER --}}
 <script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
