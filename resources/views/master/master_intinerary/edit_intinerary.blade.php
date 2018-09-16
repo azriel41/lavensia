@@ -412,12 +412,14 @@
                             </div>
                         </div>
                         <div class="col-sm-12">
+                            @if (Auth::user()->akses('edit itinerary','mh_aktif')) {
                             <a style="cursor: pointer" class="btn pull-right forward arrow">
                                 <i class="material-icons">arrow_forward</i>
                             </a>
                             <a style="cursor: pointer" class="btn pull-right backward arrow readonly">
                                 <i class="material-icons">arrow_back</i>
                             </a>
+                            @endif
                         </div>
                     </form>
                 </div>

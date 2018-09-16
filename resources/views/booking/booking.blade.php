@@ -607,32 +607,26 @@
                                 <div class="devider" style="margin-bottom: 50px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >
                                     <div class="table-responsive addition">
-                                        <table width="100%" class="table table-striped  table-hover ">
-                                            <thead >
-                                                <tr>
-                                                    <th style="width: 25%" align="center">Name</th>
-                                                    <th style="width: 20%" align="right">Procie</th>
-                                                    <th align="center">Select Person</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($detail_intinerary->intinerary->add as $a=>$val)
-                                                <tr class="add_tr">
-                                                    <td align="left">
-                                                        <p class="add_name">{{ $val->ma_name }}</p>
-                                                        <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
-                                                    </td>
-                                                    <td align="right">
-                                                        <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
-                                                        <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
-                                                    </td>
-                                                    <td class="sel_opt">
-                                                        <select class=" additional form-control selectpicker" multiple data-size="4" data-actions-box="true">
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
+                                        <table width="100%" class="table">
+                                            @foreach ($detail_intinerary->intinerary->add as $a=>$val)
+                                            <tr class="add_tr" >
+                                                <td width="100px" align="left"  style="vertical-align: middle;border:none!important;">
+                                                    <img src="{{ asset('storage/app/additional').'/'.$val->ma_image }}" style="width: 100px;height: 100px">
+                                                </td>
+                                                <td width="250px"  align="left"  style="vertical-align: middle;border:none!important;">
+                                                    <p class="add_name">{{ $val->ma_name }}</p>
+                                                    <input type="hidden" class="add_id" value="{{ $val->ma_id }}">
+                                                </td>
+                                                <td align="right"  style="vertical-align: middle;border:none!important;">
+                                                    <p class="add_price_text">{{ number_format($val->ma_price, 0, ",", ".") }}</p>
+                                                    <input type="hidden" class="add_price" value="{{ $val->ma_price }}">
+                                                </td>
+                                                <td class="sel_opt"  style="vertical-align: middle;border:none!important;">
+                                                    <select class=" additional form-control selectpicker" multiple data-size="4" data-actions-box="true">
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                         </table>
                                     </div>
                                   </div>

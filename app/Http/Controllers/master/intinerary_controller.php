@@ -36,24 +36,35 @@ class intinerary_controller extends Controller
         return Datatables::of($data)
                         ->addColumn('aksi', function ($data) {
                             $c1 = '';
+                            $c = '';
+                            $b = '<li class="bg-default">
+                                    <a class=" waves-effect waves-block">
+                                        There Is Nothing
+                                    </a>
+                                  </li>';
+
                             $a = '<div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="material-icons">settings</i>
                                     Manage <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="padding:0px">';
-                                    $b = '<li class="bg-orange">
-                                        <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
-                                            <i class="material-icons">edit</i>
-                                            Edit
-                                        </a>
-                                    </li>';
-                                    $c = '<li class="bg-red">
-                                        <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
-                                            <i class="material-icons">delete</i>
-                                            Delete
-                                        </a>
-                                    </li>';
+
+                                        $b = '<li class="bg-orange">
+                                                    <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
+                                                        <i class="material-icons">edit</i>
+                                                        Edit
+                                                    </a>
+                                                </li>';
+                                    if (Auth::user()->akses('hapus itinerary','mh_aktif')) {
+                                        $c = '<li class="bg-red">
+                                            <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
+                                                <i class="material-icons">delete</i>
+                                                Delete
+                                            </a>
+                                        </li>';
+                                    }
+
 
                                     if ($data->mi_status != 'ACTIVE') {
                                         if (Auth::user()->akses('approve itinerary','mh_aktif')) {
