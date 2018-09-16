@@ -1314,9 +1314,6 @@
         var total = total_add + total_room - agent_com*penambah + tips*penambah+ visa*penambah + tax*penambah;
 
 
-        console.log(visa);
-
-
         $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
         $('.total_room_input').val(total_room);
         $('.total_additional').html(accounting.formatMoney(total_add,"", 2, ".",','));
