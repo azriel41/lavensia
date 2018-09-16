@@ -55,9 +55,8 @@ class bookingController extends Controller
 			$hours = $dt->format('H'); 
 			$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
 
-			if (!in_array($hours, $range)) {
-		    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
-
+			if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) {
+				$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 		    	$id 				= $req->id;
 
 		    	if (Auth::User() != null) {
@@ -68,8 +67,22 @@ class bookingController extends Controller
 		        	return view('booking.booking',compact('detail_intinerary','detil','id'));
 		        }
 			}else{
-				Session::flash('message','BUKAN WAKTU SERVICE');
-				return redirect()->back();
+				if (!in_array($hours, $range)) {
+			    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
+
+			    	$id 				= $req->id;
+
+			    	if (Auth::User() != null) {
+			            $cart = Auth::User()->booking;
+			            $jumlah = count(Auth::User()->booking);
+			        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
+			        }else{
+			        	return view('booking.booking',compact('detail_intinerary','detil','id'));
+			        }
+				}else{
+					Session::flash('message','BUKAN WAKTU SERVICE');
+					return redirect()->back();
+				}
 			}
 		}else{
 			Session::flash('message','USER ANDA BELUM AKTIF');
@@ -84,7 +97,7 @@ class bookingController extends Controller
     		$id = $this->d_booking->max('db_id');
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
-    		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$db_total 		 	 = $req->total_harga_input;
     		$name 				 = array_values(array_filter($req->name));
     		$passport 			 = array_values(array_filter($req->passport));
     		$exp_date 			 = array_values(array_filter($req->exp_date));

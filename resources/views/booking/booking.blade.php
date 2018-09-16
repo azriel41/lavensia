@@ -1294,12 +1294,13 @@
             
         })
         var total_adult = $('.total_adult').val();
-        var total_child = $('.total_adult').val();
+        var total_child = $('.total_child').val();
         var agent_com = '{{ $detail_intinerary->md_agent_com }}';
         var tips = '{{ $detail_intinerary->md_tips }}';
         var visa = '{{ $detail_intinerary->md_visa }}';
         var tax = '{{ $detail_intinerary->md_tax }}';
-        var penambah  = total_adult + total_child;
+        var penambah  = total_adult*1 + total_child*1;
+     
         if (tips == '') {
             tips = 0;
         }
@@ -1311,7 +1312,7 @@
         if (tax == '') {
             tax = 0;
         }
-        var total = total_add + total_room - agent_com*penambah + tips*penambah+ visa*penambah + tax*penambah;
+        var total = total_add + total_room - (agent_com*penambah) + (tips*penambah) + visa*penambah + tax*penambah;
 
 
         $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
