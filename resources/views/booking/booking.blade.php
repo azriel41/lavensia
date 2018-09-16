@@ -663,7 +663,7 @@
                                 </fieldset>
                             </div>
                             
-                            <div class="col-sm-12" style="margin-top: 50px;">
+                            <div class="col-sm-12" style="margin-top: 50px;z-index: 1;" >
                                 <button type="button" class="btn btn-success waves-effect calc"><i class="fa fa-calculator"></i> Create Invoice</button>
                             </div>
                         </form>
@@ -696,6 +696,12 @@
                                 <input type="hidden" class="total_room_input" name="total_room_input">
                                 <input type="hidden" class="total_additional_input" name="total_additional_input">
                                 <input type="hidden" class="total_harga_input" name="total_harga_input">
+
+                                <input type="hidden" class="tax_input" name="tax">
+                                <input type="hidden" class="agent_com_input" name="agent_com">
+                                <input type="hidden" class="tips_input" name="tips">
+                                <input type="hidden" class="visa_input" name="visa">
+
                             </div>
                         </div>
                     </div>
@@ -1293,12 +1299,45 @@
             }
             
         })
+        var agent_com = '{{ $detail_intinerary->md_agent_com }}';
+        var tips = '{{ $detail_intinerary->md_tips }}';
+        var visa = '{{ $detail_intinerary->md_visa }}';
+        var tax = '{{ $detail_intinerary->md_tax }}';
+        if (tips == '') {
+            tips = 0;
+        }
+
+        if (visa == '') {
+            visa = 0;
+        }
+
+        if (tax == '') {
+            tax = 0;
+        }
+        var total = total_add + total_room - agent_com*1 + tips*1+ visa*1 + tax*1;
+
+
+        console.log(visa);
+
+
         $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
         $('.total_room_input').val(total_room);
         $('.total_additional').html(accounting.formatMoney(total_add,"", 2, ".",','));
         $('.total_additional_input').val(total_add);
-        $('.total_harga').html(accounting.formatMoney(total_add + total_room,"", 2, ".",','));
-        $('.total_harga_input').val(total_add + total_room);
+        $('.total_harga').html(accounting.formatMoney(total,"", 2, ".",','));
+        $('.total_harga_input').val(total);
+
+        $('.agent_com').html(accounting.formatMoney('{{ $detail_intinerary->md_agent_com }}',"", 2, ".",','));
+        $('.agent_com_input').val('{{ $detail_intinerary->md_agent_com }}');
+
+        $('.tips').html(accounting.formatMoney('{{ $detail_intinerary->md_tips }}',"", 2, ".",','));
+        $('.tips_input').val('{{ $detail_intinerary->md_tips }}');
+
+        $('.visa').html(accounting.formatMoney('{{ $detail_intinerary->md_visa }}',"", 2, ".",','));
+        $('.visa_input').val('{{ $detail_intinerary->md_visa }}');
+
+        $('.tax').html(accounting.formatMoney('{{ $detail_intinerary->md_tax }}',"", 2, ".",','));
+        $('.tax_input').val('{{ $detail_intinerary->md_tax }}');
 
         var valid = validate.indexOf(0);
         if (valid != -1) {

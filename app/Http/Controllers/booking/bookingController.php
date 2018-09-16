@@ -121,6 +121,10 @@ class bookingController extends Controller
 						    'db_total_adult'			=> $req->total_adult,
 						    'db_total_child'			=> $req->total_child,
 						    'db_total_infant'			=> $req->total_infant,
+						    'db_tax'					=> $req->tax,
+						   	'db_visa'					=> $req->visa,
+						   	'db_agent_com'				=> $req->agent_com,
+						   	'db_tips'					=> $req->tips,
 						    'created_by'				=> Auth::user()->id,
 						    'updated_by'				=> Auth::user()->id,
     					 );

@@ -85,7 +85,7 @@ class payment_page_controller extends Controller
                         );
 
             $upd = array(
-                           'db_status'          => 'Hold System',
+                           'db_status'          => 'Hold By System',
                         );
 
             $this->d_history_bayar->create($head);
@@ -125,14 +125,26 @@ class payment_page_controller extends Controller
     public function payment_termin(Request $req)
     {
         $booking = $this->d_booking->cari('db_id',$req->id);
-
-        if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking);
-            return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
+        $history = $booking->payment;
+        if ($history == null) {
+            if (Auth::User() != null) {
+                $cart = Auth::User()->booking;
+                $jumlah = count(Auth::User()->booking);
+                return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
+            }else{
+                return view('operational.payment_user.payment_termin','booking');
+            }
         }else{
-            return view('operational.payment_user.payment_termin','booking');
+            if (Auth::User() != null) {
+                $cart = Auth::User()->booking;
+                $jumlah = count(Auth::User()->booking);
+                return view('operational.payment_user.payment_user',compact('cart','jumlah','booking'));
+            }else{
+                return view('operational.payment_user.payment_user','booking');
+            }
+
         }
+        
     }
     public function save_termin(Request $req)
     {

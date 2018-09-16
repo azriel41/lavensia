@@ -709,7 +709,7 @@
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
-            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group" width="75px">'+
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group" style="width:65px!important">'+
             '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
             '</div>',

@@ -62,8 +62,8 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12" style="text-align: right">
-            <form class="form_total">
+        <div class="col-sm-12" style="text-align: right;margin-top: 25px;">
+            <form class="form_total" style="overflow-y: scroll; max-height: 200px">
                 <div class="col-sm-8">
                     <h4 colspan="3">Room</h4>
                 </div>
@@ -77,6 +77,34 @@
                 <div class="col-sm-4">
                     <h4 class="total_additional"></h4>
                     <input type="hidden" class="total_additional_input" name="total_additional_input">
+                </div>
+                <div class="col-sm-8">
+                    <h4 colspan="3">Agent Com</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="agent_com"></h4>
+                    <input type="hidden" class="agent_com_input" name="agent_com_input">
+                </div>
+                <div class="col-sm-8">
+                    <h4 colspan="3">Tips</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="tips"></h4>
+                    <input type="hidden" class="tips_input" name="tips_input">
+                </div>
+                <div class="col-sm-8">
+                    <h4 colspan="3">Visa</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="visa"></h4>
+                    <input type="hidden" class="visa_input" name="visa_input">
+                </div>
+                <div class="col-sm-8">
+                    <h4 colspan="3">Apt Tax & Fuel Surcharge</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="tax"></h4>
+                    <input type="hidden" class="tax_input" name="tax_input">
                 </div>
                 <div class="col-sm-8">
                     <h4 colspan="3">Total</h4>

@@ -222,7 +222,7 @@ class booking_allController extends Controller
     		DB::beginTransaction();
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
-    		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$db_total 		 	 = $req->total_harga_input;
     		$book 		   = $this->d_booking->cari('db_id',$req->booking_id);
     		$total_pax 	   = $req->total_adult + $req->total_child;
     		$total_pax_old = $book->db_total_adult + $book->db_total_child;
@@ -259,6 +259,10 @@ class booking_allController extends Controller
 						    'db_total_adult'			=> $req->total_adult,
 						    'db_total_child'			=> $req->total_child,
 						    'db_total_infant'			=> $req->total_infant,
+						    'db_tax'					=> $req->tax,
+						   	'db_visa'					=> $req->visa,
+						   	'db_agent_com'				=> $req->agent_com,
+						   	'db_tips'					=> $req->tips,
 						    'updated_by'				=> Auth::user()->id,
     					 );
 
@@ -437,7 +441,7 @@ class booking_allController extends Controller
     		DB::beginTransaction();
     		$db_total_additional = filter_var($req->total_additional_input,FILTER_SANITIZE_NUMBER_INT);
     		$db_total_room 		 = filter_var($req->total_room_input,FILTER_SANITIZE_NUMBER_INT);
-    		$db_total 		 	 = $db_total_additional+$db_total_room;
+    		$db_total 		 	 = $req->total_harga_input;
     		$book 		   = $this->d_booking->cari('db_id',$req->booking_id);
     		$total_pax 	   = $req->total_adult + $req->total_child;
     		$total_pax_old = $book->db_total_adult + $book->db_total_child;
@@ -464,6 +468,10 @@ class booking_allController extends Controller
 						    'db_total_adult'			=> $req->total_adult,
 						    'db_total_child'			=> $req->total_child,
 						    'db_total_infant'			=> $req->total_infant,
+						    'db_tax'					=> $req->tax,
+						   	'db_visa'					=> $req->visa,
+						   	'db_agent_com'				=> $req->agent_com,
+						   	'db_tips'					=> $req->tips,
 						    'updated_by'				=> Auth::user()->id,
     					 );
 
