@@ -253,7 +253,7 @@ class intinerary_controller extends Controller
                     'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_tips'           => filter_var($req->tips[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_visa'           => filter_var($req->visa[$i],FILTER_SANITIZE_NUMBER_INT),
-                    'md_tax'            => filter_var($req->md_apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_tax'            => filter_var($req->tax[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );
