@@ -70,11 +70,11 @@
                 <div class="carousel-inner" role="listbox">
                     
                     <!-- single slide -->
-                        <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
+                        <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);background-size: 100%;background-repeat: no-repeat;"></div>
                     <!-- end single slide -->
                     
                     <!-- single slide -->
-                        <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
+                        <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);background-size: 100%;background-repeat: no-repeat;"></div>
                     <!-- end single slide -->
                     
                 </div>
