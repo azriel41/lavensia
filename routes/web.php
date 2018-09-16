@@ -70,7 +70,6 @@ Route::get('/welcome', function () {
 		}
 		$det = $val->detail_intinerarys;
 	}
-
 	$book = App\User::all();
 
 
