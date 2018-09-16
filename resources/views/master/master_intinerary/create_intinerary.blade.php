@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <select name="category[]" id="category" class="form-control js-example-basic-single width100" multiple="">
-                                                    <option disabled="" value="">Select Category</option>
+                                                    <option disabled="" value="">Select Destination</option>
                                                 @foreach ($category as $val)
                                                     <option value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
                                                 @endforeach  

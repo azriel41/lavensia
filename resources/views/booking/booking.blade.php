@@ -1293,10 +1293,13 @@
             }
             
         })
+        var total_adult = $('.total_adult').val();
+        var total_child = $('.total_adult').val();
         var agent_com = '{{ $detail_intinerary->md_agent_com }}';
         var tips = '{{ $detail_intinerary->md_tips }}';
         var visa = '{{ $detail_intinerary->md_visa }}';
         var tax = '{{ $detail_intinerary->md_tax }}';
+        var penambah  = total_adult + total_child;
         if (tips == '') {
             tips = 0;
         }
@@ -1308,10 +1311,7 @@
         if (tax == '') {
             tax = 0;
         }
-        var total = total_add + total_room - agent_com*1 + tips*1+ visa*1 + tax*1;
-
-
-        console.log(visa);
+        var total = total_add + total_room - agent_com*penambah + tips*penambah+ visa*penambah + tax*penambah;
 
 
         $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
@@ -1321,17 +1321,17 @@
         $('.total_harga').html(accounting.formatMoney(total,"", 2, ".",','));
         $('.total_harga_input').val(total);
 
-        $('.agent_com').html(accounting.formatMoney('{{ $detail_intinerary->md_agent_com }}',"", 2, ".",','));
-        $('.agent_com_input').val('{{ $detail_intinerary->md_agent_com }}');
+        $('.agent_com').html(accounting.formatMoney(agent_com*penambah,"", 2, ".",','));
+        $('.agent_com_input').val(agent_com*penambah);
 
-        $('.tips').html(accounting.formatMoney('{{ $detail_intinerary->md_tips }}',"", 2, ".",','));
-        $('.tips_input').val('{{ $detail_intinerary->md_tips }}');
+        $('.tips').html(accounting.formatMoney(tips*penambah,"", 2, ".",','));
+        $('.tips_input').val(tips*penambah);
 
-        $('.visa').html(accounting.formatMoney('{{ $detail_intinerary->md_visa }}',"", 2, ".",','));
-        $('.visa_input').val('{{ $detail_intinerary->md_visa }}');
+        $('.visa').html(accounting.formatMoney(visa*penambah,"", 2, ".",','));
+        $('.visa_input').val(visa*penambah);
 
-        $('.tax').html(accounting.formatMoney('{{ $detail_intinerary->md_tax }}',"", 2, ".",','));
-        $('.tax_input').val('{{ $detail_intinerary->md_tax }}');
+        $('.tax').html(accounting.formatMoney(tax*penambah,"", 2, ".",','));
+        $('.tax_input').val(tax*penambah);
 
         var valid = validate.indexOf(0);
         if (valid != -1) {

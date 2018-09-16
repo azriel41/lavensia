@@ -341,7 +341,22 @@
                             </li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">build</i>
+                            <span>Function</span>
+                        </a>
+                  {{--       <ul class="ml-menu">
+                            <li>
+                                <a href="{{ route('function_company') }}">Company</a>
+                            </li>
+                        </ul>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{ route('function_article') }}">Article</a>
+                            </li>
+                        </ul> --}}
+                    </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
@@ -366,13 +381,6 @@
                     
                     
                    
-            <!-- #Menu -->
-            <!-- Footer -->
-            {{-- <div class="legal"> --}}
-                {{-- <div class="copyright">
-                    <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
-                </div> --}}
-            {{-- </div> --}}
-            <!-- #Footer -->
+    
         </aside>
 </section>

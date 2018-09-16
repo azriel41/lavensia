@@ -300,7 +300,7 @@
                                 </table>
                                 <div style="margin-top: 20px"></div>
                                 <div class="pull-left">
-                                    <span>{{ $data[0]->mi_term }}</span>
+                                    <span>{!! $data[0]->mi_term !!}</span>
                                 </div>
                             </div>
                         </div>

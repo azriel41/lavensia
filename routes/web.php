@@ -266,6 +266,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 	/******** END OPERATIONAL ***********/
 
-
 });
 
