@@ -23,12 +23,6 @@
              <section id="package" class="works clearfix">
                 <div class="container">
                     <div class="row">
-                    
-                        <div class="sec-title text-center">
-                            <h2>LAVENSIA Tour & Travel</h2>
-                            {{-- <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div> --}}
-                        </div>
-                        
                         <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                             <ul class="text-center">
                                 @foreach ($category as $val) 
@@ -41,14 +35,14 @@
                     </div>
                 </div>
 
-                <div class="project-wrapper">
+                <div class="project-wrapper" style="margin-bottom: 275px">
                     @foreach ($intinerary as $index => $iti)
                         <figure class="mix work-item 
                             @foreach ($cat as $i=>$tes)
                                 {{ str_replace(' ','-',$cat[$index][$i])}}
                             @endforeach
                             ">
-                            <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="">
+                            <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="" >
                             <figcaption class="overlay">
                                 <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="intinerary(this)" ><b><i class="fa fa-search"></i></b></button>
                                 <h4>{{ $intinerary[$index]['mi_name'] }}</h4>
