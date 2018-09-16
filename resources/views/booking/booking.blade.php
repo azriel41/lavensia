@@ -1294,12 +1294,18 @@
             
         })
         var total_adult = $('.total_adult').val();
-        var total_child = $('.total_adult').val();
+        var total_child = $('.total_child').val();
         var agent_com = '{{ $detail_intinerary->md_agent_com }}';
         var tips = '{{ $detail_intinerary->md_tips }}';
         var visa = '{{ $detail_intinerary->md_visa }}';
         var tax = '{{ $detail_intinerary->md_tax }}';
-        var penambah  = total_adult + total_child;
+        var penambah  = total_adult*1 + total_child*1;
+        console.log(agent_com);
+        console.log(tips);
+        console.log(visa);
+        console.log(tax);
+        console.log(tax);
+        console.log(penambah);
         if (tips == '') {
             tips = 0;
         }
