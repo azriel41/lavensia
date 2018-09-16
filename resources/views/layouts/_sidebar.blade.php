@@ -1,7 +1,7 @@
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="preloader">
-            <div class="spinner-layer pl-red">
+            <div class="spinner-layer pl-cyan">
                 <div class="circle-clipper left">
                     <div class="circle"></div>
                 </div>
@@ -27,7 +27,7 @@
         <i class="material-icons">close</i>
     </div>
 </div>
-<nav class="navbar">
+<nav class="navbar bg-cyan">
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
@@ -288,7 +288,7 @@
                     </li>
                     @endif
                     @if(Auth::user()->akses('approve master agent','mh_aktif'))
-                    <li class="active">
+                    <li>
                         <a href="{{ route('master_agent_agent') }}">
                             <i class="material-icons">widgets</i>
                             <span>Agent</span>

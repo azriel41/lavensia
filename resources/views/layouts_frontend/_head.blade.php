@@ -277,7 +277,7 @@ End Fixed Navigation
     color: grey;
 }
 .form_display {
-    position: fixed;
+    position: absolute;
     z-index: 90;
     top: 1px;
     right: -0px;
@@ -285,7 +285,7 @@ End Fixed Navigation
     background: radial-gradient(circle, rgba(13, 18, 41, 0.8), rgba(0, 3, 19, 0.8));
     color: #fff;
     width: 465px;
-    height: 725px;
+    height: 100%;
 }
 </style>
 
