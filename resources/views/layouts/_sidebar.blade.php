@@ -296,7 +296,7 @@
                     </li>
                     @endif
 
-                    @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 )
+                    @if (auth::user()->role_id == 1 || auth::user()->role_id == 2 || auth::user()->role_id == 3 )
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
