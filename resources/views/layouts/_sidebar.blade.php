@@ -311,12 +311,7 @@
                             @endif
                             @if(Auth::user()->akses('master category','mh_aktif'))
                                 <li>
-                                    <a href="{{ route('master_category') }}">Perusahaan</a>
-                                </li>
-                            @endif
-                            @if(Auth::user()->akses('master category','mh_aktif'))
-                                <li>
-                                    <a href="{{ route('master_category') }}">Category</a>
+                                    <a href="{{ route('master_category') }}">Destination</a>
                                 </li>
                             @endif
                             @if(Auth::user()->akses('master additional','mh_aktif'))

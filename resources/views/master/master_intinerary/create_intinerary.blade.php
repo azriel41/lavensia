@@ -324,7 +324,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Infant Price</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Visa</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="visa" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
@@ -339,18 +362,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Infant Price</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line req">
-                                                    <input type="text" id="infant_price" class="form-control " placeholder="Field Required">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="start">Minimal DP</label>
@@ -377,6 +389,30 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Tips</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="tips" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Apt Tax & Fuel Surcharge</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Seat</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -392,8 +428,8 @@
                                     <button type="button" class="btn btn-primary waves-effect pull-right add_detail">Add Detail</button>
                                 </div>
                             </div>
-                            <div class="detail_departure col-sm-12" style="overflow-x: auto;width: 100%">
-                               <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: auto;">
+                            <div class="detail_departure col-sm-12 table-responsive" style="overflow-x: scroll;width: 100%">
+                               <table class="table detail table-bordered" style="width: 100%;font-size: 12px;overflow-x: scroll;">
                                     <thead>
                                         <tr>
                                             <td>Start</td>
@@ -404,8 +440,11 @@
                                             <td>Infant Price</td>
                                             <td>Minimal DP</td>
                                             <td>Agent Com</td>
+                                            <td>Tips</td>
+                                            <td>Visa</td>
+                                            <td>Apt Tax</td>
                                             <td>Seat</td>
-                                            <td>Action</td>
+                                            <td width="">Action</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -443,30 +482,35 @@
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#child_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#child_w_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#infant_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#minimal_dp").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
 
@@ -474,6 +518,28 @@
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#tips").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#visa").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#apt_tax").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
     });
 
     
@@ -596,6 +662,10 @@
         var child_w_price = $('#child_w_price').val();
         var minimal_dp    = $('#minimal_dp').val();
         var agent_com     = $('#agent_com').val();
+        var tips     = $('#tips').val();
+        var apt_tax     = $('#apt_tax').val();
+        var visa     = $('#visa').val();
+        var agent_com     = $('#agent_com').val();
 
 
         var par = $('.index_'+index).parents('tr');
@@ -627,10 +697,19 @@
             '<p class="agent_com_text">'+agent_com+'</p>'+
             '<input type="hidden" name="agent_com[]" value="'+agent_com+'" class="agent_com">',
 
+            '<p class="agent_com_text">'+tips+'</p>'+
+            '<input type="hidden" name="tips[]" value="'+tips+'" class="tips">',
+
+            '<p class="agent_com_text">'+visa+'</p>'+
+            '<input type="hidden" name="visa[]" value="'+visa+'" class="visa">',
+
+            '<p class="agent_com_text">'+apt_tax+'</p>'+
+            '<input type="hidden" name="apt_tax[]" value="'+apt_tax+'" class="apt_tax">',
+
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
-            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group" width="75px">'+
             '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
             '</div>',
@@ -658,7 +737,10 @@
         var term          = $(par).find('.term').val();
         var seat          = $(par).find('.seat').val();
         var minimal_dp    = $(par).find('.minimal_dp').val();
-        var agent_com    = $(par).find('.agent_com').val();
+        var agent_com     = $(par).find('.agent_com').val();
+        var tips          = $(par).find('.tips').val();
+        var visa          = $(par).find('.visa').val();
+        var apt_tax       = $(par).find('.apt_tax').val();
 
 
         $('#index').val(index);
@@ -672,6 +754,9 @@
         $('#seat').val(seat);
         $('#minimal_dp').val(minimal_dp);
         $('#agent_com').val(agent_com);
+        $('#tips').val(tips);
+        $('#visa').val(visa);
+        $('#apt_tax').val(apt_tax);
     }
 
 

@@ -241,7 +241,7 @@
                         <h2 class="count_h2">BOOK FORM</h2>
                         <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <p>{{ $detail_intinerary->md_nota }}</p>
                         </div>
@@ -253,7 +253,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sec-sub-title text-center ">
                         <form action="#" id="save">
                             <!-- Agent detail-->
                             <fieldset class="scheduler-border col-sm-6" style="border-right: 1px solid #8db0ff;">
@@ -315,7 +315,7 @@
                                 </div>
                             </fieldset>
                             <!-- Room Type 1-->
-                            <fieldset class="scheduler-border col-sm-12 dropping wow fadeInUp  animated" data-wow-duration="1000ms" >
+                            <fieldset class="scheduler-border col-sm-12 dropping " >
                                 <h3 class="count_h2"><b>ROOM TOUR</b></h3>
                                 <div class="devider" style="margin-bottom: 20px"><i class="fa fa-heart-o fa-lg"></i></div>
                                 <div class="col-sm-12 room_append">
@@ -602,7 +602,7 @@
                             </fieldset>
                             <!-- Additional-->
                             <hr>
-                            <fieldset class="scheduler-border col-sm-12 wow fadeInUp  animated" data-wow-duration="1000ms" >
+                            <fieldset class="scheduler-border col-sm-12 " >
                               <h3 class="count_h2"><b>ADDITIONAL</h3>
                                 <div class="devider" style="margin-bottom: 50px"><i class="fa fa-heart-o fa-lg"></i></div>
                                   <div class="contact-form col1" >

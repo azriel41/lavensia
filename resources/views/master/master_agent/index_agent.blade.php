@@ -15,7 +15,7 @@
     <div class="header">
         <ol class="breadcrumb breadcrumb-bg-pink">
             <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-            <li class="active"><i class="material-icons"></i>Master Intinerary</li>
+            <li class="active"><i class="material-icons"></i>Master Agent</li>
         </ol>
     </div>
     <div class="row clearfix ">
@@ -23,10 +23,10 @@
             <div class="card">
                 <div class="header bg-cyan">
                     <h4 class="inline-block">
-                        Master Intinerary
+                        Master Agent
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ route('master_intinerary_create') }}">
+                        <a href="{{ route('master_agent_agent_create') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>

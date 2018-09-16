@@ -240,6 +240,9 @@ class intinerary_controller extends Controller
                     'md_seat_remain'    => $req->seat[$i]-1,
                     'md_dp'             => filter_var($req->minimal_dp[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_tips'           => filter_var($req->tips[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_visa'           => filter_var($req->visa[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_tax'            => filter_var($req->md_apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );

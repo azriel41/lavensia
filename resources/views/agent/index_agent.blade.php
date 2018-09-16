@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="header bg-cyan">
                     <h4 class="inline-block">
-                        Master Intinerary
+                        Master Agent
                     </h4>
                     <div class="pull-right">
                         <a href="{{ route('master_agent_agent_create') }}">
