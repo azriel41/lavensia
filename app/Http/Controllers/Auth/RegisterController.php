@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Mail;
 class RegisterController extends Controller
 {
     /*
@@ -64,6 +64,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        Mail::send('mail',['name' => $data['username'],'email' => $data['email'],'password' => $data['password'],'date'=>date("Y-m-d H:i:s")],function($message){
+            $data = 'master@oke-trip.com';
+            $message->to($data,'To')->Subject('DATA MASTER AGENT');
+            $message->from('master@oke-trip.com','Support');
+        });
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

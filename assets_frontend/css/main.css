@@ -580,7 +580,7 @@ top: -8px;
         transition: all 450ms ease-out 0s;
 }
 .book_bg{
-  background-color: red;
+  background-color: #0097e6f2;
   padding: 15px 15px 15px 15px;
   margin-left: -20px;
   width: 100%;
@@ -915,6 +915,7 @@ label.error {
 
 .footer {
   background: url("../img/footer2.jpg") no-repeat scroll 0 5px transparent;
+  background-size: cover;
   color: #fff;
 }
 

@@ -29,10 +29,6 @@
                             {{-- <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div> --}}
                         </div>
                         
-                        <div class="sec-sub-title text-center">
-                            <p>Paket Tour Domestik | Paket Tour Internasional | Galeri Lavensia | Passport & Visa</p>
-                        </div>
-                        
                         <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                             <ul class="text-center">
                                 @foreach ($category as $val) 
@@ -166,7 +162,7 @@
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
-                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                            <a href="article/article/2" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -181,7 +177,7 @@
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
-                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                            <a href="article/article/3" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -195,7 +191,7 @@
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
-                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                            <a href="article/article/4" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -209,7 +205,7 @@
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
                                         <div class="book_bg">
-                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                            <a href="article/article/5" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
