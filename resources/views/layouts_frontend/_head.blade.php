@@ -288,8 +288,20 @@ End Fixed Navigation
     height: 100%;
 }
 </style>
+        @include('layouts_frontend._scripts')
 
 <script type="text/javascript">
+    $( window ).load(function() {
+        if ($(window).width() < 465) {
+            // alert('a');
+            $('.form_display').css('width','300px');
+        }
+        else {
+            $('.form_display').css('width','465px');
+            // alert('b');
+        }
+    });
+    
     function login_log(argument) {
          if (!$(".form_display").is(":visible")) {
                 $('.form_display').css('display','block');
