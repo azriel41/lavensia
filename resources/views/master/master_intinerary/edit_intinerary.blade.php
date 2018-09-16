@@ -60,17 +60,20 @@
                             </div>
                             <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-control-label" for="category">Destination</label>
+                                    <label class="form-control-label" for="intinerary">Destination</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <select name="category" id="category" class="form-control js-example-basic-single width100">
-                                                 <option value="">Select Category</option>
-                                            @foreach ($category as $val)
-                                                <option  value="{{ $val->mc_id }}">{{ $val->mc_name }}
-                                                </option>
-                                            @endforeach  
+                                            <select name="category[]" id="category" class="form-control js-example-basic-single width100" multiple="">
+                                                    <option disabled="" value="">Select Destination</option>
+                                                @foreach ($category as $val)
+                                                    <option @foreach ($data->destination as $a)
+                                                        @if ($a->category->mc_id == $val->mc_id)
+                                                            selected="" 
+                                                        @endif
+                                                    @endforeach value="{{ $val->mc_id }}">{{ $val->mc_name }}</option>
+                                                @endforeach  
                                             </select>
                                         </div>
                                     </div>
@@ -335,6 +338,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Visa</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="visa" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
@@ -375,6 +390,42 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Agent Com</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="agent_com" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Tips</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="tips" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label" for="start">Apt Tax & Fuel Surcharge</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Seat</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -401,6 +452,10 @@
                                             <td>CwB Price</td>
                                             <td>Infant Price</td>
                                             <td>Minimal DP</td>
+                                            <td>Agent Com</td>
+                                            <td>Tips</td>
+                                            <td>Visa</td>
+                                            <td>Apt Tax</td>
                                             <td>Seat</td>
                                             <td>Action</td>
                                         </tr>
@@ -412,7 +467,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            @if (Auth::user()->akses('edit itinerary','mh_aktif')) {
+                            @if (Auth::user()->akses('edit itinerary','mh_aktif'))
                             <a style="cursor: pointer" class="btn pull-right forward arrow">
                                 <i class="material-icons">arrow_forward</i>
                             </a>
@@ -603,6 +658,18 @@
 
             '<p class="minimal_dp_text">'+minimal_dp+'</p>'+
             '<input type="hidden" name="minimal_dp[]" value="'+minimal_dp+'" class="minimal_dp">',
+
+            '<p class="agent_com_text">'+agent_com+'</p>'+
+            '<input type="hidden" name="agent_com[]" value="'+agent_com+'" class="agent_com">',
+
+            '<p class="agent_com_text">'+tips+'</p>'+
+            '<input type="hidden" name="tips[]" value="'+tips+'" class="tips">',
+
+            '<p class="agent_com_text">'+visa+'</p>'+
+            '<input type="hidden" name="visa[]" value="'+visa+'" class="visa">',
+
+            '<p class="agent_com_text">'+apt_tax+'</p>'+
+            '<input type="hidden" name="apt_tax[]" value="'+apt_tax+'" class="apt_tax">',
 
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
@@ -854,6 +921,12 @@
         var md_detail     = '{{ $data->md_detail }}';
         var md_dp         = '{{ number_format($data->md_dp, 0, ",", ".") }}';
 
+        var agent_com     = '{{ number_format($data->md_agent_com, 0, ",", ".") }}';
+        var tips          = '{{ number_format($data->md_tips, 0, ",", ".") }}';
+        var visa         = '{{ number_format($data->md_visa, 0, ",", ".") }}';
+        var apt_tax         = '{{ number_format($data->md_tax, 0, ",", ".") }}';
+
+
 
         var action = '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>';
@@ -881,6 +954,18 @@
 
             '<p class="minimal_dp_text">'+md_dp+'</p>'+
             '<input type="hidden" name="minimal_dp[]" value="'+md_dp+'" class="minimal_dp">',
+
+            '<p class="agent_com_text">'+agent_com+'</p>'+
+            '<input type="hidden" name="agent_com[]" value="'+agent_com+'" class="agent_com">',
+
+            '<p class="agent_com_text">'+tips+'</p>'+
+            '<input type="hidden" name="tips[]" value="'+tips+'" class="tips">',
+
+            '<p class="agent_com_text">'+visa+'</p>'+
+            '<input type="hidden" name="visa[]" value="'+visa+'" class="visa">',
+
+            '<p class="agent_com_text">'+apt_tax+'</p>'+
+            '<input type="hidden" name="apt_tax[]" value="'+apt_tax+'" class="apt_tax">',
 
             '<p class="seat_text">'+seat_remain+'/'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
