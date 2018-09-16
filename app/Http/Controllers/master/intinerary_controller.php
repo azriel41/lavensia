@@ -249,7 +249,11 @@ class intinerary_controller extends Controller
 
 
                 if ($req->detail_id[$i] != '0') {
+
                     $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
+
+                    $remain    = $cari_seat->md_seat - 1 - $cari_seat->md_seat_remain;
+                    $det['md_seat_remain']    -= $remain;
                     $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
                 }else{
                     $id_dt = $detail_intinerary->max_detail('md_intinerary_id',$id,'md_detail');

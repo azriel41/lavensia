@@ -259,7 +259,7 @@
                                             <div class="col-sm-8" align="right">
                                                 <table class="table">
                                                     <tr>
-                                                        <td align="right">Room Price :</td>
+                                                        <td align="right" width="140">Room Price :</td>
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_room, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
