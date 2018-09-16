@@ -14,7 +14,7 @@
 Route::get('/', function () {
 	$category = App\category::all();
 
-	$intinerary = App\intinerary::all();
+	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 
 	$det = [];
 	$cat = [];
@@ -59,8 +59,7 @@ Auth::routes();
 Route::get('/welcome', function () {
 	$category = App\category::all();
 
-	$intinerary = App\intinerary::all();
-
+	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
@@ -76,7 +75,6 @@ Route::get('/welcome', function () {
 				->where('db_users',Auth::User()->role_id)
 				->whereRaw('db_total = db_total_remain')
 				->get();
-
 
 	$jumlah = count(DB::table('d_booking')
 				->where('db_users',Auth::User()->role_id)

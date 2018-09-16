@@ -26,7 +26,7 @@ class agentController extends Controller
 
     public function datatable_agent()
     {
-        $data = user::all();
+        $data = user::where('role_id','=','1')->where('role_id','=','2')->get();
         
         $data = collect($data);
 
@@ -38,7 +38,7 @@ class agentController extends Controller
                                     Manage <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="padding:0px">';
-
+                            
                             $b = '<li class="bg-teal">
                                         <a onclick="approve(\''.$data->id.'\')" class="waves-effect waves-block" style="color:white">
                                             <i class="material-icons">spellcheck</i>

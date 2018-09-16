@@ -30,6 +30,9 @@ class detail_intinerary extends Model
 						   'md_tour_leader',
 						   'md_tip',
 						   'md_agent_com',
+						   'md_tips',
+						   'md_apt_tax',
+						   'md_visa',
 						   'created_by',
 						   'updated_by'];
 

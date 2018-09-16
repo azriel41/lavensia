@@ -6,7 +6,7 @@
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
                 <li><i class="material-icons"></i>Master Category</li>
-                <li class="active"><i class="material-icons"></i>Create Category</li>
+                <li class="active"><i class="material-icons"></i>Create Destination</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -14,20 +14,8 @@
                 <div class="card">
                     <div class="header bg-light-blue">
                             <h2>
-                                Create Category <small></small>
+                                Create Destination <small></small>
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
 
                     <div class="body">

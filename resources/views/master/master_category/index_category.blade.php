@@ -11,7 +11,7 @@
         <div class="header">
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">widgets</i> Master</a></li>
-                <li class="active"><i class="material-icons"></i>Master Category</li>
+                <li class="active"><i class="material-icons"></i>Master Destination</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="header bg-blue-grey">
                         <h4 class="inline-block">
-                            Master Category
+                            Master Destination
                         </h4>
                         <div class="pull-right">
                             <a href="{{ route('master_category_create') }}">

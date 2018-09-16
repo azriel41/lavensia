@@ -102,7 +102,7 @@ class agent_agentController extends Controller
         if(Auth::user()->akses('approve master agent','mh_aktif')){
             return view('agent.create_agent',compact('data'));
         }else{
-            return view('home');
+            return redirect()->back();
         }
     }
     public function agent_save(Request $request)
