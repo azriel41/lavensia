@@ -64,44 +64,21 @@
 
         <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            
-                <!-- Indicators bullet -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 </ol>
-                <!-- End Indicators bullet -->              
-                
-                <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    
-                    <!-- single slide -->
-                        <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);background-size: 100%;background-repeat: no-repeat;"></div>
-                    <!-- end single slide -->
-                    
-                    <!-- single slide -->
-                        <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);background-size: 100%;background-repeat: no-repeat;"></div>
-                    <!-- end single slide -->
-                    
+                    <div class="item active"  style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
+                    <div class="item" style="background-image: url(assets_frontend/img/comingsnweb.jpg);"></div>
                 </div>
-                <!-- End Wrapper for slides -->
-                
             </div>
         </section>
 
              <section id="team" class="team">
                 <div class="container">
                     <div class="row">
-            
-                        {{-- <div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
-                            <h2>ARTICLE</h2>
-                        </div> --}}
                         <br>
-                        
-                    {{--     <div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
-                        </div> --}}
-
                         <!-- single member -->
                         <figure class="team-member col-md-6 col-sm-12 col-sm-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb_head">

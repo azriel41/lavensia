@@ -115,7 +115,7 @@ class agent_agentController extends Controller
            $filename = auth::user()->id.'.jpg';
            Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }
-       
+
        $image = DB::table('users')->insert([
                 'co_name'       =>$request->co_name,
                 'co_phone'      =>$request->co_phone,
@@ -129,11 +129,11 @@ class agent_agentController extends Controller
                 'email'         =>$request->email,
                 'address'       =>$request->address,
                 'image'         =>$filename,
-                'password'      =>Hash::make('123123'),
-                'username'      =>$request->name,
+                'password'      =>Hash::make($request->password),
+                'username'      =>$request->username,
             ]);
 
-        return redirect('agent/index_agent');
+        return redirect('agent/master_agent_agent');
     }
     public function agent_edit($id)
     {
@@ -171,6 +171,8 @@ class agent_agentController extends Controller
                 'email'         =>$request->email,
                 'address'       =>$request->address,
                 'image'         =>$filename,
+                'password'      =>Hash::make($request->password),
+                'username'      =>$request->username,
             ]);
 
        return view('agent.index_agent');

@@ -50,7 +50,7 @@
                                     <th>&nbsp;</th>
                                  </tr>
                                  <tr>
-                                     <td><img src="../assets_frontend/img/team/4.jpg?{{ time() }}" class="img-responsive"></td>
+                                     <td><img src="{{ asset('/assets_frontend/img/team/4.jpg') }}" class="img-responsive"></td>
                                  </tr>
                              </table>
                              <table width="95%">

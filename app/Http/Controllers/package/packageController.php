@@ -41,10 +41,19 @@ class packageController extends Controller
     }
     public function package_pdf(Request $req)
     {
-        $id = str_replace('/', '-', $req->id);
-        
+        $data = intinerary::where('mi_nota',$req->id)->get();
+        $gg = $data[0]->mi_pdf;
+        if ($gg == null) {
+            return view('pdf_kosong');
+        }
+        $file = realpath('.').'/storage/app/'.$gg;
 
-        return response()->download('storage/app/itinerary/'.'PDF_'.$id.'.pdf');
+        // return $file;
+        $headers = [
+              'Content-Type' => 'application/pdf',
+         ];
+
+        return response()->download($file);
 
     }
     public function package_modal_detail(Request $request)
