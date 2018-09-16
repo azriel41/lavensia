@@ -145,12 +145,8 @@
                                 </div>
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta">
-                                                <div class="book_bg" style="background-color: red;padding: 10px 10px 10px 10px">
-                                                    <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
+                                        <div class="book_bg" style="z-index: 99">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -165,8 +161,8 @@
                                 <img src="assets_frontend/img/team/5.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article_head">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -180,8 +176,8 @@
                                 <img src="assets_frontend/img/team/1.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -194,8 +190,8 @@
                                 <img src="assets_frontend/img/team/3.jpg?{{ time() }}" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -208,8 +204,8 @@
                                 <img src="assets_frontend/img/team/2.png" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay_article">
                                     <div class="campaign-city-country-cta">
-                                        <div class="book"> 
-                                            <div class="campaign-city-country-cta"><div class="book"><a href="yo.php" style="color: white !important"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div></div>
+                                        <div class="book_bg">
+                                            <a href="article/article/1" style="color: white !important;"> Show more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </figcaption>
