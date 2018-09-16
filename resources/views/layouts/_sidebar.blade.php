@@ -303,7 +303,6 @@
                             <span>Product</span>
                         </a>
                         <ul class="ml-menu">
-
                             @if(Auth::user()->akses('master agent','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_agent') }}">Agent</a>
@@ -370,9 +369,9 @@
             <!-- #Menu -->
             <!-- Footer -->
             {{-- <div class="legal"> --}}
-                <div class="copyright">
+                {{-- <div class="copyright">
                     <br><a href="#">Created & Developed by <b> Esensi Creative</b></a>
-                </div>
+                </div> --}}
             {{-- </div> --}}
             <!-- #Footer -->
         </aside>

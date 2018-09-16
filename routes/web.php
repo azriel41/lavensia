@@ -98,7 +98,9 @@ Route::get('/package/package_pdf', 'package\packageController@package_pdf')->nam
 //partner
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
-//article
+
+
+//article index
 Route::get('/article/article/{id}', 'article\articleController@article')->name('article');
 
 
@@ -106,17 +108,10 @@ Route::get('/article/article/{id}', 'article\articleController@article')->name('
 Route::group(['middleware' => 'auth'], function () {
 
 	/*********** PAGE AGENT ************/  
-
-
-
 	Route::get('/agent/master_agent_agent', 'agent\agent_agentController@agent')->name('master_agent_agent');
 	Route::get('/agent/master_agent_agent_create', 'agent\agent_agentController@agent_create')->name('master_agent_agent_create');
 	Route::post('/agent/master_agent_agent_save', 'agent\agent_agentController@agent_save')->name('master_agent_agent_save');
 	Route::get('/agent/master_agent_agent_datatable', 'agent\agent_agentController@agent_datatable')->name('master_agent_agent_datatable');
-
-
-
-
 	/*********** HALAMAN UTAMA ************/  
 	
 	// STORAGE URL

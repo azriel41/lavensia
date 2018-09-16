@@ -54,13 +54,26 @@ class additionalController extends Controller
     {
     	$price = str_replace( '.', '',$request->ad_price);
 
+        // dd($request->file('image'));
+       // if ($request->file('image') == null) {
+       //     $filename = $request->ad_id.'.jpg';
+       // }else{
+           $image = $request->file('image');
+           $upload = 'additional/additional';
+           $filename = $request->ad_id.'.jpg';
+           Storage::put('additional/additional-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       // }
+
+      $price = str_replace( '.', '',$request->ad_price);
+
      	$data = additional::find($request->ad_id);
      	$data->ma_name  = $request->ad_name;
      	$data->ma_price = $price;
      	$data->ma_desc  = $request->ad_desc;
+      $data->ma_image = $filename;
      	$data->save();
 
-      return response()->json(['status'=>'sukses']);
+      return redirect('master/master_additional');
     }
     public function edit(Request $request,$id)
     {
