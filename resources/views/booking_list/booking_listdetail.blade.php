@@ -336,13 +336,45 @@
                                 <tr>
                                     <td align="left" class="Hightlight">Adult</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight">{{ $data[0]->db_total_adult }}</td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->db_total_adult,'0','.','')}}</td>
                                     <td align="left" class="Hightlight">Child</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight">{{ $data[0]->db_total_child }}</td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->db_total_child,0,'','.')}}</td>
                                     <td align="left" class="Hightlight">Infant</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight">{{ $data[0]->db_total_infant }}</td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->db_total_infant,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Adult</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_adult_price,0,'','.')}}</td>
+                                    <td align="left" class="Hightlight">Child</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_child_price,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Infant</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_infant_price,0,'','.')}}</td>
+                                    <td align="left" class="Hightlight">Child w b</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_child_w_price,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Agent Com</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_agent_com,0,'','.')}}</td>
+                                    <td align="left" class="Hightlight">Tips</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_tips,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="Hightlight">Visa Tips</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_visa,0,'','.')}}</td>
+                                    <td align="left" class="Hightlight">Visa Tips</td>
+                                    <td>: </td>
+                                    <td align="right" class="Hightlight">{{ number_format($data[0]->md_tips,0,'','.')}}</td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="Hightlight">Room Price</td>

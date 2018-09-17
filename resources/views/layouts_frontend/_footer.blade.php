@@ -101,6 +101,16 @@
             </div>
         </footer>
         @else
-        
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="copyright text-center">
+                            Copyright © 2018 <a href="#"><b style="color:yellow">OKE-TRIP.COM</b></a>. All rights reserved. Designed & developed by <a href="http://esensicreative.com/"><b style="color:white">Esensi Creative</b></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
         @endif
 @endif
