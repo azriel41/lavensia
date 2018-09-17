@@ -346,16 +346,20 @@
                             <i class="material-icons">build</i>
                             <span>Function</span>
                         </a>
-                  {{--       <ul class="ml-menu">
-                            <li>
-                                <a href="{{ route('function_company') }}">Company</a>
-                            </li>
+                        <ul class="ml-menu">
+                            @if(Auth::user()->akses('article','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('article_index') }}">Article</a>
+                                </li>
+                            @endif
                         </ul>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="{{ route('function_article') }}">Article</a>
-                            </li>
-                        </ul> --}}
+                            @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('company_index') }}">Company</a>
+                                </li>
+                            @endif
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">

@@ -26,28 +26,34 @@ Route::get('/', function () {
 
 	$book = App\User::all();
 
+	$article1 = App\article::where('da_show','1')->first();
+	$article2 = App\article::where('da_show','2')->first();
+	$article3 = App\article::where('da_show','3')->first();
+	$article4 = App\article::where('da_show','4')->first();
+	$article5 = App\article::where('da_show','5')->first();
+
 	if (Auth::User() != null) {
 
 			$cart   = DB::table('d_booking')
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
 						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
 						->where('db_users',Auth::User()->role_id)
-						->whereRaw('db_total = db_total_remain')
+						->where('db_status','Waiting List')
 						->get();
 
 
 			$jumlah = count(DB::table('d_booking')
 						->where('db_users',Auth::User()->role_id)
-						->whereRaw('db_total = db_total_remain')
+						->where('db_status','Waiting List')
 						->get());
 			// return $cart;
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
     		return view('home');
 		}else{
-    		return view('welcome',compact('category','intinerary','det','response','cart','jumlah','cat'));
+    		return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cart','jumlah','cat'));
 		}
 	}else{
-    	return view('welcome',compact('category','intinerary','det','response','cat'));
+    	return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cat'));
 	}
 
 })->name('dashboard');
@@ -59,35 +65,49 @@ Auth::routes();
 
 //intinerary ajax modal
 Route::get('/welcome', function () {
-	$category = App\category::all();
+	if (Auth::User() != null) {
+		$category = App\category::all();
 
-	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
-	$det = [];
-	$cat = [];
-	foreach ($intinerary as $index => $val) {
-		foreach ($val->destination as $key => $val1) {
-			$cat[$index][$key] = $val1->category->mc_name;
+		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
+		$det = [];
+		$cat = [];
+		foreach ($intinerary as $index => $val) {
+			foreach ($val->destination as $key => $val1) {
+				$cat[$index][$key] = $val1->category->mc_name;
+			}
+			$det = $val->detail_intinerarys;
 		}
-		$det = $val->detail_intinerarys;
+		$book = App\User::all();
+
+
+		$cart   = DB::table('d_booking')
+					->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+					->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+					->where('db_users',Auth::User()->role_id)
+					->where('db_status','Waiting List')
+					->get();
+
+		$jumlah = count(DB::table('d_booking')
+					->where('db_users',Auth::User()->role_id)
+					->where('db_status','Waiting List')
+					->get());
+		// return $cart;
+
+		
+		$article1 = App\article::where('da_show','1')->first();
+		$article2 = App\article::where('da_show','2')->first();
+		$article3 = App\article::where('da_show','3')->first();
+		$article4 = App\article::where('da_show','4')->first();
+		$article5 = App\article::where('da_show','5')->first();
+		return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cart','jumlah','cat'));
+	}else{
+		$article1 = App\article::where('da_show','1')->first();
+		$article2 = App\article::where('da_show','2')->first();
+		$article3 = App\article::where('da_show','3')->first();
+		$article4 = App\article::where('da_show','4')->first();
+		$article5 = App\article::where('da_show','5')->first();
+    	return view('welcome',compact('article1','article2','article3','article4','article5','article1','article2','article3','article4','article5','category','intinerary','det','response','cat'));
 	}
-	$book = App\User::all();
-
-
-	$cart   = DB::table('d_booking')
-				->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
-				->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
-				->where('db_users',Auth::User()->role_id)
-				->whereRaw('db_total = db_total_remain')
-				->get();
-
-	$jumlah = count(DB::table('d_booking')
-				->where('db_users',Auth::User()->role_id)
-				->whereRaw('db_total = db_total_remain')
-				->get());
-	// return $cart;
-	return view('welcome',compact('category','intinerary','det','response','cart','jumlah','cat'));
-	
-
 })->name('welcome');
 
 //Halaman See more 
@@ -120,7 +140,23 @@ Route::group(['middleware' => 'auth'], function () {
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	
+	//ARTICLE
+    Route::get('/function/article/article_index', 'article\articleController@article_index')->name('article_index');
+	Route::get('/function/article/create', 'article\articleController@create')->name('article_create');
+	Route::get('/function/article/edit', 'article\articleController@edit')->name('article_edit');
+	Route::post('/function/article/save', 'article\articleController@save')->name('article_save');
+	Route::post('/function/article/update', 'article\articleController@update')->name('article_update');
+	Route::post('/function/article/delete', 'article\articleController@delete')->name('article_delete');
+	Route::get('/function/article/article_datatable', 'article\articleController@article_datatable')->name('article_datatable');
+
+
+	//ARTICLE
+    Route::get('/function/company/company_index', 'company\company_controller@company_index')->name('company_index');
+	Route::get('/function/company/create', 'company\company_controller@create_create')->name('company_create');
+	Route::get('/function/company/edit', 'company\company_controller@edit')->name('company_edit');
+	Route::post('/function/company/save', 'company\company_controller@save')->name('company_save');
+	Route::post('/function/company/update', 'company\company_controller@update')->name('company_update');
+	Route::get('/function/company/company_datatable', 'company\company_controller@company_datatable')->name('company_datatable');
 
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');

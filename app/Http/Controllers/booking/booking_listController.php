@@ -81,17 +81,17 @@ class booking_listController extends Controller
         $book = User::all();
 
         if (Auth::User() != null) {
-            $cart   = DB::table('d_booking')
+           $cart   = DB::table('d_booking')
                         ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
                         ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
-                        ->where('db_users',Auth::User()->id)
-                        ->whereRaw('db_total = db_total_remain')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
                         ->get();
 
 
             $jumlah = count(DB::table('d_booking')
-                        ->where('db_users',Auth::User()->id)
-                        ->whereRaw('db_total = db_total_remain')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
                         ->get());
             return view('booking_list.booking_list',compact('data','category','intinerary','det','response','cart','jumlah'));
         }else{
@@ -102,10 +102,12 @@ class booking_listController extends Controller
     public function bookingdetail($id)
     {
 		$data = DB::table('d_booking')
+                        ->select('handle.name as handle','bookby.name as bookby','d_booking.*','m_intinerary.*','d_additonal_booking.*','m_detail_intinerary.*','d_party_name.*')
 						->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')	
 						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')	
-						->leftjoin('users','users.id','=','d_booking.db_handle_by')	
+                        ->leftjoin('users as handle','handle.id','=','d_booking.db_handle_by') 
+						->leftjoin('users as bookby','bookby.id','=','d_booking.created_by')	
 						->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')	
 						->where('db_kode_transaksi',$id)
 						->get();    	
@@ -133,13 +135,13 @@ class booking_listController extends Controller
                         ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
                         ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
                         ->where('db_users',Auth::User()->role_id)
-                        ->whereRaw('db_total = db_total_remain')
+                        ->where('db_status','Waiting List')
                         ->get();
 
 
             $jumlah = count(DB::table('d_booking')
                         ->where('db_users',Auth::User()->role_id)
-                        ->whereRaw('db_total = db_total_remain')
+                        ->where('db_status','Waiting List')
                         ->get());
             return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah','simple_table'));
         }else{

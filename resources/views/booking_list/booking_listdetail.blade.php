@@ -367,12 +367,12 @@
                                 <tr>
                                     <td align="left" class="Hightlight">Book By</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight" colspan="7">{{ $data[0]->created_by }}</td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data[0]->bookby }}</td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="Hightlight">Handle By</td>
                                     <td>: </td>
-                                    <td align="left" class="Hightlight" colspan="7">{{ $data[0]->name }}</td>
+                                    <td align="left" class="Hightlight" colspan="7">{{ $data[0]->handle }}</td>
                                 </tr>
                                 <tr>
                                     <td valign="top" align="left" class="Hightlight">Remark</td>
@@ -400,27 +400,14 @@
                                             <td align="left">{{ $e->dp_birth_date }}</td>
                                         </tr>
                                     @endforeach
-                                    <tr>
-                                        <td align="left" class="Hightlight" colspan="7" style="min-height: 250px">{{ $data[0]->mi_term }}</td>
-                                    </tr>
+                                    
                                 </table>
                             </div>
                     </div>
 
                    
                     <!-- Image--> 
-                        <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
-                            <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-12" data-wow-duration="1000ms">
-                                <h3 class="count_h2" style="font-weight: bold;">Booking Detail</h3>
-                                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12" style="min-height: 250px">
-                                        <table width="100%" class="table">
-                                            <tr>
-                                                <td align="left" class="Hightlight" colspan="7" style="min-height: 250px">{{ $data[0]->mi_term }}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                            </div>
-                        </div>
+                      
                     
 
                 </div>

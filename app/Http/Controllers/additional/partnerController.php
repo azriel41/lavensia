@@ -16,9 +16,10 @@ class partnerController extends Controller
 {
     
     public function partner()
-    {
-    	$data = User::all();
-        
+    {	
+    	// $data = user::all();
+    	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->groupBy('co_address','co_phone','image','co_name')->get();
+        // return $data;
         $category = category::all();
 
 		$intinerary = intinerary::all();
@@ -34,17 +35,17 @@ class partnerController extends Controller
 		if (Auth::User() != null) {
 
 				$cart   = DB::table('d_booking')
-							->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
-							->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
-							->where('db_users',Auth::User()->role_id)
-							->whereRaw('db_total = db_total_remain')
-							->get();
+						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+						->where('db_users',Auth::User()->role_id)
+						->where('db_status','Waiting List')
+						->get();
 
 
-				$jumlah = count(DB::table('d_booking')
-							->where('db_users',Auth::User()->role_id)
-							->whereRaw('db_total = db_total_remain')
-							->get());
+			$jumlah = count(DB::table('d_booking')
+						->where('db_users',Auth::User()->role_id)
+						->where('db_status','Waiting List')
+						->get());
 				// return $cart;
 
 	    	return view('additional.partner',compact('data','category','intinerary','det','response','cart','jumlah'));

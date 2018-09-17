@@ -28,6 +28,8 @@
 
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset ('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+{{-- count to --}}
+<script src="{{ asset ('assets/plugins/jquery-countTo/jquery.countTo.js') }}"></script>
 
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset ('assets/plugins/node-waves/waves.js') }}"></script>
@@ -40,10 +42,11 @@
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{ asset ('assets/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
-
+<!-- TinyMCE -->
 <!-- Custom Js -->
 <script src="{{ asset ('assets/js/admin.js') }}"></script>
 <script src="{{ asset ('assets/js/pages/index.js') }}"></script>
+<script src="{{ asset ('assets/js/pages/forms/editors.js') }}"/></script>
 
 <!-- Demo Js -->
 <script src="{{ asset ('assets/js/demo.js') }}"></script>
@@ -76,7 +79,12 @@
 {{-- DATEPICKER --}}
 <script src="{{ asset ('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 {{-- SELECT2 --}}
-<script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"  /></script>
+<script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"/></script>
+
+
+
+<!-- Custom Js -->
+
 
 <script type="text/javascript">
 		
