@@ -67,7 +67,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control numberonly" readonly=""  value="{{ $data[0]->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="number" name="co_phone" id="co_phone" class="form-control" readonly=""  value="{{ $data[0]->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" value="{{ $data[0]->mg_phone }}"  class="form-control numberonly" style="text-align: : right;"   placeholder="Manager Phone">
+                                            <input type="number" name="mg_phone" id="mg_phone" value="{{ $data[0]->mg_phone }}"  class="form-control" style="text-align: : right;"   placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>

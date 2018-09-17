@@ -176,7 +176,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control numberonly" style="text-align: : right;"  value="{{ $data->mg_phone }}" placeholder="Manager Phone">
+                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;"  value="{{ $data->mg_phone }}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="phone" id="phone" class="form-control numberonly" style="text-align: : right;"  value="{{ $data->phone }}" placeholder="PIC Phone">
+                                            <input type="number" name="phone" id="phone" class="form-control" style="text-align: : right;"  value="{{ $data->phone }}" placeholder="PIC Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -259,6 +259,67 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="address" id="address" class="form-control" placeholder="PIC Address">{{ $data->address }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
+                                    <h3 class="font-bold col-red"><i class="fa fa-home"></i> Log in Data</h3>
+                            </div>
+                            <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
+                                <hr style="
+                                display: block;
+                                margin-top: 0.5em;
+                                margin-bottom: 0.5em;
+                                margin-left: auto;
+                                margin-right: auto;
+                                border-style: inset;
+                                border-width: 1px;
+                                border-color: #E91E63 !important;
+                                " />
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">Role <b style="color: red">*</b></label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select class="form-control" name="role_id">
+                                                @foreach ($role as $e)
+                                                    @if ($data->role_id == $e->role_id)
+                                                        <option value="{{ $e->role_id }}" selected="">{{ $e->role_name }}</option>
+                                                    @else
+                                                        <option value="{{ $e->role_id }}">{{ $e->role_name }}</option>
+                                                    @endif
+                                                @endforeach
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">Username <b style="color: red">*</b></label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="username" id="username" value="{{ $data->username }}" class="form-control"  placeholder="Username">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">Password <b style="color: red">*</b></label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="password" name="password" id="password" class="form-control"  placeholder="Password">
                                         </div>
                                     </div>
                                 </div>

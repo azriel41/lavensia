@@ -256,6 +256,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//agent
 	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
 	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');
+	Route::get('/master/agent/create_agent', 'master\agentController@agent_create')->name('master_create_agent');
+	Route::post('/master/agent/save_agent', 'master\agentController@agent_save')->name('master_save_agent');
 	Route::get('/master/master_agent/{id}/edit', 'master\agentController@agent_edit')->name('master_agent_edit');
 	Route::post('/master/master_agent/{id}/update', 'master\agentController@agent_update')->name('master_agent_update');
 	Route::get('/master/master_agent/{id}/delete', 'master\agentController@agent_delete')->name('master_agent_delete');
