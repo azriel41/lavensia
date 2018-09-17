@@ -1391,7 +1391,7 @@
                 icon: 'fa fa-info',
                 position:'topRight',
                 title: 'Error!',
-                message: 'Terjadi Kesalahan!',
+                message: 'Terjadi Kesalahan, Cek Kembali Data Anda!',
             });
           }
         });

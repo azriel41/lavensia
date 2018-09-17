@@ -267,8 +267,21 @@
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_additional, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td align="right">Agent Com Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_agent_com, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Tips Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_tips, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Visa Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_visa, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Apt Tax & Fuel Surcharge Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_tax, 2, ",", ".") }}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td align="right">Total Price :</td>
-                                                        <td align="right"> Rp.  {{ number_format($booking->db_total_additional+$booking->db_total_room, 2, ",", ".") }}</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_total, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td align="right">Total Payment :</td>
@@ -536,7 +549,10 @@ $('.save').click(function(){
     }
     
     if (method == 'dp') {
-        if (total_payment < '{{ $booking->detail_itin->md_dp }}'*1) {
+        var adult = '{{ $booking->db_total_adult }}';
+        var child = '{{ $booking->db_total_child }}';
+        var totals = adult * child;
+        if (total_payment < ('{{ $booking->detail_itin->md_dp }}'*totals)) {
             iziToast.warning({
                 icon: 'fa fa-times',
                 position:'topRight',
@@ -564,39 +580,38 @@ $('.save').click(function(){
     }
 
     $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-        $.ajax({
-            type: "POST",
-            url:'{{ url('/payment_page/save') }}',
-            data: formdata ? formdata : form.serialize(),
-            dataType:'json',
-            processData: false,
-            contentType: false,
-          success:function(data){
-            if (data.status == '1') {
-                // console.log('{{ url('/') }}'+'/booking/bookingdetail/'+data.id);
-                location.href = '{{ url('/') }}'+'/booking/bookingdetail/'+data.id;
-            }else if (data.status == '0') {
-                iziToast.success({
-                    icon: 'fa fa-save',
-                    position:'topRight',
-                    title: 'Error!',
-                    message:data.message,
-                });
-            }
-          },error:function(){
-            iziToast.warning({
-                icon: 'fa fa-info',
+    $.ajax({
+        type: "POST",
+        url:'{{ url('/payment_page/save') }}',
+        data: formdata ? formdata : form.serialize(),
+        dataType:'json',
+        processData: false,
+        contentType: false,
+      success:function(data){
+        if (data.status == '1') {
+            // console.log('{{ url('/') }}'+'/booking/bookingdetail/'+data.id);
+            location.href = '{{ url('/') }}'+'/booking/bookingdetail/'+data.id;
+        }else if (data.status == '0') {
+            iziToast.success({
+                icon: 'fa fa-save',
                 position:'topRight',
                 title: 'Error!',
-                message: 'Terjadi Kesalahan!',
+                message:data.message,
             });
-          }
+        }
+      },error:function(){
+        iziToast.warning({
+            icon: 'fa fa-info',
+            position:'topRight',
+            title: 'Error!',
+            message: 'Terjadi Kesalahan!',
         });
-
+      }
+    });
 })
 </script>
