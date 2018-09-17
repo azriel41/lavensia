@@ -71,10 +71,9 @@
                                     <td><hr></td>
                                 </tr>
                             </table>
-                            
                             @foreach ($news as $e)
                                 <img src="{{ asset('/storage/app/article/'.'article-'.$e->da_image) }}?{{ time() }}" class="img-responsive">
-                                 <b style="font-size: 14px;">{{ substr(strip_tags($e->da_header), 0,30) }}{{ strlen($e->da_header) > 2 ?  ".." : "" }}</b>
+                                 <b style="font-size: 13px;"><a href="{{ asset('/article/article/'.$e->da_show) }}">{{ substr(strip_tags($e->da_header), 0,30) }}{{ strlen($e->da_header) > 2 ?  ".." : "" }}</a></b>
                                 <hr>
                                 <br>
                             @endforeach
