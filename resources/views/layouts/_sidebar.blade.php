@@ -330,6 +330,16 @@
                             @endif
                         </ul>
                     </li>
+                    @if(Auth::user()->akses('master agent','mh_aktif'))
+                    <li>
+                        <li>
+                            <a href="{{ route('master_agent') }}">
+                                <i class="material-icons">assignment</i>
+                                <span>Agent</span>
+                            </a>
+                        </li>
+                    </li>
+                    @endif
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>

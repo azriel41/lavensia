@@ -21,7 +21,7 @@ class agent_agentController extends Controller
 {
     public function agent()
     {
-        $data = user::where('co_name',Auth::user()->co_name)->get();
+        $data = user::where('co_name',Auth::user()->co_name)->where('co_id','!=',Auth::user()->id)->get();
         
         if(Auth::user()->akses('approve master agent','mh_aktif')){
     	   return view('agent.index_agent',compact('data'));
@@ -32,7 +32,7 @@ class agent_agentController extends Controller
 
     public function agent_datatable()
     {
-        $data = user::where('co_name',Auth::user()->co_name)->get();
+        $data = user::where('co_name',Auth::user()->co_name)->where('co_id','!=',Auth::user()->id)->get();
         
         $data = collect($data);
         // return $data;
@@ -83,8 +83,16 @@ class agent_agentController extends Controller
                                     <i class="material-icons">extensions</i>
                                    </button>';
                         })
+                        ->addColumn('privileges', function ($data) {
+                            if ($data->role_id == 4) {
+                                $role = 'Master Agent'
+                            }else{
+                                $role = 'Admin Agent'
+                            }
+                            return $role;
+                        })
                        
-                        ->rawColumns(['aksi','schedule','departure'])
+                        ->rawColumns(['aksi','schedule','departure','privileges'])
                         ->addIndexColumn()
                         ->make(true);
     }

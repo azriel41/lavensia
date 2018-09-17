@@ -44,6 +44,7 @@
                                 <th class="center">Com Name</th>
                                 <th class="center">Man Name</th>
                                 <th class="center">Status</th>
+                                <th class="center">Privileges</th>
                                 <th class="center">Detail</th>
                             </tr>
                         </thead>
@@ -90,6 +91,7 @@ window.onload = function(){
             {data: 'co_name', name: 'co_name'},
             {data: 'mg_name', name: 'mg_name'},
             {data: 'status', name: 'status'},
+            {data: 'privileges', name: 'privileges'},
             {data: 'aksi', name: 'aksi'},
         ]
     });

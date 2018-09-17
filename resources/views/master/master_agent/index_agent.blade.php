@@ -26,7 +26,7 @@
                         Master Agent
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ route('master_agent_agent_create') }}">
+                        <a href="{{ route('master_create_agent') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>
@@ -44,6 +44,8 @@
                                 <th class="center">Com Name</th>
                                 <th class="center">Man Name</th>
                                 <th class="center">Status</th>
+                                <th class="center">Privileges</th>
+
                                 <th class="center">Detail</th>
                             </tr>
                         </thead>
@@ -90,6 +92,8 @@ window.onload = function(){
             {data: 'co_name', name: 'co_name'},
             {data: 'mg_name', name: 'mg_name'},
             {data: 'status', name: 'status'},
+            {data: 'privileges', name: 'privileges'},
+            
             {data: 'aksi', name: 'aksi'},
         ]
     });
