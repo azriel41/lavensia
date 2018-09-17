@@ -303,11 +303,11 @@
                             <span>Product</span>
                         </a>
                         <ul class="ml-menu">
-                            @if(Auth::user()->akses('master agent','mh_aktif'))
+                           {{--  @if(Auth::user()->akses('master agent','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_agent') }}">Agent</a>
                                 </li>
-                            @endif
+                            @endif --}}
                             @if(Auth::user()->akses('master category','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_category') }}">Destination</a>
