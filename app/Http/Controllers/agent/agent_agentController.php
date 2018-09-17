@@ -85,9 +85,9 @@ class agent_agentController extends Controller
                         })
                         ->addColumn('privileges', function ($data) {
                             if ($data->role_id == 4) {
-                                $role = 'Master Agent'
+                                $role = 'Master Agent';
                             }else{
-                                $role = 'Admin Agent'
+                                $role = 'Admin Agent';
                             }
                             return $role;
                         })
