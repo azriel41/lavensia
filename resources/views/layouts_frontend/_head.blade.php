@@ -277,7 +277,7 @@ End Fixed Navigation
     color: grey;
 }
 .form_display {
-    position: fixed;
+    position: absolute;
     z-index: 90;
     top: 1px;
     right: -0px;
