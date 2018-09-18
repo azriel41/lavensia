@@ -54,8 +54,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control"  placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control" value="{{old('co_name')}}"   placeholder="Company Name">
                                         </div>
+                                        @if($errors->has('co_name'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_name')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +70,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="co_phone" id="co_phone" class="form-control" style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="number" name="co_phone" id="co_phone" class="form-control" value="{{old('co_phone')}}"   style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
+                                        @if($errors->has('co_phone'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +86,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control"  placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control" value="{{old('co_email')}}"   placeholder="Company Email">
                                         </div>
+                                        @if($errors->has('co_email'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_email')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -93,8 +102,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address"></textarea>
+                                            <textarea name="co_address" id="co_address" class="form-control" value="{{old('co_address')}}"  placeholder="Company Address"></textarea>
                                         </div>
+                                        @if($errors->has('co_address'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_address')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +140,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if($errors->has('image'))
+                                            <small style="color: #ed5565">{{ $errors->first('image')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -156,8 +171,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control"  placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control" value="{{old('mg_name')}}" placeholder="Manager Name">
                                         </div>
+                                        @if($errors->has('co_phone'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +187,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" placeholder="Manager Phone">
+                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" value="{{old('mg_phone')}}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +200,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control" value="{{old('mg_email')}}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
@@ -212,8 +230,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="PIC Name">
+                                            <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" placeholder="PIC Name">
                                         </div>
+                                        @if($errors->has('name'))
+                                            <small style="color: #ed5565">{{ $errors->first('name')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -225,8 +246,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="phone" id="phone" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
+                                            <input type="number" name="phone" id="phone" value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
                                         </div>
+                                        @if($errors->has('phone'))
+                                            <small style="color: #ed5565">{{ $errors->first('phone')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -238,8 +262,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="email" id="email" class="form-control"  placeholder="PIC Email">
+                                            <input type="text" name="email" id="email" value="{{old('email')}}" class="form-control"  placeholder="PIC Email">
                                         </div>
+                                        @if($errors->has('email'))
+                                            <small style="color: #ed5565">{{ $errors->first('email')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>  
@@ -251,8 +278,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="address" id="address" class="form-control" placeholder="PIC Address"></textarea>
+                                            <textarea name="address" id="address" value="{{old('address')}}" class="form-control" placeholder="PIC Address"></textarea>
                                         </div>
+                                        @if($errors->has('address'))
+                                            <small style="color: #ed5565">{{ $errors->first('address')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -294,8 +324,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="username" id="username" class="form-control"  placeholder="Username">
+                                            <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}"  placeholder="Username">
                                         </div>
+                                        @if($errors->has('username'))
+                                            <small style="color: #ed5565">{{ $errors->first('username')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>  

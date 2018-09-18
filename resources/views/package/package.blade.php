@@ -197,11 +197,28 @@
 
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-                                <div class="col-md-12">
+                                <div class="col-md-12" >
+                                      
+                                        <table width="100%" class="table table-striped" align="center">
+                                            <tr style="background-color: #7ed6df;">
+                                                <th class="center-al">No Flight</th>
+                                                <th class="center-al">No Route</th>
+                                                <th class="center-al">Time</th>
+                                            </tr>
+                                    @foreach ($flight as $element)
+                                            <tr>
+                                                <td>{{ $element->fd_nomor }}</td>
+                                                <td>{{ $element->fd_route }}</td>
+                                                <td>{{ $element->fd_time }}</td>
+                                            </tr>
+                                    @endforeach
+                                        </table>
+                                            
+
                                     @foreach ($schedule as $index => $sch)
                                       <div style="margin-top: 20px"></div>
                                       <div style="min-height: 100px">
-                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #1d42fc;">
+                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #7ed6df;">
                                                 <span>Day</span><br>
                                                 <span class="day-tour">{{ $index+1 }}</span>
                                             </div>
@@ -235,6 +252,10 @@
                                                <th class="center-al">Child</th>
                                                <th class="center-al">Child w Bed</th>
                                                <th class="center-al">Infant</th>
+                                               <th class="center-al">visa</th>
+                                               <th class="center-al">Tax</th>
+                                               <th class="center-al">Tips</th>
+                                               <th class="center-al">Min DP</th>
                                                <th class="center-al">Seat Remain</th>
                                                <th class="center-al">Book</th>
                                            </tr>
@@ -249,6 +270,10 @@
                                                <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_child_w_price,0,'','.') }}</td>
                                                <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_Visa,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_tax,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_tips,0,'','.') }}</td>
+                                               <td align="right">{{ number_format($det->md_dp,0,'','.') }}</td>
                                                <td>{{ $det->md_seat_remain }}</td>
                                                <td>
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
@@ -270,7 +295,7 @@
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped" align="center">
                                         <thead>
-                                           <tr >
+                                           <tr style="background-color: #7ed6df;">
                                                <th class="center-al">No</th>
                                                <th class="center-al">Name</th>
                                                <th class="center-al">Price</th>
@@ -299,7 +324,7 @@
                                     
                                 </table>
                                 <div style="margin-top: 20px"></div>
-                                <div class="pull-left">
+                                <div class="pull-left" style="text-align: left">
                                     <span>{!! $data[0]->mi_term !!}</span>
                                 </div>
                             </div>
