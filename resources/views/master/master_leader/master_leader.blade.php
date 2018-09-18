@@ -26,7 +26,7 @@
                         Master Tour Leader
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ url('/master/master_intinerary/master_leader') }}">
+                        <a href="{{ url('/master/master_intinerary/create') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>
