@@ -50,12 +50,14 @@ class intinerary_controller extends Controller
                                 </button>
                                 <ul class="dropdown-menu" style="padding:0px">';
 
+                                    if (Auth::user()->akses('edit itinerary','mh_aktif')) {
                                         $b = '<li class="bg-orange">
                                                     <a href="'.url('/master/master_intinerary/edit').'/'.$data->mi_id.'" class=" waves-effect waves-block" style="color:white">
                                                         <i class="material-icons">edit</i>
                                                         Edit
                                                     </a>
                                                 </li>';
+                                    }
                                     if (Auth::user()->akses('hapus itinerary','mh_aktif')) {
                                         $c = '<li class="bg-red">
                                             <a onclick="deleting(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
@@ -253,7 +255,7 @@ class intinerary_controller extends Controller
                     'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_tips'           => filter_var($req->tips[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_visa'           => filter_var($req->visa[$i],FILTER_SANITIZE_NUMBER_INT),
-                    'md_tax'            => filter_var($req->apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_tax'            => filter_var($req->md_apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );

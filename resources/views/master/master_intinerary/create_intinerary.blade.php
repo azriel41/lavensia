@@ -238,13 +238,6 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line" >
-                                                                    <input type="text" value="" style="font-weight: bold; text-transform: uppercase;" name="fd_tanggal[]" placeholder="Date Flight" class="form-control fd_tanggal sch_req datenormal">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line" >
                                                                     <input type="text" value="" style="font-weight: bold; text-transform: uppercase;" name="fd_route[]" placeholder="Route" class="form-control fd_route sch_req">
                                                                 </div>
                                                             </div>
