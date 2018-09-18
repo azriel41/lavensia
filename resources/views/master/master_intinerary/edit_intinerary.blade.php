@@ -98,7 +98,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_term }}</textarea>
+                                            <textarea rows="4"  id="term_con" name="term" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_term }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="preview_td">
-                                        <img style="width: 100%;border:1px solid pink" class="gambar" id="output" src="{{ route('storage') }}/{{ $data->mi_image }}?'{{ time() }}'" >
+                                        <img style="width: 100%;border:1px solid pink" class="gambar output" id="output" src="{{ asset('storage/app') }}/{{ $data->mi_image }}?'{{ time() }}'" >
                                     </div>
                                 </div>
                             </div>
@@ -229,33 +229,33 @@
                             <div class="row clearfix">
                                 <div class="col-md-12">
                                     <div class="panel panel-danger">
-                                        <div class="panel-heading" role="tab" id="headingOne_1">
+                                        <div class="panel-heading" role="tab" id="headingOne_2">
                                             <h4 class="panel-title">
-                                                <a style="text-decoration: none; width: 100%" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne_1" aria-expanded="true" aria-controls="collapseOne_1" class="">
+                                                <a style="text-decoration: none; width: 100%" role="button" data-toggle="collapse" data-parent="#accordion_2" href="#collapseOne_2" aria-expanded="true" aria-controls="collapseOne_2" class="">
                                                 <i class="material-icons">add</i> Add Flight Detail
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div id="collapseOne_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_1" aria-expanded="true" style="">
+                                        <div id="collapseOne_2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_2" aria-expanded="true" style="">
                                             <div class="panel-body">
                                                 <div class="flight">
                                                     @foreach ($data->flight as $i=> $val)
                                                         <div class="all_flight">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line" >
                                                                         <input type="text" value="{{ $val->fd_nomor }}" style="font-weight: bold; text-transform: uppercase;" name="fd_nomor[]" placeholder="No Flight" class="form-control fd_nomor sch_req">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line" >
                                                                         <input type="text" value="{{ $val->fd_route }}" style="font-weight: bold; text-transform: uppercase;" name="fd_route[]" placeholder="Route" class="form-control fd_route sch_req">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group form-float">
                                                                     <div class="form-line" >
                                                                         <input type="text" value="{{ $val->fd_time }}" style="font-weight: bold; text-transform: uppercase;" name="fd_time[]" placeholder="Time" class="form-control fd_time sch_req">
@@ -284,20 +284,21 @@
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Start</label>
+                                            <label class="form-control-label">Start</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req" style="position:relative">
                                                     <input type="text" id="start" class="form-control datenormal" placeholder="DD-MM-YYYY">
                                                     <input type="hidden" id="index">
+                                                    <input type="hidden" id="detail_id">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Adult Price</label>
+                                            <label class="form-control-label">Adult Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -309,7 +310,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Child Price</label>
+                                            <label class="form-control-label">Child Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -321,7 +322,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Child With Bed Price</label>
+                                            <label class="form-control-label">Child With Bed Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -333,12 +334,24 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Visa</label>
+                                            <label class="form-control-label">Visa</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req">
                                                     <input type="text" id="visa" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label">Apt Tax & Fuel Surcharge</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -359,7 +372,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Infant Price</label>
+                                            <label class="form-control-label">Infant Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -371,7 +384,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Minimal DP</label>
+                                            <label class="form-control-label">Minimal DP</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -383,7 +396,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Agent Com</label>
+                                            <label class="form-control-label">Agent Com</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -395,7 +408,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Tips</label>
+                                            <label class="form-control-label">Tips</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -405,18 +418,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Apt Tax & Fuel Surcharge</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line req">
-                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                             <label class="form-control-label" for="end">Seat</label>
@@ -492,30 +494,64 @@
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#child_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#child_w_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#infant_price").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
     });
 
     $("#minimal_dp").maskMoney({
         precision:0,
         thousands:'.',
         allowZero:true,
+        defaultZero:true,
+    });
+
+
+    $("#agent_com").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#tips").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#visa").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
+    $("#apt_tax").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
     });
 
 
@@ -619,11 +655,18 @@
         var adult_price   = $('#adult_price').val();
         var child_price   = $('#child_price').val();
         var infant_price  = $('#infant_price').val();
-        var term          = $('#term').val();
         var seat          = $('#seat').val();
         var child_w_price = $('#child_w_price').val();
         var minimal_dp    = $('#minimal_dp').val();
-
+        var agent_com     = $('#agent_com').val();
+        var tips          = $('#tips').val();
+        var apt_tax       = $('#apt_tax').val();
+        var visa          = $('#visa').val();
+        var agent_com     = $('#agent_com').val();
+        var detail_id     = $('#detail_id').val();
+        if (detail_id == '') {
+            detail_id = 0;
+        }
 
         var par = $('.index_'+index).parents('tr');
         detail.row(par).remove().draw();
@@ -631,7 +674,7 @@
         detail.row.add([
             '<p class="start_text">'+start+'</p>'+
             '<input type="hidden" name="start[]" value="'+start+'" class="start">'+
-            '<input type="hidden" name="detail_id[]" value="0" class="detail_id">'+
+            '<input type="hidden" name="detail_id[]" value="'+detail_id+'" class="detail_id">'+
             '<input type="hidden" value="'+inc+'" class="index index_'+inc+'">',
 
             '<p class="end_text">'+end+'</p>'+
@@ -667,14 +710,13 @@
             '<p class="seat_text">'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
-            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group"  style="width:65px">'+
             '<a title="Edit" type="button" onclick="edit(this)" class="btn btn-warning  waves-effect "><i class=fa fa-edit>edit</i></a>'+
             '<a title="Delete" type="button" onclick="hapus(this)" class="btn btn-danger  waves-effect "><i class=fa fa-trash>trash</i></a>'+
             '</div>',
         ]).draw();
         inc++;
         $('.add_departure input').val('');
-        $('.add_departure textarea').val('');
     })
 
     function hapus(a) {
@@ -694,6 +736,7 @@
         var term          = $(par).find('.term').val();
         var seat          = $(par).find('.seat').val();
         var minimal_dp    = $(par).find('.minimal_dp').val();
+        var detail_id     = $(par).find('.detail_id').val();
 
 
         $('#index').val(index);
@@ -706,6 +749,11 @@
         $('#term').val(term);
         $('#seat').val(seat);
         $('#minimal_dp').val(minimal_dp);
+        $('#agent_com').val(agent_com);
+        $('#tips').val(tips);
+        $('#visa').val(visa);
+        $('#apt_tax').val(apt_tax);
+        $('#detail_id').val(detail_id);
     }
 
     $('#chooseFile').bind('change', function () {
@@ -963,7 +1011,7 @@
             '<p class="seat_text">'+seat_remain+'/'+seat+'</p>'+
             '<input type="hidden" name="seat[]" value="'+seat+'" class="seat">',
 
-            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group">'+
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Extra-small button group" style="width:65px">'+
             action+
             '</div>',
         ]).draw();
