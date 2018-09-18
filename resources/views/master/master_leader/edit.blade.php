@@ -231,7 +231,7 @@
                         title: 'Success!',
                         message: 'Data Saved!',
                     });
-                    window.location=('{{ route('master_leader') }}')
+                    window.location=('{{ url('/master/master_intinerary/master_leader') }}')
                 }else{
                     iziToast.error({
                         icon: 'fas fa-times-circle',
