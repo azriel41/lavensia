@@ -143,7 +143,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//ARTICLE
     Route::get('/function/article/article_index', 'article\articleController@article_index')->name('article_index');
 	Route::get('/function/article/create', 'article\articleController@create')->name('article_create');
-	Route::get('/function/article/edit', 'article\articleController@edit')->name('article_edit');
+	Route::get('/function/article/edit/{id}', 'article\articleController@edit')->name('article_edit');
 	Route::post('/function/article/save', 'article\articleController@save')->name('article_save');
 	Route::post('/function/article/update', 'article\articleController@update')->name('article_update');
 	Route::post('/function/article/delete', 'article\articleController@delete')->name('article_delete');
