@@ -270,7 +270,7 @@
                                 <div class="col-sm-6">
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Start</label>
+                                            <label class="form-control-label">Start</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -283,7 +283,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Adult Price</label>
+                                            <label class="form-control-label">Adult Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -295,7 +295,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Child No Bed Price</label>
+                                            <label class="form-control-label">Child No Bed Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -307,7 +307,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Child With Bed Price</label>
+                                            <label class="form-control-label">Child With Bed Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -319,7 +319,7 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Infant Price</label>
+                                            <label class="form-control-label">Infant Price</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
@@ -331,12 +331,24 @@
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Visa</label>
+                                            <label class="form-control-label">Visa</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <div class="form-group">
                                                 <div class="form-line req">
                                                     <input type="text" id="visa" class="form-control " placeholder="Field Required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
+                                            <label class="form-control-label">Apt Tax & Fuel Surcharge</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="form-group">
+                                                <div class="form-line req">
+                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>
@@ -388,18 +400,6 @@
                                             <div class="form-group">
                                                 <div class="form-line req">
                                                     <input type="text" id="tips" class="form-control" placeholder="Field Required">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
-                                            <label class="form-control-label" for="start">Apt Tax & Fuel Surcharge</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <div class="form-line req">
-                                                    <input type="text" id="apt_tax" class="form-control" placeholder="Field Required">
                                                 </div>
                                             </div>
                                         </div>

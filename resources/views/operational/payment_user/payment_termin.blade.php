@@ -264,9 +264,23 @@
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_additional, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td align="right">Agent Com Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_agent_com, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Tips Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_tips, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Visa Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_visa, 2, ",", ".") }}</td>
+                                                    </tr><tr>
+                                                        <td align="right">Apt Tax & Fuel Surcharge Price :</td>
+                                                        <td align="right"> Rp.  {{ number_format($booking->db_tax, 2, ",", ".") }}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td align="right">Paid :</td>
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total-$booking->db_total_remain, 2, ",", ".") }}</td>
                                                     </tr>
+
                                                     <tr>
                                                         <td align="right">Remaining :</td>
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total_remain, 2, ",", ".") }}</td>
