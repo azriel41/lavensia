@@ -65,6 +65,45 @@ class articleController extends Controller
     {
 	   	return view('article.create_article',compact('data'));
     }
+    public function edit($id)
+    {
+
+      $data = DB::table('d_article')->where('da_id',$id)->first();
+      return view('article.edit_article',compact('data'));
+    }
+     public function update(Request $request)
+    {
+      // dd($request->all());
+      $foto = DB::table('d_article')->max('da_id');
+
+      if ($foto == null) {
+        $foto = 1;
+      }else{
+        $foto +=1;
+      }
+      
+      $art = DB::table('d_article')->where('da_id',$request->id)->get();
+
+       if ($request->file('image') == null) {
+           $filename = $art[0]->da_image;
+       }else{
+           $image = $request->file('image');
+           $upload = 'article/article';
+           $filename = $foto.'.jpg';
+           Storage::put('article/article-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = article::findOrfail($request->id);
+        $data->da_header  = $request->da_header;
+        $data->da_image  = $filename;
+        $data->da_desc  = $request->da_desc;
+        $data->da_show  = $request->da_show;
+        $data->da_created_by  = Auth::user()->username;
+        $data->save();
+
+       return redirect('function/article/article_index');
+    }
     public function save(Request $request)
     {
 

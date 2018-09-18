@@ -85,7 +85,7 @@
                                                 Manage <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a href="article/{{ $e->da_id }}/edit"  class=" waves-effect waves-block"><i class="fa fa-edit"></i> Edit</a></li>
+                                                <li><a href="edit/{{ $e->da_id }}"  class=" waves-effect waves-block"><i class="fa fa-edit"></i> Edit</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li><a onclick="hapus(this)" data-id="{{ $e->da_id }}" class=" waves-effect waves-block"><i class="fa fa-trash"></i> Delete</a></li>
                                             </ul>
