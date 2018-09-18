@@ -220,7 +220,7 @@
         }
         $.ajax({
             data : formdata,
-            url  : '{{ route('update_leader') }}?id='+'{{ $data->tl_id }}',
+            url  : '{{ url('/master/master_intinerary/update_leader') }}?id='+'{{ $data->tl_id }}',
             type : 'POST',
             processData: false,
             contentType: false,
@@ -231,7 +231,7 @@
                         title: 'Success!',
                         message: 'Data Saved!',
                     });
-                    window.location=('{{ route('master_leader') }}')
+                    window.location=('{{ url('/master/master_intinerary/master_leader') }}')
                 }else{
                     iziToast.error({
                         icon: 'fas fa-times-circle',
