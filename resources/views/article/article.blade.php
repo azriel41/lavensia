@@ -58,7 +58,9 @@
                                  </tr>
                                  <tr>
                                      <td>
+                                      <div class="col-sm-12">
                                          {!! $data->da_desc !!}
+                                      </div>
                                      </td>
                                  </tr>
                              </table>

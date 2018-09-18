@@ -292,10 +292,12 @@ class booking_listController extends Controller
         for ($i=0; $i <count($data) ; $i++) { 
             if ($data[$i]->dp_status_person == 'adult') {
                 $total_1[$i] = $data[$i]->md_adult_price;
-            }elseif ($data[$i]->dp_status_person == 'child') {
+            }elseif ($data[$i]->dp_status_person == 'child' && $data[$i]->dp_status_person == 'doubletwin&cnb') {
                 $total_2[$i] = $data[$i]->md_child_price;
+            }elseif ($data[$i]->dp_status_person == 'child' && $data[$i]->dp_status_person == 'doubletwin&cwb') {
+                $total_3[$i] = $data[$i]->md_child_w_price;
             }elseif ($data[$i]->dp_status_person == 'baby') {
-                $total_3[$i] = $data[$i]->md_infant_price;
+                $total_4[$i] = $data[$i]->md_infant_price;
             }
         }
         if ($total_1 == null) {
@@ -304,11 +306,13 @@ class booking_listController extends Controller
             $total_2 = [0];
         }elseif ($total_3 == null) {
             $total_3 = [0];
+        }elseif ($total_4 == null) {
+            $total_4 = [0];
         }
-        $total_pax = array_sum($total_1)+array_sum($total_2)+array_sum($total_3);
+        $total_pax = array_sum($total_1)+array_sum($total_2)+array_sum($total_3)+array_sum($total_4);
 
 
-       $add_book = DB::table('d_additonal_booking')
+        $add_book = DB::table('d_additonal_booking')
             ->leftjoin('m_additional','m_additional.ma_id','=','d_additonal_booking.da_additional_id')
             ->where('da_booking_id',$id)->get()->toArray();
         
@@ -321,14 +325,27 @@ class booking_listController extends Controller
         }
         $total_add = array_sum($add);
 
-        $grand_total = $total_pax+$total_add;
 
-        
+        $data_w_bay = DB::table('d_booking')
+            ->leftjoin('d_history_bayar','d_history_bayar.dh_booking_id','=','d_booking.db_id')
+            ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+            ->leftjoin('users','users.id','=','d_booking.db_users')
+            ->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
+            // ->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
+            ->where('db_id',$id)->where('dp_status_person','!=','baby')->get()->toArray();
 
-        $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('data','add_book','total_pax','total_add','grand_total'));
-        return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');
+        // return $data_w_bay;
+        $tips = count($data_w_bay)*$data[0]->db_tips;
+        $agen_com = count($data_w_bay)*$data[0]->db_agent_com;
+        $tax = count($data_w_bay)*$data[0]->db_tax;
+        $visa = count($data_w_bay)*$data[0]->db_visa;
 
-		// return view('booking_print.booking_print_invoice',compact('data','add_book','total_pax','total_add','grand_total'));
+        $grand_total = $total_pax+$total_add+$tips+$agen_com+$tax+$visa;
+
+        // $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('agen_com','tax','visa','tips','data','add_book','total_pax','total_add','grand_total'));
+        // return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');
+
+		return view('booking_print.booking_print_invoice',compact('agen_com','tax','visa','tips','data','add_book','total_pax','total_add','grand_total'));
     }
     
 }
