@@ -16,6 +16,7 @@ use Response;
 use File;
 use Storage;
 use Hash;
+use Validator;
 use Yajra\Datatables\Datatables;
 class agentController extends Controller
 {
@@ -123,6 +124,29 @@ class agentController extends Controller
            $filename = auth::user()->id.'.jpg';
            Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }
+
+        $rules = [
+                  "username" => "required|unique:users,username",
+                  "co_name" => "required",
+                  "co_phone" => "required",
+                  "co_email" => "required",
+                  "co_address" => "required",
+                  "mg_name" => "required",
+                  "name" => "required",
+                  "phone" => "required",                
+                  "email" => "required|unique:users,username", 
+                  "address" => "required",
+                  "image" => "required",  
+                  "password" => "required",  
+
+            ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+          return redirect()->back()
+          ->witherrors($validator)
+          ->withinput();
+        }
+
 
        $image = DB::table('users')->insert([
                 'co_name'       =>$request->co_name,

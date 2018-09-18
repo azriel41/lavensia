@@ -160,7 +160,7 @@
     tinymce.init({
     selector: '#mytextarea',
     plugins: "link code",
-    height: 300,
+        height: 300,
   });
 </script>
 @endsection  

@@ -30,13 +30,15 @@ class packageController extends Controller
         $additional = DB::table('m_additional_intinerary')
                                             ->leftjoin('m_additional','m_additional_intinerary.additional_ma_id','=','m_additional.ma_id')
                                             ->where('intinerary_mi_id','=',$id)->get();
+
+        $flight = DB::table('m_flight_detail')->where('fd_intinerary_id',$id)->get();
         // return $additional;
         if (Auth::User() != null) {
             $cart = Auth::User()->booking;
             $jumlah = count(Auth::User()->booking);
-            return view('package.package',compact('data','schedule','detail','additional','cart','jumlah'));
+            return view('package.package',compact('data','schedule','detail','additional','cart','jumlah','flight'));
         }else{
-            return view('package.package',compact('data','schedule','detail','additional'));
+            return view('package.package',compact('data','schedule','detail','additional','flight'));
         }
     }
     public function package_pdf(Request $req)
