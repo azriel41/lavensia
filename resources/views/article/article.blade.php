@@ -22,7 +22,6 @@
                 border: 1px solid #bcbcbc;
                 padding: 5px;
             }
-
         </style>
     </head>
     
@@ -35,7 +34,7 @@
         <section id="package" class="package background_page">
             <div class="container">
                 <div class="row gg" >
-                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
+                    <div class="text-center wow fadeInUp  animated" data-wow-duration="1000ms">
                       <div class="container">
                         <div class="col-md-9" style="border-right: 1px solid #ddd;">
                              <table width="100%" >
@@ -49,9 +48,9 @@
                                  <tr>
                                     <th>&nbsp;</th>
                                  </tr>
-                                 <tr>
+                               {{--   <tr>
                                      <td><img src="{{ asset('/storage/app/article/'.'article-'.$data->da_image) }}?{{ time() }}" class="img-responsive"></td>
-                                 </tr>
+                                 </tr> --}}
                              </table>
                              <table width="95%">
                                  <tr>
