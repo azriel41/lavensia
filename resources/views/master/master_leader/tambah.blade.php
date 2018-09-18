@@ -214,6 +214,7 @@
         if (window.FormData){
             formdata = new FormData(form[0]);
         }
+        
         $.ajax({
             data : formdata,
             url  : ('{{ url('/master/master_intinerary/save_leader') }}'),

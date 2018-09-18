@@ -255,7 +255,7 @@ class intinerary_controller extends Controller
                     'md_agent_com'      => filter_var($req->agent_com[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_tips'           => filter_var($req->tips[$i],FILTER_SANITIZE_NUMBER_INT),
                     'md_visa'           => filter_var($req->visa[$i],FILTER_SANITIZE_NUMBER_INT),
-                    'md_tax'            => filter_var($req->md_apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
+                    'md_tax'            => filter_var($req->apt_tax[$i],FILTER_SANITIZE_NUMBER_INT),
                     'updated_at'        => Carbon::now(),
                     'updated_by'        => $name
                 );
@@ -264,9 +264,10 @@ class intinerary_controller extends Controller
                 if ($req->detail_id[$i] != '0') {
 
                     $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
-
-                    $remain    = $cari_seat->md_seat - 1 - $cari_seat->md_seat_remain;
-                    $det['md_seat_remain']    -= $remain;
+                    $det['md_seat_remain']    = $cari_seat->md_seat_remain;
+                    if ($cari_seat->md_seat_remain > $req->seat[$i]) {
+                        return Response::json(['status'=>0,'message'=>'Seat Telah Terpakai Sebagian']);
+                    }
                     $update_detail = $detail_intinerary->update_detail($det,'md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
                 }else{
                     $id_dt = $detail_intinerary->max_detail('md_intinerary_id',$id,'md_detail');

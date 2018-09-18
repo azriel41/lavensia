@@ -152,9 +152,9 @@ class payment_page_controller extends Controller
                         ->where('db_users',Auth::User()->role_id)
                         ->where('db_status','Waiting List')
                         ->get());
-                return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
+                return view('operational.payment_user.payment_user',compact('cart','jumlah','booking'));
             }else{
-                return view('operational.payment_user.payment_termin','booking');
+                return view('operational.payment_user.payment_user','booking');
             }
         }else{
             if (Auth::User() != null) {
@@ -170,9 +170,9 @@ class payment_page_controller extends Controller
                         ->where('db_users',Auth::User()->role_id)
                         ->where('db_status','Waiting List')
                         ->get());
-                return view('operational.payment_user.payment_user',compact('cart','jumlah','booking'));
+                return view('operational.payment_user.payment_termin',compact('cart','jumlah','booking'));
             }else{
-                return view('operational.payment_user.payment_user','booking');
+                return view('operational.payment_user.payment_termin','booking');
             }
 
         }
