@@ -220,7 +220,7 @@
         }
         $.ajax({
             data : formdata,
-            url  : '{{ route('update_leader') }}?id='+'{{ $data->tl_id }}',
+            url  : '{{ url('/master/master_intinerary/update_leader') }}?id='+'{{ $data->tl_id }}',
             type : 'POST',
             processData: false,
             contentType: false,

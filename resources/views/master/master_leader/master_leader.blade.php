@@ -26,7 +26,7 @@
                         Master Tour Leader
                     </h4>
                     <div class="pull-right">
-                        <a href="{{ url('/master/master_intinerary/create') }}">
+                        <a href="{{ url('/master/master_intinerary/create_leader') }}">
                             <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">add</i> Add Data</button>
                         </a>
                     </div>
@@ -91,11 +91,11 @@ window.onload = function(){
 }
 
 function deleting() {
-   location.href = '{{ url('blade_pllplplp') }}';
+   
 }
 
 function editing(id) {
-    location.href = '{{ url('/master/master_intinerary/edit') }}?id='+id;
+    location.href = '{{ url('/master/master_intinerary/edit_leader') }}?id='+id;
 }
 
 
