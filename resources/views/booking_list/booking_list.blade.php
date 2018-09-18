@@ -143,7 +143,7 @@
                                             <td>{{ $el->name }}</td>
                                             <td>
                                                 @if ($el->db_total_remain == 0)
-                                                    <span class="label label-success">Lunas</span>
+                                                    <button class="btn btn-sm btn-deault payment" disabled=""> <i class="fa fa-money"></i> Pay</button>
                                                 @else
                                                     <button class="btn btn-sm btn-book payment" data-id={{ $el->db_id }}> <i class="fa fa-money"></i> Pay</button>
                                                 @endif
