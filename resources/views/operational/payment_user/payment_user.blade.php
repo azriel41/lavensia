@@ -452,7 +452,7 @@ function load(parent,file) {
 // END GAMBAR
 function hitung(a) {
     total_payment = 0;
-    var sisa = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+    var sisa = '{{ $booking->db_total_additional+$booking->db_total_room+$booking->db_tax+$booking->db_visa-$booking->db_agent_com+$booking->db_tips }}';
     $('.nominal').each(function(){
         total_payment +=  $(this).val().replace(/[^0-9\-]+/g,"")*1;
         sisa -= $(this).val().replace(/[^0-9\-]+/g,"")*1;
@@ -463,7 +463,7 @@ function hitung(a) {
             });
             temp -= $(this).val().replace(/[^0-9\-]+/g,"")*1;
             console.log(temp);
-            var sisa1 = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+            var sisa1 = '{{ $booking->db_total_additional+$booking->db_total_room+$booking->db_tax+$booking->db_visa-$booking->db_agent_com+$booking->db_tips }}';
              sisa1 = sisa1 - temp
             $(this).val(accounting.formatMoney(sisa1,"", 0, ".",','));
         }
@@ -515,7 +515,7 @@ $('input').focus(function(){
 })  
 
 $('.save').click(function(){
-    var total = '{{ $booking->db_total_additional+$booking->db_total_room }}';
+    var total = '{{ $booking->db_total_additional+$booking->db_total_room+$booking->db_tax+$booking->db_visa-$booking->db_agent_com+$booking->db_tips }}';
     var nominal = $('.nominal').val().replace(/[^0-9\-]+/g,"");
     var validator = [];
     var method    = $('.payment:checked').val()
