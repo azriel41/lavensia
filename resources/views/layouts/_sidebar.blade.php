@@ -371,6 +371,7 @@
                             @endif
                         </ul>
                     </li>
+                    @if(Auth::user()->akses('report oketrip','mh_aktif'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
@@ -378,10 +379,30 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('report_profit') }}">Report Income</a>
+                                <a href="{{ route('report_customer_oketrip') }}">Report Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_profit_oketrip') }}">Report Penjualan</a>
                             </li>
                         </ul>
                     </li>
+                    @endif
+                    @if(Auth::user()->akses('report agent','mh_aktif'))
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">pie_chart</i>
+                            <span>Report</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{ route('report_customer_agent') }}">Report Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_purchase_agent') }}">Report Penjualan</a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endif
 
                     <li>
                         <a href="{{ route('booking_print') }}">
