@@ -414,6 +414,18 @@
 
                 $('#drophere').html("<img class='image_drop img-responsive' src='{{ asset('storage/app/agent/agent-'.Auth::user()->image) }}' width='400px' height='300px' name='image-drop'>");
                 $('.noFile').html('{{ Auth::user()->image }}');
+            }else{
+                $('#co_name').val('');
+                $('#co_phone').val('');
+                $('#co_email').val('');
+                $('#co_address').val('');
+                $('#mg_name').val('');
+                $('#mg_email').val('');
+                $('#mg_phone').val('');
+
+
+                $('#drophere').html("<img class='image_drop img-responsive' src='' width='400px' height='300px' name='image-drop'>");
+                $('.noFile').html('image');
             }
         })
         
