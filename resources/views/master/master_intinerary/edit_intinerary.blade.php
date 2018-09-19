@@ -736,7 +736,10 @@
         var term          = $(par).find('.term').val();
         var seat          = $(par).find('.seat').val();
         var minimal_dp    = $(par).find('.minimal_dp').val();
-        var detail_id     = $(par).find('.detail_id').val();
+        var agent_com     = $(par).find('.agent_com').val();
+        var tips          = $(par).find('.tips').val();
+        var visa          = $(par).find('.visa').val();
+        var apt_tax       = $(par).find('.apt_tax').val();
 
 
         $('#index').val(index);
