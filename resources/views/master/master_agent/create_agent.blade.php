@@ -412,7 +412,7 @@
                 $('#mg_phone').val('{{ Auth::user()->mg_phone }}');
 
 
-                $('#drophere').html("<img class='image_drop img-responsive' src='{{ asset('storage/app/agent/agent-'.Auth::user()->image) }}' width='400px' height='300px' name='image-drop'>");
+                $('#drophere').html("<img class='image_drop img-responsive' src='{{ asset('storage/app/agent/agent-'.Auth::user()->image) }}?{{ time() }}' width='400px' height='300px' name='image-drop'>");
                 $('.noFile').html('{{ Auth::user()->image }}');
             }else{
                 $('#co_name').val('');
