@@ -136,7 +136,6 @@ class agentController extends Controller
                   "phone" => "required",                
                   "email" => "required|unique:users,username", 
                   "address" => "required",
-                  "image" => "required",  
                   "password" => "required",  
 
             ];
