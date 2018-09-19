@@ -30,6 +30,27 @@
                     <div class="body">
                         <form id="save_data" action="{{ route('master_agent_update', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">Role <b style="color: red">*</b></label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select class="form-control" name="role_id" id="role_id">
+                                                @foreach ($role as $e)
+                                                    @if ($data->role_id == $e->role_id)
+                                                        <option value="{{ $e->role_id }}" selected="">{{ $e->role_name }}</option>
+                                                    @else
+                                                        <option value="{{ $e->role_id }}">{{ $e->role_name }}</option>
+                                                    @endif
+                                                @endforeach
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
                             {{-- company --}}
                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
                                     <h3 class="font-bold col-cyan"><i class="fa fa-home"></i> Company</h3>
@@ -95,6 +116,22 @@
                                         <div class="form-line">
                                             <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address">{{ $data->co_address }}</textarea>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="co_city" id="co_city" class="form-control" value="{{ $data->co_city }}"   placeholder="Company City">
+                                        </div>
+                                        @if($errors->has('co_city'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_city')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -278,27 +315,7 @@
                                 border-color: #E91E63 !important;
                                 " />
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                    <label for="intinerary">Role <b style="color: red">*</b></label>
-                                </div>
-                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <select class="form-control" name="role_id">
-                                                @foreach ($role as $e)
-                                                    @if ($data->role_id == $e->role_id)
-                                                        <option value="{{ $e->role_id }}" selected="">{{ $e->role_name }}</option>
-                                                    @else
-                                                        <option value="{{ $e->role_id }}">{{ $e->role_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                                
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
+                            
                             <div class="row clearfix">
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Username <b style="color: red">*</b></label>
@@ -376,43 +393,33 @@
         reader.readAsDataURL(file.files[0]);
     }
 
+    $('#role_id').change(function(){
+        if ($('#role_id').val() == '1' || $('#role_id').val() == '2' || $('#role_id').val() == '3' ) {
+            $('#co_name').val('{{ Auth::user()->co_name }}');
+            $('#co_phone').val('{{ Auth::user()->co_phone }}');
+            $('#co_email').val('{{ Auth::user()->co_email }}');
+            $('#co_address').val('{{ Auth::user()->co_address }}');
+            $('#mg_name').val('{{ Auth::user()->mg_name }}');
+            $('#mg_email').val('{{ Auth::user()->mg_email }}');
+            $('#mg_phone').val('{{ Auth::user()->mg_phone }}');
 
-    function save() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $.ajax({
-            data : $('#save_data').serialize(),
-            url  : ('{{ route('save_profile') }}'),
-            type : 'POST',
-            success: function (data) {
-                if (data.status == 'sukses') {
-                    iziToast.success({
-                        icon: 'fa fa-user',
-                        title: 'Success!',
-                        message: 'Data Saved!',
-                    });
-                    window.location=('{{ route('profile') }}')
-                }else{
-                    iziToast.error({
-                        icon: 'fas fa-times-circle',
-                        title: 'Error!',
-                        message: 'Something Wrong,Call Developer!',
-                    });
-                }
-            },
-            error:function(){
-                iziToast.error({
-                    icon: 'fas fa-times-circle',
-                    title: 'Error!',
-                    message: 'Something Wrong,Call Developer',
-                });
-            }
-        })
-    }
+            $('#drophere').html("<img class='image_drop img-responsive' src='{{ asset('storage/app/agent/agent-'.Auth::user()->image) }}?{{ time() }}' width='400px' height='300px' name='image-drop'>");
+            $('.noFile').html('{{ Auth::user()->image }}');
+        }else{
+            $('#co_name').val('');
+            $('#co_phone').val('');
+            $('#co_email').val('');
+            $('#co_address').val('');
+            $('#mg_name').val('');
+            $('#mg_email').val('');
+            $('#mg_phone').val('');
+
+
+            $('#drophere').html("<img class='image_drop img-responsive' src='' width='400px' height='300px' name='image-drop'>");
+            $('.noFile').html('image');
+        }
+    })
 
 
 </script>

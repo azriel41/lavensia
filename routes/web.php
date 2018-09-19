@@ -307,9 +307,17 @@ Route::group(['middleware' => 'auth'], function () {
 	/******** REPORT ***********/
 	//oketrip
 	Route::get('/report/report_customer_oketrip', 'report\reportoketripController@report_customer_oketrip')->name('report_customer_oketrip');
+	Route::get('/report/cari_report_customer_oketrip', 'report\reportoketripController@cari_report_customer_oketrip')->name('cari_report_customer_oketrip');
+
+
+	//
 	Route::get('/report/report_profit_oketrip', 'report\reportoketripController@report_profit_oketrip')->name('report_profit_oketrip');
+	Route::get('/report/cari_report_profit_oketrip', 'report\reportoketripController@cari_report_profit_oketrip')->name('cari_report_profit_oketrip');
+
 	//lavensia
 	Route::get('/report/report_customer_agent', 'report\reportoketripController@report_customer_agent')->name('report_customer_agent');
+
+	//
 	Route::get('/report/report_purchase_agent', 'report\reportoketripController@report_purchase_agent')->name('report_purchase_agent');
 });
 
