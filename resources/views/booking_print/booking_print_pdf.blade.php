@@ -13,7 +13,7 @@
     }
     
 </style>
-
+<div style="width:900px">
 <table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;">
     <tr>
         <td height="100" width="30%" style="padding-left: 10px;">Flight Detail</td>
@@ -26,43 +26,55 @@
 <br>
 
 <table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;" >
-        <tr style="vertical-align: middle;">
-            <th class="center row2" width="5%" height="20">No</th>
+        <tr style="vertical-align: middle;background-color: #5bc0de">
+            <th class="center row2" width="1%" height="30px">No</th>
             <th class="center row2" width="35%">Passenger Name</th>
             <th class="center row2" width="20%">Passport</th>
-            <th class="center row2" colspan="4">Pembagian Kamar</th>
+            <th class="center row2"  colspan="4">Pembagian Kamar</th>
         </tr>
         @php
             $temp = 0;
         @endphp
+        <tr style="background-color: #d7abff">
+            <td align="center">1</td>
+            <td>{{ $tourled->tl_name }}</td>
+            <td>{{ $tourled->tl_passport }}</td>
+            <td>double</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
         @if ($id == null)
             <tr>
-                <td colspan="10" style="vertical-align: middle !important; text-align: center">TIDAK ADA DATA</td>
+                <td colspan="10" style="vertical-align: middle !important; text-align: center;">TIDAK ADA DATA</td>
             </tr>
         @endif
         @foreach ($id as $i=>$awal)
             @foreach ($room[$i] as $a=>$awal1)
+               
                 <tr class="bor-top">
                     <td align="center">
                         @foreach ($passenger as $akhir)
                             @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
                                 @if ($akhir->dp_status_person == 'child')
-                                    <label style="padding-left: 10px !important">{{ $temp +=1 }}</label><span class="dot" ></span><br>
+                                    <label>{{ $temp +=1 }}</label><span class="dot" ></span><br>
                                 @elseif($akhir->dp_status_person == 'baby')
-                                    <label style="padding-left: 10px !important">{{ $temp +=1 }}</label><span class="dot1" ></span><br>
+                                    <label>{{ $temp +=1 }}</label><span class="dot1" ></span><br>
                                 @else
-                                    <label>{{ $temp +=1 }}</label><span class=""></span><br>
+                                    <label>{{ $temp +=2 }}</label><span class=""></span><br>
                                 @endif
                             @endif
                         @endforeach
                     </td>
                     <td >
+
                         @foreach ($passenger as $akhir)
                             @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
                                 <label class="kena_dot">{{ $akhir->dp_name }}</label><br>
                             @endif
                         @endforeach
                     </td>
+
                     <td  >
                         @foreach ($passenger as $akhir)
                             @if ($id[$i] == $akhir->dp_booking_id and $room[$i][$a] == $akhir->dp_room)
@@ -70,7 +82,7 @@
                             @endif
                         @endforeach
                     </td>
-                    <td >
+                    <td width="100">
                         @php
                             $temp1 = 0;
                         @endphp
@@ -108,11 +120,16 @@
     </table>
 <br>
 <div style="width: 200px">
-    <table style="width: 100%;" border="0">
+    <table style="width: 400px;" border="0">
         <tr>
-            <td width="10" align="left">ADULT</td>
-            <td width="10" align="left">:</td>
-            <td width="10" align="left">
+            <td>Single</td>
+            <td>:</td>
+            <td>
+               {{ $single }}
+            </td>
+            <td>ADULT</td>
+            <td>:</td>
+            <td>
                 @php
                     $adult = 0;
                     for ($i=0; $i < count($booking); $i++) { 
@@ -121,11 +138,14 @@
                     echo $adult;
                 @endphp
             </td>
-
-            
         </tr>
         <tr>
-            <td>CHILD</td>
+            <td>Double</td>
+            <td >:</td>
+            <td>
+               {{ $double }}
+            </td>
+            <td >CHILD</td>
             <td>:</td>
             <td>
                 @php
@@ -138,6 +158,11 @@
             </td>
         </tr>
         <tr>
+            <td>Twin</td>
+            <td>:</td>
+            <td>
+               {{ $twin }}
+            </td>
             <td>INFANT</td>
             <td>:</td>
             <td>
@@ -150,5 +175,47 @@
                 @endphp
             </td>
         </tr>
+        <tr>
+            <td>Twin</td>
+            <td>:</td>
+            <td>
+               {{ $twin }}
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td&nbsp;></td>
+        </tr>
+        <tr>
+            <td>Triple</td>
+            <td>:</td>
+            <td>
+               {{ $triple }}
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td&nbsp;></td>
+        </tr>
+        <tr>
+            <td >Double & cnb</td>
+            <td>:</td>
+            <td>
+               {{ $doubletwincnb }}
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td&nbsp;></td>
+        </tr>
+        <tr>
+            <td>Double & CWB</td>
+            <td>:</td>
+            <td>
+               {{ $doubletwincwb }}
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td&nbsp;></td>
+        </tr>
+        
     </table>
+</div>
 </div>

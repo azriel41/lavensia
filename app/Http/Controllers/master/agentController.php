@@ -206,7 +206,7 @@ class agentController extends Controller
                 'role_id'      =>$request->role_id,
             ]);
 
-       return view('master.agent');
+       return view('master/agent');
     }
     public function agent_delete($id)
     {
