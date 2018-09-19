@@ -136,7 +136,6 @@ class agentController extends Controller
                   "phone" => "required",                
                   "email" => "required|unique:users,username", 
                   "address" => "required",
-                  "image" => "required",  
                   "password" => "required",  
 
             ];
@@ -206,7 +205,7 @@ class agentController extends Controller
                 'role_id'      =>$request->role_id,
             ]);
 
-       return view('master.agent');
+       return redirect('master/agent');
     }
     public function agent_delete($id)
     {

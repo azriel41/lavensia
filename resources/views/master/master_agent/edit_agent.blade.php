@@ -67,7 +67,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control numberonly" style="text-align: : right;"  value="{{ $data->co_phone }}" placeholder="Company Phone">
+                                            <input type="number" name="co_phone" id="co_phone" class="form-control" style="text-align: : right;"  value="{{ $data->co_phone }}" placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>

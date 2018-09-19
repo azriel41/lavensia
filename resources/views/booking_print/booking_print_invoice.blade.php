@@ -33,7 +33,7 @@
 <table boder="1" class="table table-bordered intinerary" style="width: 100%;">
   <thead>
    <tr style="background-color: #5bc0de">
-       <th align="left" height="30px">Name</th>
+       <th align="left" width="30px">Name</th>
        <th align="left">Description</th>
        <th align="left">Booking Code</th>
        <th align="left">Total</th>
@@ -41,7 +41,7 @@
    </thead>
    @foreach ($data as $i => $dt)
    			<tr @if ((($i+1)/5) == 1) style="page-break-after:always;" @endif>
-             <td align="left" style="padding-left: 20px;">
+             <td  align="left" style="padding-left: 20px;">
                 <p>{{ $dt->dp_name }}<br>
                 @foreach ($add_book as $e => $ab)
                   @if ($dt->dp_name == $ab->da_name)
@@ -90,39 +90,39 @@
    @endforeach
    <tfoot>
        <tr style="background-color: #5bc0de">
-           <th align="left" width="65%">Terbilang </th>
-           <th align="center">Additional</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($total_add ,0,'','.') }}</th>
+           <th align="left" width="50%" colspan="2">Terbilang </th>
+           <th align="center" >Additional</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($total_add ,0,'','.') }}</th>
        </tr>
         <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">total</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($total_pax ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($total_pax ,0,'','.') }}</th>
        </tr>
        <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">Tips</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($tips ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($tips ,0,'','.') }}</th>
        </tr>
        <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">Agent Com</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($agen_com ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($agen_com ,0,'','.') }}</th>
        </tr>
        <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">Tax</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($tax ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($tax ,0,'','.') }}</th>
        </tr>
        <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">Visa</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($visa ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($visa ,0,'','.') }}</th>
        </tr>
        <tr style="background-color: #5bc0de">
-           <th align="left" style="background-color: white"></th>
+           <th align="left" style="background-color: white" colspan="2"></th>
            <th align="left">Grand total</th>
-           <th align="right" colspan="2"><span style="float: left">IDR </span>{{ number_format($grand_total ,0,'','.') }}</th>
+           <th align="right"><span style="float: left">IDR </span>{{ number_format($grand_total ,0,'','.') }}</th>
        </tr>
    </tfoot>
 </table>
