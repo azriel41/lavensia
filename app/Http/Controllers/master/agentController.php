@@ -121,15 +121,17 @@ class agentController extends Controller
 
        if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
            $filename_oke = $data_master->image;
-       }
-       if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
        }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           if ($request->file('image') == null) {
+               $filename = auth::user()->id.'.jpg';
+           }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = auth::user()->id.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           }
        }
+       
 
 
         $rules = [
