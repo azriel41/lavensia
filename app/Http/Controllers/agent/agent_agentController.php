@@ -174,7 +174,7 @@ class agent_agentController extends Controller
                 'image'         =>$filename,
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
-                'role_id'       =>'1',
+                'role_id'       =>'5',
             ]);
 
         return redirect('agent/master_agent_agent');
