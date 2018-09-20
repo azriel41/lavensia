@@ -139,8 +139,6 @@ class agentController extends Controller
                Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
            }
        }
-       
-       // return $filename;
 
         $rules = [
                   "username" => "required|unique:users,username",

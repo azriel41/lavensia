@@ -313,19 +313,39 @@ Route::group(['middleware' => 'auth'], function () {
 	/******** END OPERATIONAL ***********/
 
 	/******** REPORT ***********/
-	//oketrip
+	//report statistic oktrip customer
 	Route::get('/report/report_customer_oketrip', 'report\reportoketripController@report_customer_oketrip')->name('report_customer_oketrip');
 	Route::get('/report/cari_report_customer_oketrip', 'report\reportoketripController@cari_report_customer_oketrip')->name('cari_report_customer_oketrip');
 
 
-	//
+	//report statistic oktrip penjualan
 	Route::get('/report/report_profit_oketrip', 'report\reportoketripController@report_profit_oketrip')->name('report_profit_oketrip');
 	Route::get('/report/cari_report_profit_oketrip', 'report\reportoketripController@cari_report_profit_oketrip')->name('cari_report_profit_oketrip');
 
-	//lavensia
-	Route::get('/report/report_customer_agent', 'report\reportoketripController@report_customer_agent')->name('report_customer_agent');
+	//report table oktrip customer
+	Route::get('/report/report_table_customer_oketrip', 'report\reportoketripController@report_table_customer_oketrip')->name('report_table_customer_oketrip');
+	Route::get('/report/cari_report_table_customer_oketrip', 'report\reportoketripController@cari_report_table_customer_oketrip')->name('cari_report_table_customer_oketrip');
 
-	//
-	Route::get('/report/report_purchase_agent', 'report\reportoketripController@report_purchase_agent')->name('report_purchase_agent');
+	//report table oktrip penjualan
+	Route::get('/report/report_table_profit_oketrip', 'report\reportoketripController@report_table_profit_oketrip')->name('report_table_profit_oketrip');
+	Route::get('/report/cari_report_table_profit_oketrip', 'report\reportoketripController@cari_report_table_profit_oketrip')->name('cari_report_table_profit_oketrip');
+
+	//report statistic agent customer
+	Route::get('/report/report_customer_agent', 'report\reportagentController@report_customer_agent')->name('report_customer_agent');
+	Route::get('/report/datatale_report_customer_agent', 'report\reportagentController@datatale_report_customer_agent')->name('datatale_report_customer_agent');
+	Route::get('/report/cari_report_customer_agent', 'report\reportagentController@cari_report_customer_agent')->name('cari_report_customer_agent');
+
+
+	//report statistic agent penjualan
+	Route::get('/report/report_profit_agent', 'report\reportagentController@report_profit_agent')->name('report_profit_agent');
+	Route::get('/report/cari_report_profit_agent', 'report\reportagentController@cari_report_profit_agent')->name('cari_report_profit_agent');
+
+	//report table agent customer
+	Route::get('/report/report_table_customer_agent', 'report\reportagentController@report_table_customer_agent')->name('report_table_customer_agent');
+	Route::get('/report/cari_report_table_customer_agent', 'report\reportagentController@cari_report_table_customer_agent')->name('cari_report_table_customer_agent');
+
+	//report table agent penjualan
+	Route::get('/report/report_table_profit_agent', 'report\reportagentController@report_table_profit_agent')->name('report_table_profit_agent');
+	Route::get('/report/cari_report_table_profit_agent', 'report\reportagentController@cari_report_table_profit_agent')->name('cari_report_table_profit_agent');
 });
 

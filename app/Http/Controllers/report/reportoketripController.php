@@ -108,7 +108,7 @@ class reportoketripController extends Controller
 
     	return view('report.report_oketrip.report_profit',compact('admin','data_tgl'));
     }
-    public function cari_report_profit_oketrip(Request $req)
+    public function cari_report_profit_oketrip()
     {
     	$year_min = substr($req->min,-4);
     	$month_min = substr($req->min,0,-5);
@@ -137,6 +137,14 @@ class reportoketripController extends Controller
     	}else{
     		return response()->json(['status'=>'kosong']);
     	}
+    }
+    public function report_table_customer_oketrip(Request $req)
+    {
+        $data = DB::selecct("SELECT md_nota,md_seat,md_seat_remain,md_start FROM d_booking");
+    }
+    public function report_table_profit_oketrip(Request $req)
+    {
+        # code...
     }
 }
 

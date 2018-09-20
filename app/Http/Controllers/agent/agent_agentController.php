@@ -15,13 +15,14 @@ use Auth;
 use Response;
 use File;
 use Hash;
+use Validator;
 use Storage;
 use Yajra\Datatables\Datatables;
 class agent_agentController extends Controller
 {
     public function agent()
     {
-        $data = user::where('co_name',Auth::user()->co_name)->where('id','!=',Auth::user()->id)->get();
+        
         
         if(Auth::user()->akses('approve master agent','mh_aktif')){
     	   return view('agent.index_agent',compact('data'));
@@ -32,7 +33,7 @@ class agent_agentController extends Controller
 
     public function agent_datatable()
     {
-        $data = user::where('co_name',Auth::user()->co_name)->where('id','!=',Auth::user()->id)->get();
+        $data = user::where('co_name',Auth::user()->co_name)->get();
         
         $data = collect($data);
         // return $data;
@@ -115,14 +116,48 @@ class agent_agentController extends Controller
     }
     public function agent_save(Request $request)
     {
-       if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
+       $data_master = DB::table('users')->where('role_id',1)->first();
+
+       $data_image = DB::table('users')->max('id');
+
+       if ($data_image == null) {
+            $data_image = 1;
        }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+            $data_image += 1;
        }
+
+       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+           $filename = $data_master->image;
+       }else{
+           if ($request->file('image') == null) {
+               $filename = $data_image.'.jpg';
+           }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = $data_image.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           }
+       }
+        $rules = [
+                  "username" => "required|unique:users,username",
+                  "co_name" => "required",
+                  "co_phone" => "required",
+                  "co_email" => "required",
+                  "co_address" => "required",
+                  "mg_name" => "required",
+                  "name" => "required",
+                  "phone" => "required",                
+                  "email" => "required|unique:users,email", 
+                  "address" => "required",
+                  "password" => "required",  
+
+            ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+          return redirect()->back()
+          ->witherrors($validator)
+          ->withinput();
+        }
 
        $image = DB::table('users')->insert([
                 'co_name'       =>$request->co_name,
@@ -139,6 +174,7 @@ class agent_agentController extends Controller
                 'image'         =>$filename,
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
+                'role_id'       =>'1',
             ]);
 
         return redirect('agent/master_agent_agent');

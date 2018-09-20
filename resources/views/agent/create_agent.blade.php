@@ -140,7 +140,7 @@
                             </div>
 
                             {{-- Manager --}}
-                            <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
+                           <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
                                     <h3 class="font-bold col-orange"><i class="fa fa-home"></i> Manager</h3>
                             </div>
                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
@@ -163,8 +163,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" value="{{ $data[0]->mg_name }}" class="form-control"  placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control" value="{{old('mg_name')}}" placeholder="Manager Name">
                                         </div>
+                                        @if($errors->has('co_phone'))
+                                            <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +179,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="mg_phone" id="mg_phone" value="{{ $data[0]->mg_phone }}"  class="form-control" style="text-align: : right;"   placeholder="Manager Phone">
+                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" value="{{old('mg_phone')}}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +192,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" value="{{ $data[0]->mg_email }}"  class="form-control"  placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control" value="{{old('mg_email')}}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
@@ -219,8 +222,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="name" id="name" class="form-control"  placeholder="PIC Name">
+                                            <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" placeholder="PIC Name">
                                         </div>
+                                        @if($errors->has('name'))
+                                            <small style="color: #ed5565">{{ $errors->first('name')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -232,8 +238,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="phone" id="phone" class="form-control numberonly" style="text-align: : right;"   placeholder="PIC Phone">
+                                            <input type="number" name="phone" id="phone" value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
                                         </div>
+                                        @if($errors->has('phone'))
+                                            <small style="color: #ed5565">{{ $errors->first('phone')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -245,8 +254,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="email" id="email" class="form-control"  placeholder="PIC Email">
+                                            <input type="text" name="email" id="email" value="{{old('email')}}" class="form-control"  placeholder="PIC Email">
                                         </div>
+                                        @if($errors->has('email'))
+                                            <small style="color: #ed5565">{{ $errors->first('email')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>  
@@ -258,12 +270,14 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="address" id="address" class="form-control" placeholder="PIC Address"></textarea>
+                                            <textarea name="address" id="address" value="{{old('address')}}" class="form-control" placeholder="PIC Address"></textarea>
                                         </div>
+                                        @if($errors->has('address'))
+                                            <small style="color: #ed5565">{{ $errors->first('address')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
                                     <h3 class="font-bold col-red"><i class="fa fa-home"></i> Log in Data</h3>
                             </div>
@@ -279,7 +293,7 @@
                                 border-color: #E91E63 !important;
                                 " />
                             </div>
-
+                            
                             <div class="row clearfix">
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Username <b style="color: red">*</b></label>
@@ -287,8 +301,11 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="username" id="username" class="form-control"  placeholder="Username">
+                                            <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}"  placeholder="Username">
                                         </div>
+                                        @if($errors->has('username'))
+                                            <small style="color: #ed5565">{{ $errors->first('username')}}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>  
@@ -305,6 +322,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="row clearfix">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form-control-label">

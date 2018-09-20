@@ -60,8 +60,18 @@ class bookingController extends Controller
 		    	$id 				= $req->id;
 
 		    	if (Auth::User() != null) {
-		            $cart = Auth::User()->booking;
-		            $jumlah = count(Auth::User()->booking);
+		            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+		            $jumlah = count(DB::table('d_booking')
+		                        ->where('db_users',Auth::User()->role_id)
+		                        ->where('db_status','Waiting List')
+		                        ->get());
 		        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
 		        }else{
 		        	return view('booking.booking',compact('detail_intinerary','detil','id'));
@@ -73,8 +83,18 @@ class bookingController extends Controller
 			    	$id 				= $req->id;
 
 			    	if (Auth::User() != null) {
-			            $cart = Auth::User()->booking;
-			            $jumlah = count(Auth::User()->booking);
+			            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+			            $jumlah = count(DB::table('d_booking')
+			                        ->where('db_users',Auth::User()->role_id)
+			                        ->where('db_status','Waiting List')
+			                        ->get());
 			        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
 			        }else{
 			        	return view('booking.booking',compact('detail_intinerary','detil','id'));

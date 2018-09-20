@@ -118,7 +118,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line ">
-                                            <select class="form-control js-example-basic-single width100" id="additional" name="additional[]" multiple="">
+                                            <select class="form-control width100" id="additional" name="additional[]" multiple="">
                                                 @foreach ($additional as $val)
                                                     <option value="{{ $val->ma_id}}">{{ $val->ma_name }}</option>
                                                 @endforeach
@@ -809,11 +809,7 @@
             $('#category').parents('.form-line').addClass('focused');
             temp1 +=1;
         }
-        if ($('#additional').val() == null) {
-            $('#additional').parents('.form-line').addClass('error');
-            $('#additional').parents('.form-line').addClass('focused');
-            temp1 +=1;
-        }
+       
 
         $('.sch_req').each(function(i){
             if ($('.sch_req').eq(i).val() == '' ) {
