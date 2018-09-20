@@ -54,7 +54,7 @@ class agentController extends Controller
                                         </a>
                                     </li>';
                             $d = '<li>
-                                        <a href="'.url('/master/master_agent').'/'.$data->id.'/delete'.'" class="waves-effect waves-block">
+                                        <a href="#" onclick="confirmation('.$data->id.')" class="waves-effect waves-block">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -116,13 +116,28 @@ class agentController extends Controller
     }
     public function agent_save(Request $request)
     {
-        if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
+
+       $data_master = DB::table('users')->where('role_id',1)->first();
+
+       $data_image = DB::table('users')->max('id');
+
+       if ($data_image == null) {
+            $data_image = 1;
        }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+            $data_image += 1;
+       }
+
+       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+           $filename = $data_master->image;
+       }else{
+           if ($request->file('image') == null) {
+               $filename = $data_image.'.jpg';
+           }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = $data_image.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           }
        }
 
         $rules = [
@@ -134,9 +149,10 @@ class agentController extends Controller
                   "mg_name" => "required",
                   "name" => "required",
                   "phone" => "required",                
-                  "email" => "required|unique:users,username", 
+                  "email" => "required|unique:users,email", 
                   "address" => "required",
                   "password" => "required",  
+                  "role_id" => "required",  
 
             ];
         $validator = Validator::make($request->all(), $rules);
@@ -147,22 +163,22 @@ class agentController extends Controller
         }
 
 
-       $image = DB::table('users')->insert([
-                'co_name'       =>$request->co_name,
-                'co_phone'      =>$request->co_phone,
-                'co_email'      =>$request->co_email,
-                'co_address'    =>$request->co_address,
-                'mg_name'       =>$request->mg_name,
-                'mg_phone'      =>$request->mg_phone,
-                'mg_email'      =>$request->mg_email,
+        $image = DB::table('users')->insert([
                 'name'          =>$request->name,
                 'phone'         =>$request->phone,
                 'email'         =>$request->email,
                 'address'       =>$request->address,
-                'image'         =>$filename,
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
-                'role_id'      =>$request->role_id,
+                'role_id'       =>$request->role_id,
+                'co_name'       =>$request->co_name,
+                'co_phone'      =>$request->co_phone,
+                'co_email'      =>$request->co_email,
+                'co_address'    =>$request->co_address,
+                'image'      =>$filename,
+                'mg_name'       =>$request->mg_name,
+                'mg_phone'      =>$request->mg_phone,
+                'mg_email'      =>$request->mg_email,
             ]);
 
         return redirect('master/agent');
@@ -178,14 +194,30 @@ class agentController extends Controller
     public function agent_update(Request $request,$id)
     {
 
-        if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
+       $data_master = DB::table('users')->where('role_id',1)->first();
+
+       $data_image = DB::table('users')->max('id');
+
+       if ($data_image == null) {
+            $data_image = 1;
        }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+            $data_image += 1;
        }
+
+       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+           $filename = $data_master->image;
+       }else{
+           if ($request->file('image') == null) {
+               $filename = $data_image.'.jpg';
+           }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = $data_image.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           }
+       }
+
+       return $filename;
        
        $image = DB::table('users')->where('id',$id)->update([
                 'co_name'       =>$request->co_name,
@@ -211,7 +243,11 @@ class agentController extends Controller
     {
        $data = DB::table('users')->where('id',$id)->delete();
         
-       return redirect()->back();
+       if ($data == true) {
+         return response()->json(['status'=>'sukses']);
+       }else{
+         return response()->json(['status'=>'Error']); 
+       }
     }
 
 }

@@ -264,7 +264,8 @@ class intinerary_controller extends Controller
                 if ($req->detail_id[$i] != '0') {
 
                     $cari_seat = $detail_intinerary->show_detail_one('md_intinerary_id',$id,'md_detail',$req->detail_id[$i]);
-                    $det['md_seat_remain']    = $cari_seat->md_seat_remain;
+                    $remain    = $req->seat[$i] - $cari_seat->md_seat;
+                    $det['md_seat_remain']      = $cari_seat->md_seat_remain + $remain;
                     if ($cari_seat->md_seat_remain > $req->seat[$i]) {
                         return Response::json(['status'=>0,'message'=>'Seat Telah Terpakai Sebagian']);
                     }

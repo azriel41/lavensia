@@ -740,6 +740,7 @@
         var tips          = $(par).find('.tips').val();
         var visa          = $(par).find('.visa').val();
         var apt_tax       = $(par).find('.apt_tax').val();
+        var detail_id     = $(par).find('.detail_id').val();
 
 
         $('#index').val(index);

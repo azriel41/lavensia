@@ -313,6 +313,11 @@
                                     <a href="{{ route('master_category') }}">Destination</a>
                                 </li>
                             @endif
+                            @if(Auth::user()->akses('master company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_company') }}">Company</a>
+                                </li>
+                            @endif
                             @if(Auth::user()->akses('master additional','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_additional') }}">Additional</a>
@@ -379,14 +384,26 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('report_customer_oketrip') }}">Report Customer</a>
+                                <a href="{{ route('report_customer_oketrip') }}">Statistic Customer</a>
                             </li>
                             <li>
-                                <a href="{{ route('report_profit_oketrip') }}">Report Penjualan</a>
+                                <a href="{{ route('report_profit_oketrip') }}">Statistic Penjualan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_table_profit_oketrip') }}">Report Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_table_profit_oketrip') }}">Report Penjualan</a>
                             </li>
                         </ul>
                     </li>
+                    @else
                     @endif
+
+
+                    @else
+                    @endif
+
                     @if(Auth::user()->akses('report agent','mh_aktif'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -395,24 +412,30 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('report_customer_agent') }}">Report Customer</a>
+                                <a href="{{ route('report_customer_agent') }}">Statistic Customer</a>
                             </li>
                             <li>
-                                <a href="{{ route('report_purchase_agent') }}">Report Penjualan</a>
+                                <a href="{{ route('report_profit_agent') }}">Statistic Penjualan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_table_customer_agent') }}">Report Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('report_table_profit_agent') }}">Report Penjualan</a>
                             </li>
                         </ul>
                     </li>
+                    @else
                     @endif
 
-                    <li>
+           {{--          <li>
                         <a href="{{ route('booking_print') }}">
                             <i class="material-icons">print</i>
                             <span>BOOK</span>
                         </a>
-                    </li>
-                    @else
+                    </li> --}}
                     
-                    @endif
+                    
                     
                     
                    

@@ -100,6 +100,66 @@ window.onload = function(){
 
 }
 
+
+function confirmation(argument) {
+       var this_val = argument;
+
+       iziToast.question({
+                theme: 'dark',
+                overlay: true,
+                displayMode: 'once',
+                id: 'question',
+                zindex: 999,
+                backgroundColor: '#1f1f22',
+                icon: 'fa fa-info-circle',
+                title: 'Are you Sure!',
+                message: '',
+                position: 'center', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                progressBarColor: 'rgb(0, 255, 184)',
+                buttons: [
+                    ['<button style="background-color:red;"> Delete </button>', function (instance, toast) {
+
+                        // window.location=();
+
+                        $.ajax({
+                            url  : baseUrl+'/master/master_agent'+'/'+this_val+'/delete',
+                            type :'get',
+                            success:function(data){
+                                if (data.status == 'sukses') {
+                                    iziToast.success({position: 'topRight',message: 'Successfully Deleted!'});
+                                    window.location=('{{ route('master_agent') }}')
+                                }else{
+                                    iziToast.error({position: 'topRight',message: 'Error Check your data! '});
+                                }
+                            },
+                            error:function(data){
+
+                            }
+
+                        })
+
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                    }, true], // true to focus
+                    ['<button> Cancel </button>', function (instance, toast) {
+                        instance.hide({
+                            transitionOut: 'fadeOutUp',
+                            onClosing: function(instance, toast, closedBy){
+                                console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                            }
+                        }, toast, 'buttonName');
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                    }]
+                ],
+                onOpening: function(instance, toast){
+                    console.info('callback abriu!');
+                },
+                onClosing: function(instance, toast, closedBy){
+                    console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
+                }
+            });
+       }
+
 function approve(mi_id) {
     var id = mi_id;
     iziToast.show({

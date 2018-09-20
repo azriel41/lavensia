@@ -82,6 +82,11 @@
 <script src="{{ asset ('assets/plugins/select2/dist/js/select2.min.js') }}"/></script>
 
 
+{{-- highchart --}}
+<script src="{{ asset ('assets/js/highchart/highcharts.js') }}"></script>
+<script src="{{ asset ('assets/js/highchart/highcharts-3d.js') }}"></script>
+<script src="{{ asset ('assets/js/highchart/exporting.js') }}"></script>
+
 
 <!-- Custom Js -->
 
@@ -105,8 +110,23 @@
 		}
     });
 
+    $('.datenormal_month').bootstrapMaterialDatePicker({
+        format: 'MM-YYYY',
+        clearButton: true,
+        weekStart: 0,
+        time: false,
+        onSet: function (ele) {
+		    if(ele.select){
+		          this.close();
+		    }
+		}
+    });
+
     $('.maskMoney').maskMoney({thousands:'.', decimal:',', precision:-1});
     $('.numberonly').maskMoney({thousands:'', decimal:'', precision:-1,allowZero: true});
+
+    var baseUrl = '{{ url('/') }}';
+    
 
 
 </script>

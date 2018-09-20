@@ -32,10 +32,20 @@ class packageController extends Controller
                                             ->where('intinerary_mi_id','=',$id)->get();
 
         $flight = DB::table('m_flight_detail')->where('fd_intinerary_id',$id)->get();
-        // return $additional;
+
         if (Auth::User() != null) {
-            $cart = Auth::User()->booking;
-            $jumlah = count(Auth::User()->booking);
+            $cart   = DB::table('d_booking')
+                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get();
+
+
+            $jumlah = count(DB::table('d_booking')
+                        ->where('db_users',Auth::User()->role_id)
+                        ->where('db_status','Waiting List')
+                        ->get());
             return view('package.package',compact('data','schedule','detail','additional','cart','jumlah','flight'));
         }else{
             return view('package.package',compact('data','schedule','detail','additional','flight'));

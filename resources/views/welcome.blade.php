@@ -37,8 +37,8 @@
 
                 <div class="project-wrapper" style="margin-bottom: 275px">
                     @foreach ($intinerary as $index => $iti)
-                        <figure class="mix work-item 
-                            @foreach ($cat as $i=>$tes)
+                        <figure class="mix work-item    
+                            @foreach ($cat[$index] as $i=>$tes)
                                 {{ str_replace(' ','-',$cat[$index][$i])}}
                             @endforeach
                             ">
