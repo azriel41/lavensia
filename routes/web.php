@@ -253,6 +253,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/master/master_category/update', 'master\categoryController@update')->name('master_category_update');
 	Route::post('/master/master_category/delete', 'master\categoryController@delete')->name('master_category_delete');
 
+	//company
+	Route::get('/master/master_company', 'master\companyController@index')->name('master_company');
+	Route::get('/master/master_company/create', 'master\companyController@create')->name('master_company_create');
+	Route::post('/master/master_company/save', 'master\companyController@save')->name('master_company_save');
+	Route::get('/master/master_company/{id}/edit', 'master\companyController@edit')->name('master_company_edit');
+	Route::post('/master/master_company/update', 'master\companyController@update')->name('master_company_update');
+	Route::post('/master/master_company/delete', 'master\companyController@delete')->name('master_company_delete');
+
 	//agent
 	Route::get('/master/agent', 'master\agentController@agent')->name('master_agent');
 	Route::get('/master/agent/datatable_agent', 'master\agentController@datatable_agent')->name('datatable_agent');

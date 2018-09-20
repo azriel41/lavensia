@@ -116,7 +116,13 @@ class agentController extends Controller
     }
     public function agent_save(Request $request)
     {
-        if ($request->file('image') == null) {
+
+       $data_master = DB::table('users')->where('role_id',1)->first();
+
+       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+           $filename_oke = $data_master->image;
+       }
+       if ($request->file('image') == null) {
            $filename = auth::user()->id.'.jpg';
        }else{
            $image = $request->file('image');
@@ -124,6 +130,7 @@ class agentController extends Controller
            $filename = auth::user()->id.'.jpg';
            Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }
+
 
         $rules = [
                   "username" => "required|unique:users,username",
@@ -134,9 +141,10 @@ class agentController extends Controller
                   "mg_name" => "required",
                   "name" => "required",
                   "phone" => "required",                
-                  "email" => "required|unique:users,username", 
+                  "email" => "required|unique:users,email", 
                   "address" => "required",
                   "password" => "required",  
+                  "role_id" => "required",  
 
             ];
         $validator = Validator::make($request->all(), $rules);
@@ -147,22 +155,22 @@ class agentController extends Controller
         }
 
 
-       $image = DB::table('users')->insert([
-                'co_name'       =>$request->co_name,
-                'co_phone'      =>$request->co_phone,
-                'co_email'      =>$request->co_email,
-                'co_address'    =>$request->co_address,
-                'mg_name'       =>$request->mg_name,
-                'mg_phone'      =>$request->mg_phone,
-                'mg_email'      =>$request->mg_email,
+        $image = DB::table('users')->insert([
                 'name'          =>$request->name,
                 'phone'         =>$request->phone,
                 'email'         =>$request->email,
                 'address'       =>$request->address,
-                'image'         =>$filename,
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
-                'role_id'      =>$request->role_id,
+                'role_id'       =>$request->role_id,
+                'co_name'       =>$request->co_name,
+                'co_phone'      =>$request->co_phone,
+                'co_email'      =>$request->co_email,
+                'co_address'    =>$request->co_address,
+                'image'      =>$filename,
+                'mg_name'       =>$request->mg_name,
+                'mg_phone'      =>$request->mg_phone,
+                'mg_email'      =>$request->mg_email,
             ]);
 
         return redirect('master/agent');
