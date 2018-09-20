@@ -32,7 +32,7 @@ class packageController extends Controller
                                             ->where('intinerary_mi_id','=',$id)->get();
 
         $flight = DB::table('m_flight_detail')->where('fd_intinerary_id',$id)->get();
-        // return $additional;
+
         if (Auth::User() != null) {
             $cart = Auth::User()->booking;
             $jumlah = count(Auth::User()->booking);

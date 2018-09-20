@@ -202,16 +202,16 @@
                                         <table width="100%" class="table table-striped" align="center">
                                             <tr style="background-color: #7ed6df;">
                                                 <th class="center-al">No Flight</th>
-                                                <th class="center-al">No Route</th>
+                                                <th class="center-al">Route</th>
                                                 <th class="center-al">Time</th>
                                             </tr>
-                                   {{--  @foreach ($flight as $element)
+                                          @foreach ($flight as $element)
                                             <tr>
                                                 <td>{{ $element->fd_nomor }}</td>
                                                 <td>{{ $element->fd_route }}</td>
                                                 <td>{{ $element->fd_time }}</td>
                                             </tr>
-                                    @endforeach --}}
+                                          @endforeach
                                         </table>
                                             
 
