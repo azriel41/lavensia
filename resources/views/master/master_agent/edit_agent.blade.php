@@ -393,33 +393,6 @@
         reader.readAsDataURL(file.files[0]);
     }
 
-    $('#role_id').change(function(){
-        if ($('#role_id').val() == '1' || $('#role_id').val() == '2' || $('#role_id').val() == '3' ) {
-            $('#co_name').val('{{ Auth::user()->co_name }}');
-            $('#co_phone').val('{{ Auth::user()->co_phone }}');
-            $('#co_email').val('{{ Auth::user()->co_email }}');
-            $('#co_address').val('{{ Auth::user()->co_address }}');
-            $('#mg_name').val('{{ Auth::user()->mg_name }}');
-            $('#mg_email').val('{{ Auth::user()->mg_email }}');
-            $('#mg_phone').val('{{ Auth::user()->mg_phone }}');
-
-
-            $('#drophere').html("<img class='image_drop img-responsive' src='{{ asset('storage/app/agent/agent-'.Auth::user()->image) }}?{{ time() }}' width='400px' height='300px' name='image-drop'>");
-            $('.noFile').html('{{ Auth::user()->image }}');
-        }else{
-            $('#co_name').val('');
-            $('#co_phone').val('');
-            $('#co_email').val('');
-            $('#co_address').val('');
-            $('#mg_name').val('');
-            $('#mg_email').val('');
-            $('#mg_phone').val('');
-
-
-            $('#drophere').html("<img class='image_drop img-responsive' src='' width='400px' height='300px' name='image-drop'>");
-            $('.noFile').html('image');
-        }
-    })
 
 
 </script>
