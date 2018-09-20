@@ -54,7 +54,7 @@ class agentController extends Controller
                                         </a>
                                     </li>';
                             $d = '<li>
-                                        <a href="'.url('/master/master_agent').'/'.$data->id.'/delete'.'" class="waves-effect waves-block">
+                                        <a href="#" onclick="confirmation('.$data->id.')" class="waves-effect waves-block">
                                             <i class="material-icons">delete</i>
                                             Delete
                                         </a>
@@ -243,7 +243,11 @@ class agentController extends Controller
     {
        $data = DB::table('users')->where('id',$id)->delete();
         
-       return redirect()->back();
+       if ($data == true) {
+         return response()->json(['status'=>'sukses']);
+       }else{
+         return response()->json(['status'=>'Error']); 
+       }
     }
 
 }
