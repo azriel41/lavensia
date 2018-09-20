@@ -119,20 +119,28 @@ class agentController extends Controller
 
        $data_master = DB::table('users')->where('role_id',1)->first();
 
+       $data_image = DB::table('users')->max('id');
+
+       if ($data_image == null) {
+            $data_image = 1;
+       }else{
+            $data_image += 1;
+       }
+
        if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
-           $filename_oke = $data_master->image;
+           $filename = $data_master->image;
        }else{
            if ($request->file('image') == null) {
-               $filename = auth::user()->id.'.jpg';
+               $filename = $data_image.'.jpg';
            }else{
                $image = $request->file('image');
                $upload = 'agent/agent';
-               $filename = auth::user()->id.'.jpg';
+               $filename = $data_image.'.jpg';
                Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
            }
        }
        
-
+       // return $filename;
 
         $rules = [
                   "username" => "required|unique:users,username",
@@ -188,14 +196,30 @@ class agentController extends Controller
     public function agent_update(Request $request,$id)
     {
 
-        if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
+       $data_master = DB::table('users')->where('role_id',1)->first();
+
+       $data_image = DB::table('users')->max('id');
+
+       if ($data_image == null) {
+            $data_image = 1;
        }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+            $data_image += 1;
        }
+
+       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+           $filename = $data_master->image;
+       }else{
+           if ($request->file('image') == null) {
+               $filename = $data_image.'.jpg';
+           }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = $data_image.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+           }
+       }
+
+       return $filename;
        
        $image = DB::table('users')->where('id',$id)->update([
                 'co_name'       =>$request->co_name,
