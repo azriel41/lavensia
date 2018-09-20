@@ -9,7 +9,7 @@
 		<th>Seat</th>
 	</thead>
 	<tbody>
-		@foreach ($data->detail_intinerarys as $data)
+		@foreach ($data->detail_intinerarys->sortByDesc('md_start') as $data)
 		<tr>
 			<td><a onclick="" href="{{ route('intinerary_detail',['id'=>$data->md_id]) }}">{{ $data->md_nota }}</a></td>
 			<td>{{ Carbon\carbon::parse($data->md_start)->format('d-m-Y') }}</td>
@@ -25,6 +25,7 @@
 <script type="text/javascript">
 	$('.depart').DataTable({
 		// paging:false,
+		ordering:false,
 		searching:false,
 	})
 </script>
