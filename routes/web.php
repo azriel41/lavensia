@@ -78,8 +78,6 @@ Route::get('/welcome', function () {
 			$det = $val->detail_intinerarys;
 		}
 		$book = App\User::all();
-
-
 		$cart   = DB::table('d_booking')
 					->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
 					->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
@@ -91,9 +89,6 @@ Route::get('/welcome', function () {
 					->where('db_users',Auth::User()->role_id)
 					->where('db_status','Waiting List')
 					->get());
-		// return $cart;
-
-		
 		$article1 = App\article::where('da_show','1')->first();
 		$article2 = App\article::where('da_show','2')->first();
 		$article3 = App\article::where('da_show','3')->first();

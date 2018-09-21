@@ -228,21 +228,21 @@
                                             <div class="panel-body">
                                                 <div class="flight">
                                                     <div class="all_flight">
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line" >
                                                                     <input type="text" value="" style="font-weight: bold; text-transform: uppercase;" name="fd_nomor[]" placeholder="No Flight" class="form-control fd_nomor sch_req">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line" >
                                                                     <input type="text" value="" style="font-weight: bold; text-transform: uppercase;" name="fd_route[]" placeholder="Route" class="form-control fd_route sch_req">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line" >
                                                                     <input type="text" value="" style="font-weight: bold; text-transform: uppercase;" name="fd_time[]" placeholder="Time" class="form-control fd_time sch_req">
