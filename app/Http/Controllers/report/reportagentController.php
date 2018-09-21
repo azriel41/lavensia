@@ -35,6 +35,18 @@ class reportagentController extends Controller
     					->orWhere('role_id',5)
     					->get();
 
+        $year_min = date("Y");
+        $month_min = date("m");
+
+        $year_max = date("Y");
+        $month_max = date("m");
+
+        $data_tgl = DB::select("SELECT extract(year from created_at) as yr, extract(month from created_at) as mon,count(dp_booking_id) as pax 
+                                    FROM d_party_name 
+                                    where YEAR(created_at) >= '$year_min' AND MONTH(created_at) >= '$month_min' 
+                                    AND YEAR(created_at) <= '$year_max' AND MONTH(created_at)  <= '$month_max' 
+                                    group by extract(year from created_at), extract(month from created_at)");
+
     	 return view('report.report_agent.report_customer',compact('admin','data_tgl'));
     }
     public function datatale_report_customer_agent()
