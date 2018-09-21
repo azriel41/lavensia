@@ -15,7 +15,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Booking List</h2>
+                                    <h2>Profit</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
@@ -85,8 +85,8 @@
                                                
                                             </div>    --}}
                                         </form>
-                                        <hr>
-                                        <br>
+                                        {{-- <hr>
+                                        <br> --}}
                                         <div class="row clearfix">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table customer">

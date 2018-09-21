@@ -15,7 +15,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Booking List</h2>
+                                    <h2>Customer</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
@@ -78,14 +78,14 @@
                                                 </div>
                                             </div>   --}}
 
-                                            <div class="row clearfix">
+                                           {{--  <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <button type="button" class="btn btn-primary cari"><i class="fa fa-search"></i> Search</button>
                                                 </div>
-                                            </div>   
+                                            </div>   --}} 
                                         </form>
-                                        <hr>
-                                        <br>
+                                        {{-- <hr>
+                                        <br> --}}
                                         <div class="row clearfix">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table customer">
