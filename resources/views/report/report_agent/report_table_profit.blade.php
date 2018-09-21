@@ -38,7 +38,7 @@
                                         <form id="save_data" action="{{ route('master_save_agent') }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                             {{-- company --}}
-                                            <div class="row clearfix">
+                                          {{--   <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <label for="intinerary">Date Start <b style="color: red">*</b></label>
                                                 </div>
@@ -76,20 +76,36 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>   --}}
 
-                                            <div class="row clearfix">
+                                            {{-- <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <button type="button" class="btn btn-primary cari"><i class="fa fa-search"></i> Search</button>
                                                 </div>
                                                
-                                            </div>   
+                                            </div>    --}}
                                         </form>
                                         <hr>
-                                        <div class="drop_here">
-                                            <div id="container" style="min-width: 100%; height: 400px; margin: 0 auto">
-                                            </div>
-                                        </div>
+                                        <br>
+                                        <div class="row clearfix">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <table class="table customer">
+                                                        <thead>
+                                                            <tr>
+                                                              <th> No</th>
+                                                              <th> Book</th>
+                                                              <th> Start Date</th>
+                                                              <th> Booker</th>
+                                                              <th> Total Pax</th>
+                                                              <th> Total penjualan</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>  
                                         </div>
                                   </div>
                             </div>
@@ -105,60 +121,22 @@
 @section('extra_scripts')
 <script type="text/javascript">
    
-    Highcharts.chart('container', {
-    title: {
-        text: 'Total Pax Book'
-    },
-    xAxis: {
-            categories: [
-                @foreach ($data_tgl as $element)
-                   {{ $element->mon }}+'-'+{{ $element->yr }},
-               @endforeach
- 
-            ]
-    },
-    series: [{
-            name: 'Total Pax Book',
-            data: [
-                @foreach ($data_tgl as $element)
-                   {{ $element->pax }},
-               @endforeach
-            ],
-            zoneAxis: 'x',
-            zones: [{
-                value: 8
-            }, {
-                dashStyle: 'dot'
-            }]
-        }]
-    });
 
-    $('.cari').click(function(){
-        $.ajax({
-            data : $('#save_data').serialize(),
-            url  : ('{{ route('cari_report_profit_oketrip') }}'),
-            type : 'get',
-            success: function (data) {
-                if (data.status == 'kosong') {
-                    iziToast.warning({
-                        icon: 'fa fa-times',
-                        title: 'warning!',
-                        message: 'Data Not Found!',
-                    });
-                    $('.drop_here').html('');
-                }else{
-                    $('.drop_here').html(data);
-                }
-            },
-            error:function(){
-                iziToast.error({
-                    icon: 'fas fa-times-circle',
-                    title: 'Error!',
-                    message: 'Something Wrong,Call Developer',
-                });
-            }
-        })
-    })
+$('.customer').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url:'{{ route('datatale_report_profil_agent') }}',
+        },
+        columns: [
+            {data: 'DT_Row_Index', name: 'DT_Row_Index'},
+            {data: 'db_kode_transaksi', name: 'db_kode_transaksi'},
+            {data: 'md_start', name: 'md_start'},
+            {data: 'name', name: 'name'},
+            {data: 'total_pax', name: 'total_pax'},
+            {data: 'data', name: 'data'},
+        ]
+    });
 
 
 </script>

@@ -41,54 +41,59 @@ class reportagentController extends Controller
     {
         set_time_limit(30000);
 
-        $data = DB::select('SELECT * FROM o_member 
-                            left join m_keterangan_member on m_keterangan_member.mk_code = o_member.om_keterangan_mem
-                            left join m_bank on m_bank.mb_code = o_member.om_bank
-                            left join m_web_registration on m_web_registration.mw_code = o_member.om_web_regist
-                            left join users on users.id = o_member.om_operator
-                            ');
-        // return $data;
-        $seq = DB::select("SELECT ot_member as om_cd,sum(ot_sales) sales,sum(ot_purchase) purchase FROM o_transaction group by ot_member");
+        $data = DB::select("SELECT count('dp_name') as total_pax,db_id as kode,db_kode_transaksi FROM d_booking
+                                left join d_party_name on d_party_name.dp_booking_id = d_booking.db_id
+                                group by db_id,db_kode_transaksi");
 
-        if ($seq == null) {
-            $seq = 'kosong';
-        }
-        // return $seq;
-        // $data = array_merge($data1,$seq);
+        $pay = DB::select("SELECT sum(d_history_bayar_d.dhd_nominal) as total,dh_booking_id FROM d_history_bayar
+                                inner join d_history_bayar_d on d_history_bayar_d.dhd_history_id = d_history_bayar.dh_id
+                                where dh_status_payment = 'APPROVE'
+                                group by dh_booking_id");
+
+        // return $pay;
         $data = collect($data);
-        // return $data;
 
         return Datatables::of($data)
-            ->addColumn('aksi', function ($data) {
-                return'<div class="btn-group">
-                            <a href="'.$data->om_code .'/edit_member" class="btn btn-sm txt-color-white bg-color-orange"><i class="fa fa-pencil-square-o"></i></a>
-                       </div>';
-            })
-            ->addColumn('sales', function($data) {
-                    $seq = DB::select("SELECT ot_member,sum(ot_sales) sales,sum(ot_purchase) purchase FROM o_transaction group by ot_member");
-                    for ($i=0; $i <count($seq) ; $i++) { 
-                        if ($data->om_code == $seq[$i]->ot_member) {
-                            return 'Rp. '.number_format($seq[$i]->sales,0,'','.');
-                        }
+            ->addColumn('data', function($data) use ($pay) {
+                for ($i=0; $i <count($pay); $i++) { 
+                    if ($data->kode == $pay[$i]->dh_booking_id) {
+                        return $pay[$i]->total;
                     }
-                    
+                }
+                
             })
-            ->addColumn('purchase', function($data) {
-                    $seq = DB::select("SELECT ot_member,sum(ot_sales) sales,sum(ot_purchase) purchase FROM o_transaction group by ot_member");
-                    for ($i=0; $i <count($seq) ; $i++) { 
-                        if ($data->om_code == $seq[$i]->ot_member) {
-                            return 'Rp. '.number_format($seq[$i]->purchase,0,'','.');
-                        }
+            ->rawColumns(['data'])
+            ->addIndexColumn()
+            ->make(true);
+    }
+    public function datatale_report_profil_agent()
+    {
+        set_time_limit(30000);
+
+        $data = DB::select("SELECT count('dp_name') as total_pax,db_id as kode,db_kode_transaksi,md_start,users.name FROM d_booking
+                                left join d_party_name on d_party_name.dp_booking_id = d_booking.db_id
+                                left join m_detail_intinerary on m_detail_intinerary.md_id = d_booking.db_intinerary_id
+                                left join users on users.id = d_booking.created_by
+                                group by db_id,db_kode_transaksi,md_start,users.name");
+
+        $pay = DB::select("SELECT sum(d_history_bayar_d.dhd_nominal) as total,dh_booking_id FROM d_history_bayar
+                                inner join d_history_bayar_d on d_history_bayar_d.dhd_history_id = d_history_bayar.dh_id
+                                where dh_status_payment = 'APPROVE'
+                                group by dh_booking_id");
+
+        // return $pay;
+        $data = collect($data);
+
+        return Datatables::of($data)
+            ->addColumn('data', function($data) use ($pay) {
+                for ($i=0; $i <count($pay); $i++) { 
+                    if ($data->kode == $pay[$i]->dh_booking_id) {
+                        return $pay[$i]->total;
                     }
+                }
+                
             })
-            ->addColumn('detail', function ($data) {
-                return'<button onclick="detail(\''.$data->om_code.'\')" type="button" class="btn btn-sm btn-primary btn-xl" data-toggle="modal">
-                        <i class="fa fa-fw fa-th"></i>
-                       </button>';
-            })
-            
-           
-            ->rawColumns(['aksi','sales','purchase','detail'])
+            ->rawColumns(['data'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -181,6 +186,7 @@ class reportagentController extends Controller
                         ->where('co_name',Auth::user()->co_name)
                         ->orWhere('role_id',5)
                         ->get();
+
         return view('report.report_agent.report_table_customer',compact('admin','data_tgl'));
 
     }
