@@ -34,7 +34,7 @@
             <a href="javascript:void(0);" class="bars"></a>
             <a class="navbar-brand" href="{{ route('home') }}">OKE-TRIP</a>
         </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse">
+        {{-- <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Call Search -->
                 <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
@@ -227,7 +227,7 @@
                 </li>
                 <!-- #END# Tasks -->
             </ul>
-        </div>
+        </div> --}}
     </div>
 </nav>
 
@@ -428,7 +428,7 @@
                     @else
                     @endif
 
-           {{--          <li>
+                    {{--          <li>
                         <a href="{{ route('booking_print') }}">
                             <i class="material-icons">print</i>
                             <span>BOOK</span>

@@ -1,5 +1,4 @@
 @extends('main')
-@include('layouts._sidebar')
     
 <style type="text/css">
     .gede{
