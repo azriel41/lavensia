@@ -1347,6 +1347,7 @@
       
        
         // $('.invoice_tab').prop('hidden',false);
+        $('.save').removeClass('disabled');
         $('#invoice').modal('show');
     })
     
@@ -1395,6 +1396,7 @@
             });
           }
         });
+        $('.save').addClass('disabled');
     })
 
 
