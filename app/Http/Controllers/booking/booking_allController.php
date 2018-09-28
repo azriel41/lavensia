@@ -618,33 +618,35 @@ class booking_allController extends Controller
 				                        </a>
 				                     </li>';
 		                    }
+		                    if (Auth::user()->akses('approve payment','mh_aktif')) {
+		                    	if ($data->booking->db_handle_by != null) {
+			                    	if ( $data->dh_status_payment != 'APPROVE') {
+			                    		$c = 	'<li>
+							                        <a onclick="approve(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-teal">
+							                            <i class="material-icons">touch_app</i>
+							                            Approve
+							                        </a>';
+			                    	}
 
-		                    if ($data->booking->db_handle_by != null) {
-		                    	if ( $data->dh_status_payment != 'APPROVE') {
-		                    		$c = 	'<li>
-						                        <a onclick="approve(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-teal">
-						                            <i class="material-icons">touch_app</i>
-						                            Approve
-						                        </a>';
-		                    	}
+			                    	if ($data->booking->db_handle_by == Auth::User()->id ) {
+							            $f =        '<a onclick="check(\''.$data->dh_id.'\')" class="waves-effect waves-block bg-cyan" >
+							                            <i class="material-icons">edit</i>
+							                            Check
+							                        </a>';
+			                    	}
 
-		                    	if ($data->booking->db_handle_by == Auth::User()->id ) {
-						            $f =        '<a onclick="check(\''.$data->dh_id.'\')" class="waves-effect waves-block bg-cyan" >
-						                            <i class="material-icons">edit</i>
-						                            Check
-						                        </a>';
-		                    	}
-
-		                    	if ( $data->dh_status_payment == 'APPROVE') {
-		                    		$g = 	
-						                        '<a onclick="deleting(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-red">
-						                            <i class="material-icons">delete</i>
-						                            Delete
-						                        </a>
-						                    </li>';
-		                    	}
-		                    	
+			                    	if ( $data->dh_status_payment == 'APPROVE') {
+			                    		$g = 	
+							                        '<a onclick="deleting(\''.$data->dh_id.'\')" class=" waves-effect waves-block bg-red">
+							                            <i class="material-icons">delete</i>
+							                            Delete
+							                        </a>
+							                    </li>';
+			                    	}
+			                    	
+			                    }
 		                    }
+			                    
 			                    
 			                $d = '</ul>
 			           			 </div>';
