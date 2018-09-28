@@ -37,8 +37,8 @@
         @endphp
         <tr style="background-color: #d7abff">
             <td align="center">1</td>
-            <td>{{ $tourled->tl_name }}</td>
-            <td>{{ $tourled->tl_passport }}</td>
+            <td>{{ $tourled->tl_name  or null }}</td>
+            <td>{{ $tourled->tl_passport  or null }}</td>
             <td>double</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

@@ -1,5 +1,5 @@
 @extends('main')
-@include('layouts._sidebar')
+
 <style type="text/css" media="screen">
     .inline-block{
         display: inline-block;

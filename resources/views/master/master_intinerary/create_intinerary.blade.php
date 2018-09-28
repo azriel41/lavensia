@@ -1,5 +1,4 @@
 @extends('main')
-@include('layouts._sidebar')
 @section('content')
 <div class="container-fluid">
     <div class="block-header">

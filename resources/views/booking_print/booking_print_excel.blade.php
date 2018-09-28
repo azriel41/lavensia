@@ -58,9 +58,9 @@
             <td>double</td>
             <td>{{ $tourled->tl_passport or null}}</td>
             <td>{{ $tourled->tl_issuing or null}}</td>
-            <td>{{ date('d-M-Y',strtotime($tourled->tl_exp_date))}}</td>
+            <td>{{ $tourled->tl_exp_date or null  }}</td>
             <td>{{ $tourled->tl_birth_place or null}}</td>
-            <td>{{ date('d-M-Y',strtotime($tourled->tl_birth_date))}}</td>
+            <td>{{ $tourled->tl_birth_date or null}}</td>
             <td>TOUR LEADER</td>
             <td>-</td>
         </tr>

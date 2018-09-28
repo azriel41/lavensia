@@ -1,5 +1,4 @@
 @extends('main')
-@include('layouts._sidebar')
     @section('content')
         @include('layouts.task')
         <div class="header">

@@ -1,6 +1,4 @@
 @extends('main')
-@include('layouts._sidebar')
-    
 
     <section class="content">
         <div class="container-fluid">
@@ -15,7 +13,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Booking List</h2>
+                                    <h2>Customer</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
@@ -38,7 +36,7 @@
                                         <form id="save_data" action="{{ route('master_save_agent') }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                             {{-- company --}}
-                                            <div class="row clearfix">
+                                            {{-- <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <label for="intinerary">Date Start <b style="color: red">*</b></label>
                                                 </div>
@@ -76,24 +74,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>   --}}
 
-                                            <div class="row clearfix">
+                                           {{--  <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <button type="button" class="btn btn-primary cari"><i class="fa fa-search"></i> Search</button>
                                                 </div>
-                                            </div>   
+                                            </div>   --}} 
                                         </form>
-                                        <hr>
-                                        <br>
+                                        {{-- <hr>
+                                        <br> --}}
                                         <div class="row clearfix">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table customer">
                                                         <thead>
                                                             <tr>
-                                                              <th>Code Book</th>
-                                                              <th>Total Passenger</th>
-                                                              <th>Total Purchase</th>
+                                                              <th> No</th>
+                                                              <th> Book</th>
+                                                              <th> Total Pax</th>
+                                                              <th> Total penjualan</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -102,10 +101,7 @@
                                                     </table>
                                                 </div>
                                             </div>  
-                                        <div class="drop_here">
-                                            <div id="container" style="min-width: 100%; height: 400px; margin: 0 auto">
-                                            </div>
-                                        </div>
+                                        
                                         </div>
                                   </div>
                             </div>
@@ -121,34 +117,17 @@
 @section('extra_scripts')
 <script type="text/javascript">
 
-    $('#customer').DataTable({
+    $('.customer').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-          url:'{{ route('operational_datatable_member') }}',
+          url:'{{ route('datatale_report_customer_agent') }}',
         },
-        columnDefs: [
-                {
-                    targets: 0 ,
-                    className: 'center'
-                },
-                {
-                    targets: 5 ,
-                    className: 'center'
-                },
-                {
-                    targets: 6 ,
-                    className: 'center'
-                },
-            ],
         columns: [
             {data: 'DT_Row_Index', name: 'DT_Row_Index'},
-            {data: 'om_code', name: 'om_code'},
-            {data: 'om_name', name: 'om_name'},
-            {data: 'sales', name: 'sales'},
-            {data: 'purchase', name: 'purchase'},
-            {data: 'detail', name: 'detail'},   
-            {data: 'aksi', name: 'aksi'},   
+            {data: 'db_kode_transaksi', name: 'db_kode_transaksi'},
+            {data: 'total_pax', name: 'total_pax'},
+            {data: 'data', name: 'data'},
         ]
     });
 

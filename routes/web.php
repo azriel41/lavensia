@@ -333,6 +333,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//report statistic agent penjualan
 	Route::get('/report/report_profit_agent', 'report\reportagentController@report_profit_agent')->name('report_profit_agent');
+	Route::get('/report/datatale_report_profil_agent', 'report\reportagentController@datatale_report_profil_agent')->name('datatale_report_profil_agent');
 	Route::get('/report/cari_report_profit_agent', 'report\reportagentController@cari_report_profit_agent')->name('cari_report_profit_agent');
 
 	//report table agent customer

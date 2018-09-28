@@ -1,4 +1,5 @@
 @extends('main')
+    
 
     <section class="content">
         <div class="container-fluid">

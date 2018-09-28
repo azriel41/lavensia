@@ -52,6 +52,66 @@ class reportoketripController extends Controller
 
     	return view('report.report_oketrip.report_customer',compact('admin','data_tgl'));
     }
+    public function datatale_report_customer_oketrip()
+    {
+        set_time_limit(30000);
+
+        $data = DB::select("SELECT count('dp_name') as total_pax,db_id as kode,db_kode_transaksi FROM d_booking
+                                left join d_party_name on d_party_name.dp_booking_id = d_booking.db_id
+                                group by db_id,db_kode_transaksi");
+
+        $pay = DB::select("SELECT sum(d_history_bayar_d.dhd_nominal) as total,dh_booking_id FROM d_history_bayar
+                                inner join d_history_bayar_d on d_history_bayar_d.dhd_history_id = d_history_bayar.dh_id
+                                where dh_status_payment = 'APPROVE'
+                                group by dh_booking_id");
+
+        // return $pay;
+        $data = collect($data);
+
+        return Datatables::of($data)
+            ->addColumn('data', function($data) use ($pay) {
+                for ($i=0; $i <count($pay); $i++) { 
+                    if ($data->kode == $pay[$i]->dh_booking_id) {
+                        return $pay[$i]->total;
+                    }
+                }
+                
+            })
+            ->rawColumns(['data'])
+            ->addIndexColumn()
+            ->make(true);
+    }
+    public function datatale_report_profil_oketrip()
+    {
+        set_time_limit(30000);
+
+        $data = DB::select("SELECT count('dp_name') as total_pax,db_id as kode,db_kode_transaksi,md_start,users.name FROM d_booking
+                                left join d_party_name on d_party_name.dp_booking_id = d_booking.db_id
+                                left join m_detail_intinerary on m_detail_intinerary.md_id = d_booking.db_intinerary_id
+                                left join users on users.id = d_booking.created_by
+                                group by db_id,db_kode_transaksi,md_start,users.name");
+
+        $pay = DB::select("SELECT sum(d_history_bayar_d.dhd_nominal) as total,dh_booking_id FROM d_history_bayar
+                                inner join d_history_bayar_d on d_history_bayar_d.dhd_history_id = d_history_bayar.dh_id
+                                where dh_status_payment = 'APPROVE'
+                                group by dh_booking_id");
+
+        // return $pay;
+        $data = collect($data);
+
+        return Datatables::of($data)
+            ->addColumn('data', function($data) use ($pay) {
+                for ($i=0; $i <count($pay); $i++) { 
+                    if ($data->kode == $pay[$i]->dh_booking_id) {
+                        return $pay[$i]->total;
+                    }
+                }
+                
+            })
+            ->rawColumns(['data'])
+            ->addIndexColumn()
+            ->make(true);
+    }
     public function cari_report_customer_oketrip(Request $req)
     {
     	$year_min = substr($req->min,-4);
@@ -140,11 +200,21 @@ class reportoketripController extends Controller
     }
     public function report_table_customer_oketrip(Request $req)
     {
-        $data = DB::selecct("SELECT md_nota,md_seat,md_seat_remain,md_start FROM d_booking");
+        $admin = DB::table('users')
+                        ->where('role_id',4)
+                        ->where('co_name',Auth::user()->co_name)
+                        ->orWhere('role_id',5)
+                        ->get();
+        return view('report.report_oketrip.report_table_profit',compact('admin','data_tgl'));
     }
     public function report_table_profit_oketrip(Request $req)
     {
-        # code...
+        $admin = DB::table('users')
+                        ->where('role_id',4)
+                        ->where('co_name',Auth::user()->co_name)
+                        ->orWhere('role_id',5)
+                        ->get();
+        return view('report.report_oketrip.report_table_profit',compact('admin','data_tgl'));
     }
 }
 

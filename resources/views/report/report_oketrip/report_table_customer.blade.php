@@ -1,4 +1,5 @@
 @extends('main')
+    
 
     <section class="content">
         <div class="container-fluid">
@@ -13,7 +14,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Profit</h2>
+                                    <h2>Customer</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
@@ -36,7 +37,7 @@
                                         <form id="save_data" action="{{ route('master_save_agent') }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                             {{-- company --}}
-                                          {{--   <div class="row clearfix">
+                                            {{-- <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <label for="intinerary">Date Start <b style="color: red">*</b></label>
                                                 </div>
@@ -76,12 +77,11 @@
                                                 </div>
                                             </div>   --}}
 
-                                            {{-- <div class="row clearfix">
+                                           {{--  <div class="row clearfix">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
                                                     <button type="button" class="btn btn-primary cari"><i class="fa fa-search"></i> Search</button>
                                                 </div>
-                                               
-                                            </div>    --}}
+                                            </div>   --}} 
                                         </form>
                                         {{-- <hr>
                                         <br> --}}
@@ -92,8 +92,6 @@
                                                             <tr>
                                                               <th> No</th>
                                                               <th> Book</th>
-                                                              <th> Start Date</th>
-                                                              <th> Booker</th>
                                                               <th> Total Pax</th>
                                                               <th> Total penjualan</th>
                                                             </tr>
@@ -104,6 +102,7 @@
                                                     </table>
                                                 </div>
                                             </div>  
+                                        
                                         </div>
                                   </div>
                             </div>
@@ -118,23 +117,49 @@
 
 @section('extra_scripts')
 <script type="text/javascript">
-   
 
-$('.customer').DataTable({
+    $('.customer').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-          url:'{{ route('datatale_report_profil_agent') }}',
+          url:'{{ route('datatale_report_customer_agent') }}',
         },
         columns: [
             {data: 'DT_Row_Index', name: 'DT_Row_Index'},
             {data: 'db_kode_transaksi', name: 'db_kode_transaksi'},
-            {data: 'md_start', name: 'md_start'},
-            {data: 'name', name: 'name'},
             {data: 'total_pax', name: 'total_pax'},
             {data: 'data', name: 'data'},
         ]
     });
+
+    
+
+    $('.cari').click(function(){
+        $.ajax({
+            data : $('#save_data').serialize(),
+            url  : ('{{ route('cari_report_customer_oketrip') }}'),
+            type : 'get',
+            success: function (data) {
+                if (data.status == 'kosong') {
+                    iziToast.warning({
+                        icon: 'fa fa-times',
+                        title: 'warning!',
+                        message: 'Data Not Found!',
+                    });
+                    $('.drop_here').html('');
+                }else{
+                    $('.drop_here').html(data);
+                }
+            },
+            error:function(){
+                iziToast.error({
+                    icon: 'fas fa-times-circle',
+                    title: 'Error!',
+                    message: 'Something Wrong,Call Developer',
+                });
+            }
+        })
+    })
 
 
 </script>
