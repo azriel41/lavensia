@@ -216,6 +216,58 @@ class reportoketripController extends Controller
                         ->get();
         return view('report.report_oketrip.report_table_profit',compact('admin','data_tgl'));
     }
+
+
+    public function report_pelunasan_agent()
+    {
+        $admin = DB::table('users')
+                        ->where('role_id',4)
+                        ->where('co_name',Auth::user()->co_name)
+                        ->orWhere('role_id',5)
+                        ->get();
+        return view('report.report_oketrip.report_pelunasan_agent',compact('admin','data_tgl')); 
+    }
+    public function datatable_report_customer_agent()
+    {
+        set_time_limit(30000);
+
+        $data = DB::select("SELECT count('dp_name') as total_pax,db_id as kode,db_kode_transaksi FROM d_booking
+                                left join d_party_name on d_party_name.dp_booking_id = d_booking.db_id
+                                group by db_id,db_kode_transaksi");
+
+        $tot = DB::select("SELECT dh_booking_id,dh_total_payment FROM d_history_bayar
+                                    where dh_status_payment = 'APPROVE'");
+
+        $pay = DB::select("SELECT sum(d_history_bayar_d.dhd_nominal) as total,dh_booking_id FROM d_history_bayar
+                                inner join d_history_bayar_d on d_history_bayar_d.dhd_history_id = d_history_bayar.dh_id
+                                where dh_status_payment = 'APPROVE'
+                                group by dh_booking_id");
+
+
+        // return [$data,$tot,$pay];
+        $data = collect($data);
+
+        return Datatables::of($data)
+            ->addColumn('data', function($data) use ($pay) {
+                for ($i=0; $i <count($pay); $i++) { 
+                    if ($data->kode == $pay[$i]->dh_booking_id) {
+                        return $pay[$i]->total;
+                    }
+                }
+                
+            })
+            ->addColumn('tot', function($data) use ($tot) {
+                for ($i=0; $i <count($tot); $i++) { 
+                    if ($data->kode == $tot[$i]->dh_booking_id) {
+                        return $tot[$i]->dh_total_payment;
+                    }
+                }
+                
+            })
+            ->rawColumns(['data','tot'])
+            ->addIndexColumn()
+            ->make(true);
+    }
 }
 
 

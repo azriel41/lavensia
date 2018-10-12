@@ -395,6 +395,9 @@
                             <li>
                                 <a href="{{ route('report_table_profit_oketrip') }}">Report Penjualan</a>
                             </li>
+                            <li>
+                                <a href="{{ route('report_pelunasan_agent') }}">Report pelunasan</a>
+                            </li>
                         </ul>
                     </li>
                     @else

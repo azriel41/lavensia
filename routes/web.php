@@ -285,7 +285,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/ganti_nama', 'master\intinerary_controller@ganti_nama')->name('ganti_nama');
 	Route::get('/master/master_intinerary/delete', 'master\intinerary_controller@delete')->name('delete_intinerary');
 	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
-	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
+	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@datatale_report_customer_agent')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 
 
@@ -324,6 +324,12 @@ Route::group(['middleware' => 'auth'], function () {
 	//report table oktrip penjualan
 	Route::get('/report/report_table_profit_oketrip', 'report\reportoketripController@report_table_profit_oketrip')->name('report_table_profit_oketrip');
 	Route::get('/report/cari_report_table_profit_oketrip', 'report\reportoketripController@cari_report_table_profit_oketrip')->name('cari_report_table_profit_oketrip');
+
+	//report statistic Sisa pelunasan agnt
+	Route::get('/report/report_pelunasan_agent', 'report\reportoketripController@report_pelunasan_agent')->name('report_pelunasan_agent');
+	Route::get('/report/datatable_report_customer_agent', 'report\reportoketripController@datatable_report_customer_agent')->name('datatable_report_customer_agent');
+	Route::get('/report/cari_report_customer_oketrip', 'report\reportoketripController@cari_report_customer_oketrip')->name('cari_report_customer_oketrip');
+
 
 	//report statistic agent customer
 	Route::get('/report/report_customer_agent', 'report\reportagentController@report_customer_agent')->name('report_customer_agent');

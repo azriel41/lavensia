@@ -254,9 +254,6 @@
             $('#slider').css('height','330px');
             $('.carousel-example-generic').css('height','330px');
             $('.carousel-inner').css('height','330px');
-
-            // 
-
             $('.carousel-indicators').css('margin-top','-35%');
 
         }
@@ -266,7 +263,6 @@
             $('#slider').css('height','200px');
             $('.carousel-example-generic').css('height','200px');
             $('.carousel-inner').css('height','200px');
-            // 
             $('.carousel-indicators').css('margin-top','-50%');
         }
         else {
