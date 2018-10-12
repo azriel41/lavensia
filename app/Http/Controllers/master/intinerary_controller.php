@@ -342,7 +342,7 @@ class intinerary_controller extends Controller
             $all_detail = $detail_intinerary->show('md_intinerary_id',$req->id)->toArray();
             $temp = [];
             for ($a=0; $a < count($all_detail); $a++) { 
-                if ($all_detail[$a]['md_seat'] != $all_detail[$a]['md_seat_remain']) {
+                if ($all_detail[$a]['md_seat'] != ($all_detail[$a]['md_seat_remain']+1)) {
                     array_push($temp, 0);
                 }else{
                     array_push($temp, 1);
