@@ -37,16 +37,16 @@
 
                 <div class="project-wrapper" style="margin-bottom: 275px">
                     @foreach ($intinerary as $index => $iti)
-                        <figure class="mix work-item    
-                            @foreach ($cat[$index] as $i=>$tes)
-                                {{ str_replace(' ','-',$cat[$index][$i])}}
-                            @endforeach
-                            ">
+                        <figure class="mix work-item"
+                            {{-- @foreach ($cat[$index] as $i =>$tes) --}}
+                                {{-- {{ str_replace(' ','-',$cat[$index][$i]) }} --}}
+                            {{-- @endf  oreach --}}
+                            >
                             <img src="{{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}" alt="" >
                             <figcaption class="overlay">
                                 <button class="btn btn-small btn-book" style="margin-top: 15%;border-radius: 100%;height: 37px;" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="intinerary(this)" ><b><i class="fa fa-search"></i></b></button>
                                 <h4>{{ $intinerary[$index]['mi_name'] }}</h4>
-                                <p></p>
+                                <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
                                 <br>
                                 <button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button>
                             </figcaption>

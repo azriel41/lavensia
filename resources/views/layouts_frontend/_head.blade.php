@@ -54,7 +54,7 @@ Fixed Navigation
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
                 @if (Route::has('login'))
-                        @if (Auth::check())
+                         @if (Auth::check())
                             <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -143,7 +143,7 @@ Fixed Navigation
             <h3 style="color: white !important;border-radius: 0px !important;">Log In</h3>
         </div>
         <hr>
-        <div class="contact-form">
+        <div class="contact-form" style="padding: 10px 10px 10px 10px;">
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
               {{ csrf_field() }}
                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -299,15 +299,15 @@ End Fixed Navigation
         }
     });
     
-    function login_log(argument) {
-        if (!$(".form_display").is(":visible")) {
-            $('.form_display').css('display','block');
-        }
-        else {
-            $('.form_display').css('display','none');
-        }
+        function login_log(argument) {
+            if (!$(".form_display").is(":visible")) {
+                $('.form_display').css('display','block');
+            }
+            else {
+                $('.form_display').css('display','none');
+            }
 
-    }
+        }
     function home(argument) {
         window.location = ('{{ route('home') }}')
     }

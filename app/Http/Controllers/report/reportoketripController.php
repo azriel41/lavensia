@@ -244,7 +244,8 @@ class reportoketripController extends Controller
                                 group by dh_booking_id");
 
 
-        // return [$data,$tot,$pay];
+
+
         $data = collect($data);
 
         return Datatables::of($data)
