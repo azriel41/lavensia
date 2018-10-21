@@ -352,7 +352,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="">UNDER MAINTENANCE</a>
+                                <a href="{{ route('finance') }}">Finance</a>
                             </li>
                         </ul>
                     </li>

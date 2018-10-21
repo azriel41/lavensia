@@ -96,6 +96,13 @@ window.onload = function(){
         ]
     });
 
+    $(".mask").maskMoney({
+        precision:0,
+        thousands:'.',
+        allowZero:true,
+        defaultZero:true,
+    });
+
 }
 
 function schedule(mc_id) {
@@ -141,6 +148,12 @@ function departure(mc_id) {
 }
 
 function approve(id) {
+    $('.table_approve input').val(0);
+    $('.mi_id').val(id);
+    $('#approve').modal('show');
+}
+
+function save_approve() {
     iziToast.show({
             overlay: true,
             close: false,
@@ -165,7 +178,7 @@ function approve(id) {
                     $.ajax({
                         type: "get",
                         url:'{{ route('approve_itinerary') }}',
-                        data: {id},
+                        data: $('.table_approve').serialize(),
                         dataType:'json',
                       success:function(data){
                         if (data.status == '1') {

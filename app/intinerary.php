@@ -11,7 +11,27 @@ class intinerary extends Model
 	const CREATED_AT = 'created_at';
 	const UPDATED_AT = 'updated_at';
 
-	protected $fillable = ['mi_id','mi_nota','mi_name','category_id','mi_highlight','mi_term','mi_pdf','mi_image','mi_by','created_by','updated_by','mi_status'];
+	protected $fillable = [ 'mi_id',
+							'mi_nota',
+							'mi_name',
+							'category_id',
+							'mi_highlight',
+							'mi_term',
+							'mi_pdf',
+							'mi_image',
+							'mi_by',
+							'created_by',
+							'updated_by',
+							'mi_status',
+							'mi_agent_com_adult',
+							'mi_agent_com_cwb',
+							'mi_agent_com_cnb',
+							'mi_agent_com_infant',
+							'mi_netto_adult',
+							'mi_netto_cwb',
+							'mi_netto_cnb',
+							'mi_netto_infant'
+						];
 
 	public function category()
 	{

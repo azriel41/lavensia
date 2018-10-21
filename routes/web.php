@@ -349,5 +349,10 @@ Route::group(['middleware' => 'auth'], function () {
 	//report table agent penjualan
 	Route::get('/report/report_table_profit_agent', 'report\reportagentController@report_table_profit_agent')->name('report_table_profit_agent');
 	Route::get('/report/cari_report_table_profit_agent', 'report\reportagentController@cari_report_table_profit_agent')->name('cari_report_table_profit_agent');
+
+	// FINANCE
+	Route::get('/finance/finance', 'finance\finance_controller@finance')->name('finance');
+	Route::get('/finance/payment', 'report\reportagentController@report_table_profit_agent')->name('report_table_profit_agent');
+
 });
 

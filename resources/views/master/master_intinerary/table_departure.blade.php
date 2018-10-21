@@ -4,7 +4,8 @@
 		<th>Start</th>
 		<th>End</th>
 		<th>Adult Price</th>
-		<th>Child Price</th>
+		<th>CnB Price</th>
+		<th>CwB Price</th>
 		<th>Infant Price</th>
 		<th>Seat</th>
 	</thead>
@@ -16,6 +17,7 @@
 			<td>{{ Carbon\carbon::parse($data->md_end)->format('d-m-Y') }}</td>
 			<td>{{ number_format($data->md_adult_price, 2, ",", ".") }}</td>
 			<td>{{ number_format($data->md_child_price, 2, ",", ".") }}</td>
+			<td>{{ number_format($data->md_child_w_price, 2, ",", ".") }}</td>
 			<td>{{ number_format($data->md_infant_price, 2, ",", ".") }}</td>
 			<td>{{ $data->md_seat_remain }}/{{ $data->md_seat }}</td>
 		</tr>
