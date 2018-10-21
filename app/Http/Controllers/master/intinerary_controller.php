@@ -77,6 +77,13 @@ class intinerary_controller extends Controller
                                                 </a>
                                             </li>';
                                         }
+                                    }else{
+                                        $c1 = '<li class="bg-cyan">
+                                                <a onclick="approve(\''.$data->mi_id.'\')" class="waves-effect waves-block" style="color:white">
+                                                    <i class="material-icons">check</i>
+                                                    Edit Netto
+                                                </a>
+                                            </li>';
                                     }
                                 $d = '</ul>
                             </div>';
@@ -462,9 +469,14 @@ class intinerary_controller extends Controller
 
     public function approve(Request $req)
     {
+        $key = array_keys($req->all());
+        $value = $req->all();                
         if (Auth::user()->akses('approve itinerary','mh_aktif')) {
-            $array = array('mi_status'=>'ACTIVE');
-            $this->all_variable->intinerary()->update($array,'mi_id',$req->id);
+            for ($i=0; $i < count($key); $i++) { 
+                $data[$key[$i]] = filter_var($value[$key[$i]],FILTER_SANITIZE_NUMBER_INT);
+                $data['mi_status'] = 'ACTIVE';
+            }
+            $this->all_variable->intinerary()->update($data,'mi_id',$req->mi_id);
             return Response::json(['status'=>1,'message'=>'Update Success']);
         }
     }

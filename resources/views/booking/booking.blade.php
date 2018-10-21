@@ -1350,7 +1350,7 @@
         $('.save').removeClass('disabled');
         $('#invoice').modal('show');
     })
-    
+
     $('.save').click(function(){
         
         var form  = $('#save');
