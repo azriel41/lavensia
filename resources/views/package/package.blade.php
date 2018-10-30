@@ -1,207 +1,82 @@
- <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-    <head>
-        <!-- meta charec set -->
+
+@extends('layouts_frontend_2._main')  
+
+
+@section('extra_style')
+
+<style type="text/css">
+th{
+    text-align: center;
+}
+#tour{
+    color: 
+}
+.left{
+    float: left;
+}
+hr{
+    margin-top: 0.2rem !important;
+    margin-bottom: -1.1rem !important;
+    border: 0 !important;
+    border-top: 1px solid rgba(36, 36, 36, 0.36) !important;
+}
+.book-a-table-widget{
+  background-color: transparent !important;
+}
+</style>
+@endsection
+
+@section('content')
+
+ <div class="breadcumb-area height-500 bg-img bg-overlay" style="background-image: url({{ asset('assets_frontend_2/img/bg-img/breadcumb.jpg') }} )">
        
-        @include('layouts_frontend._head')
-       
-        <style type="text/css">
-            .btn-primary {
-                color: white;
-                background-color: transparent;
-                border-color: #ffffff;
-            }
-            .btn-primary:hover {
-                color: black;
-                background-color: #f4c800;
-                border-color: #ffffff;
-            }
-            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-                color: #000;
-                background-color: #face03;
-                border-color: #ffffff;
-            }
-            .btn-book{
-                color: black;
-                background-color: #f9ce05;
-            }
-            .logo{
-                width: 100px;
-            }
-            .support{
-                margin-top: 10px;
-            }
-            .mb50{
-                /*margin-top: 30px;*/
-                background-color: white;
-            }
+    </div>
+    <!-- ***** Breadcumb Area End ***** -->
 
-
-            .nav-tabs { 
-                border-bottom: 2px solid #DDD; 
-            }
-            .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-                border-width: 0; 
-            }
-            .nav-tabs > li > a {
-                border: none; 
-                color: #666; 
-            }
-            .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
-                border: none; 
-                color: black !important; 
-                background: transparent !important; 
-            }
-            .nav-tabs > li > a::after {
-                content: ""; 
-                background: #1d42fc; 
-                height: 2px; position: absolute; 
-                width: 100%; 
-                left: 0px; 
-                bottom: -1px; 
-                transition: all 250ms ease 0s; 
-                transform: scale(0); 
-            }
-            .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
-                transform: scale(1); 
-            }
-            .tab-nav > li > a::after {
-                background: #21527d none repeat scroll 0% 0%; 
-                color: #fff; 
-            }
-
-            .tab-pane {
-                padding: 5px 0; 
-                margin-left: 20px;
-            }
-            .tab-content {
-                padding:5px;
-                background-color:white;
-                min-height: 400px;
-            }
-            .kiri{
-                text-align:left;
-            }
-            /* MODAL */
-            .modal-backdrop {
-                z-index: 1040 !important;
-            }
-            .modal-dialog {
-                margin: auto;
-                z-index: 1100 !important;
-                width: 700px;
-            }
-            .modal-content {
-                border-radius: 0px; 
-            }
-            .modal {
-              text-align: center;
-            }
-
-            @media screen and (min-width: 768px) { 
-              .modal:before {
-                display: inline-block;
-                vertical-align: middle;
-                content: " ";
-                height: 100%;
-              }
-            }
-            .modal-dialog {
-              display: inline-block;
-              vertical-align: middle;
-            }
-            .center-al{
-                text-align: center;
-            }
-            /*btn orange*/
-            .btn-orange {
-                color: white;
-                background-color: #eb4d4b;
-                border-color: #ffffff;
-            }
-            .btn-orange:hover {
-                color: #534c4c;
-                background-color: #ff6b6b;
-                border-color: white;
-            }
-            .img-responsive{
-                margin: auto !important;
-                border: 1px solid #bcbcbc;
-                padding: 5px;
-            }
-
-        </style>
-    </head>
-    
-    <body id="body">  
-
-        <!--
-        Contact Us
-        ==================================== -->        
-        <section id="package" class="package background_page">
-            <div class="container">
-                <div class="row mb50 margin_top_30px">
-                     <!-- Header--> 
-                    @if (Session::has('message'))
-                        <div class="col-md-12" style="min-height: 100px">
-                                <div class="alert alert-danger alert-dismissable" style="animation: fadein 0.5s, fadeout 0.5s 2.5s;">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                  <h2 style="text-align:left"><h4 style="text-align:center">{{ Session::get('message') }}</h4>
-                                </div>
+    <!-- ***** Single Listing Area Start ***** -->
+    <section class="dorne-single-listing-area section-padding-100">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <!-- Single Listing Content -->
+                <div class="col-12 col-lg-8">
+                         @if (Session::has('message'))
+                            <div class="col-md-12" style="min-height: 100px">
+                                    <div class="alert alert-danger alert-dismissable" style="animation: fadein 0.5s, fadeout 0.5s 2.5s;">
+                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                      <h2 style="text-align:left"><h4 style="text-align:center">{{ Session::get('message') }}</h4>
+                                    </div>
+                            </div>
+                        @endif
+                    <div class="single-listing-content">
+                        <div class="listing-title">
+                            <h3>{{ $data[0]->mi_name }}</h3>
+                            <h5>
+                                {{ $data[0]->mi_highlight }}
+                            </h5>
+                            <br>
+                            <h6>By : {{ $data[0]->mi_by }}</h6>
                         </div>
-                    @endif
-                    <!-- Image--> 
-                    <div class="col-sm-12 col-sm-12 col-sm-12 col-sm-12">
-                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-4" data-wow-duration="1000ms">
-                                <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
+
+                        <div class="single-listing-nav">
+                            <nav>
+                                <ul class="nav nav-tabs ">
+                                    <li><a class="active" data-toggle="tab" href="#tour"><i class="fa fa-plus-square-o"></i> Tour</a></li>
+                                    <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
+                                    <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
+                                    <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & Cond</a></li>
+                                </ul>
+                            </nav>
                         </div>
-                        <div class="sec-sub-title text-center wow fadeInUp  animated col-sm-8" data-wow-duration="1000ms">
-                            <table width="100%"> 
-                                <tr>
-                                    <td align="left" valign="top" class="Hightlight"><h2 style="margin-top: -5px;font-weight: bold">{{ $data[0]->mi_name }}</h2></td>
-                                </tr>
-                                <tr>
-                                    <td align="left" class="Hightlight"><h4 class="support">By : {{ $data[0]->mi_by }}</h4></td>
-                                </tr>
-                                <tr>
-                                    <td align="left" class="Hightlight">{{ $data[0]->mi_highlight }}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                </tr>
 
-                                <tr>
-                                    {{-- <td align="left"></td> --}}
-                                    <td align="left"><button class="btn btn-small btn-book download" id="pdf" data-id="{{ $data[0]->mi_nota }}" ><b><i class="fa fa-cloud-download"></i> Itinerary</b></button></td>
-                                </tr>
-                            </table>
+                         <div class="tab-content">
+                            <div id="tour" class="active tab-pane">
 
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb50 margin_top_-40px">
-                 {{-- @include('package.modal_book') --}}
-                    <!-- Tabs--> 
-                    <div class="sec-sub-title text-center wow fadeInUp  animated" data-wow-duration="1000ms">
-                      <div class="container">
-                        <ul class="nav nav-tabs ">
-                            <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-plus-square-o"></i> Tour</a></li>
-                            <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
-                            <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
-                            <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & Cond</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
                                 <div class="col-md-12" >
-                                      
+                                    <h5>Flight Code</h5>
+                                    <div class="table table-striped table-responsive">
                                         <table width="100%" class="table table-striped" align="center">
-                                            <tr style="background-color: #7ed6df;">
-                                                <th class="center-al">No Flight</th>
+                                            <tr  style="background-color: #7ed6df;">
+                                                <th class="center-al" >No Flight</th>
                                                 <th class="center-al">Route</th>
                                                 <th class="center-al">Time</th>
                                             </tr>
@@ -213,71 +88,92 @@
                                             </tr>
                                           @endforeach
                                         </table>
-                                            
-
+                                    </div>
+                                    <h5>Schedule Detail</h5>
                                     @foreach ($schedule as $index => $sch)
                                       <div style="margin-top: 20px"></div>
-                                      <div style="min-height: 100px">
-                                            <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #7ed6df;">
-                                                <span>Day</span><br>
-                                                <span class="day-tour">{{ $index+1 }}</span>
-                                            </div>
+                                        <div class="single-listing-menu d-flex justify-content-between">
+                                            <!-- Listing Menu Title -->
+                                            
 
-                                            <div class="col-md-11 col-md-11 col-md-11">
-                                                <p class="title-itin"><b>{{ $sch->ms_caption }}</b>   |   {{ $sch->ms_bld }}</p>
-                                                <p class="desc-itin">{{ $sch->ms_description }}</p>
+                                            <div class="listing-menu-title">
+                                                 <div style="min-height: 100px">
+                                                    <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #7ed6df;">
+                                                        <span>Day</span><br>
+                                                        <span class="day-tour">{{ $index+1 }}</span>
+                                                    </div>
+
+                                                    <div class="col-md-11 col-md-11 col-md-11">
+                                                        <p class="title-itin"><b>{{ $sch->ms_caption }}</b>   |   {{ $sch->ms_bld }}</p>
+                                                        <p class="desc-itin">{{ $sch->ms_description }}</p>
+                                                    </div>
+                                                 </div>
                                             </div>
-                                       </div>
+                                        </div>
+
+                                     
                                       <br>
                                     @endforeach
                                 </div>
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
-                                <table width="100%" class="kiri">
-                                    <br>
-                                    <tr>
-                                        <th><b>Price Table</b></th>
-                                    </tr>
-                                </table>
+                                <h5>Price Table</h5>
                                 <div style="margin-top: 20px"></div>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped" align="center">
                                         <thead>
                                            <tr style="background-color: #7ed6df;" >
-                                               <th class="center-al">No</th>
-                                               <th class="center-al">Code Tour</th>
-                                               <th class="center-al">Date</th>
-                                               <th class="center-al">Adult</th>
-                                               <th class="center-al">Child</th>
-                                               <th class="center-al">Child w Bed</th>
-                                               <th class="center-al">Infant</th>
-                                               <th class="center-al">visa</th>
-                                               <th class="center-al">Tax</th>
-                                               <th class="center-al">Tips</th>
-                                               <th class="center-al">Min DP</th>
-                                               <th class="center-al">Seat Remain</th>
-                                               <th class="center-al">Book</th>
+                                               {{-- <th>No</th> --}}
+                                               <th>Book</th>
+                                               <th>Code Tour</th>
+                                               <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                               <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Tour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                               <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Additional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                              {{--  <th>Adult</th>
+                                               <th>Child</th>
+                                               <th>Child w Bed</th>
+                                               <th>Infant</th> --}}
+                                               <th>Min DP</th>
+                                               <th>Seat Remain</th>
                                            </tr>
                                         </thead>
                                         <tbody>
                                           @foreach ($detail as $index => $det)
                                            <tr align="left">
-                                               <td>{{ $index+1 }}</td>
-                                               <td>{{ $det->md_nota }}</td>
-                                               <td>{{ date('d M Y',strtotime($det->md_start))  }} - {{ date('d M Y',strtotime($det->md_end))  }}</td>
-                                               <td align="right">{{ number_format($det->md_adult_price,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_child_price,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_child_w_price,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_infant_price,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_Visa,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_tax,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_tips,0,'','.') }}</td>
-                                               <td align="right">{{ number_format($det->md_dp,0,'','.') }}</td>
-                                               <td>{{ $det->md_seat_remain }}</td>
-                                               <td>
+                                               {{-- <td width="5%">{{ $index+1 }}</td> --}}
+                                               <td width="10%">
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
+                                               <td width="10%">{{ $det->md_nota }}</td>
+                                               <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j style="margin: 0% 0% 0% 20%;">s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
+                                               <td align="right" width="20%">
+                                                <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">Child : </span><b>{{ number_format($det->md_child_price,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">CwB : </span><b>{{ number_format($det->md_child_w_price,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">Infant : </span><b>{{ number_format($det->md_infant_price,0,'','.') }} </b>
+                                               </td>
+                                               <td align="right" width="20%">
+                                                <span class="left">Visa : </span><b>{{ number_format($det->md_Visa,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">Tax : </span><b>{{ number_format($det->md_tax,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">Tip gd : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
+                                                <hr>
+                                                <br>
+                                                <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
+                                               </td>
+                                               <td align="right" width="10%"><b>{{ number_format($det->md_dp,0,'','.') }}</b></td>
+                                               <td width="10%">{{ $det->md_seat_remain }}</td>
+                                               
                                             </tr>
                                           @endforeach
                                         </tbody>
@@ -329,27 +225,40 @@
                                 </div>
                             </div>
                         </div>
-                      </div>
+                    </div>
+                </div>
+
+                <!-- Listing Sidebar -->
+                <div class="col-12 col-md-8 col-lg-4">
+                    <div class="listing-sidebar">
+
+                        <!-- Listing Verify -->
+                        <div class="author-widget mt-50 d-flex align-items-center">
+                            <img src="{{ asset('assets_frontend_2/img/clients-img/1.jpg') }}" alt="">
+                            <div class="authors-name">
+                                <a href="#">{{ $data[0]->created_by }}</a>
+                                <p>The Author</p>
+                                <p> {{ date('d M Y',strtotime($det->created_at))  }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Book A Table Widget -->
+                        <div class="book-a-table-widget mt-50">
+                            <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
+                        </div>
+
+                        
+
+
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!--
-        End Contact Us
-        ==================================== -->
-        
-        
-        @include('layouts_frontend._footer')
-        
-        
-        <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+        </div>
+    </section>
+@endsection
 
-        @include('layouts_frontend._scripts')
-        
-    </body>
-</html>
 
+@section('extra_scripts')
 <script type="text/javascript">
     
 
@@ -398,3 +307,4 @@
     
     
 </script>
+@endsection

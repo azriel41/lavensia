@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-cyan">
-                <h3 class="modal-title" id="largeModalLabel">Term & Condition</h3>
+                <h3 class="modal-title" id="largeModalLabel">Term & Condi   tion</h3>
             </div>
             <div class="modal-body">
                 <p>
@@ -27,11 +27,11 @@
       </div>
       <div class="modal-body " style="text-align: left">
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">Room</a></li>
-          <li><a data-toggle="tab" href="#menu1">Additional</a></li>
+          <li style="padding: 10px;" class="active"><a data-toggle="tab" href="#home">Room</a></li>
+          <li style="padding: 10px;"><a data-toggle="tab" href="#menu1">Additional</a></li>
         </ul>
         <div class="tab-content"  >
-          <div id="home" class="tab-pane fade in active">
+          <div id="home" class="tab-pane active">
             <table width="100%" class="table table-striped table-hover table_room">
                 <thead >
                     <tr>
