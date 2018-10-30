@@ -96,6 +96,7 @@ Route::get('/welcome', function () {
 		$article5 = App\article::where('da_show','5')->first();
 		return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cart','jumlah','cat'));
 	}else{
+		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		$article1 = App\article::where('da_show','1')->first();
 		$article2 = App\article::where('da_show','2')->first();
 		$article3 = App\article::where('da_show','3')->first();
@@ -113,7 +114,7 @@ Route::get('/package/package_pdf', 'package\packageController@package_pdf')->nam
 //partner
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
-
+Route::get('/contact/contact', 'additional\partnerController@contact')->name('contact');
 
 //article index
 Route::get('/article/article/{id}', 'article\articleController@article')->name('article');
@@ -178,6 +179,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');
+		//datatable booking list
+		Route::get('/booking/datatable_booking_list', 'booking\booking_listController@datatable_booking_list')->name('datatable_booking_list');
 		//booking detail
 		Route::get('/booking/bookingdetail/{id}', 'booking\booking_listController@bookingdetail')->name('bookingdetail');
 		//booking detail print itin 

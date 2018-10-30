@@ -227,6 +227,72 @@ class booking_listController extends Controller
         // return view('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
         return $pdf->setPaper('A4', 'potrait')->download('booking_detail.pdf');
     }
+    public function datatable_booking_list()
+    {
+        $user = Auth::user()->id;
+
+        $data = DB::Table('d_booking as db')
+                        ->leftjoin('m_intinerary as mi','db.db_intinerary_id','=','mi.mi_id')
+                        // ->join('m_detail_intinerary as mid','mi.mi_id','=','mid.md_intinerary_id')
+                        ->leftjoin('users','users.id','=','db.db_handle_by')    
+                        ->where('db_users',$user)
+                        ->get();
+        
+        $data = collect($data);
+        return Datatables::of($data)
+                        ->addColumn('bookingdetail', function ($data) {
+                            return "<a class='btn btn-sm btn-book'  href='bookingdetail/".$data->db_kode_transaksi."'>".$data->db_kode_transaksi."</a>";
+                        })
+                        ->addColumn('date', function ($data) {
+                            return date('d F Y',strtotime($data->created_at));
+                        })
+                        ->addColumn('status', function ($data) {
+                            $parent = $data->db_status;
+
+                            $a = '<span class="label label-primary"> '.$data->db_status.'</span>';
+
+                            $b = '<span class="label label-success"> '.$data->db_status.'</span>';
+
+                            $c = '<span class="label label-danger"> '.$data->db_status.'</span>';
+
+                            $d = '<span class="label label-info"> '.$data->db_status.'</span>';
+
+                            if ($parent == 'Waiting List') {
+                                return $a;
+                            }elseif ($parent == 'Holding Confirm') {
+                                return $b;
+                            }elseif ($parent == 'Canceled') {
+                                return $c;
+                            }else {
+                                return $d;
+                            }
+                        })
+                        ->addColumn('pay', function ($data) {
+                            $a = '<span class="label label-success">Lunas</span>';
+
+                            $b = '<span class="label label-danger">Belum Lunas</span>';
+
+                            if ($data->db_total_remain == 0) {
+                                return $a;
+                            }else {
+                                return $b;
+                            }
+                        })
+                        ->addColumn('termin', function ($data) {
+                            $a = '<button class="btn btn-sm btn-deault" disabled=""> <i class="fa fa-money"></i> Pay</button>';
+
+                            $b = '<button class="btn btn-sm btn-book payment" data-id='.$data->db_id.'> <i class="fa fa-money"></i> Pay</button>';
+
+                            if ($data->db_total_remain == 0) {
+                                return $a;
+                            }else {
+                                return $b;
+                            }
+                        })
+                        ->rawColumns(['bookingdetail','date','status','pay','termin'])
+                        ->addIndexColumn()
+                        ->make(true);
+    }
     public function bookingdetail_download_md_tata_tertib($id)
     {
 

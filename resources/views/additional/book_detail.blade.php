@@ -19,7 +19,6 @@
                 background-color: white;
                 padding-bottom: 60px;
             }
-          
         </style>
     </head>
     
