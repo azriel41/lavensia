@@ -109,9 +109,8 @@
                 <hr class="black" style="border-bottom: 2px solid black">
             </div>
             <div class="col-sm-12 table-responsive" style="font-size: 10px">
-                @if (isset($awal) or isset($akhir))
-                    {{-- expr --}}
-                <label>Periode Transaksi : {{ $awal }} - {{ $akhir }}</label>
+                @if (($awal != '') && ($akhir != ''))
+                    <label>Periode Transaksi : {{ $awal }} - {{ $akhir }}</label>
                 @endif
                 <table class="table table-bordered overflow">
                     @php
@@ -254,9 +253,7 @@
                         <div class="form-group">
                             <div class="form-line req" style="position:relative">
                                 <input type="text" id="start" class="form-control datenormal " 
-                                @if (isset($awal))
-                                    value="{{ $awal }}" 
-                                @endif
+                      
                                 placeholder="DD/MM/YYYY">
                             </div>
                         </div>
@@ -270,9 +267,7 @@
                         <div class="form-group">
                             <div class="form-line req" style="position:relative">
                                 <input type="text" id="end" 
-                                @if (isset($akhir))
-                                    value="{{ $akhir }}" 
-                                @endif
+                       
                                 class="form-control datenormal " placeholder="DD/MM/YYYY">
                             </div>
                         </div>

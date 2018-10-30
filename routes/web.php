@@ -355,7 +355,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// FINANCE
 	Route::get('/finance/finance', 'finance\finance_controller@finance')->name('finance');
-	Route::get('/finance/laba_rugi', 'laba_rugi\finance_controller@laba_rugi')->name('laba_rugi');
+	Route::get('/finance/laba_rugi', 'finance\finance_controller@laba_rugi')->name('laba_rugi');
 	Route::get('/finance/payment', 'report\reportagentController@report_table_profit_agent')->name('report_table_profit_agent');
 
 });
