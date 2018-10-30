@@ -345,6 +345,7 @@
                         </li>
                     </li>
                     @endif
+                    @if(Auth::user()->akses('finance','mh_aktif'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
@@ -352,10 +353,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route('finance') }}">Finance</a>
+                                <a href="{{ route('finance') }}">Laporan Pendapatan</a>
+                                <a href="{{ route('laba_rugi') }}">Laporan Laba Rugi</a>
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">build</i>
