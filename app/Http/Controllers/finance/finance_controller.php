@@ -55,7 +55,7 @@ class finance_controller extends Controller
     	}else{
     		$akhir = '';
     	}
-    	$data = d_booking::whereRaw("db_id != '0' $start $end")->take(5000)
+    	$data = d_booking::whereRaw("db_status != 'Waiting List' $start $end")->take(5000)
     			  ->get();
     	return view('finance.finance.finance',compact('data','awal','akhir'));
     }
@@ -92,7 +92,7 @@ class finance_controller extends Controller
         $bulan = [];
         $bulan['head'] = [];
         $bulan['date'] = [];
-        $sql_bulan = d_booking::select('created_at as bulan')->whereRaw("db_id != '0' $start $end")->take(5000)
+        $sql_bulan = d_booking::select('created_at as bulan')->whereRaw("db_status != 'Waiting List' $start $end")->take(5000)
                             ->get();
         foreach ($sql_bulan as $i => $b) {
             $bulan['head'][$i] = carbon::parse($b->bulan)->format('M Y');
@@ -115,7 +115,7 @@ class finance_controller extends Controller
             $akhir = '';
         }
 
-        $data = d_booking::whereRaw("db_id != '0' $start $end")->take(5000)
+        $data = d_booking::whereRaw("db_status != 'Waiting List' $start $end")->take(5000)
                   ->get();
     	return view('finance.laba_rugi.laba_rugi',compact('bulan','data','awal','akhir'));
     }

@@ -37,8 +37,32 @@ REPLACE INTO `d_additonal_booking` (`da_booking_id`, `da_detail`, `da_name`, `da
 	(1, 5, 'WD', 370000, 'Waiting List', 8, '2018-09-16 11:27:27', '2018-09-16 11:27:27', NULL, '1'),
 	(1, 6, 'DSFDFD', 370000, 'Waiting List', 8, '2018-09-16 11:27:27', '2018-09-16 11:27:27', NULL, '1'),
 	(1, 7, 'FWEFCREFEW', 370000, 'Waiting List', 8, '2018-09-16 11:27:27', '2018-09-16 11:27:27', NULL, '1'),
-	(1, 8, 'FWE', 370000, 'Waiting List', 8, '2018-09-16 11:27:27', '2018-09-16 11:27:27', NULL, '1');
+	(1, 8, 'FWE', 370000, 'Waiting List', 8, '2018-09-16 11:27:27', '2018-09-16 11:27:27', NULL, '1'),
+	(2, 1, 'DE', 51000, 'Waiting List', 6, '2018-09-16 17:43:11', '2018-09-16 17:43:11', '3', '3');
 /*!40000 ALTER TABLE `d_additonal_booking` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.d_article
+CREATE TABLE IF NOT EXISTS `d_article` (
+  `da_id` int(11) NOT NULL AUTO_INCREMENT,
+  `da_header` varchar(60000) DEFAULT NULL,
+  `da_image` varchar(50) DEFAULT NULL,
+  `da_created_by` varchar(100) DEFAULT NULL,
+  `da_desc` longtext,
+  `da_created_at` timestamp NULL DEFAULT NULL,
+  `da_updated_at` timestamp NULL DEFAULT NULL,
+  `da_show` int(11) DEFAULT NULL,
+  PRIMARY KEY (`da_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_article: ~5 rows (approximately)
+/*!40000 ALTER TABLE `d_article` DISABLE KEYS */;
+REPLACE INTO `d_article` (`da_id`, `da_header`, `da_image`, `da_created_by`, `da_desc`, `da_created_at`, `da_updated_at`, `da_show`) VALUES
+	(16, 'MALAYSIA', '21.jpg', 'master', '<p style="box-sizing: border-box; margin: 0rem 0px 1.77778rem; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.77778rem; text-rendering: optimizeLegibility; word-spacing: 0.3px; color: #3a3a3a;">HTML5 WYSIWYG (What You See Is What You Get) editors are always high in demand. But there are now so many of them around that it&rsquo;s hard to find the best ones. In this post I&rsquo;m going to present 10 of the very best jQuery and HTML5 WYSIWYG plugins, saving you time finding the plugin that fits your needs.</p>\r\n<h2 id="1-froala" style="box-sizing: border-box; margin: 0px 0px 16px; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; color: #262626; text-rendering: optimizeLegibility; line-height: calc(2.66667rem); font-size: calc(1.95313rem); letter-spacing: -0.02em;">1. Froala</h2>\r\n<p style="box-sizing: border-box; margin: 0rem 0px 1.77778rem; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.77778rem; text-rendering: optimizeLegibility; word-spacing: 0.3px; color: #3a3a3a;"><a style="box-sizing: border-box; color: #189697; text-decoration-line: none; line-height: 0; transition: all 0.2s ease 0s; word-wrap: break-word; padding: 5px 0px 0px;" href="https://www.froala.com/wysiwyg-editor">Froala</a>&nbsp;WYSIWYG HTML Editor is easy to integrate and to use. It requires minimal coding knowledge. It requires&nbsp;<a style="box-sizing: border-box; color: #189697; text-decoration-line: none; line-height: 0; transition: all 0.2s ease 0s; word-wrap: break-word; padding: 5px 0px 0px;" href="http://jquery.com/">jQuery</a>&nbsp;1.11.0 or higher and the iconic font named&nbsp;<a style="box-sizing: border-box; color: #189697; text-decoration-line: none; line-height: 0; transition: all 0.2s ease 0s; word-wrap: break-word; padding: 5px 0px 0px;" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>&nbsp;4.4.0 . In combination with all the UI and UX features it has, it also comes with a strong defence mechanism against XSS attacks.</p>\r\n<h3 id="highlights" style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; color: #262626; text-rendering: optimizeLegibility; line-height: 1.77778rem; font-size: calc(1.5625rem); letter-spacing: -0.02em;">Highlights</h3>\r\n<ul style="box-sizing: border-box; margin: 0rem 0px 1.77778rem 25px; padding: 0px; direction: ltr; font-size: 20px; line-height: 1.77778rem; list-style: none; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; counter-reset: ol-counter 0; color: #3a3a3a;">\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">34 KB gzipped</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Inline editing</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Keyboard shortcuts are available</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Requires basic HTML and JavaScript knowledge</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Dark and light theme (can be customised by editing LESS file)</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Optimised for mobile</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">MS-Word friendly</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">34 languages are supported including RTL(Right To Left) support</li>\r\n</ul>\r\n<h2 id="2-contenttools" style="box-sizing: border-box; margin: 0px 0px 16px; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; color: #262626; text-rendering: optimizeLegibility; line-height: calc(2.66667rem); font-size: calc(1.95313rem); letter-spacing: -0.02em;">2. ContentTools</h2>\r\n<p style="box-sizing: border-box; margin: 0rem 0px 1.77778rem; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.77778rem; text-rendering: optimizeLegibility; word-spacing: 0.3px; color: #3a3a3a;"><a style="box-sizing: border-box; color: #189697; text-decoration-line: none; line-height: 0; transition: all 0.2s ease 0s; word-wrap: break-word; padding: 5px 0px 0px;" href="http://getcontenttools.com/">ContentTools</a>&nbsp;is a small and beautiful content editor. The library doesn&rsquo;t use any JavaScript framework or library (not even jQuery) but plays nicely with any of them. The ContentTools package is made up of 5 libraries, each of which can be used independently. It&rsquo;s designed to be easy to extend.</p>\r\n<h3 id="highlights-1" style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; color: #262626; text-rendering: optimizeLegibility; line-height: 1.77778rem; font-size: calc(1.5625rem); letter-spacing: -0.02em;">Highlights</h3>\r\n<ul style="box-sizing: border-box; margin: 0rem 0px 1.77778rem 25px; padding: 0px; direction: ltr; font-size: 20px; line-height: 1.77778rem; list-style: none; font-family: Roboto, \'Helvetica Neue\', Helvetica, Helvetica, Arial, sans-serif; counter-reset: ol-counter 0; color: #3a3a3a;">\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">49 KB gzipped</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Inline editing</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">Resizing images and videos</li>\r\n<li style="box-sizing: border-box; margin: 0px; padding: 0px; direction: ltr; position: relative;">supports undo/redo</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '2018-09-17 04:49:26', '2018-09-18 18:34:39', 1),
+	(17, 'BANGKOK PTY', '21.jpg', 'master', '<p>Hello, World!</p>', '2018-09-17 09:59:24', '2018-09-18 18:34:53', 2),
+	(18, 'MALAYSIA', '21.jpg', 'master', '<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><strong><span style="color: #333333; font-family: Georgia, Times New Roman, Bitstream Charter, Times, serif;"><span style="font-size: 16px;">Tips Traveling&nbsp; ke Kuala Lumpur untuk Pertama kalinya?</span></span></strong></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7918 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/septiansesco-trip-to-kl-5b2f8b40caf7db093d21eb23.jpg" alt="" width="374" height="374" /></p>\r\n<p>Traveling ke luar negeri emang punya sensasi berbeda menurutku. Karena adanya perbedaan budaya dan bahasa, bikin deg-deg serrr deh pas setibanya disana hahaa. Destinasi luar negeri kali ini adalah Malaysia. Negara tetangga ini cukup aman dan nyaman untuk dikunjungi, baik kamu traveling sendokiran alias sendirian atau mau bulan madu ngajak pasangan. Murah dan nggak susah bagi kamu yang cuma bisa dua bahasa, yakni bahasa Indonesia dan bahasa Daerah heuheu.Nah, supaya traveling kamu menyenangkan, aku mau share beberapa tips traveling ke Kuala Lumpur, terutama bagi kamu nih yang baru pertama keluar negeri atau pertama ke Malaysia.Tips pertama, pastikan pasport kamu punya masa expired diatas dari enam bulan.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7919 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/tips-1-5b2f8371dd0fa860da6748d2.jpg" alt="" width="463" height="323" /></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Agar kamu bisa aman wira-wiri di imigrasi. Gak lucu kan kalau udah sampe bandara mau flight, eh gagal di imigrasi karena masa pasport kamu yang udah tinggal enam bulan lagi. Sedihnya lagi kalau udah sampe negara tujuan, dideportasi balik, apa kabar itinerary dan hotel yang udah dibooking haha. Petugas imigrasi emang sedikit yang ramah, cuma dua lah dari sepuluh orang. Jadi, santai aja ngadepin petugas imigrasi. Kalau ditanya mau kemana, bilang aja mau Holiday di Kuala Lumpur atau Belanja di KLCC.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Lanjut ke tips yang kedua, booking tiket pesawat dari jauh-jauh hari.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7920 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/tips-2-5b2f862216835f1ed77dada2.jpg" alt="" width="454" height="340" /></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Karena dengan begitu kamu bakal dapet tiket promo yang murah, syukur-syukur kalau beruntung dapet free seat. Jadi, tinggal bayar airport tax aja sekitar 100-150ribu. Lumayan banget kaan buat kamu yang suka backpackeran. AirAsia jagonya nih soal penerbangan ke Malaysia. Info detailnya kamu bisa kunjungi langsung web resminya. Perjalananku kemarin pun sangat menyenangkan, no delay dan pramugarinya cantik banget, eh hahaa.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Tips ketiga ini gak kalah penting, booking hotel secara online.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7921 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/Cheap-Hotels-Booking.jpg" alt="" width="436" height="339" /></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Banyak banget pilihan hotel dan penginapan di KL. Harga yang ditawarkanpun variatif. Dari harga 100ribu sampai 1juta per malam. Pinter-pinter kamu pilih penginapan kalau gak mau dapet yang zonk hahaa. Entah itu kamarnya bau, kamar mandinya ada kecoaknya, kamarnya gak aman dan banyak lagi hal lainnya. Aku sarankan booking penginapan secara online, jadi lebih tenang sesampainya disana dan lebih efisien waktu juga.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Lanjut ke tips yang keempat yaitu bawa MiFi.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7922 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/tips-4-5b2f84b3bde575516040c722.jpg" alt="" width="427" height="320" /></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Mungkin ada yang belum tahu nih MiFi itu apa, aku jelasin dikit yaa. MiFi ini singkatan dari Mobile Wi-FI yang berperan sebagai WiFi Hotspot. Ini cocok banget kalau kamu yang traveling in a small group ke luar negeri. Jadi gak repot dan lebih hemat, kamu tinggal beli satu simcard lokal, terus pasang deh di MiFi. Setelah itu, udah bisa bebas internetan saat traveling. Kalau kamu belum punya, sekarang juga udah banyak jasa yang menyewakan perangkat ini. Selama di KL aku ditemani dengan Alcatel MW40C, kekuatannya nangkep sinyal stabil baget, apalagi pas aku di dalem goa Batu Cave, tetep bisa update di sosmed hahaa. Kalau kamu juga tipikel orang yang simpel, Alcatel MW40C ini cocok. Gak perlu setting internet, tinggal pasang terus MiFi nya langsung menyesuaikan hahaa azhek banget kan, udah gitu bisa jalan di jaringan 2G, 3G dan 4G LTE semua operator.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Alright, satu lagi nih tips terakhir dari aku, bawa uang secukupnya dan bawa kartu ATM yang berlogo Cirrus/Visa/Mastercard.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><img class="aligncenter wp-image-7923 " style="height: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" src="http://www.lavensia.com/wp-content/uploads/2018/09/tips-5-5b2f87b6cf01b45b5538b9e4.jpg" alt="" width="422" height="316" /></p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Menukar uang secukupnya di Indonesia penting banget gaess. Karena rate kurs di Indonesia jauh lebih bagus ketimbang di negeri tujuan kita yang pasti lebih mahal. Selisihnya bisa 1000 sampai 2000 kalau nukar uang disini, mending kalau nukarnya sedikit, jika dikalkulasi dalam jumlah banyak kan jadi lumayan banget, wagelaseh berkurang deh tabungan nikah lu jombs hahaa. Dan jangan lupa bawa kartu ATM yang berlogo Cirrus/Visa/Mastercard sebagai cadangan kalau kamu perlu dana tambahan. In case aku pakai BCA, tiap tarik tunainya dikenakan biaya Rp. 25.000.</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">Itu tadi 5 tips buat kamu yang perdana keluar negeri, terutama Kuala Lumpur, Malaysia. Semoga bermanfaat yaa gaess</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;">&nbsp;</p>\r\n<p style="color: #333333; font-family: Georgia, \'Times New Roman\', \'Bitstream Charter\', Times, serif; font-size: 16px;"><em>Sumber : kompasiana.com</em></p>', '2018-09-18 12:49:31', '2018-09-18 18:35:07', 3),
+	(19, 'Typography', '19.jpg', 'master', '<h1 style="text-align: left;"><em><strong>Typography</strong></em></h1>\r\n<p>&nbsp;</p>\r\n<h4 style="text-align: left;"><span style="font-family: acumin-pro, sans-serif; font-size: 22px;">Recently,&nbsp;</span><a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; font-size: 22px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap; font-family: acumin-pro, sans-serif;" href="http://www.condenast.co.uk/" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">Cond&eacute; Nast Digital</span></a><span style="font-family: acumin-pro, sans-serif; font-size: 22px;">&nbsp;undertook a complete redesign of the articles published on wired.co.uk. The aim was to provide a more content-first and immersive experience. These aims were established after&nbsp;</span><a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; font-size: 22px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap; font-family: acumin-pro, sans-serif;" href="http://views.fromthe7th.com/posts/2013/04/wired-uk-website-launches-new-articles" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">research by our Information Architect.</span></a></h4>\r\n<p dir="ltr" style="box-sizing: inherit; margin: 0px auto; padding: 9px 0px 15px; border: none; outline: 0px; font-size: 18px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; max-width: 720px; font-family: acumin-pro, sans-serif; text-align: left;">We started on the path of fulfilling those aims over a year ago with the redesign of the&nbsp;<a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap;" href="http://www.gq-magazine.co.uk/" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">GQ.co.uk</span></a>&nbsp;articles and the introduction of what we call the &lsquo;StickyScrollRead&rsquo; component, which allowed the editors to embed media that would be pulled out of the body copy at screen widths wider that 1000px and pinned on screen. That meant the user could continue to read the article and still refer to the peice of media that the copy was about. This proved to be a much more immersive experience and allowed the body copy more room to breath.</p>\r\n<p style="text-align: left;">&nbsp;</p>\r\n<p dir="ltr" style="box-sizing: inherit; margin: 0px auto; padding: 9px 0px 15px; border: none; outline: 0px; font-size: 18px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; max-width: 720px; font-family: acumin-pro, sans-serif; text-align: left;">We wanted the Wired article templates to maintain the SSR functionality that had worked so well on GQ but we had also learnt a lot since the GQ designs that we could incorporate into Wired.&nbsp;Design process wise, we had also evolved a lot more too since the GQ articles were designed.</p>', '2018-09-18 13:56:06', '2018-09-18 13:56:06', 5),
+	(20, 'Typography', '20.jpg', 'master', '<h1 style="text-align: left;"><em><strong>Typography</strong></em></h1>\r\n<p>&nbsp;</p>\r\n<h4 style="text-align: left;"><span style="font-family: acumin-pro, sans-serif; font-size: 22px;">Recently,&nbsp;</span><a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; font-size: 22px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap; font-family: acumin-pro, sans-serif;" href="http://www.condenast.co.uk/" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">Cond&eacute; Nast Digital</span></a><span style="font-family: acumin-pro, sans-serif; font-size: 22px;">&nbsp;undertook a complete redesign of the articles published on wired.co.uk. The aim was to provide a more content-first and immersive experience. These aims were established after&nbsp;</span><a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; font-size: 22px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap; font-family: acumin-pro, sans-serif;" href="http://views.fromthe7th.com/posts/2013/04/wired-uk-website-launches-new-articles" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">research by our Information Architect.</span></a></h4>\r\n<p dir="ltr" style="box-sizing: inherit; margin: 0px auto; padding: 9px 0px 15px; border: none; outline: 0px; font-size: 18px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; max-width: 720px; font-family: acumin-pro, sans-serif; text-align: left;">We started on the path of fulfilling those aims over a year ago with the redesign of the&nbsp;<a class="external inner-link-effect" style="box-sizing: inherit; touch-action: manipulation; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; text-decoration-line: none; transition: all 0.3s ease-out 0s; position: relative; white-space: nowrap;" href="http://www.gq-magazine.co.uk/" rel="nofollow"><span class="ile-sp" style="box-sizing: inherit; margin: 0px; padding: 0px; border: none; outline: 0px; vertical-align: baseline; background: transparent; list-style: none; position: relative; z-index: 3;">GQ.co.uk</span></a>&nbsp;articles and the introduction of what we call the &lsquo;StickyScrollRead&rsquo; component, which allowed the editors to embed media that would be pulled out of the body copy at screen widths wider that 1000px and pinned on screen. That meant the user could continue to read the article and still refer to the peice of media that the copy was about. This proved to be a much more immersive experience and allowed the body copy more room to breath.</p>\r\n<p style="text-align: left;">&nbsp;</p>\r\n<p dir="ltr" style="box-sizing: inherit; margin: 0px auto; padding: 9px 0px 15px; border: none; outline: 0px; font-size: 18px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; list-style: none; max-width: 720px; font-family: acumin-pro, sans-serif; text-align: left;">We wanted the Wired article templates to maintain the SSR functionality that had worked so well on GQ but we had also learnt a lot since the GQ designs that we could incorporate into Wired.&nbsp;Design process wise, we had also evolved a lot more too since the GQ articles were designed.</p>', '2018-09-18 13:56:07', '2018-09-18 13:56:07', 5);
+/*!40000 ALTER TABLE `d_article` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.d_booking
 CREATE TABLE IF NOT EXISTS `d_booking` (
@@ -71,10 +95,11 @@ CREATE TABLE IF NOT EXISTS `d_booking` (
   UNIQUE KEY `db_kode_transaksi` (`db_kode_transaksi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.d_booking: ~1 rows (approximately)
+-- Dumping data for table lavensia.d_booking: ~2 rows (approximately)
 /*!40000 ALTER TABLE `d_booking` DISABLE KEYS */;
 REPLACE INTO `d_booking` (`db_id`, `db_kode_transaksi`, `db_users`, `db_telp`, `db_intinerary_id`, `db_status`, `db_name`, `db_pdf`, `db_total_adult`, `db_total_child`, `db_total_infant`, `db_remark`, `db_total_additional`, `db_total_room`, `db_tax`, `db_visa`, `db_agent_com`, `db_tips`, `db_handle_by`, `db_total`, `db_total_remain`, `updated_by`, `created_at`, `updated_at`, `created_by`) VALUES
-	(1, '180900001', 1, '323', 25, 'Hold By System', 'ER312', NULL, 4, 1, 2, 'fewfwexcd', 2641000, 499180, NULL, NULL, 33333, NULL, 1, 3106847, 106847, 1, '2018-09-16 11:00:59', '2018-09-16 11:43:15', 1);
+	(1, '180900001', 1, '323', 25, 'Hold By System', 'ER312', NULL, 4, 1, 2, 'fewfwexcd', 2641000, 499180, NULL, NULL, 33333, NULL, 1, 3106847, 106847, 1, '2018-10-16 11:00:59', '2018-09-16 11:43:15', 1),
+	(2, '180900002', 3, '323213', 25, 'Waiting List', 'TRES', NULL, 1, 0, 1, 'fef', 51000, 55656, 0, 0, 33333, 0, NULL, 73323, 73323, 3, '2018-09-16 17:43:11', '2018-09-16 17:43:11', 3);
 /*!40000 ALTER TABLE `d_booking` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.d_history_bayar
@@ -89,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `d_history_bayar` (
   PRIMARY KEY (`dh_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.d_history_bayar: ~2 rows (approximately)
+-- Dumping data for table lavensia.d_history_bayar: ~1 rows (approximately)
 /*!40000 ALTER TABLE `d_history_bayar` DISABLE KEYS */;
 REPLACE INTO `d_history_bayar` (`dh_id`, `dh_booking_id`, `dh_total_payment`, `dh_payment_method`, `dh_status_payment`, `created_at`, `updated_at`) VALUES
 	(1, 1, 3000000, 'dp', 'APPROVE', '2018-09-16 11:35:40', '2018-09-16 11:43:15');
@@ -111,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `d_history_bayar_d` (
   CONSTRAINT `FK_d_history_bayar_d_d_history_bayar` FOREIGN KEY (`dhd_history_id`) REFERENCES `d_history_bayar` (`dh_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.d_history_bayar_d: ~1 rows (approximately)
+-- Dumping data for table lavensia.d_history_bayar_d: ~0 rows (approximately)
 /*!40000 ALTER TABLE `d_history_bayar_d` DISABLE KEYS */;
 REPLACE INTO `d_history_bayar_d` (`dhd_id`, `dhd_history_id`, `dhd_bank`, `dhd_nominal`, `dhd_nama_rekening`, `dhd_image`, `dhd_tanggal`, `created_at`, `updated_at`) VALUES
 	(2, 1, '2323', 3, '2323', 'history_bayar/BAYAR_PERTAMA_180900001_1.png', '2018-09-16', '2018-09-16 11:35:40', '2018-09-16 11:35:40');
@@ -151,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `d_party_name` (
   CONSTRAINT `FK_d_party_name_d_booking` FOREIGN KEY (`dp_booking_id`) REFERENCES `d_booking` (`db_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.d_party_name: ~7 rows (approximately)
+-- Dumping data for table lavensia.d_party_name: ~8 rows (approximately)
 /*!40000 ALTER TABLE `d_party_name` DISABLE KEYS */;
 REPLACE INTO `d_party_name` (`dp_booking_id`, `dp_detail`, `dp_bed`, `dp_name`, `dp_passport`, `dp_exp_date`, `dp_issuing`, `dp_gender`, `dp_birth_date`, `dp_birth_place`, `dp_room`, `dp_reference`, `dp_status_person`, `dp_image`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 	(1, 1, 'single', 'EWR', 'EWREW', '2018-09-16', 'EWC', 'male', '2018-09-16', 'WEVWE', 1, 'WV', 'adult', 'booking/180900001_ewr_1_1.png', '2018-09-16 11:00:59', '2018-09-16 11:27:27', '1', '1'),
@@ -160,7 +185,9 @@ REPLACE INTO `d_party_name` (`dp_booking_id`, `dp_detail`, `dp_bed`, `dp_name`, 
 	(1, 4, 'doubletwin&cwb', 'FWEFCREFEW', 'ewvcw', '2018-09-16', 'FDSV', 'male', '2018-09-16', 'BFDVB', 3, 'EVERR', 'adult', 'booking/180900001_fwefcrefew_1_4.png', '2018-09-16 11:14:39', '2018-09-16 11:27:27', '1', '1'),
 	(1, 5, 'doubletwin&cwb', 'FWE', 'vfgea', '2018-09-16', 'SDFDSF', 'male', '2018-09-16', 'FDSFD', 3, 'DSFASD', 'child', 'booking/180900001_fwe_1_5.png', '2018-09-16 11:14:39', '2018-09-16 11:27:27', '1', '1'),
 	(1, 6, 'single', 'DF', 'sdfsd', '2018-09-16', 'VSDVC', 'male', '2018-09-16', 'DS', 5, 'DVDS', 'adult', 'booking/180900001_df_1_6.png', '2018-09-16 11:19:04', '2018-09-16 11:27:27', '1', '1'),
-	(1, 7, 'single', 'SFDSD', 'vsd', '2018-09-16', 'DSF', 'female', '2018-09-16', 'SDFSD', 5, 'DVDSV', 'baby', 'booking/180900001_sfdsd_1_7.png', '2018-09-16 11:19:04', '2018-09-16 11:27:27', '1', '1');
+	(1, 7, 'single', 'SFDSD', 'vsd', '2018-09-16', 'DSF', 'female', '2018-09-16', 'SDFSD', 5, 'DVDSV', 'baby', 'booking/180900001_sfdsd_1_7.png', '2018-09-16 11:19:04', '2018-09-16 11:27:27', '1', '1'),
+	(2, 1, 'single', 'DE', 'D23', '2018-09-16', 'FE', 'male', '2018-09-16', 'DEFEW', 1, 'FEWW', 'adult', 'booking/180900002_de_2_1.png', '2018-09-16 17:43:11', '2018-09-16 17:43:11', '3', '3'),
+	(2, 2, 'single', 'EDSF', 'EWCE', '2018-09-16', 'EFE', 'male', '2018-09-16', 'WE', 1, 'EF', 'baby', 'booking/180900002_edsf_2_2.png', '2018-09-16 17:43:11', '2018-09-16 17:43:11', '3', '3');
 /*!40000 ALTER TABLE `d_party_name` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.d_tour_leader
@@ -188,6 +215,23 @@ CREATE TABLE IF NOT EXISTS `d_tour_leader` (
 REPLACE INTO `d_tour_leader` (`tl_id`, `tl_name`, `tl_alamat`, `tl_phone`, `tl_passport`, `tl_exp_date`, `tl_issuing`, `tl_gender`, `tl_birth_date`, `tl_birth_place`, `tl_image`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 	(1, 't4', '3e3r44444444', '3e454', '3e3r44444444', '2018-09-15', 'fede5454', 'female', '2018-09-15', 'fed5454545', 'tour_leader/PHOTO_1.jpg', '2018-09-15 12:23:07', '2018-09-15 14:11:38', 'few', 'few');
 /*!40000 ALTER TABLE `d_tour_leader` ENABLE KEYS */;
+
+-- Dumping structure for table lavensia.d_tour_leader_payment
+CREATE TABLE IF NOT EXISTS `d_tour_leader_payment` (
+  `tlp_id` int(11) NOT NULL,
+  `tlp_tour_leader` int(11) DEFAULT NULL,
+  `tlp_date` date DEFAULT NULL,
+  `tlp_total` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`tlp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table lavensia.d_tour_leader_payment: ~0 rows (approximately)
+/*!40000 ALTER TABLE `d_tour_leader_payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `d_tour_leader_payment` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -258,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `m_category` (
   PRIMARY KEY (`mc_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_category: ~3 rows (approximately)
+-- Dumping data for table lavensia.m_category: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_category` DISABLE KEYS */;
 REPLACE INTO `m_category` (`mc_id`, `mc_name`, `mc_created_at`, `mc_updated_at`) VALUES
 	(6, 'Thailand', '2018-09-15 16:24:52', '2018-09-15 16:24:52'),
@@ -316,15 +360,14 @@ CREATE TABLE IF NOT EXISTS `m_detail_intinerary` (
   UNIQUE KEY `md_nota` (`md_nota`),
   KEY `FK_m_detail_intinerary_m_intinerary` (`md_intinerary_id`),
   CONSTRAINT `FK_m_detail_intinerary_m_intinerary` FOREIGN KEY (`md_intinerary_id`) REFERENCES `m_intinerary` (`mi_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_detail_intinerary: ~4 rows (approximately)
+-- Dumping data for table lavensia.m_detail_intinerary: ~3 rows (approximately)
 /*!40000 ALTER TABLE `m_detail_intinerary` DISABLE KEYS */;
 REPLACE INTO `m_detail_intinerary` (`md_id`, `md_intinerary_id`, `md_detail`, `md_nota`, `md_seat`, `md_seat_remain`, `md_start`, `md_end`, `md_adult_price`, `md_child_price`, `md_infant_price`, `md_child_w_price`, `md_dp`, `md_final`, `md_tata_tertib`, `md_tour_leader`, `md_agent_com`, `md_tip`, `md_tips`, `md_visa`, `md_tax`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-	(25, 2, 1, 'TR180916/002/001', 21, 15, '2018-09-16', '2018-09-16', 32323, 232, 23333, 323222, 2323333, 'detail_itin/FINAL_25.jpg', 'detail_itin/TATA_TERTIB_25.png', 1, 33333, 33333, NULL, NULL, NULL, '2018-09-16 02:39:23', '2018-09-16 11:27:27', 'admin1', 'admin1'),
-	(26, 3, 1, 'TR180916/003/001', 21, 20, '2018-09-16', '2018-09-16', 4324, 0, 2354235, 4234, 32432, NULL, NULL, NULL, 4324, NULL, 324, 23, NULL, '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1'),
-	(27, 3, 2, 'TR180916/003/002', 332323, 332322, '2018-09-16', '2018-09-16', 3333333, 323, 3123232, 32, 123123, NULL, NULL, NULL, 22222, NULL, 123123, 321, NULL, '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1'),
-	(28, 4, 1, 'TR180916/004/001', 21, 20, '2018-09-16', '2018-09-18', 10000000, 3400000, 2500000, 10000000, 4000000, NULL, NULL, NULL, 200000, NULL, 500000, 1500000, NULL, '2018-09-16 10:44:04', '2018-09-16 10:44:04', 'admin1', 'admin1');
+	(25, 2, 1, 'TR180916/002/001', 21, 14, '2018-09-16', '2018-09-16', 32323, 232, 23333, 323222, 2323333, 'detail_itin/FINAL_25.jpg', 'detail_itin/TATA_TERTIB_25.png', 1, 33333, 33333, NULL, NULL, NULL, '2018-09-16 02:39:23', '2018-09-16 17:43:11', 'admin1', 'admin1'),
+	(26, 3, 1, 'TR180916/003/001', 21, 20, '2018-10-15', '2018-09-16', 4324, 0, 2354235, 4234, 32432, NULL, NULL, NULL, 4324, NULL, 324, 23, NULL, '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1'),
+	(27, 3, 2, 'TR180916/003/002', 332323, 332322, '2018-09-15', '2018-09-16', 3333333, 323, 3123232, 32, 123123, NULL, NULL, NULL, 22222, NULL, 123123, 321, NULL, '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1');
 /*!40000 ALTER TABLE `m_detail_intinerary` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_flight_detail
@@ -344,8 +387,7 @@ CREATE TABLE IF NOT EXISTS `m_flight_detail` (
 /*!40000 ALTER TABLE `m_flight_detail` DISABLE KEYS */;
 REPLACE INTO `m_flight_detail` (`fd_intinerary_id`, `fd_detail`, `fd_nomor`, `fd_tanggal`, `fd_route`, `fd_time`) VALUES
 	(2, 1, 'EREW', '2018-09-16', 'EWRWE', 'rwe'),
-	(3, 1, '213', '2018-09-16', '12312', '312'),
-	(4, 1, 'TES', '2018-09-16', 'TES', 'tes');
+	(3, 1, '213', '2018-09-16', '12312', '312');
 /*!40000 ALTER TABLE `m_flight_detail` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_hak_akses
@@ -358,9 +400,9 @@ CREATE TABLE IF NOT EXISTS `m_hak_akses` (
   `mh_created_at` timestamp NULL DEFAULT NULL,
   `mh_updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`mh_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_hak_akses: ~14 rows (approximately)
+-- Dumping data for table lavensia.m_hak_akses: ~12 rows (approximately)
 /*!40000 ALTER TABLE `m_hak_akses` DISABLE KEYS */;
 REPLACE INTO `m_hak_akses` (`mh_id`, `mh_level`, `mh_menu`, `mh_aksi`, `mh_aktif`, `mh_created_at`, `mh_updated_at`) VALUES
 	(1, '1', 'master agent', 'true', 'true', '2018-09-09 19:47:48', '2018-09-09 19:47:49'),
@@ -376,7 +418,11 @@ REPLACE INTO `m_hak_akses` (`mh_id`, `mh_level`, `mh_menu`, `mh_aksi`, `mh_aktif
 	(11, '3', 'master additional', 'true', 'true', '2018-09-09 20:08:44', '2018-09-09 20:08:45'),
 	(12, '3', 'master intinerary', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04'),
 	(13, '1', 'hapus itinerary', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04'),
-	(14, '1', 'edit itinerary', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04');
+	(14, '1', 'edit itinerary', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04'),
+	(15, '1', 'article', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04'),
+	(16, '1', 'company', 'true', 'true', '2018-09-09 20:09:03', '2018-09-09 20:09:04'),
+	(17, '1', 'report oketrip', 'true', 'true', NULL, NULL),
+	(18, '1', 'finance', 'true', 'true', NULL, NULL);
 /*!40000 ALTER TABLE `m_hak_akses` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_intinerary
@@ -391,6 +437,14 @@ CREATE TABLE IF NOT EXISTS `m_intinerary` (
   `mi_pdf` varchar(50) NOT NULL,
   `mi_highlight` mediumtext,
   `mi_by` varchar(300) DEFAULT NULL,
+  `mi_netto_adult` double DEFAULT NULL,
+  `mi_netto_cwb` double DEFAULT NULL,
+  `mi_netto_cnb` double DEFAULT NULL,
+  `mi_netto_infant` double DEFAULT NULL,
+  `mi_agent_com_adult` double DEFAULT NULL,
+  `mi_agent_com_cwb` double DEFAULT NULL,
+  `mi_agent_com_cnb` double DEFAULT NULL,
+  `mi_agent_com_infant` double DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
@@ -399,12 +453,11 @@ CREATE TABLE IF NOT EXISTS `m_intinerary` (
   UNIQUE KEY `mi_nota` (`mi_nota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_intinerary: ~3 rows (approximately)
+-- Dumping data for table lavensia.m_intinerary: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_intinerary` DISABLE KEYS */;
-REPLACE INTO `m_intinerary` (`mi_id`, `mi_nota`, `mi_name`, `mi_term`, `mi_status`, `category_id`, `mi_image`, `mi_pdf`, `mi_highlight`, `mi_by`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-	(2, 'TR180916/002', 'RERE', 'erer', 'ACTIVE', NULL, 'itinerary/PHOTO_TR180916-002.jpg', 'itinerary/PDF_TR180916-002.png', 'RER', 'ERERE', '2018-09-16 02:39:23', '2018-09-16 10:12:18', 'admin1', 'admin1'),
-	(3, 'TR180916/003', '3RE21', '321', 'NOT ACTIVE', NULL, 'itinerary/PHOTO_TR180916-003.jpg', 'itinerary/PDF_TR180916-003.jpg', '3E21', '312312', '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1'),
-	(4, 'TR180916/004', 'PATTAYA', 'asdasdasdasdas', 'ACTIVE', NULL, 'itinerary/PHOTO_TR180916-004.JPG', 'itinerary/PDF_TR180916-004.png', 'PATTAYA', 'AIRASIA', '2018-09-16 10:44:04', '2018-09-16 10:49:32', 'admin1', 'admin1');
+REPLACE INTO `m_intinerary` (`mi_id`, `mi_nota`, `mi_name`, `mi_term`, `mi_status`, `category_id`, `mi_image`, `mi_pdf`, `mi_highlight`, `mi_by`, `mi_netto_adult`, `mi_netto_cwb`, `mi_netto_cnb`, `mi_netto_infant`, `mi_agent_com_adult`, `mi_agent_com_cwb`, `mi_agent_com_cnb`, `mi_agent_com_infant`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+	(2, 'TR180916/002', 'RERE', 'erer', 'ACTIVE', NULL, 'itinerary/PHOTO_TR180916-002.jpg', 'itinerary/PDF_TR180916-002.png', 'RER', 'ERERE', 222222, 222222, 222222, 2222222, 22222, 222222, 333333, 100000, '2018-09-16 02:39:23', '2018-09-16 10:12:18', 'admin1', 'admin1'),
+	(3, 'TR180916/003', '3RE21', '321', 'ACTIVE', NULL, 'itinerary/PHOTO_TR180916-003.jpg', 'itinerary/PDF_TR180916-003.jpg', '3E21', '312312', 23232323, 23232323, 23232323, 23232323, 32323232, 32323232, 2323232, 100000, '2018-09-16 02:42:03', '2018-10-21 12:40:21', 'admin1', 'admin1');
 /*!40000 ALTER TABLE `m_intinerary` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.m_schedule
@@ -422,13 +475,12 @@ CREATE TABLE IF NOT EXISTS `m_schedule` (
   CONSTRAINT `FK_m_schedule_m_intinerary` FOREIGN KEY (`ms_intinerary_id`) REFERENCES `m_intinerary` (`mi_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table lavensia.m_schedule: ~4 rows (approximately)
+-- Dumping data for table lavensia.m_schedule: ~3 rows (approximately)
 /*!40000 ALTER TABLE `m_schedule` DISABLE KEYS */;
 REPLACE INTO `m_schedule` (`ms_intinerary_id`, `ms_detail`, `ms_caption`, `ms_description`, `ms_bld`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 	(2, 1, 'ER', 'ewr', 'EWREW', '2018-09-16 02:39:23', '2018-09-16 02:39:23', 'admin1', 'admin1'),
 	(2, 2, 'WREW', 'rewre', 'FEWF', '2018-09-16 02:39:23', '2018-09-16 02:39:23', 'admin1', 'admin1'),
-	(3, 1, '312', '12312', '3213', '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1'),
-	(4, 1, 'TES', 'tes', 'TES', '2018-09-16 10:44:04', '2018-09-16 10:44:04', 'admin1', 'admin1');
+	(3, 1, '312', '12312', '3213', '2018-09-16 02:42:03', '2018-09-16 02:42:03', 'admin1', 'admin1');
 /*!40000 ALTER TABLE `m_schedule` ENABLE KEYS */;
 
 -- Dumping structure for table lavensia.password_resets
@@ -487,14 +539,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table lavensia.users: ~5 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `password`, `username`, `birthday`, `phone`, `email`, `address`, `role_id`, `remember_token`, `image`, `co_name`, `co_phone`, `co_address`, `co_email`, `mg_name`, `mg_phone`, `mg_email`, `created_at`, `updated_at`, `status`) VALUES
-	(1, 'master', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'master', NULL, '9897878', 'oketrip1@gmail.com', 'admin1', 1, 'bAJYZdrLux16fuXZYgNrnJGDEVP08JrI5RPtbVEZ5ERGMRPZEyvFZSNLSpeO', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(1, 'master', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'master', NULL, '9897878', 'oketrip1@gmail.com', 'admin1', 1, 'pzpW3wb5RQqt5EPOs8Fbx94ySSoG5oKxVFBIAX2gRPA4rqUWtF0KPlUbqLQO', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
 	(2, 'supervisor', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'supervisor', NULL, '9897878', 'oketrip2@gmail.com', 'admin1', 2, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
-	(3, 'admin', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'admin', NULL, '9897878', 'oketrip3@gmail.com', 'admin1', 3, 'NCbl6UXZ6oAKHwRao1rOsmwdMJS3yKn6qNamt6JzSjsLL1CwokhiFIQiN9yu', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
+	(3, 'admin', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'admin', NULL, '9897878', 'oketrip3@gmail.com', 'admin1', 3, 'amuaT1uehFFcYg772jyqmTMAKu4ziyuS4MoAf9ASdqcgePYtYytsYzL7NjAr', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
 	(4, 'master agen', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'master_agen', NULL, '9897878', 'agen_master@gmail.com', 'admin1', 4, 'bEnkEaJgFPZBEMwoQo79v9BwneJXZDwPcPPceAl0ZYkgYMlAanwpawcZ6IED', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF'),
 	(5, 'agen', '$2y$10$hIwtTGJEmZw8y9fIu6GIyusu4qJpsTiJrDohEBwc9e73Uh4noXBwW', 'agen', NULL, '9897878', 'agen@gmail.com', 'admin1', 4, 'yb0VdsUjqvdvsPp8WBdek1ihkI5BAZWxOTuGSB8wcN1BD4Bn2MCE9SL49NMg', '10.jpg', 'admin1', '9889798', 'admin1', 'admin1@gmail.com', 'admin1', '989898', 'admin1@gmail.com', '2018-09-15 14:58:53', '2018-09-15 16:47:48', 'AKTIF');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
