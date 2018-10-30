@@ -281,13 +281,13 @@
                         </tr>
 
                         <tr>
-                            <td><b>GROSS PROFIT</b></td>
+                            <td><b>NETTO PROFIT</b></td>
                             <td align="right">
                                 @php
                                     if (($total - $total_hpp) < 0 ) {
                                         echo '( '. number_format(($total - $total_hpp) * -1,0,',','.') .' )';
                                     }else{
-                                        echo '( '. number_format($total - $total_hpp,0,',','.') .' )';
+                                        echo number_format($total - $total_hpp,0,',','.');
                                     }
                                 @endphp
                             </td>
@@ -296,7 +296,7 @@
                                     if (($persen - $persen_hpp) < 0 ) {
                                         echo '( '. number_format(($persen - $persen_hpp) * -1,0,',','.') .' ) %';
                                     }else{
-                                        echo '( '. number_format($persen - $persen_hpp,0,',','.') .' ) %';
+                                        echo  number_format($persen - $persen_hpp,0,',','.') .' %';
                                     }
                                 @endphp
                             </td>
@@ -543,7 +543,7 @@
                                             if (($total[$c] - $total_hpp[$c]) < 0 ) {
                                                 echo '( '. number_format(($total[$c] - $total_hpp[$c]) * -1,0,',','.') .' )';
                                             }else{
-                                                echo '( '. number_format($total[$c] - $total_hpp[$c],0,',','.') .' )';
+                                                echo  number_format($total[$c] - $total_hpp[$c],0,',','.') ;
                                             }
                                         @endphp
                                     </b>
@@ -647,7 +647,7 @@
                                             if (($persen[$c] - $persen_hpp[$c]) < 0 ) {
                                                 echo '( '. number_format(($persen[$c] - $persen_hpp[$c]) * -1,0,',','.') .' ) %';
                                             }else{
-                                                echo '( '. number_format($persen[$c] - $persen_hpp[$c],0,',','.') .' ) %';
+                                                echo number_format($persen[$c] - $persen_hpp[$c],0,',','.') .' %';
                                             }
                                         @endphp 
                                     </b>
