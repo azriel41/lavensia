@@ -641,7 +641,7 @@
 
                         <tr>
                             @foreach ($bulan['date'] as $c => $date)
-                                <td align="right">
+                                <td align="center">
                                     <b>
                                         @php
                                             if (($persen[$c] - $persen_hpp[$c]) < 0 ) {
