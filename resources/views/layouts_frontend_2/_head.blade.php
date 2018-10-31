@@ -28,3 +28,6 @@
 <link href="{{ asset ('assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 {{-- <link href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet"> --}}
 <link href="{{ asset ('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
+
+
+<link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}"/>
