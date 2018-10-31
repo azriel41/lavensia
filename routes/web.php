@@ -15,6 +15,7 @@ Route::get('/', function () {
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
+	$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
@@ -25,12 +26,6 @@ Route::get('/', function () {
 	}
 
 	$book = App\User::all();
-
-	$article1 = App\article::where('da_show','1')->first();
-	$article2 = App\article::where('da_show','2')->first();
-	$article3 = App\article::where('da_show','3')->first();
-	$article4 = App\article::where('da_show','4')->first();
-	$article5 = App\article::where('da_show','5')->first();
 
 	if (Auth::User() != null) {
 
@@ -50,10 +45,12 @@ Route::get('/', function () {
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
     		return view('home');
 		}else{
-    		return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cart','jumlah','cat'));
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+
+    		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 		}
 	}else{
-    	return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cat'));
+    	return view('welcome',compact('article','category','intinerary','det','response','cat'));
 	}
 
 })->name('dashboard');
@@ -67,6 +64,8 @@ Auth::routes();
 Route::get('/welcome', function () {
 	if (Auth::User() != null) {
 		$category = App\category::all();
+
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
 
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		$det = [];
@@ -89,20 +88,13 @@ Route::get('/welcome', function () {
 					->where('db_users',Auth::User()->role_id)
 					->where('db_status','Waiting List')
 					->get());
-		$article1 = App\article::where('da_show','1')->first();
-		$article2 = App\article::where('da_show','2')->first();
-		$article3 = App\article::where('da_show','3')->first();
-		$article4 = App\article::where('da_show','4')->first();
-		$article5 = App\article::where('da_show','5')->first();
-		return view('welcome',compact('article1','article2','article3','article4','article5','category','intinerary','det','response','cart','jumlah','cat'));
+		
+		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 	}else{
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
-		$article1 = App\article::where('da_show','1')->first();
-		$article2 = App\article::where('da_show','2')->first();
-		$article3 = App\article::where('da_show','3')->first();
-		$article4 = App\article::where('da_show','4')->first();
-		$article5 = App\article::where('da_show','5')->first();
-    	return view('welcome',compact('article1','article2','article3','article4','article5','article1','article2','article3','article4','article5','category','intinerary','det','response','cat'));
+		
+    	return view('welcome',compact('article','category','intinerary','det','response','cat'));
 	}
 })->name('welcome');
 

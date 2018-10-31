@@ -167,74 +167,97 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="assets_frontend_2/img/bg-img/editor-1.jpg" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="#">New York</a>
-                                <a href="#">1643 Destinations</a>
-                            </div>
-                            <div class="add-more">
-                                <a href="#">+</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="assets_frontend_2/img/bg-img/editor-2.jpg" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="#">Barcelona</a>
-                                <a href="#">943 Destinations</a>
-                            </div>
-                            <div class="add-more">
-                                <a href="#">+</a>
-                            </div>
-                        </div>
-                    </div>
+                @foreach ($article as $a)
+                @if ($loop->index == 0)
+                    <div class="col-12 col-lg-12">
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="assets_frontend_2/img/bg-img/editor-3.jpg" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
-                                <a href="#">paris</a>
-                                <a href="#">243 Destinations</a>
+                                <a href="#">{{ $a->da_header }}</a>
+                                {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                             </div>
                             <div class="add-more">
-                                <a href="#">+</a>
+                                <a href="article/article/{{ $a->da_id }}">+</a>
+                            </div>
+                            </div>
+                    </div>
+                    </div>
+
+                @endif
+                
+
+                @if ($loop->index == 1)
+                    <div class="col-12 col-lg-6">
+                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" height="100%" alt="">
+                            <div class="editors-pick-info">
+                                <div class="places-total-destinations d-flex">
+                                    <a href="#">{{ $a->da_header }}</a>
+                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
+                                </div>
+                                <div class="add-more">
+                                    <a href="article/article/{{ $a->da_id }}">+</a>
+                                </div>
+                            </div>
+                        </div>
+                @endif
+
+                @if ($loop->index == 2)
+                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                            <div class="editors-pick-info">
+                                <div class="places-total-destinations d-flex">
+                                    <a href="#">{{ $a->da_header }}</a>
+                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
+                                </div>
+                                <div class="add-more">
+                                    <a href="article/article/{{ $a->da_id }}">+</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                @endif
+
+                @if ($loop->index == 3)
+                    <div class="col-12 col-lg-6">
+                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                            <div class="editors-pick-info">
+                                <div class="places-total-destinations d-flex">
+                                    <a href="#">{{ $a->da_header }}</a>
+                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
+                                </div>
+                                <div class="add-more">
+                                    <a href="article/article/{{ $a->da_id }}">+</a>
+                                </div>
+                            </div>
+                        </div>
+                @endif
+
+
+                @if ($loop->index == 4)
+                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                            <div class="editors-pick-info">
+                                <div class="places-total-destinations d-flex">
+                                    <a href="#">{{ $a->da_header }}</a>
+                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
+                                </div>
+                                <div class="add-more">
+                                    <a href="article/article/{{ $a->da_id }}">+</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                @endif
+            @endforeach
+                
+                    
                 </div>
-                <div class="col-12 col-lg-6">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="assets_frontend_2/img/bg-img/editor-2.jpg" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="#">Barcelona</a>
-                                <a href="#">943 Destinations</a>
-                            </div>
-                            <div class="add-more">
-                                <a href="#">+</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="assets_frontend_2/img/bg-img/editor-3.jpg" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="#">paris</a>
-                                <a href="#">243 Destinations</a>
-                            </div>
-                            <div class="add-more">
-                                <a href="#">+</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                
             </div>
         </div>
     </section>
