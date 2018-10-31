@@ -14,7 +14,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Booking List</h2>
+                                    <h2>Report Customer</h2>
                                 </div>
                             </div>
                             <ul class="header-dropdown m-r--5">
