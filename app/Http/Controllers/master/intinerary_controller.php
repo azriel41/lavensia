@@ -10,6 +10,7 @@ use carbon\Carbon;
 use Auth;
 use Response;
 use File;
+use App\intinerary;
 use Storage;
 use Yajra\Datatables\Datatables;
 use App\all_variable;
@@ -616,5 +617,14 @@ class intinerary_controller extends Controller
             DB::rollBack();
             dd($error);
         }
+    }
+    public function search(Request $req,$id)
+    {
+        // return $id;
+        $intinerary = DB::table('m_intinerary')->where('mi_status','ACTIVE')->where('category_id','like','%'.$id.'%')->get();
+
+
+        return view('itinerary.itinerary',compact('intinerary'));
+
     }
 }

@@ -20,9 +20,9 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-features-area mb-50">
                         @if ($e->image != null)
-                            <img src="{{ asset('storage/app/agent/agent-'.$e->image) }}" alt="Team Member" class="agent">
+                            <img src="{{ asset('storage/app/agent/agent-'.$e->image) }}" alt="Team Member" style="height: 40% !important" class="agent">
                         @else
-                            <img src="{{ asset('storage/app/NoImage'.'.png') }}" alt="Team Member" class="agent">
+                            <img src="{{ asset('storage/app/NoImage'.'.png') }}" alt="Team Member" style="height: 40% !important" class="agent">
                         @endif
                         <!-- Price -->
                         <div class="feature-content d-flex align-items-center justify-content-between">

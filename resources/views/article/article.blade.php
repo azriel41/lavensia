@@ -218,8 +218,8 @@
                 <a class="post-img" href="{{ asset('/article/article/'.$e->da_id) }}"><img src="{{ asset('/storage/app/article/'.'article-'.$e->da_image) }}?{{ time() }}" alt=""></a>
                 <div class="post-body">
                   <div class="post-meta">
-                    {{-- <a class="post-category cat-2" href="#">JavaScript</a> --}}
-                    <span class="post-date">{{ date('d-M-y',strtotime($e->da_created_at)) }}</span>
+                    <a class="post-category cat-2" href="#">{{ date('d M y',strtotime($e->da_created_at)) }}</a>
+                    {{-- <span class="post-date">{{ date('d-M-y',strtotime($e->da_created_at)) }}</span> --}}
                   </div>
                   <h3 class="post-title"><a href="{{ asset('/article/article/'.$e->da_id) }}">{{ $e->da_header }}</a></h3>
                 </div>

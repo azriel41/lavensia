@@ -81,21 +81,25 @@
                 {data: 'bookingdetail', name: 'bookingdetail'},
                 {data: 'db_name', name: 'db_name'},
                 {data: 'date', name: 'date'},
-                {data: 'date', name: 'date'},
-                {data: 'mi_name', name: 'mi_name'},
+                {data: 'date_start', name: 'date_start'},
+                {data: 'grup', name: 'grup'},
                 {data: 'status', name: 'status'},
                 {data: 'pay', name: 'pay'},
-                {data: 'bookingdetail', name: 'bookingdetail'},
+                {data: 'bookby', name: 'bookby'},
                 {data: 'name', name: 'name'},
                 {data: 'termin', name: 'termin'},
             ]
         });
 
+        // function pay(argument) {
+        //     var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
+        //     var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
+        //     var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
+        //     window.location=('{{ url('/payment_page/payment_termin') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+$(argument).data('id'));
+        // }
+        
         $('.payment').click(function(){
-            var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
-            var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
-            var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
-            window.location=('{{ url('/payment_page/payment_termin') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+$(this).data('id'));
+            alert('ss');
         })
 
     </script>

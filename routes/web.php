@@ -45,6 +45,7 @@ Route::get('/', function () {
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
     		return view('home');
 		}else{
+		$category = App\category::all();
 		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
 
     		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
@@ -91,6 +92,7 @@ Route::get('/welcome', function () {
 		
 		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 	}else{
+		$category = App\category::all();
 		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		
@@ -168,6 +170,7 @@ Route::group(['middleware' => 'auth'], function () {
 		//booking detail
 		Route::get('/detil_payment/payment', 'payment_page\payment_page_controller@payment')->name('payment_page');
 
+	Route::get('/itinerary/itinerary_hasil/{id}','master\intinerary_controller@search')->name('itinerary_hasil');
 
 	//BOOKINGLIST
 	Route::get('/booking/booking_list', 'booking\booking_listController@booking_list')->name('booking_list');

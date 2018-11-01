@@ -18,36 +18,38 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
-                        <h2>Discover plsaces near you</h2>
+                        <h2>Discover places near you</h2>
                         <h4>This is the best guide of your city</h4>
                     </div>
-                    <!-- Hero Search Form -->
-                    <div class="hero-search-form">
+                    @if (Auth::User() != null)
+                    
+                        <div class="hero-search-form">
                         <!-- Tabs -->
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                <h6>What are you looking for?</h6>
-                                <form action="#" method="get">
-                                    <select class="custom-select">
-                                        <option selected>Your Destinations</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Latvia</option>
-                                        <option value="3">Dhaka</option>
-                                        <option value="4">Melbourne</option>
-                                        <option value="5">London</option>
-                                    </select>
-                                    <input type="input" name="date" id="date" class="form-control custom-select" placeholder="Email Address">
-                                    <select class="custom-select">
-                                        <option selected>Price Rwange</option>
-                                        <option value="1">$100 - $499</option>
-                                        <option value="2">$500 - $999</option>
-                                        <option value="3">$1000 - $4999</option>
-                                    </select>
-                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                                </form>
+                                <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                    <h6>What are you looking for?</h6>
+                                    <form id="cari">
+                                        <select id="destination" class="custom-select">
+                                            <option value="" selected>Your Destinations</option>
+                                            @foreach ($category as $e)
+                                                <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <select class="custom-select">
+                                            <option selected>Price Rwange</option>
+                                            <option value="1">$100 - $499</option>
+                                            <option value="2">$500 - $999</option>
+                                            <option value="3">$1000 - $4999</option>
+                                        </select>
+                                        <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        {{-- expr --}}
+                    @endif
+                    <!-- Hero Search Form -->
+                    
                 </div>
             </div>
         </div>
@@ -174,7 +176,7 @@
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
-                                <a href="#">{{ $a->da_header }}</a>
+                                <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
                                 {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                             </div>
                             <div class="add-more">
@@ -193,7 +195,7 @@
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" height="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="#">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -208,7 +210,7 @@
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="#">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -226,7 +228,7 @@
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="#">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -242,7 +244,7 @@
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="#">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -264,6 +266,8 @@
     <!-- ***** Editor Pick Area End ***** -->
    
     <!-- ***** Features Destinations Area End ***** -->
+    @if (Auth::User() != null)
+        {{-- expr --}}
     <section class="ftco-section bg-light">
         <div class="container-fluid">
                 <div class="row justify-content-start mb-5 pb-3">
@@ -307,6 +311,10 @@
             </div>          
         </div>
     </section>
+    @else
+
+    @endif
+    
 
 @endsection
 
@@ -319,6 +327,8 @@
         var parent = $(argument).data('id');
         window.location = ('{{ url('/package/package') }}/'+parent);
     }
+
+
     
     $( window ).load(function() {
         if ($(window).width() <= 600 && $(window).width() >= 401) {
@@ -366,6 +376,11 @@
           }
         });
 
+    }
+
+    function cari(argument) {
+        var loc = $('#destination').val();
+        window.location = ('{{ asset('itinerary/itinerary_hasil') }}/'+loc);
     }
     </script>
 
