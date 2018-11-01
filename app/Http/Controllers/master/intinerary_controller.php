@@ -621,7 +621,7 @@ class intinerary_controller extends Controller
     public function cari_intinerary(Request $req)
     {
         // return $id;
-        $intinerary = DB::table('m_intinerary')->where('mi_status','ACTIVE')->where('category_id','like','%'.$req->id.'%')->get();
+        $intinerary = DB::table('m_intinerary')->join('m_destination','m_intinerary.mi_id','=','m_destination.d_detail')->where('mi_status','ACTIVE')->where('d_category_id','like','%'.$req->id.'%')->get();
 
 
         return view('itinerary.itinerary',compact('intinerary'));
