@@ -14,8 +14,8 @@
 
     <!-- ***** Welcome Area Start ***** -->
     <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-1.jpg);">
-        <div class="container h-200">
-            <div class="row h-200 align-items-center justify-content-center">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
                         <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span>
