@@ -134,7 +134,6 @@ hr{
                                                <th>Child</th>
                                                <th>Child w Bed</th>
                                                <th>Infant</th> --}}
-                                               <th>Min DP</th>
                                                <th>Seat Remain</th>
                                            </tr>
                                         </thead>
@@ -145,7 +144,15 @@ hr{
                                                <td width="10%">
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
                                                </td>
-                                               <td width="10%">{{ $det->md_nota }}</td>
+                                               <td width="10%" align="right">
+                                                {{ $det->md_nota }}
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <span class="left">DP : </span>
+                                                <b>{{ number_format($det->md_dp,0,'','.') }}</b>
+                                                <b>
+                                                </td>
                                                <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j style="margin: 0% 0% 0% 20%;">s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right" width="20%">
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
@@ -171,7 +178,7 @@ hr{
                                                 <br>
                                                 <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
                                                </td>
-                                               <td align="right" width="10%"><b>{{ number_format($det->md_dp,0,'','.') }}</b></td>
+                                               </td>
                                                <td width="10%">{{ $det->md_seat_remain }}</td>
                                                
                                             </tr>

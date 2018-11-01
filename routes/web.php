@@ -77,6 +77,8 @@ Route::get('/welcome', function () {
 			}
 			$det = $val->detail_intinerarys;
 		}
+		// return $cat;
+
 		$book = App\User::all();
 		$cart   = DB::table('d_booking')
 					->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')

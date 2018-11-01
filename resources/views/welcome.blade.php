@@ -36,12 +36,12 @@
                                                 <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
                                             @endforeach
                                         </select>
-                                        <select class="custom-select">
+                                        {{-- <select class="custom-select">
                                             <option selected>Price Rwange</option>
                                             <option value="1">$100 - $499</option>
                                             <option value="2">$500 - $999</option>
                                             <option value="3">$1000 - $4999</option>
-                                        </select>
+                                        </select> --}}
                                         <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
                                     </form>
                                 </div>
@@ -69,6 +69,9 @@
             </div>
         </div>
     </section>
+    <div class="scrolldown">
+        
+    </div>
     <!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Catagory Area Start ***** -->
@@ -162,14 +165,12 @@
     <!-- ***** About Area End ***** -->
     @if (Auth::User() != null)
         {{-- expr --}}
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-light" style="margin-top: -50px;">
         <div class="container-fluid">
                 <div class="row justify-content-start mb-5 pb-3">
                   <div class="col-12">
                     <div class="about-content text-center">
                         <h3>Itinerary<br></h3>
-                        <br>
-                        <br>
                         <br>
                     </div>
                 </div>
@@ -194,7 +195,9 @@
                                     {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
                                     <hr>
                                     <p class="bottom-area d-flex">
-                                        <span><i class="icon-map-o"></i> San Franciso, CA</span> 
+                                        <span><i class="icon-map-o"></i>
+
+                                        </span> 
                                         <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
                                     </p>
                                 </div>
@@ -362,6 +365,9 @@
     });
 
     function cari(argument) {
+      $('html, body').animate({
+        scrollTop: $(".scrolldown").offset().top
+    }, 1000);
         var loc = $('#destination').val();
         $.ajax({
             type: "get",

@@ -73,8 +73,8 @@ table{
                                 <ul id="listingNav">
                                     <li class="active"><a href="#overview">Itinerrary info</a></li>
                                     <li><a href="#menu">Detail Book</a></li>
-                                    <li><a href="#review">Reviews</a></li>
-                                    <li><a href="#lomap">Location on map</a></li>
+                                    {{-- <li><a href="#review">Reviews</a></li> --}}
+                                    <li><a href="#lomap">Passenger</a></li>
                                 </ul>
                             </nav>
                         </div>
