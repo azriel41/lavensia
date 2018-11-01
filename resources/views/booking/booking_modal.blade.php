@@ -65,7 +65,7 @@
         <div class="col-sm-12" style="text-align: right;margin-top: 25px;">
             <form class="form_total" style="overflow-y: scroll; max-height: 200px">
                 <div class="col-sm-8">
-                    <h4 colspan="3">Room</h4>
+                    <h4 colspan="3">Total</h4>
                 </div>
                 <div class="col-sm-4">
                     <h4 class="total_room"></h4>

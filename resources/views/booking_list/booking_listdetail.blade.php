@@ -212,7 +212,7 @@ table{
                                     <td align="right" colspan="3">{{ number_format($data[0]->md_tax,0,'','.')}}</td>
                                 </tr>
                                 <tr>
-                                    <td align="left">Room Price</td>
+                                    <td align="left">Total Price</td>
                                     <td>: </td>
                                     <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_total_room,0,'','.') }}</td>
                                 </tr>
