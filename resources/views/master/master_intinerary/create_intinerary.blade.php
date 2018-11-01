@@ -93,7 +93,8 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required"></textarea>
+                                            <textarea id="mytextarea" id="term" name="term" >Hello, World!</textarea>
+                                            {{-- <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required"></textarea> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -462,8 +463,14 @@
 
 @endsection
 @section('extra_scripts')
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
 <script>
+    tinymce.init({
+    selector: '#mytextarea',
+    plugins: "link code",
+        height: 300,
+  });
     window.onload = function(){
         $('.form-line').each(function(){
             $(this).removeClass('error');

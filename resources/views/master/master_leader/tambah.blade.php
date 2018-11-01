@@ -25,7 +25,7 @@
                             <div class="col-sm-6">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Name</label>
+                                        <label class="form-control-label" >Name</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -38,7 +38,7 @@
                                
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Alamat</label>
+                                        <label class="form-control-label" >Alamat</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -50,7 +50,7 @@
                                 </div>
                                  <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Phone</label>
+                                        <label class="form-control-label" >Phone</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Passport</label>
+                                        <label class="form-control-label" >Passport</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -74,19 +74,19 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Exp Date</label>
+                                        <label class="form-control-label" >Exp Date</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="exp_date" id="exp_date" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required">
+                                                <input type="text" name="exp_date" id="exp_date" style="text-transform: uppercase;" class="form-control ot_date" placeholder="Field Required">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Issued</label>
+                                        <label class="form-control-label" >Issued</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -100,7 +100,7 @@
                             <div class="col-sm-6">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Gender</label>
+                                        <label class="form-control-label" >Gender</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <select class="form-control gender" name="gender">
@@ -112,24 +112,24 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Date Birth</label>
+                                        <label class="form-control-label" >Date Birth</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="date_birth" id="date_birth" style="text-transform: uppercase;" class="form-control datenormal" placeholder="Field Required">
+                                                <input type="text" name="date_birth" id="date_birth" style="text-transform: uppercase;" class="form-control ot_date" placeholder="Field Required">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label class="form-control-label" for="intinerary">Place Birth</label>
+                                        <label class="form-control-label" >Place Birth</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line page_1_req">
-                                                <input type="text" name="place_birth" id="place_birth" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
+                                                <input type="text" name="place_birth"  id="place_birth" style="text-transform: uppercase;" class="form-control" placeholder="Field Required">
                                             </div>
                                         </div>
                                     </div>

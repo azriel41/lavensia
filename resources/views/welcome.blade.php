@@ -71,7 +71,7 @@
     <!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Catagory Area Start ***** -->
-    <section class="dorne-catagory-area">
+    {{-- <section class="dorne-catagory-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -137,16 +137,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ***** Catagory Area End ***** -->
 
     <!-- ***** About Area Start ***** -->
-    <section class="dorne-about-area section-padding-0-100">
+    <section class="dorne-about-area section-padding-0-0" style="padding-bottom: 4%">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="about-content text-center">
-                        <h2>Discover your city with <br><span>Dorne</span></h2>
+                        <div class="" style="padding-top: 4%"></div>
+                        <h3>Discover your city with <br><span>Dorne</span></h3>
                         <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
                     </div>
                 </div>
@@ -154,7 +155,54 @@
         </div>
     </section>
     <!-- ***** About Area End ***** -->
+@if (Auth::User() != null)
+        {{-- expr --}}
+    <section class="ftco-section bg-light">
+        <div class="container-fluid">
+                <div class="row justify-content-start mb-5 pb-3">
+                  <div class="col-12">
+                    <div class="about-content text-center">
+                        {{-- <h3>Itinerary<br></h3> --}}
+                        {{-- <br> --}}
+                        {{-- <br> --}}
+                        {{-- <br> --}}
+                    </div>
+                </div>
+                
+                    <div class="container-fluid">
+                        @foreach ($intinerary as $index => $iti)
+                        <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
+                            <div class="destination">
+                                <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>
+                                <div class="text p-3">
+                                    <div class="d-flex">
+                                        <div>
+                                            <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
+                                    {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
+                                    <hr>
+                                    <p class="bottom-area d-flex">
+                                        <span><i class="icon-map-o"></i> San Franciso, CA</span> 
+                                        <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+            </div>          
+        </div>
+    </section>
+    @else
 
+    @endif
     <!-- ***** Editor Pick Area Start ***** -->
     <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url(assets_frontend_2/img/bg-img/hero-2.jpg);">
         <div class="container">
@@ -266,54 +314,7 @@
     <!-- ***** Editor Pick Area End ***** -->
    
     <!-- ***** Features Destinations Area End ***** -->
-    @if (Auth::User() != null)
-        {{-- expr --}}
-    <section class="ftco-section bg-light">
-        <div class="container-fluid">
-                <div class="row justify-content-start mb-5 pb-3">
-                  <div class="col-12">
-                    <div class="about-content text-center">
-                        <h4>Itinerary<br><span>Detail</span></h4>
-                        <br>
-                        <br>
-                        <br>
-                    </div>
-                </div>
-                
-                    <div class="container-fluid">
-                        @foreach ($intinerary as $index => $iti)
-                        <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
-                            <div class="destination">
-                                <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3">
-                                    <div class="d-flex">
-                                        <div>
-                                            <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
-                                    {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
-                                    <hr>
-                                    <p class="bottom-area d-flex">
-                                        <span><i class="icon-map-o"></i> San Franciso, CA</span> 
-                                        <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-            </div>          
-        </div>
-    </section>
-    @else
-
-    @endif
+    
     
 
 @endsection

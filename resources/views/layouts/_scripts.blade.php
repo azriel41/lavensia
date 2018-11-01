@@ -110,6 +110,13 @@
 		}
     });
 
+
+     $('.ot_date').datepicker({
+            format:'dd-mm-yyyy',
+            autoclose: true
+        });
+
+
     $('.datenormal_month').bootstrapMaterialDatePicker({
         format: 'MM-YYYY',
         clearButton: true,

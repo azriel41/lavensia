@@ -129,6 +129,7 @@ table{
                                   <td align="left">Status</td>
                                     <td>: </td>
                                   <td align="left" >
+
                                         @if ($data[0]->db_status == 'Waiting List')
                                             <span class="label label-warning"> {{ $data[0]->db_status }}</span>
                                         @elseif ($data[0]->db_status == 'Holding Confirm')
@@ -239,6 +240,8 @@ table{
                             <h4>Detail Passenger</h4>
                             <div class="location-map">
                                 @foreach ($simple_table as $index => $e)
+                                @if ($e->dp_bed == 'single')
+                                <p>DOUBLE</p>
                                 <div class="col-sm-12">
                                     <div class="col-sm-4">
                                         <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
@@ -275,6 +278,84 @@ table{
                                         </div>
                                     </div>
                                 </div>
+                                @elseif($e->dp_bed == 'twin')
+                                <p>DOUBLE</p>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
+                                    </div>
+                                    <div class="col-sm-8">
+                                      <div class="table-responsive">
+                                        <table class="table table-striped table-bordered" width="100%">
+
+                                            <tr>
+                                                <th align="left" width="10%">Nama</th>
+                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
+                                                <td width="10%">Gender</td>
+                                                <td width="25%">: {{ $e->dp_gender }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Passport </th>
+                                                <td>: {{ $e->dp_passport }}</td>
+                                                <td>Date of Birth</td>
+                                                <td>: {{ $e->dp_birth_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Expired Date </th>
+                                                <td>: {{ $e->dp_exp_date }}</td>
+                                                <td>Place of Birth</td>
+                                                <td>: {{ $e->dp_birth_place }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
+                                            </tr>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                @elseif($e->dp_bed == 'double')
+                                <p>DOUBLE</p>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
+                                    </div>
+                                    <div class="col-sm-8">
+                                      <div class="table-responsive">
+                                        <table class="table table-striped table-bordered" width="100%">
+
+                                            <tr>
+                                                <th align="left" width="10%">Nama</th>
+                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
+                                                <td width="10%">Gender</td>
+                                                <td width="25%">: {{ $e->dp_gender }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Passport </th>
+                                                <td>: {{ $e->dp_passport }}</td>
+                                                <td>Date of Birth</td>
+                                                <td>: {{ $e->dp_birth_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Expired Date </th>
+                                                <td>: {{ $e->dp_exp_date }}</td>
+                                                <td>Place of Birth</td>
+                                                <td>: {{ $e->dp_birth_place }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
+                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
+                                            </tr>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                
                                 <div class="col-sm-12" style="margin-top: 30px;">
                                     
                                 </div>
