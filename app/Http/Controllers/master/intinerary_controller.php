@@ -618,10 +618,10 @@ class intinerary_controller extends Controller
             dd($error);
         }
     }
-    public function search(Request $req,$id)
+    public function cari_intinerary(Request $req)
     {
         // return $id;
-        $intinerary = DB::table('m_intinerary')->where('mi_status','ACTIVE')->where('category_id','like','%'.$id.'%')->get();
+        $intinerary = DB::table('m_intinerary')->where('mi_status','ACTIVE')->where('category_id','like','%'.$req->id.'%')->get();
 
 
         return view('itinerary.itinerary',compact('intinerary'));

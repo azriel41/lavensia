@@ -112,6 +112,9 @@ Route::get('/contact/contact', 'additional\partnerController@contact')->name('co
 
 //article index
 Route::get('/article/article/{id}', 'article\articleController@article')->name('article');
+//cari itinerary di welcome page
+Route::get('/intinerary/cari_intinerary', 'master\intinerary_controller@cari_intinerary')->name('name_cari_intinerary');
+
 
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE

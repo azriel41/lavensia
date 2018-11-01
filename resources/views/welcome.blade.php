@@ -18,8 +18,8 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
-                        <h2>Discover places near you</h2>
-                        <h4>This is the best guide of your city</h4>
+                        <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span>
+                        {{-- <h4>This is the best guide of your city</h4> --}}
                     </div>
                     @if (Auth::User() != null)
                     
@@ -29,6 +29,7 @@
                                 <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                                     <h6>What are you looking for?</h6>
                                     <form id="cari">
+                                        <input type="" name="" readonly="" style="background-color: transparent;border:none">
                                         <select id="destination" class="custom-select">
                                             <option value="" selected>Your Destinations</option>
                                             @foreach ($category as $e)
@@ -141,35 +142,39 @@
     <!-- ***** Catagory Area End ***** -->
 
     <!-- ***** About Area Start ***** -->
+    @if (Auth::User() != null)
+    @else
     <section class="dorne-about-area section-padding-0-0" style="padding-bottom: 4%">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="about-content text-center">
-                        <div class="" style="padding-top: 4%"></div>
-                        <h3>Discover your city with <br><span>Dorne</span></h3>
-                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="about-content text-center">
+                            <div class="" style="padding-top: 4%"></div>
+                            <h3>Discover your city with <br><span>Dorne</span></h3>
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+    
     <!-- ***** About Area End ***** -->
-@if (Auth::User() != null)
+    @if (Auth::User() != null)
         {{-- expr --}}
     <section class="ftco-section bg-light">
         <div class="container-fluid">
                 <div class="row justify-content-start mb-5 pb-3">
                   <div class="col-12">
                     <div class="about-content text-center">
-                        {{-- <h3>Itinerary<br></h3> --}}
-                        {{-- <br> --}}
-                        {{-- <br> --}}
-                        {{-- <br> --}}
+                        <h3>Itinerary<br></h3>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
-                
-                    <div class="container-fluid">
+                  <div class="container-fluid">
+                    <div class="drop_here">
                         @foreach ($intinerary as $index => $iti)
                         <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
                             <div class="destination">
@@ -197,6 +202,7 @@
                         </div>
                         @endforeach
                     </div>
+                </div>
             </div>          
         </div>
     </section>
@@ -221,7 +227,7 @@
                 @if ($loop->index == 0)
                     <div class="col-12 col-lg-12">
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
                                 <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -240,7 +246,7 @@
                 @if ($loop->index == 1)
                     <div class="col-12 col-lg-6">
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" height="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" height="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -255,7 +261,7 @@
 
                 @if ($loop->index == 2)
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -273,7 +279,7 @@
                 @if ($loop->index == 3)
                     <div class="col-12 col-lg-6">
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -289,7 +295,7 @@
 
                 @if ($loop->index == 4)
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -355,17 +361,15 @@
         }
     });
 
-    function intinerary(argument) {
-        var parent = $(argument).data('id');
+    function cari(argument) {
+        var loc = $('#destination').val();
         $.ajax({
             type: "get",
-            url:'{{ route('package_modal_detail') }}',
-            data: { id:parent },
+            url:'{{ route('name_cari_intinerary') }}',
+            data: {id:loc},
             success:function(data){
             
             $('.drop_here').html(data);
-            $('#myModal').modal('show');
-
 
           },error:function(){
             iziToast.warning({
@@ -376,12 +380,6 @@
             });
           }
         });
-
-    }
-
-    function cari(argument) {
-        var loc = $('#destination').val();
-        window.location = ('{{ asset('itinerary/itinerary_hasil') }}/'+loc);
     }
     </script>
 
