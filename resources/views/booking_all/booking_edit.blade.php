@@ -30,6 +30,7 @@
                 background-color: red;
                 border-color: #ffffff;
             }
+
             .btn-primary:hover {
                 color: black;
                 background-color: #f4c800;
@@ -1844,7 +1845,7 @@
         })
         var total_adult = $('.total_adult').val();
         var total_child = $('.total_child').val();
-        var agent_com = '{{ $detail_intinerary->md_agent_com }}';
+        var agent_com = 0;
         var tips = '{{ $detail_intinerary->md_tips }}';
         var visa = '{{ $detail_intinerary->md_visa }}';
         var tax = '{{ $detail_intinerary->md_tax }}';

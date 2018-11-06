@@ -33,7 +33,7 @@ hr{
 .modal-dialog {
     margin: auto;
     z-index: 1100 !important;
-    width: 700px ;
+    width: 700px !important;
 }
 .modal-content {
     border-radius: 0px; 
