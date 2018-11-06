@@ -90,7 +90,7 @@ window.onload = function(){
 }
 
 function deleting(tl_id) {
-    alert(tl_id);
+    // alert(tl_id);
     var id = tl_id;
     iziToast.show({
             overlay: true,
