@@ -148,8 +148,10 @@ class intinerary_controller extends Controller
 
     public function save(Request $req)
     {
+        // dd($req->all());
+
+
         return DB::transaction(function() use ($req) {  
-            // dd($req->all());
             $name                       = Auth::user()->name;
             $intinerary                 = $this->all_variable->intinerary();
             $schedule                   = $this->all_variable->schedule();
