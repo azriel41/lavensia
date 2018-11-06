@@ -97,11 +97,24 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <textarea rows="4"  id="term_con" name="term" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_term }}</textarea>
+                                            <textarea id="mytextarea" name="term" >{{ $data->mi_term }}</textarea>
+                                            {{-- <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required"></textarea> --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{-- <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="highlight">Term & Condition</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line page_1_req">
+                                            <textarea rows="4"  id="term_con" name="term" class="form-control no-resize" placeholder="Field Required">{{ $data->mi_term }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="caption_by">Flight By</label>
@@ -481,7 +494,12 @@
 @section('extra_scripts')
 
 <script>
-  
+        tinymce.init({
+    selector: '#mytextarea',
+    plugins: "link code",
+        height: 300,
+
+  });
     window.onload = function(){
         $('.form-line').each(function(){
             $(this).removeClass('error');
@@ -749,7 +767,7 @@
         $('#child_price').val(child_price);
         $('#infant_price').val(infant_price);
         $('#child_w_price').val(child_w_price);
-        $('#term').val(term);
+        $('#mytextarea').val(term);
         $('#seat').val(seat);
         $('#minimal_dp').val(minimal_dp);
         $('#agent_com').val(agent_com);
@@ -820,6 +838,8 @@
 
 
     $(document).on('click','.save',function(){
+        tinyMCE.triggerSave();
+        var comment = $("#mytextarea").val();
         var temp1 = 0;
         $('.page_1_req .form-control').each(function(i){
             if ($('.page_1_req  .form-control').eq(i).val() == '' ) {
@@ -904,7 +924,7 @@
                     $.ajax({
                         type: "POST",
                         url:'{{ url('/master/master_intinerary/save') }}',
-                        data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize(),
+                        data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize()+'&'+comment,
                         dataType:'json',
                         processData: false,
                         contentType: false,
