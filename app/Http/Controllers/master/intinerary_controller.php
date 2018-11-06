@@ -148,8 +148,10 @@ class intinerary_controller extends Controller
 
     public function save(Request $req)
     {
+        // dd($req->all());
+
+
         return DB::transaction(function() use ($req) {  
-            // dd($req->all());
             $name                       = Auth::user()->name;
             $intinerary                 = $this->all_variable->intinerary();
             $schedule                   = $this->all_variable->schedule();
@@ -531,6 +533,15 @@ class intinerary_controller extends Controller
             dd($error);
         }
     }
+    public function delete_leader(Request $req)
+    {
+        // dd($req->all());
+        return DB::transaction(function() use ($req) {  
+            DB::table('d_tour_leader')->where('tl_id',$req->id)->delete();    
+        });
+        return Response::json(['status'=>1]);
+
+    }
 
     public function datatable_leader()
     {
@@ -618,10 +629,29 @@ class intinerary_controller extends Controller
             dd($error);
         }
     }
-    public function search(Request $req,$id)
+    public function cari_intinerary(Request $req)
     {
         // return $id;
-        $intinerary = DB::table('m_intinerary')->where('mi_status','ACTIVE')->where('category_id','like','%'.$id.'%')->get();
+        $cat = $req->id;
+        $bulan = $req->month;
+
+        if ($cat != null) {
+            $category = "AND d_category_id = $cat"; 
+        }else{
+            $category = '';
+        }
+        // return $category;
+
+        if ($bulan != null) {
+            $month = "AND MONTH(md_start) = $bulan ";
+        }else{
+            $month = '';
+        }
+
+        $intinerary = DB::select("SELECT * FROM m_intinerary
+            where mi_status = 'ACTIVE' $category '$month' ");
+
+        // $intinerary = DB::table('m_intinerary')->join('m_destination','m_intinerary.mi_id','=','m_destination.d_detail')->where('mi_status','ACTIVE')->where('d_category_id','like','%'.$req->id.'%')->whereMonth('md_start',$req->)->get();
 
 
         return view('itinerary.itinerary',compact('intinerary'));

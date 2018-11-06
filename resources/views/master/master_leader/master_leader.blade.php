@@ -89,7 +89,75 @@ window.onload = function(){
 
 }
 
-function deleting() {
+function deleting(tl_id) {
+    // alert(tl_id);
+    var id = tl_id;
+    iziToast.show({
+            overlay: true,
+            close: false,
+            timeout: 20000, 
+            color: 'dark',
+            icon: 'fa fa-question-circle',
+            title: 'Hapus Data!',
+            message: 'Apakah Anda Yakin ?!',
+            position: 'center',
+            progressBarColor: 'rgb(0, 255, 184)',
+            buttons: [
+            [
+                '<button class="bg-red">Delete</button>',
+                function (instance, toast) {
+
+                  $.ajaxSetup({
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: "get",
+                        url:'{{ route('delete_leader') }}',
+                        data: {id},
+                        dataType:'json',
+                      success:function(data){
+                        if (data.status == '1') {
+                            iziToast.success({
+                                message: 'Data Berhasil Dihapus!',
+                                position:'topRight',
+                                icon:'fa fa-delete'
+                            });
+                            var table = $('.intinerary').DataTable();
+                            table.ajax.reload();
+                        }else if (data.status == '0') {
+                            iziToast.warning({
+                                position:'topRight',
+                                message:data.message,
+                                iconText:'fa fa-warning'
+                            });
+
+                        }
+                      },error:function(){
+                        iziToast.warning({
+                            message: 'Terjadi Kesalahan!',
+                            position:'topRight',
+                            iconText:'fa fa-warning'
+                        });
+                      }
+                    });
+                    instance.hide({
+                        transitionOut: 'fadeOutUp'
+                    }, toast);
+                }
+            ],
+            [
+                '<button style="background-color:#44d7c9;">Cancel</button>',
+                function (instance, toast) {
+                  instance.hide({
+                    transitionOut: 'fadeOutUp'
+                  }, toast);
+                }
+              ]
+            ]
+    });
    
 }
 

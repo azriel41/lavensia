@@ -23,21 +23,20 @@ class articleController extends Controller
     }
     public function article($id)
     {
-    	$data = article::where('da_show',$id)->first();
-    	
+      $article = DB::table('d_article')->where('da_id',$id)->orderBy('da_id','DESC')->limit(7)->get();
     	$news = DB::table('d_article')->orderBy('da_id','DESC')->limit(7)->get();
-        // return $news;
-        $category = category::all();
+        // return $article;
+      $category = category::all();
 
-		$intinerary = intinerary::all();
+  		$intinerary = intinerary::all();
 
-		$det = [];
-		$cat = [];
-		foreach ($intinerary as $index => $val) {
-			$det = $val->detail_intinerarys;
-			$cat = $val->category;
-		}
-		$book = User::all();
+  		$det = [];
+  		$cat = [];
+  		foreach ($intinerary as $index => $val) {
+  			$det = $val->detail_intinerarys;
+  			$cat = $val->category;
+  		}
+  		$book = User::all();
 
 		if (Auth::User() != null) {
 
@@ -56,9 +55,9 @@ class articleController extends Controller
 				// return $cart;
 
 
-	    	return view('article.article',compact('news','data','category','intinerary','det','response','cart','jumlah'));
+	    	return view('article.article',compact('article','news','category','intinerary','det','response','cart','jumlah'));
 		}else{
-	    	return view('article.article',compact('news','data','category','intinerary','det','response'));
+	    	return view('article.article',compact('article','news','category','intinerary','det','response'));
 		}
     }
     public function create()

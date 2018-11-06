@@ -93,7 +93,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line page_1_req">
-                                            <textarea id="mytextarea" id="term" name="term" >Hello, World!</textarea>
+                                            <textarea id="mytextarea" name="term" ></textarea>
                                             {{-- <textarea rows="4" id="term" name="term" class="form-control no-resize" placeholder="Field Required"></textarea> --}}
                                         </div>
                                     </div>
@@ -470,6 +470,7 @@
     selector: '#mytextarea',
     plugins: "link code",
         height: 300,
+
   });
     window.onload = function(){
         $('.form-line').each(function(){
@@ -749,7 +750,7 @@
         $('#child_price').val(child_price);
         $('#infant_price').val(infant_price);
         $('#child_w_price').val(child_w_price);
-        $('#term').val(term);
+        $('#mytextarea').val(term);
         $('#seat').val(seat);
         $('#minimal_dp').val(minimal_dp);
         $('#agent_com').val(agent_com);
@@ -802,6 +803,13 @@
 
 
     $(document).on('click','.save',function(){
+        // var comment = $.trim($("#mytextarea").val());
+        tinyMCE.triggerSave();
+        var comment = $("#mytextarea").val();
+        // alert(comment);
+
+
+
         var temp1 = 0;
         $('.page_1_req .form-control').each(function(i){
             if ($('.page_1_req  .form-control').eq(i).val() == '' ) {
@@ -881,7 +889,7 @@
                     $.ajax({
                         type: "POST",
                         url:'{{ route('save_intinerary') }}',
-                        data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize(),
+                        data: formdata ? formdata : form.serialize()+'&'+detail.$('input').serialize()+'&'+comment,
                         dataType:'json',
                         processData: false,
                         contentType: false,

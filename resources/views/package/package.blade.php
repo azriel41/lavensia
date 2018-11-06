@@ -121,7 +121,7 @@ hr{
                                 <h5>Price Table</h5>
                                 <div style="margin-top: 20px"></div>
                                 <div class="table-responsive">
-                                    <table width="100%" class="table table-striped" align="center">
+                                    <table width="100%" class="table table-striped" align="center" style="font-size: 13px;">
                                         <thead>
                                            <tr style="background-color: #7ed6df;" >
                                                {{-- <th>No</th> --}}
@@ -134,7 +134,6 @@ hr{
                                                <th>Child</th>
                                                <th>Child w Bed</th>
                                                <th>Infant</th> --}}
-                                               <th>Min DP</th>
                                                <th>Seat Remain</th>
                                            </tr>
                                         </thead>
@@ -143,35 +142,43 @@ hr{
                                            <tr align="left">
                                                {{-- <td width="5%">{{ $index+1 }}</td> --}}
                                                <td width="10%">
-                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b style="font-size: 12px;"><i class="fa fa-share-square-o"></i> Book !</b></button>
                                                </td>
-                                               <td width="10%">{{ $det->md_nota }}</td>
+                                               <td width="10%" align="right">
+                                                {{ $det->md_nota }}
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <span class="left">DP : </span>
+                                                <b>{{ number_format($det->md_dp,0,'','.') }}</b>
+                                                <b>
+                                                </td>
                                                <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j style="margin: 0% 0% 0% 20%;">s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right" width="20%">
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Child : </span><b>{{ number_format($det->md_child_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">CwB : </span><b>{{ number_format($det->md_child_w_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Infant : </span><b>{{ number_format($det->md_infant_price,0,'','.') }} </b>
                                                </td>
                                                <td align="right" width="20%">
                                                 <span class="left">Visa : </span><b>{{ number_format($det->md_Visa,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tax : </span><b>{{ number_format($det->md_tax,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tip gd : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
                                                </td>
-                                               <td align="right" width="10%"><b>{{ number_format($det->md_dp,0,'','.') }}</b></td>
+                                               </td>
                                                <td width="10%">{{ $det->md_seat_remain }}</td>
                                                
                                             </tr>
@@ -215,7 +222,7 @@ hr{
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th><b>Term & Cond</b></th>
+                                        <th><b>Term & Conditions</b></th>
                                     </tr>
                                     
                                 </table>

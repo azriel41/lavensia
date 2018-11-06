@@ -19,8 +19,8 @@
                        <div class="col-md-8">
             <div class="section-row sticky-container">
               <div class="main-post">
-                <h2>{{ $data->da_header }}</h2>
-                <p>{!! $data->da_desc !!}</p>
+                <h2>{{ $article[0]->da_header }}</h2>
+                <p>{!! $article[0]->da_desc !!}</p>
               </div>
               <div class="post-shares sticky-shares">
                 <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>

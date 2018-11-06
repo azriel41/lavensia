@@ -77,6 +77,8 @@ Route::get('/welcome', function () {
 			}
 			$det = $val->detail_intinerarys;
 		}
+		// return $cat;
+
 		$book = App\User::all();
 		$cart   = DB::table('d_booking')
 					->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
@@ -112,6 +114,9 @@ Route::get('/contact/contact', 'additional\partnerController@contact')->name('co
 
 //article index
 Route::get('/article/article/{id}', 'article\articleController@article')->name('article');
+//cari itinerary di welcome page
+Route::get('/intinerary/cari_intinerary', 'master\intinerary_controller@cari_intinerary')->name('name_cari_intinerary');
+
 
 
 // BUAT ROUTE BARU HARUS DIDALAM MIDDLEWARE
@@ -236,6 +241,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/edit_leader', 'master\intinerary_controller@edit_leader')->name('edit_leader');
 	Route::post('/master/master_intinerary/save_leader', 'master\intinerary_controller@save_leader')->name('save_leader');
 	Route::post('/master/master_intinerary/update_leader', 'master\intinerary_controller@update_leader')->name('update_leader');
+	Route::get('/master/master_intinerary/delete_leader', 'master\intinerary_controller@delete_leader')->name('delete_leader');
 	Route::get('/master/master_intinerary/datatable_leader', 'master\intinerary_controller@datatable_leader')->name('datatable_leader');
 
 	//Category

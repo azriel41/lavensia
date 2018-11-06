@@ -73,8 +73,8 @@ table{
                                 <ul id="listingNav">
                                     <li class="active"><a href="#overview">Itinerrary info</a></li>
                                     <li><a href="#menu">Detail Book</a></li>
-                                    <li><a href="#review">Reviews</a></li>
-                                    <li><a href="#lomap">Location on map</a></li>
+                                    {{-- <li><a href="#review">Reviews</a></li> --}}
+                                    <li><a href="#lomap">Passenger</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -212,7 +212,7 @@ table{
                                     <td align="right" colspan="3">{{ number_format($data[0]->md_tax,0,'','.')}}</td>
                                 </tr>
                                 <tr>
-                                    <td align="left">Room Price</td>
+                                    <td align="left">Total Price</td>
                                     <td>: </td>
                                     <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_total_room,0,'','.') }}</td>
                                 </tr>

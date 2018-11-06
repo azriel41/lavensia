@@ -1,11 +1,74 @@
 @extends('layouts_frontend_2._main')  
 
 @section('extra_style')
-
 <style type="text/css">
-    .tab-content{
-        background-color:transparent !important;
+.tab-content{
+    background-color:transparent !important;
+}
+.h-seratus{
+    height: 103% !important;
+}
+.carousel{
+background: #2f4357;
+}
+.carousel .item{
+    min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+}
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+        
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
     }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+
+
+.carousel, 
+.carousel-inner, 
+.carousel-inner .item {
+    height: 100%;
+}
+
+.item:nth-child(1) {
+    background: #74C390;
+}
+
+.item:nth-child(2) {
+    background: #51BCE8;
+}
+
+.item:nth-child(3) {
+    background: #E46653;
+}
+
 </style>
 @endsection
 
@@ -13,61 +76,207 @@
 @section('content')
 
     <!-- ***** Welcome Area Start ***** -->
-    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-1.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-12 col-md-10">
-                    <div class="hero-content">
-                        <h2>Discover places near you</h2>
-                        <h4>This is the best guide of your city</h4>
-                    </div>
-                    @if (Auth::User() != null)
-                    
-                        <div class="hero-search-form">
-                        <!-- Tabs -->
-                        <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                    <h6>What are you looking for?</h6>
-                                    <form id="cari">
-                                        <select id="destination" class="custom-select">
-                                            <option value="" selected>Your Destinations</option>
-                                            @foreach ($category as $e)
-                                                <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <select class="custom-select">
-                                            <option selected>Price Rwange</option>
-                                            <option value="1">$100 - $499</option>
-                                            <option value="2">$500 - $999</option>
-                                            <option value="3">$1000 - $4999</option>
-                                        </select>
-                                        <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                                    </form>
+  <div class="bs-example" style="height: 100%">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-pause="hover" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-pause="hover" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-pause="hover" data-slide-to="2"></li>
+        </ol>   
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-11.jpg);">
+                    <div class="container h-seratus">
+                        <div class="row h-seratus align-items-center justify-content-center">
+                            <div class="col-12 col-md-10">
+                                <div class="hero-content" style="margin-top: 50px !important;">
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
+                                    {{-- <h4>This is the best guide of your city</h4> --}}
+                                    
                                 </div>
+                                @if (Auth::User() != null)
+                                
+                                    <div class="hero-search-form">
+                                    <!-- Tabs -->
+                                    <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                                <h6>What are you looking for?</h6>
+                                                <form id="cari">
+                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
+                                                    <select id="destination" class="custom-select">
+                                                        <option value="" selected>Your Destinations</option>
+                                                        @foreach ($category as $e)
+                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select id="month" class="custom-select">
+                                                        <option value="" selected>Month Departure</option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">Mart</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- expr --}}
+                                @else
+                                <div class="hero-search-form">
+                                        <div style="height: 65%"> 
+                                        </div>
+                                    </div>
+                                @endif
+                                <!-- Hero Search Form -->
+                                
                             </div>
                         </div>
-                        {{-- expr --}}
-                    @endif
-                    <!-- Hero Search Form -->
-                    
-                </div>
+                    </div>
+                </section>
+            </div>
+            <div class="item">
+                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-3.jpg);">
+                    <div class="container h-seratus">
+                        <div class="row h-seratus align-items-center justify-content-center">
+                            <div class="col-12 col-md-10">
+                                <div class="hero-content" style="margin-top: 50px !important;">
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
+                                    {{-- <h4>This is the best guide of your city</h4> --}}
+                                    
+                                </div>
+                                @if (Auth::User() != null)
+                                
+                                    <div class="hero-search-form">
+                                    <!-- Tabs -->
+                                    <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                                <h6>What are you looking for?</h6>
+                                                <form id="cari">
+                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
+                                                    <select id="destination" class="custom-select">
+                                                        <option value="" selected>Your Destinations</option>
+                                                        @foreach ($category as $e)
+                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select id="month" class="custom-select">
+                                                        <option value="" selected>Month Departure</option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">Mart</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- expr --}}
+                                @else
+                                <div class="hero-search-form">
+                                        <div style="height: 65%"> 
+                                        </div>
+                                    </div>
+                                @endif
+                                <!-- Hero Search Form -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="item">
+                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-2.jpg);">
+                    <div class="container h-seratus">
+                        <div class="row h-seratus align-items-center justify-content-center">
+                            <div class="col-12 col-md-10">
+                                <div class="hero-content" style="margin-top: 50px !important;">
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
+                                    {{-- <h4>This is the best guide of your city</h4> --}}
+                                    
+                                </div>
+                                @if (Auth::User() != null)
+                                
+                                    <div class="hero-search-form">
+                                    <!-- Tabs -->
+                                    <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                                <h6>What are you looking for?</h6>
+                                                <form id="cari">
+                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
+                                                    <select id="destination" class="custom-select">
+                                                        <option value="" selected>Your Destinations</option>
+                                                        @foreach ($category as $e)
+                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select id="month" class="custom-select">
+                                                        <option value="" selected>Month Departure</option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">Mart</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- expr --}}
+                                @else
+                                <div class="hero-search-form">
+                                        <div style="height: 65%"> 
+                                        </div>
+                                    </div>
+                                @endif
+                                <!-- Hero Search Form -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        <!-- Hero Social Btn -->
-        <div class="hero-social-btn">
-            <div class="social-title d-flex align-items-center">
-                <h6>Follow us on Social Media</h6>
-                <span></span>
-            </div>
-            <div class="social-btns">
-                <a href="#"><i class="fa fa-linkedin" aria-haspopup="true"></i></a>
-                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-haspopup="true"></i></a>
-                <a href="#"><i class="fa fa-facebook" aria-haspopup="true"></i></a>
-            </div>
-        </div>
-    </section>
+        <!-- Carousel controls -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</div>
+    
+    <div class="scrolldown">
+        
+    </div>
     <!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Catagory Area Start ***** -->
@@ -141,35 +350,37 @@
     <!-- ***** Catagory Area End ***** -->
 
     <!-- ***** About Area Start ***** -->
+    @if (Auth::User() != null)
+    @else
     <section class="dorne-about-area section-padding-0-0" style="padding-bottom: 4%">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="about-content text-center">
-                        <div class="" style="padding-top: 4%"></div>
-                        <h3>Discover your city with <br><span>Dorne</span></h3>
-                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="about-content text-center">
+                            <div class="" style="padding-top: 4%"></div>
+                            <h3>Discover your city with <br><span>Dorne</span></h3>
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+    
     <!-- ***** About Area End ***** -->
-@if (Auth::User() != null)
+    @if (Auth::User() != null)
         {{-- expr --}}
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-light" style="margin-top: -50px;">
         <div class="container-fluid">
                 <div class="row justify-content-start mb-5 pb-3">
                   <div class="col-12">
                     <div class="about-content text-center">
-                        {{-- <h3>Itinerary<br></h3> --}}
-                        {{-- <br> --}}
-                        {{-- <br> --}}
-                        {{-- <br> --}}
+                        <h3>Itinerary<br></h3>
+                        <br>
                     </div>
                 </div>
-                
-                    <div class="container-fluid">
+                  <div class="container-fluid">
+                    <div class="drop_here">
                         @foreach ($intinerary as $index => $iti)
                         <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
                             <div class="destination">
@@ -189,7 +400,9 @@
                                     {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
                                     <hr>
                                     <p class="bottom-area d-flex">
-                                        <span><i class="icon-map-o"></i> San Franciso, CA</span> 
+                                        <span><i class="icon-map-o"></i>
+
+                                        </span> 
                                         <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
                                     </p>
                                 </div>
@@ -197,6 +410,7 @@
                         </div>
                         @endforeach
                     </div>
+                </div>
             </div>          
         </div>
     </section>
@@ -221,7 +435,7 @@
                 @if ($loop->index == 0)
                     <div class="col-12 col-lg-12">
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
                                 <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -240,7 +454,7 @@
                 @if ($loop->index == 1)
                     <div class="col-12 col-lg-6">
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" height="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" height="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -255,7 +469,7 @@
 
                 @if ($loop->index == 2)
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -273,7 +487,7 @@
                 @if ($loop->index == 3)
                     <div class="col-12 col-lg-6">
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -289,7 +503,7 @@
 
                 @if ($loop->index == 4)
                         <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}" width="100%" alt="">
+                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
                                     <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
@@ -324,6 +538,12 @@
 @section('extra_scripts')
 
     <script type="text/javascript">
+
+    $("#myCarousel").carousel({
+        interval : 3000,
+        pasue:"hover"
+    });
+
     function more(argument) {
         var parent = $(argument).data('id');
         window.location = ('{{ url('/package/package') }}/'+parent);
@@ -355,17 +575,19 @@
         }
     });
 
-    function intinerary(argument) {
-        var parent = $(argument).data('id');
+    function cari(argument) {
+      $('html, body').animate({
+        scrollTop: $(".scrolldown").offset().top
+    }, 1000);
+        var loc = $('#destination').val();
+        var month = $('#month').val();
         $.ajax({
             type: "get",
-            url:'{{ route('package_modal_detail') }}',
-            data: { id:parent },
+            url:'{{ route('name_cari_intinerary') }}',
+            data: {id:loc,month:month},
             success:function(data){
             
             $('.drop_here').html(data);
-            $('#myModal').modal('show');
-
 
           },error:function(){
             iziToast.warning({
@@ -376,12 +598,6 @@
             });
           }
         });
-
-    }
-
-    function cari(argument) {
-        var loc = $('#destination').val();
-        window.location = ('{{ asset('itinerary/itinerary_hasil') }}/'+loc);
     }
     </script>
 
