@@ -92,7 +92,7 @@ background: #2f4357;
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
                                 <div class="hero-content" style="margin-top: 50px !important;">
-                                    <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span>
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
                                     {{-- <h4>This is the best guide of your city</h4> --}}
                                     
                                 </div>
@@ -151,7 +151,7 @@ background: #2f4357;
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
                                 <div class="hero-content" style="margin-top: 50px !important;">
-                                    <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span>
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
                                     {{-- <h4>This is the best guide of your city</h4> --}}
                                     
                                 </div>
@@ -210,7 +210,7 @@ background: #2f4357;
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
                                 <div class="hero-content" style="margin-top: 50px !important;">
-                                    <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span>
+                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
                                     {{-- <h4>This is the best guide of your city</h4> --}}
                                     
                                 </div>
