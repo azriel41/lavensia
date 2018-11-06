@@ -142,7 +142,7 @@ hr{
                                            <tr align="left">
                                                {{-- <td width="5%">{{ $index+1 }}</td> --}}
                                                <td width="10%">
-                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b style="font-size: 12px;"><i class="fa fa-share-square-o"></i> Book Now!</b></button>
+                                                   <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b style="font-size: 12px;"><i class="fa fa-share-square-o"></i> Book !</b></button>
                                                </td>
                                                <td width="10%" align="right">
                                                 {{ $det->md_nota }}
