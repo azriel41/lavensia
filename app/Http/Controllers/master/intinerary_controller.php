@@ -621,7 +621,26 @@ class intinerary_controller extends Controller
     public function cari_intinerary(Request $req)
     {
         // return $id;
-        $intinerary = DB::table('m_intinerary')->join('m_destination','m_intinerary.mi_id','=','m_destination.d_detail')->where('mi_status','ACTIVE')->where('d_category_id','like','%'.$req->id.'%')->get();
+        $cat = $req->id;
+        $bulan = $req->month;
+
+        if ($cat != null) {
+            $category = "AND d_category_id = $cat"; 
+        }else{
+            $category = '';
+        }
+        // return $category;
+
+        if ($bulan != null) {
+            $month = "AND MONTH(md_start) = $bulan ";
+        }else{
+            $month = '';
+        }
+
+        $intinerary = DB::select("SELECT * FROM m_intinerary
+            where mi_status = 'ACTIVE' $category '$month' ");
+
+        // $intinerary = DB::table('m_intinerary')->join('m_destination','m_intinerary.mi_id','=','m_destination.d_detail')->where('mi_status','ACTIVE')->where('d_category_id','like','%'.$req->id.'%')->whereMonth('md_start',$req->)->get();
 
 
         return view('itinerary.itinerary',compact('intinerary'));

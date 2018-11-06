@@ -91,16 +91,16 @@
             ]
         });
 
-        // function pay(argument) {
-        //     var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
-        //     var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
-        //     var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
-        //     window.location=('{{ url('/payment_page/payment_termin') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+$(argument).data('id'));
-        // }
+        function pay(argument) {
+            var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
+            var rand2 = '{{ md5('Dengan Nama Allah Yang Maha Pengasih Lagi Maha Penyayang').rand(1,1000000) }}';
+            var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
+            window.location=('{{ url('/payment_page/payment_termin') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+argument.value);
+        }
         
-        $('.payment').click(function(){
-            alert('ss');
-        })
+       // function pay(argument) {
+       //     alert();
+       // }
 
     </script>
 

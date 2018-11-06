@@ -292,7 +292,7 @@ class booking_listController extends Controller
                             $a = '<button class="btn btn-sm btn-deault" disabled=""> <i class="fa fa-money"></i> Pay</button>';
 
                             // $b = '<a class="btn btn-sm btn-book payment" href="URL"><i class="fa fa-money"></i> Pay';
-                            $b = '<button class="btn btn-sm btn-book payment" data-id='.$data->db_id.'> <i class="fa fa-money"></i> Pay</button>';
+                            $b = "<input class='btn btn-sm btn-book payment' type='button' value='$data->db_id' onclick='pay(this)' />";
 
                             if ($data->db_total_remain == 0) {
                                 return $a;

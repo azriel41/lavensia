@@ -24,6 +24,7 @@
 <script src="{{ asset ('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset ('assets/plugins/mask-money/jquery.maskMoney.min.js')}}"></script>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 	var baseUrl = '{{ url('/') }}';
