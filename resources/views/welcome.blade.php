@@ -36,7 +36,7 @@ background: #2f4357;
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
             <div class="item active">
-                <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-1.jpg);">
+                <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-11.jpg);">
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
@@ -95,7 +95,7 @@ background: #2f4357;
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-1.jpg);">
+                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-3.jpg);">
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
@@ -154,7 +154,7 @@ background: #2f4357;
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-1.jpg);">
+                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img1/hero-2.jpg);">
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
