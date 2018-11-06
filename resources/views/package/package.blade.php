@@ -156,25 +156,25 @@ hr{
                                                <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j style="margin: 0% 0% 0% 20%;">s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right" width="20%">
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Child : </span><b>{{ number_format($det->md_child_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">CwB : </span><b>{{ number_format($det->md_child_w_price,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Infant : </span><b>{{ number_format($det->md_infant_price,0,'','.') }} </b>
                                                </td>
                                                <td align="right" width="20%">
                                                 <span class="left">Visa : </span><b>{{ number_format($det->md_Visa,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tax : </span><b>{{ number_format($det->md_tax,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tip gd : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
                                                </td>
