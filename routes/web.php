@@ -241,6 +241,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/edit_leader', 'master\intinerary_controller@edit_leader')->name('edit_leader');
 	Route::post('/master/master_intinerary/save_leader', 'master\intinerary_controller@save_leader')->name('save_leader');
 	Route::post('/master/master_intinerary/update_leader', 'master\intinerary_controller@update_leader')->name('update_leader');
+	Route::get('/master/master_intinerary/delete_leader', 'master\intinerary_controller@delete_leader')->name('delete_leader');
 	Route::get('/master/master_intinerary/datatable_leader', 'master\intinerary_controller@datatable_leader')->name('datatable_leader');
 
 	//Category

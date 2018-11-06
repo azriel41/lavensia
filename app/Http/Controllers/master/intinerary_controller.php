@@ -531,6 +531,14 @@ class intinerary_controller extends Controller
             dd($error);
         }
     }
+    public function delete_leader(Request $req)
+    {
+        // dd($req->all());
+        // return DB::transaction(function() use ($req) {  
+            DB::table('d_tour_leader')->where('tl_id',$req->id)->delete();
+            
+        // });
+    }
 
     public function datatable_leader()
     {
