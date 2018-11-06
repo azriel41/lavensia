@@ -121,7 +121,7 @@ hr{
                                 <h5>Price Table</h5>
                                 <div style="margin-top: 20px"></div>
                                 <div class="table-responsive">
-                                    <table width="100%" class="table table-striped" align="center" style="font-size: 12px;">
+                                    <table width="100%" class="table table-striped" align="center" style="font-size: 13px;">
                                         <thead>
                                            <tr style="background-color: #7ed6df;" >
                                                {{-- <th>No</th> --}}
