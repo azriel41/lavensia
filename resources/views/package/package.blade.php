@@ -222,7 +222,7 @@ hr{
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th><b>Term & Cond</b></th>
+                                        <th><b>Term & Conditions</b></th>
                                     </tr>
                                     
                                 </table>
