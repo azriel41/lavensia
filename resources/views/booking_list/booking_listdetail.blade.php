@@ -241,7 +241,7 @@ table{
                             <div class="location-map">
                                 @foreach ($simple_table as $index => $e)
                                 @if ($e->dp_bed == 'single')
-                                <p>DOUBLE</p>
+                                <p>SINGLE</p>
                                 <div class="col-sm-12">
                                     <div class="col-sm-4">
                                         <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
@@ -279,7 +279,7 @@ table{
                                     </div>
                                 </div>
                                 @elseif($e->dp_bed == 'twin')
-                                <p>DOUBLE</p>
+                                <p>TWIN</p>
                                 <div class="col-sm-12">
                                     <div class="col-sm-4">
                                         <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
