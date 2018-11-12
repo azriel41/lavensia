@@ -79,6 +79,13 @@
                     <input type="hidden" class="total_additional_input" name="total_additional_input">
                 </div>
                 <div class="col-sm-8">
+                    <h4 colspan="3">Agent Com</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="agent_com"></h4>
+                    <input type="hidden" class="agent_com_input" name="agent_com_input">
+                </div>
+                <div class="col-sm-8">
                     <h4 colspan="3">Tips</h4>
                 </div>
                 <div class="col-sm-4">
