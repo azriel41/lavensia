@@ -146,12 +146,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	//ARTICLE
-    Route::get('/function/company/company_index', 'company\company_controller@company_index')->name('company_index');
-	Route::get('/function/company/create', 'company\company_controller@create_create')->name('company_create');
-	Route::get('/function/company/edit', 'company\company_controller@edit')->name('company_edit');
-	Route::post('/function/company/save', 'company\company_controller@save')->name('company_save');
-	Route::post('/function/company/update', 'company\company_controller@update')->name('company_update');
-	Route::get('/function/company/company_datatable', 'company\company_controller@company_datatable')->name('company_datatable');
+    Route::get('/function/company/company_index', 'master\companyController@index')->name('company_index');
+	Route::get('/function/company/create', 'master\companyController@create')->name('company_create');
+	Route::get('/function/company/edit', 'master\companyController@edit')->name('company_edit');
+	Route::post('/function/company/save', 'master\companyController@save')->name('company_save');
+	Route::post('/function/company/update', 'master\companyController@update')->name('company_update');
+	Route::get('/function/company/company_datatable', 'master\companyController@company_datatable')->name('company_datatable');
 
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');

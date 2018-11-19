@@ -13,7 +13,6 @@ class companyController extends Controller
 {
     public function index($value='')
     {
-      $data = company::all(); 
     	return view('master.master_company.index_company',compact('data'));
     }
     public function create()
