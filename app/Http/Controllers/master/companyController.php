@@ -35,6 +35,8 @@ class companyController extends Controller
         $data = slider::findOrfail(1);
         $data->ms_img  = $filename;
         $data->update();
+
+        return view('master.master_company.index_company');
     }
 
     public function slider_2(Request $request)
@@ -54,6 +56,8 @@ class companyController extends Controller
         $data = slider::findOrfail(2);
         $data->ms_img  = $filename;
         $data->update();
+
+        return view('master.master_company.index_company');
     }
 
     public function slider_3(Request $request)
@@ -73,6 +77,8 @@ class companyController extends Controller
         $data = slider::findOrfail(3);
         $data->ms_img  = $filename;
         $data->update();
+
+        return view('master.master_company.index_company');
     }
 
 }
