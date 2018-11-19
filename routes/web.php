@@ -132,6 +132,11 @@ Route::group(['middleware' => 'auth'], function () {
 	// STORAGE URL
 	Route::get('/storage/app')->name('storage');
 	
+	Route::post('/function/company/company_slider_1', 'master\companyController@slider_1')->name('slider_1');
+	Route::post('/function/company/company_slider_2', 'master\companyController@slider_2')->name('slider_2');
+	Route::post('/function/company/company_slider_3', 'master\companyController@slider_3')->name('slider_3');
+
+
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 

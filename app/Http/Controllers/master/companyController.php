@@ -4,51 +4,75 @@ namespace App\Http\Controllers\master;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\company;
+use App\slider;
 use DB;
 use auth;
 use Carbon\carbon;
-
+use Storage;
 class companyController extends Controller
 {
     public function index($value='')
     {
     	return view('master.master_company.index_company',compact('data'));
     }
-    public function create()
-    {
-      $regencies = DB::table('regencies')->get();  
-    	return view('master.master_company.create_company',compact('regencies'));
-    }
-    public function save(Request $request)
-    {
-    	$price = str_replace( '.', '',$request->ad_price);
 
-     	$data = new company;
-      $data->mc_name  = $request->ad_name;
-      $data->save();
-
-      return response()->json(['status'=>'sukses']);
-    }
-    public function update(Request $request)
+    public function slider_1(Request $request)
     {
+      $foto = '1';
 
-     	$data = company::find($request->ad_id);
-      $data->mc_name  = $request->ad_name;
-      $data->save();
+      
 
-      return response()->json(['status'=>'sukses']);
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(1);
+        $data->ms_img  = $filename;
+        $data->update();
     }
-    public function edit(Request $request,$id)
+
+    public function slider_2(Request $request)
     {
-    	$data = company::find($id);	
-    	return view('master.master_company.edit_company',compact('data'));
-    }
-    public function delete(Request $request)
-    {
-    	$data = company::find($request->id)->delete();	
-        
-        return response()->json(['status'=>'sukses']);
+      $foto = '2';
 
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(2);
+        $data->ms_img  = $filename;
+        $data->update();
     }
+
+    public function slider_3(Request $request)
+    {
+      $foto = '3';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(3);
+        $data->ms_img  = $filename;
+        $data->update();
+    }
+
 }

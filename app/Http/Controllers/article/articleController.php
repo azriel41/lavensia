@@ -124,7 +124,7 @@ class articleController extends Controller
        }
 
        
-          $data = new article;
+        $data = new article;
 	      $data->da_header  = $request->da_header;
 	      $data->da_image  = $filename;
 	      $data->da_desc  = $request->da_desc;

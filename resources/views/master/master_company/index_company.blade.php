@@ -22,9 +22,119 @@
                         </h4>
                     </div>
                     <div class="body">
-                            
+                    
+                    <form method="post" action="{{ route('slider_1') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                <label for="intinerary">Slide 1</label>
+                            </div>
+                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div >
+                                            <img class="image_drop img-responsive" 
+                                               src="{{ asset('storage/app/company/company-1.jpg') }}" 
+                                           width="400px" height="300px" name="image-drop">
+                                        </div>
+                                        <br>
+                                        <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName" >Image</div>
+                                                    <div class="file-select-name noFile">
+                                                        
+                                                             Image
+                                                        
+                                                    </div> 
+                                                <input type="file" class="chooseFile" name="image"  
+                                                   
+                                                       src="{{ asset('storage/app/company/company-1.jpg') }}" 
+                                                   
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
+                        </div>
+                    </form>
 
-                                
+
+                    <form method="post" action="{{ route('slider_2') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                <label for="intinerary">Slide 2</label>
+                            </div>
+                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div >
+                                            <img class="image_drop1 img-responsive" 
+                                               src="{{ asset('storage/app/company/company-2.jpg') }}" 
+                                           width="400px" height="300px" name="image-drop2">
+                                        </div>
+                                        <br>
+                                        <div class="file-upload2 col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName1" >Image</div>
+                                                    <div class="file-select-name noFile1">
+                                                        
+                                                             Image
+                                                        
+                                                    </div> 
+                                                <input type="file" class="chooseFile1" name="image"  
+                                                   
+                                                       src="{{ asset('storage/app/company/company-2.jpg') }}" 
+                                                   
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
+                        </div>
+                    </form>
+
+                    <form method="post" action="{{ route('slider_3') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                <label for="intinerary">Slide 2</label>
+                            </div>
+                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div >
+                                            <img class="image_drop3 img-responsive" 
+                                               src="{{ asset('storage/app/company/company-3.jpg') }}" 
+                                           width="400px" height="300px" name="image-drop3">
+                                        </div>
+                                        <br>
+                                        <div class="file-upload3 col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName3" >Image</div>
+                                                    <div class="file-select-name noFile3">
+                                                        
+                                                             Image
+                                                        
+                                                    </div> 
+                                                <input type="file" class="chooseFile3" name="image"  
+                                                   
+                                                       src="{{ asset('storage/app/company/company-3.jpg') }}" 
+                                                   
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
+                        </div>
+                    </form>
+
 
 
                     </div>
@@ -33,44 +143,10 @@
         </div>
     @endsection
 
+@section('extra_scripts')
 <script>
     
-    function hapus(ar) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $.ajax({
-            data : {id:$(ar).data('id')},
-            url  : ('{{ route('master_company_delete') }}'),
-            type : 'POST',
-            success: function (data) {
-                if (data.status == 'sukses') {
-                    iziToast.success({
-                        icon: 'fa fa-user',
-                        title: 'Success!',
-                        message: 'Data deleted!',
-                    });
-                    location.reload();
-                }else{
-                    iziToast.error({
-                        icon: 'fas fa-times-circle',
-                        title: 'Error!',
-                        message: 'Something Wrong,Call Developer!',
-                    });
-                }
-            },
-            error:function(){
-                iziToast.error({
-                    icon: 'fas fa-times-circle',
-                    title: 'Error!',
-                    message: 'Something Wrong,Call Developer',
-                });
-            }
-        })
-    }
 
 </script>
-  
+  @endsection
