@@ -134,4 +134,12 @@ class articleController extends Controller
 
        return redirect('function/article/article_index');
     }
+    public function delete(Request $request)
+    {
+
+      $ss = DB::table('d_article')->where('da_id',$request->id)->get();
+      Storage::delete('article/article-'.$ss[0]->da_image);
+
+      $data = DB::table('d_article')->where('da_id',$request->id)->delete();
+    }
 }

@@ -112,7 +112,7 @@
         $.ajax({
             data : {id:$(ar).data('id')},
             url  : ('{{ route('article_delete') }}'),
-            type : 'POST',
+            type : 'get',
             success: function (data) {
                 if (data.status == 'sukses') {
                     iziToast.success({
