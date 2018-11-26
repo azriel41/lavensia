@@ -358,8 +358,8 @@ background: #2f4357;
                     <div class="col-12">
                         <div class="about-content text-center">
                             <div class="" style="padding-top: 4%"></div>
-                            <h3>Discover your city with <br><span>Dorne</span></h3>
-                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                            <h3>Discover your city with <br><span>Oke-trip.com</span></h3>
+                            {{-- <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -392,7 +392,7 @@ background: #2f4357;
                                 <div class="text p-3">
                                     <div class="d-flex">
                                         <div>
-                                            <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                                                <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
                                         </div>
                                     </div>
                                     <br>
@@ -438,7 +438,7 @@ background: #2f4357;
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
-                                <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
+                                <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
                                 {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                             </div>
                             <div class="add-more">
@@ -457,7 +457,7 @@ background: #2f4357;
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" height="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -472,7 +472,7 @@ background: #2f4357;
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -490,7 +490,7 @@ background: #2f4357;
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">
@@ -506,7 +506,7 @@ background: #2f4357;
                         <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
                             <div class="editors-pick-info">
                                 <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
+                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
                                     {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
                                 </div>
                                 <div class="add-more">

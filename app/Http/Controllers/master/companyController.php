@@ -80,5 +80,25 @@ class companyController extends Controller
 
         return view('master.master_company.index_company');
     }
+    public function bg_page(Request $request)
+    {
+       $foto = '4';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/bg';
+           $filename = $foto.'.jpg';
+           Storage::put('company/bg-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(4);
+        $data->ms_img  = $filename;
+        $data->update();
+
+        return view('master.master_company.index_company');
+    }
 
 }

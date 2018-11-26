@@ -28,7 +28,7 @@ hr{
 
 @section('content')
 
- <div class="breadcumb-area height-500 bg-img bg-overlay" style="background-image: url({{ asset('assets_frontend_2/img/bg-img/breadcumb.jpg') }} )">
+ <div class="breadcumb-area height-500 bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/bg-4.jpg') }} )">
        
     </div>
     <!-- ***** Breadcumb Area End ***** -->
