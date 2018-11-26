@@ -22,8 +22,8 @@
                             <div class="card">
                                 <div class="header">
                                     <h2>
-                                        TINYMCE
-                                        <small>Taken from <a href="https://www.tinymce.com" target="_blank">www.tinymce.com</a></small>
+                                        Article
+                                        {{-- <small>Taken from <a href="https://www.tinymce.com" target="_blank">www.tinymce.com</a></small> --}}
                                     </h2>
                                     <ul class="header-dropdown m-r--5">
                                         <li class="dropdown">
