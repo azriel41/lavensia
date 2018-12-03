@@ -42,7 +42,7 @@ table{
 
 @section('content')
 
- <div class="breadcumb-area height-700 bg-img bg-overlay" style="background-image: url({{  asset('storage/app/'.$data[0]->mi_image)  }} )">
+ <div class="breadcumb-area bg-img bg-overlay" style="height:1020px !important;background-image: url({{  asset('storage/app/'.$data[0]->mi_image)  }} )">
         <div class="container">
             <div class="row">
                 <div class="col-12">

@@ -76,7 +76,7 @@ background: #2f4357;
 @section('content')
 
     <!-- ***** Welcome Area Start ***** -->
-  <div class="bs-example" style="height: 100%">
+  <div class="bs-example" @if (Auth::user() != null) style="height: 110%" @else style="height: 100%" @endif>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Carousel indicators -->
         <ol class="carousel-indicators">
@@ -433,88 +433,70 @@ background: #2f4357;
             <div class="row">
                 @foreach ($article as $a)
                 @if ($loop->index == 0)
-                    <div class="col-12 col-lg-12">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
-                                {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                            </div>
-                            <div class="add-more">
-                                <a href="article/article/{{ $a->da_id }}">+</a>
-                            </div>
-                            </div>
+                  <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img  src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
-                    </div>
-
+                  </div>
                 @endif
                 
 
                 @if ($loop->index == 1)
-                    <div class="col-12 col-lg-6">
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" height="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="background-size:cover " alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
+                  </div>
                 @endif
 
                 @if ($loop->index == 2)
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
-
+                       <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
+                  </div>
                 @endif
 
                 @if ($loop->index == 3)
-                    <div class="col-12 col-lg-6">
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
+                  </div>
                 @endif
 
 
                 @if ($loop->index == 4)
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}"><p style="margin:15px 0px 2px -30px !important">{{ $a->da_header }}</p></a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                       <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
+                  </div>
                 @endif
             @endforeach
                 
@@ -540,8 +522,8 @@ background: #2f4357;
     <script type="text/javascript">
 
     $("#myCarousel").carousel({
-        interval : 3000,
-        pasue:"hover"
+        // interval : 3000,
+        // pasue:"hover"
     });
 
     function more(argument) {
