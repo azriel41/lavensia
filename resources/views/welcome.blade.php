@@ -418,7 +418,7 @@ background: #2f4357;
 
     @endif
     <!-- ***** Editor Pick Area Start ***** -->
-    <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url(assets_frontend_2/img/bg-img/hero-2.jpg);">
+    <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url({{  asset('storage/app/company/bg-5.jpg') }}?{{ time() }});">
         <div class="container">
             <div class="row">
                 <div class="col-12">

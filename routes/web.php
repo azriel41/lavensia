@@ -137,6 +137,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/function/company/company_slider_3', 'master\companyController@slider_3')->name('slider_3');
 	//package
 	Route::post('/function/company/bg_page', 'master\companyController@bg_page')->name('bg_page');
+	Route::post('/function/company/bg_article', 'master\companyController@bg_article')->name('bg_article');
 
 
 	//home - admin
