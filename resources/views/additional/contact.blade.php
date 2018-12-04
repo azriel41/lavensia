@@ -1,7 +1,8 @@
 @extends('layouts_frontend_2._main')  
 
 @section('content')
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../assets/img/bg-img/hero-1.jpg)">
+    {{-- <div <center></center>lass="breadcumb-area bg-img bg-overlay" style="background-image: url(../assets/img/bg-img/hero-1.jpg)"> --}}
+    <div class="breadcumb-area bg-img bg-overlay" style="height: 400px !important;background-image: url({{ asset('storage/app/company/bg-4.jpg') }})">
     </div>
     <!-- ***** Breadcumb Area End ***** -->
 
