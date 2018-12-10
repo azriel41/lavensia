@@ -15,7 +15,7 @@ Route::get('/', function () {
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
-	$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+	$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
@@ -46,7 +46,7 @@ Route::get('/', function () {
     		return view('home');
 		}else{
 		$category = App\category::all();
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 
     		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 		}
@@ -66,7 +66,7 @@ Route::get('/welcome', function () {
 	if (Auth::User() != null) {
 		$category = App\category::all();
 
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		$det = [];
@@ -95,7 +95,7 @@ Route::get('/welcome', function () {
 		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 	}else{
 		$category = App\category::all();
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		
     	return view('welcome',compact('article','category','intinerary','det','response','cat'));
