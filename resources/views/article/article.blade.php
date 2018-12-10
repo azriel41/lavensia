@@ -210,6 +210,13 @@
             <!-- post widget -->
             <div class="aside-widget">
               <div class="section-title">
+                <h2>Like us on Facebook</h2>
+              </div>
+              <div id="fb-root">
+                                <div class="fb-page" data-href="https://www.facebook.com/Oke-Tripcom-233135077356613/?modal=admin_todo_tour" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/lavensiatourtravel" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/lavensiatourtravel">Lavensia Tour &amp; Travel</a></blockquote></div>
+                            </div>
+                            <br>
+              <div class="section-title">
                 <h2>Featured Posts</h2>
               </div>
              
@@ -285,6 +292,13 @@
 @endsection
 
 @section('extra_scripts')
+ <script>(function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.2';
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
 <script src="{{ asset('js/main.js') }}"></script>
 
     

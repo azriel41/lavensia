@@ -193,6 +193,9 @@ background: #2f4357;
                             <div class="" style="padding-top: 4%"></div>
                             <h3>Discover your city with <br><span>Oke-trip.com</span></h3>
                             {{-- <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p> --}}
+                            {{-- <div id="fb-root">
+                                <div class="fb-page" data-href="https://www.facebook.com/Oke-Tripcom-233135077356613/?modal=admin_todo_tour" data-tabs="timeline" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"></div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -282,7 +285,7 @@ background: #2f4357;
                      <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
-                      <div class="post-meta">
+                      <div class="post-meta">   
                         <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
                         
                       </div>
@@ -364,7 +367,7 @@ background: #2f4357;
 
 
 @section('extra_scripts')
-
+   
     <script type="text/javascript">
 
     $("#myCarousel").carousel({

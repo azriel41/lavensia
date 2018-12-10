@@ -366,21 +366,21 @@
                             <span>Function</span>
                         </a>
                         <ul class="ml-menu">
-                            @if(Auth::user()->akses('company','mh_aktif'))
+                           {{--  @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
                                     <a href="{{ route('company_index') }}">Company</a>
                                 </li>
-                            @endif
+                            @endif --}}
                              @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
-                                    <a href="{{ route('master_bg_slider') }}">Slider image</a>
+                                    <a href="{{ route('master_bg_slider') }}">Master Slider</a>
                                 </li>
                             @endif
-                            @if(Auth::user()->akses('company','mh_aktif'))
+                            {{-- @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_bg_artikel') }}">bg artikel</a>
                                 </li>
-                            @endif
+                            @endif --}}
                             @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_bg_page') }}">bg per page</a>
