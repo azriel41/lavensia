@@ -1,15 +1,5 @@
 @extends('main')
-@include('layouts._sidebar')
-<style type="text/css">
-    .table_right{
-        text-align: right;
-        border-right: 1px solid #03a9f4;
-    }
-    .table_left{
-        text-align: left;
-        width: 70%
-    }
-</style>
+
     @section('content')
         @include('layouts.task')
         <div class="header">
