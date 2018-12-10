@@ -371,7 +371,7 @@ background: #2f4357;
     <script type="text/javascript">
 
     $("#myCarousel").carousel({
-        interval : 1000000,
+        interval : 3000,
         // pasue:"hover"
     });
 
