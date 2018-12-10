@@ -279,7 +279,15 @@ background: #2f4357;
                 @endif
                 
                 @if ($loop->index == 0)
-                    <div class="post post-thumb col-md-6">
+                     <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
                   </div>
                 @endif
 
