@@ -9,11 +9,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </p>
                 </div>
                 <div class="footer-social-btns">
-                    <a href="#"><i class="fa fa-linkedin" aria-haspopup="true"></i></a>
-                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                    <a href="https://twitter.com/lavensia_tour"><i class="fa fa-twitter" aria-haspopup="true"></i></a>
-                    <a href="https://www.facebook.com/lavensiatourtravel"><i class="fa fa-facebook" aria-haspopup="true"></i></a>
+                  <a href="https://www.facebook.com/Oke-Tripcom-233135077356613/?modal=admin_todo_tour" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/oketripdotcom/" class="share-twitter"><i class="fa fa-instagram"></i></a>
                 </div>
             </div>
         </div>

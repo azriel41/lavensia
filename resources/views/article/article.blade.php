@@ -23,11 +23,8 @@
                 <p>{!! $article[0]->da_desc !!}</p>
               </div>
               <div class="post-shares sticky-shares">
-                <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>
-                <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/Oke-Tripcom-233135077356613/?modal=admin_todo_tour" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/oketripdotcom/" class="share-twitter"><i class="fa fa-instagram"></i></a>
                 <a href="#"><i class="fa fa-envelope"></i></a>
               </div>
             </div>
@@ -75,55 +72,6 @@
              @endforeach
             </div>
             <!-- /post widget -->
-            
-            <!-- catagories -->
-           {{--  <div class="aside-widget">
-              <div class="section-title">
-                <h2>Catagories</h2>
-              </div>
-              <div class="category-widget">
-                <ul>
-                  <li><a href="#" class="cat-1">Web Design<span>340</span></a></li>
-                  <li><a href="#" class="cat-2">JavaScript<span>74</span></a></li>
-                  <li><a href="#" class="cat-4">JQuery<span>41</span></a></li>
-                  <li><a href="#" class="cat-3">CSS<span>35</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- /catagories -->
-            
-            <!-- tags -->
-            <div class="aside-widget">
-              <div class="tags-widget">
-                <ul>
-                  <li><a href="#">Chrome</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">Tutorial</a></li>
-                  <li><a href="#">Backend</a></li>
-                  <li><a href="#">JQuery</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Development</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                  <li><a href="#">Website</a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- /tags -->
-            
-            <!-- archive -->
-            <div class="aside-widget">
-              <div class="section-title">
-                <h2>Archive</h2>
-              </div>
-              <div class="archive-widget">
-                <ul>
-                  <li><a href="#">January 2018</a></li>
-                  <li><a href="#">Febuary 2018</a></li>
-                  <li><a href="#">March 2018</a></li>
-                </ul>
-              </div>
-            </div> --}}
-            <!-- /archive -->
           </div>
               </div>
             </div>          
@@ -134,12 +82,12 @@
 
 @section('extra_scripts')
  <script>(function(d, s, id) {
-                              var js, fjs = d.getElementsByTagName(s)[0];
-                              if (d.getElementById(id)) return;
-                              js = d.createElement(s); js.id = id;
-                              js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.2';
-                              fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));</script>
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.2';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 <script src="{{ asset('js/main.js') }}"></script>
 
     
