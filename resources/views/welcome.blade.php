@@ -87,7 +87,11 @@ background: #2f4357;
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
             <div class="item active">
-                <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-1.jpg);">
+                @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-6.jpg);">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-1.jpg);">
+                @endif
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
@@ -146,7 +150,11 @@ background: #2f4357;
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-2.jpg);">
+                 @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-7.jpg);">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-2.jpg);">
+                @endif
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
@@ -205,7 +213,11 @@ background: #2f4357;
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-3.jpg);">
+                 @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-8.jpg);">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-3.jpg);">
+                @endif
                     <div class="container h-seratus">
                         <div class="row h-seratus align-items-center justify-content-center">
                             <div class="col-12 col-md-10">
@@ -437,7 +449,7 @@ background: #2f4357;
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img  src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
                       <div class="post-meta">
-                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}zzz</a>
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
                         
                       </div>
                       <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>

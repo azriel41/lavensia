@@ -53,7 +53,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" readonly=""  value="{{ $data[0]->co_name }}" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control" readonly="" value="{{ $data[0]->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>

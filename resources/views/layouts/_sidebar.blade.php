@@ -371,6 +371,21 @@
                                     <a href="{{ route('company_index') }}">Company</a>
                                 </li>
                             @endif
+                             @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_slider') }}">Slider image</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_artikel') }}">bg artikel</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_page') }}">bg per page</a>
+                                </li>
+                            @endif
                             @if(Auth::user()->akses('article','mh_aktif'))
                                 <li>
                                     <a href="{{ route('article_index') }}">Article</a>

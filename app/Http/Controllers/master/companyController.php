@@ -15,6 +15,21 @@ class companyController extends Controller
     {
     	return view('master.master_company.index_company',compact('data'));
     }
+    public function master_bg_slider()
+    {
+      return view('master.master_company.master_bg_slider',compact('data'));
+    }
+    public function master_bg_artikel()
+    {
+      return view('master.master_company.master_bg_artikel',compact('data'));
+    }
+    public function master_bg_page()
+    {
+      return view('master.master_company.master_bg_page',compact('data'));
+    }
+    
+
+
 
     public function slider_1(Request $request)
     {
@@ -36,7 +51,7 @@ class companyController extends Controller
         $data->ms_img  = $filename;
         $data->update();
 
-        return view('master.master_company.index_company');
+        return view('master.master_company.master_bg_slider');
     }
 
     public function slider_2(Request $request)
@@ -57,7 +72,7 @@ class companyController extends Controller
         $data->ms_img  = $filename;
         $data->update();
 
-        return view('master.master_company.index_company');
+        return view('master.master_company.master_bg_slider');
     }
 
     public function slider_3(Request $request)
@@ -78,8 +93,80 @@ class companyController extends Controller
         $data->ms_img  = $filename;
         $data->update();
 
-        return view('master.master_company.index_company');
+        return view('master.master_company.master_bg_slider');
     }
+
+
+
+
+    public function sesudah_slider_1(Request $request)
+    {
+      // dd($request->all());
+      $foto = '6';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(6);
+        $data->ms_img  = $filename;
+        $data->update();
+
+        return view('master.master_company.master_bg_slider');
+    }
+
+    public function sesudah_slider_2(Request $request)
+    {
+      $foto = '7';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(7);
+        $data->ms_img  = $filename;
+        $data->update();
+
+        return view('master.master_company.master_bg_slider');
+    }
+
+    public function sesudah_slider_3(Request $request)
+    {
+      $foto = '8';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/company';
+           $filename = $foto.'.jpg';
+           Storage::put('company/company-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+
+       
+        $data = slider::findOrfail(8);
+        $data->ms_img  = $filename;
+        $data->update();
+
+        return view('master.master_company.master_bg_slider');
+    }
+
+
+
+
+
     public function bg_page(Request $request)
     {
        $foto = '4';
@@ -98,7 +185,7 @@ class companyController extends Controller
         $data->ms_img  = $filename;
         $data->update();
 
-        return view('master.master_company.index_company');
+        return view('master.master_company.master_bg_slider');
     }
     public function bg_article(Request $request)
     {
@@ -118,7 +205,7 @@ class companyController extends Controller
         $data->ms_img  = $filename;
         $data->update();
 
-        return view('master.master_company.index_company');
+        return redirect()->back();
     }
 
 }
