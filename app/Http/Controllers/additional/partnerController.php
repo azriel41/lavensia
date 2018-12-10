@@ -19,7 +19,7 @@ class partnerController extends Controller
     {	
     	// $data = user::all();
     	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->where('name','!=','developer')->groupBy('co_address','co_phone','image','co_name')->get();
-        return $data;
+        // return $data;
         $category = category::all();
 
 		$intinerary = intinerary::all();
