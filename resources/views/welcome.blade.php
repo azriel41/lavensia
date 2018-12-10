@@ -281,7 +281,7 @@ background: #2f4357;
                   </div>
                 @endif
                 
-                @if ($loop->index == 0)
+                @if ($loop->index == 1)
                      <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
@@ -294,7 +294,7 @@ background: #2f4357;
                   </div>
                 @endif
 
-                @if ($loop->index == 1)
+                @if ($loop->index == 2)
                     <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
@@ -308,7 +308,7 @@ background: #2f4357;
                 @endif
 
 
-                @if ($loop->index == 2)
+                @if ($loop->index == 3)
                        <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
@@ -321,7 +321,7 @@ background: #2f4357;
                   </div>
                 @endif
 
-                @if ($loop->index == 3)
+                @if ($loop->index == 4)
                     <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
@@ -335,7 +335,7 @@ background: #2f4357;
                 @endif
 
 
-                @if ($loop->index == 4)
+                @if ($loop->index == 5)
                        <div class="post post-thumb col-md-6">
                     <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" style="height: 55% !important" alt=""></a>
                     <div class="post-body">
