@@ -128,7 +128,7 @@
                                                         @if ($data[0]->image == null )
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                                         @else 
-                                                           src="{{ asset('storage/app/agent/agent-'.$data[0]->image.'.jpg') }}"
+                                                           src="{{ asset('storage/app/agent/agent-'.$data[0]->image) }}"
                                                         @endif
                                                     >
                                                 </div>

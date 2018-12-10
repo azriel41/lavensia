@@ -239,7 +239,7 @@
                 <div class="bg-image-side"  style="background: {{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}">
                 </div>
                 <div class="image"">
-                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}?'{{ time() }}'" style="z-index: 999;" width="48" height="48" alt="User" />
+                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->image) }}?'{{ time() }}'" style="z-index: 999;" width="70" height="70" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
