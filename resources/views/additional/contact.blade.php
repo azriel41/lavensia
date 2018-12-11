@@ -7,13 +7,14 @@
     <!-- ***** Breadcumb Area End ***** -->
 
     <!-- ***** Contact Area Start ***** -->
-    {{-- <div class="dorne-contact-area d-md-flex" id="contact"> --}}
-        <br>
-        <div class="col-sm-12 text-center">
-            <h2>Contact us</h2>
-        </div>
-            
-        <div class="col-md-offset-4 col-md-4 contact-form-area equal-height">
+    <div class="dorne-contact-area d-md-flex" id="contact">
+        
+
+        <div class="contact-form-area equal-height">
+            <div class="text-center">
+                <h2>Contact us</h2>
+            </div>
+            <br>
             <div class="contact-text ">
                 <table class="table">
                     <tr>
@@ -80,10 +81,12 @@
                 </table>
             </div>
         </div>
-        <div class="col-sm-12 text-center">
-            <h2>About us</h2>   
-        </div>
+        
         <div class="contact-form-area equal-height">
+            <div class="text-center">
+                <h2>About us</h2>   
+            </div>
+            <br>
             <div class="contact-text">
                 <h4>Warmest Traveller</h4>
                 <p>It is a pride for us to be present among you with various options Latest Tour program. In terms of service, quality ,and competitive price. I hope that the contents of this guide will be very useful for planning a tour, either within or abroad.</p>
@@ -107,7 +110,7 @@
             </div>
          
         </div>
-
+    </div>
 @endsection
 
 @section('extra_scripts')
