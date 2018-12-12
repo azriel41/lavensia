@@ -140,9 +140,9 @@ background: #2f4357;
 
             <div class="item active">
                 @if (Auth::User() != null)
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-6.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-6.jpg') }}?{{ time() }});">
                 @else
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-1.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-1.jpg') }}?{{ time() }});">
                 @endif
 
                     
@@ -150,18 +150,18 @@ background: #2f4357;
             </div>
             <div class="item">
                  @if (Auth::User() != null)
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-7.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-7.jpg') }}?{{ time() }});">
                 @else
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-2.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-2.jpg') }}?{{ time() }});">
                 @endif
                     
                 </section>
             </div>
             <div class="item">
                  @if (Auth::User() != null)
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-8.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-8.jpg') }}?{{ time() }});">
                 @else
-                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(storage/app/company/company-3.jpg);">
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-3.jpg') }}?{{ time() }});">
                 @endif
                     
                 </section>
