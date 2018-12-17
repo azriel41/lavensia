@@ -69,7 +69,7 @@ table{
                                 <ul id="listingNav">
                                     <li class="active"><a href="#overview">Itinerrary info</a></li>
                                     <li><a href="#menu">Detail Book</a></li>
-                                    <li><a href="#passenger">passenger</a></li>
+                                    <li><a href="#passenger">Passenger</a></li>
                                     <li style="background-color: none"><a href="#lomap"></a></li>
                                 </ul>
                             </nav>

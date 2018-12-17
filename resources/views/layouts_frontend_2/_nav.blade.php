@@ -72,7 +72,7 @@
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{ url('/welcome') }}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 @if (Route::has('login'))
                                     @if (Auth::check())
@@ -98,7 +98,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hy, {{ auth::user()->name}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
+                                        <a class="dropdown-item" href="{{ route('welcome') }}">Dashboard</a>
                                         <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -278,5 +278,6 @@
         var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
         window.location=('{{ url('/payment_page/payment') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id);
     }
+    
 
 </script>
