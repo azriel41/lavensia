@@ -83,8 +83,9 @@ class articleController extends Controller
       
       $art = DB::table('d_article')->where('da_id',$request->id)->get();
 
-       if ($request->file('image') == null) {
+       if ($request->file('image') != null) {
            $filename = $art[0]->da_image;
+           Storage::put('article/article-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }else{
            $image = $request->file('image');
            $upload = 'article/article';
@@ -137,9 +138,12 @@ class articleController extends Controller
     public function delete(Request $request)
     {
 
+      // dd($request->all());
       $ss = DB::table('d_article')->where('da_id',$request->id)->get();
       Storage::delete('article/article-'.$ss[0]->da_image);
 
       $data = DB::table('d_article')->where('da_id',$request->id)->delete();
+
+      return response()->json(['status'=>'sukses']);
     }
 }

@@ -238,7 +238,7 @@
             <div class="user-info" >
                 <div class="bg-image-side"  style="background: {{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}">
                 </div>
-                <div class="image"">
+                <div class="image crop">
                     <img src="{{ asset('storage/app/agent/agent-'.auth::user()->image) }}?'{{ time() }}'" style="z-index: 999;" width="70" height="70" alt="User" />
                 </div>
                 <div class="info-container">
