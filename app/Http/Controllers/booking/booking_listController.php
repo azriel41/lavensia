@@ -207,7 +207,7 @@ class booking_listController extends Controller
                 $doubletwincwb[$i] = $book_onlybed[$i]->dp_bed;
             }
         }
-        
+
         if ($double == null) {
             $double = 0;
         }else{
@@ -484,7 +484,7 @@ class booking_listController extends Controller
         $tax = count($data_w_bay)*$data[0]->db_tax;
         $visa = count($data_w_bay)*$data[0]->db_visa;
 
-        $grand_total = $total_pax+$total_add+$tips+$agen_com+$tax+$visa;
+        $grand_total = $total_pax+$total_add+$tips-$agen_com+$tax+$visa;
 
         // $pdf = PDF::loadView('booking_print.booking_print_invoice',compact('agen_com','tax','visa','tips','data','add_book','total_pax','total_add','grand_total'));
         // return $pdf->setPaper('A4', 'landscape')->stream('temp.pdf');
