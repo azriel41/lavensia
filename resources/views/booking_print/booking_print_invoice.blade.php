@@ -1,5 +1,12 @@
 <style type="text/css">
   
+  table td{
+    font-size: 11px;
+  }
+  table th {
+    font-size: 12px;
+  }
+  
   p{
     margin: 0px 0px 0px 0px;
   }
@@ -7,8 +14,10 @@
 </style>
 <table class="table table-bordered intinerary" style="width: 100%;">
     <tr>
-       <th align="left"> INVOICE </th>
-       <th align="center" rowspan="3">&nbsp;</th>
+       <th align="left" width="40%"> INVOICE </th>
+       <th align="center" rowspan="3" ><img src="{{ asset('assets_frontend_2/img/logo.jpeg') }}" style="
+    width: 120px;
+"></th>
        <th align="right">CC : {{ $data[0]->co_name }}</th>
    </tr>
     <tr>
