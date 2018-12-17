@@ -98,7 +98,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hy, {{ auth::user()->name}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('welcome') }}">Dashboard</a>
+                                        <a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
                                         <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
