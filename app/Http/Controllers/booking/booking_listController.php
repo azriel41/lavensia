@@ -365,6 +365,7 @@ class booking_listController extends Controller
         $total_1 = [];
         $total_2 = [];
         $total_3 = [];
+        $total_4 = [];
         for ($i=0; $i <count($data) ; $i++) { 
             if ($data[$i]->dp_status_person == 'adult') {
                 $total_1[$i] = $data[$i]->md_adult_price;
