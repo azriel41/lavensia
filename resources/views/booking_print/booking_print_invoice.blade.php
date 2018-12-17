@@ -15,7 +15,7 @@
 <table class="table table-bordered intinerary" style="width: 100%;">
     <tr>
        <th align="left" width="40%"> INVOICE </th>
-       <th align="center" rowspan="3" ><img src="{{ asset('assets_frontend_2/img/logo.jpeg') }}" style="
+       <th align="center" rowspan="3" ><img src="{{ asset('assets_frontend_2/img/logo.png') }}" style="
     width: 120px;
 "></th>
        <th align="right">CC : {{ $data[0]->co_name }}</th>
