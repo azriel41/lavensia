@@ -153,15 +153,15 @@
         text-transform: uppercase;
     }
     .crop {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    overflow: hidden;
+	    width: 70px;
+	    height: 70px;
+	    border-radius: 50%;
+	    overflow: hidden;
 	}
 
 	.crop img {
-	    width: 400px;
-	    height: 300px;
-	    margin: -75px 0 0 -100px;
+		width: 200px;
+	    height: 100px;
+	    margin: -15px 0 0 -65px;
 	}
 </style>
