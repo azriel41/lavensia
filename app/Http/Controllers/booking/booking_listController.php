@@ -178,6 +178,71 @@ class booking_listController extends Controller
                     //  ->where('db_intinerary_id','=',$id)
                     //  ->get();
         // return $data;
+        $book_onlybed    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->groupBy('dp_booking_id','dp_bed')
+                                        ->get();
+        $double = [];
+        $doubletwincnb = [];
+        $single = [];
+        $twin = [];
+        $triple = [];
+        $doubletwincwb = [];
+
+        for ($i=0; $i <count($book_onlybed) ; $i++) {
+            if ($book_onlybed[$i]->dp_bed == 'double') {
+                $double[$i] = $book_onlybed[$i]->dp_bed;
+            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
+                $doubletwincnb[$i] = $book_onlybed[$i]->dp_bed;
+            }elseif ($book_onlybed[$i]->dp_bed == 'single') {
+                $single[$i] = $book_onlybed[$i]->dp_bed;
+            }elseif ($book_onlybed[$i]->dp_bed == 'twin') {
+                $twin[$i] = $book_onlybed[$i]->dp_bed;
+            }elseif ($book_onlybed[$i]->dp_bed == 'triple') {
+                $triple[$i] = $book_onlybed[$i]->dp_bed;
+            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cwb') {
+                $doubletwincwb[$i] = $book_onlybed[$i]->dp_bed;
+            }
+        }
+        
+        if ($double == null) {
+            $double = 0;
+        }else{
+            $double = count($double)+1;
+        }
+
+        if ($doubletwincnb == null) {
+            $doubletwincnb = 0;
+        }else{
+            $doubletwincnb = count($doubletwincnb);
+        }
+
+        if ($single == null) {
+            $single = 0;
+        }else{
+            $single = count($single);
+        }
+
+        if ($twin == null) {
+            $twin = 0;
+        }else{
+            $twin = count($twin);
+        }
+
+        if ($triple == null) {
+            $triple = 0;
+        }else{
+            $triple = count($triple);
+        }
+
+        if ($doubletwincwb == null) {
+            $doubletwincwb = 0;
+        }else{
+            $doubletwincwb = count($doubletwincwb);
+        }
 
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
@@ -223,10 +288,12 @@ class booking_listController extends Controller
             
         }
         // return $person;
+        // return $single;
         
-        $pdf = PDF::loadView('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
+        $pdf = PDF::loadView('booking_print.booking_print_pdf',compact('single','double','twin','triple','doubletwincwb','doubletwincnb','flight','passenger','id','room','bed','person','booking','detail_intinerary'))
+                ;
         // return view('booking_print.booking_print_pdf',compact('flight','passenger','id','room','bed','person','booking','detail_intinerary'));
-        return $pdf->setPaper('A4', 'potrait')->download('booking_detail.pdf');
+        return $pdf->setPaper('A5', 'landscape')->download('booking_detail.pdf');
     }
     public function datatable_booking_list()
     {
