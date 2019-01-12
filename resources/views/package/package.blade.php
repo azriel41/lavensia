@@ -23,6 +23,9 @@ hr{
 .book-a-table-widget{
   background-color: transparent !important;
 }
+.opening-hours-widget {
+  padding: 20px;
+}
 </style>
 @endsection
 
@@ -247,8 +250,15 @@ hr{
                         </div>
 
                         
-
-
+                        <div class="opening-hours-widget mt-50">
+                            <h6>More Information</h6>
+                            <ul class="opening-hours">
+                                <li>
+                                    <p>ITINERARY</p>
+                                    <p><button type="button" class="btn btn-small btn-book download_itin" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -261,6 +271,11 @@ hr{
 <script type="text/javascript">
     
 
+    $('.download_itin').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_itin/'+ini);
+
+    })
     
     function booking(id) {
         var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
