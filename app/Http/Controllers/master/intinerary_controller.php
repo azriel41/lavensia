@@ -460,7 +460,7 @@ class intinerary_controller extends Controller
         }
         if ($image != null) {
 
-            $image1 = 'detail_itin/Detail_flayer_'.$req->id.'.'.$image->getClientOriginalExtension();
+            $image1 = 'detail_itin/Detail_flayer_'.$req->id.'.jpg';
 
             Storage::put($image1,file_get_contents($image));
         }else{
