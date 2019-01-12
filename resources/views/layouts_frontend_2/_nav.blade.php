@@ -86,7 +86,7 @@
                                     <a class="nav-link" href="{{ route('partner') }}">Partner </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                                    <a class="nav-link" href="{{ route('contact') }}">About Us</a>
                                 </li>
                             </ul>
                             <!-- Search btn -->

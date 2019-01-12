@@ -1,8 +1,7 @@
 @extends('main')
     
 
-    <section class="content">
-        <div class="container-fluid">
+    @section('content')
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
@@ -94,8 +93,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+@endsection
             
             <!-- #END# CPU Usage -->
         </div>

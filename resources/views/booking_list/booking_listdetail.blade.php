@@ -326,16 +326,16 @@ table{
                         <div class="opening-hours-widget mt-50">
                             <h6>More Information</h6>
                             <ul class="opening-hours">
-                                <li>
-                                    <p>ITINERARY</p>
-                                    <p><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
-                                </li>
+                                {{-- <li> --}}
+                                    {{-- <p>ITINERARY</p> --}}
+                                    {{-- <p><button class="btn btn-small btn-book download_itin" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p> --}}
+                                {{-- </li> --}}
                                 <li>
                                     <p>PROFILE CUSTOMER</p>
                                     <p><button class="btn btn-small btn-danger download_pdf" id="pdf" data-id="{{ $data[0]->db_intinerary_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
                                 </li>
                                 <li>
-                                    <p>TERM & CONDITION</p>
+                                    <p>HAL PER</p>
                                     <p><button class="btn btn-small btn-primary download_md_tata_tertib" id="pdf" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
                                 </li>
                                 <li>
@@ -344,11 +344,11 @@ table{
                                 </li>
                                 <li>
                                     <p>INVOICE</p>
-                                    @if ($data[0]->db_total_remain == 0)
+                                    {{-- @if ($data[0]->db_total_remain == 0) --}}
                                        <p><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
-                                    @else
-                                       <p><button class="btn btn-small btn-default" id="pdf" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
-                                    @endif                                        
+                                    {{-- @else --}}
+                                       {{-- <p><button class="btn btn-small btn-default" id="pdf" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p> --}}
+                                    {{-- @endif                                         --}}
                                 </li>
                             </ul>
                         </div>

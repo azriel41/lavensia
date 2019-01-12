@@ -199,13 +199,27 @@ class companyController extends Controller
            $filename = $foto.'.jpg';
            Storage::put('company/bg-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }
-
-       
         $data = slider::findOrfail(5);
         $data->ms_img  = $filename;
         $data->update();
-
         return redirect()->back();
+    }
+
+    
+
+    public function contact_update(Request $request)
+    {
+      $data = DB::table('m_contact')->where('mc_id',1)->update([
+          'mc_name'=>$request->mc_name,
+          'mc_isi'=>$request->mc_isi,
+          'mc_rek'=>$request->mc_rek,
+      ]);
+      return response()->json(['status'=>'sukses']);
+    }
+    public function contact_isi(Request $request)
+    {
+      $contact = DB::table('m_contact')->where('mc_id',1)->get();  
+      return view('master.master_contact.create_contact',compact('contact'));
     }
 
 }

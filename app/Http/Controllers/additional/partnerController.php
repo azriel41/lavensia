@@ -55,6 +55,8 @@ class partnerController extends Controller
     }
     public function contact()
     {
+    	$contact = DB::table('m_contact')->where('mc_id',1)->get();
+    	// return json_encode($contact);
     	if (Auth::User() != null) {
 
 				$cart   = DB::table('d_booking')
@@ -71,9 +73,9 @@ class partnerController extends Controller
 						->get());
 				// return $cart;
 
-	    	return view('additional.contact',compact('cart','jumlah'));
+	    	return view('additional.contact',compact('cart','jumlah','contact'));
 		}else{
-	        return view('additional.contact');
+	        return view('additional.contact',compact('contact'));
 		}
     }
 }

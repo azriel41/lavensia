@@ -310,6 +310,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 
 
+	// master contact
+	Route::get('/master/master_contact/contact_save', 'master\companyController@contact_save')->name('master_contact_save');
+	Route::get('/master/master_contact/contact_isi', 'master\companyController@contact_isi')->name('master_contact_isi');
+	Route::get('/master/master_contact/contact_update', 'master\companyController@contact_update')->name('master_contact_update');
 	
 
 	/************* END MASTER ***********/

@@ -418,13 +418,18 @@ class intinerary_controller extends Controller
     }
     public function save_detail(Request $req)
     {
+        $check = DB::table('m_intinerary')->join('m_detail_intinerary','md_intinerary_id','mi_id')->where('md_id',$req->id)->first();
+        // return json_encode($check);
+        if ($req->tl == null) {
+                return Response::json(['status'=>0,'message'=>'Please Select Tour Leader...']);
+        }
+        // dd($req->all());
+
         DB::beginTransaction();
-
-
-        $check = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
-
         $fc = $req->file('fc');
         $tt = $req->file('tt');
+        $image = $req->file('image');
+
         if ($fc != null) {
 
             $tour_code = str_replace('/', '-', $req->tour_code);
@@ -453,14 +458,28 @@ class intinerary_controller extends Controller
                 return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
             }
         }
-        $save = array(
+        if ($image != null) {
+
+            $image1 = 'detail_itin/Detail_flayer_'.$check->mi_id.'.jpg';
+
+            Storage::put($image1,file_get_contents($image));
+        }else{
+                $check1 = $check->md_flayer;
+            if ($check1 != null) {
+                $image1 = $check->md_flayer;
+            }else{
+                return Response::json(['status'=>0,'message'=>'Please Put Your Image...']);
+            }
+        }
+        $update = DB::table('m_detail_intinerary')->where('md_id',$req->id)->update([
                     'md_tata_tertib'=>$tt1,
                     'md_final'=>$fc1,
+                    'md_flayer'=>$image1,
                     'md_tour_leader'=>$req->tl,
                     'md_tip'=>filter_var($req->tip,FILTER_SANITIZE_NUMBER_INT),
-                );
 
-        $update   =  $this->all_variable->detail_intinerary()->update($save,'md_id',$req->id);
+        ]);
+        // $update   =  $this->all_variable->detail_intinerary()->update($save,'md_id',$req->id);
         if ($update != 1) {
             return Response::json(['status'=>0,'message'=>'Data Gagal Disimpan']);
             DB::rollBack();
