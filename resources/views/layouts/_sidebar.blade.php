@@ -376,6 +376,11 @@
                                     <a href="{{ route('master_bg_slider') }}">Master Slider</a>
                                 </li>
                             @endif
+                             @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_contact_isi') }}">Contact</a>
+                                </li>
+                            @endif
                             {{-- @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_bg_artikel') }}">bg artikel</a>
