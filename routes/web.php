@@ -308,6 +308,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
 	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
+	Route::get('/master/master_intinerary/edit_netto', 'master\intinerary_controller@edit_netto')->name('edit_netto');
 
 
 	// master contact

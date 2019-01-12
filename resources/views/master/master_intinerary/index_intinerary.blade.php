@@ -148,9 +148,29 @@ function departure(mc_id) {
 }
 
 function approve(id) {
-    $('.table_approve input').val(0);
-    $('.mi_id').val(id);
-    $('#approve').modal('show');
+
+    $.ajax({
+        url:'{{ route('edit_netto') }}',
+        data:{id},
+        success:function(data){
+            $('.table_approve input').val(0);
+            $('.mi_netto_adult').val(data.data.mi_netto_adult);
+            $('.mi_agent_com_adult').val(data.data.mi_agent_com_adult);
+            $('.mi_netto_cwb ').val(data.data.mi_netto_cwb);
+            $('.mi_agent_com_cwb').val(data.data.mi_agent_com_cwb);
+            $('.mi_netto_cnb').val(data.data.mi_netto_cnb);
+            $('.mi_netto_infant').val(data.data.mi_netto_infant);
+            $('.mi_agent_com_cnb').val(data.data.mi_agent_com_cnb);
+            $('.mi_agent_com_infant').val(data.data.mi_agent_com_infant);
+
+            $('.mi_id').val(id);
+            $('#approve').modal('show');
+        },
+        error:function(){
+            
+        }
+    })
+    
 }
 
 function save_approve() {

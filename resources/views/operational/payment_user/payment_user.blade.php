@@ -243,7 +243,7 @@ function load(parent,file) {
 // END GAMBAR
 function hitung(a) {
     total_payment = 0;
-    var sisa = '{{ $booking->db_total_additional + $booking->db_total_room + $booking->db_tax + $booking->db_visa- $booking->db_agent_com + $booking->db_tips }}';
+    var sisa = '{{ $booking->db_total_additional + $booking->db_total_room + $booking->db_tax + $booking->db_visa - $booking->db_agent_com + $booking->db_tips }}';
     $('.nominal').each(function(){
         total_payment +=  $(this).val().replace(/[^0-9\-]+/g,"")*1;
         sisa -= $(this).val().replace(/[^0-9\-]+/g,"")*1;

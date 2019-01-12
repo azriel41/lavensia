@@ -677,4 +677,11 @@ class intinerary_controller extends Controller
         return view('itinerary.itinerary',compact('intinerary'));
 
     }
+
+    public function edit_netto(Request $req)
+    {
+        $data = $this->all_variable->intinerary()->cari('mi_id',$req->id);
+
+        return Response::json(['data'=>$data]);
+    }
 }
