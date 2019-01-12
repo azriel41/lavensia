@@ -98,6 +98,7 @@ class finance_controller extends Controller
             $bulan['head'][$i] = carbon::parse($b->bulan)->format('M Y');
             $bulan['date'][$i] = carbon::parse($b->bulan)->format('m-Y');
         }
+        
         $bulan['head'] = array_unique($bulan['head']);
         $bulan['head'] = array_values($bulan['head']);
         $bulan['date'] = array_unique($bulan['date']);
