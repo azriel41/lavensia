@@ -42,24 +42,28 @@ table{
 
 @section('content')
 
- <div class="breadcumb-area bg-img bg-overlay bg-100" style="background-color: rgba(14, 2, 35, 0.9)">
-    
+ <div class="breadcumb-area height-700 bg-img bg-overlay" style="background-image: url({{  asset('storage/app/'.$data[0]->mi_image)  }} )">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <div class="map-ratings-review-area d-flex">
+                            <a href="#">Detail Booking</a>
+                            <a href="#">{{ $data[0]->db_kode_transaksi }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- ***** Breadcumb Area End ***** -->
     <!-- ***** Single Listing Area Start ***** -->
     <section class="dorne-single-listing-area section-padding-100">
         <div class="container">
-            
-                <br>
             <div class="row justify-content-center">
                 <!-- Single Listing Content -->
-               
-                <div class="col-sm-12 text-center" style="margin-bottom: 5%;">
-                    <img src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" style="border: 1px solid #dedede;padding: 5px;" width="600px" height="500px">
-                </div>
-
-                <div class="col-sm-12 about-content">
-                    <h3 style="margin-bottom: -10px">{{ $data[0]->mi_name }}</h3>
+                <div class="about-content text-center">
+                        <h2>{{ $data[0]->mi_name }}</h2>
                 </div>
 
                 <div class="col-12 col-lg-8">
@@ -69,19 +73,13 @@ table{
                                 <ul id="listingNav">
                                     <li class="active"><a href="#overview">Itinerrary info</a></li>
                                     <li><a href="#menu">Detail Book</a></li>
-                                    <li><a href="#passenger">Passenger</a></li>
-                                    <li style="background-color: none"><a href="#lomap"></a></li>
+                                    {{-- <li><a href="#review">Reviews</a></li> --}}
+                                    <li><a href="#lomap">Passenger</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div id="lomap">
-                            
-                        </div>
 
-                        <div class="overview-content mt-30" id="overview">
-                            <div class="about-content text-center">
-                                    <h3>ITINERARY INFO</h3>
-                            </div>
+                        <div class="overview-content mt-50" id="overview">
                             <div class="responsive">
                               <table width="100%" class="table table-striped"> 
                                   <tr>
@@ -110,11 +108,11 @@ table{
                             </div>
                         </div>
 
-                        <div class="listing-menu-area " id="menu">
+                        <div class="listing-menu-area mt-100" id="menu">
                             <div class="about-content text-center">
                                     <h3>DETAIL BOOK</h3>
                             </div>
-                            {{-- <br> --}}
+                            <br>
                             <div class="table-responsive">
                             <h5>Book info</h5>
                             <table width="100%" class="table table-striped"> 
@@ -238,130 +236,60 @@ table{
                             </div>
                         </div>
 
-                        <div class="mt-30" id="passenger">
-                            <div class="about-content text-center">
-                                    <h3>DETAIL PASSENGER</h3>
-                            </div>
+                        <div class="location-on-map mt-50" id="lomap">
+                            <h4>Detail Passenger</h4>
                             <div class="location-map">
-                                @foreach ($simple_table as $index => $e)
-                                @if ($e->dp_bed == 'single')
-                                <p>SINGLE</p>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-4">
-                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
-                                    </div>
-                                    <div class="col-sm-8">
-                                      <div class="table-responsive">
-                                        <table class="table table-striped table-bordered" width="100%">
-
-                                            <tr>
-                                                <th align="left" width="10%">Nama</th>
-                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
-                                                <td width="10%">Gender</td>
-                                                <td width="25%">: {{ $e->dp_gender }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Passport </th>
-                                                <td>: {{ $e->dp_passport }}</td>
-                                                <td>Date of Birth</td>
-                                                <td>: {{ $e->dp_birth_date }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Expired Date </th>
-                                                <td>: {{ $e->dp_exp_date }}</td>
-                                                <td>Place of Birth</td>
-                                                <td>: {{ $e->dp_birth_place }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                @elseif($e->dp_bed == 'twin')
-                                <p>TWIN</p>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-4">
-                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
-                                    </div>
-                                    <div class="col-sm-8">
-                                      <div class="table-responsive">
-                                        <table class="table table-striped table-bordered" width="100%">
-
-                                            <tr>
-                                                <th align="left" width="10%">Nama</th>
-                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
-                                                <td width="10%">Gender</td>
-                                                <td width="25%">: {{ $e->dp_gender }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Passport </th>
-                                                <td>: {{ $e->dp_passport }}</td>
-                                                <td>Date of Birth</td>
-                                                <td>: {{ $e->dp_birth_date }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Expired Date </th>
-                                                <td>: {{ $e->dp_exp_date }}</td>
-                                                <td>Place of Birth</td>
-                                                <td>: {{ $e->dp_birth_place }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                @elseif($e->dp_bed == 'double')
-                                <p>DOUBLE</p>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-4">
-                                        <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
-                                    </div>
-                                    <div class="col-sm-8">
-                                      <div class="table-responsive">
-                                        <table class="table table-striped table-bordered" width="100%">
-
-                                            <tr>
-                                                <th align="left" width="10%">Nama</th>
-                                                <td width="25%">: <b>{{ $e->dp_name }}</b></td>
-                                                <td width="10%">Gender</td>
-                                                <td width="25%">: {{ $e->dp_gender }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Passport </th>
-                                                <td>: {{ $e->dp_passport }}</td>
-                                                <td>Date of Birth</td>
-                                                <td>: {{ $e->dp_birth_date }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Expired Date </th>
-                                                <td>: {{ $e->dp_exp_date }}</td>
-                                                <td>Place of Birth</td>
-                                                <td>: {{ $e->dp_birth_place }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
-                                                <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                <div class="col-sm-12" style="margin-top: 30px;">
-                                    
-                                </div>
+                               @foreach ($fam as $i1 => $f)
+                                    @if ($f->dp_bed == 'single')
+                                        <p>SINGLE</p>
+                                    @elseif($f->dp_bed == 'twin')
+                                        <p>TWIN</p>
+                                    @elseif($f->dp_bed == 'triple')
+                                        <p>TRIPLE</p>
+                                    @elseif($f->dp_bed == 'doubletwin&cnb')
+                                        <p>DOUBLE/TWIN CHILD NO BED</p>
+                                    @elseif($f->dp_bed == 'doubletwin&cwb')
+                                        <p>DOUBLE/TWIN CHILD WITH BED</p>
+                                    @endif
+                                    @foreach ($simple_table->party_name as $i => $e)
+                                        @if ($e->dp_room == $f->dp_room)
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-4">
+                                                    <img src="{{ asset('storage/app/'.$e->dp_image) }}" width="250px" height="170px">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                  <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" width="100%">
+                                                        <tr>
+                                                            <th align="left" width="10%">Nama</th>
+                                                            <td width="25%">: <b>{{ $e->dp_name }}</b></td>
+                                                            <td width="10%">Gender</td>
+                                                            <td width="25%">: {{ $e->dp_gender }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Passport </th>
+                                                            <td>: {{ $e->dp_passport }}</td>
+                                                            <td>Date of Birth</td>
+                                                            <td>: {{ $e->dp_birth_date }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Expired Date </th>
+                                                            <td>: {{ $e->dp_exp_date }}</td>
+                                                            <td>Place of Birth</td>
+                                                            <td>: {{ $e->dp_birth_place }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th {{-- style="border-bottom: 1px solid #ddd;"--}}>Issuing </th> 
+                                                            <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_issuing }}</td>
+                                                            <td {{-- style="border-bottom: 1px solid #ddd;" --}}>Remark</td>
+                                                            <td {{-- style="border-bottom: 1px solid #ddd;" --}}>: {{ $e->dp_reference }}</td>
+                                                        </tr>
+                                                    </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </div>
                         </div>
@@ -374,13 +302,26 @@ table{
                     <div class="listing-sidebar">
 
                         <!-- Listing Verify -->
-                        <div class="listing-verify">
-                            <a href="#" class="btn dorne-btn w-100"><i class="fa fa-check pr-3"></i>Detail Book : {{ $data[0]->db_kode_transaksi }}</a>
+                        @if ($data[0]->db_status == 'Waiting List')
                             
-                        </div>
+                        @elseif ($data[0]->db_status == 'Holding Confirm')
+                            <div class="listing-verify">
+                                <a href="#" class="btn dorne-btn w-100"><i class="fa fa-check pr-3"></i> Verified Listing</a>
+                            </div>
+                        @elseif ($data[0]->db_status == 'Canceled')
+                            
+                        @else
+                            <div class="listing-verify">
+                                <a href="#" class="btn dorne-btn w-100"><i class="fa fa-check pr-3"></i> Verified Listing</a>
+                            </div>
+                        @endif
                         
 
-                    
+                        <!-- Book A Table Widget -->
+                        <div class=" mt-50">
+                                <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
+                        </div>
+
                         <!-- Opening Hours Widget -->
                         <div class="opening-hours-widget mt-50">
                             <h6>More Information</h6>
@@ -403,7 +344,7 @@ table{
                                 </li>
                                 <li>
                                     <p>INVOICE</p>
-                                    @if ($data[0]->db_status == 'Holding Confirm')
+                                    @if ($data[0]->db_total_remain == 0)
                                        <p><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
                                     @else
                                        <p><button class="btn btn-small btn-default" id="pdf" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
