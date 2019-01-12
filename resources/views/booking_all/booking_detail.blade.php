@@ -1,5 +1,4 @@
 @extends('main')
-@include('layouts._sidebar')
 <style type="text/css">
     .gede{
         font-size: 12px !important;
@@ -9,8 +8,7 @@
     }
 </style>
 
-    <section class="content">
-        <div class="container-fluid">
+@section('content')
             @include('layouts.task')
             <div class="header">
                 <ol class="breadcrumb breadcrumb-bg-pink">
@@ -61,13 +59,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
-            
-            <!-- #END# CPU Usage -->
-        </div>
-    </section>
 
     <div class="modal fade" id="modal_check" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
@@ -83,8 +75,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>            <!-- #END# CPU Usage -->
+        </div>
 
+    </section>
+
+
+
+        @endsection            
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){

@@ -8,8 +8,7 @@
         vertical-align: middle!important;
     }
 </style>
-    <section class="content">
-        <div class="container-fluid">
+@section('content')
             @include('layouts.task')
             <div class="header">
                 <ol class="breadcrumb breadcrumb-bg-pink">
@@ -67,9 +66,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            
+@endsection
             <!-- #END# CPU Usage -->
         </div>
     </section>
