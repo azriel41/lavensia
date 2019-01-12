@@ -113,11 +113,8 @@ class booking_listController extends Controller
 						->get();    	
 		// return $data;
 
-        $simple_table = DB::table('d_booking')->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')->where('db_kode_transaksi',$id)->get();
-        
-        $simple_table = DB::table('d_booking')->leftjoin('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')->where('db_kode_transaksi',$id)->get();
-
-
+        $simple_table = d_booking::where('db_kode_transaksi',$id)->first();
+        $fam = DB::table('d_party_name')->select('dp_bed','dp_room')->where('dp_booking_id',$simple_table->db_id)->groupBy('dp_room','dp_bed')->get();
         $category = category::all();
 
         $intinerary = intinerary::all();
@@ -143,9 +140,9 @@ class booking_listController extends Controller
                         ->where('db_users',Auth::User()->role_id)
                         ->where('db_status','Waiting List')
                         ->get());
-            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah','simple_table'));
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','cart','jumlah','simple_table','fam'));
         }else{
-            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','simple_table'));
+            return view('booking_list.booking_listdetail',compact('data','category','intinerary','det','response','simple_table','fam'));
         }
 
     }
