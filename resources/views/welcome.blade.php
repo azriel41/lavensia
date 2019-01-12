@@ -219,13 +219,13 @@ background: #2f4357;
                     <div class="drop_here">
                         @foreach ($intinerary as $index => $iti)
                         <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
-                            <div class="destination">
+                            <div class="destination" {{-- style="min-height: 260px;max-height: 260px;"> --}}>
                                 <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
-                                <div class="text p-3">
+                                <div class="text p-3" style="min-height: 260px;max-height: 260px;">
                                     <div class="d-flex">
                                         <div>
                                                 <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
