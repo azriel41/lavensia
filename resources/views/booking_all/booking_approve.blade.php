@@ -1865,7 +1865,7 @@
         if (tax == '') {
             tax = 0;
         }
-        var total = total_add + total_room + (agent_com*penambah) + (tips*penambah) + (visa*penambah) + tax*penambah;
+        var total = total_add + total_room - (agent_com*penambah) + (tips*penambah) + (visa*penambah) + tax*penambah;
 
 
         $('.total_room').html(accounting.formatMoney(total_room,"", 2, ".",','));
