@@ -218,7 +218,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <select class="form-control tl" name="tl">
-                                    <option>Select Tour Leader</option>
+                                    <option value="">Select Tour Leader</option>
                                     @foreach ($tl as $tl)
                                         <option @if ($detail_intinerary->md_tour_leader == $tl->tl_id)
                                             selected="" 
@@ -403,6 +403,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row clearfix preview_div">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Photo</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="file-upload upl_1" style="width: 100%;">
+                                        <div class="file-select">
+                                            <div class="file-select-button fileName" >Image</div>
+                                            <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
+                                            <input type="file" class="chooseFile" name="image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Preview</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="preview_td">
+                                        @if ($detail_intinerary->md_flayer == null)
+                                            <img width="400px" height="400px" style="border:1px solid pink" class="output" >
+                                        @else
+                                            <img width="400px" height="400px" src="{{ asset('storage/app/'.$detail_intinerary->md_flayer ) }}" style="border:1px solid pink" class="output" >
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>          
                         <div class="col-sm-12">
                         <div class="col-sm-9">
                             <div class=" col-sm-3">
@@ -464,6 +490,45 @@
 @endsection
 @section('extra_scripts')
 <script>
+       $('.chooseFile').bind('change', function () {
+        var filename = $(this).val();
+        var fsize = $(this)[0].files[0].size;
+        if(fsize>1048576) //do something if file size more than 1 mb (1048576)
+        {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
+          return false;
+        }
+        var parent = $(this).parents(".preview_div");
+        if (/^\s*$/.test(filename)) {
+            $(parent).find('.file-upload').removeClass('active');
+            $(parent).find(".noFile").text("No file chosen..."); 
+        }
+        else {
+            $(parent).find('.file-upload').addClass('active');
+            $(parent).find(".noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+        load(parent,this);
+    });
+
+    function load(parent,file) {
+        var fsize = $(file)[0].files[0].size;
+        if(fsize>2048576) //do something if file size more than 1 mb (1048576)
+        {
+          iziToast.warning({
+            icon: 'fa fa-times',
+            message: 'File Is To Big!',
+          });
+          return false;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $(parent).find('.output').attr('src',e.target.result);
+        };
+        reader.readAsDataURL(file.files[0]);
+    }
     $(window).scroll(function(){
       if ($(this).scrollTop() > 390) {
         $('.plank').addClass('add_top');
@@ -495,7 +560,7 @@
         $('#preview_pdf').modal('show');
     }
 
-        $('.chooseFile').bind('change', function () {
+    $('.chooseFile').bind('change', function () {
         var filename = $(this).val();
         var fsize = $(this)[0].files[0].size;
         if(fsize>1048576) //do something if file size more than 1 mb (1048576)
@@ -575,7 +640,7 @@
                             });
 
                         }else if (data.status == '0') {
-                            iziToast.success({
+                            iziToast.error({
                                 icon: 'fa fa-save',
                                 position:'topRight',
                                 title: 'Error!',

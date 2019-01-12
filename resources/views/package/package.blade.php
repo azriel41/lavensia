@@ -257,6 +257,10 @@ hr{
                                     <p>ITINERARY</p>
                                     <p><button type="button" class="btn btn-small btn-book download_itin" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
                                 </li>
+                                <li>
+                                    <p>FLAYER</p>
+                                    <p><a class="btn btn-primary" href="{{ asset('/storage/app/detail_itin/Detail_flayer_'.$data[0]->mi_id.'.jpg') }}" download="{{ asset('/storage/app/detail_itin/Detail_flayer_'.$data[0]->mi_id.'.jpg') }}"><i class="fa fa-cloud-download"></i> Download</a></p>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -274,6 +278,11 @@ hr{
     $('.download_itin').click(function(){
         var ini = $(this).data('id');
         window.open(baseUrl+'/booking/bookingdetail_download_itin/'+ini);
+
+    })
+    $('.download_flayer').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/storage/app/detail_itin/Detail_flayer_'+ini+'.jpg');
 
     })
     
