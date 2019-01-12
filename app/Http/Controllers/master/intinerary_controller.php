@@ -418,8 +418,8 @@ class intinerary_controller extends Controller
     }
     public function save_detail(Request $req)
     {
-        // return $check = $this->all_variable->detail_intinerary()->cari('md_id',$req->id);
-
+        $check = DB::table('m_intinerary')->join('m_detail_intinerary','md_intinerary_id','mi_id')->where('md_id',$req->id)->first();
+        // return json_encode($check);
         if ($req->tl == null) {
                 return Response::json(['status'=>0,'message'=>'Please Select Tour Leader...']);
         }
@@ -460,7 +460,7 @@ class intinerary_controller extends Controller
         }
         if ($image != null) {
 
-            $image1 = 'detail_itin/Detail_flayer_'.$req->id.'.jpg';
+            $image1 = 'detail_itin/Detail_flayer_'.$check->mi_id.'.jpg';
 
             Storage::put($image1,file_get_contents($image));
         }else{
