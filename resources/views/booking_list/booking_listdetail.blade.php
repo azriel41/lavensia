@@ -344,11 +344,11 @@ table{
                                 </li>
                                 <li>
                                     <p>INVOICE</p>
-                                    @if ($data[0]->db_total_remain == 0)
+                                    {{-- @if ($data[0]->db_total_remain == 0) --}}
                                        <p><button class="btn btn-small btn-success download_invoice" id="pdf" data-id="{{ $data[0]->db_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
-                                    @else
+                                    {{-- @else --}}
                                        <p><button class="btn btn-small btn-default" id="pdf" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
-                                    @endif                                        
+                                    {{-- @endif                                         --}}
                                 </li>
                             </ul>
                         </div>
