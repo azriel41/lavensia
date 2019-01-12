@@ -204,7 +204,7 @@ background: #2f4357;
     @endif
     
     <!-- ***** About Area End ***** -->
-    @if (Auth::User() != null)
+    {{-- @if (Auth::User() != null) --}}
         {{-- expr --}}
     <section class="ftco-section bg-light" style="margin-top: -50px;">
         <div class="container-fluid">
@@ -250,9 +250,9 @@ background: #2f4357;
             </div>          
         </div>
     </section>
-    @else
+    {{-- @else --}}
 
-    @endif
+    {{-- @endif --}}
     <!-- ***** Editor Pick Area Start ***** -->
     <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url({{  asset('storage/app/company/bg-5.jpg') }}?{{ time() }});">
         <div class="container">
