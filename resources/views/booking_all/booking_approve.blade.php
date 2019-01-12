@@ -1241,7 +1241,7 @@
         <!--
         End Contact Us
         ==================================== -->
-        @include('layouts_frontend._footer')
+        {{-- @include('layouts_frontend._footer') --}}
         <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
         @include('layouts_frontend._scripts')
     </body>

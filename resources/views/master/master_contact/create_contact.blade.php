@@ -20,6 +20,16 @@
                     <div class="body">
                         <form id="save_data" method="get" accept-charset="utf-8" >
                             <div class="row clearfix">
+                                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">No Rek</label>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="mc_rek" id="mc_rek" value="{{ $contact[0]->mc_rek }}" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Name</label>
                                 </div>

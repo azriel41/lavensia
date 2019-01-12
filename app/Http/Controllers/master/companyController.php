@@ -212,6 +212,7 @@ class companyController extends Controller
       $data = DB::table('m_contact')->where('mc_id',1)->update([
           'mc_name'=>$request->mc_name,
           'mc_isi'=>$request->mc_isi,
+          'mc_rek'=>$request->mc_rek,
       ]);
       return response()->json(['status'=>'sukses']);
     }
