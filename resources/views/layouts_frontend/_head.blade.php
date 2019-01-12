@@ -52,7 +52,7 @@ Fixed Navigation
        
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
-                <li><a href="" onclick="window.location.href=('{{ route('dashboard') }}')"><b>Home</b></a></li>
+                <li><a href="" onclick="window.location.href=('{{ route('welcome') }}')"><b>Home</b></a></li>
                 @if (Route::has('login'))
                          @if (Auth::check())
                             <li><a href="" onclick="window.location.href=('{{ route('booking_list') }}')"><b>Booking List</b></a></li>
@@ -320,5 +320,4 @@ End Fixed Navigation
         var rand3 = '{{ md5('Segala Puji Bagi Allah Tuhan Seru Sekalian Alam').rand(1,1000000)}}';
         window.location=('{{ url('/payment_page/payment') }}'+'?rand='+rand1+'&rand2='+rand2+'&rand3='+rand3+'&id='+id);
     }
-    
 </script>

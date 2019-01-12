@@ -1,17 +1,92 @@
 @extends('layouts_frontend_2._main')  
 
 @section('content')
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../assets/img/bg-img/hero-1.jpg)">
+    {{-- <div <center></center>lass="breadcumb-area bg-img bg-overlay" style="background-image: url(../assets/img/bg-img/hero-1.jpg)"> --}}
+    <div class="breadcumb-area bg-img bg-overlay" style="height: 400px !important;background-image: url({{ asset('storage/app/company/bg-4.jpg') }})">
     </div>
     <!-- ***** Breadcumb Area End ***** -->
 
     <!-- ***** Contact Area Start ***** -->
     <div class="dorne-contact-area d-md-flex" id="contact">
-        <!-- Contact Form Area -->
+        
+
         <div class="contact-form-area equal-height">
-            
+            <div class="text-center">
+                <h2>Contact us</h2>
+            </div>
+            <br>
+            <div class="contact-text ">
+                <table class="table">
+                    <tr>
+                        <th>Address</th>
+                        <th>:</th>
+                        <th>Jl. Nginden Intan Raya No. 7, Surabaya 60118</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <th>:</th>
+                        <th>62 31 5992855</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>HP / WA</th>
+                        <th>:</th>
+                        <th>62 31 5992855</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>E-MAIL</th>
+                        <th>:</th>
+                        <th>lavensiatour@yahoo.com</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>WEB</th>
+                        <th>:</th>
+                        <th><a href="www.lavensia.com"></a>www.lavensia.com</b></th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>FACEBOOK</th>
+                        <th>:</th>
+                        <th><a href=""></a>Lavensia Tour and Travel</b></th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>INSTAGRAM</th>
+                        <th>:</th>
+                        <th>@lavensiatour</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th>LINE</th>
+                        <th>:</th>
+                        <th> @vez7824k (pakai @)</th>
+                    </tr>
+                </table>
+            </div>
         </div>
+        
         <div class="contact-form-area equal-height">
+            <div class="text-center">
+                <h2>About us</h2>   
+            </div>
+            <br>
             <div class="contact-text">
                 <h4>Warmest Traveller</h4>
                 <p>It is a pride for us to be present among you with various options Latest Tour program. In terms of service, quality ,and competitive price. I hope that the contents of this guide will be very useful for planning a tour, either within or abroad.</p>
@@ -33,43 +108,7 @@
 
                 
             </div>
-            <div class="contact-form">
-                <div class="contact-form-title">
-                    <h6>Contact Business</h6>
-                </div>
-                <form action="#">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <input type="text" name="name" class="form-control" placeholder="Your Name">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address">
-                        </div>
-                        <div class="col-12">
-                            <input type="text" name="subject" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="col-12">
-                            <textarea name="message" class="form-control" id="Message" cols="30" rows="10" placeholder="Your Message"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn dorne-btn">Send</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Map Area -->
-        <div class="dorne-map-area equal-height">
-            <div class="contact-info d-lg-flex">
-                    <div class="single-contact-info">
-                        <h6><i class="fa fa-map-signs" aria-hidden="true"></i> Main Avenue Soho, NY</h6>
-                        <h6><i class="fa fa-map-signs" aria-hidden="true"></i> No. 25-33</h6>
-                    </div>
-                    <div class="single-contact-info">
-                        <h6><i class="fa fa-envelope-o" aria-hidden="true"></i> contact@yourbusiness.com</h6>
-                        <h6><i class="fa fa-phone" aria-hidden="true"></i> +34 567 22478 49567</h6>
-                    </div>
-                </div>
+         
         </div>
     </div>
 @endsection

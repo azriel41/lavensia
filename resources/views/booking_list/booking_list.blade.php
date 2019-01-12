@@ -1,6 +1,8 @@
 @extends('layouts_frontend_2._main')  
 
 @section('extra_style')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
 <style type="text/css">
     .form-inline{
         display :block !important;

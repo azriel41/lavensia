@@ -238,8 +238,8 @@
             <div class="user-info" >
                 <div class="bg-image-side"  style="background: {{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}">
                 </div>
-                <div class="image"">
-                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}?'{{ time() }}'" style="z-index: 999;" width="48" height="48" alt="User" />
+                <div class="image crop">
+                    <img src="{{ asset('storage/app/agent/agent-'.auth::user()->image) }}?'{{ time() }}'" style="z-index: 999;" width="70" height="70" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
@@ -303,11 +303,12 @@
                             <span>Product</span>
                         </a>
                         <ul class="ml-menu">
-                           {{--  @if(Auth::user()->akses('master agent','mh_aktif'))
+                        {{--     @if(Auth::user()->akses('master agent','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_agent') }}">Agent</a>
                                 </li>
                             @endif --}}
+
                             @if(Auth::user()->akses('master category','mh_aktif'))
                                 <li>
                                     <a href="{{ route('master_category') }}">Destination</a>
@@ -365,19 +366,33 @@
                             <span>Function</span>
                         </a>
                         <ul class="ml-menu">
+                           {{--  @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('company_index') }}">Company</a>
+                                </li>
+                            @endif --}}
+                             @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_slider') }}">Master Slider</a>
+                                </li>
+                            @endif
+                            {{-- @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_artikel') }}">bg artikel</a>
+                                </li>
+                            @endif --}}
+                            @if(Auth::user()->akses('company','mh_aktif'))
+                                <li>
+                                    <a href="{{ route('master_bg_page') }}">bg per page</a>
+                                </li>
+                            @endif
                             @if(Auth::user()->akses('article','mh_aktif'))
                                 <li>
                                     <a href="{{ route('article_index') }}">Article</a>
                                 </li>
                             @endif
                         </ul>
-                        <ul class="ml-menu">
-                            @if(Auth::user()->akses('company','mh_aktif'))
-                                <li>
-                                    <a href="{{ route('company_index') }}">Company</a>
-                                </li>
-                            @endif
-                        </ul>
+                        
                     </li>
                     @if(Auth::user()->akses('report oketrip','mh_aktif'))
                     <li>

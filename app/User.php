@@ -46,7 +46,6 @@ class User extends Authenticatable
     }
 
     public function akses($fitur,$aksi){
-        
          $cek = DB::table('users')
                 ->leftjoin('m_hak_akses', 'mh_level', '=', 'role_id')
                 ->where('mh_menu', '=', $fitur)

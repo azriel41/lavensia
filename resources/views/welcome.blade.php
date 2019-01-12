@@ -76,7 +76,9 @@ background: #2f4357;
 @section('content')
 
     <!-- ***** Welcome Area Start ***** -->
-  <div class="bs-example" style="height: 100%">
+  <div class="bs-example" @if (Auth::user() != null) style="height: 110%" @else style="height: 100%" @endif>
+    
+
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Carousel indicators -->
         <ol class="carousel-indicators">
@@ -85,182 +87,83 @@ background: #2f4357;
             <li data-target="#myCarousel" data-pause="hover" data-slide-to="2"></li>
         </ol>   
         <!-- Wrapper for carousel items -->
+
         <div class="carousel-inner">
+            {{-- <div class="container h-seratus"> --}}
+                        <div class="align-items-center justify-content-center">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <!-- Hero Search Form -->
+                                   @if (Auth::User() != null)
+                                    <div class="hero-search-form">
+                                    <!-- Tabs -->
+                                    <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                                <h6>What are you looking for?</h6>
+                                                <form id="cari">
+                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
+                                                    <select id="destination" class="custom-select">
+                                                        <option value="" selected>Your Destinations</option>
+                                                        @foreach ($category as $e)
+                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select id="month" class="custom-select">
+                                                        <option value="" selected>Month Departure</option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">Mart</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- expr --}}
+                                @else
+                                <div class="hero-search-form">
+                                        <div style="height: 65%"> 
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    {{-- </div> --}}
+
             <div class="item active">
-                <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-11.jpg);">
-                    <div class="container h-seratus">
-                        <div class="row h-seratus align-items-center justify-content-center">
-                            <div class="col-12 col-md-10">
-                                <div class="hero-content" style="margin-top: 50px !important;">
-                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
-                                    {{-- <h4>This is the best guide of your city</h4> --}}
-                                    
-                                </div>
-                                @if (Auth::User() != null)
-                                
-                                    <div class="hero-search-form">
-                                    <!-- Tabs -->
-                                    <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                                <h6>What are you looking for?</h6>
-                                                <form id="cari">
-                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
-                                                    <select id="destination" class="custom-select">
-                                                        <option value="" selected>Your Destinations</option>
-                                                        @foreach ($category as $e)
-                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <select id="month" class="custom-select">
-                                                        <option value="" selected>Month Departure</option>
-                                                        <option value="1">January</option>
-                                                        <option value="2">February</option>
-                                                        <option value="3">Mart</option>
-                                                        <option value="4">April</option>
-                                                        <option value="5">May</option>
-                                                        <option value="6">June</option>
-                                                        <option value="7">July</option>
-                                                        <option value="8">August</option>
-                                                        <option value="9">September</option>
-                                                        <option value="10">October</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">December</option>
-                                                    </select>
-                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- expr --}}
-                                @else
-                                <div class="hero-search-form">
-                                        <div style="height: 65%"> 
-                                        </div>
-                                    </div>
-                                @endif
-                                <!-- Hero Search Form -->
-                                
-                            </div>
-                        </div>
-                    </div>
+                @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-6.jpg') }}?{{ time() }});">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-1.jpg') }}?{{ time() }});">
+                @endif
+
+                    
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-3.jpg);">
-                    <div class="container h-seratus">
-                        <div class="row h-seratus align-items-center justify-content-center">
-                            <div class="col-12 col-md-10">
-                                <div class="hero-content" style="margin-top: 50px !important;">
-                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
-                                    {{-- <h4>This is the best guide of your city</h4> --}}
-                                    
-                                </div>
-                                @if (Auth::User() != null)
-                                
-                                    <div class="hero-search-form">
-                                    <!-- Tabs -->
-                                    <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                                <h6>What are you looking for?</h6>
-                                                <form id="cari">
-                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
-                                                    <select id="destination" class="custom-select">
-                                                        <option value="" selected>Your Destinations</option>
-                                                        @foreach ($category as $e)
-                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <select id="month" class="custom-select">
-                                                        <option value="" selected>Month Departure</option>
-                                                        <option value="1">January</option>
-                                                        <option value="2">February</option>
-                                                        <option value="3">Mart</option>
-                                                        <option value="4">April</option>
-                                                        <option value="5">May</option>
-                                                        <option value="6">June</option>
-                                                        <option value="7">July</option>
-                                                        <option value="8">August</option>
-                                                        <option value="9">September</option>
-                                                        <option value="10">October</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">December</option>
-                                                    </select>
-                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- expr --}}
-                                @else
-                                <div class="hero-search-form">
-                                        <div style="height: 65%"> 
-                                        </div>
-                                    </div>
-                                @endif
-                                <!-- Hero Search Form -->
-                                
-                            </div>
-                        </div>
-                    </div>
+                 @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-7.jpg') }}?{{ time() }});">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-2.jpg') }}?{{ time() }});">
+                @endif
+                    
                 </section>
             </div>
             <div class="item">
-                 <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(assets_frontend_2/img/bg-img/hero-2.jpg);">
-                    <div class="container h-seratus">
-                        <div class="row h-seratus align-items-center justify-content-center">
-                            <div class="col-12 col-md-10">
-                                <div class="hero-content" style="margin-top: 50px !important;">
-                                    {{-- <span style="font-size: 40px;color: white;font-weight: 700;">Special Promo</span> --}}
-                                    {{-- <h4>This is the best guide of your city</h4> --}}
-                                    
-                                </div>
-                                @if (Auth::User() != null)
-                                
-                                    <div class="hero-search-form">
-                                    <!-- Tabs -->
-                                    <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                                <h6>What are you looking for?</h6>
-                                                <form id="cari">
-                                                    {{-- <input type="" name="" readonly="" style="background-color: transparent;border:none"> --}}
-                                                    <select id="destination" class="custom-select">
-                                                        <option value="" selected>Your Destinations</option>
-                                                        @foreach ($category as $e)
-                                                            <option value="{{ $e->mc_id }}">{{ $e->mc_name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <select id="month" class="custom-select">
-                                                        <option value="" selected>Month Departure</option>
-                                                        <option value="1">January</option>
-                                                        <option value="2">February</option>
-                                                        <option value="3">Mart</option>
-                                                        <option value="4">April</option>
-                                                        <option value="5">May</option>
-                                                        <option value="6">June</option>
-                                                        <option value="7">July</option>
-                                                        <option value="8">August</option>
-                                                        <option value="9">September</option>
-                                                        <option value="10">October</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">December</option>
-                                                    </select>
-                                                    <button type="button" class="btn dorne-btn" onclick="cari()"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- expr --}}
-                                @else
-                                <div class="hero-search-form">
-                                        <div style="height: 65%"> 
-                                        </div>
-                                    </div>
-                                @endif
-                                <!-- Hero Search Form -->
-                                
-                            </div>
-                        </div>
-                    </div>
+                 @if (Auth::User() != null)
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-8.jpg') }}?{{ time() }});">
+                @else
+                    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/company-3.jpg') }}?{{ time() }});">
+                @endif
+                    
                 </section>
             </div>
         </div>
@@ -277,77 +180,7 @@ background: #2f4357;
     <div class="scrolldown">
         
     </div>
-    <!-- ***** Welcome Area End ***** -->
-
-    <!-- ***** Catagory Area Start ***** -->
-    {{-- <section class="dorne-catagory-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="all-catagories">
-                        <div class="row">
-                            <!-- Single Catagory Area -->
-                            <div class="col-12 col-sm-6 col-md">
-                                <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.2s">
-                                    <div class="catagory-content">
-                                        <img src="assets_frontend_2/img/core-img/icon-1.png" alt="">
-                                        <a href="#">
-                                            <h6>Hotels</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Catagory Area -->
-                            <div class="col-12 col-sm-6 col-md">
-                                <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.4s">
-                                    <div class="catagory-content">
-                                        <img src="assets_frontend_2/img/core-img/icon-2.png" alt="">
-                                        <a href="#">
-                                            <h6>Restaurants</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Catagory Area -->
-                            <div class="col-12 col-sm-6 col-md">
-                                <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.6s">
-                                    <div class="catagory-content">
-                                        <img src="assets_frontend_2/img/core-img/icon-3.png" alt="">
-                                        <a href="#">
-                                            <h6>Shopping</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Catagory Area -->
-                            <div class="col-12 col-sm-6 col-md">
-                                <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.8s">
-                                    <div class="catagory-content">
-                                        <img src="assets_frontend_2/img/core-img/icon-4.png" alt="">
-                                        <a href="#">
-                                            <h6>Beauty &amp; Spa</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Catagory Area -->
-                            <div class="col-12 col-md">
-                                <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="1s">
-                                    <div class="catagory-content">
-                                        <img src="assets_frontend_2/img/core-img/icon-5.png" alt="">
-                                        <a href="#">
-                                            <h6>Cinema</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- ***** Catagory Area End ***** -->
+    
 
     <!-- ***** About Area Start ***** -->
     @if (Auth::User() != null)
@@ -358,8 +191,11 @@ background: #2f4357;
                     <div class="col-12">
                         <div class="about-content text-center">
                             <div class="" style="padding-top: 4%"></div>
-                            <h3>Discover your city with <br><span>Dorne</span></h3>
-                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
+                            <h3>Discover your city with <br><span>Oke-trip.com</span></h3>
+                            {{-- <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p> --}}
+                            {{-- <div id="fb-root">
+                                <div class="fb-page" data-href="https://www.facebook.com/Oke-Tripcom-233135077356613/?modal=admin_todo_tour" data-tabs="timeline" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"></div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -368,7 +204,7 @@ background: #2f4357;
     @endif
     
     <!-- ***** About Area End ***** -->
-    @if (Auth::User() != null)
+    {{-- @if (Auth::User() != null) --}}
         {{-- expr --}}
     <section class="ftco-section bg-light" style="margin-top: -50px;">
         <div class="container-fluid">
@@ -392,7 +228,7 @@ background: #2f4357;
                                 <div class="text p-3">
                                     <div class="d-flex">
                                         <div>
-                                            <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                                                <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
                                         </div>
                                     </div>
                                     <br>
@@ -414,11 +250,11 @@ background: #2f4357;
             </div>          
         </div>
     </section>
-    @else
+    {{-- @else --}}
 
-    @endif
+    {{-- @endif --}}
     <!-- ***** Editor Pick Area Start ***** -->
-    <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url(assets_frontend_2/img/bg-img/hero-2.jpg);">
+    <section class="dorne-editors-pick-area bg-img bg-overlay-9 section-padding-100" style="background-image: url({{  asset('storage/app/company/bg-5.jpg') }}?{{ time() }});">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -429,92 +265,97 @@ background: #2f4357;
                     </div>
                 </div>
             </div>
-
+                    <?php 
+                        if (isset($_SERVER['HTTP_USER_AGENT'])) {
+                            $agent = $_SERVER['HTTP_USER_AGENT'];
+                        }
+                        if (strlen(strstr($agent, 'Firefox')) > 0) {
+                            $browser = 'firefox';
+                        }else{
+                            $browser = 'else';
+                        }
+                    ?>
             <div class="row">
                 @foreach ($article as $a)
                 @if ($loop->index == 0)
-                    <div class="col-12 col-lg-12">
-                    <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                        <div class="editors-pick-info">
-                            <div class="places-total-destinations d-flex">
-                                <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
-                                {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                            </div>
-                            <div class="add-more">
-                                <a href="article/article/{{ $a->da_id }}">+</a>
-                            </div>
-                            </div>
+                  <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img  src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" 
+                    @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif   alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
-                    </div>
-
+                  </div>
                 @endif
                 
-
                 @if ($loop->index == 1)
-                    <div class="col-12 col-lg-6">
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" height="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                     <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">   
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
+                  </div>
                 @endif
 
                 @if ($loop->index == 2)
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
+                  </div>
                 @endif
+
 
                 @if ($loop->index == 3)
-                    <div class="col-12 col-lg-6">
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                       <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
+                  </div>
+                @endif
+
+                @if ($loop->index == 4)
+                    <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
+                    </div>
+                  </div>
                 @endif
 
 
-                @if ($loop->index == 4)
-                        <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" width="100%" alt="">
-                            <div class="editors-pick-info">
-                                <div class="places-total-destinations d-flex">
-                                    <a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a>
-                                    {{-- <a href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a> --}}
-                                </div>
-                                <div class="add-more">
-                                    <a href="article/article/{{ $a->da_id }}">+</a>
-                                </div>
-                            </div>
-                        </div>
+                @if ($loop->index == 5)
+                       <div class="post post-thumb col-md-6">
+                    <a class="post-img" href="article/article/{{ $a->da_id }}"><img src="{{ asset('storage/app/article/article-') }}{{ $a->da_image }}?{{ time() }}" @if ($browser == 'firefox') style="height: 100% !important" @else style="height: 55% !important"@endif alt=""></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-2" href="#">{{ date('d-M-y',strtotime($a->da_created_at)) }}</a>
+                        
+                      </div>
+                      <h3 class="post-title"><a href="article/article/{{ $a->da_id }}">{{ $a->da_header }}</a></h3>
                     </div>
+                  </div>
                 @endif
             @endforeach
                 
@@ -536,12 +377,12 @@ background: #2f4357;
 
 
 @section('extra_scripts')
-
+   
     <script type="text/javascript">
 
     $("#myCarousel").carousel({
         interval : 3000,
-        pasue:"hover"
+        // pasue:"hover"
     });
 
     function more(argument) {

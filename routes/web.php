@@ -15,7 +15,7 @@ Route::get('/', function () {
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
-	$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+	$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 	$det = [];
 	$cat = [];
 	foreach ($intinerary as $index => $val) {
@@ -46,7 +46,7 @@ Route::get('/', function () {
     		return view('home');
 		}else{
 		$category = App\category::all();
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 
     		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 		}
@@ -66,7 +66,7 @@ Route::get('/welcome', function () {
 	if (Auth::User() != null) {
 		$category = App\category::all();
 
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		$det = [];
@@ -95,7 +95,7 @@ Route::get('/welcome', function () {
 		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 	}else{
 		$category = App\category::all();
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(5)->get();
+		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 		$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
 		
     	return view('welcome',compact('article','category','intinerary','det','response','cat'));
@@ -132,6 +132,23 @@ Route::group(['middleware' => 'auth'], function () {
 	// STORAGE URL
 	Route::get('/storage/app')->name('storage');
 	
+
+    Route::get('/function/company/master_bg_slider', 'master\companyController@master_bg_slider')->name('master_bg_slider');
+    Route::get('/function/company/master_bg_artikel', 'master\companyController@master_bg_artikel')->name('master_bg_artikel');
+    Route::get('/function/company/master_bg_page', 'master\companyController@master_bg_page')->name('master_bg_page');
+	//slider sebelum login
+	Route::post('/function/company/company_slider_1', 'master\companyController@slider_1')->name('slider_1');
+	Route::post('/function/company/company_slider_2', 'master\companyController@slider_2')->name('slider_2');
+	Route::post('/function/company/company_slider_3', 'master\companyController@slider_3')->name('slider_3');
+	//slider sebelum login
+	Route::post('/function/company/company_sesudah_slider_1', 'master\companyController@sesudah_slider_1')->name('sesudah_slider_1');
+	Route::post('/function/company/company_sesudah_slider_2', 'master\companyController@sesudah_slider_2')->name('sesudah_slider_2');
+	Route::post('/function/company/company_sesudah_slider_3', 'master\companyController@sesudah_slider_3')->name('sesudah_slider_3');
+	//package
+	Route::post('/function/company/bg_page', 'master\companyController@bg_page')->name('bg_page');
+	Route::post('/function/company/bg_article', 'master\companyController@bg_article')->name('bg_article');
+
+
 	//home - admin
 	Route::get('/home', 'HomeController@index')->name('home');
 
@@ -141,17 +158,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/function/article/edit/{id}', 'article\articleController@edit')->name('article_edit');
 	Route::post('/function/article/save', 'article\articleController@save')->name('article_save');
 	Route::post('/function/article/update', 'article\articleController@update')->name('article_update');
-	Route::post('/function/article/delete', 'article\articleController@delete')->name('article_delete');
+	Route::get('/function/article/delete', 'article\articleController@delete')->name('article_delete');
 	Route::get('/function/article/article_datatable', 'article\articleController@article_datatable')->name('article_datatable');
 
 
 	//ARTICLE
-    Route::get('/function/company/company_index', 'company\company_controller@company_index')->name('company_index');
-	Route::get('/function/company/create', 'company\company_controller@create_create')->name('company_create');
-	Route::get('/function/company/edit', 'company\company_controller@edit')->name('company_edit');
-	Route::post('/function/company/save', 'company\company_controller@save')->name('company_save');
-	Route::post('/function/company/update', 'company\company_controller@update')->name('company_update');
-	Route::get('/function/company/company_datatable', 'company\company_controller@company_datatable')->name('company_datatable');
+    Route::get('/function/company/company_index', 'master\companyController@index')->name('company_index');
+	Route::get('/function/company/create', 'master\companyController@create')->name('company_create');
+	Route::get('/function/company/edit', 'master\companyController@edit')->name('company_edit');
+	Route::post('/function/company/save', 'master\companyController@save')->name('company_save');
+	Route::post('/function/company/update', 'master\companyController@update')->name('company_update');
+	Route::get('/function/company/company_datatable', 'master\companyController@company_datatable')->name('company_datatable');
 
 	//Profile
 	Route::get('/profile', 'HomeController@profile')->name('profile');
@@ -289,7 +306,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/ganti_nama', 'master\intinerary_controller@ganti_nama')->name('ganti_nama');
 	Route::get('/master/master_intinerary/delete', 'master\intinerary_controller@delete')->name('delete_intinerary');
 	Route::get('/master/master_intinerary/approve', 'master\intinerary_controller@approve')->name('approve_itinerary');
-	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@datatale_report_customer_agent')->name('intinerary_detail');
+	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 
 

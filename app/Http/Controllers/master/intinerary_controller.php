@@ -649,7 +649,8 @@ class intinerary_controller extends Controller
         }
 
         $intinerary = DB::select("SELECT * FROM m_intinerary
-            where mi_status = 'ACTIVE' $category '$month' ");
+             left join m_destination on m_destination.d_id =  m_intinerary.mi_id
+             where mi_status = 'ACTIVE' $category $month ");
 
         // $intinerary = DB::table('m_intinerary')->join('m_destination','m_intinerary.mi_id','=','m_destination.d_detail')->where('mi_status','ACTIVE')->where('d_category_id','like','%'.$req->id.'%')->whereMonth('md_start',$req->)->get();
 

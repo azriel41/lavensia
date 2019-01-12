@@ -134,13 +134,10 @@
                              <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
                         </div>
                     </form>
-
-                    <br>
-                    <hr>
-                    -----------
                     <hr>
                     <br>
-                    <form method="post" action="{{ route('slider_1') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                    <hr>
+                    <form method="post" action="{{ route('sesudah_slider_1') }}" enctype="multipart/form-data"  accept-charset="utf-8">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                         <div class="row clearfix">
                             <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
@@ -151,7 +148,7 @@
                                     <div class="form-line">
                                         <div >
                                             <img class="image_drop img-responsive" 
-                                               src="{{ asset('storage/app/company/company-1.jpg') }}?{{ time() }}" 
+                                               src="{{ asset('storage/app/company/company-6.jpg') }}?{{ time() }}" 
                                            width="400px" height="300px" name="image-drop">
                                         </div>
                                         <br>
@@ -165,7 +162,7 @@
                                                     </div> 
                                                 <input type="file" class="chooseFile" name="image"  
                                                    
-                                                       src="{{ asset('storage/app/company/company-1.jpg') }}?{{ time() }}" 
+                                                       src="{{ asset('storage/app/company/company-6.jpg') }}?{{ time() }}" 
                                                    
                                                 >
                                             </div>
@@ -178,7 +175,7 @@
                     </form>
 
 
-                    <form method="post" action="{{ route('slider_2') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                    <form method="post" action="{{ route('sesudah_slider_2') }}" enctype="multipart/form-data"  accept-charset="utf-8">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                         <div class="row clearfix">
                             <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
@@ -189,7 +186,7 @@
                                     <div class="form-line">
                                         <div >
                                             <img class="image_drop img-responsive" 
-                                               src="{{ asset('storage/app/company/company-2.jpg') }}?{{ time() }}" 
+                                               src="{{ asset('storage/app/company/company-7.jpg') }}?{{ time() }}" 
                                            width="400px" height="300px" name="image-drop2">
                                         </div>
                                         <br>
@@ -203,7 +200,7 @@
                                                     </div> 
                                                 <input type="file" class="chooseFile" name="image"  
                                                    
-                                                       src="{{ asset('storage/app/company/company-2.jpg') }}?{{ time() }}" 
+                                                       src="{{ asset('storage/app/company/company-7.jpg') }}?{{ time() }}" 
                                                    
                                                 >
                                             </div>
@@ -215,7 +212,7 @@
                         </div>
                     </form>
 
-                    <form method="post" action="{{ route('slider_3') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                    <form method="post" action="{{ route('sesudah_slider_3') }}" enctype="multipart/form-data"  accept-charset="utf-8">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                         <div class="row clearfix">
                             <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
@@ -226,7 +223,7 @@
                                     <div class="form-line">
                                         <div >
                                             <img class="image_drop img-responsive" 
-                                               src="{{ asset('storage/app/company/company-3.jpg') }}?{{ time() }}" 
+                                               src="{{ asset('storage/app/company/company-8.jpg') }}?{{ time() }}" 
                                            width="400px" height="300px" name="image-drop3">
                                         </div>
                                         <br>
@@ -240,7 +237,7 @@
                                                     </div> 
                                                 <input type="file" class="chooseFile" name="image"  
                                                    
-                                                       src="{{ asset('storage/app/company/company-3.jpg') }}?{{ time() }}" 
+                                                       src="{{ asset('storage/app/company/company-8.jpg') }}?{{ time() }}" 
                                                    
                                                 >
                                             </div>
@@ -251,83 +248,6 @@
                              <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
                         </div>
                     </form>
-
-                    <form method="post" action="{{ route('bg_page') }}" enctype="multipart/form-data"  accept-charset="utf-8">
-                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                        <div class="row clearfix">
-                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                <label for="intinerary">Bg per package/book</label>
-                            </div>
-                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <div >
-                                            <img class="image_drop img-responsive" 
-                                               src="{{ asset('storage/app/company/bg-4.jpg') }}?{{ time() }}" 
-                                           width="400px" height="300px" name="image-drop4">
-                                        </div>
-                                        <br>
-                                        <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
-                                            <div class="file-select">
-                                                <div class="file-select-button fileName" >Image</div>
-                                                    <div class="file-select-name noFile">
-                                                        
-                                                             Image
-                                                        
-                                                    </div> 
-                                                <input type="file" class="chooseFile" name="image"  
-                                                   
-                                                       src="{{ asset('storage/app/company/bg-4.jpg') }}?{{ time() }}" 
-                                                   
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
-                        </div>
-                    </form>
-
-                    <form method="post" action="{{ route('bg_article') }}" enctype="multipart/form-data"  accept-charset="utf-8">
-                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                        <div class="row clearfix">
-                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                <label for="intinerary">Bg Artikel</label>
-                            </div>
-                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <div >
-                                            <img class="image_drop   img-responsive" 
-                                               src="{{ asset('storage/app/company/bg-5.jpg') }}?{{ time() }}" 
-                                           width="400px" height="300px" name="image-drop4">
-                                        </div>
-                                        <br>
-                                        <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
-                                            <div class="file-select">
-                                                <div class="file-select-button fileName" >Image</div>
-                                                    <div class="file-select-name noFile">
-                                                        
-                                                             Image
-                                                        
-                                                    </div> 
-                                                <input type="file" class="chooseFile" name="image"  
-                                                   
-                                                       src="{{ asset('storage/app/company/bg-5.jpg') }}?{{ time() }}" 
-                                                   
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
-                        </div>
-                    </form>
-
-
-
                     </div>
                 </div>
             </div>

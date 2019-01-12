@@ -40,7 +40,7 @@
                                 <th class="center">Phone</th>
                                 <th class="center">Email</th>
                                 <th class="center">Address</th>
-                                <th class="center">Com Name</th>
+                                <th class="center">Com sName</th>
                                 <th class="center">Man Name</th>
                                 <th class="center">Status</th>
                                 <th class="center">Privileges</th>

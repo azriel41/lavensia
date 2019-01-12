@@ -13,7 +13,7 @@
     }
     
 </style>
-<div style="width:900px">
+<div style="width:700px">
 <table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;">
     <tr>
         <td height="100" width="30%" style="padding-left: 10px;">Flight Detail</td>

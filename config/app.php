@@ -182,6 +182,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Yugo\SMSGateway\Providers\SmsServiceProvider::class,
+        // 
+
         /* doom pdf*/ 
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
@@ -238,7 +240,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Input' => Illuminate\Support\Facades\Input::class,
-
+        'providers' => [ App\Providers\D_memServiceProvider::class ]
     ],
 
 ];

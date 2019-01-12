@@ -1184,7 +1184,7 @@ li {
 }
 
 .hero-search-form {
-    margin-top: 90px;
+    margin-top: 30%;
     position: relative;
     z-index: 1;
 }
@@ -1629,15 +1629,15 @@ li {
 .contact-form-area {
 	position: relative;
 	z-index: 1;
-	padding: 100px 40px 100px 50px;
+	padding: 60px 40px 60px 50px;
 }
 
 .contact-form-area,
 .dorne-map-area {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    width: 50%;
+        /*-ms-flex: 0 0 50%;*/
+            /*flex: 0 0 50%;*/
+    /*width: 50%;*/
 }
 
 #googleMap {

@@ -14,20 +14,19 @@
 <link href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
 <!-- Custom Css -->
-<link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
 
 {{-- <link href="{{ asset ('assets_frontend/css/package_style.css') }}" rel="stylesheet"> --}}
 
 <!-- Waves Effect Css -->
 <link href="{{ asset ('assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
+<link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
 
 <!-- Animation Css -->
 <link href="{{ asset ('assets/plugins/animate-css/animate.css') }}" rel="stylesheet" />
 
 {{-- Bootstrap Datatable --}}
 <link href="{{ asset ('assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-
 <!-- Swall Css-->
 <link href="{{ asset ('assets/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" />
 
@@ -153,4 +152,16 @@
 	.uppercase{
         text-transform: uppercase;
     }
+    .crop {
+	    width: 70px;
+	    height: 70px;
+	    border-radius: 50%;
+	    overflow: hidden;
+	}
+
+	.crop img {
+		width: 200px;
+	    height: 100px;
+	    margin: -15px 0 0 -65px;
+	}
 </style>

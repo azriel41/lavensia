@@ -5,7 +5,14 @@
 <script src="{{ asset ('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 <!-- Bootstrap Core Js -->
 <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.js') }}"></script>
+<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
+<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.time.js') }}"></script>
 
+<!-- Sparkline Chart Plugin Js -->
+<script src="{{ asset ('assets/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
 <!-- Bootstrap Tags Input Plugin Js -->
 <script src="{{ asset ('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
 
@@ -34,14 +41,7 @@
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset ('assets/plugins/node-waves/waves.js') }}"></script>
 
-<!-- Flot Charts Plugin Js -->
-<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.js') }}"></script>
-<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
-<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
-<script src="{{ asset ('assets/plugins/flot-charts/jquery.flot.time.js') }}"></script>
 
-<!-- Sparkline Chart Plugin Js -->
-<script src="{{ asset ('assets/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
 <!-- TinyMCE -->
 <!-- Custom Js -->
 <script src="{{ asset ('assets/js/admin.js') }}"></script>

@@ -217,7 +217,7 @@ class agentController extends Controller
            }
        }
 
-       return $filename;
+       // return $filename;
        
        $image = DB::table('users')->where('id',$id)->update([
                 'co_name'       =>$request->co_name,

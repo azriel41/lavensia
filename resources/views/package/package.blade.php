@@ -23,12 +23,15 @@ hr{
 .book-a-table-widget{
   background-color: transparent !important;
 }
+.opening-hours-widget {
+  padding: 20px;
+}
 </style>
 @endsection
 
 @section('content')
 
- <div class="breadcumb-area height-500 bg-img bg-overlay" style="background-image: url({{ asset('assets_frontend_2/img/bg-img/breadcumb.jpg') }} )">
+ <div class="breadcumb-area height-500 bg-img bg-overlay" style="background-image: url({{ asset('storage/app/company/bg-4.jpg') }} )">
        
     </div>
     <!-- ***** Breadcumb Area End ***** -->
@@ -49,7 +52,7 @@ hr{
                         @endif
                     <div class="single-listing-content">
                         <div class="listing-title">
-                            <h3>{{ $data[0]->mi_name }}</h3>
+                            <h1>{{ $data[0]->mi_name }}</h1>
                             <h5>
                                 {{ $data[0]->mi_highlight }}
                             </h5>
@@ -191,7 +194,7 @@ hr{
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th><b>Additional Table</b></th>
+                                        <th><h5>Additional Price</h5></th>
                                     </tr>
                                 </table>
                                 <div style="margin-top: 20px"></div>
@@ -222,7 +225,7 @@ hr{
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th><b>Term & Conditions</b></th>
+                                        <th> <h5>Term & Condition </h5></th>
                                     </tr>
                                     
                                 </table>
@@ -240,23 +243,22 @@ hr{
                     <div class="listing-sidebar">
 
                         <!-- Listing Verify -->
-                        <div class="author-widget mt-50 d-flex align-items-center">
-                            <img src="{{ asset('assets_frontend_2/img/clients-img/1.jpg') }}" alt="">
-                            <div class="authors-name">
-                                <a href="#">{{ $data[0]->created_by }}</a>
-                                <p>The Author</p>
-                                <p> {{ date('d M Y',strtotime($det->created_at))  }}</p>
-                            </div>
-                        </div>
-
+                      
                         <!-- Book A Table Widget -->
                         <div class="book-a-table-widget mt-50">
                             <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
                         </div>
 
                         
-
-
+                        <div class="opening-hours-widget mt-50">
+                            <h6>More Information</h6>
+                            <ul class="opening-hours">
+                                <li>
+                                    <p>ITINERARY</p>
+                                    <p><button type="button" class="btn btn-small btn-book download_itin" data-id="{{ $data[0]->mi_id }}" ><b><i class="fa fa-cloud-download"></i> Download</b></button></p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,6 +271,11 @@ hr{
 <script type="text/javascript">
     
 
+    $('.download_itin').click(function(){
+        var ini = $(this).data('id');
+        window.open(baseUrl+'/booking/bookingdetail_download_itin/'+ini);
+
+    })
     
     function booking(id) {
         var rand1 = '{{ md5('Demi yang Maha Pengasih Lagi Maha Penyayang Bagi Sang Pencipta Alam Semesta').rand(1,1000000) }}';
