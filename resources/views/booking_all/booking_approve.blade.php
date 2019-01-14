@@ -6,7 +6,7 @@
     <head>
         <!-- meta charec set -->
        
-        {{-- @include('layouts_frontend._head') --}}
+        @include('layouts_frontend._head')
        
         <style type="text/css">
             .btn-primary {
