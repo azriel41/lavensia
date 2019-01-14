@@ -117,9 +117,9 @@
                             </ul>
                             </div>
                             @else
-                                <div class="dorne-add-listings-btn login_log">
+                               {{--  <div class="dorne-add-listings-btn login_log">
                                     <button class="btn dorne-btn" onclick="login_log_log()"><i class="fa fa-lock"></i> Log In</button>
-                                </div>
+                                </div> --}}
                             @endif
                             
                             @endif
