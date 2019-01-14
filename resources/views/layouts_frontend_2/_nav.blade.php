@@ -118,7 +118,7 @@
                             </div>
                             @else
                                 <div class="dorne-add-listings-btn login_log">
-                                    <button class="btn dorne-btn" onclick="login_log()"><i class="fa fa-lock"></i> Log In</button>
+                                    <button class="btn dorne-btn" onclick="login_log_log()"><i class="fa fa-lock"></i> Log In</button>
                                 </div>
                             @endif
                             
@@ -212,6 +212,11 @@
 <script src="{{ asset('assets_frontend_2/js/jquery/jquery-2.2.4.min.js') }}"></script>
 
 <script type="text/javascript">
+    
+    function login_log_log() {
+        window.location = (baseUrl+'/login');
+    }
+
     $( window ).load(function() {
 
         if ($(window).width() < 465) {
