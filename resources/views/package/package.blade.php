@@ -249,7 +249,8 @@ hr{
                             <img class="img-responsive" src="{{  asset('storage/app/'.$data[0]->mi_image)  }}" width="300px" height="400px" alt="">
                         </div>
 
-                        
+                        @if (Auth::user() != null)
+
                         <div class="opening-hours-widget mt-50">
                             <h6>More Information</h6>
                             <ul class="opening-hours">
@@ -263,6 +264,7 @@ hr{
                                 </li>
                             </ul>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@
             <th class="center row2"  colspan="4">Pembagian Kamar</th>
         </tr>
         @php
-            $temp = 0;
+            $temp = 1;
         @endphp
         <tr style="background-color: #d7abff">
             <td align="center">1</td>
@@ -50,8 +50,8 @@
             </tr>
         @endif
         @foreach ($id as $i=>$awal)
+
             @foreach ($room[$i] as $a=>$awal1)
-               
                 <tr class="bor-top">
                     <td align="center">
                         @foreach ($passenger as $akhir)
@@ -61,7 +61,7 @@
                                 @elseif($akhir->dp_status_person == 'baby')
                                     <label>{{ $temp +=1 }}</label><span class="dot1" ></span><br>
                                 @else
-                                    <label>{{ $temp +=2 }}</label><span class=""></span><br>
+                                    <label>{{ $temp +=1 }}</label><span class=""></span><br>
                                 @endif
                             @endif
                         @endforeach
