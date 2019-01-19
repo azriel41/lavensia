@@ -51,9 +51,9 @@
         transition-property: top;
         transition-duration: 0.2s; 
         position: fixed !important; 
-        top: -20px; 
+        top: -100px; 
         left: 0px; 
-        z-index: 1;
+        z-index: 10;
         width: 100%;
         background-color: #fff
     }
@@ -90,8 +90,11 @@
                          
                     </div>
                     <div class="col-sm-5">
-                        <table>
+                        <table class="table">
                             <caption>KETERANGAN</caption>
+                            <tr>
+                                <th style="text-transform: uppercase;">DETAIL KODE NOMOR {{ $detail_intinerary->md_nota }} | TANGGAL : {{ carbon\carbon::parse($detail_intinerary->md_start)->format('d F Y') }} - {{ carbon\carbon::parse($detail_intinerary->md_end)->format('d F Y') }}</th>
+                            </tr>
                             <tr>
                                 <td><span class="dot" style="margin-bottom: 0px !important"></span></td>
                                 <td>:</td>
@@ -152,8 +155,11 @@
                 <div class="body table-responsive">
                     <div class="col-sm-12 keterangan_1">
                         <div class="col-sm-6">
-                            <table>
+                            <table class="table">
                                 <caption>KETERANGAN</caption>
+                                <tr>
+                                    <th style="text-transform: uppercase;">DETAIL KODE NOMOR {{ $detail_intinerary->md_nota }} | TANGGAL : {{ carbon\carbon::parse($detail_intinerary->md_start)->format('d F Y') }} - {{ carbon\carbon::parse($detail_intinerary->md_end)->format('d F Y') }}</th>
+                                </tr>
                                 <tr>
                                     <td><span class="dot" style="margin-bottom: 0px !important"></span></td>
                                     <td>:</td>
