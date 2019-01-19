@@ -557,8 +557,8 @@ class intinerary_controller extends Controller
         // dd($req->all());
         return DB::transaction(function() use ($req) {  
             DB::table('d_tour_leader')->where('tl_id',$req->id)->delete();    
+            return Response::json(['status'=>1]);
         });
-        return Response::json(['status'=>1]);
 
     }
 

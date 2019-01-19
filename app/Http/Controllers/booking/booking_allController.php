@@ -283,15 +283,12 @@ class booking_allController extends Controller
 
 						if (isset($req->file('image')[$b])) {
 							$file = $req->file('image')[$b];
-							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->passport[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 		                	Storage::put($filename,file_get_contents($file));
 						}else{
 							$filename =  $this->d_party_name->show_detail_one('dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b])->dp_image;
 						}
 							
-					
-
-						
 						$data = array(	
 							'dp_bed'			=> $req->dp_bed[$b],
 							'dp_name'			=> strtoupper($req->name[$b]),
@@ -317,7 +314,7 @@ class booking_allController extends Controller
 						}
 
 						if ($file != null) {
-			                $filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+			                $filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->passport[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 
 			                Storage::put($filename,file_get_contents($file));
 			            }else{
@@ -492,7 +489,7 @@ class booking_allController extends Controller
 
 						if (isset($req->file('image')[$b])) {
 							$file = $req->file('image')[$b];
-							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+							$filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->passport[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 		                	Storage::put($filename,file_get_contents($file));
 						}else{
 							$filename =  $this->d_party_name->show_detail_one('dp_booking_id',$req->booking_id,'dp_detail',$req->dp_detail[$b])->dp_image;
@@ -523,7 +520,7 @@ class booking_allController extends Controller
 						}
 
 						if ($file != null) {
-			                $filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->name[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+			                $filename = 'booking/'.$book->db_kode_transaksi.'_'.$req->passport[$b].'_'.$req->booking_id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 
 			                Storage::put($filename,file_get_contents($file));
 			            }else{

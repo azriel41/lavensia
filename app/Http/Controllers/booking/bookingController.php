@@ -186,7 +186,7 @@ class bookingController extends Controller
 		            if ($file != null) {
 
 		                $tour_code = str_replace('/', '-', $req->tour_code);
-		                $filename = 'booking/'.$index.'_'.$req->r_name[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
+		                $filename = 'booking/'.$index.'_'.$req->r_passport[$b].'_'.$id.'_'.$dt.'.'.$file->getClientOriginalExtension();
 
 		                Storage::put($filename,file_get_contents($file));
 		            }else{
