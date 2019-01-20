@@ -113,6 +113,9 @@ Route::get('/package/package/{id}', 'package\packageController@package')->name('
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
 Route::get('/contact/contact', 'additional\partnerController@contact')->name('contact');
 
+Route::get('/load_footer', 'additional\partnerController@load_footer')->name('load_footer');
+
+
 //article index
 Route::get('/article/article/{id}', 'article\articleController@article')->name('article');
 //cari itinerary di welcome page

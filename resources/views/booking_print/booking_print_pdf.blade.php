@@ -174,17 +174,7 @@
                     echo $infant;
                 @endphp
             </td>
-        </tr>
-        <tr>
-            <td>Twin</td>
-            <td>:</td>
-            <td>
-               {{ $twin }}
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td&nbsp;></td>
-        </tr>
+    
         <tr>
             <td>Triple</td>
             <td>:</td>

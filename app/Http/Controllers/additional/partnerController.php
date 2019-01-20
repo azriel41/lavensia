@@ -78,4 +78,10 @@ class partnerController extends Controller
 	        return view('additional.contact',compact('contact'));
 		}
     }
+    public function load_footer()
+    {
+    	$data = DB::table('m_contact')->select('mc_rek')->get();
+
+    	return response()->json(['kontak'=>$data[0]->mc_rek]);
+    }
 }

@@ -18,13 +18,15 @@ class packageController extends Controller
 {
     public function package(Request $request,$id)
     {
+        // return 'a';
     	$id = $request->id;
 
     	$data = intinerary::where('mi_id','=',$id)->get();
-    	foreach ($data as $index => $det) {
-    		$detail = $det->detail_intinerarys;
-    	}
-    	// return $detail;
+    	// foreach ($data as $index => $det) {
+    		// $detail = $det->detail_intinerarys;
+    	// }
+        $detail = DB::table('m_detail_intinerary')->where('md_intinerary_id',$id)->orderBy('md_start','ASC')->get();
+    	// return $detail; 
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
        
         $additional = DB::table('m_additional_intinerary')

@@ -187,6 +187,7 @@ return [
         /* doom pdf*/ 
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        
 
     ],
 

@@ -62,7 +62,12 @@ class booking_allController extends Controller
     public function datatable_booking_all(Request $req)
     {
            
-    	$data = $this->d_booking->all()->sortByDesc("created_at");;
+    	$data = $this->d_booking->all()->sortByDesc("created_at");
+    	// $data = DB::table('d_booking')
+    					// ->join('m_intinerary','mi_id','db_intinerary_id')
+    					// ->join('m_user','mi_id','db_intinerary_id')
+    					// ->get();
+        // return $data;
         $data = collect($data);
         return Datatables::of($data)
 			        ->addColumn('aksi', function ($data) {
@@ -111,7 +116,7 @@ class booking_allController extends Controller
 			            return $a.$b.$c.$d;
 			        })->addColumn('handle_name', function ($data) {
 			        	if ($data->db_handle_by != null) {
-			        		return $data->handle->name;
+			        		return $data->user->name;
 			        	}else{
 			        		return '-';
 			        	}
@@ -121,6 +126,8 @@ class booking_allController extends Controller
 			        	}else{
 			        		return '-';
 			        	}
+			        })->addColumn('deep_date', function ($data) {
+			        		return $data->detail_itin->md_start;
 			        })->addColumn('code', function ($data) {
 
 			        	$pay = $data->payment;
@@ -144,7 +151,7 @@ class booking_allController extends Controller
                         
 			        })
 
-			        ->rawColumns(['aksi','handle_name','code','label'])
+			        ->rawColumns(['aksi','handle_name','code','label','deep_date'])
 			        ->addIndexColumn()
 			        ->make(true);
 

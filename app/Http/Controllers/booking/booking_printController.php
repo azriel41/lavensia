@@ -12,6 +12,7 @@ use App\detail_intinerary;
 use App\User;
 use App\additional;
 use App\m_additional_intinerary;
+Use phpoffice\phpspreadsheet;
 use DB;
 use carbon\Carbon;
 use Auth;
@@ -27,7 +28,6 @@ use App\all_variable;
 use Excel;
 use PDF;
 use PHPExcel_Worksheet_PageSetup;
-
 
 class booking_printController extends Controller
 {
@@ -107,72 +107,62 @@ class booking_printController extends Controller
         $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();
         // return json_encode($tourled);
         // hitung bed
-        $book_onlybed    = DB::table('m_detail_intinerary')
-                                        ->select('dp_booking_id','dp_bed')
+        $double    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
                                         ->where('md_id',$id)
-                                        ->groupBy('dp_booking_id','dp_bed')
+                                        ->where('dp_bed','double')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $single    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','single')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $twin    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','twin')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $triple    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','triple')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $doubletwincwb    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','doubletwin&cwb')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $doubletwincnb    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','doubletwin&cnb')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
                                         ->get();
         
 
-        $double = [];
-        $doubletwincnb = [];
-        $single = [];
-        $twin = [];
-        $triple = [];
-        $doubletwincwb = [];
-
-        for ($i=0; $i <count($book_onlybed) ; $i++) {
-            if ($book_onlybed[$i]->dp_bed == 'double') {
-                $double[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
-                $doubletwincnb[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'single') {
-                $single[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'twin') {
-                $twin[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'triple') {
-                $triple[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cwb') {
-                $doubletwincwb[$i] = $book_onlybed[$i]->dp_bed;
-            }
-        }
-        if ($double == null) {
-            $double = 0;
-        }else{
-            $double = count($double)+1;
-        }
-
-        if ($doubletwincnb == null) {
-            $doubletwincnb = 0;
-        }else{
-            $doubletwincnb = count($doubletwincnb);
-        }
-
-        if ($single == null) {
-            $single = 0;
-        }else{
-            $single = count($single);
-        }
-
-        if ($twin == null) {
-            $twin = 0;
-        }else{
-            $twin = count($twin);
-        }
-
-        if ($triple == null) {
-            $triple = 0;
-        }else{
-            $triple = count($triple);
-        }
-
-        if ($doubletwincwb == null) {
-            $doubletwincwb = 0;
-        }else{
-            $doubletwincwb = count($doubletwincwb);
-        }
+        $double = count($double)+1;
+        $doubletwincnb = count($doubletwincnb);
+        $single = count($single);
+        $twin = count($twin);
+        $triple = count($triple);
+        $doubletwincwb = count($doubletwincwb);
 
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
@@ -217,10 +207,10 @@ class booking_printController extends Controller
             }
             
         }
-        // return $person;
-        
-        
-        Excel::create('Excel '.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
+        // return Excel::download('aa', 'users.xlsx');
+        ob_end_clean();
+        ob_start();
+        return Excel::create('Excel'.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
             $excel->sheet('New sheet', function($sheet) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight) {
                 $sheet->loadView('booking_print.booking_print_excel')
                 ->with('passenger',$passenger)
@@ -239,7 +229,9 @@ class booking_printController extends Controller
                 ->with('doubletwincwb',$doubletwincwb);
             });
 
-        })->download('xls');
+        })->export('pdf');
+        b_flush();
+
         // return view('booking_print.booking_print_excel',compact('double','doubletwincnb','single','twin','triple','doubletwincwb','tourled','flight','passenger','id','room','bed','person','booking','detail_intinerary'));
     }
     public function print_pdf($id)
@@ -248,72 +240,63 @@ class booking_printController extends Controller
         $detil   = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
         $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();
         // hitung bed
-        $book_onlybed    = DB::table('m_detail_intinerary')
-                                        ->select('dp_booking_id','dp_bed')
+        $double    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
                                         ->where('md_id',$id)
-                                        ->groupBy('dp_booking_id','dp_bed')
+                                        ->where('dp_bed','double')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $single    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','single')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $twin    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','twin')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $triple    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','triple')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $doubletwincwb    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','doubletwin&cwb')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->get();
+        $doubletwincnb    = DB::table('m_detail_intinerary')
+                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
+                                        ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
+                                        ->where('md_id',$id)
+                                        ->where('dp_bed','doubletwin&cnb')
+                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
                                         ->get();
         
 
-        $double = [];
-        $doubletwincnb = [];
-        $single = [];
-        $twin = [];
-        $triple = [];
-        $doubletwincwb = [];
+        $double = count($double)+1;
+        $doubletwincnb = count($doubletwincnb);
+        $single = count($single);
+        $twin = count($twin);
+        $triple = count($triple);
+        $doubletwincwb = count($doubletwincwb);
 
-        for ($i=0; $i <count($book_onlybed) ; $i++) {
-            if ($book_onlybed[$i]->dp_bed == 'double') {
-                $double[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
-                $doubletwincnb[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'single') {
-                $single[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'twin') {
-                $twin[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'triple') {
-                $triple[$i] = $book_onlybed[$i]->dp_bed;
-            }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cwb') {
-                $doubletwincwb[$i] = $book_onlybed[$i]->dp_bed;
-            }
-        }
-        if ($double == null) {
-            $double = 0;
-        }else{
-            $double = count($double)+1;
-        }
-
-        if ($doubletwincnb == null) {
-            $doubletwincnb = 0;
-        }else{
-            $doubletwincnb = count($doubletwincnb);
-        }
-
-        if ($single == null) {
-            $single = 0;
-        }else{
-            $single = count($single);
-        }
-
-        if ($twin == null) {
-            $twin = 0;
-        }else{
-            $twin = count($twin);
-        }
-
-        if ($triple == null) {
-            $triple = 0;
-        }else{
-            $triple = count($triple);
-        }
-
-        if ($doubletwincwb == null) {
-            $doubletwincwb = 0;
-        }else{
-            $doubletwincwb = count($doubletwincwb);
-        }
 
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
@@ -372,12 +355,19 @@ class booking_printController extends Controller
 						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
 						->where('db_intinerary_id','=',$id)
 						->get();
-    	// return $data;
+        $detil   = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
+        $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();            
+        if ($tourled != null) {
+            $img_leader = $tourled->tl_image;
+        }else{
+            $img_leader = null;
+        }
+    	// return $img_leader;
         // $dompdf = new Dompdf();
         // $dompdf->loadHtml('booking_print.booking_print_passport', compact('data'));
         // $dompdf->stream();
         // $pdf = PDF::loadView('booking_print.booking_print_passport', compact('data'))->setPaper('a4','landscape')->download('Passport '.date('d-m-y').'.pdf');
-		return view('booking_print.booking_print_passport',compact('data'));
+		return view('booking_print.booking_print_passport',compact('data','img_leader'));
 
         // $pdf = PDF::loadView('booking_print.booking_print_passport',compact('data'));
         // return $pdf->setPaper('A4', 'landscape')->->stream('temp.pdf');
