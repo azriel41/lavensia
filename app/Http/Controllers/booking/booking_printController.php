@@ -263,64 +263,28 @@ class booking_printController extends Controller
                                         ->get();
         
 
-        $double = [];
-        $doubletwincnb = [];
-        $single = [];
-        $twin = [];
-        $triple = [];
-        $doubletwincwb = [];
+        $double = 1;
+        $doubletwincnb = 0;
+        $single = 0;
+        $twin = 0;
+        $triple = 0;
+        $doubletwincwb = 0;
 
         for ($i=0; $i <count($book_onlybed) ; $i++) {
             if ($book_onlybed[$i]->dp_bed == 'double') {
-                $double[$i] = $book_onlybed[$i]->dp_bed;
+                $double = $book_onlybed[$i]->dp_booking_id;
             }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
-                $doubletwincnb[$i] = $book_onlybed[$i]->dp_bed;
+                $doubletwincnb = $book_onlybed[$i]->dp_booking_id;
             }elseif ($book_onlybed[$i]->dp_bed == 'single') {
-                $single[$i] = $book_onlybed[$i]->dp_bed;
+                $single = $book_onlybed[$i]->dp_booking_id;
             }elseif ($book_onlybed[$i]->dp_bed == 'twin') {
-                $twin[$i] = $book_onlybed[$i]->dp_bed;
+                $twin = $book_onlybed[$i]->dp_booking_id;
             }elseif ($book_onlybed[$i]->dp_bed == 'triple') {
-                $triple[$i] = $book_onlybed[$i]->dp_bed;
+                $triple = $book_onlybed[$i]->dp_booking_id;
             }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cwb') {
-                $doubletwincwb[$i] = $book_onlybed[$i]->dp_bed;
+                $doubletwincwb = $book_onlybed[$i]->dp_booking_id;
             }
         }
-        if ($double == null) {
-            $double = 0;
-        }else{
-            $double = count($double)+1;
-        }
-
-        if ($doubletwincnb == null) {
-            $doubletwincnb = 0;
-        }else{
-            $doubletwincnb = count($doubletwincnb);
-        }
-
-        if ($single == null) {
-            $single = 0;
-        }else{
-            $single = count($single);
-        }
-
-        if ($twin == null) {
-            $twin = 0;
-        }else{
-            $twin = count($twin);
-        }
-
-        if ($triple == null) {
-            $triple = 0;
-        }else{
-            $triple = count($triple);
-        }
-
-        if ($doubletwincwb == null) {
-            $doubletwincwb = 0;
-        }else{
-            $doubletwincwb = count($doubletwincwb);
-        }
-
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
         $booking   = $detail_intinerary->book;
