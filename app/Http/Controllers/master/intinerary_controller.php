@@ -334,7 +334,7 @@ class intinerary_controller extends Controller
     public function departure(Request $req)
     {
         $data = $this->all_variable->intinerary()->same('mi_id',$req->mc_id);
-        return $data;
+
         return view('master.master_intinerary.table_departure',compact('data'));
 
     }
