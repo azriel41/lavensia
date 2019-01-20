@@ -185,7 +185,7 @@ hr{
                                                 <br>
                                                 <span class="left">Tipping : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
                                                @if (Auth::user() != null)
-                                                <hr>
+                                                {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
                                                @endif
