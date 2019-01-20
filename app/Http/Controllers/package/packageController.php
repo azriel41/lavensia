@@ -20,7 +20,7 @@ class packageController extends Controller
     {
     	$id = $request->id;
 
-    	$data = intinerary::where('mi_id','=',$id)->get();
+    	$data = intinerary::where('mi_id','=',$id)->orderBy('md_start','ASC')->get();
     	foreach ($data as $index => $det) {
     		$detail = $det->detail_intinerarys;
     	}
