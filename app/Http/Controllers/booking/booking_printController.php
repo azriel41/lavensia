@@ -225,7 +225,7 @@ class booking_printController extends Controller
         $detil   = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
         $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();
         // hitung bed
-        $book_onlybed    = DB::table('m_detail_intinerary')
+        return $book_onlybed    = DB::table('m_detail_intinerary')
                                         ->select('dp_booking_id','dp_bed')
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
