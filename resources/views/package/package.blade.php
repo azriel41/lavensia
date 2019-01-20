@@ -177,7 +177,7 @@ hr{
                                                 <span class="left">Infant : </span><b>{{ number_format($det->md_infant_price,0,'','.') }} </b>
                                                </td>
                                                <td align="right" width="20%">
-                                                <span class="left">Visa : </span><b>{{ number_format($det->md_Visa,0,'','.') }} </b>
+                                                <span class="left">Visa : </span><b>{{ number_format($det->md_visa,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tax : </span><b>{{ number_format($det->md_tax,0,'','.') }} </b>
