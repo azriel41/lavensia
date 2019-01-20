@@ -10,7 +10,7 @@
 		<th>Seat</th>
 	</thead>
 	<tbody>
-		@foreach ($data->detail_intinerarys->sortByDesc('md_start','ASC') as $data)
+		@foreach ($data->detail_intinerarys->sortByAsc('md_start') as $data)
 		<tr>
 			<td><a onclick="" href="{{ route('intinerary_detail',['id'=>$data->md_id]) }}">{{ $data->md_nota }}</a></td>
 			<td>{{ Carbon\carbon::parse($data->md_start)->format('d-m-Y') }}</td>
