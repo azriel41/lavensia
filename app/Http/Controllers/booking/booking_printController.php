@@ -262,7 +262,7 @@ class booking_printController extends Controller
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
                                         ->where('md_id',$id)
-                                        ->where('dp_bed','doubletwincwb')
+                                        ->where('dp_bed','doubletwin&cwb')
                                         ->groupBy('dp_booking_id','dp_bed','dp_room')
                                         ->get();
         $doubletwincnb    = DB::table('m_detail_intinerary')
@@ -270,7 +270,7 @@ class booking_printController extends Controller
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
                                         ->where('md_id',$id)
-                                        ->where('dp_bed','doubletwincnb')
+                                        ->where('dp_bed','doubletwin&cnb')
                                         ->groupBy('dp_booking_id','dp_bed','dp_room')
                                         ->get();
         
