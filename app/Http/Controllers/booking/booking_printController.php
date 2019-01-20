@@ -226,11 +226,11 @@ class booking_printController extends Controller
         $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();
         // hitung bed
         $book_onlybed    = DB::table('m_detail_intinerary')
-                                        ->select('dp_booking_id','dp_bed','dp_room')
+                                        ->select('dp_bed','dp_room')
                                         ->leftjoin('d_booking','m_detail_intinerary.md_id','d_booking.db_intinerary_id') 
                                         ->leftjoin('d_party_name','d_booking.db_id','d_party_name.dp_booking_id') 
                                         ->where('md_id',$id)
-                                        ->groupBy('dp_booking_id','dp_bed','dp_room')
+                                        ->groupBy('dp_bed','dp_room')
                                         ->get();
         
 
@@ -243,17 +243,17 @@ class booking_printController extends Controller
 
         for ($i=0; $i <count($book_onlybed) ; $i++) {
             if ($book_onlybed[$i]->dp_bed == 'double') {
-                $double = $book_onlybed[$i]->dp_booking_id;
+                $double = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
-                $doubletwincnb = $book_onlybed[$i]->dp_booking_id;
+                $doubletwincnb = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'single') {
-                $single = $book_onlybed[$i]->dp_booking_id;
+                $single = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'twin') {
-                $twin = $book_onlybed[$i]->dp_booking_id;
+                $twin = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'triple') {
-                $triple = $book_onlybed[$i]->dp_booking_id;
+                $triple = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cwb') {
-                $doubletwincwb = $book_onlybed[$i]->dp_booking_id;
+                $doubletwincwb = $book_onlybed[$i]->dp_room;
             }
         }
         // return [$double,
