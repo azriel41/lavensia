@@ -132,7 +132,7 @@ hr{
                                                  <th>Book</th>
                                                @endif
                                                @if (Auth::user() != null)
-                                               <th>Code Tour</th>
+                                               <th>Down Payment</th>
                                                @endif
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Tour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -154,18 +154,17 @@ hr{
                                                </td>
                                                @endif
                                                @if (Auth::user() != null)
-                                               <td width="10%" align="right">
+                                               <td width="12%" align="right">
                                                 {{-- {{ $det->md_nota }} --}}
                                                 {{-- <br> --}}
                                                 {{-- <br> --}}
                                                 {{-- <br> --}}
-                                                <span class="left">DP : </span>
-                                                <b>{{ number_format($det->md_dp,0,'','.') }}</b>
-                                                <b>
+                                                <span class="left">DP : <b>{{ number_format($det->md_dp,0,'','.') }}</b></span>
+                                                
                                                 </td>
                                                @endif
-                                               <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j >s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
-                                               <td align="right" width="20%">
+                                               <td width="8%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j >s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
+                                               <td align="right" width="8%">
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>

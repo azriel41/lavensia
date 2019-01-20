@@ -115,7 +115,7 @@ class booking_printController extends Controller
                                         ->groupBy('dp_booking_id','dp_bed')
                                         ->get();
         
-
+        
         $double = [];
         $doubletwincnb = [];
         $single = [];
@@ -218,9 +218,15 @@ class booking_printController extends Controller
             
         }
         // return $person;
+        // return $flight;
+        // Excel::create('Filename.xls', function($excel) use ($flight){
+        //      $excel->sheet('New sheet', function($sheet) use ($flight){
+        //         $sheet->loadView('booking_print.booking_print_excel')
+        //                 ->with('flight',$flight);
+        //     });
+        // })->download('xls');
         
-        
-        Excel::create('Excel '.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
+        Excel::create('Excel'.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
             $excel->sheet('New sheet', function($sheet) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight) {
                 $sheet->loadView('booking_print.booking_print_excel')
                 ->with('passenger',$passenger)
@@ -239,7 +245,7 @@ class booking_printController extends Controller
                 ->with('doubletwincwb',$doubletwincwb);
             });
 
-        })->export('xlsx');
+        })->export('csv');
         // return view('booking_print.booking_print_excel',compact('double','doubletwincnb','single','twin','triple','doubletwincwb','tourled','flight','passenger','id','room','bed','person','booking','detail_intinerary'));
     }
     public function print_pdf($id)
