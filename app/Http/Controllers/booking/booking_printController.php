@@ -234,7 +234,7 @@ class booking_printController extends Controller
                                         ->get();
         
 
-        $double = 0;
+        $double = 1;
         $doubletwincnb = 0;
         $single = 0;
         $twin = 0;
@@ -243,7 +243,7 @@ class booking_printController extends Controller
 
         for ($i=0; $i <count($book_onlybed) ; $i++) {
             if ($book_onlybed[$i]->dp_bed == 'double') {
-                $double = $book_onlybed[$i]->dp_room;
+                $double += $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'doubletwin&cnb') {
                 $doubletwincnb = $book_onlybed[$i]->dp_room;
             }elseif ($book_onlybed[$i]->dp_bed == 'single') {
