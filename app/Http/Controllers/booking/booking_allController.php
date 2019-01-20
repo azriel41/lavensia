@@ -116,7 +116,7 @@ class booking_allController extends Controller
 			            return $a.$b.$c.$d;
 			        })->addColumn('handle_name', function ($data) {
 			        	if ($data->db_handle_by != null) {
-			        		return $data[$i]->name;
+			        		return $data->user->name;
 			        	}else{
 			        		return '-';
 			        	}
