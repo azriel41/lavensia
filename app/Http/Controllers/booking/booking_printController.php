@@ -220,7 +220,7 @@ class booking_printController extends Controller
                 $sheet->loadView('booking_print.booking_print_excel')
                         ->with('double',$double);
             });
-        })->download('xls');
+        })->export('xls');
         
         Excel::create('Excel'.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
             $excel->sheet('New sheet', function($sheet) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight) {

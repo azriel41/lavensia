@@ -18,8 +18,13 @@
     
 </style>
 </head>
-<body>sssss
-{{ $double }}
+<body>
+    <table>
+        <tr>
+            <td>{{ $double }}</td>
+        </tr>
+    </table>
+
 </body>
 </html>
 
