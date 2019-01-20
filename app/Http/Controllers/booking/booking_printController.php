@@ -378,12 +378,19 @@ class booking_printController extends Controller
 						->join('d_party_name','d_party_name.dp_booking_id','=','d_booking.db_id')
 						->where('db_intinerary_id','=',$id)
 						->get();
-    	// return $data;
+        $detil   = DB::table('m_detail_intinerary')->where('md_id',$id)->get();
+        $tourled = DB::table('d_tour_leader')->where('tl_id',$detil[0]->md_tour_leader)->first();            
+        if ($tourled != null) {
+            $img_leader = $tourled->tl_image;
+        }else{
+            $img_leader = null;
+        }
+    	// return $img_leader;
         // $dompdf = new Dompdf();
         // $dompdf->loadHtml('booking_print.booking_print_passport', compact('data'));
         // $dompdf->stream();
         // $pdf = PDF::loadView('booking_print.booking_print_passport', compact('data'))->setPaper('a4','landscape')->download('Passport '.date('d-m-y').'.pdf');
-		return view('booking_print.booking_print_passport',compact('data'));
+		return view('booking_print.booking_print_passport',compact('data','img_leader'));
 
         // $pdf = PDF::loadView('booking_print.booking_print_passport',compact('data'));
         // return $pdf->setPaper('A4', 'landscape')->->stream('temp.pdf');
