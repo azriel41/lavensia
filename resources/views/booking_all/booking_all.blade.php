@@ -50,7 +50,7 @@
                                            <th class="center-al">Code Tour</th>
                                            <th class="center-al">Date</th>
                                            <th class="center-al">Party Name</th>
-                                           {{-- <th class="center-al">Dep Date</th> --}}
+                                           <th class="center-al">Dep Date</th>
                                            {{-- <th class="center-al">Group Name</th> --}}
                                            <th class="center-al">Status</th>
                                            <th class="center-al">Book by</th>
@@ -85,7 +85,7 @@ $(document).ready(function(){
             {data: 'code', name: 'code'},
             {data: 'created_at',        name: 'created_at'},
             {data: 'db_name',           name: 'db_name'},
-            // {data: 'created_at',        name: 'created_at'},
+            {data: 'deep_date',        name: 'deep_date'},
             {data: 'label',         name: 'label'},
             {data: 'book_by',           name: 'book_by'},
             {data: 'handle_name',       name: 'handle_name'},

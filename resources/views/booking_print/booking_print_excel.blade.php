@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html>
+<head>
+    <title></title>
+    <style type="text/css">
+    
+    .intinerary{
+    border-collapse: collapse;
+    }
+
+    .intinerary ,.intinerary th, .intinerary td {
+        border: 1px solid black;
+    }
+    .c {
+        border-bottom: 1px solid black;
+    }
+    
+</style>
+</head>
 <body>
 <div >
     <table class="" style="width: 100%;vertical-align: middle;color: red">
     <tr>
-        {{-- @foreach ($flight as $f) --}}
-        {{-- <td>{{ $f->fd_nomor }} | {{ date('d-M',strtotime($f->fd_tanggal)) }} | {{ $f->fd_route }} | {{ $f->fd_time }}</td> --}}
-        {{-- @endforeach --}}
+        @foreach ($flight as $f)
+        <td>{{ $f->fd_nomor }} | {{ date('d-M',strtotime($f->fd_tanggal)) }} | {{ $f->fd_route }} | {{ $f->fd_time }}</td>
+        @endforeach
     </tr> 
 </table>
 <br>
-{{-- ssssssss --}}
-{{-- <table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;" >
+
+<table class="table table-bordered intinerary" style="width: 100%;vertical-align: middle;" >
         <tr style="vertical-align: middle;background-color: #5bc0de">
             <th class="center row2" width="1%" height="30px" rowspan="2">No</th>
             <th class="center row2" width="35%" rowspan="2">Passenger Name</th>
@@ -148,9 +165,9 @@
                 </tr>
             @endforeach
         @endforeach
-    </table> --}}
+    </table>
 <br>
-{{-- <div style="width: 200px">
+<div style="width: 200px">
     <table style="width: 400px;" border="0">
         <tr>
             <td>Single</td>
@@ -248,7 +265,7 @@
         </tr>
         
     </table>
-</div> --}}
+</div>
 </div>
 </body>
 </html>
