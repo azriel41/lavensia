@@ -26,6 +26,18 @@ hr{
 .opening-hours-widget {
   padding: 20px;
 }
+.title-itin{
+  color: black;
+  font-size: 18px;
+}
+.desc-itin{
+  color: black;
+  font-size: 15px;
+}
+.day-tour{
+  color: black;
+  font-weight: 400;
+}
 </style>
 @endsection
 
@@ -84,7 +96,7 @@ hr{
                                                 <th class="center-al">Time</th>
                                             </tr>
                                           @foreach ($flight as $element)
-                                            <tr>
+                                            <tr class="title-itin">
                                                 <td>{{ $element->fd_nomor }}</td>
                                                 <td>{{ $element->fd_route }}</td>
                                                 <td>{{ $element->fd_time }}</td>
@@ -102,8 +114,8 @@ hr{
                                             <div class="listing-menu-title">
                                                  <div style="min-height: 100px">
                                                     <div class="col-md-1 col-md-1 col-md-1" style="border: 1px solid #bcbcbc;border-left: 2px solid #7ed6df;">
-                                                        <span>Day</span><br>
-                                                        <span class="day-tour">{{ $index+1 }}</span>
+                                                        <span class="day-tour"><b>Day</b></span><br>
+                                                        <span class="day-tour"><b>{{ $index+1 }}</b></span>
                                                     </div>
 
                                                     <div class="col-md-11 col-md-11 col-md-11">
