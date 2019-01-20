@@ -263,7 +263,7 @@ class booking_printController extends Controller
                                         ->get();
         
 
-        $double = 1;
+        $double = 0;
         $doubletwincnb = 0;
         $single = 0;
         $twin = 0;
