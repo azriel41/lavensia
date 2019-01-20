@@ -239,7 +239,7 @@ class booking_printController extends Controller
                 ->with('doubletwincwb',$doubletwincwb);
             });
 
-        })->store('xls');
+        })->export('xlsx');
         // return view('booking_print.booking_print_excel',compact('double','doubletwincnb','single','twin','triple','doubletwincwb','tourled','flight','passenger','id','room','bed','person','booking','detail_intinerary'));
     }
     public function print_pdf($id)
