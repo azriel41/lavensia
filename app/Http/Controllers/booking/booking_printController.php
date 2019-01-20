@@ -12,6 +12,7 @@ use App\detail_intinerary;
 use App\User;
 use App\additional;
 use App\m_additional_intinerary;
+Use phpoffice\phpspreadsheet;
 use DB;
 use carbon\Carbon;
 use Auth;
@@ -27,7 +28,6 @@ use App\all_variable;
 use Excel;
 use PDF;
 use PHPExcel_Worksheet_PageSetup;
-
 
 class booking_printController extends Controller
 {
@@ -163,12 +163,6 @@ class booking_printController extends Controller
         $twin = count($twin);
         $triple = count($triple);
         $doubletwincwb = count($doubletwincwb);
-        // return [$double,
-        // $doubletwincnb,
-        // $single,
-        // $twin,
-        // $triple,
-        // $doubletwincwb];
 
         $detail_intinerary = $this->all_variable->detail_intinerary()->cari('md_id',$id);
 
@@ -213,16 +207,10 @@ class booking_printController extends Controller
             }
             
         }
-        // return $person;
-        // return $flight;
-       return  Excel::create('Filename', function($excel) use ($double){
-             $excel->sheet('New sheet', function($sheet) use ($double){
-                $sheet->loadView('booking_print.booking_print_excel')
-                        ->with('double',$double);
-            });
-        })->export('xls');
-        
-        Excel::create('Excel'.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
+        // return Excel::download('aa', 'users.xlsx');
+        ob_end_clean();
+        ob_start();
+        return Excel::create('Excel'.date('d-m-y'), function($excel) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight){
             $excel->sheet('New sheet', function($sheet) use ($tourled,$double,$doubletwincnb,$single,$twin,$triple,$doubletwincwb,$passenger,$id,$room,$bed,$person,$booking,$detail_intinerary,$flight) {
                 $sheet->loadView('booking_print.booking_print_excel')
                 ->with('passenger',$passenger)
@@ -241,7 +229,8 @@ class booking_printController extends Controller
                 ->with('doubletwincwb',$doubletwincwb);
             });
 
-        })->export('xls');
+        })->export('pdf');
+        b_flush();
 
         // return view('booking_print.booking_print_excel',compact('double','doubletwincnb','single','twin','triple','doubletwincwb','tourled','flight','passenger','id','room','bed','person','booking','detail_intinerary'));
     }
