@@ -65,7 +65,7 @@ hr{
                                 <ul class="nav nav-tabs ">
                                     <li><a class="active" data-toggle="tab" href="#tour"><i class="fa fa-plus-square-o"></i> Tour</a></li>
                                     <li><a data-toggle="tab" href="#menu1"><i class="fa fa-money"></i> Price</a></li>
-                                    <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li>
+                                    {{-- <li><a data-toggle="tab" href="#menu2"><i class="fa fa-plus"></i> Additional</a></li> --}}
                                     <li><a data-toggle="tab" href="#menu3"><i class="fa fa-text"></i> Term & Cond</a></li>
                                 </ul>
                             </nav>
@@ -128,8 +128,10 @@ hr{
                                         <thead>
                                            <tr style="background-color: #7ed6df;" >
                                                {{-- <th>No</th> --}}
-                                               <th>Book</th>
-                                               <th>Code Tour</th>
+                                               @if (Auth::user() != null)
+                                                 <th>Book</th>
+                                               @endif
+                                               {{-- <th>Code Tour</th> --}}
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Tour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Additional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -142,12 +144,14 @@ hr{
                                         </thead>
                                         <tbody>
                                           @foreach ($detail as $index => $det)
-                                           <tr align="left">
+                                           <tr align="center">
                                                {{-- <td width="5%">{{ $index+1 }}</td> --}}
+                                               @if (Auth::user() != null)
                                                <td width="10%">
                                                    <button class="btn btn-small btn-book" onclick="booking('{{ $det->md_id }}')" ><b style="font-size: 12px;"><i class="fa fa-share-square-o"></i> Book !</b></button>
                                                </td>
-                                               <td width="10%" align="right">
+                                               @endif
+                                              {{--  <td width="10%" align="right">
                                                 {{ $det->md_nota }}
                                                 <br>
                                                 <br>
@@ -155,13 +159,13 @@ hr{
                                                 <span class="left">DP : </span>
                                                 <b>{{ number_format($det->md_dp,0,'','.') }}</b>
                                                 <b>
-                                                </td>
-                                               <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j style="margin: 0% 0% 0% 20%;">s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
+                                                </td> --}}
+                                               <td width="20%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j >s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right" width="20%">
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>
-                                                <span class="left">Child : </span><b>{{ number_format($det->md_child_price,0,'','.') }} </b>
+                                                <span class="left">CnB : </span><b>{{ number_format($det->md_child_price,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">CwB : </span><b>{{ number_format($det->md_child_w_price,0,'','.') }} </b>
@@ -176,10 +180,10 @@ hr{
                                                 <span class="left">Tax : </span><b>{{ number_format($det->md_tax,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>
-                                                <span class="left">Tip gd : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
+                                                <span class="left">Tipping : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
                                                 {{-- <hr> --}}
-                                                <br>
-                                                <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
+                                                {{-- <br> --}}
+                                                {{-- <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b> --}}
                                                </td>
                                                </td>
                                                <td width="10%">{{ $det->md_seat_remain }}</td>
