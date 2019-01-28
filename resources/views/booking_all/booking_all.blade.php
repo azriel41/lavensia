@@ -164,6 +164,9 @@ $(document).ready(function(){
                                 icon: 'fas fa-check-circle',
                                 message: 'Data Telah Dihapus!',
                             });
+                            iziToast.hide({
+                                transitionOut: 'fadeOutUp'
+                            }, toast);
                         }else if (data.status == '0') {
                             iziToast.success({
                                 icon: 'fa fa-save',
