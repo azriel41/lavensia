@@ -41,7 +41,7 @@
                                 </p>
                             </div>
                             <div class="feature-favourite">
-                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                {{-- <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a> --}}
                             </div>
                         </div>
                     </div>
@@ -54,22 +54,6 @@
 
                         <!-- Single Features Area -->
 
-                        <div class="single-features-area">
-                            
-                            <!-- Price -->
-                            
-                            <div class="feature-content d-flex align-items-center justify-content-between">
-                                <div class="feature-title">
-                                    
-                                </div>
-                                <div class="feature-favourite">
-                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-
-       
 @endsection
 
 @section('extra_scripts')
