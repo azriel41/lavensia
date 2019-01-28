@@ -378,7 +378,7 @@
                             @endif
                              @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
-                                    <a href="{{ route('master_contact_isi') }}">Contact</a>
+                                    <a href="{{ route('master_contact_isi') }}">About Us</a>
                                 </li>
                             @endif
                             {{-- @if(Auth::user()->akses('company','mh_aktif'))
@@ -388,7 +388,7 @@
                             @endif --}}
                             @if(Auth::user()->akses('company','mh_aktif'))
                                 <li>
-                                    <a href="{{ route('master_bg_page') }}">bg per page</a>
+                                    <a href="{{ route('master_bg_page') }}">Bg per page</a>
                                 </li>
                             @endif
                             @if(Auth::user()->akses('article','mh_aktif'))
