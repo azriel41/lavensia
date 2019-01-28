@@ -135,7 +135,7 @@
                                     <div class="file-upload upl_1" style="width: 100%;">
                                         <div class="file-select">
                                             <div class="file-select-button fileName" >Image</div>
-                                            <div class="file-select-name noFile tag_image_1" >Passport Image</div> 
+                                            <div class="file-select-name noFile tag_image_1" >Image</div> 
                                             <input type="file" class="chooseFile" name="image">
                                         </div>
                                     </div>
