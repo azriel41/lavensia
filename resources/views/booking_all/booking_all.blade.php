@@ -140,7 +140,6 @@ $(document).ready(function(){
     function deleting(id) {
         iziToast.show({
             overlay: true,
-            timeout: 20000, 
             color: 'dark',
             icon: 'fa fa-question-circle',
             title: 'Hapus Booking!',
