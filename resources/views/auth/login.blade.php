@@ -44,8 +44,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label for="rememberme">Remember Me</label>
+                            {{-- <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> --}}
+                            {{-- <label for="rememberme">Remember Me</label> --}}
                         </div>
                         <div class="col-xs-4">
                             <button class="btn btn-block waves-effect"  style="color:white;background-color: #0526ce;" type="submit">SIGN IN</button>
