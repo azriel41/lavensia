@@ -80,12 +80,15 @@ class articleController extends Controller
       }else{
         $foto +=1;
       }
-      
+      // if ($request->file('image') == null) {
+        // return 'a';
+      // }else{
+        // return 'b';
+      // }
       $art = DB::table('d_article')->where('da_id',$request->id)->get();
-
-       if ($request->file('image') != null) {
+      // dd($request->all());
+       if ($request->file('image') == null) {
            $filename = $art[0]->da_image;
-           Storage::put('article/article-'.$filename,file_get_contents($request->file('image')->getRealPath()));
        }else{
            $image = $request->file('image');
            $upload = 'article/article';
