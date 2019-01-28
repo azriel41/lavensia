@@ -140,7 +140,6 @@ $(document).ready(function(){
     function deleting(id) {
         iziToast.show({
             overlay: true,
-            close: false,
             timeout: 20000, 
             color: 'dark',
             icon: 'fa fa-question-circle',
