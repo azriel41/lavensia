@@ -294,13 +294,13 @@ hr{
                         </div>
 
                         <div class="opening-hours-widget mt-50">
-                            <h6>Bank Informastion</h6>
+                            <h6>Bank Information</h6>
                             <ul class="opening-hours">
                                 <li>
                                     <table class="table" width="100%">
                                       <tr>
                                         <th width="28%"><img src="{{ asset('/assets_frontend_2/img/bca.png') }}" width="100px"></th>
-                                        <th class="text-left" style="padding-top: 20px;">
+                                        <th class="text-left" style="padding-top: 20px;padding-left: 0px">
                                           Rekening &nbsp; : 0889309000
                                           <br>
                                           <br>
