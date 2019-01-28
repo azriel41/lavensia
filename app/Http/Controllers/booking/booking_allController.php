@@ -62,7 +62,7 @@ class booking_allController extends Controller
     public function datatable_booking_all(Request $req)
     {
            
-    	$data = $this->d_booking->all()->sortByDesc("created_at");
+    	// $data = $this->d_booking->all()-/>sortByDesc("created_at");
     	$data = DB::table('d_booking')
     					->select('db_kode_transaksi','d_booking.created_at','db_name','db_handle_by','db_id','db_users','cr.name as dibuat','hd.name as dihandle','md_start','dh_status_payment','dh_id','db_status')
     					->leftjoin('d_history_bayar','db_id','dh_booking_id')
@@ -579,10 +579,10 @@ class booking_allController extends Controller
     	});
     }
 
-    public function booking_detail($id)
+    public function booking_detail($id,$refid)
     {
     	if (Auth::user()->akses('booking detail','mh_aktif')) {
-    		return view('booking_all.booking_detail',compact('id'));
+    		return view('booking_all.booking_detail',compact('id','refid'));
     	}else{
     		Session::flash('message','You Not Authorized');
     		return redirect()->back();
