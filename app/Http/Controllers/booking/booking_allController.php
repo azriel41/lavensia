@@ -63,10 +63,13 @@ class booking_allController extends Controller
     {
            
     	$data = $this->d_booking->all()->sortByDesc("created_at");
-    	// $data = DB::table('d_booking')
-    					// ->join('m_intinerary','mi_id','db_intinerary_id')
-    					// ->join('m_user','mi_id','db_intinerary_id')
-    					// ->get();
+    	$data = DB::table('d_booking')
+    					->select('db_kode_transaksi','d_booking.created_at','db_name','db_handle_by','db_id','db_users','cr.name as dibuat','hd.name as dihandle','md_start','dh_status_payment','dh_id','db_status')
+    					->leftjoin('d_history_bayar','db_id','dh_booking_id')
+    					->join('users as cr','cr.id','d_booking.created_by')
+    					->leftjoin('users as hd','hd.id','d_booking.db_handle_by')
+    					->join('m_detail_intinerary','md_id','db_intinerary_id')
+    					->get();
         // return $data;
         $data = collect($data);
         return Datatables::of($data)
@@ -116,28 +119,23 @@ class booking_allController extends Controller
 			            return $a.$b.$c.$d;
 			        })->addColumn('handle_name', function ($data) {
 			        	if ($data->db_handle_by != null) {
-			        		return $data->user->name;
+			        		return $data->dihandle;
 			        	}else{
 			        		return '-';
 			        	}
 			        })->addColumn('book_by', function ($data) {
 			        	if ($data->db_users != null) {
-			        		return $data->user->name;
+			        		return $data->dibuat;
 			        	}else{
 			        		return '-';
 			        	}
 			        })->addColumn('deep_date', function ($data) {
-			        		return $data->detail_itin->md_start;
+			        		return $data->md_start;
 			        })->addColumn('code', function ($data) {
 
-			        	$pay = $data->payment;
 			        	$a = '';
-			        	for ($i=0; $i < count($pay); $i++) { 
-			        		if ($pay[$i]->dh_status_payment == 'RELEASED') {
-			        			$a = '<i class="material-icons" style="color: red;font-size:10px">brightness_1</i>';
-			        		}
-			        	}
-			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'">'.$data->db_kode_transaksi.'</a>'.$a;
+	        			$a = '<i class="material-icons" style="color: red;font-size:10px">brightness_1</i>';
+			        	return '<a href="'.url('/booking/booking_detail').'/'.$data->db_id.'/'.$data->dh_id.'">'.$data->db_kode_transaksi.'</a>'.$a;
 			        })->addColumn('label', function ($data) {
 
 			        	if($data->db_status == 'Waiting List')
