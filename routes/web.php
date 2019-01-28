@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+	return Hash::make(123123);
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();

@@ -143,9 +143,13 @@ hr{
                                                @if (Auth::user() != null)
                                                  <th>Book</th>
                                                @endif
+
+                                               {{-- <th>Code Tour</th> --}}
+
                                                @if (Auth::user() != null)
                                                <th>Down Payment</th>
                                                @endif
+
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Tour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;Additional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -177,6 +181,7 @@ hr{
                                                @endif
                                                <td width="8%">{{ date('d M Y',strtotime($det->md_start))  }} <br> <j >s/d</j> <br> {{ date('d M Y',strtotime($det->md_end))  }}</td>
                                                <td align="right" width="8%">
+
                                                 <span class="left">Adult : </span><b>{{ number_format($det->md_adult_price,0,'','.') }} </b>
                                                 {{-- <hr> --}}
                                                 <br>
@@ -196,11 +201,13 @@ hr{
                                                 {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Tipping : </span><b>{{ number_format($det->md_tips,0,'','.') }} </b>
+
                                                @if (Auth::user() != null)
                                                 {{-- <hr> --}}
                                                 <br>
                                                 <span class="left">Agent com : </span><b>{{ number_format($det->md_agent_com,0,'','.') }} </b>
                                                @endif
+
                                                </td>
                                                </td>
                                                <td width="10%">{{ $det->md_seat_remain }}</td>
