@@ -277,6 +277,10 @@
                                                         <td align="right"> Rp.  {{ number_format($booking->db_tax, 2, ",", ".") }}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td align="right">Total :</td>
+                                                        <td align="right"><b> Rp.  {{ number_format($booking->db_total, 2, ",", ".") }}</b></td>
+                                                    </tr>
+                                                    <tr>
                                                         <td align="right">Paid :</td>
                                                         <td align="right"> Rp.  {{ number_format($booking->db_total-$booking->db_total_remain, 2, ",", ".") }}</td>
                                                     </tr>

@@ -253,7 +253,7 @@ hr{
                                 <table width="100%" class="kiri">
                                     <br>
                                     <tr>
-                                        <th> <h5>Term & Condition </h5></th>
+                                        <th> <h5>Term & Conditions </h5></th>
                                     </tr>
                                     
                                 </table>
