@@ -1,7 +1,7 @@
 @extends('layouts_frontend_2._main')  
 
 @section('content')
-    <div class="breadcumb-area bg-img bg-overlay" style="height: 400px !important;background-image: url({{ asset('storage/app/company/bg-4.jpg') }})">
+    <div class="breadcumb-area bg-img bg-overlay" style="height: 400px !important;background-image: url({{ asset('storage/app/company/bg-9.jpg') }})">
     </div>
     <section class="dorne-listing-destinations-area section-padding-100-50">
         <div class="container">

@@ -62,6 +62,80 @@
                     </form>
 
 
+                    <form method="post" action="{{ route('master_bg_partner') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                <label for="intinerary">Bg per partner</label>
+                            </div>
+                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div >
+                                            <img class="image_drop img-responsive" 
+                                               src="{{ asset('storage/app/company/bg-9.jpg') }}?{{ time() }}" 
+                                           width="400px" height="300px" name="image-drop4">
+                                        </div>
+                                        <br>
+                                        <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName" >Image</div>
+                                                    <div class="file-select-name noFile">
+                                                        
+                                                             Image
+                                                        
+                                                    </div> 
+                                                <input type="file" class="chooseFile" name="image"  
+                                                   
+                                                       src="{{ asset('storage/app/company/bg-9.jpg') }}?{{ time() }}" 
+                                                   
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
+                        </div>
+                    </form>
+
+                    <form method="post" action="{{ route('bg_bookinglist') }}" enctype="multipart/form-data"  accept-charset="utf-8">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                <label for="intinerary">Bg per booking list</label>
+                            </div>
+                            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div >
+                                            <img class="image_drop img-responsive" 
+                                               src="{{ asset('storage/app/company/bg-10.jpg') }}?{{ time() }}" 
+                                           width="400px" height="300px" name="image-drop4">
+                                        </div>
+                                        <br>
+                                        <div class="file-upload col-lg-6 col-md-8 col-sm-12 col-xs-12 form-control-label" style="padding-left: 0px;">
+                                            <div class="file-select">
+                                                <div class="file-select-button fileName" >Image</div>
+                                                    <div class="file-select-name noFile">
+                                                        
+                                                             Image
+                                                        
+                                                    </div> 
+                                                <input type="file" class="chooseFile" name="image"  
+                                                   
+                                                       src="{{ asset('storage/app/company/bg-10.jpg') }}?{{ time() }}" 
+                                                   
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="btn bg-blue waves-effect" id="save"><i class="fa fa-save"></i> Submit</button>
+                        </div>
+                    </form>
+
 
 
 

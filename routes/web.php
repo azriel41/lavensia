@@ -139,6 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/function/company/master_bg_slider', 'master\companyController@master_bg_slider')->name('master_bg_slider');
     Route::get('/function/company/master_bg_artikel', 'master\companyController@master_bg_artikel')->name('master_bg_artikel');
     Route::get('/function/company/master_bg_page', 'master\companyController@master_bg_page')->name('master_bg_page');
+    Route::post('/function/company/master_bg_partner', 'master\companyController@master_bg_partner')->name('master_bg_partner');
 	//slider sebelum login
 	Route::post('/function/company/company_slider_1', 'master\companyController@slider_1')->name('slider_1');
 	Route::post('/function/company/company_slider_2', 'master\companyController@slider_2')->name('slider_2');
@@ -150,6 +151,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//package
 	Route::post('/function/company/bg_page', 'master\companyController@bg_page')->name('bg_page');
 	Route::post('/function/company/bg_article', 'master\companyController@bg_article')->name('bg_article');
+	Route::post('/function/company/bg_bookinglist', 'master\companyController@bg_bookinglist')->name('bg_bookinglist');
 
 
 	//home - admin

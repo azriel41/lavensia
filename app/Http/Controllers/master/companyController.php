@@ -205,6 +205,41 @@ class companyController extends Controller
         return redirect()->back();
     }
 
+    public function master_bg_partner(Request $request)
+    {
+       $foto = '9';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/bg';
+           $filename = $foto.'.jpg';
+           Storage::put('company/bg-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+        $data = slider::findOrfail(5);
+        $data->ms_img  = $filename;
+        $data->update();
+        return redirect()->back();
+    }
+    public function bg_bookinglist(Request $request)
+    {
+       $foto = '10';
+
+      if ($request->file('image') == null) {
+           $filename = $foto.'.jpg';
+       }else{
+           $image = $request->file('image');
+           $upload = 'company/bg';
+           $filename = $foto.'.jpg';
+           Storage::put('company/bg-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+       }
+        $data = slider::findOrfail(5);
+        $data->ms_img  = $filename;
+        $data->update();
+        return redirect()->back();
+    }
+
     
 
     public function contact_update(Request $request)

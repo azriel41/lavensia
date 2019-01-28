@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-<section class="dorne-features-events-area bg-img bg-overlay-9 section-padding-100-50" style="background-image: url({{ asset('assets_frontend_2/img/bg-img/hero-3.jpg') }})">
+<section class="dorne-features-events-area bg-img bg-overlay-9 section-padding-100-50" style="background-image: url({{ asset('storage/app/company/bg-10.jpg') }})">
             <br>
             <br>
                 <br>
