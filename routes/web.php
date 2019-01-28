@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-	return Hash::make(123123);
 	$category = App\category::all();
 
 	$intinerary = App\intinerary::where('mi_status','ACTIVE')->get();
@@ -225,7 +224,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('/booking/booking_handling/update_book', 'booking\booking_allController@update_book')->name('update_book');
 		Route::get('/booking/edit/{id}', 'booking\booking_allController@edit_booking')->name('edit_booking');
 		Route::post('/booking/booking_handling/update_book_edit', 'booking\booking_allController@update_book_edit')->name('update_book_edit');
-		Route::get('/booking/booking_detail/{id}/{refid}', 'booking\booking_allController@booking_detail')->name('booking_detail');
+		Route::get('/booking/booking_detail/{id}', 'booking\booking_allController@booking_detail')->name('booking_detail');
 		Route::get('/booking/booking_all/delete', 'booking\booking_allController@delete')->name('booking_all_delete');
 		Route::get('/booking/booking_all/approve_payment', 'booking\booking_allController@approve_payment')->name('approve_payment');
 		Route::get('/booking/booking_all/delete_payment', 'booking\booking_allController@delete_payment')->name('delete_payment');

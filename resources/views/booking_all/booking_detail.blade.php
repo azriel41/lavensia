@@ -87,13 +87,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var id = '{{ $id }}';
-    var refid = '{{ $refid }}';
     $('.dt_server').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
           url:'{{ route('datatable_booking_detail') }}',
-          data:{id,refid}
+          data:{id}
         },
         columnDefs: [
                 {
