@@ -116,8 +116,9 @@ class agent_agentController extends Controller
     }
     public function agent_save(Request $request)
     {
-       $data_master = DB::table('users')->where('role_id',1)->first();
-
+      // dd($request->all());
+       $data_master = DB::table('users')->where('co_name',$request->co_name)->first();
+       // dd($data_master);
        $data_image = DB::table('users')->max('id');
 
        if ($data_image == null) {
@@ -125,8 +126,8 @@ class agent_agentController extends Controller
        }else{
             $data_image += 1;
        }
-
-       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
+       $filename = $data_master->image;
+       /*if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
            $filename = $data_master->image;
        }else{
            if ($request->file('image') == null) {
@@ -137,7 +138,9 @@ class agent_agentController extends Controller
                $filename = $data_image.'.jpg';
                Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
            }
-       }
+       }*/
+
+
         $rules = [
                   "username" => "required|unique:users,username",
                   "co_name" => "required",
@@ -182,7 +185,7 @@ class agent_agentController extends Controller
     public function agent_edit($id)
     {
         $data = DB::table('users')->where('id',$id)->first();
-        json_encode($data);
+        return json_encode($data);
 
         if(Auth::user()->akses('approve master agent','mh_aktif')){
             return view('agent.edit_agent',compact('data'));

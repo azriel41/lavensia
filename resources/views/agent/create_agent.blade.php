@@ -53,7 +53,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" readonly="" value="{{ $data[0]->co_name }}" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control" readonly=""  value="{{ $data[0]->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="co_phone" id="co_phone" class="form-control" readonly=""  value="{{ $data[0]->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" class="form-control" readonly="" value="{{ $data[0]->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control"  readonly=""  value="{{ $data[0]->co_email }}" placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control"  readonly=""   value="{{ $data[0]->co_email }}" placeholder="Company Email">
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                                                 Company Image
                                                             @endif 
                                                         </div> 
-                                                    <input type="file" class="chooseFile" name="image"  
+                                                    <input type="file" class="chooseFile" disabled="" name="image"  
                                                         @if ($data[0]->image == null )
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                                         @else 
@@ -162,7 +162,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control" value="{{old('mg_name')}}" placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control"  value="{{$data[0]->mg_name}}" placeholder="Manager Name">
                                         </div>
                                         @if($errors->has('co_phone'))
                                             <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
@@ -178,7 +178,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" value="{{old('mg_phone')}}" placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control" style="text-ign: : right;"  value="{{$data[0]->mg_phone}}" readonly="" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control" value="{{old('mg_email')}}" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control" readonly=""  value="{{$data[0]->mg_email}}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" placeholder="PIC Name">
+                                            <input type="text" name="name" id="name"  value="{{old('name')}}" class="form-control" placeholder="PIC Name">
                                         </div>
                                         @if($errors->has('name'))
                                             <small style="color: #ed5565">{{ $errors->first('name')}}</small>
@@ -237,7 +237,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="phone" id="phone" value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
+                                            <input type="text" name="phone" id="phone"  value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
                                         </div>
                                         @if($errors->has('phone'))
                                             <small style="color: #ed5565">{{ $errors->first('phone')}}</small>
