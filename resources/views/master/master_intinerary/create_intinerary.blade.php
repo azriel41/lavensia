@@ -163,6 +163,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row clearfix preview_div">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Flayer image</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="file-upload upl_1" style="width: 100%;">
+                                        <div class="file-select">
+                                            <div class="file-select-button fileName" >Image</div>
+                                            <div class="file-select-name noFile tag_image_1" >Flayer Image</div> 
+                                            <input type="file" class="chooseFile" name="image_flayer">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="caption_by">Preview</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="preview_td">
+                                            <img width="400px" height="400px" style="border:1px solid pink" class="output" >
+                                    </div>
+                                </div>
+                            </div>   
                             <div class="row clearfix">
                                 <div class="col-md-12">
                                     <div class="panel panel-danger">

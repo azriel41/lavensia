@@ -225,15 +225,19 @@ background: #2f4357;
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
-                                <div class="text p-3" style="min-height: 260px;max-height: 260px;">
+                                <div class="text p-3" style="min-height: 280px;max-height: 280px;">
+                                    <div style="min-height:50px;max-width: 100%;max-height: 100%">
                                     <div class="d-flex">
                                         <div>
                                                 <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
                                         </div>
                                     </div>
+                                    </div>
                                     <br>
+                                    <div style="min-height: 100px;max-width: 100%;max-height: 100%">
                                     <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
                                     {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
+                                    </div>
                                     <hr>
                                     <p class="bottom-area d-flex">
                                         <span><i class="icon-map-o"></i>
