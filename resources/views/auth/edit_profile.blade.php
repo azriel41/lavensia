@@ -54,7 +54,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" value="{{ auth::user()->co_name }}" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif class="form-control" value="{{ auth::user()->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control" style="text-align: : right;"  value="{{ auth::user()->co_phone }}" placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif class="form-control" style="text-align: : right;"  value="{{ auth::user()->co_phone }}" placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -80,20 +80,20 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control" value="{{ auth::user()->co_email }}" placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif value="{{ auth::user()->co_email }}" placeholder="Company Email">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row clearfix">
+                            <div class="row clearfix" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) style="pointer-events: none;" @endif>
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">City</label>
                                 </div>
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <select class="form-control city option" name="city" required="" data-live-search="true">
+                                            <select class="form-control city option" name="city" required=""  data-live-search="true">
                                                 <option value="">Select City</option>
                                                 @foreach ($city as $c)
                                                     <option @if (auth::user()->city == $c->id)
@@ -109,14 +109,14 @@
                                 </div>
                             </div>
 
-                            <div class="row clearfix">
+                            <div class="row clearfix" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) style="pointer-events: none;" @endif>
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Address</label>
                                 </div>
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address">{{ auth::user()->co_address }}</textarea>
+                                            <textarea name="co_address" id="co_address" class="form-control"  placeholder="Company Address">{{ auth::user()->co_address }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                                 @if ( auth::user()->image == null )
                                                    src="{{ asset('/assets/images/NoImage.png') }}" 
                                                 @else 
-                                                   src="{{ asset('storage/app/agent/agent-'.auth::user()->id.'.jpg') }}"
+                                                   src="{{ asset('storage/app/agent/agent-'.auth::user()->image) }}"
                                                 @endif width="400px" height="300px" name="image-drop">
                                             </div>
                                             <br>
@@ -148,7 +148,7 @@
                                                                 Company Image
                                                             @endif 
                                                         </div> 
-                                                    <input type="file" class="chooseFile" name="image"  
+                                                    <input type="file" class="chooseFile" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) disabled="" @endif name="image"  
                                                         @if ( auth::user()->image == null )
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                                         @else 
@@ -186,7 +186,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control" value="{{ auth::user()->mg_name }}" placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif value="{{ auth::user()->mg_name }}" placeholder="Manager Name">
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;"  value="{{ auth::user()->mg_phone }}" placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif class="form-control" style="text-align: : right;"  value="{{ auth::user()->mg_phone }}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +212,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control" value="{{ auth::user()->mg_email }}" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control" @if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) readonly="" @endif value="{{ auth::user()->mg_email }}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
