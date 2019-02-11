@@ -71,21 +71,21 @@
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
-                                <li class="nav-item active">
+                                <li class="nav-item {{ Request::is('welcome') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ url('/welcome') }}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 @if (Route::has('login'))
                                     @if (Auth::check())
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('booking_list') }}">Booking List </a>
+                                <li class="nav-item {{ Request::is('booking/booking_list') ? 'active' : '' }}">
+                                    <a class="nav-link " href="{{ route('booking_list') }}">Booking List </a>
                                 </li>
                                     @else
                                     @endif
                                 @endif
-                                <li class="nav-item">
+                                <li class="nav-item {{ Request::is('partner/partner') ? 'active' : '' }}" >
                                     <a class="nav-link" href="{{ route('partner') }}">Partner </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {{ Request::is('contact/contact') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('contact') }}">About Us</a>
                                 </li>
                             </ul>
