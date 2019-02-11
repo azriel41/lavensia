@@ -288,9 +288,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/agent/create_agent', 'master\agentController@agent_create')->name('master_create_agent');
 	Route::post('/master/agent/save_agent', 'master\agentController@agent_save')->name('master_save_agent');
 	Route::get('/master/master_agent/{id}/edit', 'master\agentController@agent_edit')->name('master_agent_edit');
-	Route::post('/master/master_agent/{id}/update', 'master\agentController@agent_update')->name('master_agent_update');
+	Route::post('/master/master_agent/update', 'master\agentController@agent_update')->name('master_agent_update');
 	Route::get('/master/master_agent/{id}/delete', 'master\agentController@agent_delete')->name('master_agent_delete');
 	Route::get('/master/agent/agent_approve', 'master\agentController@agent_approve')->name('master_agent_approve');
+	Route::get('/master/master_agent/hide_master_agen', 'master\agentController@hide_master_agen')->name('hide_master_agen');
 
 	//Additional
 	Route::get('/master/master_additional', 'master\additionalController@index')->name('master_additional');

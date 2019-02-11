@@ -34,39 +34,73 @@ class HomeController extends Controller
         
     }
     public function profile()
-    {
-        return view('auth.profile');
+    {   
+        if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3 or Auth::user()->role_id == 5) {
+            if (Auth::user()->role_id == 2 or Auth::user()->role_id == 3) {
+                $master = DB::table('users')->where('co_name',Auth::user()->co_name)->where('role_id',1)->first();
+            }elseif (Auth::user()->role_id == 5 ){
+                $master = DB::table('users')->where('co_name',Auth::user()->co_name)->where('role_id',4)->first();
+            }
+
+            $city  = DB::table('regencies')->where('id',$master->city)->first();
+        }else{
+            $city  = DB::table('regencies')->where('id',Auth::user()->city)->first();
+        }
+
+        if ($city == null) {
+            $city = 'Not FIlled';
+        }else{
+            $city = $city->name;
+        }
+
+        return view('auth.profile',compact('city'));
     }
     
     public function edit_profile(Request $request)
     {
-        return view('auth.edit_profile');
+        $city  = DB::table('regencies')->get();
+        return view('auth.edit_profile',compact('city'));
     }
     public function save_profile(Request $request)
     {
-       if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
-       }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
-       }
+        $filename = auth::user()->image;
+        if (Auth::user()->role_id == '4' or Auth::user()->role_id == '1' or Auth::user()->role_id == '2') {
+
+            if ($request->file('image') == null) {
+               $filename = auth::user()->image;
+            }else{
+               $image = $request->file('image');
+               $upload = 'agent/agent';
+               $filename = auth::user()->id.'.jpg';
+               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
+            }
+
+            $child = DB::table('users')->where('co_name',Auth::user()->co_name)
+                                      ->update([
+                                        'co_name'       =>$request->co_name,
+                                        'co_phone'      =>$request->co_phone,
+                                        'co_email'      =>$request->co_email,
+                                        'city'          =>$request->city,
+                                        'co_address'    =>$request->co_address,
+                                        'mg_name'       =>$request->mg_name,
+                                        'mg_phone'      =>$request->mg_phone,
+                                        'mg_email'      =>$request->mg_email,
+                                      ]); 
+
+        }
+
+        $save = DB::table('users')->where('id',Auth::user()->id)
+                                      ->update([
+                                        'name'          =>$request->name,
+                                        'phone'         =>$request->phone,
+                                        'email'         =>$request->email,
+                                        'address'       =>$request->address,
+                                        'image'         =>$filename,
+                                      ]); 
+
+            
        
-       $image = DB::table('users')->where('id',auth::user()->id)->update([
-                'co_name'       =>$request->co_name,
-                'co_phone'      =>$request->co_phone,
-                'co_email'      =>$request->co_email,
-                'co_address'    =>$request->co_address,
-                'mg_name'       =>$request->mg_name,
-                'mg_phone'      =>$request->mg_phone,
-                'mg_email'      =>$request->mg_email,
-                'name'          =>$request->name,
-                'phone'         =>$request->phone,
-                'email'         =>$request->email,
-                'address'       =>$request->address,
-                'image'         =>$filename,
-            ]);
+       $image = DB::table('users')->where('id',auth::user()->id)->first();
 
        return redirect('profile');
 

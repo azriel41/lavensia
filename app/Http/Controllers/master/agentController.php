@@ -43,8 +43,21 @@ class agentController extends Controller
                             
                             $b = '<li class="bg-teal">
                                         <a onclick="approve(\''.$data->id.'\')" class="waves-effect waves-block" style="color:white">
-                                            <i class="material-icons">spellcheck</i>
+                                            <i class="material-icons">visibility</i>
                                             Approve
+                                        </a>
+                                    </li>';
+                            $b1 = '<li class="bg-teal">
+                                        <a onclick="hide(\''.$data->id.'\',\''.'Y'.'\')" class="waves-effect waves-block" style="color:white">
+                                            <i class="material-icons">visibility_off</i>
+                                            Hide
+                                        </a>
+                                    </li>';
+
+                            $b2 = '<li class="bg-teal">
+                                        <a onclick="hide(\''.$data->id.'\',\''.'N'.'\')" class="waves-effect waves-block" style="color:white">
+                                            <i class="material-icons">visibility</i>
+                                            Unhide
                                         </a>
                                     </li>';
                             $c = '<li>
@@ -64,8 +77,13 @@ class agentController extends Controller
 
                             if (Auth::user()->akses('master agent','mh_aktif')) {
                                 if ($data->status == 'AKTIF') {
-                                    return $a.$c.$d.$e;
+                                    if ($data->hide == 'N') {
+                                      return $a.$b1.$c.$d.$e;
+                                    }elseif ($data->hide == 'Y'){
+                                      return $a.$b2.$c.$d.$e;
+                                    }
                                 }else{
+
                                     return $a.$b.$c.$d.$e;
                                 }
                             }else{
@@ -96,9 +114,23 @@ class agentController extends Controller
                                 $role = 'Admin Agent';
                             }
                             return $role;
+                        })->addColumn('status', function ($data) {
+                            if ($data->status == 'AKTIF') {
+                              return '<label class="label label-success">Active</label>';
+                            }else {
+                              return '<label class="label label-warning">Inactive</label>';
+                            }
+                            return $role;
+                        })->addColumn('hide', function ($data) {
+                            if ($data->hide == 'Y') {
+                              return '<label class="label label-success">Hidden</label>';
+                            }else {
+                              return '<label class="label label-warning">Unhidden</label>';
+                            }
+                            return $role;
                         })
                        
-                        ->rawColumns(['aksi','schedule','departure'])
+                        ->rawColumns(['aksi','schedule','departure','status','hide'])
                         ->addIndexColumn()
                         ->make(true);
     }
@@ -112,7 +144,8 @@ class agentController extends Controller
     public function agent_create()
     {
         $role = DB::table('role')->get();
-        return view('master.master_agent.create_agent',compact('role'));
+        $city = DB::table('regencies')->get();
+        return view('master.master_agent.create_agent',compact('role','city'));
     }
     public function agent_save(Request $request)
     {
@@ -143,6 +176,7 @@ class agentController extends Controller
         $rules = [
                   "username" => "required|unique:users,username",
                   "co_name" => "required",
+                  "city" => "required",
                   "co_phone" => "required",
                   "co_email" => "required",
                   "co_address" => "required",
@@ -171,11 +205,12 @@ class agentController extends Controller
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
                 'role_id'       =>$request->role_id,
+                'city'          =>$request->city,
                 'co_name'       =>$request->co_name,
                 'co_phone'      =>$request->co_phone,
                 'co_email'      =>$request->co_email,
                 'co_address'    =>$request->co_address,
-                'image'      =>$filename,
+                'image'         =>$filename,
                 'mg_name'       =>$request->mg_name,
                 'mg_phone'      =>$request->mg_phone,
                 'mg_email'      =>$request->mg_email,
@@ -187,58 +222,70 @@ class agentController extends Controller
     {
         $role = DB::table('role')->get();
         $data = DB::table('users')->where('id',$id)->first();
-        json_encode($data);
-        
-        return view('master.master_agent.edit_agent',compact('data','role'));
+        $city = DB::table('regencies')->get();
+        return view('master.master_agent.edit_agent',compact('data','role','city'));
     }
-    public function agent_update(Request $request,$id)
+    public function agent_update(Request $req)
     {
+      return DB::transaction(function() use ($req) {  
 
-       $data_master = DB::table('users')->where('role_id',1)->first();
+        $data_master = DB::table('users')->where('id',$req->id)->first();
+        if (isset($req->image)) {
+          if ($req->role_id == 1 || $req->role_id == 2 || $req->role_id == 3) {
+            $filename = $data_master->image;
+          }else{
+            if ($req->file('image') == null) {
+              $filename = $req->id.'.jpg';
+            }else{
+              $image = $req->file('image');
+              $upload = 'agent/agent';
+              $filename = $req->id.'.jpg';
+              Storage::put('agent/agent-'.$filename,file_get_contents($req->file('image')->getRealPath()));
+            }
+          }
+        }else{
+          $filename = $data_master->image;
+        }
+          
 
-       $data_image = DB::table('users')->max('id');
+        $child = DB::table('users')->where('co_name',$data_master->co_name)
+                                  ->update([
+                                    'co_name'       =>$req->co_name,
+                                    'co_phone'      =>$req->co_phone,
+                                    'co_email'      =>$req->co_email,
+                                    'co_address'    =>$req->co_address,
+                                    'city'          =>$req->city,
+                                    'mg_name'       =>$req->mg_name,
+                                    'mg_phone'      =>$req->mg_phone,
+                                    'mg_email'      =>$req->mg_email,
+                                    'image'         =>$filename,
+                                  ]);
 
-       if ($data_image == null) {
-            $data_image = 1;
-       }else{
-            $data_image += 1;
-       }
-
-       if ($request->role_id == 1 || $request->role_id == 2 || $request->role_id == 3) {
-           $filename = $data_master->image;
-       }else{
-           if ($request->file('image') == null) {
-               $filename = $data_image.'.jpg';
-           }else{
-               $image = $request->file('image');
-               $upload = 'agent/agent';
-               $filename = $data_image.'.jpg';
-               Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
-           }
-       }
+        $image = DB::table('users')->where('id',$req->id)->update([
+          'co_name'       =>$req->co_name,
+          'co_phone'      =>$req->co_phone,
+          'co_email'      =>$req->co_email,
+          'co_address'    =>$req->co_address,
+          'city'          =>$req->city,
+          'mg_name'       =>$req->mg_name,
+          'mg_phone'      =>$req->mg_phone,
+          'mg_email'      =>$req->mg_email,
+          'name'          =>$req->name,
+          'phone'         =>$req->phone,
+          'email'         =>$req->email,
+          'address'       =>$req->address,
+          'image'         =>$filename,
+          'password'      =>Hash::make($req->password),
+          'username'      =>$req->username,
+        ]);
 
        // return $filename;
        
-       $image = DB::table('users')->where('id',$id)->update([
-                'co_name'       =>$request->co_name,
-                'co_phone'      =>$request->co_phone,
-                'co_email'      =>$request->co_email,
-                'co_address'    =>$request->co_address,
-                'mg_name'       =>$request->mg_name,
-                'mg_phone'      =>$request->mg_phone,
-                'mg_email'      =>$request->mg_email,
-                'name'          =>$request->name,
-                'phone'         =>$request->phone,
-                'email'         =>$request->email,
-                'address'       =>$request->address,
-                'image'         =>$filename,
-                'password'      =>Hash::make($request->password),
-                'username'      =>$request->username,
-                'role_id'      =>$request->role_id,
-            ]);
-
-       return redirect('master/agent');
+        
+        return response()->json(['status'=>'sukses']);
+      });
     }
+
     public function agent_delete($id)
     {
        $data = DB::table('users')->where('id',$id)->delete();
@@ -248,6 +295,16 @@ class agentController extends Controller
        }else{
          return response()->json(['status'=>'Error']); 
        }
+    }
+
+    public function hide_master_agen(Request $req)
+    {
+      $child = DB::table('users')->where('id',$req->id)
+                                  ->update([
+                                    'hide'  =>$req->status,
+                                  ]);
+
+      return response()->json(['pesan'=>'Success updating data']); 
     }
 
 }

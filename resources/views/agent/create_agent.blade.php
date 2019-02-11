@@ -84,8 +84,29 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row clearfix">
+                            <div class="row clearfix" style="pointer-events: none;">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select class="form-control city option" name="city" required="" data-live-search="true">
+                                                <option value="">Select City</option>
+                                                @foreach ($city as $c)
+                                                    <option @if ($data[0]->city == $c->id)
+                                                        selected="" 
+                                                    @endif value="{{ $c->id }}">{{ $c->name }}</option>
+                                                @endforeach      
+                                            </select>
+                                            @if($errors->has('city'))
+                                                <small style="color: #ed5565">{{ $errors->first('city')}}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix" >
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
                                     <label for="intinerary">Address</label>
                                 </div>

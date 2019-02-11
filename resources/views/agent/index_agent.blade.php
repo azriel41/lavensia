@@ -76,7 +76,7 @@ window.onload = function(){
                     className: 'center'
                 },
                 {
-                    targets: 6 ,
+                    targets: 8 ,
                     className: 'center'
                 },
             ],

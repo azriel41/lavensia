@@ -43,8 +43,8 @@
                                 <th class="center">Com Name</th>
                                 <th class="center">Man Name</th>
                                 <th class="center">Status</th>
+                                <th class="center">Hide</th>
                                 <th class="center">Privileges</th>
-
                                 <th class="center">Detail</th>
                             </tr>
                         </thead>
@@ -61,7 +61,7 @@
 @section('extra_scripts')
 <script>
 window.onload = function(){
-    $('.intinerary').DataTable({
+    var table = $('.intinerary').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -73,7 +73,11 @@ window.onload = function(){
                     className: 'center'
                 },
                 {
-                    targets: 5 ,
+                    targets: 8 ,
+                    className: 'center'
+                },
+                {
+                    targets: 9 ,
                     className: 'center'
                 },
                 {
@@ -91,12 +95,31 @@ window.onload = function(){
             {data: 'co_name', name: 'co_name'},
             {data: 'mg_name', name: 'mg_name'},
             {data: 'status', name: 'status'},
+            {data: 'hide', name: 'hide'},
             {data: 'privileges', name: 'privileges'},
             
             {data: 'aksi', name: 'aksi'},
         ]
     });
 
+}
+
+function hide(id,status) {
+    $.ajax({
+        url:'{{ route('hide_master_agen') }}',
+        data:{ id,status},
+        dataType:'json',
+        success:function(data){
+            iziToast.warning({
+                message: data.pesan,
+                position:'topRight',
+            });
+            var table = $('.intinerary').DataTable();
+            table.ajax.reload(null,false);
+        },error:function(){
+            hide(id,status);
+        }
+    })
 }
 
 
@@ -159,6 +182,7 @@ function confirmation(argument) {
             });
        }
 
+
 function approve(mi_id) {
     var id = mi_id;
     iziToast.show({
@@ -195,7 +219,7 @@ function approve(mi_id) {
                                 icon:'fa fa-delete'
                             });
                             var table = $('.intinerary').DataTable();
-                            table.ajax.reload();
+                            table.ajax.reload(null,false);
                         }else if (data.status == '0') {
                             iziToast.warning({
                                 position:'topRight',

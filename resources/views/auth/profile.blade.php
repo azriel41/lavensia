@@ -56,6 +56,10 @@
                                                     <td class="table_left">{{ auth::user()->co_phone }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td class="table_right">City</td>
+                                                    <td class="table_left">{{ $city }}</td>
+                                                </tr>
+                                                <tr>
                                                     <td class="table_right">Company Address</td>
                                                     <td class="table_left">{{ auth::user()->co_address }}</td>
                                                 </tr>

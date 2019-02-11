@@ -18,7 +18,7 @@ class partnerController extends Controller
     public function partner()
     {	
     	// $data = user::all();
-    	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->where('name','!=','developer')->groupBy('co_address','co_phone','image','co_name')->get();
+    	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->where('name','!=','developer')->where('hide','=','N')->whereIn('role_id',[4,1])->groupBy('co_address','co_phone','image','co_name')->get();
         // return $data;
         $category = category::all();
 

@@ -1,4 +1,9 @@
 @extends('main')
+    <style type="text/css">
+        .error{
+                border-bottom: 1px solid red !important;
+        }
+    </style>
     @section('content')
         @include('layouts.task')
         <div class="header">
@@ -27,7 +32,7 @@
                         </div>
 
                     <div class="body">
-                        <form id="save_data" action="{{ route('master_agent_agent_save') }}" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
+                        <form id="save_data" method="post" enctype="multipart/form-data"  accept-charset="utf-8" >
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             {{-- company --}}
                             <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12 form-control-label">
@@ -53,7 +58,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control" readonly=""  value="{{ $data->co_name }}" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control wajib" @if (Auth::user()->role_id != 4) readonly=""  @endif  value="{{ $data->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +71,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control" readonly="" value="{{ $data->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" class="form-control wajib" @if (Auth::user()->role_id != 4) readonly=""  @endif  value="{{ $data->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +84,27 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control"  readonly=""   value="{{ $data->co_email }}" placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control wajib"  @if (Auth::user()->role_id != 4) readonly=""  @endif    value="{{ $data->co_email }}" placeholder="Company Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select class="form-control city option" name="city" required="" data-live-search="true">
+                                                <option value="">Select City</option>
+                                                @foreach ($city as $c)
+                                                    <option @if ($data->city == $c->id)
+                                                        selected="" 
+                                                    @endif value="{{ $c->id }}">{{ $c->name }}</option>
+                                                @endforeach      
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +117,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control" placeholder="Company Address" readonly="" >{{ $data->co_address }}</textarea>
+                                            <textarea name="co_address" id="co_address" class="form-control wajib" placeholder="Company Address" @if (Auth::user()->role_id != 4) readonly=""  @endif  >{{ $data->co_address }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +149,7 @@
                                                                 Company Image
                                                             @endif 
                                                         </div> 
-                                                    <input type="file" class="chooseFile" disabled="" name="image"  
+                                                    <input type="file" class="chooseFile"  name="image"  
                                                         @if ($data->image == null )
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                                         @else 
@@ -162,7 +187,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control"  value="{{$data->mg_name}}" placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control wajib"  value="{{$data->mg_name}}" placeholder="Manager Name">
                                         </div>
                                         @if($errors->has('co_phone'))
                                             <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
@@ -178,7 +203,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control" style="text-ign: : right;"  value="{{$data->mg_phone}}" readonly="" placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control wajib" style="text-ign: : right;"  value="{{$data->mg_phone}}" readonly="" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +216,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control" readonly=""  value="{{$data->mg_email}}" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control wajib" readonly=""  value="{{$data->mg_email}}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +246,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="name" id="name"  value="{{$data->name}}" class="form-control" placeholder="PIC Name">
+                                            <input type="text" name="name" id="name"  value="{{$data->name}}" class="form-control wajib" placeholder="PIC Name">
                                         </div>
                                         @if($errors->has('name'))
                                             <small style="color: #ed5565">{{ $errors->first('name')}}</small>
@@ -237,7 +262,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="phone" id="phone"  value="{{$data->phone}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
+                                            <input type="text" name="phone" id="phone"  value="{{$data->phone}}" class="form-control wajib" style="text-align: : right;" placeholder="PIC Phone">
                                         </div>
                                         @if($errors->has('phone'))
                                             <small style="color: #ed5565">{{ $errors->first('phone')}}</small>
@@ -253,7 +278,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="email" id="email"  value="{{$data->email}}" value="{{old('email')}}" class="form-control"  placeholder="PIC Email">
+                                            <input type="text" name="email" id="email"  value="{{$data->email}}" value="{{old('email')}}" class="form-control wajib"  placeholder="PIC Email">
                                         </div>
                                         @if($errors->has('email'))
                                             <small style="color: #ed5565">{{ $errors->first('email')}}</small>
@@ -269,7 +294,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="address" id="address"  class="form-control" placeholder="PIC Address">{{$data->address}}</textarea>
+                                            <textarea name="address" id="address"  class="form-control wajib" placeholder="PIC Address">{{$data->address}}</textarea>
                                         </div>
                                         @if($errors->has('address'))
                                             <small style="color: #ed5565">{{ $errors->first('address')}}</small>
@@ -300,7 +325,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="username"  value="{{$data->username}}" id="username" class="form-control" value="{{old('username')}}"  placeholder="Username">
+                                            <input type="text" name="username" autocomplete="username" value="{{$data->username}}" id="username" class="form-control wajib" value="{{old('username')}}"  placeholder="Username">
                                         </div>
                                         @if($errors->has('username'))
                                             <small style="color: #ed5565">{{ $errors->first('username')}}</small>
@@ -316,7 +341,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="Password">
+                                            <input type="password" name="password" id="password" autocomplete="new-password"  class="form-control wajib"  placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
@@ -325,7 +350,7 @@
 
                             <div class="row clearfix">
                                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form-control-label">
-                                    <button class="btn bg-blue waves-effect" onclick="save()" id="save"><i class="fa fa-save"></i> Submit</button>
+                                    <button type="button" class="btn bg-blue waves-effect" onclick="simpan()" id="save"><i class="fa fa-save"></i> Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -372,8 +397,38 @@
         reader.readAsDataURL(file.files[0]);
     }
 
+    $(document).on('focus','.form-line',function(){
+        $(this).removeClass('error');
+    })
 
-    function save() {
+    function simpan() {
+        var temp = 0;
+        $('.wajib').each(function(){
+            if ($(this).val() == '') {
+                console.log($(this));
+                $(this).parents('.form-line').addClass('error');
+                temp+=1;
+            }
+        });
+
+        if (temp != 0) {
+            iziToast.error({
+                icon: 'fas fa-times-circle',
+                title: 'warning!',
+                message: 'All field must be filled',
+            });
+            return false;
+        }
+
+        var form  = $('#save_data');
+        var formdata = false;
+
+        if (window.FormData){
+            formdata = new FormData(form[0]);
+            formdata.append('id','{{ $data->id }}');
+        }
+        console.log(formdata);
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -381,9 +436,12 @@
         });
 
         $.ajax({
-            data : $('#save_data').serialize(),
-            url  : ('{{ route('save_profile') }}'),
+            data : formdata ? formdata : form.serialize(),
+            url  : ('{{ route('master_agent_update') }}'),
             type : 'POST',
+            dataType:'json',
+            processData: false,
+            contentType: false,
             success: function (data) {
                 if (data.status == 'sukses') {
                     iziToast.success({

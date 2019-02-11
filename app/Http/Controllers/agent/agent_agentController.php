@@ -83,6 +83,13 @@ class agent_agentController extends Controller
                             return'<button onclick="schedule(\''.$data->id.'\')" type="button" class="btn bg-cyan waves-effect m-r-20" data-toggle="modal" data-target="#schedule">
                                     <i class="material-icons">extensions</i>
                                    </button>';
+                        })->addColumn('status', function ($data) {
+                            if ($data->status == 'AKTIF') {
+                              return '<label class="label label-success">Active</label>';
+                            }else {
+                              return '<label class="label label-warning">Inactive</label>';
+                            }
+                            return $role;
                         })
                         ->addColumn('privileges', function ($data) {
                             if ($data->role_id == 4) {
@@ -93,7 +100,7 @@ class agent_agentController extends Controller
                             return $role;
                         })
                        
-                        ->rawColumns(['aksi','schedule','departure','privileges'])
+                        ->rawColumns(['aksi','schedule','departure','privileges','status'])
                         ->addIndexColumn()
                         ->make(true);
     }
@@ -106,10 +113,12 @@ class agent_agentController extends Controller
     }
     public function agent_create()
     {
+        $city = DB::table('regencies')->get();
+
         $data = DB::table('users')->where('co_name',Auth::user()->co_name)->get();
         // return $data;
         if(Auth::user()->akses('approve master agent','mh_aktif')){
-            return view('agent.create_agent',compact('data'));
+            return view('agent.create_agent',compact('data','city'));
         }else{
             return redirect()->back();
         }
@@ -167,6 +176,7 @@ class agent_agentController extends Controller
                 'co_phone'      =>$request->co_phone,
                 'co_email'      =>$request->co_email,
                 'co_address'    =>$request->co_address,
+                'city'          =>$request->city,
                 'mg_name'       =>$request->mg_name,
                 'mg_phone'      =>$request->mg_phone,
                 'mg_email'      =>$request->mg_email,
@@ -193,36 +203,66 @@ class agent_agentController extends Controller
             return view('home');
         }
     }
-    public function agent_update(Request $request,$id)
+    public function agent_update(Request $request)
     {
 
-       if ($request->file('image') == null) {
-           $filename = auth::user()->id.'.jpg';
-       }else{
-           $image = $request->file('image');
-           $upload = 'agent/agent';
-           $filename = auth::user()->id.'.jpg';
-           Storage::put('agent/agent-'.$filename,file_get_contents($request->file('image')->getRealPath()));
-       }
-       
-       $image = DB::table('users')->where('id',$id)->update([
-                'co_name'       =>$request->co_name,
-                'co_phone'      =>$request->co_phone,
-                'co_email'      =>$request->co_email,
-                'co_address'    =>$request->co_address,
-                'mg_name'       =>$request->mg_name,
-                'mg_phone'      =>$request->mg_phone,
-                'mg_email'      =>$request->mg_email,
-                'name'          =>$request->name,
-                'phone'         =>$request->phone,
-                'email'         =>$request->email,
-                'address'       =>$request->address,
-                'image'         =>$filename,
-                'password'      =>Hash::make($request->password),
-                'username'      =>$request->username,
-            ]);
+       return DB::transaction(function() use ($req) {  
 
-       return view('agent.index_agent');
+        $data_master = DB::table('users')->where('id',$req->id)->first();
+        if (isset($req->image)) {
+          if ($req->role_id == 1 || $req->role_id == 2 || $req->role_id == 3) {
+            $filename = $data_master->image;
+          }else{
+            if ($req->file('image') == null) {
+              $filename = $req->id.'.jpg';
+            }else{
+              $image = $req->file('image');
+              $upload = 'agent/agent';
+              $filename = $req->id.'.jpg';
+              Storage::put('agent/agent-'.$filename,file_get_contents($req->file('image')->getRealPath()));
+            }
+          }
+        }else{
+          $filename = $data_master->image;
+        }
+          
+
+        $child = DB::table('users')->where('co_name',$data_master->co_name)
+                                  ->update([
+                                    'co_name'       =>$req->co_name,
+                                    'co_phone'      =>$req->co_phone,
+                                    'co_email'      =>$req->co_email,
+                                    'co_address'    =>$req->co_address,
+                                    'city'          =>$req->city,
+                                    'mg_name'       =>$req->mg_name,
+                                    'mg_phone'      =>$req->mg_phone,
+                                    'mg_email'      =>$req->mg_email,
+                                    'image'         =>$filename,
+                                  ]);
+
+        $image = DB::table('users')->where('id',$req->id)->update([
+          'co_name'       =>$req->co_name,
+          'co_phone'      =>$req->co_phone,
+          'co_email'      =>$req->co_email,
+          'co_address'    =>$req->co_address,
+          'city'          =>$req->city,
+          'mg_name'       =>$req->mg_name,
+          'mg_phone'      =>$req->mg_phone,
+          'mg_email'      =>$req->mg_email,
+          'name'          =>$req->name,
+          'phone'         =>$req->phone,
+          'email'         =>$req->email,
+          'address'       =>$req->address,
+          'image'         =>$filename,
+          'password'      =>Hash::make($req->password),
+          'username'      =>$req->username,
+        ]);
+
+       // return $filename;
+        
+        return view('agent.index_agent');
+      });
+
     }
     public function agent_delete($id)
     {

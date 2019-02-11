@@ -87,7 +87,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="co_phone" id="co_phone" class="form-control" value="{{old('co_phone')}}"   style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" class="form-control" value="{{old('co_phone')}}"   style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
                                         @if($errors->has('co_phone'))
                                             <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
@@ -108,6 +108,27 @@
                                         @if($errors->has('co_email'))
                                             <small style="color: #ed5565">{{ $errors->first('co_email')}}</small>
                                         @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                    <label for="intinerary">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select class="form-control city option" name="city" required="" data-live-search="true">
+                                                <option value="">Select City</option>
+                                                @foreach ($city as $c)
+                                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                                @endforeach      
+                                            </select>
+                                            @if($errors->has('city'))
+                                                <small style="color: #ed5565">{{ $errors->first('city')}}</small>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +239,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" value="{{old('mg_phone')}}" placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control" style="text-align: : right;" value="{{old('mg_phone')}}" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +298,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" name="phone" id="phone" value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
+                                            <input type="text" name="phone" id="phone" value="{{old('phone')}}" class="form-control" style="text-align: : right;" placeholder="PIC Phone">
                                         </div>
                                         @if($errors->has('phone'))
                                             <small style="color: #ed5565">{{ $errors->first('phone')}}</small>
@@ -340,7 +361,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}"  placeholder="Username">
+                                            <input type="text" name="username" id="username" class="form-control" autocomplete="username" value="{{old('username')}}"  placeholder="Username">
                                         </div>
                                         @if($errors->has('username'))
                                             <small style="color: #ed5565">{{ $errors->first('username')}}</small>
@@ -356,7 +377,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="Password">
+                                            <input type="password" name="password" id="password" class="form-control" autocomplete="new-password"  placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
