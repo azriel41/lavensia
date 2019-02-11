@@ -96,7 +96,9 @@
                                             <select class="form-control city option" name="city" required="" data-live-search="true">
                                                 <option value="">Select City</option>
                                                 @foreach ($city as $c)
-                                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                                    <option @if (auth::user()->city == $c->id)
+                                                        selected="" 
+                                                    @endif value="{{ $c->id }}">{{ $c->name }}</option>
                                                 @endforeach      
                                             </select>
                                             @if($errors->has('city'))
