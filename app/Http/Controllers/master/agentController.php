@@ -231,7 +231,7 @@ class agentController extends Controller
 
         $data_master = DB::table('users')->where('id',$req->id)->first();
         if (isset($req->image)) {
-          if ($req->role_id == 1 || $req->role_id == 2 || $req->role_id == 3) {
+          if ($req->role_id == 4 || $req->role_id == 5 ) {
             $filename = $data_master->image;
           }else{
             if ($req->file('image') == null) {
@@ -260,28 +260,58 @@ class agentController extends Controller
                                     'mg_email'      =>$req->mg_email,
                                     'image'         =>$filename,
                                   ]);
+        if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) {
 
-        $image = DB::table('users')->where('id',$req->id)->update([
-          'co_name'       =>$req->co_name,
-          'co_phone'      =>$req->co_phone,
-          'co_email'      =>$req->co_email,
-          'co_address'    =>$req->co_address,
-          'city'          =>$req->city,
-          'mg_name'       =>$req->mg_name,
-          'mg_phone'      =>$req->mg_phone,
-          'mg_email'      =>$req->mg_email,
-          'name'          =>$req->name,
-          'phone'         =>$req->phone,
-          'email'         =>$req->email,
-          'address'       =>$req->address,
-          'image'         =>$filename,
-          'password'      =>Hash::make($req->password),
-          'username'      =>$req->username,
-        ]);
+          if ($req->password == null) {
+            $image = DB::table('users')->where('id',$req->id)->update([
+              'co_name'       =>$req->co_name,
+              'co_phone'      =>$req->co_phone,
+              'co_email'      =>$req->co_email,
+              'co_address'    =>$req->co_address,
+              'city'          =>$req->city,
+              'mg_name'       =>$req->mg_name,
+              'mg_phone'      =>$req->mg_phone,
+              'mg_email'      =>$req->mg_email,
+              'name'          =>$req->name,
+              'phone'         =>$req->phone,
+              'email'         =>$req->email,
+              'address'       =>$req->address,
+              'image'         =>$filename,
+              'username'      =>$req->username,
+            ]);
+          }else{
+            $image = DB::table('users')->where('id',$req->id)->update([
+              'co_name'       =>$req->co_name,
+              'co_phone'      =>$req->co_phone,
+              'co_email'      =>$req->co_email,
+              'co_address'    =>$req->co_address,
+              'city'          =>$req->city,
+              'mg_name'       =>$req->mg_name,
+              'mg_phone'      =>$req->mg_phone,
+              'mg_email'      =>$req->mg_email,
+              'name'          =>$req->name,
+              'phone'         =>$req->phone,
+              'email'         =>$req->email,
+              'address'       =>$req->address,
+              'image'         =>$filename,
+              'password'      =>Hash::make($req->password),
+              'username'      =>$req->username,
+            ]);
+          }
+            
 
-       // return $filename;
-       
-        
+        }else{
+          $image = DB::table('users')->where('id',$req->id)->update([
+            'name'          =>$req->name,
+            'phone'         =>$req->phone,
+            'email'         =>$req->email,
+            'address'       =>$req->address,
+            'image'         =>$filename,
+            'password'      =>Hash::make($req->password),
+            'username'      =>$req->username,
+          ]);
+        }
+          
         return response()->json(['status'=>'sukses']);
       });
     }
