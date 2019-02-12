@@ -178,6 +178,7 @@ class agent_agentController extends Controller
                 'mg_name'       =>$request->mg_name,
                 'mg_phone'      =>$request->mg_phone,
                 'mg_email'      =>$request->mg_email,
+                'jabatan'       =>$request->jabatan,
                 'name'          =>$request->name,
                 'phone'         =>$request->phone,
                 'email'         =>$request->email,
