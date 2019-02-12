@@ -273,32 +273,13 @@
 
                             <div class="row clearfix">
                                 <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                    <label for="intinerary">Email</label>
+                                    <label for="intinerary">Position</label>
                                 </div>
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="email" id="email"  value="{{$data->email}}" value="{{old('email')}}" class="form-control wajib"  placeholder="PIC Email">
+                                            <input name="jabatan" id="jabatan" value="{{$data->jabatan}}" class="form-control" placeholder="Position">
                                         </div>
-                                        @if($errors->has('email'))
-                                            <small style="color: #ed5565">{{ $errors->first('email')}}</small>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>  
-
-                            <div class="row clearfix">
-                                <div class="col-lg-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                    <label for="intinerary">Address</label>
-                                </div>
-                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="address" id="address"  class="form-control wajib" placeholder="PIC Address">{{$data->address}}</textarea>
-                                        </div>
-                                        @if($errors->has('address'))
-                                            <small style="color: #ed5565">{{ $errors->first('address')}}</small>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -402,23 +383,6 @@
     })
 
     function simpan() {
-        var temp = 0;
-        $('.wajib').each(function(){
-            if ($(this).val() == '') {
-                console.log($(this));
-                $(this).parents('.form-line').addClass('error');
-                temp+=1;
-            }
-        });
-
-        if (temp != 0) {
-            iziToast.error({
-                icon: 'fas fa-times-circle',
-                title: 'warning!',
-                message: 'All field must be filled',
-            });
-            return false;
-        }
 
         var form  = $('#save_data');
         var formdata = false;

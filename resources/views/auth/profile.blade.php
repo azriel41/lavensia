@@ -20,11 +20,11 @@
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
-                                    <ul class="dropdown-menu pull-right">
+                                 {{--    <ul class="dropdown-menu pull-right">
                                         <li><a href="{{ route('edit_profile') }}">Edit</a></li>
-                                        {{-- <li><a href="javascript:void(0);">Another action</a></li> --}}
-                                        {{-- <li><a href="javascript:void(0);">Something else here</a></li> --}}
-                                    </ul>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul> --}}
                                 </li>
                             </ul>
                         </div>

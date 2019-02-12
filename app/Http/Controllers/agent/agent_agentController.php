@@ -159,8 +159,6 @@ class agent_agentController extends Controller
                   "mg_name" => "required",
                   "name" => "required",
                   "phone" => "required",                
-                  "email" => "required|unique:users,email", 
-                  "address" => "required",
                   "password" => "required",  
 
             ];

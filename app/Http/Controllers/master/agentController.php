@@ -183,8 +183,6 @@ class agentController extends Controller
                   "mg_name" => "required",
                   "name" => "required",
                   "phone" => "required",                
-                  "email" => "required|unique:users,email", 
-                  "address" => "required",
                   "password" => "required",  
                   "role_id" => "required",  
 
@@ -200,8 +198,7 @@ class agentController extends Controller
         $image = DB::table('users')->insert([
                 'name'          =>$request->name,
                 'phone'         =>$request->phone,
-                'email'         =>$request->email,
-                'address'       =>$request->address,
+                'jabatan'       =>$request->jabatan,
                 'password'      =>Hash::make($request->password),
                 'username'      =>$request->username,
                 'role_id'       =>$request->role_id,
@@ -274,8 +271,7 @@ class agentController extends Controller
               'mg_email'      =>$req->mg_email,
               'name'          =>$req->name,
               'phone'         =>$req->phone,
-              'email'         =>$req->email,
-              'address'       =>$req->address,
+              'jabatan'       =>$req->jabatan,
               'image'         =>$filename,
               'username'      =>$req->username,
             ]);
@@ -291,8 +287,7 @@ class agentController extends Controller
               'mg_email'      =>$req->mg_email,
               'name'          =>$req->name,
               'phone'         =>$req->phone,
-              'email'         =>$req->email,
-              'address'       =>$req->address,
+              'jabatan'       =>$req->jabatan,
               'image'         =>$filename,
               'password'      =>Hash::make($req->password),
               'username'      =>$req->username,
@@ -304,8 +299,7 @@ class agentController extends Controller
           $image = DB::table('users')->where('id',$req->id)->update([
             'name'          =>$req->name,
             'phone'         =>$req->phone,
-            'email'         =>$req->email,
-            'address'       =>$req->address,
+            'jabatan'       =>$req->jabatan,
             'image'         =>$filename,
             'password'      =>Hash::make($req->password),
             'username'      =>$req->username,
