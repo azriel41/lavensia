@@ -187,7 +187,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_name" id="mg_name" class="form-control wajib"  value="{{$data->mg_name}}" placeholder="Manager Name">
+                                            <input type="text" name="mg_name" id="mg_name" class="form-control wajib" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif  value="{{$data->mg_name}}" placeholder="Manager Name">
                                         </div>
                                         @if($errors->has('co_phone'))
                                             <small style="color: #ed5565">{{ $errors->first('co_phone')}}</small>
@@ -203,7 +203,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_phone" id="mg_phone" class="form-control wajib" style="text-ign: : right;"  value="{{$data->mg_phone}}" readonly="" placeholder="Manager Phone">
+                                            <input type="text" name="mg_phone" id="mg_phone" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif class="form-control wajib" style="text-ign: : right;"  value="{{$data->mg_phone}}" readonly="" placeholder="Manager Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +216,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="mg_email" id="mg_email" class="form-control wajib" readonly=""  value="{{$data->mg_email}}" placeholder="Manager Email">
+                                            <input type="text" name="mg_email" id="mg_email" class="form-control wajib"  @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif value="{{$data->mg_email}}" placeholder="Manager Email">
                                         </div>
                                     </div>
                                 </div>
