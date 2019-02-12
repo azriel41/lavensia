@@ -58,7 +58,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_name" id="co_name" class="form-control wajib" @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) readonly=""  @endif  value="{{ $data->co_name }}" placeholder="Company Name">
+                                            <input type="text" name="co_name" id="co_name" class="form-control wajib" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif  value="{{ $data->co_name }}" placeholder="Company Name">
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_phone" id="co_phone" class="form-control wajib" @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) readonly=""  @endif  value="{{ $data->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
+                                            <input type="text" name="co_phone" id="co_phone" class="form-control wajib" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif  value="{{ $data->co_phone }}" style="text-align: : right;"   placeholder="Company Phone">
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="co_email" id="co_email" class="form-control wajib"  @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) readonly=""  @endif    value="{{ $data->co_email }}" placeholder="Company Email">
+                                            <input type="text" name="co_email" id="co_email" class="form-control wajib"  @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif    value="{{ $data->co_email }}" placeholder="Company Email">
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="co_address" id="co_address" class="form-control wajib" placeholder="Company Address" @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) readonly=""  @endif  >{{ $data->co_address }}</textarea>
+                                            <textarea name="co_address" id="co_address" class="form-control wajib" placeholder="Company Address" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) readonly=""  @endif  >{{ $data->co_address }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                                                                 Company Image
                                                             @endif 
                                                         </div> 
-                                                    <input type="file" class="chooseFile" @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) disabled=""  @endif   name="image"  
+                                                    <input type="file" class="chooseFile" @if (Auth::user()->role_id == 4 or Auth::user()->role_id == 5) disabled=""  @endif   name="image"  
                                                         @if ($data->image == null )
                                                            src="{{ asset('/assets/images/NoImage.png') }}" 
                                                         @else 
