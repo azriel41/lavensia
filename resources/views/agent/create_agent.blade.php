@@ -304,7 +304,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}"  placeholder="Username">
+                                            <input type="text" name="username" id="username" class="form-control" autocomplete="username" value="{{old('username')}}"  placeholder="Username">
                                         </div>
                                         @if($errors->has('username'))
                                             <small style="color: #ed5565">{{ $errors->first('username')}}</small>
@@ -320,7 +320,7 @@
                                 <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="Password">
+                                            <input type="password" name="password" id="password" class="form-control"  autocomplete="new-password" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
