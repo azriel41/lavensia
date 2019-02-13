@@ -9,6 +9,8 @@ use Session;
 use Auth;
 use Storage;
 use DB;
+use App\d_booking;
+use carbon\carbon;
 class HomeController extends Controller
 {
     /**
@@ -28,9 +30,21 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        
-        
-        return view('home');
+          
+        $today = d_booking::where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),carbon::now()->format('Y-m-d'))->get()->count();
+
+        $yesterday = d_booking::where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),carbon::now()->subDays(1)->format('Y-m-d'))->get()->count();
+
+        $weekAgo = d_booking::where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),'>=',carbon::now()->subDays(7)->format('Y-m-d'))
+                              ->where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'),'<=',carbon::now()->format('Y-m-d'))
+                              ->get()->count();
+
+        $bestTravel = d_booking::selectRaw('count(db_intinerary_id) as best,db_intinerary_id')->groupBy('db_intinerary_id')->orderBy('best','DESC')->limit(5)->get();
+
+        $bestAgen = d_booking::selectRaw('count(db_users) as best,db_users')->groupBy('db_users')->orderBy('best','DESC')->limit(5)->get();
+
+
+        return view('home',compact('weekAgo','today','yesterday','bestTravel','bestAgen'));
         
     }
     public function profile()

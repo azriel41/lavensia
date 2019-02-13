@@ -101,8 +101,7 @@ class booking_listController extends Controller
     }
     public function bookingdetail($id)
     {
-		$data = DB::table('d_booking')
-                        ->select('handle.name as handle','bookby.name as bookby','d_booking.*','m_intinerary.*','d_additonal_booking.*','m_detail_intinerary.*','d_party_name.*')
+		$data = d_booking::select('handle.name as handle','bookby.name as bookby','d_booking.*','m_intinerary.*','d_additonal_booking.*','m_detail_intinerary.*','d_party_name.*')
 						->leftjoin('d_additonal_booking','d_additonal_booking.da_booking_id','=','d_booking.db_id')
 						->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')	
 						->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')	
@@ -296,10 +295,9 @@ class booking_listController extends Controller
     {
         $user = Auth::user()->id;
 
-        $data = DB::Table('d_booking as db')
-                        ->leftjoin('m_detail_intinerary as mid','db.db_intinerary_id','=','mid.md_id')
+        $data = d_booking::leftjoin('m_detail_intinerary as mid','db_intinerary_id','=','mid.md_id')
                         ->leftjoin('m_intinerary as mi','mid.md_intinerary_id','=','mi.mi_id')
-                        ->leftjoin('users as us','us.id','=','db.db_handle_by') 
+                        ->leftjoin('users as us','us.id','=','db_handle_by') 
                         ->where('db_users',$user)   
                         ->get();
         
@@ -318,7 +316,10 @@ class booking_listController extends Controller
                             return '<span>'.$data->mi_name.'</span>';
                         })
                         ->addColumn('bookby', function ($data) {
-                            return '<span>'.$data->created_by.'</span>';
+                            return '<span>'.$data->user->name.'</span>';
+                        })
+                        ->addColumn('handle', function ($data) {
+                            return '<span>'.$data->handle->name.'</span>';
                         })
                         ->addColumn('status', function ($data) {
                             $parent = $data->db_status;
@@ -356,15 +357,14 @@ class booking_listController extends Controller
                             $a = '<button class="btn btn-sm btn-deault" disabled=""> <i class="fa fa-money"></i> Pay</button>';
 
                             // $b = '<a class="btn btn-sm btn-book payment" href="URL"><i class="fa fa-money"></i> Pay';
-                            $b = "<input class='btn btn-sm btn-book payment' type='button' value='$data->db_id' onclick='pay(this)' />";
-
+                            $b = "<input class='btn btn-sm btn-book payment' type='button' value=".number_format($data->db_total_remain, 2, ",", ".")." onclick='pay(".$data->db_id.")' />";
                             if ($data->db_total_remain == 0) {
                                 return $a;
                             }else {
                                 return $b;
                             }
                         })
-                        ->rawColumns(['bookingdetail','date','status','pay','termin','date_start','grup','bookby'])
+                        ->rawColumns(['bookingdetail','date','status','pay','termin','date_start','grup','bookby','handle'])
                         ->addIndexColumn()
                         ->make(true);
     }

@@ -442,9 +442,6 @@ a:not([href]):not([tabindex]){
                                         <input type="text" class="form-control party_name"  name="party_name">
                                     </div>
                                 </div>
-                                <div class="mt-50">
-                                    
-                                </div>
                                 <div class="col-sm-12 ">
                                     <div class="col-sm-3">
                                         <p class="grey"><b>Telp</b></p>
@@ -453,6 +450,22 @@ a:not([href]):not([tabindex]){
                                         <input type="number" class="form-control party_telephone"  name="party_telephone">
                                     </div>
                                 </div>
+                                @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)
+                                    <div class="col-sm-12 ">
+                                        <div class="col-sm-3">
+                                            <p class="grey"><b>Transfer To Agent</b></p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <select class="form-control agent selectpicker" data-size="6" name="agent" data-live-search="true">
+                                                @foreach ($user as $e)
+                                                    <option @if (Auth::user()->id == $e->id)
+                                                        selected="" 
+                                                    @endif value="{{ $e->id }}">{{ $e->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="col-sm-12" style="margin-top: 20px">
                                     <div class="col-sm-2">
                                         <p class="grey"><b>Adult</b></p>
@@ -805,7 +818,7 @@ a:not([href]):not([tabindex]){
                                   <div class="col1 col-sm-12" >
                                     <div class="input-group margin-top-20px">
                                         <div class="checkbox checkbox-info checkbox-circle">
-                                            <input id="check_agree" type="checkbox" name="check_agree">
+                                            <input id="check_agree" class="checkbox" type="checkbox" name="check_agree">
                                             <label for="Kwitansi">
                                                 <b>I Agree With All Term & Condition</b><a onclick="open_term()" data-toggle="modal" data-target="#exampleModal"> See Term & Condition</a>
                                             </label>

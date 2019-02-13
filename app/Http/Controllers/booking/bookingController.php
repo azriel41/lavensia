@@ -52,8 +52,8 @@ class bookingController extends Controller
     {	
     	if (Auth::User()->status == 'AKTIF') {
 	    	$dt = carbon::now();
-			$hours = $dt->format('H'); 
-			$range = [16,17,18,19,20,21,22,23,0,1,2,3,4,5,6];
+
+	    	$user = DB::table('users')->get();
 
 			if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3) {
 				$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
@@ -72,37 +72,32 @@ class bookingController extends Controller
 		                        ->where('db_users',Auth::User()->role_id)
 		                        ->where('db_status','Waiting List')
 		                        ->get());
-		        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
+		        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah','user'));
 		        }else{
-		        	return view('booking.booking',compact('detail_intinerary','detil','id'));
+		        	return view('booking.booking',compact('detail_intinerary','detil','id','user'));
 		        }
 			}else{
-				if (!in_array($hours, $range)) {
-			    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
+		    	$detail_intinerary  = $this->detail_intinerary->cari('md_id',$req->id);
 
-			    	$id 				= $req->id;
+		    	$id 				= $req->id;
 
-			    	if (Auth::User() != null) {
-			            $cart   = DB::table('d_booking')
-                        ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
-                        ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
-                        ->where('db_users',Auth::User()->role_id)
-                        ->where('db_status','Waiting List')
-                        ->get();
+		    	if (Auth::User() != null) {
+		            $cart   = DB::table('d_booking')
+                    ->leftjoin('m_detail_intinerary','m_detail_intinerary.md_id','=','d_booking.db_intinerary_id')
+                    ->leftjoin('m_intinerary','m_intinerary.mi_id','=','m_detail_intinerary.md_intinerary_id')
+                    ->where('db_users',Auth::User()->role_id)
+                    ->where('db_status','Waiting List')
+                    ->get();
 
 
-			            $jumlah = count(DB::table('d_booking')
-			                        ->where('db_users',Auth::User()->role_id)
-			                        ->where('db_status','Waiting List')
-			                        ->get());
-			        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah'));
-			        }else{
-			        	return view('booking.booking',compact('detail_intinerary','detil','id'));
-			        }
-				}else{
-					Session::flash('message','BUKAN WAKTU SERVICE');
-					return redirect()->back();
-				}
+		            $jumlah = count(DB::table('d_booking')
+		                        ->where('db_users',Auth::User()->role_id)
+		                        ->where('db_status','Waiting List')
+		                        ->get());
+		        	return view('booking.booking',compact('detail_intinerary','detil','id','cart','jumlah','user'));
+		        }else{
+		        	return view('booking.booking',compact('detail_intinerary','detil','id','user'));
+		        }
 			}
 		}else{
 			Session::flash('message','USER ANDA BELUM AKTIF');
@@ -139,10 +134,15 @@ class bookingController extends Controller
     		$tahun = Carbon::now()->format('y');
    			$index = str_pad($id, 5, '0', STR_PAD_LEFT);
    			$index = $tahun.$bulan.$index;
+   			if (isset($req->agent)) {
+   				$user = $req->agent;
+   			}else{
+   				$user = Auth::user()->id;
+   			}
     		$data = array(
     						'db_id'				    	=> $id,
     						'db_kode_transaksi'	    	=> $index,
-						    'db_users'					=> Auth::user()->id,
+						    'db_users'					=> $user,
 						    'db_name'					=> strtoupper($req->party_name),
 						    'db_intinerary_id'			=> $req->id,
 						    'db_telp'					=> $req->party_telephone,

@@ -12,6 +12,7 @@ use App\detail_intinerary;
 use App\intinerary;
 use App\schedule;
 use App\m_additional_intinerary;
+use carbon\carbon;
 
 
 class packageController extends Controller
@@ -25,7 +26,7 @@ class packageController extends Controller
     	// foreach ($data as $index => $det) {
     		// $detail = $det->detail_intinerarys;
     	// }
-        $detail = DB::table('m_detail_intinerary')->where('md_intinerary_id',$id)->orderBy('md_start','ASC')->get();
+        $detail = DB::table('m_detail_intinerary')->where('md_intinerary_id',$id)->where('md_end','>=',carbon::now()->format('Y-m-d'))->orderBy('md_start','ASC')->get();
     	// return $detail; 
         $schedule = schedule::where('ms_intinerary_id','=',$id)->get();
        

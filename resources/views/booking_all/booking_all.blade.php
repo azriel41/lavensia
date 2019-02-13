@@ -54,7 +54,7 @@
                                            {{-- <th class="center-al">Group Name</th> --}}
                                            <th class="center-al">Status</th>
                                            <th class="center-al">Book by</th>
-                                           <th class="center-al">Procces By</th>
+                                           <th class="center-al">procces By</th>
                                            <th class="center-al">Detail</th>
                                        </tr>
                                     </thead>

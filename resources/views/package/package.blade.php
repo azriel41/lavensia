@@ -214,6 +214,11 @@ hr{
                                                
                                             </tr>
                                           @endforeach
+                                          @if (count($detail) == 0)
+                                            <tr>
+                                              <td colspan="6" class="text-center">No Schedule</td>
+                                            </tr>
+                                          @endif
                                         </tbody>
                                     </table>
                                 </div>
