@@ -420,10 +420,6 @@ class intinerary_controller extends Controller
     {
         $check = DB::table('m_intinerary')->join('m_detail_intinerary','md_intinerary_id','mi_id')->where('md_id',$req->id)->first();
         // return json_encode($check);
-        if ($req->tl == null) {
-                return Response::json(['status'=>0,'message'=>'Please Select Tour Leader...']);
-        }
-        // dd($req->all());
 
         DB::beginTransaction();
         $fc = $req->file('fc');
@@ -441,7 +437,7 @@ class intinerary_controller extends Controller
             if ($check1 != null) {
                 $fc1 = $check->md_final;
             }else{
-                return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
+                $fc1 = null;
             }
         }
 
@@ -455,7 +451,7 @@ class intinerary_controller extends Controller
             if ($check1 != null) {
                 $tt1 = $check->md_tata_tertib;
             }else{
-                return Response::json(['status'=>0,'message'=>'Please Put Your PDF...']);
+                $tt1 = null;
             }
         }
         if ($image != null) {
@@ -468,14 +464,20 @@ class intinerary_controller extends Controller
             if ($check1 != null) {
                 $image1 = $check->md_flayer;
             }else{
-                return Response::json(['status'=>0,'message'=>'Please Put Your Image...']);
+                $image1 = null;
             }
+        }
+
+        if ($req->tl != null) {
+            $tl = $req->tl;
+        }else{
+            $tl = null;
         }
         $update = DB::table('m_detail_intinerary')->where('md_id',$req->id)->update([
                     'md_tata_tertib'=>$tt1,
                     'md_final'=>$fc1,
                     'md_flayer'=>$image1,
-                    'md_tour_leader'=>$req->tl,
+                    'md_tour_leader'=>$tl,
                     'md_tip'=>filter_var($req->tip,FILTER_SANITIZE_NUMBER_INT),
 
         ]);
