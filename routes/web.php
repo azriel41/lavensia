@@ -43,10 +43,11 @@ Route::get('/', function () {
 						->get());
 			// return $cart;
 		if (Auth::user()->role_id ==1 or Auth::user()->role_id ==2) {
-    		return view('home');
+	
+    		return redirect('/home');
 		}else{
-		$category = App\category::all();
-		$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
+			$category = App\category::all();
+			$article = DB::table('d_article')->orderBy('da_created_at','DESC')->take(6)->get();
 
     		return view('welcome',compact('article','category','intinerary','det','response','cart','jumlah','cat'));
 		}
