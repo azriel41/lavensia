@@ -100,7 +100,7 @@ table{
                                   <tr>
                                       <td align="left">Periode</td>
                                       <td>: </td>
-                                      <td align="left">{{ date('d F y',strtotime($data[0]->md_start)) }}  -  {{ date('d F y',strtotime($data[0]->md_start)) }}</td>
+                                      <td align="left">{{ date('d F y',strtotime($data[0]->md_start)) }}  -  {{ date('d F y',strtotime($data[0]->md_end)) }}</td>
                                   </tr>
                               </table>
 

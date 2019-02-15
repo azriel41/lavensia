@@ -297,10 +297,7 @@ class booking_listController extends Controller
     {
         $user = Auth::user()->id;
 
-        $data = d_booking::leftjoin('m_detail_intinerary as mid','db_intinerary_id','=','mid.md_id')
-                        ->leftjoin('m_intinerary as mi','mid.md_intinerary_id','=','mi.mi_id')
-                        ->leftjoin('users as us','us.id','=','db_handle_by') 
-                        ->where('db_users',$user)   
+        $data = d_booking::where('db_users',$user)   
                         ->get();
         
         $data = collect($data);
@@ -309,13 +306,13 @@ class booking_listController extends Controller
                             return "<a class='btn btn-sm btn-book'  href='bookingdetail/".$data->db_kode_transaksi."'>".$data->db_kode_transaksi."</a>";
                         })
                         ->addColumn('date', function ($data) {
-                            return date('d F Y',strtotime($data->created_at));
+                            return carbon::parse($data->created_at)->format('d F Y');
                         })
                         ->addColumn('date_start', function ($data) {
-                            return date('d F Y',strtotime($data->md_start));
+                            return carbon::parse($data->detail_itin->md_start)->format('d F Y');
                         })
                         ->addColumn('grup', function ($data) {
-                            return '<span>'.$data->mi_name.'</span>';
+                            return '<span>'.$data->detail_itin->intinerary->mi_name.'</span>';
                         })
                         ->addColumn('bookby', function ($data) {
                             return '<span>'.$data->user->name.'</span>';

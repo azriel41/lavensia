@@ -32,6 +32,7 @@ class d_booking extends Model
 						   'db_agent_com',
 						   'db_tips',
 						   'created_by',
+						   'created_at',
 						   'db_handle_by',
 						   'updated_by',
 						];
