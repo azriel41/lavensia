@@ -10,7 +10,7 @@
                 </div>
                 <div class="content">
                     <div class="text">AGENT</div>
-                    <div class="number count-to" data-from="0" data-to="{{ count(agent()) }}" data-speed="15" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="{{ count(agent()) }}" data-speed="15" data-fresh-interval="20">{{ count(agent()) }}</div>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="content">
                     <div class="text">BOOKING LIST</div>
-                    <div class="number count-to" data-from="0" data-to="{{ count(booking()) }}" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="{{ count(booking()) }}" data-speed="1000" data-fresh-interval="20">{{ count(booking()) }}</div>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="content">
                         <div class="text">ITINERARY</div>
-                        <div class="number count-to" data-from="0" data-to="{{ count(itinerary()) }}" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{ count(itinerary()) }}" data-speed="1000" data-fresh-interval="20">{{ count(itinerary()) }}</div>
                     </div>
                 </div>
             </div>
