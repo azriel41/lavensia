@@ -110,7 +110,11 @@ Route::get('/package/{id}/package', 'package\packageController@package')->name('
 Route::get('/package/package_pdf', 'package\packageController@package_pdf')->name('package_pdf');
 //partner
 Route::get('/package/package/{id}', 'package\packageController@package')->name('package');
+Route::get('/contact/contact', 'additional\partnerController@contact')->name('contact');
+Route::get('/partner/partner_data', 'additional\partnerController@partner_data')->name('partner_data');
 Route::get('/partner/partner', 'additional\partnerController@partner')->name('partner');
+
+
 Route::get('/contact/contact', 'additional\partnerController@contact')->name('contact');
 
 Route::get('/load_footer', 'additional\partnerController@load_footer')->name('load_footer');

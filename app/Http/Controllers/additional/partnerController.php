@@ -18,8 +18,18 @@ class partnerController extends Controller
     public function partner()
     {	
     	// $data = user::all();
-    	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->where('name','!=','developer')->where('hide','=','N')->whereIn('role_id',[4,1])->groupBy('co_address','co_phone','image','co_name')->get();
+    	$data = DB::table('users')->select('co_address','co_phone','image','co_name')->where('name','!=','developer')->where('city','!=',null)->where('hide','=','N')->whereIn('role_id',[4,1])->groupBy('co_address','co_phone','image','co_name')->get();
         // return $data;
+
+    	$city = DB::table('users')
+    			 ->join('regencies','regencies.id','=','city')
+                 ->distinct()
+				 ->select('regencies.name as city','regencies.id as id')
+				 ->where('users.name','!=','developer')
+				 ->where('hide','=','N')
+				 ->whereIn('role_id',[4,1])
+				 ->get();
+
         $category = category::all();
 
 		$intinerary = intinerary::all();
@@ -30,6 +40,7 @@ class partnerController extends Controller
 			$det = $val->detail_intinerarys;
 			$cat = $val->category;
 		}
+
 		$book = User::all();
 
 		if (Auth::User() != null) {
@@ -48,11 +59,30 @@ class partnerController extends Controller
 						->get());
 				// return $cart;
 
-	    	return view('additional.partner',compact('data','category','intinerary','det','response','cart','jumlah'));
+	    	return view('additional.partner',compact('data','category','intinerary','det','response','cart','jumlah','city'));
 		}else{
-	    	return view('additional.partner',compact('data','category','intinerary','det','response'));
+	    	return view('additional.partner',compact('data','category','intinerary','det','response','city'));
 		}
     }
+
+    public function partner_data(Request $req)
+    {
+    	if ($req->city == '') {
+	      $city = '';
+	    }else{
+	      $city = 'and city ='."'$req->city'";
+	    }
+
+    	$data = DB::table('users')->select('co_address','co_phone','image','co_name','city')
+    							  ->whereRaw("hide = 'N' $city")
+    							  ->where('name','!=','developer')
+    							  ->where('city','!=',null)
+    							  ->whereIn('role_id',[4,1])
+    							  ->get();
+
+	    return view('additional.partner_data',compact('data'));
+    }
+
     public function contact()
     {
     	$contact = DB::table('m_contact')->where('mc_id',1)->get();

@@ -43,7 +43,6 @@ class HomeController extends Controller
 
         $bestAgen = d_booking::selectRaw('count(db_users) as best,db_users')->groupBy('db_users')->orderBy('best','DESC')->limit(5)->get();
 
-
         return view('home',compact('weekAgo','today','yesterday','bestTravel','bestAgen'));
         
     }

@@ -1,48 +1,49 @@
 <!-- Widgets -->
 <div class="row clearfix">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-light-blue hover-expand-effect">
-            <div class="icon">
-                <i class="material-icons">playlist_add_check</i>
-            </div>
-            <div class="content">
-                <div class="text">NEW TASKS</div>
-                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-cyan hover-expand-effect">
-            <div class="icon">
-                <i class="material-icons">help</i>
-            </div>
-            <div class="content">
-                <div class="text">NEW TICKETS</div>
-                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+    <a @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)
+        href="{{ url('booking/booking_all') }}" @else href="{{ url('agent/master_agent_agent') }}"
+    @endif  style="cursor: pointer;">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
+            <div class="info-box bg-light-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">person</i>
+                </div>
+                <div class="content">
+                    <div class="text">AGENT</div>
+                    <div class="number count-to" data-from="0" data-to="{{ count(agent()) }}" data-speed="15" data-fresh-interval="20"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-blue hover-expand-effect">
-            <div class="icon">
-                <i class="material-icons">forum</i>
-            </div>
-            <div class="content">
-                <div class="text">NEW COMMENTS</div>
-                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-teal hover-expand-effect">
-            <div class="icon">
-                <i class="material-icons">person_add</i>
-            </div>
-            <div class="content">
-                <div class="text">NEW VISITORS</div>
-                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+    </a>
+    <a @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)
+        href="{{ url('booking/booking_all') }}" @else href="{{ url('booking/booking_list') }}"
+    @endif  style="cursor: pointer;">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-cyan hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">book</i>
+                </div>
+                <div class="content">
+                    <div class="text">BOOKING LIST</div>
+                    <div class="number count-to" data-from="0" data-to="{{ count(booking()) }}" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
+    @if (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)
+        <a href="{{ url('master/master_intinerary') }}" style="cursor: pointer;">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-blue hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">local_play</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">ITINERARY</div>
+                        <div class="number count-to" data-from="0" data-to="{{ count(itinerary()) }}" data-speed="1000" data-fresh-interval="20"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    @endif
 </div>
 <!-- #END# Widgets -->

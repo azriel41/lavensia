@@ -178,48 +178,65 @@ table{
                               <h5>Price</h5>
 
                               <table width="100%" class="table table-striped"> 
-                                
                                 <tr>
+                                    @php
+                                        $adult = 0;
+                                        $child = 0;
+                                        $infant = 0;
+                                        $cwb = 0;
+                                        foreach ($data as $i => $d) {
+                                            if($d->dp_status_person == 'adult'){
+                                                $adult += $d->md_adult_price;
+                                            }elseif($d->dp_status_person == 'child' and $d->dp_bed == 'doubletwin&cwb'){
+                                                $child += $d->md_child_price;
+                                            }elseif($d->dp_status_person == 'infant'){
+                                                $infant += $d->md_infant_price;
+                                            }elseif($d->dp_status_person == 'child' and $d->dp_bed == 'doubletwin&cnb'){
+                                                $cwb += $d->md_child_w_price;
+                                            }
+                                        }
+                                    @endphp
                                     <td align="left">Adult</td>
                                     <td>: </td>
-                                    <td align="right" colspan="2">{{ number_format($data[0]->md_adult_price,0,'','.')}}</td>
+                                    <td align="right" colspan="2">{{ number_format($adult,0,'','.')}}</td>
                                     <td align="left">Child</td>
                                     <td>: </td>
-                                    <td align="right" colspan="3">{{ number_format($data[0]->md_child_price,0,'','.')}}</td>
+                                    <td align="right" colspan="3">{{ number_format($child,0,'','.')}}</td>
                                 </tr>
                                 <tr>
                                     <td align="left">Infant</td>
                                     <td>: </td>
-                                    <td align="right" colspan="2">{{ number_format($data[0]->md_infant_price,0,'','.')}}</td>
+                                    <td align="right" colspan="2">{{ number_format($infant,0,'','.')}}</td>
                                     <td align="left">CwB</td>
                                     <td>: </td>
-                                    <td align="right" colspan="3">{{ number_format($data[0]->md_child_w_price,0,'','.')}}</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Agent Com</td>
-                                    <td>: </td>
-                                    <td align="right" colspan="2">{{ number_format($data[0]->md_agent_com,0,'','.')}}</td>
-                                    <td align="left">Tips</td>
-                                    <td>: </td>
-                                    <td align="right" colspan="3">{{ number_format($data[0]->md_tips,0,'','.')}}</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Visa</td>
-                                    <td>: </td>
-                                    <td align="right" colspan="2">{{ number_format($data[0]->md_visa,0,'','.')}}</td>
-                                    <td align="left">Tax</td>
-                                    <td>: </td>
-                                    <td align="right" colspan="3">{{ number_format($data[0]->md_tax,0,'','.')}}</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Total Price</td>
-                                    <td>: </td>
-                                    <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_total_room,0,'','.') }}</td>
+                                    <td align="right" colspan="3">{{ number_format($cwb,0,'','.')}}</td>
                                 </tr>
                                 <tr>
                                     <td align="left">Add Price</td>
                                     <td>: </td>
-                                    <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_total_additional,0,'','.') }}</td>
+                                    <td align="right" colspan="2">{{ number_format($data[0]->db_total_additional,0,'','.') }}</td>
+                                    
+                                    <td align="left">Tips</td>
+                                    <td>: </td>
+                                    <td align="right" colspan="3">{{ number_format($data[0]->db_tips,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Visa</td>
+                                    <td>: </td>
+                                    <td align="right" colspan="2">{{ number_format($data[0]->db_visa,0,'','.')}}</td>
+                                    <td align="left">Tax</td>
+                                    <td>: </td>
+                                    <td align="right" colspan="3">{{ number_format($data[0]->db_tax,0,'','.')}}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Total Price</td>
+                                    <td>: </td>
+                                    <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_total+$data[0]->db_agent_com,0,'','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Agent Com</td>
+                                    <td>: </td>
+                                    <td align="right" colspan="7">Rp. {{ number_format($data[0]->db_agent_com,0,'','.')}}</td>
                                 </tr>
                                 <tr>
                                     <td align="left">Total Price</td>
@@ -235,7 +252,39 @@ table{
                             </table>
                             </div>
                         </div>
-
+                        <div class="location-on-map mt-50">
+                            <h4>PAYMENT HISTORY</h4>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <th>No</th>
+                                    <th>Account Name</th>
+                                    <th>Bank Name</th>
+                                    <th>Date</th>
+                                    <th>Nominal</th>
+                                    <th>Proofment</th>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $index = 0;
+                                    @endphp
+                                    @foreach ($payment->payment as $i => $p)
+                                        @foreach ($p->detail_history->sortByDesc('dhd_tanggal') as $i1 => $p1)
+                                            <tr>
+                                                <td>{{ $index+1 }}</td>
+                                                <td>{{ $p1->dhd_nama_rekening }}</td>
+                                                <td>{{ $p1->dhd_bank }}</td>
+                                                <td>{{ number_format($p1->dhd_nominal,0,'','.') }}</td>
+                                                <td>{{ carbon\carbon::parse($p1->dhd_tanggal)->format('d/m/Y') }}</td>
+                                                <td><img src="{{ asset('storage/app') }}/{{ $p1->dhd_image }}"></td>
+                                            </tr>
+                                            @php
+                                                $index++;
+                                            @endphp
+                                        @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="location-on-map mt-50" id="lomap">
                             <h4>Detail Passenger</h4>
                             <div class="location-map">
@@ -244,6 +293,8 @@ table{
                                         <p>SINGLE</p>
                                     @elseif($f->dp_bed == 'twin')
                                         <p>TWIN</p>
+                                    @elseif($f->dp_bed == 'double')
+                                        <p>DOUBLE</p>
                                     @elseif($f->dp_bed == 'triple')
                                         <p>TRIPLE</p>
                                     @elseif($f->dp_bed == 'doubletwin&cnb')
