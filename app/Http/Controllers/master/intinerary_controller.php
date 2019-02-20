@@ -686,4 +686,17 @@ class intinerary_controller extends Controller
 
         return Response::json(['data'=>$data]);
     }
+
+    public function rubah_seat(Request $req)
+    {
+        DB::beginTransaction();
+        try{
+            $data = DB::table('m_detail_intinerary')->where('md_nota',$req->md_nota)->update(['md_seat_remain'=>$req->md_seat_remain]);
+            DB::commit();
+            return Response::json(['status'=>1]);
+        }catch(Exception $error){
+            DB::rollBack();
+            dd($error);
+        }
+    }
 }

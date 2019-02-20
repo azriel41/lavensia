@@ -320,6 +320,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/master/master_intinerary/intinerary_detail', 'master\intinerary_controller@intinerary_detail')->name('intinerary_detail');
 	Route::post('/master/master_intinerary/save_detail', 'master\intinerary_controller@save_detail')->name('save_detail');
 	Route::get('/master/master_intinerary/edit_netto', 'master\intinerary_controller@edit_netto')->name('edit_netto');
+	Route::get('/master/master_intinerary/rubah_seat', 'master\intinerary_controller@rubah_seat')->name('rubah_seat');
 
 
 	// master contact
