@@ -42,6 +42,7 @@
                                 <th class="center">Itinerary</th>
                                 <th class="center">Detail</th>
                                 <th class="center">Status</th>
+                                <th class="center">Book By</th>
                                 <th class="center">Action</th>
                             </tr>
                         </thead>
@@ -79,7 +80,7 @@ window.onload = function(){
                     className: 'center'
                 },
                 {
-                    targets: 7 ,
+                    targets: 8 ,
                     className: 'center'
                 },
             ],
@@ -92,6 +93,7 @@ window.onload = function(){
             {data: 'schedule', name: 'schedule'},
             {data: 'departure', name: 'departure'},
             {data: 'status', name: 'status'},
+            {data: 'mi_book_by', name: 'mi_book_by'},
             {data: 'aksi', name: 'aksi'},
         ]
     });
