@@ -30,6 +30,7 @@ class intinerary extends Model
 							'mi_netto_adult',
 							'mi_netto_cwb',
 							'mi_netto_cnb',
+							'mi_book_by',
 							'mi_netto_infant'
 						];
 

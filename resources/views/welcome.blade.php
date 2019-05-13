@@ -218,36 +218,72 @@ background: #2f4357;
                   <div class="container-fluid">
                     <div class="drop_here">
                         @foreach ($intinerary as $index => $iti)
-                        <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
-                            <div class="destination" {{-- style="min-height: 260px;max-height: 260px;"> --}}>
-                                <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3" style="min-height: 280px;max-height: 280px;">
-                                    <div style="min-height:50px;max-width: 100%;max-height: 100%">
-                                    <div class="d-flex">
-                                        <div>
-                                                <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                        @if (Auth::user() != null)
+                            @if (Auth::user()->co_name == $iti->mi_book_by)
+                                <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
+                                    <div class="destination" {{-- style="min-height: 260px;max-height: 260px;"> --}}>
+                                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
+                                            <div class="icon d-flex justify-content-center align-items-center">
+                                                <span class="icon-search2"></span>
+                                            </div>
+                                        </a>
+                                        <div class="text p-3" style="min-height: 280px;max-height: 280px;">
+                                            <div style="min-height:50px;max-width: 100%;max-height: 100%">
+                                            <div class="d-flex">
+                                                <div>
+                                                        <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                            <div style="min-height: 100px;max-width: 100%;max-height: 100%">
+                                            <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
+                                            {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
+                                            </div>
+                                            <hr>
+                                            <p class="bottom-area d-flex">
+                                                <span><i class="icon-map-o"></i>
+
+                                                </span> 
+                                                <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
+                                            </p>
                                         </div>
                                     </div>
-                                    </div>
-                                    <br>
-                                    <div style="min-height: 100px;max-width: 100%;max-height: 100%">
-                                    <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
-                                    {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
-                                    </div>
-                                    <hr>
-                                    <p class="bottom-area d-flex">
-                                        <span><i class="icon-map-o"></i>
+                                </div>
+                            @endif
+                        @endif
+                        @if ($iti->mi_book_by == null)
+                            <div class="col-md-3 col-md-6 col-m-12 ftco-animate">
+                                <div class="destination" {{-- style="min-height: 260px;max-height: 260px;"> --}}>
+                                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="border: 1px solid #e6e6e6;background-image: url({{  asset('storage/app/'.$intinerary[$index]['mi_image'])  }}?{{ time() }});">
+                                        <div class="icon d-flex justify-content-center align-items-center">
+                                            <span class="icon-search2"></span>
+                                        </div>
+                                    </a>
+                                    <div class="text p-3" style="min-height: 280px;max-height: 280px;">
+                                        <div style="min-height:50px;max-width: 100%;max-height: 100%">
+                                        <div class="d-flex">
+                                            <div>
+                                                    <span class="price" style="color: #1872bf"><b>{{ $intinerary[$index]['mi_name'] }}</b></span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div style="min-height: 100px;max-width: 100%;max-height: 100%">
+                                        <p>{{ $intinerary[$index]['mi_highlight'] }}</p>
+                                        {{-- <p class="days"><span>2 days 3 nights</span></p> --}}
+                                        </div>
+                                        <hr>
+                                        <p class="bottom-area d-flex">
+                                            <span><i class="icon-map-o"></i>
 
-                                        </span> 
-                                        <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
-                                    </p>
+                                            </span> 
+                                            <span class="ml-auto"><button class="btn btn-small btn-book" data-id="{{ $intinerary[$index]['mi_id'] }}" onclick="more(this)"><b>See More!</b></button></span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>

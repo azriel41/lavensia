@@ -14,6 +14,7 @@ use App\intinerary;
 use Storage;
 use Yajra\Datatables\Datatables;
 use App\all_variable;
+use App\User;
 class intinerary_controller extends Controller
 {
     protected $all_variable;
@@ -141,8 +142,8 @@ class intinerary_controller extends Controller
         $data =  $this->all_variable->intinerary()->same('mi_id',$id);
         $additional = $this->all_variable->additional()->all();
         $category =  $this->all_variable->category()->all();
-
-        return view('master.master_intinerary.edit_intinerary',compact('category','data','additional'));
+        $user =  User::select('co_name')->distinct()->get();
+        return view('master.master_intinerary.edit_intinerary',compact('category','data','additional','user'));
     }
 
 
@@ -210,6 +211,7 @@ class intinerary_controller extends Controller
                 $save_head = $intinerary->create($head);
             }else{
                 $id = $check->mi_id;
+                $head['mi_book_by'] = $req->book_by;
                 $update_head = $intinerary->update($head,'mi_nota',$req->tour_code);
             }
 

@@ -57,6 +57,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-control-label" for="tour_code">Book By</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line ">
+                                            <select name="book_by" id="book_by" class="form-control js-example-basic-single width100">
+                                                    <option value="">None</option>
+                                                    @foreach ($user as $val)
+                                                        <option 
+                                                            @if ($data->mi_book_by == $val->co_name)
+                                                                selected="" 
+                                                            @endif
+                                                         value="{{ $val->co_name }}">{{ $val->co_name }}</option>
+                                                    @endforeach  
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix ">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label class="form-control-label" for="intinerary">Destination</label>
